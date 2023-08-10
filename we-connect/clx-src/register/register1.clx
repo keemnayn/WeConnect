@@ -69,12 +69,9 @@
       <cl:inputbox std:sid="i-box-be86d18c" id="ipb1" style="border-radius:5px; background-color:#FFFFFF; color:#A0A0A0; font-weight:500; font-style:normal; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
         <cl:xylayoutdata std:sid="xyl-data-9b8f0dea" top="156px" left="158px" width="355px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:button std:sid="button-03baeff4" style="background-color:#4C4C6D; border-radius:5px; color:#070000; font-size:16px; font-style:normal; background-image:linear-gradient(#fcfeff,#e0e1e2);" class="button1" value="중복 확인">
+      <cl:button std:sid="button-03baeff4" style="background-color:#F6F6F7; border-radius:5px; color:#070000; font-size:16px; font-style:normal; background-image:none;" class="button1" value="중복 확인">
         <cl:xylayoutdata std:sid="xyl-data-f7d92360" top="156px" left="523px" width="109px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:htmlsnippet std:sid="htmlsnippet-bb28984f" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>사원번호&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-21804d3e" top="245px" left="157px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
       <cl:inputbox std:sid="i-box-1419f975" id="ipb2" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; text-align:center;" value="" placeholder="&#xD;&#xA;">
         <cl:xylayoutdata std:sid="xyl-data-c05bbe93" top="272px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
@@ -88,13 +85,10 @@
         <cl:xylayoutdata std:sid="xyl-data-79a2e94e" top="378px" left="157px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-a037999a" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>비밀번호 확인&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-01fe0f86" top="378px" left="698px" width="234px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-01fe0f86" top="378px" left="701px" width="234px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:inputbox std:sid="i-box-366d54cf" id="ipb5" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; text-align:center;" placeholder="&#xD;&#xA;">
-        <cl:xylayoutdata std:sid="xyl-data-23d164b7" top="272px" left="701px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:inputbox>
       <cl:htmlsnippet std:sid="htmlsnippet-a98cbb1c" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>성명 &lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-f545e8ce" top="245px" left="698px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-f545e8ce" top="245px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-e7082d07" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>아이디 &lt;/div>">
         <cl:xylayoutdata std:sid="xyl-data-efb9299c" top="116px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -120,7 +114,7 @@
       </cl:htmlsnippet>
       <cl:xylayout std:sid="xylayout-e0d6727c"/>
     </cl:group>
-    <cl:button std:sid="button-861d4f5e" style="background-color:#6091F7; color:#070000; font-size:16px; font-style:normal; background-image:linear-gradient(#fcfeff,#e0e1e2);" class="btn-success" value="확인">
+    <cl:button std:sid="button-861d4f5e" style="background-color:#6091F7; color:#070000; font-size:16px; font-style:normal; background-image:none;" class="btn-success" value="확인">
       <cl:xylayoutdata std:sid="xyl-data-05974be4" top="762px" left="656px" width="204px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:button std:sid="button-92e0fc1e" style="background-color:#929292; color:#070000; font-size:16px; font-style:normal;" class="btn-fail" value="취소">
@@ -129,7 +123,9 @@
     <cl:xylayout std:sid="xylayout-e8b4695f"/>
   </body>
   <std:studiosetting>
-    <std:hruler/>
+    <std:hruler>
+      <std:guide position="799"/>
+    </std:hruler>
     <std:vruler/>
   </std:studiosetting>
 </html>

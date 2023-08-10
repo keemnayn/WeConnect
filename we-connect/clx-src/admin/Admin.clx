@@ -93,7 +93,7 @@
             <cl:datavalue columnname="label"><![CDATA[회의실등록]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[회의실등록]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminMeetingRoomForm]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[회의실예약현황]]></cl:datavalue>
@@ -105,6 +105,7 @@
             <cl:datavalue columnname="label"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[일정]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/schedule]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[프로젝트관리]]></cl:datavalue>
@@ -118,25 +119,28 @@
   </head>
   <body std:sid="body-84664d5f">
     <cl:listener std:sid="listener-3bad8a05" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-5e56734a" name="load" handler="onBodyLoad"/>
     <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
       <cl:listener std:sid="listener-3e8bb458" name="item-click" handler="onTre1ItemClick"/>
       <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="adminMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
     <cl:group std:sid="group-4144ff34" style="background-color:#F1EFFF;">
+      <cl:listener std:sid="listener-c45b7b67" name="click" handler="onGroupClick"/>
       <cl:xylayoutdata std:sid="xyl-data-136c73eb" top="0px" right="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       <cl:img std:sid="image-d90345a2" style="background-image:url('../img/enjoy.png');">
         <cl:xylayoutdata std:sid="xyl-data-41517700" top="5px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:img>
+      <cl:output std:sid="output-ffa6c7b0" style="font-size:15px; text-align:center;" value=" 관리자님">
+        <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="10px" right="0px" bottom="0px" width="90px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+      </cl:output>
+      <cl:output std:sid="output-738cf04b" id="clock1" style="font-size:15px; text-align:center;" value="현재시간">
+        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="10px" right="105px" bottom="0px" width="186px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+      </cl:output>
       <cl:xylayout std:sid="xylayout-fee4904d"/>
     </cl:group>
-    <cl:output std:sid="output-dac76730" style="font-size:20px;" value="박해준">
-      <cl:xylayoutdata std:sid="xyl-data-6f68c183" top="5px" right="160px" width="60px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-    </cl:output>
-    <cl:output std:sid="output-ffa6c7b0" style="font-size:20px;" value=" 관리자님">
-      <cl:xylayoutdata std:sid="xyl-data-a62eab05" top="5px" right="70px" width="90px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-    </cl:output>
     <cl:embeddedapp std:sid="e-app-ab9fedd7" id="ea1">
+      <cl:listener std:sid="listener-b4ef381c" name="init" handler="onEa1Init"/>
       <cl:xylayoutdata std:sid="xyl-data-1f7cd493" top="70px" right="20px" bottom="70px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:embeddedapp>
     <cl:group std:sid="group-fa8979ad" style="background-color:#F1EFFF;">

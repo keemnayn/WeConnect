@@ -108,33 +108,18 @@
 				button_1.value = "중복 확인";
 				button_1.style.setClasses(["button1"]);
 				button_1.style.css({
-					"background-color" : "#4C4C6D",
+					"background-color" : "#F6F6F7",
 					"border-radius" : "5px",
 					"color" : "#070000",
 					"font-size" : "16px",
 					"font-style" : "normal",
-					"background-image" : "linear-gradient(#fcfeff,#e0e1e2)"
+					"background-image" : "none"
 				});
 				container.addChild(button_1, {
 					"top": "156px",
 					"left": "523px",
 					"width": "109px",
 					"height": "48px"
-				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.value = "<div>사원번호<\/div>";
-				hTMLSnippet_1.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_1, {
-					"top": "245px",
-					"left": "157px",
-					"width": "100px",
-					"height": "30px"
 				});
 				var inputBox_2 = new cpr.controls.InputBox("ipb2");
 				inputBox_2.value = "";
@@ -183,8 +168,23 @@
 					"width": "352px",
 					"height": "48px"
 				});
+				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_1.value = "<div>비밀번호 <\/div>";
+				hTMLSnippet_1.style.css({
+					"color" : "#070000",
+					"font-weight" : "bold",
+					"font-size" : "16px",
+					"font-family" : "sans-serif",
+					"font-style" : "normal"
+				});
+				container.addChild(hTMLSnippet_1, {
+					"top": "378px",
+					"left": "157px",
+					"width": "100px",
+					"height": "30px"
+				});
 				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_2.value = "<div>비밀번호 <\/div>";
+				hTMLSnippet_2.value = "<div>비밀번호 확인<\/div>";
 				hTMLSnippet_2.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -194,12 +194,12 @@
 				});
 				container.addChild(hTMLSnippet_2, {
 					"top": "378px",
-					"left": "157px",
-					"width": "100px",
+					"left": "701px",
+					"width": "234px",
 					"height": "30px"
 				});
 				var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_3.value = "<div>비밀번호 확인<\/div>";
+				hTMLSnippet_3.value = "<div>성명 <\/div>";
 				hTMLSnippet_3.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -208,28 +208,13 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_3, {
-					"top": "378px",
-					"left": "698px",
-					"width": "234px",
+					"top": "245px",
+					"left": "160px",
+					"width": "100px",
 					"height": "30px"
 				});
-				var inputBox_5 = new cpr.controls.InputBox("ipb5");
-				inputBox_5.placeholder = "\r\n";
-				inputBox_5.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
-					"color" : "#070000",
-					"font-style" : "normal",
-					"text-align" : "center"
-				});
-				container.addChild(inputBox_5, {
-					"top": "272px",
-					"left": "701px",
-					"width": "352px",
-					"height": "48px"
-				});
 				var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_4.value = "<div>성명 <\/div>";
+				hTMLSnippet_4.value = "<div>아이디 <\/div>";
 				hTMLSnippet_4.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -238,36 +223,21 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "245px",
-					"left": "698px",
-					"width": "100px",
-					"height": "30px"
-				});
-				var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_5.value = "<div>아이디 <\/div>";
-				hTMLSnippet_5.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_5, {
 					"top": "116px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
 				});
-				var hTMLSnippet_6 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_6.value = "<h1>회원가입<\/h1>";
-				hTMLSnippet_6.style.css({
+				var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_5.value = "<h1>회원가입<\/h1>";
+				hTMLSnippet_5.style.css({
 					"color" : "#070000",
 					"font-weight" : "bolder",
 					"font-size" : "18px",
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
-				container.addChild(hTMLSnippet_6, {
+				container.addChild(hTMLSnippet_5, {
 					"top": "10px",
 					"left": "20px",
 					"width": "260px",
@@ -292,16 +262,16 @@
 					"width": "352px",
 					"height": "48px"
 				});
-				var hTMLSnippet_7 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_7.value = "<div>직급<\/div>";
-				hTMLSnippet_7.style.css({
+				var hTMLSnippet_6 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_6.value = "<div>직급<\/div>";
+				hTMLSnippet_6.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
 					"font-size" : "16px",
 					"font-family" : "sans-serif",
 					"font-style" : "normal"
 				});
-				container.addChild(hTMLSnippet_7, {
+				container.addChild(hTMLSnippet_6, {
 					"top": "499px",
 					"left": "701px",
 					"width": "100px",
@@ -327,16 +297,16 @@
 					"width": "352px",
 					"height": "48px"
 				});
-				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_8.value = "<div>부서<\/div>";
-				hTMLSnippet_8.style.css({
+				var hTMLSnippet_7 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_7.value = "<div>부서<\/div>";
+				hTMLSnippet_7.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
 					"font-size" : "16px",
 					"font-family" : "sans-serif",
 					"font-style" : "normal"
 				});
-				container.addChild(hTMLSnippet_8, {
+				container.addChild(hTMLSnippet_7, {
 					"top": "499px",
 					"left": "158px",
 					"width": "100px",
@@ -361,7 +331,7 @@
 				"color" : "#070000",
 				"font-size" : "16px",
 				"font-style" : "normal",
-				"background-image" : "linear-gradient(#fcfeff,#e0e1e2)"
+				"background-image" : "none"
 			});
 			container.addChild(button_2, {
 				"top": "762px",

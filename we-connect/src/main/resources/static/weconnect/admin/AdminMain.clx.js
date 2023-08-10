@@ -62,26 +62,34 @@
 					group_2.setLayout(xYLayout_3);
 					(function(container){
 						var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_1.value = "<h3>공지사항<\/h3>";
+						hTMLSnippet_1.value = "<hr>\r\n";
 						container.addChild(hTMLSnippet_1, {
-							"top": "0px",
-							"left": "7px",
-							"width": "150px",
-							"height": "100px"
-						});
-						var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_2.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_2, {
 							"top": "30px",
 							"right": "0px",
 							"left": "-251px",
 							"height": "20px"
 						});
+						var textArea_1 = new cpr.controls.TextArea("txa1");
+						textArea_1.value = "공지사항";
+						textArea_1.style.css({
+							"border-right-style" : "none",
+							"border-left-style" : "none",
+							"font-weight" : "900",
+							"font-size" : "16px",
+							"border-bottom-style" : "none",
+							"border-top-style" : "none"
+						});
+						container.addChild(textArea_1, {
+							"top": "0px",
+							"left": "2px",
+							"width": "100px",
+							"height": "30px"
+						});
 					})(group_2);
 					container.addChild(group_2, {
-						"top": "0px",
-						"right": "500px",
-						"bottom": "500px",
+						"top": "240px",
+						"right": "949px",
+						"bottom": "360px",
 						"left": "0px"
 					});
 					var group_3 = new cpr.controls.Container();
@@ -99,22 +107,38 @@
 					var xYLayout_4 = new cpr.controls.layouts.XYLayout();
 					group_3.setLayout(xYLayout_4);
 					(function(container){
-						var calendar_1 = new cpr.controls.Calendar();
-						container.addChild(calendar_1, {
-							"top": "0px",
+						var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_2.value = "<hr>\r\n";
+						container.addChild(hTMLSnippet_2, {
+							"top": "30px",
 							"right": "0px",
-							"bottom": "0px",
-							"left": "0px"
+							"left": "0px",
+							"height": "20px"
+						});
+						var textArea_2 = new cpr.controls.TextArea("txa2");
+						textArea_2.value = "회원승인";
+						textArea_2.style.css({
+							"border-right-style" : "none",
+							"border-left-style" : "none",
+							"font-weight" : "900",
+							"font-size" : "16px",
+							"border-bottom-style" : "none",
+							"border-top-style" : "none"
+						});
+						container.addChild(textArea_2, {
+							"top": "1px",
+							"left": "0px",
+							"width": "100px",
+							"height": "30px"
 						});
 					})(group_3);
 					container.addChild(group_3, {
-						"right": "0px",
+						"right": "949px",
 						"bottom": "0px",
-						"width": "500px",
-						"height": "500px"
+						"left": "0px",
+						"height": "342px"
 					});
 					var group_4 = new cpr.controls.Container();
-					group_4.style.setClasses(["main_layout1"]);
 					group_4.style.css({
 						"border-right-style" : "solid",
 						"border-bottom-color" : "#bfbfbf",
@@ -127,29 +151,110 @@
 					});
 					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
 					group_4.setLayout(xYLayout_5);
-					(function(container){
-						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_3.value = "<h3>회원승인<\/h3>";
-						container.addChild(hTMLSnippet_3, {
-							"top": "0px",
-							"left": "7px",
-							"width": "150px",
-							"height": "100px"
-						});
-						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_4.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_4, {
-							"top": "30px",
-							"right": "0px",
-							"width": "498px",
-							"height": "20px"
-						});
-					})(group_4);
 					container.addChild(group_4, {
 						"top": "0px",
+						"left": "0px",
+						"width": "629px",
+						"height": "210px"
+					});
+					var group_5 = new cpr.controls.Container();
+					group_5.style.css({
+						"border-right-style" : "solid",
+						"border-bottom-color" : "#bfbfbf",
+						"border-left-style" : "solid",
+						"border-left-color" : "#bfbfbf",
+						"border-top-color" : "#bfbfbf",
+						"border-bottom-style" : "solid",
+						"border-right-color" : "#bfbfbf",
+						"border-top-style" : "solid"
+					});
+					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+					group_5.setLayout(xYLayout_6);
+					container.addChild(group_5, {
+						"top": "0px",
+						"right": "293px",
+						"left": "652px",
+						"height": "210px"
+					});
+					var group_6 = new cpr.controls.Container();
+					group_6.style.css({
+						"border-right-style" : "solid",
+						"border-bottom-color" : "#bfbfbf",
+						"border-left-style" : "solid",
+						"border-left-color" : "#bfbfbf",
+						"border-top-color" : "#bfbfbf",
+						"border-bottom-style" : "solid",
+						"border-right-color" : "#bfbfbf",
+						"border-top-style" : "solid"
+					});
+					var xYLayout_7 = new cpr.controls.layouts.XYLayout();
+					group_6.setLayout(xYLayout_7);
+					(function(container){
+						var calendar_1 = new cpr.controls.Calendar();
+						calendar_1.style.setClasses(["admain_cld"]);
+						container.addChild(calendar_1, {
+							"top": "0px",
+							"right": "0px",
+							"bottom": "0px",
+							"left": "0px"
+						});
+					})(group_6);
+					container.addChild(group_6, {
+						"top": "0px",
 						"right": "0px",
-						"bottom": "500px",
-						"width": "500px"
+						"width": "270px",
+						"height": "210px"
+					});
+					var group_7 = new cpr.controls.Container();
+					group_7.style.css({
+						"border-right-style" : "solid",
+						"border-bottom-color" : "#bfbfbf",
+						"border-left-style" : "solid",
+						"border-left-color" : "#bfbfbf",
+						"border-top-color" : "#bfbfbf",
+						"border-right-color" : "#bfbfbf",
+						"border-bottom-style" : "solid",
+						"border-top-style" : "solid"
+					});
+					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
+					group_7.setLayout(xYLayout_8);
+					(function(container){
+						var tabFolder_2 = new cpr.controls.TabFolder();
+						
+						var tabItem_2 = (function(tabFolder){
+							var tabItem_2 = new cpr.controls.TabItem();
+							tabItem_2.text = "게시판";
+							var group_8 = new cpr.controls.Container();
+							var xYLayout_9 = new cpr.controls.layouts.XYLayout();
+							group_8.setLayout(xYLayout_9);
+							tabItem_2.content = group_8;
+							return tabItem_2;
+						})(tabFolder_2);
+						tabFolder_2.addTabItem(tabItem_2);
+						
+						var tabItem_3 = (function(tabFolder){
+							var tabItem_3 = new cpr.controls.TabItem();
+							tabItem_3.text = "tab 2";
+							var group_9 = new cpr.controls.Container();
+							var xYLayout_10 = new cpr.controls.layouts.XYLayout();
+							group_9.setLayout(xYLayout_10);
+							tabItem_3.content = group_9;
+							return tabItem_3;
+						})(tabFolder_2);
+						tabFolder_2.addTabItem(tabItem_3);
+						tabFolder_2.setSelectedTabItem(tabItem_2);
+						container.addChild(tabFolder_2, {
+							"top": "0px",
+							"right": "0px",
+							"bottom": "0px",
+							"left": "0px"
+						});
+					})(group_7);
+					container.addChild(group_7, {
+						"top": "240px",
+						"right": "1px",
+						"bottom": "0px",
+						"width": "925px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;
