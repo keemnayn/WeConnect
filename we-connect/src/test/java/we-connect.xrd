@@ -35,8 +35,8 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMzdHEe62a551BIGueQ" location="Point(284.0, 744.0)" table="Table_kC3LMjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LNTdHEe62a551BIGueQ" location="Point(912.0, 55.0)" table="Table_kC3LNDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LNzdHEe62a551BIGueQ" location="Point(932.0, 205.0)" table="Table_kC3LNjdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOTdHEe62a551BIGueQ" location="Point(872.0, 782.0)" table="Table_kC3LODdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOzdHEe62a551BIGueQ" location="Point(1907.0, 71.0)" table="Table_kC3LOjdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOTdHEe62a551BIGueQ" location="Point(852.0, 782.0)" table="Table_kC3LODdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOzdHEe62a551BIGueQ" location="Point(1978.0, 82.0)" table="Table_kC3LOjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LPTdHEe62a551BIGueQ" location="Point(1473.0, 31.0)" table="Table_kC3LPDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LPzdHEe62a551BIGueQ" location="Point(1345.0, 820.0)" table="Table_kC3LPjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yQTdHEe62a551BIGueQ" location="Point(1398.0, 622.0)" table="Table_kC3yQDdHEe62a551BIGueQ"/>
@@ -48,7 +48,6 @@
       <viewSettings showColumnHeader="true">
         <cellsToShow>name</cellsToShow>
         <cellsToShow>oppositeModeName</cellsToShow>
-        <cellsToShow>domain</cellsToShow>
         <cellsToShow>dataType</cellsToShow>
         <cellsToShow>nullable</cellsToShow>
       </viewSettings>
@@ -90,8 +89,8 @@
         <targetAnchor side="bottom" offset="167"/>
       </tableRelations>
       <tableRelations UUID="TRelation_JTyEADdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_JTw14DdIEe62a551BIGueQ">
-        <sourceAnchor side="bottom" offset="113"/>
-        <targetAnchor offset="195"/>
+        <sourceAnchor side="bottom" offset="121"/>
+        <targetAnchor offset="223"/>
       </tableRelations>
       <tableRelations UUID="TRelation_LA-loDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_LA8wcDdIEe62a551BIGueQ">
         <sourceAnchor side="right" offset="27"/>
@@ -120,8 +119,8 @@
         <targetAnchor side="bottom" offset="186"/>
       </tableRelations>
       <tableRelations UUID="TRelation_Vv2jIDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_Vvzf0DdIEe62a551BIGueQ">
-        <sourceAnchor side="bottom" offset="120"/>
-        <targetAnchor offset="242"/>
+        <sourceAnchor side="bottom" offset="157"/>
+        <targetAnchor offset="259"/>
       </tableRelations>
       <tableRelations UUID="TRelation_YSamgDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_YSW8IDdIEe62a551BIGueQ">
         <sourceAnchor side="bottom" offset="281"/>
@@ -130,7 +129,7 @@
       </tableRelations>
       <tableRelations UUID="TRelation_ZYLUsDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_ZYKGkDdIEe62a551BIGueQ">
         <sourceAnchor side="left" offset="34"/>
-        <targetAnchor side="right" offset="74"/>
+        <targetAnchor side="right" offset="85"/>
       </tableRelations>
       <tableRelations UUID="TRelation_f7l-YDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_f7kwQDdIEe62a551BIGueQ">
         <sourceAnchor side="left" offset="66"/>
@@ -141,36 +140,34 @@
         <targetAnchor side="right" offset="152"/>
       </tableRelations>
       <tableRelations UUID="TRelation_ALxEsDdKEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_ALsMMDdKEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="58"/>
-        <targetAnchor side="right" offset="96"/>
+        <sourceAnchor side="left" offset="39"/>
+        <targetAnchor side="right" offset="77"/>
       </tableRelations>
       <tableRelations UUID="TRelation_mnQTMDdKEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_mnMBwDdKEe62a551BIGueQ">
-        <sourceAnchor side="bottom" offset="257"/>
-        <targetAnchor offset="32"/>
+        <sourceAnchor side="bottom" offset="265"/>
+        <targetAnchor offset="40"/>
       </tableRelations>
     </diagram>
   </businessArea>
   <databaseModel UUID="DModel_jJ90VDdHEe62a551BIGueQ" logicalName="새 데이터베이스" physicalName="NEW_DATABASE">
     <schema UUID="Schema_jJ90VTdHEe62a551BIGueQ" logicalName="내 스키마" physicalName="MY_SCHEMA">
       <table UUID="Table_kC19EDdHEe62a551BIGueQ" logicalName="회원" physicalName="member">
-        <column UUID="Column_COy-UDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" notNull="true">
+        <column UUID="Column_COy-UDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_COy-UTdIEe62a551BIGueQ" key="PKCGroup_COrpkDdIEe62a551BIGueQ">
-            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_COy-UjdIEe62a551BIGueQ" group="PKCGroup_COrpkDdIEe62a551BIGueQ"/>
+            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_COy-UjdIEe62a551BIGueQ" group="PKCGroup_COrpkDdIEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_js33oDdIEe62a551BIGueQ" logicalName="부서번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_zRp0IDdIEe62a551BIGueQ" logicalName="회원명" physicalName="member_name" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_0V77oDdIEe62a551BIGueQ" logicalName="이메일" physicalName="member_email" dataType="VARCHAR2(300)" notNull="true"/>
+        <column UUID="Column_1QF2wDdIEe62a551BIGueQ" logicalName="비밀번호" physicalName="member_pw" dataType="VARCHAR2(300)" notNull="true"/>
+        <column UUID="Column_2A0JEDdIEe62a551BIGueQ" logicalName="직급" physicalName="position" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_2ofNEDdIEe62a551BIGueQ" logicalName="계정상태" physicalName="member_status" dataType="NUMBER" notNull="true"/>
+        <column UUID="Column_4NyW8DdIEe62a551BIGueQ" logicalName="관리자여부" physicalName="manager_yn" dataType="CHAR(1)" notNull="true"/>
+        <column UUID="Column_js33oDdIEe62a551BIGueQ" logicalName="부서번호" physicalName="department_id" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_js33oTdIEe62a551BIGueQ" key="FKCGroup_js3QkzdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_js33ojdIEe62a551BIGueQ" group="FKCGroup_js3QkzdIEe62a551BIGueQ" parentColumn="Column_js3QkDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_zRp0IDdIEe62a551BIGueQ" logicalName="회원명" physicalName="COL" derivedPhysicalName="true"/>
-        <column UUID="Column_0V77oDdIEe62a551BIGueQ" logicalName="이메일" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_0s5DEDdIEe62a551BIGueQ" logicalName="사원번호" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_1QF2wDdIEe62a551BIGueQ" logicalName="비밀번호" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_2A0JEDdIEe62a551BIGueQ" logicalName="직급" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_2QQ6UDdIEe62a551BIGueQ" logicalName="닉네임" physicalName="COL6" derivedPhysicalName="true"/>
-        <column UUID="Column_2ofNEDdIEe62a551BIGueQ" logicalName="계정상태" physicalName="COL7" derivedPhysicalName="true"/>
-        <column UUID="Column_4NyW8DdIEe62a551BIGueQ" logicalName="관리자여부" physicalName="COL8" derivedPhysicalName="true"/>
         <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_COrpkDdIEe62a551BIGueQ" logicalName="회원 기본키" physicalName="PK_member" derivedPhysicalName="true" derivedLogicalName="true">
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_COrpkTdIEe62a551BIGueQ" logicalName="회원 기본키" physicalName="PK_member" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
@@ -179,14 +176,14 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC2kITdHEe62a551BIGueQ" logicalName="자유게시판 첨부파일" physicalName="free_board_file">
-        <column UUID="Column_AJN8cDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_AJN8cDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 번호" physicalName="free_board_file_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_AJN8cTdJEe62a551BIGueQ" key="PKCGroup_AJMuUDdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_AJN8cjdJEe62a551BIGueQ" group="PKCGroup_AJMuUDdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_BEQoYDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 이름" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_Cg_FEDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 경로" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_f7lXUDdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_BEQoYDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 이름" physicalName="free_board_file_name" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_Cg_FEDdJEe62a551BIGueQ" logicalName="자유게시판 첨부파일 경로" physicalName="free_board_file_path" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_f7lXUDdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="free_board_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_f7lXUTdIEe62a551BIGueQ" key="FKCGroup_f7kwQDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_f7lXUjdIEe62a551BIGueQ" group="FKCGroup_f7kwQDdIEe62a551BIGueQ" parentColumn="Column_OGm50DdIEe62a551BIGueQ"/>
           </membership>
@@ -199,16 +196,16 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC2kIzdHEe62a551BIGueQ" logicalName="자유게시판" physicalName="free_board">
-        <column UUID="Column_OGm50DdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="id" notNull="true">
+        <column UUID="Column_OGm50DdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="free_board_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_OGm50TdIEe62a551BIGueQ" key="PKCGroup_OGmSwDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_OGm50jdIEe62a551BIGueQ" group="PKCGroup_OGmSwDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_72NPIDdIEe62a551BIGueQ" logicalName="자유게시판 제목" physicalName="COL" derivedPhysicalName="true"/>
-        <column UUID="Column_9ncjQDdIEe62a551BIGueQ" logicalName="자유게시판 내용" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_-OU9EDdIEe62a551BIGueQ" logicalName="자유게시판 등록일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_-pyxEDdIEe62a551BIGueQ" logicalName="자유게시판 조회수" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_Et6sIDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_72NPIDdIEe62a551BIGueQ" logicalName="자유게시판 제목" physicalName="free_board_title" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_9ncjQDdIEe62a551BIGueQ" logicalName="자유게시판 내용" physicalName="free_board_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_-OU9EDdIEe62a551BIGueQ" logicalName="자유게시판 등록일" physicalName="free_board_create" dataType="DATE" notNull="true"/>
+        <column UUID="Column_-pyxEDdIEe62a551BIGueQ" logicalName="자유게시판 조회수" physicalName="free_board_views" dataType="NUMBER" notNull="true"/>
+        <column UUID="Column_Et6sIDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_Et6sITdIEe62a551BIGueQ" key="FKCGroup_Et6FEDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_Et6sIjdIEe62a551BIGueQ" group="FKCGroup_Et6FEDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -221,19 +218,19 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC2kJTdHEe62a551BIGueQ" logicalName="자유게시판 댓글" physicalName="free_board_comment">
-        <column UUID="Column_KG9_ADdJEe62a551BIGueQ" logicalName="자유게시판 댓글 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_KG9_ADdJEe62a551BIGueQ" logicalName="자유게시판 댓글 번호" physicalName="free_board_comment_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_KG9_ATdJEe62a551BIGueQ" key="PKCGroup_KG9X8DdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_KG9_AjdJEe62a551BIGueQ" group="PKCGroup_KG9X8DdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_K6tJEDdJEe62a551BIGueQ" logicalName="자유게시판 댓글 내용" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_LmQngDdJEe62a551BIGueQ" logicalName="자유게시판 댓글 작성일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_GOE3UDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_K6tJEDdJEe62a551BIGueQ" logicalName="자유게시판 댓글 내용" physicalName="free_board_comment_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_LmQngDdJEe62a551BIGueQ" logicalName="자유게시판 댓글 작성일" physicalName="free_board_comment_date" dataType="DATE" notNull="true"/>
+        <column UUID="Column_GOE3UDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_GOE3UTdIEe62a551BIGueQ" key="FKCGroup_GOEQQDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_GOE3UjdIEe62a551BIGueQ" group="FKCGroup_GOEQQDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_OcWgUDdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_OcWgUDdIEe62a551BIGueQ" logicalName="자유게시판 번호" physicalName="free_board_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_83roUDdKEe62a551BIGueQ" key="FKCGroup_OcV5QDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_OcWgUjdIEe62a551BIGueQ" group="FKCGroup_OcV5QDdIEe62a551BIGueQ" parentColumn="Column_OGm50DdIEe62a551BIGueQ"/>
           </membership>
@@ -248,60 +245,60 @@
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_KG9X8TdJEe62a551BIGueQ" logicalName="자유게시판 댓글 기본키" physicalName="PK_free_board_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC2kJzdHEe62a551BIGueQ" logicalName="공지사항" physicalName="notice_board">
-        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="COL" notNull="true">
+      <table UUID="Table_kC2kJzdHEe62a551BIGueQ" logicalName="공지사항" physicalName="notice">
+        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="notice_name" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_U3woETdJEe62a551BIGueQ" key="PKCGroup_U3vZ8DdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_U3woEjdJEe62a551BIGueQ" group="PKCGroup_U3vZ8DdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_V1xvgDdJEe62a551BIGueQ" logicalName="공지사항 제목" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_WMF9wDdJEe62a551BIGueQ" logicalName="공지사항 내용" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_WrAuYDdJEe62a551BIGueQ" logicalName="공지사항 조회수" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_XMENADdJEe62a551BIGueQ" logicalName="공지사항 등록일" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_GrPUcDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_V1xvgDdJEe62a551BIGueQ" logicalName="공지사항 제목" physicalName="notice_title" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_WMF9wDdJEe62a551BIGueQ" logicalName="공지사항 내용" physicalName="notice_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_WrAuYDdJEe62a551BIGueQ" logicalName="공지사항 조회수" physicalName="notice_views" dataType="NUMBER" notNull="true"/>
+        <column UUID="Column_XMENADdJEe62a551BIGueQ" logicalName="공지사항 등록일" physicalName="notice_create" dataType="DATE" notNull="true"/>
+        <column UUID="Column_GrPUcDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_GrPUcTdIEe62a551BIGueQ" key="FKCGroup_GrOtYDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_GrPUcjdIEe62a551BIGueQ" group="FKCGroup_GrOtYDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_GrOtYDdIEe62a551BIGueQ" logicalName="회원 -> 공지사항" physicalName="FK_member_TO_notice_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_GrOtYTdIEe62a551BIGueQ" logicalName="회원 -> 공지사항" physicalName="FK_member_TO_notice_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_GrOtYDdIEe62a551BIGueQ" logicalName="회원 -> 공지사항" physicalName="FK_member_TO_notice" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_GrOtYTdIEe62a551BIGueQ" logicalName="회원 -> 공지사항" physicalName="FK_member_TO_notice" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_U3vZ8DdJEe62a551BIGueQ" logicalName="공지사항 기본키" physicalName="PK_notice_board" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_U3vZ8TdJEe62a551BIGueQ" logicalName="공지사항 기본키" physicalName="PK_notice_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_U3vZ8DdJEe62a551BIGueQ" logicalName="공지사항 기본키" physicalName="PK_notice" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_U3vZ8TdJEe62a551BIGueQ" logicalName="공지사항 기본키" physicalName="PK_notice" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC3LMDdHEe62a551BIGueQ" logicalName="건의사항" physicalName="proposal_board">
-        <column UUID="Column_V5ZOwDdKEe62a551BIGueQ" logicalName="건의사항 번호" physicalName="COL" notNull="true">
+      <table UUID="Table_kC3LMDdHEe62a551BIGueQ" logicalName="건의사항" physicalName="proposal">
+        <column UUID="Column_V5ZOwDdKEe62a551BIGueQ" logicalName="건의사항 번호" physicalName="proposal_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_V5ZOwTdKEe62a551BIGueQ" key="PKCGroup_V5YAoDdKEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_V5ZOwjdKEe62a551BIGueQ" group="PKCGroup_V5YAoDdKEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_WjOO4DdKEe62a551BIGueQ" logicalName="건의사항 제목" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_XMP9wDdKEe62a551BIGueQ" logicalName="건의사항 내용" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_XiU7cDdKEe62a551BIGueQ" logicalName="건의사항 등록일" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_X58KMDdKEe62a551BIGueQ" logicalName="건의사항 처리상태" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_HNOAIDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_WjOO4DdKEe62a551BIGueQ" logicalName="건의사항 제목" physicalName="proposal_title" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_XMP9wDdKEe62a551BIGueQ" logicalName="건의사항 내용" physicalName="proposal_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_XiU7cDdKEe62a551BIGueQ" logicalName="건의사항 등록일" physicalName="proposal_create" dataType="DATE" notNull="true"/>
+        <column UUID="Column_X58KMDdKEe62a551BIGueQ" logicalName="건의사항 처리상태" physicalName="proposal_status" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_HNOAIDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_HNOAITdIEe62a551BIGueQ" key="FKCGroup_HNNZEDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_HNOAIjdIEe62a551BIGueQ" group="FKCGroup_HNNZEDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_HNNZEDdIEe62a551BIGueQ" logicalName="회원 -> 건의사항" physicalName="FK_member_TO_proposal_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_HNNZETdIEe62a551BIGueQ" logicalName="회원 -> 건의사항" physicalName="FK_member_TO_proposal_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_HNNZEDdIEe62a551BIGueQ" logicalName="회원 -> 건의사항" physicalName="FK_member_TO_proposal" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_HNNZETdIEe62a551BIGueQ" logicalName="회원 -> 건의사항" physicalName="FK_member_TO_proposal" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_V5YAoDdKEe62a551BIGueQ" logicalName="건의사항 기본키" physicalName="PK_proposal_board" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_V5YAoTdKEe62a551BIGueQ" logicalName="건의사항 기본키" physicalName="PK_proposal_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_V5YAoDdKEe62a551BIGueQ" logicalName="건의사항 기본키" physicalName="PK_proposal" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_V5YAoTdKEe62a551BIGueQ" logicalName="건의사항 기본키" physicalName="PK_proposal" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3LMjdHEe62a551BIGueQ" logicalName="알림" physicalName="alert">
-        <column UUID="Column_ZCbcQDdKEe62a551BIGueQ" logicalName="알림 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_ZCbcQDdKEe62a551BIGueQ" logicalName="알림 번호" physicalName="alert_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_ZCbcQTdKEe62a551BIGueQ" key="PKCGroup_ZCaOIDdKEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_ZCbcQjdKEe62a551BIGueQ" group="PKCGroup_ZCaOIDdKEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_ZXCaUDdKEe62a551BIGueQ" logicalName="알림 발생일시" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_bLYFwDdKEe62a551BIGueQ" logicalName="알림 내용" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_aCX2UDdKEe62a551BIGueQ" logicalName="알림 확인여부" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_HsJ-4DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_ZXCaUDdKEe62a551BIGueQ" logicalName="알림 발생일시" physicalName="alert_date" dataType="DATE" notNull="true"/>
+        <column UUID="Column_bLYFwDdKEe62a551BIGueQ" logicalName="알림 내용" physicalName="alert_content" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_aCX2UDdKEe62a551BIGueQ" logicalName="알림 확인여부" physicalName="alert_check" dataType="CHAR(1)" notNull="true"/>
+        <column UUID="Column_HsJ-4DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_HsJ-4TdIEe62a551BIGueQ" key="FKCGroup_HsIJsDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_HsJ-4jdIEe62a551BIGueQ" group="FKCGroup_HsIJsDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -313,36 +310,36 @@
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_ZCaOITdKEe62a551BIGueQ" logicalName="알림 기본키" physicalName="PK_alert" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC3LNDdHEe62a551BIGueQ" logicalName="개인게시글 첨부파일" physicalName="private_board_file">
-        <column UUID="Column_RKr5YDdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 번호" physicalName="COL" notNull="true">
+      <table UUID="Table_kC3LNDdHEe62a551BIGueQ" logicalName="개인게시글 첨부파일" physicalName="private_post_file">
+        <column UUID="Column_RKr5YDdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 번호" physicalName="private_post_file_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_RKr5YTdJEe62a551BIGueQ" key="PKCGroup_RKqrQDdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_RKr5YjdJEe62a551BIGueQ" group="PKCGroup_RKqrQDdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_SrhaADdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 이름" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_THXBcDdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 경로" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_VbNv4DdIEe62a551BIGueQ" logicalName="개인게시글 번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_SrhaADdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 이름" physicalName="private_post_file_name" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_THXBcDdJEe62a551BIGueQ" logicalName="게인게시글 첨부파일 경로" physicalName="private_post_file_path" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_VbNv4DdIEe62a551BIGueQ" logicalName="개인게시글 번호" physicalName="private_post_id" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_VbNv4TdIEe62a551BIGueQ" key="FKCGroup_VbNI0zdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_VbNv4jdIEe62a551BIGueQ" group="FKCGroup_VbNI0zdIEe62a551BIGueQ" parentColumn="Column_VbNI0DdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_VbNI0zdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_board_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_VbL6sDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_VbNI1DdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_board_file" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_VbNI0zdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_VbL6sDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_VbNI1DdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_RKqrQDdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_board_file" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_RKqrQTdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_board_file" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_RKqrQDdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_post_file" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_RKqrQTdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3LNjdHEe62a551BIGueQ" logicalName="개인게시글" physicalName="private_board">
-        <column UUID="Column_VbNI0DdIEe62a551BIGueQ" logicalName="개인게시글 번호" physicalName="id" notNull="true">
+        <column UUID="Column_VbNI0DdIEe62a551BIGueQ" logicalName="개인게시글 번호" physicalName="private_post_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_VbNI0TdIEe62a551BIGueQ" key="PKCGroup_VbL6sDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_VbNI0jdIEe62a551BIGueQ" group="PKCGroup_VbL6sDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_NWPXYDdJEe62a551BIGueQ" logicalName="개인게시글 제목" physicalName="COL" derivedPhysicalName="true"/>
-        <column UUID="Column_OA9vYDdJEe62a551BIGueQ" logicalName="개인게시글 내용" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_QHBc8DdJEe62a551BIGueQ" logicalName="게인개시글 작성일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_IvRBsDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_NWPXYDdJEe62a551BIGueQ" logicalName="개인게시글 제목" physicalName="private_post_name" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_OA9vYDdJEe62a551BIGueQ" logicalName="개인게시글 내용" physicalName="private_post_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_QHBc8DdJEe62a551BIGueQ" logicalName="게인개시글 작성일" physicalName="private_post_date" dataType="DATE" notNull="true"/>
+        <column UUID="Column_IvRBsDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_IvRBsTdIEe62a551BIGueQ" key="FKCGroup_IvQaoDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_IvRBsjdIEe62a551BIGueQ" group="FKCGroup_IvQaoDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -354,61 +351,61 @@
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_VbL6sTdIEe62a551BIGueQ" logicalName="개인게시글 기본키" physicalName="PK_private_board" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC3LODdHEe62a551BIGueQ" logicalName="팀게시글" physicalName="team_board">
-        <column UUID="Column_UCIdEDdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="id" notNull="true">
+      <table UUID="Table_kC3LODdHEe62a551BIGueQ" logicalName="팀게시글" physicalName="team_post">
+        <column UUID="Column_UCIdEDdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="team_post_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_UCIdETdIEe62a551BIGueQ" key="PKCGroup_UCHO8DdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_UCIdEjdIEe62a551BIGueQ" group="PKCGroup_UCHO8DdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_7Rb4sDdJEe62a551BIGueQ" logicalName="팀게시글 제목" physicalName="COL" derivedPhysicalName="true"/>
-        <column UUID="Column_7uzKIDdJEe62a551BIGueQ" logicalName="팀게시글 내용" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_JTxc8DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_7Rb4sDdJEe62a551BIGueQ" logicalName="팀게시글 제목" physicalName="team_post_title" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_7uzKIDdJEe62a551BIGueQ" logicalName="팀게시글 내용" physicalName="team_post_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_JTxc8DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_JTxc8TdIEe62a551BIGueQ" key="FKCGroup_JTw14DdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_JTxc8jdIEe62a551BIGueQ" group="FKCGroup_JTw14DdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_ALv2kDdKEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="id3" derivedLogicalName="true">
+        <column UUID="Column_ALv2kDdKEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="project_id" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_ALv2kTdKEe62a551BIGueQ" key="FKCGroup_ALsMMDdKEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_ALv2kjdKEe62a551BIGueQ" group="FKCGroup_ALsMMDdKEe62a551BIGueQ" parentColumn="Column_DnblMDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_JTw14DdIEe62a551BIGueQ" logicalName="회원 -> 팀게시글" physicalName="FK_member_TO_team_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_JTw14TdIEe62a551BIGueQ" logicalName="회원 -> 팀게시글" physicalName="FK_member_TO_team_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_JTw14DdIEe62a551BIGueQ" logicalName="회원 -> 팀게시글" physicalName="FK_member_TO_team_post" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_JTw14TdIEe62a551BIGueQ" logicalName="회원 -> 팀게시글" physicalName="FK_member_TO_team_post" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_UCHO8DdIEe62a551BIGueQ" logicalName="팀게시글 기본키" physicalName="PK_team_board" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_UCHO8TdIEe62a551BIGueQ" logicalName="팀게시글 기본키" physicalName="PK_team_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_UCHO8DdIEe62a551BIGueQ" logicalName="팀게시글 기본키" physicalName="PK_team_post" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_UCHO8TdIEe62a551BIGueQ" logicalName="팀게시글 기본키" physicalName="PK_team_post" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_ALsMMDdKEe62a551BIGueQ" logicalName="프로젝트 -> 팀게시글" physicalName="FK_project_TO_team_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_DnaXEDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_ALsMMTdKEe62a551BIGueQ" logicalName="프로젝트 -> 팀게시글" physicalName="FK_project_TO_team_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_ALsMMDdKEe62a551BIGueQ" logicalName="프로젝트 -> 팀게시글" physicalName="FK_project_TO_team_post" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_DnaXEDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_ALsMMTdKEe62a551BIGueQ" logicalName="프로젝트 -> 팀게시글" physicalName="FK_project_TO_team_post" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3LOjdHEe62a551BIGueQ" logicalName="회의실" physicalName="room">
-        <column UUID="Column_ZI3GUDdIEe62a551BIGueQ" logicalName="회의실 번호" physicalName="id" notNull="true">
+        <column UUID="Column_ZI3GUDdIEe62a551BIGueQ" logicalName="회의실 번호" physicalName="room_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_ZI3GUTdIEe62a551BIGueQ" key="PKCGroup_ZI14MDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_ZI3GUjdIEe62a551BIGueQ" group="PKCGroup_ZI14MDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_e3nuADdKEe62a551BIGueQ" logicalName="회의실 명" physicalName="COL" derivedPhysicalName="true"/>
+        <column UUID="Column_e3nuADdKEe62a551BIGueQ" logicalName="회의실 명" physicalName="room_name" dataType="VARCHAR2(100)"/>
         <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_ZI14MDdIEe62a551BIGueQ" logicalName="회의실 기본키" physicalName="PK_room" derivedPhysicalName="true" derivedLogicalName="true">
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_ZI14MTdIEe62a551BIGueQ" logicalName="회의실 기본키" physicalName="PK_room" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3LPDdHEe62a551BIGueQ" logicalName="회의실 예약" physicalName="room_reserv">
-        <column UUID="Column_Gb7bMDdKEe62a551BIGueQ" logicalName="회의실 예약 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_Gb7bMDdKEe62a551BIGueQ" logicalName="회의실 예약 번호" physicalName="room_reserv_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_Gb7bMTdKEe62a551BIGueQ" key="PKCGroup_Gb6NEDdKEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_Gb7bMjdKEe62a551BIGueQ" group="PKCGroup_Gb6NEDdKEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_HRnGADdKEe62a551BIGueQ" logicalName="회의실 예약 시작일자" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_O0YT4DdKEe62a551BIGueQ" logicalName="회의실 예약 종료일자" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_PY7LYDdKEe62a551BIGueQ" logicalName="회의실 예약 시작시간" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_P8UzYDdKEe62a551BIGueQ" logicalName="회의실 예약 종료시간" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_LA9-kDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_HRnGADdKEe62a551BIGueQ" logicalName="회의실 예약 시작일자" physicalName="room_reserv_start_day" dataType="DATE" notNull="true"/>
+        <column UUID="Column_O0YT4DdKEe62a551BIGueQ" logicalName="회의실 예약 종료일자" physicalName="room_reserv_end_day" dataType="DATE" notNull="true"/>
+        <column UUID="Column_PY7LYDdKEe62a551BIGueQ" logicalName="회의실 예약 시작시간" physicalName="room_reserv_start_time" dataType="DATE" notNull="true"/>
+        <column UUID="Column_P8UzYDdKEe62a551BIGueQ" logicalName="회의실 예약 종료시간" physicalName="room_reserv_end_time" dataType="DATE" notNull="true"/>
+        <column UUID="Column_LA9-kDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_LA9-kTdIEe62a551BIGueQ" key="FKCGroup_LA8wcDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_LA9-kjdIEe62a551BIGueQ" group="FKCGroup_LA8wcDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_ZYKtoDdIEe62a551BIGueQ" logicalName="회의실 번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_ZYKtoDdIEe62a551BIGueQ" logicalName="회의실 번호" physicalName="room_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_ZYKtoTdIEe62a551BIGueQ" key="FKCGroup_ZYKGkDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_ZYKtojdIEe62a551BIGueQ" group="FKCGroup_ZYKGkDdIEe62a551BIGueQ" parentColumn="Column_ZI3GUDdIEe62a551BIGueQ"/>
           </membership>
@@ -424,15 +421,15 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC3LPjdHEe62a551BIGueQ" logicalName="프로젝트" physicalName="project">
-        <column UUID="Column_DnblMDdIEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="id" notNull="true">
+        <column UUID="Column_DnblMDdIEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="project_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_DnblMTdIEe62a551BIGueQ" key="PKCGroup_DnaXEDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_DnblMjdIEe62a551BIGueQ" group="PKCGroup_DnaXEDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_GBORoDdJEe62a551BIGueQ" logicalName="프로젝트명" physicalName="COL" derivedPhysicalName="true"/>
-        <column UUID="Column_GaftQDdJEe62a551BIGueQ" logicalName="프로젝트 시작일" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_HQm14DdJEe62a551BIGueQ" logicalName="프로젝트 마감일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_YSZYYDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_GBORoDdJEe62a551BIGueQ" logicalName="프로젝트명" physicalName="project_name" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_GaftQDdJEe62a551BIGueQ" logicalName="프로젝트 시작일" physicalName="project_start" dataType="DATE" notNull="true"/>
+        <column UUID="Column_HQm14DdJEe62a551BIGueQ" logicalName="프로젝트 마감일" physicalName="project_end" dataType="DATE" notNull="true"/>
+        <column UUID="Column_YSZYYDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_YSZYYTdIEe62a551BIGueQ" key="FKCGroup_YSW8IDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_YSZYYjdIEe62a551BIGueQ" group="FKCGroup_YSW8IDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -445,7 +442,7 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC3yQDdHEe62a551BIGueQ" logicalName="프로젝트멤버" physicalName="project_member">
-        <column UUID="Column_CO2BoDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true" notNull="true">
+        <column UUID="Column_CO2BoDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_CO2BoTdIEe62a551BIGueQ" key="FKCGroup_CO0zgDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_CO2BojdIEe62a551BIGueQ" group="FKCGroup_CO0zgDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -453,7 +450,7 @@
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_CO2osTdIEe62a551BIGueQ" group="PKCGroup_CO2BozdIEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_D8sDgDdIEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="id2" derivedLogicalName="true" notNull="true">
+        <column UUID="Column_D8sDgDdIEe62a551BIGueQ" logicalName="프로젝트 번호" physicalName="project_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_D8sDgTdIEe62a551BIGueQ" key="FKCGroup_D8rccDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_D8sDgjdIEe62a551BIGueQ" group="FKCGroup_D8rccDdIEe62a551BIGueQ" parentColumn="Column_DnblMDdIEe62a551BIGueQ"/>
           </membership>
@@ -471,38 +468,38 @@
           <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_D8rccTdIEe62a551BIGueQ" logicalName="프로젝트 -> 프로젝트멤버" physicalName="FK_project_TO_project_member" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC3yQjdHEe62a551BIGueQ" logicalName="팀게시글 첨부파일" physicalName="team_board_file">
-        <column UUID="Column_Rzz5cDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 번호" physicalName="COL" notNull="true">
+      <table UUID="Table_kC3yQjdHEe62a551BIGueQ" logicalName="팀게시글 첨부파일" physicalName="team_post_file">
+        <column UUID="Column_Rzz5cDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 번호" physicalName="team_post_file_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_Rzz5cTdKEe62a551BIGueQ" key="PKCGroup_RzyrUDdKEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_Rzz5cjdKEe62a551BIGueQ" group="PKCGroup_RzyrUDdKEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_TpZiEDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 이름" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_UkKhMDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 경로" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_Vv1VADdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_TpZiEDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 이름" physicalName="team_post_file_name" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_UkKhMDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 경로" physicalName="team_post_file_path" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_Vv1VADdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="team_post_id" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_Vv1VATdIEe62a551BIGueQ" key="FKCGroup_Vvzf0DdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_Vv1VAjdIEe62a551BIGueQ" group="FKCGroup_Vvzf0DdIEe62a551BIGueQ" parentColumn="Column_UCIdEDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_Vvzf0DdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 첨부파일" physicalName="FK_team_board_TO_team_board_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_UCHO8DdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_Vvzf0TdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 첨부파일" physicalName="FK_team_board_TO_team_board_file" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_Vvzf0DdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 첨부파일" physicalName="FK_team_post_TO_team_post_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_UCHO8DdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_Vvzf0TdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 첨부파일" physicalName="FK_team_post_TO_team_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_RzyrUDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 기본키" physicalName="PK_team_board_file" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_RzzSYDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 기본키" physicalName="PK_team_board_file" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_RzyrUDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 기본키" physicalName="PK_team_post_file" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_RzzSYDdKEe62a551BIGueQ" logicalName="팀게시글 첨부파일 기본키" physicalName="PK_team_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3yRDdHEe62a551BIGueQ" logicalName="연차신청" physicalName="leave_request">
-        <column UUID="Column_w0VAoDdJEe62a551BIGueQ" logicalName="연차신청 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_w0VAoDdJEe62a551BIGueQ" logicalName="연차신청 번호" physicalName="leave_request_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_w0VAoTdJEe62a551BIGueQ" key="PKCGroup_w0TygDdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_w0VAojdJEe62a551BIGueQ" group="PKCGroup_w0TygDdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_1XHPUDdJEe62a551BIGueQ" logicalName="연차 구분" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_2nJ64DdJEe62a551BIGueQ" logicalName="연차 시작일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_30LusDdJEe62a551BIGueQ" logicalName="연차 종료일" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_4Ts8QDdJEe62a551BIGueQ" logicalName="승인 상태" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_5UGCQDdJEe62a551BIGueQ" logicalName="연차 사유" physicalName="COL6" derivedPhysicalName="true"/>
-        <column UUID="Column_MH_4EDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_1XHPUDdJEe62a551BIGueQ" logicalName="연차 구분" physicalName="leave_request_type" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_2nJ64DdJEe62a551BIGueQ" logicalName="연차 시작일" physicalName="leave_request_start" dataType="DATE" notNull="true"/>
+        <column UUID="Column_30LusDdJEe62a551BIGueQ" logicalName="연차 종료일" physicalName="leave_request_end" dataType="DATE" notNull="true"/>
+        <column UUID="Column_4Ts8QDdJEe62a551BIGueQ" logicalName="승인 상태" physicalName="leave_request_status" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_5UGCQDdJEe62a551BIGueQ" logicalName="연차 사유" physicalName="leave_request_reason" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_MH_4EDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_MH_4ETdIEe62a551BIGueQ" key="FKCGroup_MH_RADdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_MH_4EjdIEe62a551BIGueQ" group="FKCGroup_MH_RADdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -515,16 +512,16 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC3yRjdHEe62a551BIGueQ" logicalName="근태" physicalName="attendance">
-        <column UUID="Column_Yu__YDdJEe62a551BIGueQ" logicalName="근태 번호" physicalName="COL" notNull="true">
+        <column UUID="Column_Yu__YDdJEe62a551BIGueQ" logicalName="근태 번호" physicalName="attendance_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_Yu__YTdJEe62a551BIGueQ" key="PKCGroup_Yu-xQDdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_Yu__YjdJEe62a551BIGueQ" group="PKCGroup_Yu-xQDdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_a-_FADdJEe62a551BIGueQ" logicalName="출근시간" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_bPg0UDdJEe62a551BIGueQ" logicalName="퇴근시간" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_bmd7wDdJEe62a551BIGueQ" logicalName="등록일" physicalName="COL4" derivedPhysicalName="true"/>
-        <column UUID="Column_dBqucDdJEe62a551BIGueQ" logicalName="근태 상태" physicalName="COL5" derivedPhysicalName="true"/>
-        <column UUID="Column_MpCvoDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_a-_FADdJEe62a551BIGueQ" logicalName="출근시간" physicalName="work_in_time" dataType="DATE" notNull="true"/>
+        <column UUID="Column_bPg0UDdJEe62a551BIGueQ" logicalName="퇴근시간" physicalName="work_out_time" dataType="DATE"/>
+        <column UUID="Column_bmd7wDdJEe62a551BIGueQ" logicalName="출근일" physicalName="work_day" dataType="DATE" notNull="true"/>
+        <column UUID="Column_dBqucDdJEe62a551BIGueQ" logicalName="근태 상태" physicalName="attendance_status" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_MpCvoDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_MpCvoTdIEe62a551BIGueQ" key="FKCGroup_MpA6cDdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_MpCvojdIEe62a551BIGueQ" group="FKCGroup_MpA6cDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
@@ -537,42 +534,42 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC3ySDdHEe62a551BIGueQ" logicalName="부서" physicalName="department">
-        <column UUID="Column_js3QkDdIEe62a551BIGueQ" logicalName="부서번호" physicalName="id" notNull="true">
+        <column UUID="Column_js3QkDdIEe62a551BIGueQ" logicalName="부서번호" physicalName="department_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_js3QkTdIEe62a551BIGueQ" key="PKCGroup_js2pgDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_js3QkjdIEe62a551BIGueQ" group="PKCGroup_js2pgDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_xqpaEDdIEe62a551BIGueQ" logicalName="부서명" physicalName="COL" derivedPhysicalName="true"/>
+        <column UUID="Column_xqpaEDdIEe62a551BIGueQ" logicalName="부서명" physicalName="department_name" dataType="VARCHAR2(100)" notNull="true"/>
         <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_js2pgDdIEe62a551BIGueQ" logicalName="부서 기본키" physicalName="PK_department" derivedPhysicalName="true" derivedLogicalName="true">
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_js2pgTdIEe62a551BIGueQ" logicalName="부서 기본키" physicalName="PK_department" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_Q5zaMDdIEe62a551BIGueQ" logicalName="팀게시글 댓글" physicalName="team_board_comment">
-        <column UUID="Column_g9RL4DdKEe62a551BIGueQ" logicalName="팀게시글 댓글 번호" physicalName="COL" notNull="true">
+      <table UUID="Table_Q5zaMDdIEe62a551BIGueQ" logicalName="팀게시글 댓글" physicalName="team_post_comment">
+        <column UUID="Column_g9RL4DdKEe62a551BIGueQ" logicalName="팀게시글 댓글 번호" physicalName="team_post_comment_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_g9Ry8DdKEe62a551BIGueQ" key="PKCGroup_g9P9wDdKEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_g9Ry8TdKEe62a551BIGueQ" group="PKCGroup_g9P9wDdKEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
-        <column UUID="Column_iETFYDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 내용" physicalName="COL2" derivedPhysicalName="true"/>
-        <column UUID="Column_iYRxUDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 작성일" physicalName="COL3" derivedPhysicalName="true"/>
-        <column UUID="Column_UCJEIDdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="id" derivedPhysicalName="true" derivedLogicalName="true">
+        <column UUID="Column_iETFYDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 내용" physicalName="team_post_comment_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_iYRxUDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 작성일" physicalName="team_post_comment_date" dataType="DATE" notNull="true"/>
+        <column UUID="Column_UCJEIDdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="team_post_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_UCJEITdIEe62a551BIGueQ" key="FKCGroup_UCIdEzdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_UCJEIjdIEe62a551BIGueQ" group="FKCGroup_UCIdEzdIEe62a551BIGueQ" parentColumn="Column_UCIdEDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_mnPsIDdKEe62a551BIGueQ" logicalName="회원번호" physicalName="id2" derivedLogicalName="true">
+        <column UUID="Column_mnPsIDdKEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_mnPsITdKEe62a551BIGueQ" key="FKCGroup_mnMBwDdKEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_mnPsIjdKEe62a551BIGueQ" group="FKCGroup_mnMBwDdKEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_UCIdEzdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 댓글" physicalName="FK_team_board_TO_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_UCHO8DdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_UCIdFDdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 댓글" physicalName="FK_team_board_TO_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_UCIdEzdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 댓글" physicalName="FK_team_post_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_UCHO8DdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_UCIdFDdIEe62a551BIGueQ" logicalName="팀게시글 -> 팀게시글 댓글" physicalName="FK_team_post_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_g9P9wDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 기본키" physicalName="PK_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_g9P9wTdKEe62a551BIGueQ" logicalName="팀게시글 댓글 기본키" physicalName="PK_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_g9P9wDdKEe62a551BIGueQ" logicalName="팀게시글 댓글 기본키" physicalName="PK_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_g9P9wTdKEe62a551BIGueQ" logicalName="팀게시글 댓글 기본키" physicalName="PK_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_mnMBwDdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_mnMBwTdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_board_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_mnMBwDdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_mnMBwTdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
     </schema>
