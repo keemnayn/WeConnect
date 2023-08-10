@@ -99,7 +99,7 @@
     </cl:group>
     <cl:group std:sid="group-552c99b1" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-65c7913b" top="334px" bottom="0px" left="494px" width="610px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:calendar std:sid="calendar-5c8821bb" class="main-calendar">
+      <cl:calendar std:sid="calendar-5c8821bb" style="background-image:none;" class="main-calendar">
         <cl:xylayoutdata std:sid="xyl-data-c752826a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       </cl:calendar>
       <cl:xylayout std:sid="xylayout-40d1f6ce"/>

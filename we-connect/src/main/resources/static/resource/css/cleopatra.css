@@ -813,7 +813,7 @@ body {
 }
 /* calendar */
 /* 캘린더 */
-.cl-calendar.main-calendar {
+.cl-calendar.main-calendar, .admin_carlendar, .admain_cld {
 	background-color: #ffffff;
 	border: 1px solid #babfc7;
 	border-radius: 5px;
@@ -2094,10 +2094,12 @@ body {
   cursor: auto;
 }
 /*Button*/
+
+/**/
+
 .cl-button {
   box-sizing: border-box;
   overflow: hidden;
-  background-image: linear-gradient(#FCFEFF, #E0E1E2);
   border-radius: 4px;
   border: solid 1px #959697;
   text-shadow: 0px 1px 0px white;
@@ -4780,6 +4782,11 @@ input::-ms-clear {
   text-align: left;
   vertical-align: baseline;
 }
+  /*추가*/
+a{
+  	text-decoration-line: none;
+	color: inherit;
+  }
 .cl-customscrollbar {
   position: relative;
   box-sizing: border-box;

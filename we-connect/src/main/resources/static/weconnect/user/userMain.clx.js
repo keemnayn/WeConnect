@@ -412,6 +412,9 @@
 			(function(container){
 				var calendar_1 = new cpr.controls.Calendar();
 				calendar_1.style.setClasses(["main-calendar"]);
+				calendar_1.style.css({
+					"background-image" : "none"
+				});
 				container.addChild(calendar_1, {
 					"top": "0px",
 					"right": "0px",
