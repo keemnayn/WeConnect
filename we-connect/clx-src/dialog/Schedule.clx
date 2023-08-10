@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-b69526df" version="1.0.4584">
+  <head std:sid="head-9694cad1">
+    <screen std:sid="screen-30248629" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="600" customWidth="800" active="true"/>
+    <screen std:sid="screen-6fac2ba5" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-9a02973e" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-38a2173c" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-19149f8a">
+      <cl:dataset std:sid="d-set-2950bfd0" id="type">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-5a5375cb" name="type"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[선택]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[주간보고]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[보고]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[교육]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[연차]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[외부]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+    </cl:model>
+    <cl:appspec title="일정관리 팝업"/>
+  </head>
+  <body std:sid="body-f7eeed76">
+    <cl:group std:sid="group-ccc9925a">
+      <cl:xylayoutdata std:sid="xyl-data-db102dfd" top="90px" right="20px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-1d111ff7" value="일정구분">
+        <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
+      </cl:output>
+      <cl:combobox std:sid="c-box-73f5625e" id="cmb1" value="선택">
+        <cl:formdata std:sid="f-data-f398ee34" row="0" col="1"/>
+        <cl:itemset datasetid="type" label="type" value="type"/>
+      </cl:combobox>
+      <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+        <cl:rows length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-018838cb">
+      <cl:xylayoutdata std:sid="xyl-data-59de68a7" top="300px" right="20px" bottom="120px" left="20px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:output std:sid="output-d4483102" value="설명">
+        <cl:formdata std:sid="f-data-6e415ad2" row="0" col="0"/>
+      </cl:output>
+      <cl:inputbox std:sid="i-box-cbe7f8f3" id="ipb1">
+        <cl:formdata std:sid="f-data-64343db5" row="0" col="1"/>
+      </cl:inputbox>
+      <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+        <cl:rows length="1" unit="FRACTION" autoSizing="true"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION" autoSizing="true"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:button std:sid="button-0446aba0" value="취소">
+      <cl:xylayoutdata std:sid="xyl-data-6b776e3f" right="280px" bottom="20px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-39198b35" value="저장">
+      <cl:xylayoutdata std:sid="xyl-data-56bce2de" bottom="20px" left="280px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:group std:sid="group-b89c1d4b">
+      <cl:xylayoutdata std:sid="xyl-data-9e3f5e79" top="30px" right="670px" left="20px" height="40px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-f282f164" value="일정관리">
+        <cl:formdata std:sid="f-data-f7fbbe59" row="0" col="0"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-ae679585" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-d33ad2fa">
+      <cl:xylayoutdata std:sid="xyl-data-713c92de" top="160px" right="20px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-46df48f5" value="시작일자">
+        <cl:formdata std:sid="f-data-91caa2fc" row="0" col="0"/>
+      </cl:output>
+      <cl:dateinput std:sid="d-input-19bc48ef" id="dti1">
+        <cl:formdata std:sid="f-data-bfb1bb5f" row="0" col="1"/>
+      </cl:dateinput>
+      <cl:formlayout std:sid="f-layout-fb9999d1" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-e1984736">
+      <cl:xylayoutdata std:sid="xyl-data-2ed214ed" top="230px" right="20px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-4c0309e9" value="종료일자">
+        <cl:formdata std:sid="f-data-d36a0449" row="0" col="0"/>
+      </cl:output>
+      <cl:dateinput std:sid="d-input-e9693324" id="dti2">
+        <cl:formdata std:sid="f-data-77c33691" row="0" col="1"/>
+      </cl:dateinput>
+      <cl:formlayout std:sid="f-layout-1dd3bdd9" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-180c0e60"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>
