@@ -37,17 +37,31 @@
       <cl:htmlsnippet std:sid="htmlsnippet-ce90cf54" value="&lt;h3>근태정보&lt;/h3>">
         <cl:xylayoutdata std:sid="xyl-data-f92d6bdc" top="-5px" left="17px" width="150px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:button std:sid="button-385dbe2f" style="border-radius:10px;" value="출근">
+      <cl:button std:sid="button-385dbe2f" style="border-radius:10px; background-color:#E0E1E2; background-image:none;" class="btn_go" value="출근">
+        <cl:listener std:sid="listener-f04ac77a" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-c2a18410" right="80px" bottom="10px" width="59px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-fcf6c989" style="border-radius:10px; background-color:#4680FF; font-weight:500;" value="퇴근">
+      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none;" value="퇴근">
+        <cl:listener std:sid="listener-c1551a94" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-b71d16d3" bottom="10px" left="538px" width="60px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:htmlsnippet std:sid="htmlsnippet-563ab83f" id="currentTime" value="&lt;div id=&quot;currentTime&quot;>&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-9e0a996a" top="111px" left="17px" width="100px" height="35px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="clock" style="font-weight:900; font-size:30px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-cc86a7b1" top="122px" left="17px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="clock" style="font-size:30px;" value="&lt;h1>00:00&lt;/h1>">
-        <cl:xylayoutdata std:sid="xyl-data-0a3eba7d" top="1px" left="177px" width="226px" height="130px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:16px;" value="&lt;div id=&quot;day&quot;>요일&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-dd388c1c" top="85px" left="17px" width="228px" height="31px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-da0914cb" value="&lt;div>출근:&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-2287017a" top="194px" left="17px" width="48px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-2187928c" value="&lt;div>퇴근:&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-25ab1cde" top="194px" left="177px" width="48px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" value="&lt;span>기록없음&lt;/span>">
+        <cl:xylayoutdata std:sid="xyl-data-91fc5872" top="194px" left="220px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go" value="&lt;span>00:00&lt;/span>">
+        <cl:xylayoutdata std:sid="xyl-data-843d47e7" top="194px" left="54px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:xylayout std:sid="xylayout-215244ed"/>
     </cl:group>
@@ -85,7 +99,7 @@
     </cl:group>
     <cl:group std:sid="group-552c99b1" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-65c7913b" top="334px" bottom="0px" left="494px" width="610px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:calendar std:sid="calendar-5c8821bb">
+      <cl:calendar std:sid="calendar-5c8821bb" class="main-calendar">
         <cl:xylayoutdata std:sid="xyl-data-c752826a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       </cl:calendar>
       <cl:xylayout std:sid="xylayout-40d1f6ce"/>

@@ -213,6 +213,9 @@
 			});
 			
 			var embeddedApp_1 = new cpr.controls.EmbeddedApp("ea1");
+			if(typeof onEa1Init2 == "function") {
+				embeddedApp_1.addEventListener("init", onEa1Init2);
+			}
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
@@ -221,6 +224,9 @@
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
+			}
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
 			}
 		}
 	});

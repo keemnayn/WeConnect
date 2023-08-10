@@ -19,7 +19,8 @@
 			 ************************************************/
 
 			function clock() {
-					const clockTarget = new cpr.controls.HTMLSnippet("clock");
+					const clockTarget = app.lookup("clock"); 
+					const clock = app.lookup("day");
 			        const date = new Date();
 			        const hours = date.getHours();
 			        const month = date.getMonth();
@@ -28,7 +29,8 @@
 			        const minutes = date.getMinutes();
 			        const seconds = date.getSeconds();
 			        const week = ['일', '월', '화', '수', '목', '금', '토'];
-			        clockTarget.value= `${month+1}월 ${clockDate}일 ${week[day]}요일`
+			        clockTarget.value= `${hours}시 ${minutes}분 ${seconds}초`
+			      	clock.value= `${month+1}월 ${clockDate}일 ${week[day]}요일`
 			}
 
 			/*
@@ -38,6 +40,35 @@
 			function onBodyInit(e){
 				clock();
 				setInterval(clock, 1000);
+			}
+
+			/*
+			 * "출근" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+				const go = app.lookup("go");
+				const date = new Date();
+				const hours = date.getHours();
+				const minutes = date.getMinutes();
+				const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+				go.value = `${hours}: ${formattedMinutes}`
+			}
+
+			/*
+			 * "퇴근" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick2(e){
+				var button = e.control;
+				const back = app.lookup("back");
+				const date = new Date();
+				const hours = date.getHours();
+				const minutes = date.getMinutes();
+				const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+				back.value =`${hours}: ${formattedMinutes}`
+				back.redraw();
 			};
 			// End - User Script
 			
@@ -164,46 +195,93 @@
 				});
 				var button_1 = new cpr.controls.Button();
 				button_1.value = "출근";
+				button_1.style.setClasses(["btn_go"]);
 				button_1.style.css({
-					"border-radius" : "10px"
+					"border-radius" : "10px",
+					"background-color" : "#E0E1E2",
+					"background-image" : "none"
 				});
+				if(typeof onButtonClick == "function") {
+					button_1.addEventListener("click", onButtonClick);
+				}
 				container.addChild(button_1, {
 					"right": "80px",
 					"bottom": "10px",
 					"width": "59px",
 					"height": "50px"
 				});
-				var button_2 = new cpr.controls.Button();
+				var button_2 = new cpr.controls.Button("btn1");
 				button_2.value = "퇴근";
 				button_2.style.css({
 					"border-radius" : "10px",
-					"background-color" : "#4680FF",
-					"font-weight" : "500"
+					"background-color" : "#F7EEEB",
+					"font-weight" : "500",
+					"background-image" : "none"
 				});
+				if(typeof onButtonClick2 == "function") {
+					button_2.addEventListener("click", onButtonClick2);
+				}
 				container.addChild(button_2, {
 					"bottom": "10px",
 					"left": "538px",
 					"width": "60px",
 					"height": "50px"
 				});
-				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("currentTime");
-				hTMLSnippet_8.value = "<div id=\"currentTime\"><\/div>";
-				container.addChild(hTMLSnippet_8, {
-					"top": "111px",
-					"left": "17px",
-					"width": "100px",
-					"height": "35px"
-				});
-				var hTMLSnippet_9 = new cpr.controls.HTMLSnippet("clock");
-				hTMLSnippet_9.value = "<h1>00:00<\/h1>";
-				hTMLSnippet_9.style.css({
+				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("clock");
+				hTMLSnippet_8.value = " <div id=\"clock\">00:00<\/div>";
+				hTMLSnippet_8.style.css({
+					"font-weight" : "900",
 					"font-size" : "30px"
 				});
+				container.addChild(hTMLSnippet_8, {
+					"top": "122px",
+					"left": "17px",
+					"width": "224px",
+					"height": "47px"
+				});
+				var hTMLSnippet_9 = new cpr.controls.HTMLSnippet("day");
+				hTMLSnippet_9.value = "<div id=\"day\">요일<\/div>";
+				hTMLSnippet_9.style.css({
+					"color" : "#8A8989",
+					"font-size" : "16px"
+				});
 				container.addChild(hTMLSnippet_9, {
-					"top": "1px",
+					"top": "85px",
+					"left": "17px",
+					"width": "228px",
+					"height": "31px"
+				});
+				var hTMLSnippet_10 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_10.value = "<div>출근:<\/div>";
+				container.addChild(hTMLSnippet_10, {
+					"top": "194px",
+					"left": "17px",
+					"width": "48px",
+					"height": "20px"
+				});
+				var hTMLSnippet_11 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_11.value = "<div>퇴근:<\/div>";
+				container.addChild(hTMLSnippet_11, {
+					"top": "194px",
 					"left": "177px",
-					"width": "226px",
-					"height": "130px"
+					"width": "48px",
+					"height": "20px"
+				});
+				var hTMLSnippet_12 = new cpr.controls.HTMLSnippet("back");
+				hTMLSnippet_12.value = "<span>기록없음<\/span>";
+				container.addChild(hTMLSnippet_12, {
+					"top": "194px",
+					"left": "220px",
+					"width": "100px",
+					"height": "20px"
+				});
+				var hTMLSnippet_13 = new cpr.controls.HTMLSnippet("go");
+				hTMLSnippet_13.value = "<span>00:00<\/span>";
+				container.addChild(hTMLSnippet_13, {
+					"top": "194px",
+					"left": "54px",
+					"width": "100px",
+					"height": "20px"
 				});
 			})(group_2);
 			container.addChild(group_2, {
@@ -228,9 +306,9 @@
 			var xYLayout_4 = new cpr.controls.layouts.XYLayout();
 			group_3.setLayout(xYLayout_4);
 			(function(container){
-				var hTMLSnippet_10 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_10.value = "<h3>게시판<\/h3>";
-				container.addChild(hTMLSnippet_10, {
+				var hTMLSnippet_14 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_14.value = "<h3>게시판<\/h3>";
+				container.addChild(hTMLSnippet_14, {
 					"top": "-4px",
 					"left": "17px",
 					"width": "150px",
@@ -259,9 +337,9 @@
 			var xYLayout_5 = new cpr.controls.layouts.XYLayout();
 			group_4.setLayout(xYLayout_5);
 			(function(container){
-				var hTMLSnippet_11 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_11.value = "<h3>일정<\/h3>";
-				container.addChild(hTMLSnippet_11, {
+				var hTMLSnippet_15 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_15.value = "<h3>일정<\/h3>";
+				container.addChild(hTMLSnippet_15, {
 					"top": "-3px",
 					"left": "17px",
 					"width": "150px",
@@ -333,6 +411,7 @@
 			group_7.setLayout(xYLayout_8);
 			(function(container){
 				var calendar_1 = new cpr.controls.Calendar();
+				calendar_1.style.setClasses(["main-calendar"]);
 				container.addChild(calendar_1, {
 					"top": "0px",
 					"right": "0px",
