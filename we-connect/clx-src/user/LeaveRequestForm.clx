@@ -12,10 +12,7 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[오전 반차]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[오후 반차]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[반차]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="type"><![CDATA[연차]]></cl:datavalue>
@@ -26,68 +23,57 @@
     <cl:appspec/>
   </head>
   <body std:sid="body-b6366cad">
-    <cl:group std:sid="group-d6d72a61">
-      <cl:xylayoutdata std:sid="xyl-data-4524dbcb" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:group std:sid="group-058a49d6" style="border-right-style:solid; border-left-style:solid; border-bottom-style:solid; border-top-style:solid;">
-        <cl:xylayoutdata std:sid="xyl-data-43713f6c" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-        <cl:group std:sid="group-b1a87397" style="border-right-style:solid; border-left-style:solid; border-bottom-style:solid; border-top-style:solid;">
-          <cl:xylayoutdata std:sid="xyl-data-7a3705ea" top="49px" bottom="2px" left="0px" width="236px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-          <cl:output std:sid="output-806afe7e" style="text-align:center;" value="사유">
-            <cl:xylayoutdata std:sid="xyl-data-0c5820a8" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-          </cl:output>
-          <cl:xylayout std:sid="xylayout-14eb1990"/>
-        </cl:group>
-        <cl:group std:sid="group-a3c6b9e0">
-          <cl:xylayoutdata std:sid="xyl-data-2bfd01ac" top="0px" right="0px" left="496px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-          <cl:group std:sid="group-b67ae9d9">
-            <cl:xylayoutdata std:sid="xyl-data-bef37ca9" top="0px" left="383px" width="693px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            <cl:dateinput std:sid="d-input-030c4b60" id="dti1">
-              <cl:xylayoutdata std:sid="xyl-data-c5a175dd" top="0px" bottom="0px" left="0px" width="334px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-            </cl:dateinput>
-            <cl:htmlsnippet std:sid="htmlsnippet-a81a27d9" style="text-align:center;" value="&lt;span>~&lt;/span>">
-              <cl:xylayoutdata std:sid="xyl-data-688985c2" top="0px" left="290px" width="100px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            </cl:htmlsnippet>
-            <cl:dateinput std:sid="d-input-51449d79" id="dti2">
-              <cl:xylayoutdata std:sid="xyl-data-45d07d22" top="0px" right="4px" width="331px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            </cl:dateinput>
-            <cl:xylayout std:sid="xylayout-9dc8468d"/>
-          </cl:group>
-          <cl:output std:sid="output-946ee65b" style="border-right-style:solid; border-left-style:solid; border-bottom-style:solid; border-top-style:solid; text-align:center;" value="기간">
-            <cl:xylayoutdata std:sid="xyl-data-671df4a8" top="0px" bottom="0px" left="0px" width="384px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-          </cl:output>
-          <cl:xylayout std:sid="xylayout-7be0ca1f"/>
-        </cl:group>
-        <cl:group std:sid="group-f1e651dc" style="border-right-style:solid; border-left-style:solid; border-bottom-style:solid; border-top-style:solid;">
-          <cl:xylayoutdata std:sid="xyl-data-cac2d849" top="0px" left="0px" width="236px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-          <cl:output std:sid="output-580dcf09" style="text-align:center;" value="근태구분">
-            <cl:xylayoutdata std:sid="xyl-data-c9838941" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-          </cl:output>
-          <cl:xylayout std:sid="xylayout-5d0a3e04"/>
-        </cl:group>
-        <cl:group std:sid="group-174a27fd">
-          <cl:xylayoutdata std:sid="xyl-data-5a852fb2" right="0px" bottom="0px" left="240px" height="315px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-          <cl:button std:sid="button-39198b35" value="신청">
-            <cl:xylayoutdata std:sid="xyl-data-b1908981" bottom="0px" left="450px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-          </cl:button>
-          <cl:button std:sid="button-0446aba0" value="취소">
-            <cl:xylayoutdata std:sid="xyl-data-e41fca58" right="450px" bottom="0px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
-          </cl:button>
-          <cl:xylayout std:sid="xylayout-bf60580c"/>
-        </cl:group>
-        <cl:inputbox std:sid="i-box-cc539f6a" id="ipb1" style="background-color:#EBEBEB; white-space:normal; text-align:left;" value="ㅇㄴㅇㄴㅁ">
-          <cl:xylayoutdata std:sid="xyl-data-1fb6a5fe" top="53px" right="0px" bottom="53px" left="235px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-        </cl:inputbox>
-        <cl:group std:sid="group-fdb0f2a5">
-          <cl:xylayoutdata std:sid="xyl-data-1e0cc7c1" top="0px" left="239px" width="257px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-          <cl:combobox std:sid="c-box-ef789ab2" id="cmb1" style="border-right-style:solid; border-left-style:solid; border-bottom-style:solid; border-top-style:solid;">
-            <cl:xylayoutdata std:sid="xyl-data-36fb95e8" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:itemset datasetid="type" label="type" value="type"/>
-          </cl:combobox>
-          <cl:xylayout std:sid="xylayout-dd4f6199"/>
-        </cl:group>
-        <cl:xylayout std:sid="xylayout-cd2f926f"/>
-      </cl:group>
-      <cl:xylayout std:sid="xylayout-7c24db92"/>
+    <cl:group std:sid="group-1ea4ba1b">
+      <cl:xylayoutdata std:sid="xyl-data-c50892bf" top="0px" left="0px" width="1580px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-c57df6a1" value="구분">
+        <cl:formdata std:sid="f-data-ee8be003" row="0" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-0c39ec7e" value="기간">
+        <cl:formdata std:sid="f-data-09fc5d97" row="0" col="2"/>
+      </cl:output>
+      <cl:dateinput std:sid="d-input-332ca669" id="dti1">
+        <cl:formdata std:sid="f-data-a4ef86c0" row="0" col="3"/>
+      </cl:dateinput>
+      <cl:dateinput std:sid="d-input-6c273717" id="dti2">
+        <cl:formdata std:sid="f-data-7c984f7c" row="0" col="5"/>
+      </cl:dateinput>
+      <cl:combobox std:sid="c-box-e348d553" id="cmb1">
+        <cl:formdata std:sid="f-data-9fac92e0" row="0" col="1"/>
+        <cl:itemset datasetid="type" label="type" value="type"/>
+      </cl:combobox>
+      <cl:output std:sid="output-7f1c49b6" style="text-align:center;" value="~">
+        <cl:formdata std:sid="f-data-4ac9008f" row="0" col="4"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-6baa735e" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-494bec52">
+      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" left="0px" width="1580px" height="680px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-4c902b40" value="목적">
+        <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-675b5c21" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-9921eabb">
+      <cl:xylayoutdata std:sid="xyl-data-8db6732b" top="880px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:button std:sid="button-6dcdf7fe" value="신청">
+        <cl:xylayoutdata std:sid="xyl-data-90c496c9" top="10px" left="656px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
+      <cl:button std:sid="button-daaf79eb" value="취소">
+        <cl:xylayoutdata std:sid="xyl-data-55a3b7ca" top="10px" left="790px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
+      <cl:xylayout std:sid="xylayout-3030722b"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-4e35d00a"/>
   </body>

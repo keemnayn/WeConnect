@@ -75,10 +75,10 @@
 				/*초기값 설정*/
 				var voInitValue = {
 					"value": "홈",
-					"appId": "user/userMain"
+					"appId": "user/UserMain"
 				};
 				/*앱을 로드하고 로드된 앱을 임베디드 앱에 설정합니다.*/
-				cpr.core.App.load("user/userMain", function( /*cpr.core.App*/ loadedApp) {
+				cpr.core.App.load("user/UserMain", function( /*cpr.core.App*/ loadedApp) {
 					/*임베디드앱에 안에 앱이 있는 경우에는 앱을 삭제해줍니다.(다시 앱을 열고싶을때 스크립트 작성)*/
 					if (vcEmb.getEmbeddedAppInstance()) {
 						vcEmb.getEmbeddedAppInstance().dispose();
