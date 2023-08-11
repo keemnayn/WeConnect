@@ -118,16 +118,16 @@
 					{"label": "프로젝트", "value": "프로젝트", "icon": "img/user/project.png", "parent": "", "appId": ""},
 					{"label": "예약", "value": "예약", "icon": "img/user/reservation.png", "parent": "", "appId": ""},
 					{"label": "게시판", "value": "게시판", "icon": "img/user/board.png", "parent": "", "appId": ""},
-					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "user/AttendFrom"},
-					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "user/HolidayRequestForm"},
+					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "user/AttendForm"},
+					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "user/LeaveRequestForm"},
 					{"label": "일정", "value": "일정", "icon": "img/user/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
 					{"label": "업무보드", "value": "업무보드", "icon": "img/user/work_board.png", "parent": "프로젝트", "appId": ""},
-					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/MeetingRoomReservForm"},
+					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/RoomReservForm"},
 					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Board"},
-					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/notice"},
-					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판"},
-					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "project/teamBoard"},
-					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "project/myBoard"}
+					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Notice"},
+					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "user/Proposal"},
+					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "user/project/TeamPost"},
+					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "user/project/MyPost"}
 				]
 			});
 			app.register(dataSet_1);

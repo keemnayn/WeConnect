@@ -168,7 +168,7 @@
 			container.addChild(searchInput_1, {
 				"top": "40px",
 				"right": "0px",
-				"left": "1020px",
+				"width": "560px",
 				"height": "30px"
 			});
 			
@@ -182,7 +182,7 @@
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
 				"top": "40px",
-				"right": "570px",
+				"right": "560px",
 				"width": "100px",
 				"height": "30px"
 			});
