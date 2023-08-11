@@ -15,5 +15,6 @@ public class MemberVO {
 	private String position;
 	private String memberStatus;
 	private String managerYn;
+	private long leaveCount;
 	private DepartmentVO departmentVO;
 }

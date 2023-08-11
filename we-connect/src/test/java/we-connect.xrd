@@ -24,11 +24,11 @@
     </viewSettingsPreset>
     <documentPolicy UUID="DPolicy_jJ90UTdHEe62a551BIGueQ"/>
   </configuration>
-  <businessArea UUID="BArea_jJ90UjdHEe62a551BIGueQ" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" table="Table_kC19EDdHEe62a551BIGueQ Table_kC2kITdHEe62a551BIGueQ Table_kC2kIzdHEe62a551BIGueQ Table_kC2kJTdHEe62a551BIGueQ Table_kC2kJzdHEe62a551BIGueQ Table_kC3LMDdHEe62a551BIGueQ Table_kC3LMjdHEe62a551BIGueQ Table_kC3LNDdHEe62a551BIGueQ Table_kC3LNjdHEe62a551BIGueQ Table_kC3LODdHEe62a551BIGueQ Table_kC3LOjdHEe62a551BIGueQ Table_kC3LPDdHEe62a551BIGueQ Table_kC3LPjdHEe62a551BIGueQ Table_kC3yQDdHEe62a551BIGueQ Table_kC3yQjdHEe62a551BIGueQ Table_kC3yRDdHEe62a551BIGueQ Table_kC3yRjdHEe62a551BIGueQ Table_kC3ySDdHEe62a551BIGueQ Table_Q5zaMDdIEe62a551BIGueQ">
+  <businessArea UUID="BArea_jJ90UjdHEe62a551BIGueQ" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" table="Table_kC19EDdHEe62a551BIGueQ Table_kC2kITdHEe62a551BIGueQ Table_kC2kIzdHEe62a551BIGueQ Table_kC2kJTdHEe62a551BIGueQ Table_kC2kJzdHEe62a551BIGueQ Table_kC3LMDdHEe62a551BIGueQ Table_kC3LMjdHEe62a551BIGueQ Table_kC3LNDdHEe62a551BIGueQ Table_kC3LNjdHEe62a551BIGueQ Table_kC3LODdHEe62a551BIGueQ Table_kC3LOjdHEe62a551BIGueQ Table_kC3LPDdHEe62a551BIGueQ Table_kC3LPjdHEe62a551BIGueQ Table_kC3yQDdHEe62a551BIGueQ Table_kC3yQjdHEe62a551BIGueQ Table_kC3yRDdHEe62a551BIGueQ Table_kC3yRjdHEe62a551BIGueQ Table_kC3ySDdHEe62a551BIGueQ Table_Q5zaMDdIEe62a551BIGueQ Table_0nJrkDgFEe6o3pjjZ5r2_A">
     <diagram UUID="Diagram_jJ90UzdHEe62a551BIGueQ" logicalName="다이어그램" physicalName="diagram">
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kIDdHEe62a551BIGueQ" location="Point(954.0, 449.0)" table="Table_kC19EDdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kIjdHEe62a551BIGueQ" location="Point(130.0, 218.0)" table="Table_kC2kITdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kJDdHEe62a551BIGueQ" location="Point(449.0, 384.0)" table="Table_kC2kIzdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kIjdHEe62a551BIGueQ" location="Point(36.0, 218.0)" table="Table_kC2kITdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kJDdHEe62a551BIGueQ" location="Point(323.0, 399.0)" table="Table_kC2kIzdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kJjdHEe62a551BIGueQ" location="Point(396.0, 47.0)" table="Table_kC2kJTdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kKDdHEe62a551BIGueQ" location="Point(278.0, 562.0)" table="Table_kC2kJzdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMTdHEe62a551BIGueQ" location="Point(260.0, 915.0)" table="Table_kC3LMDdHEe62a551BIGueQ"/>
@@ -38,13 +38,14 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOTdHEe62a551BIGueQ" location="Point(852.0, 782.0)" table="Table_kC3LODdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOzdHEe62a551BIGueQ" location="Point(1978.0, 82.0)" table="Table_kC3LOjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LPTdHEe62a551BIGueQ" location="Point(1473.0, 31.0)" table="Table_kC3LPDdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LPzdHEe62a551BIGueQ" location="Point(1345.0, 820.0)" table="Table_kC3LPjdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LPzdHEe62a551BIGueQ" location="Point(1347.0, 782.0)" table="Table_kC3LPjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yQTdHEe62a551BIGueQ" location="Point(1398.0, 622.0)" table="Table_kC3yQDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yQzdHEe62a551BIGueQ" location="Point(750.0, 1081.0)" table="Table_kC3yQjdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yRTdHEe62a551BIGueQ" location="Point(1473.0, 231.0)" table="Table_kC3yRDdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yRTdHEe62a551BIGueQ" location="Point(1476.0, 188.0)" table="Table_kC3yRDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yRzdHEe62a551BIGueQ" location="Point(1473.0, 424.0)" table="Table_kC3yRjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3ySTdHEe62a551BIGueQ" location="Point(1780.0, 567.0)" table="Table_kC3ySDdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Q5zaMTdIEe62a551BIGueQ" location="Point(1179.0, 980.0)" table="Table_Q5zaMDdIEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Q5zaMTdIEe62a551BIGueQ" location="Point(1178.0, 949.0)" table="Table_Q5zaMDdIEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_0nK5sDgFEe6o3pjjZ5r2_A" location="Point(739.0, 341.0)" table="Table_0nJrkDgFEe6o3pjjZ5r2_A"/>
       <viewSettings>
         <cellsToShow>name</cellsToShow>
         <cellsToShow>oppositeModeName</cellsToShow>
@@ -57,17 +58,16 @@
         <targetAnchor side="left" offset="11"/>
       </tableRelations>
       <tableRelations UUID="TRelation_D8t4sDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_D8rccDdIEe62a551BIGueQ">
-        <sourceAnchor offset="186"/>
-        <targetAnchor side="bottom" offset="133"/>
+        <sourceAnchor offset="169"/>
+        <targetAnchor side="bottom" offset="118"/>
       </tableRelations>
       <tableRelations UUID="TRelation_EuCA4DdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_Et6FEDdIEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="58"/>
-        <targetAnchor side="right" offset="123"/>
+        <sourceAnchor side="left" offset="47"/>
+        <targetAnchor side="right" offset="97"/>
       </tableRelations>
       <tableRelations UUID="TRelation_GOFeYDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_GOEQQDdIEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="20"/>
-        <targetAnchor side="right" offset="58"/>
-        <routing>-99</routing>
+        <sourceAnchor side="left" offset="26"/>
+        <targetAnchor side="bottom" offset="315"/>
       </tableRelations>
       <tableRelations UUID="TRelation_GrP7gDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_GrOtYDdIEe62a551BIGueQ">
         <sourceAnchor side="left" offset="97"/>
@@ -85,8 +85,8 @@
         <routing>-209</routing>
       </tableRelations>
       <tableRelations UUID="TRelation_IvRowDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_IvQaoDdIEe62a551BIGueQ">
-        <sourceAnchor offset="145"/>
-        <targetAnchor side="bottom" offset="167"/>
+        <sourceAnchor offset="178"/>
+        <targetAnchor side="bottom" offset="200"/>
       </tableRelations>
       <tableRelations UUID="TRelation_JTyEADdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_JTw14DdIEe62a551BIGueQ">
         <sourceAnchor side="bottom" offset="121"/>
@@ -107,8 +107,8 @@
         <targetAnchor side="left" offset="112"/>
       </tableRelations>
       <tableRelations UUID="TRelation_OcXHYDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_OcV5QDdIEe62a551BIGueQ">
-        <sourceAnchor offset="154"/>
-        <targetAnchor side="bottom" offset="207"/>
+        <sourceAnchor offset="215"/>
+        <targetAnchor side="bottom" offset="142"/>
       </tableRelations>
       <tableRelations UUID="TRelation_UCJrMDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_UCIdEzdIEe62a551BIGueQ">
         <sourceAnchor side="bottom" offset="184"/>
@@ -140,12 +140,16 @@
         <targetAnchor side="right" offset="152"/>
       </tableRelations>
       <tableRelations UUID="TRelation_ALxEsDdKEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_ALsMMDdKEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="39"/>
-        <targetAnchor side="right" offset="77"/>
+        <sourceAnchor side="left" offset="51"/>
+        <targetAnchor side="right" offset="51"/>
       </tableRelations>
       <tableRelations UUID="TRelation_mnQTMDdKEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_mnMBwDdKEe62a551BIGueQ">
-        <sourceAnchor side="bottom" offset="265"/>
-        <targetAnchor offset="40"/>
+        <sourceAnchor side="bottom" offset="260"/>
+        <targetAnchor offset="36"/>
+      </tableRelations>
+      <tableRelations UUID="TRelation_M_UwUDgGEe6o3pjjZ5r2_A" foreignKeyColumnGroup="FKCGroup_M_Qe4DgGEe6o3pjjZ5r2_A">
+        <sourceAnchor offset="74"/>
+        <targetAnchor side="bottom" offset="289"/>
       </tableRelations>
     </diagram>
   </businessArea>
@@ -163,6 +167,7 @@
         <column UUID="Column_2A0JEDdIEe62a551BIGueQ" logicalName="직급" physicalName="position" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_2ofNEDdIEe62a551BIGueQ" logicalName="계정상태" physicalName="member_status" dataType="NUMBER" notNull="true"/>
         <column UUID="Column_4NyW8DdIEe62a551BIGueQ" logicalName="관리자여부" physicalName="manager_yn" dataType="CHAR(1)" notNull="true"/>
+        <column UUID="Column_gMiEsDgJEe6o3pjjZ5r2_A" logicalName="연차갯수" physicalName="leave_count" dataType="NUMBER" notNull="true"/>
         <column UUID="Column_js33oDdIEe62a551BIGueQ" logicalName="부서번호" physicalName="department_id" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_js33oTdIEe62a551BIGueQ" key="FKCGroup_js3QkzdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_js33ojdIEe62a551BIGueQ" group="FKCGroup_js3QkzdIEe62a551BIGueQ" parentColumn="Column_js3QkDdIEe62a551BIGueQ"/>
@@ -570,6 +575,25 @@
         </columnGroup>
         <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_mnMBwDdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
           <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_mnMBwTdKEe62a551BIGueQ" logicalName="회원 -> 팀게시글 댓글" physicalName="FK_member_TO_team_post_comment" derivedPhysicalName="true" derivedLogicalName="true"/>
+        </columnGroup>
+      </table>
+      <table UUID="Table_0nJrkDgFEe6o3pjjZ5r2_A" logicalName="프로필이미지" physicalName="profile_image">
+        <column UUID="Column_genakDgGEe6o3pjjZ5r2_A" logicalName="프로필이미지 번호" physicalName="profile_image_id" dataType="NUMBER" notNull="true">
+          <membership UUID="MEntry_genakTgGEe6o3pjjZ5r2_A" key="PKCGroup_1iJ7QDgFEe6o3pjjZ5r2_A">
+            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_genakjgGEe6o3pjjZ5r2_A" group="PKCGroup_1iJ7QDgFEe6o3pjjZ5r2_A" entryIndex="0"/>
+          </membership>
+        </column>
+        <column UUID="Column_1iKiUDgFEe6o3pjjZ5r2_A" logicalName="프로필이미지 경로" physicalName="profile_image_path" dataType="VARCHAR2(1000)" notNull="true"/>
+        <column UUID="Column_M_SUEDgGEe6o3pjjZ5r2_A" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
+          <membership UUID="MEntry_M_SUETgGEe6o3pjjZ5r2_A" key="FKCGroup_M_Qe4DgGEe6o3pjjZ5r2_A">
+            <value xsi:type="e:ColumnReference" UUID="CReference_M_SUEjgGEe6o3pjjZ5r2_A" group="FKCGroup_M_Qe4DgGEe6o3pjjZ5r2_A" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
+          </membership>
+        </column>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_1iJ7QDgFEe6o3pjjZ5r2_A" logicalName="프로필이미지 기본키" physicalName="PK_profile_image" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_1iJ7QTgFEe6o3pjjZ5r2_A" logicalName="프로필이미지 기본키" physicalName="PK_profile_image" derivedPhysicalName="true" derivedLogicalName="true"/>
+        </columnGroup>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_M_Qe4DgGEe6o3pjjZ5r2_A" logicalName="회원 -> 프로필이미지" physicalName="FK_member_TO_profile_image" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_M_Qe4TgGEe6o3pjjZ5r2_A" logicalName="회원 -> 프로필이미지" physicalName="FK_member_TO_profile_image" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
     </schema>
