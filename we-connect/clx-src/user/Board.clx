@@ -8,34 +8,34 @@
     <cl:model std:sid="model-495fd221">
       <cl:dataset std:sid="d-set-3a6ded94" id="board">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-715b7105" name="boardNo"/>
-          <cl:datacolumn std:sid="d-column-d529d4a1" name="empName"/>
+          <cl:datacolumn std:sid="d-column-715b7105" name="boardId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-d529d4a1" name="memberName"/>
           <cl:datacolumn std:sid="d-column-983fabd9" name="title"/>
           <cl:datacolumn std:sid="d-column-3a5fb07a" name="date"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="boardNo"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="empName"><![CDATA[user1]]></cl:datavalue>
+            <cl:datavalue columnname="boardId">1</cl:datavalue>
+            <cl:datavalue columnname="memberName">user1</cl:datavalue>
             <cl:datavalue columnname="title">title1</cl:datavalue>
             <cl:datavalue columnname="date">date1</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="boardNo"><![CDATA[2]]></cl:datavalue>
-            <cl:datavalue columnname="empName"><![CDATA[user2]]></cl:datavalue>
+            <cl:datavalue columnname="boardId">2</cl:datavalue>
+            <cl:datavalue columnname="memberName">user2</cl:datavalue>
             <cl:datavalue columnname="title">title2</cl:datavalue>
             <cl:datavalue columnname="date">date2</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="boardNo"><![CDATA[3]]></cl:datavalue>
-            <cl:datavalue columnname="empName"><![CDATA[user3]]></cl:datavalue>
+            <cl:datavalue columnname="boardId">3</cl:datavalue>
+            <cl:datavalue columnname="memberName">user3</cl:datavalue>
             <cl:datavalue columnname="title">title3</cl:datavalue>
             <cl:datavalue columnname="date">date3</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="boardNo"><![CDATA[4]]></cl:datavalue>
-            <cl:datavalue columnname="empName"><![CDATA[user4]]></cl:datavalue>
-            <cl:datavalue columnname="title"><![CDATA[title4]]></cl:datavalue>
+            <cl:datavalue columnname="boardId">4</cl:datavalue>
+            <cl:datavalue columnname="memberName">user4</cl:datavalue>
+            <cl:datavalue columnname="title">title4</cl:datavalue>
             <cl:datavalue columnname="date">date4</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
@@ -46,10 +46,13 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[내용]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[작성자]]></cl:datavalue>
+            <cl:datavalue columnname="type">내용</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type">작성자</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -59,21 +62,21 @@
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:grid std:sid="grid-38750194" id="grd1" datasetid="board">
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-f691dc26"/>
-      <cl:gridcolumn std:sid="g-column-e4ec4544"/>
+      <cl:gridcolumn std:sid="g-column-f691dc26" width="20px"/>
+      <cl:gridcolumn std:sid="g-column-e4ec4544" width="30px"/>
       <cl:gridcolumn std:sid="g-column-939f87c9"/>
-      <cl:gridcolumn std:sid="g-column-209d2f13"/>
+      <cl:gridcolumn std:sid="g-column-209d2f13" width="30px"/>
       <cl:gridheader std:sid="gh-band-fb71a40e">
         <cl:gridrow std:sid="g-row-c6d82866" height="50px"/>
-        <cl:gridcell std:sid="gh-cell-ce88962a" rowindex="0" colindex="0" targetcolumnname="boardNo" sortable="false" filterable="false" text="boardNo"/>
-        <cl:gridcell std:sid="gh-cell-86134712" rowindex="0" colindex="1" targetcolumnname="empName" sortable="false" filterable="false" text="empName"/>
-        <cl:gridcell std:sid="gh-cell-5fe0e975" rowindex="0" colindex="2" targetcolumnname="title" sortable="false" filterable="false" text="title"/>
-        <cl:gridcell std:sid="gh-cell-2fa4036d" rowindex="0" colindex="3" targetcolumnname="date" sortable="false" filterable="false" text="date"/>
+        <cl:gridcell std:sid="gh-cell-ce88962a" rowindex="0" colindex="0" targetcolumnname="boardId" sortable="false" filterable="false" text="boardId"/>
+        <cl:gridcell std:sid="gh-cell-86134712" rowindex="0" colindex="1" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-5fe0e975" rowindex="0" colindex="2" targetcolumnname="title" sortable="false" filterable="false" text="제목"/>
+        <cl:gridcell std:sid="gh-cell-2fa4036d" rowindex="0" colindex="3" targetcolumnname="date" sortable="false" filterable="false" text="작성일자"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-7cd1abcd">
         <cl:gridrow std:sid="g-row-8b2bc39f" height="50px"/>
-        <cl:gridcell std:sid="gd-cell-5ff821df" rowindex="0" colindex="0" columnname="boardNo"/>
-        <cl:gridcell std:sid="gd-cell-947a2b29" rowindex="0" colindex="1" columnname="empName"/>
+        <cl:gridcell std:sid="gd-cell-5ff821df" rowindex="0" colindex="0" columnname="boardId"/>
+        <cl:gridcell std:sid="gd-cell-947a2b29" rowindex="0" colindex="1" columnname="memberName"/>
         <cl:gridcell std:sid="gd-cell-9d6ba402" rowindex="0" colindex="2" columnname="title"/>
         <cl:gridcell std:sid="gd-cell-d546f623" rowindex="0" colindex="3" columnname="date"/>
       </cl:griddetail>
@@ -82,10 +85,10 @@
       <cl:xylayoutdata std:sid="xyl-data-48882ae0" bottom="50px" left="290px" width="1000px" height="51px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
     </cl:pageindexer>
     <cl:searchinput std:sid="s-input-e671e07b">
-      <cl:xylayoutdata std:sid="xyl-data-56469c1c" top="40px" left="1075px" width="500px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-56469c1c" top="40px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:searchinput>
     <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
-      <cl:xylayoutdata std:sid="xyl-data-ad7f4d66" top="40px" left="956px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-ad7f4d66" top="40px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
       <cl:itemset datasetid="search" label="type" value="type"/>
     </cl:combobox>
     <cl:xylayout std:sid="xylayout-710a037f"/>

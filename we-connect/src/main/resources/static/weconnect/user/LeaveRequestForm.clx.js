@@ -133,7 +133,7 @@
 				"top": "200px",
 				"left": "0px",
 				"width": "1580px",
-				"height": "680px"
+				"height": "580px"
 			});
 			
 			var group_3 = new cpr.controls.Container();
@@ -158,10 +158,10 @@
 				});
 			})(group_3);
 			container.addChild(group_3, {
-				"top": "880px",
+				"top": "800px",
 				"left": "0px",
 				"width": "1580px",
-				"height": "50px"
+				"height": "60px"
 			});
 		}
 	});

@@ -12,10 +12,10 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[반차]]></cl:datavalue>
+            <cl:datavalue columnname="type">반차</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[연차]]></cl:datavalue>
+            <cl:datavalue columnname="type">연차</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -55,7 +55,7 @@
       </cl:formlayout>
     </cl:group>
     <cl:group std:sid="group-494bec52">
-      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" left="0px" width="1580px" height="680px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" left="0px" width="1580px" height="580px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:output std:sid="output-4c902b40" value="목적">
         <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
       </cl:output>
@@ -66,7 +66,7 @@
       </cl:formlayout>
     </cl:group>
     <cl:group std:sid="group-9921eabb">
-      <cl:xylayoutdata std:sid="xyl-data-8db6732b" top="880px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-8db6732b" top="800px" left="0px" width="1580px" height="60px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:button std:sid="button-6dcdf7fe" value="신청">
         <cl:xylayoutdata std:sid="xyl-data-90c496c9" top="10px" left="656px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
