@@ -64,14 +64,14 @@
       <cl:gridcolumn std:sid="g-column-939f87c9"/>
       <cl:gridcolumn std:sid="g-column-209d2f13"/>
       <cl:gridheader std:sid="gh-band-fb71a40e">
-        <cl:gridrow std:sid="g-row-c6d82866"/>
+        <cl:gridrow std:sid="g-row-c6d82866" height="50px"/>
         <cl:gridcell std:sid="gh-cell-ce88962a" rowindex="0" colindex="0" targetcolumnname="boardNo" sortable="false" filterable="false" text="boardNo"/>
         <cl:gridcell std:sid="gh-cell-86134712" rowindex="0" colindex="1" targetcolumnname="empName" sortable="false" filterable="false" text="empName"/>
         <cl:gridcell std:sid="gh-cell-5fe0e975" rowindex="0" colindex="2" targetcolumnname="title" sortable="false" filterable="false" text="title"/>
         <cl:gridcell std:sid="gh-cell-2fa4036d" rowindex="0" colindex="3" targetcolumnname="date" sortable="false" filterable="false" text="date"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-7cd1abcd">
-        <cl:gridrow std:sid="g-row-8b2bc39f"/>
+        <cl:gridrow std:sid="g-row-8b2bc39f" height="57px"/>
         <cl:gridcell std:sid="gd-cell-5ff821df" rowindex="0" colindex="0" columnname="boardNo"/>
         <cl:gridcell std:sid="gd-cell-947a2b29" rowindex="0" colindex="1" columnname="empName"/>
         <cl:gridcell std:sid="gd-cell-9d6ba402" rowindex="0" colindex="2" columnname="title"/>

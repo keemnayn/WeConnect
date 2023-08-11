@@ -76,7 +76,7 @@
 					{"width": "100px"}
 				],
 				"header": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -117,7 +117,7 @@
 					]
 				},
 				"detail": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "57px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},

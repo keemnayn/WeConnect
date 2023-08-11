@@ -1,10 +1,9 @@
 @import "../settings.part.less";
 
 /* 캘린더 */
-.cl-calendar.main-calendar1 {
-	background-color: #ffffff;
-	border: 1px solid #babfc7;
-	border-radius: 5px;
+.cl-calendar {
+	border: 1px solid @default-border-color;
+	background-color: #fff;
 
 	/* 이전 년도 버튼 */
 	&:not(.cl-disabled) .cl-calendar-header-before {
@@ -29,7 +28,6 @@
 		// cursor: pointer;
 		&:hover, &.cl-hover{
 			// background-image: url(icons/rewind-hover.png);
-			background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
 		}
 	}
 
@@ -38,49 +36,36 @@
 		// cursor: pointer;
 		&:hover, &.cl-hover{
 			// background-image: url(icons/foward-hover.png);
-			background-image: url("../../../../images/controls/calendar/icon-chevron-right-on.svg");
 		}
 	}
 
 	/* 캘린더 헤더 */
 	.cl-calendar-header {
-		background-color: transparent;
+		
 		/* 이전 년도 버튼 */
 		.cl-calendar-header-before {
 			// background-image: url(icons/fast-rewind.png);
-			min-width: 0px;
-			width: 0px;
-			visibility: hidden; // 년도 변경 버튼을 보이지 않게 하기 위해 추가
 		}
 		
 		/* 다음 년도 버튼 */
 		.cl-calendar-header-after {
 			// background-image: url(icons/fast-foward.png);
-			min-width: 0px;
-			width: 0px;
-			visibility: hidden; // 년도 변경 버튼을 보이지 않게 하기 위해 추가
 		}
 
 		/* 이전 달 버튼 */
 		.cl-calendar-header-prev {
 			// background-image: url(icons/rewind.png);
-			background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
-			
 		}
 
 		/* 다음 달 버튼 */
 		.cl-calendar-header-next {
 			// background-image: url(icons/foward.png);
-			background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
 		}
 
 		/* 헤더 텍스트 */
 		.cl-calendar-header-text {
-			color: #333333;
-			font-weight: bold;
-			font-size: 16px;
 			&:hover, &.cl-hover{
-			color: #3f87fd;
+				color: @selection-background;
 			}
 		}
 	}
@@ -90,14 +75,12 @@
 	&:not(.cl-disabled)	.cl-calendar-content-month,
 	&:not(.cl-disabled)	.cl-calendar-content-year,
 	&:not(.cl-disabled)	.cl-other-month {
-		border-radius: 5px;
+		
 		/* 셀 호버 스타일 */
 		&:not(.cl-disabled):hover {
 			// cursor: pointer;
 			// background-color:#656565;
 			// color: white;
-			background-color: #f8f8fa;
-			color: #3f87fd;
 		}
 
 		/* 셀 숨김 스타일 */
@@ -110,8 +93,8 @@
 		
 		/* 선택된 날짜 셀 */
 		&.cl-selected{
-			background-color: transparent; //#3f87fd;
-			color: #ffffff;
+			background-color: @selection-background;
+			color: @selection-foreground;
 		}
 	}
 
@@ -137,8 +120,6 @@
 			// vertical-align: middle;
 			// background-color: #f5f5f5;
 			// cursor:default;
-			background-color: transparent;
-			font-weight: bold;
 		}
 
 		/* 날짜 선택 모드시 날짜 스타일 */
@@ -157,15 +138,11 @@
 
 		/* 이전 달 또는 다음 달의 날짜 */
 		.cl-other-month { 
-			background-color: transparent;
-			color: #c0c0c0;
+
 			/* 비활성화 상태 */
 			&.cl-disabled{
 				// background-color: #f2f2f2;
 				// color: #a7a6a6;
-				background-color: transparent;
-				color: #c0c0c0;
-				
 			}
 		}
 	
@@ -181,19 +158,12 @@
 			&.cl-calendar-defaultdate {
 				// background-color: #8A8A8B;
 				// color: white;
-				color: #3f87fd;
 			}
 
 			/* range 선택에서 선택된 날짜 스타일 */
-			&.cl-range-selected {
-				background-color: #3f87fd;
-				color: #ffffff;
-			}
+			&.cl-range-selected {}
 
-			&.cl-selected{
-				background-color: #3f87fd;
-				color: #ffffff;
-			}
+			&.cl-selected{}
 
 			&.cl-disabled{}
 
@@ -210,21 +180,14 @@
 		&:hover{
 			// cursor: pointer;
 			// text-decoration: underline;
-			color: #c0c0c0;
 		}
 	}
 
 	/* 캘린더 푸터 */
 	.cl-calendar-footer {
-		background-color: #f2f4f6;
-		border-radius: 5px;
-		font-size: 13px;
-		padding: 0px;
-		text-align: center;
-		vertical-align: middle;
+		
 		.cl-calendar-footer-text {
 			// display: inline-block;
-			color: #333333;
 		}
 		&.cl-hover {
 			.cl-calendar-footer-text {
@@ -301,7 +264,6 @@
 			/* 키보드 날짜 이동 스타일 */
 			.cl-calendar-current{
 				//box-shadow: inset 0px 0px 0px 0.125rem #656565;
-				box-shadow: inset 0px 0px 0px 2px rgba(63, 135, 253, 0.5);
 			}	
 		}
 	}
