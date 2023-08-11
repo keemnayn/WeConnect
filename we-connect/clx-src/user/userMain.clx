@@ -10,6 +10,12 @@
   </head>
   <body std:sid="body-03e545be" style="font-weight:400;">
     <cl:listener std:sid="listener-5b865503" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-22c66bce" name="property-change" handler="onBodyPropertyChange"/>
+    <cl:listener std:sid="listener-d0d1952a" name="host-change" handler="onBodyHostChange2"/>
+    <cl:listener std:sid="listener-a63fce4f" name="load" handler="onBodyLoad2"/>
+    <cl:listener std:sid="listener-8ca09816" name="unload" handler="onBodyUnload"/>
+    <cl:listener std:sid="listener-b930c8e3" name="click" handler="onBodyClick"/>
+    <cl:listener std:sid="listener-6b1cbd05" name="before-unload" handler="onBodyBeforeUnload"/>
     <cl:group std:sid="group-b4f5da64" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="4px" width="470px" height="230px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:htmlsnippet std:sid="htmlsnippet-50aa948b" value="&lt;h3>사용자 프로필&lt;/h3>">
@@ -45,10 +51,12 @@
         <cl:listener std:sid="listener-c1551a94" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-b71d16d3" bottom="10px" left="538px" width="60px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="clock" style="font-weight:900; font-size:30px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
+      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="font-weight:900; font-size:30px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
+        <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
         <cl:xylayoutdata std:sid="xyl-data-cc86a7b1" top="122px" left="17px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:16px;" value="&lt;div id=&quot;day&quot;>요일&lt;/div>">
+        <cl:listener std:sid="listener-1566cbe3" name="value-change" handler="onDayValueChange"/>
         <cl:xylayoutdata std:sid="xyl-data-dd388c1c" top="85px" left="17px" width="228px" height="31px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-da0914cb" value="&lt;div>출근:&lt;/div>">

@@ -107,12 +107,22 @@
 			function onBodyLoad(e){
 				clock();
 				setInterval(clock, 1000);
+			}
+
+			/*
+			 * 트리에서 selection-change 이벤트 발생 시 호출.
+			 * 선택된 Item 값이 저장된 후에 발생하는 이벤트.
+			 */
+			function onTre1SelectionChange(e){
+				var tre1 = e.control;
+				
 			};
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("adminMenu");
 			dataSet_1.parseData({
+				"stateRestore": true,
 				"columns": [
 					{"name": "label"},
 					{"name": "value"},
@@ -122,10 +132,10 @@
 				],
 				"rows": [
 					{"label": "홈", "value": "홈", "parent": "", "appId": "admin/AdminMain", "icon": "img/user/home.png"},
-					{"label": "회원", "value": "회원", "parent": ""},
-					{"label": "프로젝트", "value": "프로젝트", "parent": ""},
-					{"label": "게시판", "value": "게시판", "parent": ""},
-					{"label": "일정", "value": "일정", "parent": ""},
+					{"label": "회원", "value": "회원", "parent": "", "icon": "img/icon/team.png"},
+					{"label": "프로젝트", "value": "프로젝트", "parent": "", "icon": "img/icon/project.png"},
+					{"label": "게시판", "value": "게시판", "parent": "", "icon": "img/icon/board.png"},
+					{"label": "일정", "value": "일정", "parent": "", "icon": "img/icon/calendar.png", "appId": ""},
 					{"label": "예약", "value": "예약", "parent": ""},
 					{"label": "회원관리", "value": "회원관리", "parent": "회원", "appId": "admin/AdminMember"},
 					{"label": "근태관리", "value": "근태관리", "parent": "회원", "appId": "admin/AdminAttendance"},
@@ -135,9 +145,9 @@
 					{"label": "자유게시판", "value": "자유게시판", "parent": "게시판", "appId": "admin/AdminBoard"},
 					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminSuggestions"},
 					{"label": "회의실등록", "value": "회의실등록", "parent": "예약", "appId": "admin/AdminMeetingRoomForm"},
-					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "예약", "appId": ""},
-					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/schedule"},
-					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트"}
+					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "예약", "appId": "admin/AdminMeetingRoomStatus"},
+					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/schedule", "icon": "img/icon/calendar.png"},
+					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트", "appId": "admin/AdminProjectManagement"}
 				]
 			});
 			app.register(dataSet_1);
@@ -159,6 +169,7 @@
 			
 			// UI Configuration
 			var tree_1 = new cpr.controls.Tree("tre1");
+			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
 				"background-color" : "#F1EFFF",
 				"border-right-style" : "none",
@@ -176,6 +187,9 @@
 			})(tree_1);
 			if(typeof onTre1ItemClick == "function") {
 				tree_1.addEventListener("item-click", onTre1ItemClick);
+			}
+			if(typeof onTre1SelectionChange == "function") {
+				tree_1.addEventListener("selection-change", onTre1SelectionChange);
 			}
 			container.addChild(tree_1, {
 				"top": "50px",
@@ -221,7 +235,7 @@
 				});
 				container.addChild(output_2, {
 					"top": "10px",
-					"right": "105px",
+					"right": "75px",
 					"bottom": "0px",
 					"width": "186px"
 				});

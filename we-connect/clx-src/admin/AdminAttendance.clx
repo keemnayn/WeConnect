@@ -367,6 +367,7 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:grid std:sid="grid-f2646872" id="grd1" datasetid="attendanceList">
+            <cl:listener std:sid="listener-edd8d071" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-858ffeb0" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:gridcolumn std:sid="g-column-1a242a0e"/>
             <cl:gridcolumn std:sid="g-column-238614ae"/>

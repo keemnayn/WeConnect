@@ -1047,6 +1047,10 @@ body.cl-has-modal {
   /* 트리 아이템간 라인 */
 }
 .cl-tree .cl-tree-item {
+  height: 100px;
+  font-weight: 500;
+  padding: 0px;
+  border-radius: 8px;
   /* 트리 아이템 체크박스 아이콘 */
   /* 트리 셀렉션 체크박스 아이콘 */
   /* 트리 아이템 아이콘 영역 */
@@ -1056,6 +1060,12 @@ body.cl-has-modal {
   /* 트리 아이템 뱃지 스타일 */
   /* 트리 아이템 - 비활성화 */
   /* 트리 아이템 - 선택됨 */
+}
+.cl-tree .cl-tree-item .cl-text {
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding: 0px;
+  line-height: 38px;
 }
 .cl-tree .cl-tree-item.cl-checked {
   /* 트리 아이템 체크박스 아이콘 - 선택됨 */
@@ -1074,11 +1084,11 @@ body.cl-has-modal {
 }
 .cl-tree .cl-tree-item.cl-disabled.cl-selected {
   color: #777;
-  background-color: #ccc;
+  background-color: background-color: #F5F5F5;
 }
 .cl-tree .cl-tree-item.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #333;
 }
 .cl-tree .cl-tree-item.cl-selected.cl-folder {
   /* 트리 아이템 폴더 펼쳐짐 아이콘 - 선택됨 */
@@ -1892,3 +1902,4 @@ a {
   text-decoration-line: none;
   color: inherit;
 }
+@export "cleopatra-theme.less";

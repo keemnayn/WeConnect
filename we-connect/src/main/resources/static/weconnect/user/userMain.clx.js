@@ -17,36 +17,29 @@
 			 *
 			 * @author kjh970605
 			 ************************************************/
+			let intervalID; 
 
 			function clock() {
-					const clockTarget = app.lookup("clock"); 
-					const clock = app.lookup("day");
-			        const date = new Date();
-			        const hours = date.getHours();
-			        const month = date.getMonth();
-			        const clockDate = date.getDate();
-			        const day = date.getDay();
-			        const minutes = date.getMinutes();
-			        const seconds = date.getSeconds();
-			        const week = ['일', '월', '화', '수', '목', '금', '토'];
-			        clockTarget.value= `${hours}시 ${minutes}분 ${seconds}초`
-			      	clock.value= `${month+1}월 ${clockDate}일 ${week[day]}요일`
-			}
-
-			/*
-			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
-			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
-			 */
-			function onBodyInit(e){
-				clock();
-				setInterval(clock, 1000);
+				const clockTarget = app.lookup("user_clock");
+				console.log(clockTarget);
+				const user_day = app.lookup("day");
+				const date = new Date();
+				const hours = date.getHours();
+				const month = date.getMonth();
+				const clockDate = date.getDate();
+				const day = date.getDay();
+				const minutes = date.getMinutes();
+				const seconds = date.getSeconds();
+				const week = ['일', '월', '화', '수', '목', '금', '토'];
+				clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`
+				user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`
 			}
 
 			/*
 			 * "출근" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick(e){
+			function onButtonClick(e) {
 				var button = e.control;
 				const go = app.lookup("go");
 				const date = new Date();
@@ -60,15 +53,32 @@
 			 * "퇴근" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick2(e){
+			function onButtonClick2(e) {
 				var button = e.control;
 				const back = app.lookup("back");
 				const date = new Date();
 				const hours = date.getHours();
 				const minutes = date.getMinutes();
 				const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-				back.value =`${hours}: ${formattedMinutes}`
+				back.value = `${hours}: ${formattedMinutes}`
 				back.redraw();
+			}
+
+			/*
+			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+			 */
+			function onBodyLoad2(e){
+				 clock();
+				 intervalID = setInterval(clock, 1000);
+			}
+
+			/*
+			 * 루트 컨테이너에서 before-unload 이벤트 발생 시 호출.
+			 * 앱이 언로드되기 전에 발생하는 이벤트 입니다. 취소할 수 있습니다.
+			 */
+			function onBodyBeforeUnload(e){
+				clearInterval(intervalID);
 			};
 			// End - User Script
 			
@@ -227,12 +237,15 @@
 					"width": "60px",
 					"height": "50px"
 				});
-				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("clock");
+				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("user_clock");
 				hTMLSnippet_8.value = " <div id=\"clock\">00:00<\/div>";
 				hTMLSnippet_8.style.css({
 					"font-weight" : "900",
 					"font-size" : "30px"
 				});
+				if(typeof onUser_clockValueChange == "function") {
+					hTMLSnippet_8.addEventListener("value-change", onUser_clockValueChange);
+				}
 				container.addChild(hTMLSnippet_8, {
 					"top": "122px",
 					"left": "17px",
@@ -245,6 +258,9 @@
 					"color" : "#8A8989",
 					"font-size" : "16px"
 				});
+				if(typeof onDayValueChange == "function") {
+					hTMLSnippet_9.addEventListener("value-change", onDayValueChange);
+				}
 				container.addChild(hTMLSnippet_9, {
 					"top": "85px",
 					"left": "17px",
@@ -430,6 +446,24 @@
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
+			}
+			if(typeof onBodyPropertyChange == "function"){
+				app.addEventListener("property-change", onBodyPropertyChange);
+			}
+			if(typeof onBodyHostChange2 == "function"){
+				app.addEventListener("host-change", onBodyHostChange2);
+			}
+			if(typeof onBodyLoad2 == "function"){
+				app.addEventListener("load", onBodyLoad2);
+			}
+			if(typeof onBodyUnload == "function"){
+				app.addEventListener("unload", onBodyUnload);
+			}
+			if(typeof onBodyBeforeUnload == "function"){
+				app.addEventListener("before-unload", onBodyBeforeUnload);
+			}
+			if(typeof onBodyClick == "function"){
+				app.getContainer().addEventListener("click", onBodyClick);
 			}
 		}
 	});

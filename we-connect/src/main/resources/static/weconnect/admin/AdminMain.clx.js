@@ -50,6 +50,7 @@
 					group_2.style.setClasses(["main_layout1"]);
 					group_2.style.css({
 						"border-right-style" : "solid",
+						"border-radius" : "5px",
 						"border-bottom-color" : "#bfbfbf",
 						"border-left-style" : "solid",
 						"border-left-color" : "#bfbfbf",
@@ -66,11 +67,11 @@
 						container.addChild(hTMLSnippet_1, {
 							"top": "30px",
 							"right": "0px",
-							"left": "-251px",
+							"left": "0px",
 							"height": "20px"
 						});
 						var textArea_1 = new cpr.controls.TextArea("txa1");
-						textArea_1.value = "공지사항";
+						textArea_1.value = "회원승인";
 						textArea_1.style.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
@@ -80,7 +81,7 @@
 							"border-top-style" : "none"
 						});
 						container.addChild(textArea_1, {
-							"top": "0px",
+							"top": "5px",
 							"left": "2px",
 							"width": "100px",
 							"height": "30px"
@@ -96,6 +97,7 @@
 					group_3.style.setClasses(["main_layout1"]);
 					group_3.style.css({
 						"border-right-style" : "solid",
+						"border-radius" : "5px",
 						"border-bottom-color" : "#bfbfbf",
 						"border-left-style" : "solid",
 						"border-left-color" : "#bfbfbf",
@@ -116,7 +118,7 @@
 							"height": "20px"
 						});
 						var textArea_2 = new cpr.controls.TextArea("txa2");
-						textArea_2.value = "회원승인";
+						textArea_2.value = "FAQ";
 						textArea_2.style.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
@@ -126,21 +128,23 @@
 							"border-top-style" : "none"
 						});
 						container.addChild(textArea_2, {
-							"top": "1px",
-							"left": "0px",
+							"top": "5px",
+							"left": "5px",
 							"width": "100px",
 							"height": "30px"
 						});
 					})(group_3);
 					container.addChild(group_3, {
 						"right": "949px",
-						"bottom": "0px",
+						"bottom": "1px",
 						"left": "0px",
-						"height": "342px"
+						"height": "328px"
 					});
 					var group_4 = new cpr.controls.Container();
+					group_4.style.setClasses(["main_layout1"]);
 					group_4.style.css({
 						"border-right-style" : "solid",
+						"border-radius" : "5px",
 						"border-bottom-color" : "#bfbfbf",
 						"border-left-style" : "solid",
 						"border-left-color" : "#bfbfbf",
@@ -158,8 +162,10 @@
 						"height": "210px"
 					});
 					var group_5 = new cpr.controls.Container();
+					group_5.style.setClasses(["main_layout1"]);
 					group_5.style.css({
 						"border-right-style" : "solid",
+						"border-radius" : "5px",
 						"border-bottom-color" : "#bfbfbf",
 						"border-left-style" : "solid",
 						"border-left-color" : "#bfbfbf",
@@ -170,6 +176,32 @@
 					});
 					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
 					group_5.setLayout(xYLayout_6);
+					(function(container){
+						var textArea_3 = new cpr.controls.TextArea("txa3");
+						textArea_3.value = "사내소식";
+						textArea_3.style.css({
+							"border-right-style" : "none",
+							"border-left-style" : "none",
+							"font-weight" : "900",
+							"font-size" : "16px",
+							"border-bottom-style" : "none",
+							"border-top-style" : "none"
+						});
+						container.addChild(textArea_3, {
+							"top": "0px",
+							"left": "0px",
+							"width": "100px",
+							"height": "30px"
+						});
+						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_3.value = "<hr>\r\n";
+						container.addChild(hTMLSnippet_3, {
+							"top": "20px",
+							"right": "0px",
+							"left": "0px",
+							"height": "20px"
+						});
+					})(group_5);
 					container.addChild(group_5, {
 						"top": "0px",
 						"right": "293px",
@@ -177,15 +209,9 @@
 						"height": "210px"
 					});
 					var group_6 = new cpr.controls.Container();
+					group_6.style.setClasses(["main_layout1"]);
 					group_6.style.css({
-						"border-right-style" : "solid",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
+						"border-radius" : "5px"
 					});
 					var xYLayout_7 = new cpr.controls.layouts.XYLayout();
 					group_6.setLayout(xYLayout_7);
@@ -206,15 +232,9 @@
 						"height": "210px"
 					});
 					var group_7 = new cpr.controls.Container();
+					group_7.style.setClasses(["main_layout1"]);
 					group_7.style.css({
-						"border-right-style" : "solid",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-right-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-top-style" : "solid"
+						"border-radius" : "5px"
 					});
 					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
 					group_7.setLayout(xYLayout_8);
@@ -223,7 +243,7 @@
 						
 						var tabItem_2 = (function(tabFolder){
 							var tabItem_2 = new cpr.controls.TabItem();
-							tabItem_2.text = "게시판";
+							tabItem_2.text = "공지사항";
 							var group_8 = new cpr.controls.Container();
 							var xYLayout_9 = new cpr.controls.layouts.XYLayout();
 							group_8.setLayout(xYLayout_9);
@@ -234,7 +254,7 @@
 						
 						var tabItem_3 = (function(tabFolder){
 							var tabItem_3 = new cpr.controls.TabItem();
-							tabItem_3.text = "tab 2";
+							tabItem_3.text = "게시판";
 							var group_9 = new cpr.controls.Container();
 							var xYLayout_10 = new cpr.controls.layouts.XYLayout();
 							group_9.setLayout(xYLayout_10);

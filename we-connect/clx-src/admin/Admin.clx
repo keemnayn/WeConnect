@@ -6,7 +6,7 @@
     <screen std:sid="screen-70bf01ad" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-7fc5c3ed" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-c03507b1">
-      <cl:dataset std:sid="d-set-cf5029dd" id="adminMenu">
+      <cl:dataset std:sid="d-set-cf5029dd" id="adminMenu" staterestore="true">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-70421c4d" name="label"/>
           <cl:datacolumn std:sid="d-column-bb085d59" name="value"/>
@@ -26,21 +26,26 @@
             <cl:datavalue columnname="label"><![CDATA[회원]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[회원]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="icon"><![CDATA[img/icon/team.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="icon"><![CDATA[img/icon/project.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[게시판]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[게시판]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="icon"><![CDATA[img/icon/board.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[일정]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[일정]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="icon"><![CDATA[img/icon/calendar.png]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[예약]]></cl:datavalue>
@@ -99,18 +104,20 @@
             <cl:datavalue columnname="label"><![CDATA[회의실예약현황]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[회의실예약현황]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminMeetingRoomStatus]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[일정]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/schedule]]></cl:datavalue>
+            <cl:datavalue columnname="icon"><![CDATA[img/icon/calendar.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[프로젝트관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[프로젝트관리]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[프로젝트]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminProjectManagement]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -120,8 +127,9 @@
   <body std:sid="body-84664d5f">
     <cl:listener std:sid="listener-3bad8a05" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-5e56734a" name="load" handler="onBodyLoad"/>
-    <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
+    <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" class="admin_tree">
       <cl:listener std:sid="listener-3e8bb458" name="item-click" handler="onTre1ItemClick"/>
+      <cl:listener std:sid="listener-5364dcf8" name="selection-change" handler="onTre1SelectionChange"/>
       <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="adminMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
@@ -135,7 +143,7 @@
         <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="10px" right="0px" bottom="0px" width="90px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:output std:sid="output-738cf04b" id="clock1" style="font-size:15px; text-align:center;" value="현재시간">
-        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="10px" right="105px" bottom="0px" width="186px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="10px" right="75px" bottom="0px" width="186px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-fee4904d"/>
     </cl:group>
