@@ -1,2 +1,2 @@
-# WeConnect
-kosta260 Final Project 230803~
+# WeConnect(Groupware-project)
+kosta260 Final Project 230803~230825
