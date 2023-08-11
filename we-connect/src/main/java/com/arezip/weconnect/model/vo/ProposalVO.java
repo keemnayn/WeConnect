@@ -1,5 +1,7 @@
 package com.arezip.weconnect.model.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,7 @@ public class ProposalVO {
 	private long proposalId;
 	private String proposalTitle;
 	private String proposalContent;
-	private Data proposalCreate;
+	private Date proposalCreate;
 	private String proposalStatus;
 	private MemberVO memberVO;
 }

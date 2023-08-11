@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FreeBoardVO {
-	long freeBoardId;
-	String freeBoardTitle;
-	String freeBoardContent;
-	Date freeBoardCreate;
-	long freeBoardViews;
-	MemberVO memberVO;
+	private long freeBoardId;
+	private String freeBoardTitle;
+	private String freeBoardContent;
+	private Date freeBoardCreate;
+	private long freeBoardViews;
+	private MemberVO memberVO;
 }

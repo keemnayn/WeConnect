@@ -54,30 +54,30 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "190px",
-						"left": "450px",
-						"width": "1025px",
+						"top": "178px",
+						"left": "20px",
+						"width": "1540px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "190px",
-						"left": "450px",
-						"width": "1025px",
+						"top": "178px",
+						"left": "20px",
+						"width": "1540px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "190px",
-						"left": "220px",
-						"width": "500px",
+						"top": "178px",
+						"left": "10px",
+						"width": "752px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "190px",
-						"left": "154px",
-						"width": "350px",
+						"top": "178px",
+						"left": "7px",
+						"width": "526px",
 						"height": "170px"
 					}
 				]
@@ -101,29 +101,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "414px",
-						"left": "450px",
+						"top": "402px",
+						"left": "20px",
 						"width": "970px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "414px",
-						"left": "450px",
+						"top": "402px",
+						"left": "20px",
 						"width": "970px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "414px",
-						"left": "220px",
+						"top": "402px",
+						"left": "10px",
 						"width": "474px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "414px",
-						"left": "154px",
+						"top": "402px",
+						"left": "7px",
 						"width": "332px",
 						"height": "80px"
 					}
@@ -143,29 +143,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "122px",
-						"left": "450px",
+						"top": "110px",
+						"left": "20px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "122px",
-						"left": "450px",
+						"top": "110px",
+						"left": "20px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "122px",
-						"left": "220px",
+						"top": "110px",
+						"left": "10px",
 						"width": "49px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "122px",
-						"left": "154px",
+						"top": "110px",
+						"left": "7px",
 						"width": "34px",
 						"height": "30px"
 					}
@@ -185,29 +185,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "121px",
-						"left": "549px",
+						"top": "109px",
+						"left": "119px",
 						"width": "215px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "121px",
-						"left": "549px",
+						"top": "109px",
+						"left": "119px",
 						"width": "215px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "121px",
-						"left": "268px",
+						"top": "109px",
+						"left": "58px",
 						"width": "105px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "121px",
-						"left": "188px",
+						"top": "109px",
+						"left": "41px",
 						"width": "73px",
 						"height": "30px"
 					}
@@ -236,145 +236,31 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "122px",
-						"left": "1375px",
+						"top": "110px",
+						"left": "945px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "122px",
-						"left": "1375px",
+						"top": "110px",
+						"left": "945px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "122px",
-						"left": "671px",
+						"top": "110px",
+						"left": "461px",
 						"width": "49px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "122px",
-						"left": "470px",
+						"top": "110px",
+						"left": "323px",
 						"width": "34px",
 						"height": "30px"
-					}
-				]
-			});
-			
-			var image_1 = new cpr.controls.Image();
-			image_1.src = "img/user/attach-file.png";
-			image_1.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_1, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "391px",
-						"left": "1431px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "391px",
-						"left": "1431px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "391px",
-						"left": "699px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "391px",
-						"left": "489px",
-						"width": "7px",
-						"height": "20px"
-					}
-				]
-			});
-			
-			var image_2 = new cpr.controls.Image();
-			image_2.src = "img/user/three-dots.png";
-			image_2.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_2, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "391px",
-						"left": "1456px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "391px",
-						"left": "1456px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "391px",
-						"left": "711px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "391px",
-						"left": "498px",
-						"width": "7px",
-						"height": "20px"
-					}
-				]
-			});
-			
-			var image_3 = new cpr.controls.Image();
-			image_3.src = "img/user/bookmark-white.png";
-			image_3.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_3, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "391px",
-						"left": "450px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "391px",
-						"left": "450px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "391px",
-						"left": "220px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "391px",
-						"left": "154px",
-						"width": "7px",
-						"height": "20px"
 					}
 				]
 			});
@@ -388,74 +274,31 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "434px",
-						"left": "1431px",
+						"top": "422px",
+						"left": "1001px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "434px",
-						"left": "1431px",
+						"top": "422px",
+						"left": "1001px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "434px",
-						"left": "699px",
+						"top": "422px",
+						"left": "489px",
 						"width": "22px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "434px",
-						"left": "489px",
+						"top": "422px",
+						"left": "342px",
 						"width": "15px",
 						"height": "40px"
-					}
-				]
-			});
-			
-			var output_1 = new cpr.controls.Output();
-			output_1.value = "Output";
-			output_1.style.css({
-				"border-right-style" : "solid",
-				"color" : "#7E7272",
-				"border-left-style" : "solid",
-				"border-bottom-style" : "solid",
-				"font-family" : "IBM Plex Sans KR",
-				"border-top-style" : "solid"
-			});
-			container.addChild(output_1, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "514px",
-						"left": "450px",
-						"width": "1025px",
-						"height": "2px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "514px",
-						"left": "450px",
-						"width": "1025px",
-						"height": "2px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "514px",
-						"left": "220px",
-						"width": "500px",
-						"height": "2px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "514px",
-						"left": "154px",
-						"width": "350px",
-						"height": "2px"
 					}
 				]
 			});
@@ -473,29 +316,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "32px",
-						"left": "450px",
+						"top": "20px",
+						"left": "20px",
 						"width": "153px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "32px",
-						"left": "450px",
+						"top": "20px",
+						"left": "20px",
 						"width": "153px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "32px",
-						"left": "220px",
+						"top": "20px",
+						"left": "10px",
 						"width": "75px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "32px",
-						"left": "154px",
+						"top": "20px",
+						"left": "7px",
 						"width": "52px",
 						"height": "50px"
 					}
@@ -515,30 +358,30 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "593px",
-						"left": "450px",
-						"width": "1025px",
+						"top": "581px",
+						"left": "20px",
+						"width": "1540px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "593px",
-						"left": "450px",
-						"width": "1025px",
+						"top": "581px",
+						"left": "20px",
+						"width": "1540px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "593px",
-						"left": "220px",
-						"width": "500px",
+						"top": "581px",
+						"left": "10px",
+						"width": "752px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "593px",
-						"left": "154px",
-						"width": "350px",
+						"top": "581px",
+						"left": "7px",
+						"width": "526px",
 						"height": "170px"
 					}
 				]
@@ -562,29 +405,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "817px",
-						"left": "450px",
+						"top": "805px",
+						"left": "20px",
 						"width": "970px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "817px",
-						"left": "450px",
+						"top": "805px",
+						"left": "20px",
 						"width": "970px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "817px",
-						"left": "220px",
+						"top": "805px",
+						"left": "10px",
 						"width": "474px",
 						"height": "80px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "817px",
-						"left": "154px",
+						"top": "805px",
+						"left": "7px",
 						"width": "332px",
 						"height": "80px"
 					}
@@ -604,29 +447,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "525px",
-						"left": "450px",
+						"top": "513px",
+						"left": "20px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "525px",
-						"left": "450px",
+						"top": "513px",
+						"left": "20px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "525px",
-						"left": "220px",
+						"top": "513px",
+						"left": "10px",
 						"width": "49px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "525px",
-						"left": "154px",
+						"top": "513px",
+						"left": "7px",
 						"width": "34px",
 						"height": "30px"
 					}
@@ -646,29 +489,29 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "524px",
-						"left": "549px",
+						"top": "512px",
+						"left": "119px",
 						"width": "215px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "524px",
-						"left": "549px",
+						"top": "512px",
+						"left": "119px",
 						"width": "215px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "524px",
-						"left": "268px",
+						"top": "512px",
+						"left": "58px",
 						"width": "105px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "524px",
-						"left": "188px",
+						"top": "512px",
+						"left": "41px",
 						"width": "73px",
 						"height": "30px"
 					}
@@ -697,143 +540,105 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "525px",
-						"left": "1375px",
+						"top": "513px",
+						"left": "945px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "525px",
-						"left": "1375px",
+						"top": "513px",
+						"left": "945px",
 						"width": "100px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "525px",
-						"left": "671px",
+						"top": "513px",
+						"left": "461px",
 						"width": "49px",
 						"height": "30px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "525px",
-						"left": "470px",
+						"top": "513px",
+						"left": "323px",
 						"width": "34px",
 						"height": "30px"
 					}
 				]
 			});
 			
-			var image_4 = new cpr.controls.Image();
-			image_4.src = "img/user/attach-file.png";
-			image_4.style.css({
+			var image_1 = new cpr.controls.Image();
+			image_1.src = "img/user/attach-file.png";
+			image_1.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
-			container.addChild(image_4, {
+			container.addChild(image_1, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "794px",
-						"left": "1431px",
+						"top": "782px",
+						"left": "1001px",
 						"width": "20px",
 						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "794px",
-						"left": "1431px",
+						"top": "782px",
+						"left": "1001px",
 						"width": "20px",
 						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "794px",
-						"left": "699px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "794px",
+						"top": "782px",
 						"left": "489px",
+						"width": "10px",
+						"height": "20px"
+					}, 
+					{
+						"media": "all and (max-width: 499px)",
+						"top": "782px",
+						"left": "342px",
 						"width": "7px",
 						"height": "20px"
 					}
 				]
 			});
 			
-			var image_5 = new cpr.controls.Image();
-			image_5.src = "img/user/three-dots.png";
-			image_5.style.css({
+			var image_2 = new cpr.controls.Image();
+			image_2.src = "img/user/bookmark-white.png";
+			image_2.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
-			container.addChild(image_5, {
+			container.addChild(image_2, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "794px",
-						"left": "1456px",
+						"top": "782px",
+						"left": "1026px",
 						"width": "20px",
 						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "794px",
-						"left": "1456px",
+						"top": "782px",
+						"left": "1026px",
 						"width": "20px",
 						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "794px",
-						"left": "711px",
+						"top": "782px",
+						"left": "501px",
 						"width": "10px",
 						"height": "20px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "794px",
-						"left": "498px",
-						"width": "7px",
-						"height": "20px"
-					}
-				]
-			});
-			
-			var image_6 = new cpr.controls.Image();
-			image_6.src = "img/user/bookmark-white.png";
-			image_6.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_6, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "794px",
-						"left": "450px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "794px",
-						"left": "450px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "794px",
-						"left": "220px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "794px",
-						"left": "154px",
+						"top": "782px",
+						"left": "351px",
 						"width": "7px",
 						"height": "20px"
 					}
@@ -849,74 +654,107 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "837px",
-						"left": "1431px",
+						"top": "825px",
+						"left": "1001px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "837px",
-						"left": "1431px",
+						"top": "825px",
+						"left": "1001px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "837px",
-						"left": "699px",
+						"top": "825px",
+						"left": "489px",
 						"width": "22px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "837px",
-						"left": "489px",
+						"top": "825px",
+						"left": "342px",
 						"width": "15px",
 						"height": "40px"
 					}
 				]
 			});
 			
-			var output_2 = new cpr.controls.Output();
-			output_2.value = "Output";
-			output_2.style.css({
-				"border-right-style" : "solid",
-				"color" : "#7E7272",
-				"border-left-style" : "solid",
-				"border-bottom-style" : "solid",
-				"font-family" : "IBM Plex Sans KR",
-				"border-top-style" : "solid"
+			var image_3 = new cpr.controls.Image();
+			image_3.src = "img/user/attach-file.png";
+			image_3.style.css({
+				"font-family" : "IBM Plex Sans KR"
 			});
-			container.addChild(output_2, {
+			container.addChild(image_3, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "917px",
-						"left": "450px",
-						"width": "1025px",
-						"height": "2px"
+						"top": "383px",
+						"left": "1001px",
+						"width": "20px",
+						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "917px",
-						"left": "450px",
-						"width": "1025px",
-						"height": "2px"
+						"top": "383px",
+						"left": "1001px",
+						"width": "20px",
+						"height": "20px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "917px",
-						"left": "220px",
-						"width": "500px",
-						"height": "2px"
+						"top": "383px",
+						"left": "489px",
+						"width": "10px",
+						"height": "20px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "917px",
-						"left": "154px",
-						"width": "350px",
-						"height": "2px"
+						"top": "383px",
+						"left": "342px",
+						"width": "7px",
+						"height": "20px"
+					}
+				]
+			});
+			
+			var image_4 = new cpr.controls.Image();
+			image_4.src = "img/user/bookmark-white.png";
+			image_4.style.css({
+				"font-family" : "IBM Plex Sans KR"
+			});
+			container.addChild(image_4, {
+				positions: [
+					{
+						"media": "all and (min-width: 1920px)",
+						"top": "383px",
+						"left": "1026px",
+						"width": "20px",
+						"height": "20px"
+					}, 
+					{
+						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
+						"top": "383px",
+						"left": "1026px",
+						"width": "20px",
+						"height": "20px"
+					}, 
+					{
+						"media": "all and (min-width: 500px) and (max-width: 1023px)",
+						"top": "383px",
+						"left": "501px",
+						"width": "10px",
+						"height": "20px"
+					}, 
+					{
+						"media": "all and (max-width: 499px)",
+						"top": "383px",
+						"left": "351px",
+						"width": "7px",
+						"height": "20px"
 					}
 				]
 			});
