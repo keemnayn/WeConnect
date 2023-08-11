@@ -20,6 +20,32 @@
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("search");
+			dataSet_1.parseData({
+				"columns": [{"name": "type"}],
+				"rows": [
+					{"type": "전체"},
+					{"type": "내용"},
+					{"type": "작성자"}
+				]
+			});
+			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("proposal");
+			dataSet_2.parseData({
+				"columns": [
+					{"name": "proposalId"},
+					{"name": "proposalTitle"},
+					{"name": "proposalStatus"},
+					{"name": "proposalCreate"}
+				],
+				"rows": [
+					{"proposalId": "proposalId1", "proposalTitle": "proposalTitle1", "proposalStatus": "proposalStatus1", "proposalCreate": "proposalCreate1"},
+					{"proposalId": "proposalId2", "proposalTitle": "proposalTitle2", "proposalStatus": "proposalStatus2", "proposalCreate": "proposalCreate2"},
+					{"proposalId": "proposalId3", "proposalTitle": "proposalTitle3", "proposalStatus": "proposalStatus3", "proposalCreate": "proposalCreate3"}
+				]
+			});
+			app.register(dataSet_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -37,6 +63,124 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
+			var grid_1 = new cpr.controls.Grid("grd1");
+			grid_1.init({
+				"dataSet": app.lookup("proposal"),
+				"columns": [
+					{"width": "20px"},
+					{"width": "100px"},
+					{"width": "20px"},
+					{"width": "30px"}
+				],
+				"header": {
+					"rows": [{"height": "50px"}],
+					"cells": [
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 0},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "proposalId";
+								cell.text = "번호";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 1},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "proposalTitle";
+								cell.text = "제목";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 2},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "proposalStatus";
+								cell.text = "처리상태";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 3},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "proposalCreate";
+								cell.text = "등록일";
+							}
+						}
+					]
+				},
+				"detail": {
+					"rows": [{"height": "50px"}],
+					"cells": [
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 0},
+							"configurator": function(cell){
+								cell.columnName = "proposalId";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 1},
+							"configurator": function(cell){
+								cell.columnName = "proposalTitle";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 2},
+							"configurator": function(cell){
+								cell.columnName = "proposalStatus";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 3},
+							"configurator": function(cell){
+								cell.columnName = "proposalCreate";
+							}
+						}
+					]
+				}
+			});
+			container.addChild(grid_1, {
+				"top": "80px",
+				"right": "0px",
+				"bottom": "100px",
+				"left": "0px"
+			});
+			
+			var pageIndexer_1 = new cpr.controls.PageIndexer();
+			pageIndexer_1.init(1, 1, 1);
+			container.addChild(pageIndexer_1, {
+				"bottom": "50px",
+				"left": "290px",
+				"width": "1000px",
+				"height": "50px"
+			});
+			
+			var searchInput_1 = new cpr.controls.SearchInput();
+			container.addChild(searchInput_1, {
+				"top": "40px",
+				"right": "0px",
+				"width": "560px",
+				"height": "30px"
+			});
+			
+			var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+			comboBox_1.value = "전체";
+			(function(comboBox_1){
+				comboBox_1.setItemSet(app.lookup("search"), {
+					"label": "type",
+					"value": "type"
+				});
+			})(comboBox_1);
+			container.addChild(comboBox_1, {
+				"top": "40px",
+				"right": "560px",
+				"width": "100px",
+				"height": "30px"
+			});
 		}
 	});
 	app.title = "Proposal";
