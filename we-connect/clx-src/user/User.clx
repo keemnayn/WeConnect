@@ -20,7 +20,7 @@
             <cl:datavalue columnname="value"><![CDATA[홈]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/home.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/userMain]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[user/UserMain]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[근태]]></cl:datavalue>

@@ -78,7 +78,7 @@
 					"appId": "user/UserMain"
 				};
 				/*앱을 로드하고 로드된 앱을 임베디드 앱에 설정합니다.*/
-				cpr.core.App.load("user/userMain", function( /*cpr.core.App*/ loadedApp) {
+				cpr.core.App.load("user/UserMain", function( /*cpr.core.App*/ loadedApp) {
 					/*임베디드앱에 안에 앱이 있는 경우에는 앱을 삭제해줍니다.(다시 앱을 열고싶을때 스크립트 작성)*/
 					if (vcEmb.getEmbeddedAppInstance()) {
 						vcEmb.getEmbeddedAppInstance().dispose();
@@ -122,7 +122,7 @@
 					{"name": "appId"}
 				],
 				"rows": [
-					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "user/userMain"},
+					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "user/UserMain"},
 					{"label": "근태", "value": "근태", "icon": "img/user/attendance.png", "parent": "", "appId": ""},
 					{"label": "프로젝트", "value": "프로젝트", "icon": "img/user/project.png", "parent": "", "appId": ""},
 					{"label": "예약", "value": "예약", "icon": "img/user/reservation.png", "parent": "", "appId": ""},
