@@ -45,7 +45,7 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3yRzdHEe62a551BIGueQ" location="Point(1473.0, 424.0)" table="Table_kC3yRjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3ySTdHEe62a551BIGueQ" location="Point(1780.0, 567.0)" table="Table_kC3ySDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Q5zaMTdIEe62a551BIGueQ" location="Point(1179.0, 980.0)" table="Table_Q5zaMDdIEe62a551BIGueQ"/>
-      <viewSettings showColumnHeader="true">
+      <viewSettings>
         <cellsToShow>name</cellsToShow>
         <cellsToShow>oppositeModeName</cellsToShow>
         <cellsToShow>dataType</cellsToShow>
@@ -323,14 +323,14 @@
             <value xsi:type="e:ColumnReference" UUID="CReference_VbNv4jdIEe62a551BIGueQ" group="FKCGroup_VbNI0zdIEe62a551BIGueQ" parentColumn="Column_VbNI0DdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_VbNI0zdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_VbL6sDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_VbNI1DdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_board_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_VbNI0zdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_post_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_VbL6sDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_VbNI1DdIEe62a551BIGueQ" logicalName="개인게시글 -> 개인게시글 첨부파일" physicalName="FK_private_post_TO_private_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
         <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_RKqrQDdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_post_file" derivedPhysicalName="true" derivedLogicalName="true">
           <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_RKqrQTdJEe62a551BIGueQ" logicalName="개인게시글 첨부파일 기본키" physicalName="PK_private_post_file" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
-      <table UUID="Table_kC3LNjdHEe62a551BIGueQ" logicalName="개인게시글" physicalName="private_board">
+      <table UUID="Table_kC3LNjdHEe62a551BIGueQ" logicalName="개인게시글" physicalName="private_post">
         <column UUID="Column_VbNI0DdIEe62a551BIGueQ" logicalName="개인게시글 번호" physicalName="private_post_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_VbNI0TdIEe62a551BIGueQ" key="PKCGroup_VbL6sDdIEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_VbNI0jdIEe62a551BIGueQ" group="PKCGroup_VbL6sDdIEe62a551BIGueQ"/>
@@ -344,11 +344,11 @@
             <value xsi:type="e:ColumnReference" UUID="CReference_IvRBsjdIEe62a551BIGueQ" group="FKCGroup_IvQaoDdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_IvQaoDdIEe62a551BIGueQ" logicalName="회원 -> 개인게시글" physicalName="FK_member_TO_private_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
-          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_IvQaoTdIEe62a551BIGueQ" logicalName="회원 -> 개인게시글" physicalName="FK_member_TO_private_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_IvQaoDdIEe62a551BIGueQ" logicalName="회원 -> 개인게시글" physicalName="FK_member_TO_private_post" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_COrpkDdIEe62a551BIGueQ">
+          <constraint xsi:type="e:ForeignKeyConstraint" UUID="FKConstraint_IvQaoTdIEe62a551BIGueQ" logicalName="회원 -> 개인게시글" physicalName="FK_member_TO_private_post" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
-        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_VbL6sDdIEe62a551BIGueQ" logicalName="개인게시글 기본키" physicalName="PK_private_board" derivedPhysicalName="true" derivedLogicalName="true">
-          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_VbL6sTdIEe62a551BIGueQ" logicalName="개인게시글 기본키" physicalName="PK_private_board" derivedPhysicalName="true" derivedLogicalName="true"/>
+        <columnGroup xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_VbL6sDdIEe62a551BIGueQ" logicalName="개인게시글 기본키" physicalName="PK_private_post" derivedPhysicalName="true" derivedLogicalName="true">
+          <constraint xsi:type="e:PrimaryKeyConstraint" UUID="PKConstraint_VbL6sTdIEe62a551BIGueQ" logicalName="개인게시글 기본키" physicalName="PK_private_post" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroup>
       </table>
       <table UUID="Table_kC3LODdHEe62a551BIGueQ" logicalName="팀게시글" physicalName="team_post">
