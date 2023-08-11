@@ -246,7 +246,7 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC2kJzdHEe62a551BIGueQ" logicalName="공지사항" physicalName="notice">
-        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="notice_name" dataType="NUMBER" notNull="true">
+        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="notice_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_U3woETdJEe62a551BIGueQ" key="PKCGroup_U3vZ8DdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_U3woEjdJEe62a551BIGueQ" group="PKCGroup_U3vZ8DdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>

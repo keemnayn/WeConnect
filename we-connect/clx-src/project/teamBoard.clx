@@ -34,17 +34,17 @@
         <cl:xylayoutdata std:sid="sxyl-data-29d7965c" top="122px" left="1375px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:htmlsnippet>
-    <cl:img std:sid="image-f7610b68" style="font-family:IBM Plex Sans KR;" src="../../img/icon/link.png">
+    <cl:img std:sid="image-f7610b68" style="font-family:IBM Plex Sans KR;" src="../img/user/attach-file.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-8453c766">
         <cl:xylayoutdata std:sid="sxyl-data-6e3bcf3c" top="391px" left="1431px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:img std:sid="image-e21a87fe" style="font-family:IBM Plex Sans KR;" src="../../img/icon/three-dots.png">
+    <cl:img std:sid="image-e21a87fe" style="font-family:IBM Plex Sans KR;" src="../img/user/three-dots.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-0f0b7449">
         <cl:xylayoutdata std:sid="sxyl-data-4d37932c" top="391px" left="1456px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:img std:sid="image-3d80b5af" style="font-family:IBM Plex Sans KR;" src="../../img/icon/bookmark-white.png">
+    <cl:img std:sid="image-3d80b5af" style="font-family:IBM Plex Sans KR;" src="../img/user/bookmark-white.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-2496efc1">
         <cl:xylayoutdata std:sid="sxyl-data-b9b974cc" top="391px" left="450px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
@@ -89,17 +89,17 @@
         <cl:xylayoutdata std:sid="sxyl-data-898a48b7" top="525px" left="1375px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:htmlsnippet>
-    <cl:img std:sid="image-0e10a203" style="font-family:IBM Plex Sans KR;" src="../../img/icon/link.png">
+    <cl:img std:sid="image-0e10a203" style="font-family:IBM Plex Sans KR;" src="../img/user/attach-file.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-172ec782">
         <cl:xylayoutdata std:sid="sxyl-data-c67cd402" top="794px" left="1431px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:img std:sid="image-4feeec35" style="font-family:IBM Plex Sans KR;" src="../../img/icon/three-dots.png">
+    <cl:img std:sid="image-4feeec35" style="font-family:IBM Plex Sans KR;" src="../img/user/three-dots.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-8ec38381">
         <cl:xylayoutdata std:sid="sxyl-data-d7e558cd" top="794px" left="1456px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:img std:sid="image-a956df0c" style="font-family:IBM Plex Sans KR;" src="../../img/icon/bookmark-white.png">
+    <cl:img std:sid="image-a956df0c" style="font-family:IBM Plex Sans KR;" src="../img/user/bookmark-white.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-3a7dc4ef">
         <cl:xylayoutdata std:sid="sxyl-data-6ffc215c" top="794px" left="450px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
