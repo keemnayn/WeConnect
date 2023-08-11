@@ -159,7 +159,7 @@
         </column>
         <column UUID="Column_zRp0IDdIEe62a551BIGueQ" logicalName="회원명" physicalName="member_name" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_0V77oDdIEe62a551BIGueQ" logicalName="이메일" physicalName="member_email" dataType="VARCHAR2(300)" notNull="true"/>
-        <column UUID="Column_1QF2wDdIEe62a551BIGueQ" logicalName="비밀번호" physicalName="member_pw" dataType="VARCHAR2(300)" notNull="true"/>
+        <column UUID="Column_1QF2wDdIEe62a551BIGueQ" logicalName="비밀번호" physicalName="member_password" dataType="VARCHAR2(300)" notNull="true"/>
         <column UUID="Column_2A0JEDdIEe62a551BIGueQ" logicalName="직급" physicalName="position" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_2ofNEDdIEe62a551BIGueQ" logicalName="계정상태" physicalName="member_status" dataType="NUMBER" notNull="true"/>
         <column UUID="Column_4NyW8DdIEe62a551BIGueQ" logicalName="관리자여부" physicalName="manager_yn" dataType="CHAR(1)" notNull="true"/>
@@ -246,7 +246,7 @@
         </columnGroup>
       </table>
       <table UUID="Table_kC2kJzdHEe62a551BIGueQ" logicalName="공지사항" physicalName="notice">
-        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="notice_name" dataType="NUMBER" notNull="true">
+        <column UUID="Column_U3woEDdJEe62a551BIGueQ" logicalName="공지사항 번호" physicalName="notice_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_U3woETdJEe62a551BIGueQ" key="PKCGroup_U3vZ8DdJEe62a551BIGueQ">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_U3woEjdJEe62a551BIGueQ" group="PKCGroup_U3vZ8DdJEe62a551BIGueQ" entryIndex="0"/>
           </membership>

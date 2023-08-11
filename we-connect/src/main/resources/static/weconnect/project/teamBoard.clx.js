@@ -266,7 +266,7 @@
 			});
 			
 			var image_1 = new cpr.controls.Image();
-			image_1.src = "../img/icon/link.png";
+			image_1.src = "img/user/attach-file.png";
 			image_1.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -304,7 +304,7 @@
 			});
 			
 			var image_2 = new cpr.controls.Image();
-			image_2.src = "../img/icon/three-dots.png";
+			image_2.src = "img/user/three-dots.png";
 			image_2.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -342,7 +342,7 @@
 			});
 			
 			var image_3 = new cpr.controls.Image();
-			image_3.src = "../img/icon/bookmark-white.png";
+			image_3.src = "img/user/bookmark-white.png";
 			image_3.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -727,7 +727,7 @@
 			});
 			
 			var image_4 = new cpr.controls.Image();
-			image_4.src = "../img/icon/link.png";
+			image_4.src = "img/user/attach-file.png";
 			image_4.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -765,7 +765,7 @@
 			});
 			
 			var image_5 = new cpr.controls.Image();
-			image_5.src = "../img/icon/three-dots.png";
+			image_5.src = "img/user/three-dots.png";
 			image_5.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -803,7 +803,7 @@
 			});
 			
 			var image_6 = new cpr.controls.Image();
-			image_6.src = "../img/icon/bookmark-white.png";
+			image_6.src = "img/user/bookmark-white.png";
 			image_6.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
