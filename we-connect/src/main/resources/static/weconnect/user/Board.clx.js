@@ -117,7 +117,7 @@
 					]
 				},
 				"detail": {
-					"rows": [{"height": "57px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},

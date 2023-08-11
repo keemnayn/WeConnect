@@ -71,7 +71,7 @@
         <cl:gridcell std:sid="gh-cell-2fa4036d" rowindex="0" colindex="3" targetcolumnname="date" sortable="false" filterable="false" text="date"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-7cd1abcd">
-        <cl:gridrow std:sid="g-row-8b2bc39f" height="57px"/>
+        <cl:gridrow std:sid="g-row-8b2bc39f" height="50px"/>
         <cl:gridcell std:sid="gd-cell-5ff821df" rowindex="0" colindex="0" columnname="boardNo"/>
         <cl:gridcell std:sid="gd-cell-947a2b29" rowindex="0" colindex="1" columnname="empName"/>
         <cl:gridcell std:sid="gd-cell-9d6ba402" rowindex="0" colindex="2" columnname="title"/>
