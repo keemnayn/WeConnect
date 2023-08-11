@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-2e374325" version="1.0.4584">
+  <head std:sid="head-53443a02">
+    <screen std:sid="screen-fe252aac" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-d9ae29c1" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-94c4e91b" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-0adf00f6" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-798afcd3"/>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-5f8ffe8c" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
+    <cl:textarea std:sid="t-area-0669a374" id="txa1" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;" value="안녕하세요. sky팀 홍길동입니다.&#xD;&#xA;돌아오는 주 수요일 미팅 장소 안내드립니다.&#xD;&#xA;자세한 장소는 첨부 파일 확인바랍니다">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-41abe9a7">
+        <cl:xylayoutdata std:sid="sxyl-data-fbf17f21" top="178px" left="20px" width="1540px" height="170px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:textarea>
+    <cl:inputbox std:sid="i-box-45252f4b" id="ipb1" style="border-right-style:none; color:#7D7878; border-bottom-color:#ffffff; border-left-style:none; border-left-color:#ffffff; border-top-color:#ffffff; border-bottom-style:none; border-right-color:#ffffff; font-family:IBM Plex Sans KR; border-top-style:none;" placeholder="댓글 달기">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-bc79419e">
+        <cl:xylayoutdata std:sid="sxyl-data-328628e9" top="402px" left="20px" width="970px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:inputbox>
+    <cl:htmlsnippet std:sid="htmlsnippet-e7082d07" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>닉네임 &lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-2e90a394">
+        <cl:xylayoutdata std:sid="sxyl-data-849d1f35" top="110px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:htmlsnippet std:sid="htmlsnippet-69fa73ac" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>(현재 시각) &#xD;&#xA;오늘 오후 00:00&lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-d8d0df1b">
+        <cl:xylayoutdata std:sid="sxyl-data-abb58ccb" top="109px" left="119px" width="215px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:htmlsnippet std:sid="htmlsnippet-3caadb14" style="border-right-style:none; color:#010101; border-bottom-color:#686565; font-weight:normal; border-left-color:#686565; font-size:14px; border-right-color:#686565; font-style:normal; border-top-style:none; border-left-style:none; border-top-color:#686565; font-family:IBM Plex Sans KR; border-bottom-style:none; text-align:right;" value="&lt;div>부서명 &lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-bb31ed81">
+        <cl:xylayoutdata std:sid="sxyl-data-29d7965c" top="110px" left="945px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:button std:sid="button-514dd614" style="font-family:IBM Plex Sans KR;" value="등록">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-6d9fc63c">
+        <cl:xylayoutdata std:sid="sxyl-data-adc42212" top="422px" left="1001px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:button>
+    <cl:htmlsnippet std:sid="htmlsnippet-9156f03b" style="color:#010101; font-weight:bolder; font-size:27px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>새 소식&lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-57012db2">
+        <cl:xylayoutdata std:sid="sxyl-data-f4370486" top="20px" left="20px" width="153px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:textarea std:sid="t-area-4d4c5401" id="txa2" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;" value="안녕하세요. sky팀 홍길동입니다.&#xD;&#xA;돌아오는 주 수요일 미팅 장소 안내드립니다.&#xD;&#xA;자세한 장소는 첨부 파일 확인바랍니다">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-5b72f3ee">
+        <cl:xylayoutdata std:sid="sxyl-data-ec572ead" top="581px" left="20px" width="1540px" height="170px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:textarea>
+    <cl:inputbox std:sid="i-box-4ed63a93" id="ipb2" style="border-right-style:none; color:#7D7878; border-bottom-color:#ffffff; border-left-style:none; border-left-color:#ffffff; border-top-color:#ffffff; border-bottom-style:none; border-right-color:#ffffff; font-family:IBM Plex Sans KR; border-top-style:none;" placeholder="댓글 달기">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-35d6ff30">
+        <cl:xylayoutdata std:sid="sxyl-data-bd06dc21" top="805px" left="20px" width="970px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:inputbox>
+    <cl:htmlsnippet std:sid="htmlsnippet-cdc825be" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>닉네임 &lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-27524230">
+        <cl:xylayoutdata std:sid="sxyl-data-698511ba" top="513px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:htmlsnippet std:sid="htmlsnippet-0022e153" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>(현재 시각) &#xD;&#xA;오늘 오후 00:00&lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-bc75b358">
+        <cl:xylayoutdata std:sid="sxyl-data-973dea5a" top="512px" left="119px" width="215px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:htmlsnippet std:sid="htmlsnippet-791190cf" style="border-right-style:none; color:#010101; border-bottom-color:#686565; font-weight:normal; border-left-color:#686565; font-size:14px; border-right-color:#686565; font-style:normal; border-top-style:none; border-left-style:none; border-top-color:#686565; font-family:IBM Plex Sans KR; border-bottom-style:none; text-align:right;" value="&lt;div>부서명 &lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-7c69b2ed">
+        <cl:xylayoutdata std:sid="sxyl-data-898a48b7" top="513px" left="945px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
+    <cl:img std:sid="image-0e10a203" style="font-family:IBM Plex Sans KR;" src="../img/user/attach-file.png">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-172ec782">
+        <cl:xylayoutdata std:sid="sxyl-data-c67cd402" top="782px" left="1001px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:img>
+    <cl:img std:sid="image-a956df0c" style="font-family:IBM Plex Sans KR;" src="../img/user/bookmark-white.png">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-3a7dc4ef">
+        <cl:xylayoutdata std:sid="sxyl-data-6ffc215c" top="782px" left="1026px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:img>
+    <cl:button std:sid="button-2243edd8" style="font-family:IBM Plex Sans KR;" value="등록">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-8359d0da">
+        <cl:xylayoutdata std:sid="sxyl-data-ab5f3ca8" top="825px" left="1001px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:button>
+    <cl:img std:sid="image-a91a99be" style="font-family:IBM Plex Sans KR;" src="../img/user/attach-file.png">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-1c3f3bb6">
+        <cl:xylayoutdata std:sid="sxyl-data-12d66adf" top="383px" left="1001px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:img>
+    <cl:img std:sid="image-ff317aa3" style="font-family:IBM Plex Sans KR;" src="../img/user/bookmark-white.png">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-1ae193c0">
+        <cl:xylayoutdata std:sid="sxyl-data-54879e8b" top="383px" left="1026px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:img>
+    <cl:responsivexylayout std:sid="r-xylayout-a158ec9b"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler>
+      <std:guide position="820"/>
+    </std:hruler>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

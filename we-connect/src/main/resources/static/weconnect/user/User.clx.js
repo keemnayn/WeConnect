@@ -136,7 +136,7 @@
 					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Notice"},
 					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "user/Proposal"},
 					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "user/project/TeamPost"},
-					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "user/project/MyPost"}
+					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "user/project/PrivatePost"}
 				]
 			});
 			app.register(dataSet_1);

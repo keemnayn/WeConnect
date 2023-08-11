@@ -118,7 +118,7 @@
             <cl:datavalue columnname="value"><![CDATA[개인프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/solo.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[업무보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/project/MyPost]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[user/project/PrivatePost]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
