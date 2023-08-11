@@ -93,6 +93,15 @@
 						vcEmb.app = loadedApp;
 					}
 				});
+			}
+
+			/*
+			 * 임베디드 앱에서 load 이벤트 발생 시 호출.
+			 * 임베디드 앱이 준비되고 그려진 후에 디스패치 되는 이벤트.
+			 */
+			function onEa1Load(e){
+				var ea1 = e.control;
+				
 			};
 			// End - User Script
 			
@@ -215,6 +224,9 @@
 			var embeddedApp_1 = new cpr.controls.EmbeddedApp("ea1");
 			if(typeof onEa1Init2 == "function") {
 				embeddedApp_1.addEventListener("init", onEa1Init2);
+			}
+			if(typeof onEa1Load == "function") {
+				embeddedApp_1.addEventListener("load", onEa1Load);
 			}
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
