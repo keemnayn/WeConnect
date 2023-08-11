@@ -95,3 +95,12 @@ function onBodyLoad(e){
 	clock();
 	setInterval(clock, 1000);
 }
+
+/*
+ * 트리에서 selection-change 이벤트 발생 시 호출.
+ * 선택된 Item 값이 저장된 후에 발생하는 이벤트.
+ */
+function onTre1SelectionChange(e){
+	var tre1 = e.control;
+	
+}

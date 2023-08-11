@@ -145,6 +145,7 @@
     </cl:group>
     <cl:embeddedapp std:sid="e-app-72a2cc14" id="ea1">
       <cl:listener std:sid="listener-60bc421a" name="init" handler="onEa1Init2"/>
+      <cl:listener std:sid="listener-58c80708" name="load" handler="onEa1Load"/>
       <cl:xylayoutdata std:sid="xyl-data-db786247" top="70px" right="20px" bottom="70px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:embeddedapp>
     <cl:xylayout std:sid="xylayout-920748d4"/>
