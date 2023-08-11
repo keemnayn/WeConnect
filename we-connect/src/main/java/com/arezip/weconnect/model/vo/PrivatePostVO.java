@@ -1,5 +1,18 @@
 package com.arezip.weconnect.model.vo;
 
-public class PrivatePostVO {
+import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PrivatePostVO {
+	private long privatePostId;
+	private String privatePostName;
+	private String privatePostContent;
+	private Date privatePostDate;
+	private MemberVO memberVO;
 }

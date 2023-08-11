@@ -2,7 +2,10 @@ package com.arezip.weconnect.service;
 
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
-public interface TestService {
+@Slf4j
+public class MemberServiceImpl implements MemberService {
 
 }
