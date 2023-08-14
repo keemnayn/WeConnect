@@ -1,7 +1,5 @@
 package com.arezip.weconnect.model.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,7 @@ public class NoticeVO {
 	private String noticeTitle;
 	private String noticeContent;
 	private long noticeViews;
-	private Date noticeCreate;
+	private String noticeCreate;
 	private MemberVO memberVO;
+	private String noticeCategory;
 }
