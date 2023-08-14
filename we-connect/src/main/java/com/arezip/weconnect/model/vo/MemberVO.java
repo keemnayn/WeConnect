@@ -1,5 +1,7 @@
 package com.arezip.weconnect.model.vo;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberVO {
+public class MemberVO implements Serializable {
+	/**
+	 * memberVO 직렬화 
+	 */
+	private static final long serialVersionUID = 3518804505456304614L;
 	private long memberId;
 	private String memberName;
 	private String memberEmail;
