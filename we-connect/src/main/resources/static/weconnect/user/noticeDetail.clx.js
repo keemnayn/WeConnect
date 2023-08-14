@@ -31,7 +31,8 @@
 				"rows": [{"title": "공지합니다", "type": "점검", "date": "2023-08-05", "content": "공지할게요"}]
 			});
 			app.register(dataSet_1);
-			app.supportMedia("all and (min-width: 1920px)", "new-screen");
+			app.supportMedia("all and (min-width: 1920px)", "Project");
+			app.supportMedia("all and (min-width: 1920px) and (max-width: 1919px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
@@ -48,22 +49,6 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var userDefinedControl_1 = new udc.header();
-			container.addChild(userDefinedControl_1, {
-				"top": "0px",
-				"left": "0px",
-				"width": "1920px",
-				"height": "50px"
-			});
-			
-			var userDefinedControl_2 = new udc.left();
-			container.addChild(userDefinedControl_2, {
-				"top": "50px",
-				"left": "0px",
-				"width": "300px",
-				"height": "1030px"
-			});
-			
 			var output_1 = new cpr.controls.Output();
 			output_1.style.css({
 				"font-weight" : "bold",
@@ -73,9 +58,9 @@
 			output_1.setBindContext(dataRowContext_1);
 			output_1.bind("value").toDataColumn("title");
 			container.addChild(output_1, {
-				"top": "100px",
-				"right": "50px",
-				"left": "350px",
+				"top": "6px",
+				"right": "380px",
+				"left": "20px",
 				"height": "50px"
 			});
 			
@@ -88,10 +73,10 @@
 			output_2.setBindContext(dataRowContext_2);
 			output_2.bind("value").toDataColumn("content");
 			container.addChild(output_2, {
-				"top": "280px",
-				"right": "50px",
-				"bottom": "50px",
-				"left": "350px"
+				"top": "186px",
+				"right": "380px",
+				"bottom": "144px",
+				"left": "20px"
 			});
 			
 			var output_3 = new cpr.controls.Output();
@@ -102,8 +87,8 @@
 			output_3.setBindContext(dataRowContext_3);
 			output_3.bind("value").toDataColumn("date");
 			container.addChild(output_3, {
-				"top": "200px",
-				"left": "350px",
+				"top": "106px",
+				"left": "20px",
 				"width": "200px",
 				"height": "50px"
 			});
@@ -116,8 +101,8 @@
 			output_4.setBindContext(dataRowContext_4);
 			output_4.bind("value").toDataColumn("type");
 			container.addChild(output_4, {
-				"top": "200px",
-				"left": "600px",
+				"top": "106px",
+				"left": "270px",
 				"width": "100px",
 				"height": "50px"
 			});
@@ -125,8 +110,8 @@
 			var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
 			hTMLSnippet_1.value = "<hr>";
 			container.addChild(hTMLSnippet_1, {
-				"top": "250px",
-				"left": "350px",
+				"top": "156px",
+				"left": "20px",
 				"width": "1520px",
 				"height": "10px"
 			});

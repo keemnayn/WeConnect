@@ -23,11 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 public class FreeBoardRestController {
 	 private final FreeBoardService freeBoardService;
 	 
-	 @GetMapping("/board.do")//submission action 도메인과 같음	 
+	 //list 보이기
+	 @GetMapping("board.do")//submission action 도메인과 같음	 
 	 public View freeBoardListPage(DataRequest dataRequest) {
 		 List<FreeBoardVO> boardList = freeBoardService.getFreeBoardList();
 		 dataRequest.setResponse("boardList", boardList);//데이터셋 이름과 같음
 		 return new JSONDataView();
 	 }
-	 
+	
 }

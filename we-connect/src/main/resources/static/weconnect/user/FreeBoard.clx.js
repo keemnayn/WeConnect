@@ -24,6 +24,22 @@
 			 */
 			function onBodyInit(e){
 				app.lookup("boardListSub").send();
+			}
+
+			/*
+			 * "새글" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+			//	window.location = "boardWriteFrom.do";
+				app.openDialog("dialog/BoardWriteForm", {width : 800, height : 600}, function(dialog){
+					dialog.ready(function(dialogApp){
+						// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
+					});
+				}).then(function(returnValue){
+					
+				});
 			};
 			// End - User Script
 			
@@ -183,25 +199,47 @@
 				"height": "51px"
 			});
 			
-			var searchInput_1 = new cpr.controls.SearchInput();
-			container.addChild(searchInput_1, {
+			var group_1 = new cpr.controls.Container();
+			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
+			group_1.setLayout(xYLayout_2);
+			(function(container){
+				var searchInput_1 = new cpr.controls.SearchInput();
+				container.addChild(searchInput_1, {
+					"top": "0px",
+					"right": "0px",
+					"width": "560px",
+					"height": "30px"
+				});
+				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				comboBox_1.value = "전체";
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("search"), {
+						"label": "type",
+						"value": "type"
+					});
+				})(comboBox_1);
+				container.addChild(comboBox_1, {
+					"top": "0px",
+					"right": "560px",
+					"width": "100px",
+					"height": "30px"
+				});
+			})(group_1);
+			container.addChild(group_1, {
 				"top": "40px",
-				"right": "0px",
-				"width": "560px",
-				"height": "30px"
+				"width": "660px",
+				"height": "30px",
+				"left": "calc(50% - 330px)"
 			});
 			
-			var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-			comboBox_1.value = "전체";
-			(function(comboBox_1){
-				comboBox_1.setItemSet(app.lookup("search"), {
-					"label": "type",
-					"value": "type"
-				});
-			})(comboBox_1);
-			container.addChild(comboBox_1, {
+			var button_1 = new cpr.controls.Button();
+			button_1.value = "새글";
+			if(typeof onButtonClick == "function") {
+				button_1.addEventListener("click", onButtonClick);
+			}
+			container.addChild(button_1, {
 				"top": "40px",
-				"right": "560px",
+				"left": "1130px",
 				"width": "100px",
 				"height": "30px"
 			});
