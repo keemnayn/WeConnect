@@ -36,6 +36,13 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
+			var notifier_1 = new cpr.controls.Notifier();
+			container.addChild(notifier_1, {
+				"top": "82px",
+				"left": "1180px",
+				"width": "311px",
+				"height": "342px"
+			});
 		}
 	});
 	app.title = "alert";

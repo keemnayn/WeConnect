@@ -31,8 +31,8 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kJDdHEe62a551BIGueQ" location="Point(323.0, 399.0)" table="Table_kC2kIzdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kJjdHEe62a551BIGueQ" location="Point(396.0, 47.0)" table="Table_kC2kJTdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC2kKDdHEe62a551BIGueQ" location="Point(278.0, 562.0)" table="Table_kC2kJzdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMTdHEe62a551BIGueQ" location="Point(260.0, 915.0)" table="Table_kC3LMDdHEe62a551BIGueQ"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMzdHEe62a551BIGueQ" location="Point(284.0, 744.0)" table="Table_kC3LMjdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMTdHEe62a551BIGueQ" location="Point(266.0, 726.0)" table="Table_kC3LMDdHEe62a551BIGueQ"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LMzdHEe62a551BIGueQ" location="Point(284.0, 893.0)" table="Table_kC3LMjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LNTdHEe62a551BIGueQ" location="Point(912.0, 55.0)" table="Table_kC3LNDdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LNzdHEe62a551BIGueQ" location="Point(932.0, 205.0)" table="Table_kC3LNjdHEe62a551BIGueQ"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_kC3LOTdHEe62a551BIGueQ" location="Point(852.0, 782.0)" table="Table_kC3LODdHEe62a551BIGueQ"/>
@@ -75,14 +75,15 @@
         <routing>-286</routing>
       </tableRelations>
       <tableRelations UUID="TRelation_HNOnMDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_HNNZEDdIEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="176"/>
-        <targetAnchor side="right" offset="66"/>
-        <routing>-130</routing>
+        <sourceAnchor side="left" offset="135"/>
+        <targetAnchor side="right" offset="59"/>
+        <routing>-171</routing>
       </tableRelations>
       <tableRelations UUID="TRelation_HsLNADdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_HsIJsDdIEe62a551BIGueQ">
-        <sourceAnchor side="left" offset="137"/>
+        <sourceAnchor side="bottom" offset="48"/>
         <targetAnchor side="right" offset="58"/>
-        <routing>-209</routing>
+        <routing>138</routing>
+        <routing>-189</routing>
       </tableRelations>
       <tableRelations UUID="TRelation_IvRowDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_IvQaoDdIEe62a551BIGueQ">
         <sourceAnchor offset="178"/>
@@ -341,7 +342,7 @@
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_VbNI0jdIEe62a551BIGueQ" group="PKCGroup_VbL6sDdIEe62a551BIGueQ"/>
           </membership>
         </column>
-        <column UUID="Column_NWPXYDdJEe62a551BIGueQ" logicalName="개인게시글 제목" physicalName="private_post_name" dataType="VARCHAR2(100)" notNull="true"/>
+        <column UUID="Column_NWPXYDdJEe62a551BIGueQ" logicalName="개인게시글 제목" physicalName="private_post_title" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_OA9vYDdJEe62a551BIGueQ" logicalName="개인게시글 내용" physicalName="private_post_content" dataType="CLOB" notNull="true"/>
         <column UUID="Column_QHBc8DdJEe62a551BIGueQ" logicalName="게인개시글 작성일" physicalName="private_post_date" dataType="DATE" notNull="true"/>
         <column UUID="Column_IvRBsDdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
@@ -359,11 +360,13 @@
       <table UUID="Table_kC3LODdHEe62a551BIGueQ" logicalName="팀게시글" physicalName="team_post">
         <column UUID="Column_UCIdEDdIEe62a551BIGueQ" logicalName="팀게시글 번호" physicalName="team_post_id" dataType="NUMBER" notNull="true">
           <membership UUID="MEntry_UCIdETdIEe62a551BIGueQ" key="PKCGroup_UCHO8DdIEe62a551BIGueQ">
-            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_UCIdEjdIEe62a551BIGueQ" group="PKCGroup_UCHO8DdIEe62a551BIGueQ"/>
+            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_UCIdEjdIEe62a551BIGueQ" group="PKCGroup_UCHO8DdIEe62a551BIGueQ" entryIndex="0"/>
           </membership>
         </column>
         <column UUID="Column_7Rb4sDdJEe62a551BIGueQ" logicalName="팀게시글 제목" physicalName="team_post_title" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_7uzKIDdJEe62a551BIGueQ" logicalName="팀게시글 내용" physicalName="team_post_content" dataType="CLOB" notNull="true"/>
+        <column UUID="Column_60490DpCEe6ZydnV_QY7yw" logicalName="팀게시글 등록일" physicalName="team_post_create" dataType="DATE"/>
+        <column UUID="Column_7FZfADpCEe6ZydnV_QY7yw" logicalName="팀게시글 조회수" physicalName="team_post_views" dataType="NUMBER"/>
         <column UUID="Column_JTxc8DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_JTxc8TdIEe62a551BIGueQ" key="FKCGroup_JTw14DdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_JTxc8jdIEe62a551BIGueQ" group="FKCGroup_JTw14DdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>

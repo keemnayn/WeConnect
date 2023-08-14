@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PrivatePostVO {
 	private long privatePostId;
-	private String privatePostName;
+	private String privatePostTitle;
 	private String privatePostContent;
 	private Date privatePostDate;
 	private MemberVO memberVO;
