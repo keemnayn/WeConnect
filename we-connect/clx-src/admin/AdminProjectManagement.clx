@@ -5,7 +5,33 @@
     <screen std:sid="screen-341a4372" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-a7964aac" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-dd0c7e0a" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
-    <cl:model std:sid="model-23250b37"/>
+    <cl:model std:sid="model-23250b37">
+      <cl:dataset std:sid="d-set-9eb38c99" id="ds1">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-9ba2e543" name="프로젝트번호"/>
+          <cl:datacolumn std:sid="d-column-64dd8943" name="프로젝트명"/>
+          <cl:datacolumn std:sid="d-column-5834189b" name="프로젝트시작일"/>
+          <cl:datacolumn std:sid="d-column-553ac57c" name="프로젝트마감일"/>
+          <cl:datacolumn std:sid="d-column-5c249ac0" name="회원번호"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="프로젝트번호"><![CDATA[1]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트명"><![CDATA[WeConnect]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트시작일"><![CDATA[2023-08-11]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트마감일"><![CDATA[2023-08-31]]></cl:datavalue>
+            <cl:datavalue columnname="회원번호"><![CDATA[10]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="프로젝트번호"><![CDATA[2]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트명"><![CDATA[Arezip]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트시작일"><![CDATA[2023-03-24]]></cl:datavalue>
+            <cl:datavalue columnname="프로젝트마감일"><![CDATA[2023-08-31]]></cl:datavalue>
+            <cl:datavalue columnname="회원번호"><![CDATA[2]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+    </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-8355339c">
@@ -19,6 +45,53 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
+          <cl:grid std:sid="grid-c2ab4022" id="grd1" datasetid="ds1">
+            <cl:xylayoutdata std:sid="xyl-data-f6d22039" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:gridcolumn std:sid="g-column-b66e8faf" width="25px"/>
+            <cl:gridcolumn std:sid="g-column-e0db8503"/>
+            <cl:gridcolumn std:sid="g-column-ad2c72dd"/>
+            <cl:gridcolumn std:sid="g-column-26e91405"/>
+            <cl:gridcolumn std:sid="g-column-f9914e51"/>
+            <cl:gridcolumn std:sid="g-column-bed4d73a"/>
+            <cl:gridheader std:sid="gh-band-3be37d65">
+              <cl:gridrow std:sid="g-row-0e0c5a33"/>
+              <cl:gridcell std:sid="gh-cell-a1cc69ac" rowindex="0" colindex="0" sortable="false" filterable="false" columntype="checkbox"/>
+              <cl:gridcell std:sid="gh-cell-f94d3065" rowindex="0" colindex="1" targetcolumnname="프로젝트번호" sortable="false" filterable="false" text="프로젝트번호"/>
+              <cl:gridcell std:sid="gh-cell-921212c5" rowindex="0" colindex="2" targetcolumnname="프로젝트명" sortable="false" filterable="false" text="프로젝트명"/>
+              <cl:gridcell std:sid="gh-cell-af968593" rowindex="0" colindex="3" targetcolumnname="프로젝트시작일" sortable="false" filterable="false" text="프로젝트시작일"/>
+              <cl:gridcell std:sid="gh-cell-6279fe00" rowindex="0" colindex="4" targetcolumnname="프로젝트마감일" sortable="false" filterable="false" text="프로젝트마감일"/>
+              <cl:gridcell std:sid="gh-cell-eeada83d" rowindex="0" colindex="5" targetcolumnname="회원번호" sortable="false" filterable="false" text="회원번호"/>
+            </cl:gridheader>
+            <cl:griddetail std:sid="gd-band-b915e4ba">
+              <cl:gridrow std:sid="g-row-858efed1"/>
+              <cl:gridcell std:sid="gd-cell-f6c2d698" rowindex="0" colindex="0" columntype="checkbox"/>
+              <cl:gridcell std:sid="gd-cell-06e279a3" rowindex="0" colindex="1" columnname="프로젝트번호">
+                <cl:inputbox std:sid="i-box-0840ad12" id="ipb1" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:inputbox>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-409e3706" rowindex="0" colindex="2" columnname="프로젝트명">
+                <cl:inputbox std:sid="i-box-0e4fafe6" id="ipb2" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:inputbox>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-ed7083f6" rowindex="0" colindex="3" columnname="프로젝트시작일">
+                <cl:dateinput std:sid="d-input-43a1b66e" id="dti1" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:dateinput>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-016cfb2c" rowindex="0" colindex="4" columnname="프로젝트마감일">
+                <cl:dateinput std:sid="d-input-e6c9f7eb" id="dti2" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:dateinput>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-ae510da4" rowindex="0" colindex="5" columnname="회원번호">
+                <cl:inputbox std:sid="i-box-0ed8ad48" id="ipb3" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:inputbox>
+              </cl:gridcell>
+            </cl:griddetail>
+          </cl:grid>
           <cl:xylayout std:sid="xylayout-266c49d2"/>
         </cl:group>
       </cl:tabitem>

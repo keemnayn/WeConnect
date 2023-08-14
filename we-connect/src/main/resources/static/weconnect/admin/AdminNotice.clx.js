@@ -234,6 +234,7 @@
 							]
 						}
 					});
+					grid_1.style.header.setClasses(["Notice_grd1"]);
 					container.addChild(grid_1, {
 						"top": "50px",
 						"right": "0px",

@@ -20,6 +20,21 @@
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("ds1");
+			dataSet_1.parseData({
+				"columns": [
+					{"name": "프로젝트번호"},
+					{"name": "프로젝트명"},
+					{"name": "프로젝트시작일"},
+					{"name": "프로젝트마감일"},
+					{"name": "회원번호"}
+				],
+				"rows": [
+					{"프로젝트번호": "1", "프로젝트명": "WeConnect", "프로젝트시작일": "2023-08-11", "프로젝트마감일": "2023-08-31", "회원번호": "10"},
+					{"프로젝트번호": "2", "프로젝트명": "Arezip", "프로젝트시작일": "2023-03-24", "프로젝트마감일": "2023-08-31", "회원번호": "2"}
+				]
+			});
+			app.register(dataSet_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -45,6 +60,165 @@
 				var group_1 = new cpr.controls.Container();
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
+				(function(container){
+					var grid_1 = new cpr.controls.Grid("grd1");
+					grid_1.init({
+						"dataSet": app.lookup("ds1"),
+						"columns": [
+							{"width": "25px"},
+							{"width": "100px"},
+							{"width": "100px"},
+							{"width": "100px"},
+							{"width": "100px"},
+							{"width": "100px"}
+						],
+						"header": {
+							"rows": [{"height": "24px"}],
+							"cells": [
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 0},
+									"configurator": function(cell){
+										cell.columnType = "checkbox";
+										cell.filterable = false;
+										cell.sortable = false;
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "프로젝트번호";
+										cell.text = "프로젝트번호";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 2},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "프로젝트명";
+										cell.text = "프로젝트명";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 3},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "프로젝트시작일";
+										cell.text = "프로젝트시작일";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 4},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "프로젝트마감일";
+										cell.text = "프로젝트마감일";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "회원번호";
+										cell.text = "회원번호";
+									}
+								}
+							]
+						},
+						"detail": {
+							"rows": [{"height": "24px"}],
+							"cells": [
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 0},
+									"configurator": function(cell){
+										cell.columnType = "checkbox";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
+										cell.columnName = "프로젝트번호";
+										cell.control = (function(){
+											var inputBox_1 = new cpr.controls.InputBox("ipb1");
+											inputBox_1.style.css({
+												"text-align" : "center"
+											});
+											inputBox_1.bind("value").toDataColumn("프로젝트번호");
+											return inputBox_1;
+										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 2},
+									"configurator": function(cell){
+										cell.columnName = "프로젝트명";
+										cell.control = (function(){
+											var inputBox_2 = new cpr.controls.InputBox("ipb2");
+											inputBox_2.style.css({
+												"text-align" : "center"
+											});
+											inputBox_2.bind("value").toDataColumn("프로젝트명");
+											return inputBox_2;
+										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 3},
+									"configurator": function(cell){
+										cell.columnName = "프로젝트시작일";
+										cell.control = (function(){
+											var dateInput_1 = new cpr.controls.DateInput("dti1");
+											dateInput_1.style.css({
+												"text-align" : "center"
+											});
+											dateInput_1.bind("value").toDataColumn("프로젝트시작일");
+											return dateInput_1;
+										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 4},
+									"configurator": function(cell){
+										cell.columnName = "프로젝트마감일";
+										cell.control = (function(){
+											var dateInput_2 = new cpr.controls.DateInput("dti2");
+											dateInput_2.style.css({
+												"text-align" : "center"
+											});
+											dateInput_2.bind("value").toDataColumn("프로젝트마감일");
+											return dateInput_2;
+										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.columnName = "회원번호";
+										cell.control = (function(){
+											var inputBox_3 = new cpr.controls.InputBox("ipb3");
+											inputBox_3.style.css({
+												"text-align" : "center"
+											});
+											inputBox_3.bind("value").toDataColumn("회원번호");
+											return inputBox_3;
+										})();
+									}
+								}
+							]
+						}
+					});
+					container.addChild(grid_1, {
+						"top": "0px",
+						"right": "0px",
+						"bottom": "0px",
+						"left": "0px"
+					});
+				})(group_1);
 				tabItem_1.content = group_1;
 				return tabItem_1;
 			})(tabFolder_1);

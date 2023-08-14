@@ -14,7 +14,14 @@
 
 		/* 그리드 헤더 셀 */
 		.cl-grid-cell {
-
+			.cl-checkbox.cl-builtin {
+		&.cl-disabled {
+			.cl-checkbox-icon {
+				cursor: default !important;
+				background-image: none;
+			}
+		}
+	}
 			/* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 			.cl-control {}
 		}

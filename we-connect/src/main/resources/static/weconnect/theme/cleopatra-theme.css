@@ -1070,6 +1070,10 @@ body.cl-has-modal {
 .cl-grid .cl-grid-header .cl-grid-cell {
   /* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 }
+.cl-grid .cl-grid-header .cl-grid-cell .cl-checkbox.cl-builtin.cl-disabled .cl-checkbox-icon {
+  cursor: default !important;
+  background-image: none;
+}
 .cl-grid .cl-grid-header .cl-sort {
   /* 그리드 헤더 셀 정렬 인디케이터 - 정렬 가능 */
   /* 그리드 헤더 셀 정렬 인디케이터 - 오름차순 정렬됨 */

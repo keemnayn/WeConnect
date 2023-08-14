@@ -69,6 +69,7 @@
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-c21e7c3f" id="grd1" datasetid="noticeList">
             <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle class="Notice_grd1"/>
             <cl:gridcolumn std:sid="g-column-dff12167" width="25px"/>
             <cl:gridcolumn std:sid="g-column-0d7c9f4e"/>
             <cl:gridcolumn std:sid="g-column-576049f3"/>
