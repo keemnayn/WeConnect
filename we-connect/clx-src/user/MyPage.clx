@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-88187be9" version="1.0.4584">
+  <head std:sid="head-2309d219">
+    <screen std:sid="screen-35dc53e7" id="new-screen" name="new-screen" minwidth="1580px" width="1580px" height="940px"/>
+    <screen std:sid="screen-c815399c" id="default" name="default" minwidth="1024px" maxwidth="1579px" width="1024px" height="768px"/>
+    <screen std:sid="screen-2bd8d015" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-e70c50bc" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-808b228e"/>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-c75e73fb">
+    <cl:group std:sid="group-fc13dc99">
+      <cl:xylayoutdata std:sid="xyl-data-4aae3e11" top="20px" left="20px" width="1540px" height="900px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:img std:sid="image-8bbe361d" src="../img/images.jpg">
+        <cl:xylayoutdata std:sid="xyl-data-24fbb373" top="218px" left="64px" width="200px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:img>
+      <cl:button std:sid="button-1449df82" value="사진등록/수정">
+        <cl:xylayoutdata std:sid="xyl-data-2b2e1188" top="428px" left="106px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
+      <cl:htmlsnippet std:sid="htmlsnippet-9156f03b" style="color:#010101; font-weight:bolder; font-size:27px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>내 정보&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-81bcd5c4" top="86px" left="64px" width="153px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:group std:sid="group-1e42b86c">
+        <cl:xylayoutdata std:sid="xyl-data-6c073668" top="124px" left="490px" width="995px" height="677px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:grid std:sid="grid-1064f1ed" id="grd1">
+          <cl:xylayoutdata std:sid="xyl-data-bbf203fe" top="452px" left="19px" width="936px" height="201px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+          <cl:gridcolumn std:sid="g-column-abf6a109"/>
+          <cl:gridcolumn std:sid="g-column-c4399a32"/>
+          <cl:gridcolumn std:sid="g-column-b8b35bc0"/>
+          <cl:gridheader std:sid="gh-band-be2453e7">
+            <cl:gridrow std:sid="g-row-26d5bd01"/>
+            <cl:gridcell std:sid="gh-cell-760025cb" rowindex="0" colindex="0" text="총 연차일수"/>
+            <cl:gridcell std:sid="gh-cell-5fbfa82f" rowindex="0" colindex="1" text="남은 연차일수"/>
+            <cl:gridcell std:sid="gh-cell-02889eb3" rowindex="0" colindex="2" text="사용 연차일수"/>
+          </cl:gridheader>
+          <cl:griddetail std:sid="gd-band-f17f4e7e">
+            <cl:gridrow std:sid="g-row-28ba6c4b"/>
+            <cl:gridcell std:sid="gd-cell-99f66570" rowindex="0" colindex="0"/>
+            <cl:gridcell std:sid="gd-cell-e963e1d4" rowindex="0" colindex="1"/>
+            <cl:gridcell std:sid="gd-cell-5f97e49b" rowindex="0" colindex="2"/>
+          </cl:griddetail>
+        </cl:grid>
+        <cl:output std:sid="output-280fd887" style="font-size:20px;" value="member_name">
+          <cl:xylayoutdata std:sid="xyl-data-74383422" top="42px" left="17px" width="195px" height="69px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:output>
+        <cl:htmlsnippet std:sid="htmlsnippet-e7082d07" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>님 반갑습니다 &lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-1042392c" top="49px" left="283px" width="161px" height="56px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:htmlsnippet std:sid="htmlsnippet-76c515fa" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>부서&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-6bfee24c" top="137px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:htmlsnippet std:sid="htmlsnippet-1a866ff9" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>직급&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-af3e723c" top="194px" left="19px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:htmlsnippet std:sid="htmlsnippet-d7a52a82" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>이메일&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-c498086c" top="251px" left="18px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:htmlsnippet std:sid="htmlsnippet-11d8b5c7" style="color:#010101; font-weight:normal; font-size:14px; font-family:IBM Plex Sans KR; font-style:normal;" value="&lt;div>비밀번호&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-29227031" top="308px" left="17px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:output std:sid="output-f86fb2a6" value="department_id">
+          <cl:xylayoutdata std:sid="xyl-data-5cc6eeb4" top="136px" left="171px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:output>
+        <cl:output std:sid="output-002232ed" value="member_email">
+          <cl:xylayoutdata std:sid="xyl-data-21209139" top="254px" left="171px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:output>
+        <cl:output std:sid="output-df111dcf" value="position">
+          <cl:xylayoutdata std:sid="xyl-data-ff0d02df" top="195px" left="171px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:output>
+        <cl:button std:sid="button-15a50635" value="수정">
+          <cl:xylayoutdata std:sid="xyl-data-8b767d82" top="313px" left="171px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:button>
+        <cl:xylayout std:sid="xylayout-945caeee"/>
+      </cl:group>
+      <cl:xylayout std:sid="xylayout-adaa270e"/>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-e5dac787"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>
