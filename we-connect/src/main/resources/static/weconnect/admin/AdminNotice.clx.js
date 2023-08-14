@@ -32,45 +32,30 @@
 			var dataSet_1 = new cpr.data.DataSet("noticeList");
 			dataSet_1.parseData({
 				"columns": [
-					{
-						"name": "noticeTitle",
-						"dataType": "string"
-					},
-					{
-						"name": "noticeContent",
-						"dataType": "string"
-					},
-					{
-						"name": "noticeCategory",
-						"dataType": "string"
-					},
-					{
-						"name": "noticeCreate",
-						"dataType": "string"
-					}
+					{"name": "title"},
+					{"name": "content"},
+					{"name": "type"},
+					{"name": "date"}
 				],
-				"rows": []
+				"rows": [
+					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"},
+					{"title": "점검", "content": "점검합니다", "type": "점검", "date": "2023-08-27"},
+					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"},
+					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"}
+				]
 			});
 			app.register(dataSet_1);
 			
 			var dataSet_2 = new cpr.data.DataSet("noticeSearch");
 			dataSet_2.parseData({
-				"columns": [
-					{"name": "type"},
-					{"name": "label"}
-				],
+				"columns": [{"name": "type"}],
 				"rows": [
-					{"type": "all", "label": "전체"},
-					{"type": "title", "label": "제목"},
-					{"type": "category", "label": "분류"}
+					{"type": "전체"},
+					{"type": "제목"},
+					{"type": "분류"}
 				]
 			});
 			app.register(dataSet_2);
-			var submission_1 = new cpr.protocols.Submission("notices");
-			submission_1.method = "get";
-			submission_1.action = "notices.do";
-			submission_1.addResponseData(dataSet_1, false);
-			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -116,6 +101,9 @@
 										cell.columnType = "checkbox";
 										cell.filterable = false;
 										cell.sortable = false;
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -123,8 +111,11 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "noticeTitle";
-										cell.text = "noticeTitle";
+										cell.targetColumnName = "title";
+										cell.text = "제목";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -132,8 +123,11 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "noticeContent";
-										cell.text = "noticeContent";
+										cell.targetColumnName = "content";
+										cell.text = "내용";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -141,8 +135,11 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "noticeCategory";
-										cell.text = "noticeCategory";
+										cell.targetColumnName = "type";
+										cell.text = "분류";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -150,8 +147,11 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "noticeCreate";
-										cell.text = "noticeCreate";
+										cell.targetColumnName = "date";
+										cell.text = "등록일";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								}
 							]
@@ -163,15 +163,24 @@
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
 										cell.columnType = "checkbox";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "noticeTitle";
+										cell.columnName = "title";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_1 = new cpr.controls.Output();
-											output_1.bind("value").toDataColumn("noticeTitle");
+											output_1.style.css({
+												"text-align" : "center"
+											});
+											output_1.bind("value").toDataColumn("title");
 											return output_1;
 										})();
 										cell.controlConstraint = {};
@@ -180,10 +189,16 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "noticeContent";
+										cell.columnName = "content";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_2 = new cpr.controls.Output();
-											output_2.bind("value").toDataColumn("noticeContent");
+											output_2.style.css({
+												"text-align" : "center"
+											});
+											output_2.bind("value").toDataColumn("content");
 											return output_2;
 										})();
 										cell.controlConstraint = {};
@@ -192,10 +207,16 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "noticeCategory";
+										cell.columnName = "type";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_3 = new cpr.controls.Output();
-											output_3.bind("value").toDataColumn("noticeCategory");
+											output_3.style.css({
+												"text-align" : "center"
+											});
+											output_3.bind("value").toDataColumn("type");
 											return output_3;
 										})();
 										cell.controlConstraint = {};
@@ -204,10 +225,16 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "noticeCreate";
+										cell.columnName = "date";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_4 = new cpr.controls.Output();
-											output_4.bind("value").toDataColumn("noticeCreate");
+											output_4.style.css({
+												"text-align" : "center"
+											});
+											output_4.bind("value").toDataColumn("date");
 											return output_4;
 										})();
 										cell.controlConstraint = {};
@@ -216,6 +243,7 @@
 							]
 						}
 					});
+					grid_1.style.header.setClasses(["Notice_grd1"]);
 					container.addChild(grid_1, {
 						"top": "50px",
 						"right": "0px",
@@ -231,7 +259,7 @@
 					formLayout_1.leftMargin = "5px";
 					formLayout_1.horizontalSpacing = "10px";
 					formLayout_1.verticalSpacing = "10px";
-					formLayout_1.setColumns(["1fr", "1fr", "1fr"]);
+					formLayout_1.setColumns(["1fr", "1fr", "1fr", "1fr"]);
 					formLayout_1.setRows(["1fr"]);
 					group_2.setLayout(formLayout_1);
 					(function(container){
@@ -248,8 +276,14 @@
 							"rowIndex": 0
 						});
 						var button_3 = new cpr.controls.Button();
-						button_3.value = "삭제";
+						button_3.value = "저장";
 						container.addChild(button_3, {
+							"colIndex": 3,
+							"rowIndex": 0
+						});
+						var button_4 = new cpr.controls.Button();
+						button_4.value = "삭제";
+						container.addChild(button_4, {
 							"colIndex": 2,
 							"rowIndex": 0
 						});
@@ -257,26 +291,27 @@
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "225px",
+						"width": "300px",
 						"height": "40px"
 					});
-					var comboBox_1 = new cpr.controls.ComboBox("searchType");
+					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+					comboBox_1.value = "전체";
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("noticeSearch"), {
-							"label": "label",
+							"label": "type",
 							"value": "type"
 						});
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "545px",
+						"right": "620px",
 						"width": "100px",
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "245px",
+						"right": "320px",
 						"width": "280px",
 						"height": "30px"
 					});
@@ -292,9 +327,6 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
-			if(typeof onBodyLoad == "function"){
-				app.addEventListener("load", onBodyLoad);
-			}
 		}
 	});
 	app.title = "AdminNotice";

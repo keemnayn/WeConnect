@@ -13,23 +13,13 @@ CREATE TABLE member (
 	manager_yn CHAR(1) NOT NULL, /* 관리자여부 */
 	department_id NUMBER /* 부서번호 */
 );
-
--- 회원 추가 예시
-INSERT INTO member 
-(member_id, member_name, member_email, member_password, position, member_status, manager_yn, department_id) 
-VALUES 
-(member_seq.nextval, '홍길동', 'hong@example.com', 'a', '대리', '승인', 'Y', 1);
-
-INSERT INTO member 
-(member_id, member_name, member_email, member_password, position, member_status, manager_yn, department_id) 
-VALUES 
-(member_seq.nextval, '김철수', 'kim@example.com', 'a', '과장', '승인', 'N', 2);
-
--- ... 다른 회원들의 정보 추가
-
-
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
+/*멤버 테이블 insert 문 */
+INSERT INTO member (member_id, member_name, member_email, member_password, position, member_status, manager_yn, department_id)
+VALUES (member_seq.NEXTVAL, '김정현', 'john@example.com', 'a', '사원', '승인', 'Y', '2');
+/*멤버 테이블 */
+select * from member;
 
 ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
@@ -104,23 +94,6 @@ CREATE TABLE department (
 	department_id NUMBER NOT NULL, /* 부서번호 */
 	department_name VARCHAR2(100) NOT NULL /* 부서명 */
 );
--- 부서 추가 예시
-INSERT INTO department 
-(department_id, department_name) 
-VALUES 
-(department_seq.nextval, '인사');
-
-INSERT INTO department 
-(department_id, department_name) 
-VALUES 
-(department_seq.nextval, '개발');
-
-INSERT INTO department 
-(department_id, department_name) 
-VALUES 
-(department_seq.nextval, '영업');
-
--- ... 다른 부서들의 정보 추가
 
 COMMENT ON TABLE department IS '부서';
 
@@ -431,18 +404,6 @@ CREATE TABLE notice (
 	notice_create DATE NOT NULL, 
 	member_id NUMBER
 );
-
-INSERT INTO notice (notice_id, notice_title, notice_content, notice_category, member_id)
-VALUES (notice_seq.NEXTVAL, '제목입니다', '내용입니다', '공지', 1);
-
-ALTER TABLE notice
-ADD notice_category VARCHAR2(100);
-
-ALTER TABLE notice
-ADD CONSTRAINT chk_notice_category 
-CHECK (notice_category IN ('공지', '점검'));
-
-
 ALTER TABLE notice
 MODIFY notice_create DEFAULT SYSDATE;
 
@@ -801,4 +762,4 @@ ALTER TABLE free_board_comment
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id);
     
-select * from NOTICE order by notice_id desc;
+    
