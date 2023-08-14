@@ -60,7 +60,6 @@
          <version>1.0.4584.release-20230714-1438</version>
       </dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

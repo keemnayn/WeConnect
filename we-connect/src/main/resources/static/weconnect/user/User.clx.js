@@ -75,10 +75,10 @@
 				/*초기값 설정*/
 				var voInitValue = {
 					"value": "홈",
-					"appId": "user/userMain"
+					"appId": "user/UserMain"
 				};
 				/*앱을 로드하고 로드된 앱을 임베디드 앱에 설정합니다.*/
-				cpr.core.App.load("user/userMain", function( /*cpr.core.App*/ loadedApp) {
+				cpr.core.App.load("user/UserMain", function( /*cpr.core.App*/ loadedApp) {
 					/*임베디드앱에 안에 앱이 있는 경우에는 앱을 삭제해줍니다.(다시 앱을 열고싶을때 스크립트 작성)*/
 					if (vcEmb.getEmbeddedAppInstance()) {
 						vcEmb.getEmbeddedAppInstance().dispose();
@@ -93,6 +93,15 @@
 						vcEmb.app = loadedApp;
 					}
 				});
+			}
+
+			/*
+			 * 임베디드 앱에서 load 이벤트 발생 시 호출.
+			 * 임베디드 앱이 준비되고 그려진 후에 디스패치 되는 이벤트.
+			 */
+			function onEa1Load(e){
+				var ea1 = e.control;
+				
 			};
 			// End - User Script
 			
@@ -113,21 +122,21 @@
 					{"name": "appId"}
 				],
 				"rows": [
-					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "user/userMain"},
+					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "user/UserMain"},
 					{"label": "근태", "value": "근태", "icon": "img/user/attendance.png", "parent": "", "appId": ""},
 					{"label": "프로젝트", "value": "프로젝트", "icon": "img/user/project.png", "parent": "", "appId": ""},
 					{"label": "예약", "value": "예약", "icon": "img/user/reservation.png", "parent": "", "appId": ""},
 					{"label": "게시판", "value": "게시판", "icon": "img/user/board.png", "parent": "", "appId": ""},
-					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "user/AttendFrom"},
-					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "user/HolidayRequestForm"},
+					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "user/AttendForm"},
+					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "user/LeaveRequestForm"},
 					{"label": "일정", "value": "일정", "icon": "img/user/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
 					{"label": "업무보드", "value": "업무보드", "icon": "img/user/work_board.png", "parent": "프로젝트", "appId": ""},
-					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/MeetingRoomReservForm"},
-					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Board"},
-					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/notice"},
-					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판"},
-					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "project/teamBoard"},
-					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "project/myBoard"}
+					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/RoomReservForm"},
+					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/FreeBoard"},
+					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Notice"},
+					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "user/Proposal"},
+					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "user/project/TeamPost"},
+					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "user/project/PrivatePost"}
 				]
 			});
 			app.register(dataSet_1);
@@ -213,6 +222,9 @@
 			});
 			
 			var embeddedApp_1 = new cpr.controls.EmbeddedApp("ea1");
+			if(typeof onEa1Init2 == "function") {
+				embeddedApp_1.addEventListener("init", onEa1Init2);
+			}
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
@@ -221,6 +233,9 @@
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
+			}
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
 			}
 		}
 	});

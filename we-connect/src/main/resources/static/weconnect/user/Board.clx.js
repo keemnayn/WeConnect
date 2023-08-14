@@ -23,16 +23,19 @@
 			var dataSet_1 = new cpr.data.DataSet("board");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "boardNo"},
-					{"name": "empName"},
+					{
+						"name": "boardId",
+						"dataType": "string"
+					},
+					{"name": "memberName"},
 					{"name": "title"},
 					{"name": "date"}
 				],
 				"rows": [
-					{"boardNo": "1", "empName": "user1", "title": "title1", "date": "date1"},
-					{"boardNo": "2", "empName": "user2", "title": "title2", "date": "date2"},
-					{"boardNo": "3", "empName": "user3", "title": "title3", "date": "date3"},
-					{"boardNo": "4", "empName": "user4", "title": "title4", "date": "date4"}
+					{"boardId": "1", "memberName": "user1", "title": "title1", "date": "date1"},
+					{"boardId": "2", "memberName": "user2", "title": "title2", "date": "date2"},
+					{"boardId": "3", "memberName": "user3", "title": "title3", "date": "date3"},
+					{"boardId": "4", "memberName": "user4", "title": "title4", "date": "date4"}
 				]
 			});
 			app.register(dataSet_1);
@@ -41,6 +44,7 @@
 			dataSet_2.parseData({
 				"columns": [{"name": "type"}],
 				"rows": [
+					{"type": "전체"},
 					{"type": "내용"},
 					{"type": "작성자"}
 				]
@@ -70,21 +74,21 @@
 			grid_1.init({
 				"dataSet": app.lookup("board"),
 				"columns": [
+					{"width": "20px"},
+					{"width": "30px"},
 					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"}
+					{"width": "30px"}
 				],
 				"header": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
 							"configurator": function(cell){
 								cell.filterable = false;
 								cell.sortable = false;
-								cell.targetColumnName = "boardNo";
-								cell.text = "boardNo";
+								cell.targetColumnName = "boardId";
+								cell.text = "boardId";
 							}
 						},
 						{
@@ -92,8 +96,8 @@
 							"configurator": function(cell){
 								cell.filterable = false;
 								cell.sortable = false;
-								cell.targetColumnName = "empName";
-								cell.text = "empName";
+								cell.targetColumnName = "memberName";
+								cell.text = "작성자";
 							}
 						},
 						{
@@ -102,7 +106,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "title";
-								cell.text = "title";
+								cell.text = "제목";
 							}
 						},
 						{
@@ -111,24 +115,24 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "date";
-								cell.text = "date";
+								cell.text = "작성일자";
 							}
 						}
 					]
 				},
 				"detail": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
 							"configurator": function(cell){
-								cell.columnName = "boardNo";
+								cell.columnName = "boardId";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 1},
 							"configurator": function(cell){
-								cell.columnName = "empName";
+								cell.columnName = "memberName";
 							}
 						},
 						{
@@ -165,8 +169,8 @@
 			var searchInput_1 = new cpr.controls.SearchInput();
 			container.addChild(searchInput_1, {
 				"top": "40px",
-				"left": "1075px",
-				"width": "500px",
+				"right": "0px",
+				"width": "560px",
 				"height": "30px"
 			});
 			
@@ -180,7 +184,7 @@
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
 				"top": "40px",
-				"left": "956px",
+				"right": "560px",
 				"width": "100px",
 				"height": "30px"
 			});

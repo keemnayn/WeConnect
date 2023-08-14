@@ -1,1 +1,1 @@
-Place UDC Controls for finalproject here.
+Place UDC Controls for $project$ here.

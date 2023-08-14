@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-790f1878" version="1.0.4584">
+  <head std:sid="head-8d2d0196">
+    <screen std:sid="screen-790740fb" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-5a7a96c5" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-290caa67" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-03963afd" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-09d0fd0a">
+      <cl:dataset std:sid="d-set-e94c7f67" id="room">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-db4a1609" name="room"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[8층 대회의실]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[8층 소회의실]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[6층 소회의실]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[5층 대회의실]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[5층 소회의실]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="room"><![CDATA[접견실]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-38c9d2e1" id="time">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-922dcd66" name="time" datatype="string"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[9:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[10:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[11:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[12:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[13:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[14:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[15:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[16:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[17:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[18:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[19:00]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[20:00]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-903b7a96">
+    <cl:tabfolder std:sid="t-folder-b89edc7b">
+      <cl:xylayoutdata std:sid="xyl-data-895989ca" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:tabitem std:sid="t-item-b609801d" selected="true" text="일정관리">
+        <std:metadata>
+          <std:property key="is-active-item" value="true"/>
+        </std:metadata>
+        <cl:group std:sid="group-f6c0b793">
+          <std:metadata>
+            <std:property key="locked" value="true"/>
+          </std:metadata>
+          <cl:calendar std:sid="calendar-b74becfa" class="admin_carlendar">
+            <cl:xylayoutdata std:sid="xyl-data-d7ce4b32" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+          </cl:calendar>
+          <cl:xylayout std:sid="xylayout-b4028147"/>
+        </cl:group>
+      </cl:tabitem>
+    </cl:tabfolder>
+    <cl:xylayout std:sid="xylayout-d77f5a6d"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler>
+      <std:guide position="1653"/>
+    </std:hruler>
+    <std:vruler>
+      <std:guide position="215"/>
+    </std:vruler>
+  </std:studiosetting>
+</html>

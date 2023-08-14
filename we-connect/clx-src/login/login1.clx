@@ -8,17 +8,17 @@
     <cl:model std:sid="model-82b9c691"/>
     <cl:appspec/>
   </head>
-  <body std:sid="body-3026bb9d" style="background-color:#F3F2F2;">
+  <body std:sid="body-3026bb9d" style="background-color:#F8F8F8;">
     <cl:listener std:sid="listener-63d3825e" name="init" handler="onBodyInit2"/>
-    <cl:group std:sid="group-0f7a11bd" style="border-right-style:solid; border-radius:9px; background-color:#DCDCDC; border-left-style:solid; vertical-align:middle; border-bottom-style:solid; border-top-style:solid;" class="login_layout">
-      <cl:xylayoutdata std:sid="xyl-data-7432f8ef" top="210px" left="652px" width="600px" height="500px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:inputbox std:sid="i-box-8de0f2f7" id="ipb1" style="border-radius:8px; background-color:#FFFFFF; color:#FFFFFF; font-size:1em; text-align:left;" class="input_id" placeholder="아이디">
+    <cl:group std:sid="group-0f7a11bd" style="border-right-style:solid; border-radius:9px; background-color:#FEFEFF; border-left-style:solid; vertical-align:middle; border-bottom-style:solid; border-top-style:solid;" class="login_layout">
+      <cl:xylayoutdata std:sid="xyl-data-7432f8ef" top="170px" left="652px" width="600px" height="500px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:inputbox std:sid="i-box-8de0f2f7" id="ipb1" style="border-radius:8px; background-color:#FFFFFF; color:#080808; font-size:1em; text-align:left;" class="input_id" placeholder="아이디">
         <cl:xylayoutdata std:sid="xyl-data-d1c69c56" top="164px" left="90px" width="420px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:inputbox std:sid="i-box-47d3b79d" id="ipb2" style="border-radius:8px; background-color:#FFFFFF; color:#FFFFFF; font-size:1em; text-align:left;" class="input_password" placeholder="비밀번호">
+      <cl:inputbox std:sid="i-box-47d3b79d" id="ipb2" style="border-radius:8px; background-color:#FFFFFF; color:#080808; font-size:1em; text-align:left;" class="input_password" placeholder="비밀번호">
         <cl:xylayoutdata std:sid="xyl-data-15a0244e" top="225px" left="90px" width="420px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:button std:sid="button-6b0dee13" style="background-color:#4680FF; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px;" class="btn_login" value="로그인">
+      <cl:button std:sid="button-6b0dee13" style="background-color:#4680FF; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px; background-image:none;" class="btn_login" value="로그인">
         <cl:xylayoutdata std:sid="xyl-data-ad6289fc" top="334px" left="90px" width="420px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-e4bed6c2" style="background-color:#4D5B67; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px;" class="btn_register" value="회원가입">

@@ -1,150 +1,78 @@
-.cl-tabfolder.tab-basic {
-	/* 탭 폴더 헤더 스타일 */
-	.cl-tabfolder-header {
-		background-image: linear-gradient(#babfc7, #babfc7);
-		background-size: 100% 1px;
-		background-repeat: no-repeat;
-		height: 35px; // 탭 폴더 아이템의 높이
-		
-		/* 탭 폴더 헤더가 위에 표시될 때 */
-		&.cl-top {
-			background-position: 0px 100%; // 라인을 탭 아이템 기준 아래에 표시
-			
-			.cl-tabfolder-item {
-				box-shadow: inset 0px -1px 0px 0px rgb(186, 191, 199, 1); // 탭 아이템 아래 선
-				
-				/* 라인 굵어보인다면 추가 가능 */
-				+ .cl-tabfolder-item {
-					border-left: none;
-				}
-			}
-		}
-		
-		/* 탭 폴더 헤더가 아래에 표시될 때 */
-		&.cl-bottom {
-			background-position: 100% 0px; // 라인을 탭 아이템 기준 위에 표시
-			
-			.cl-tabfolder-item {
-				box-shadow: inset 0px 1px 0px 0px rgb(186, 191, 199, 1); // 탭 아이템 윗 선
-				
-				/* 라인 굵어보인다면 추가 가능 */
-				+ .cl-tabfolder-item {
-					border-left: none;
-				}
-			}
-		}
-		
-		/* 탭 폴더 아이템 스타일 */
-		.cl-tabfolder-item {
-			background-color: #ffffff;
-			color: #666666;
-			
-			/* 탭 폴더 아이템 포커스링 해제 */
-			.cl-text:focus {
-				text-decoration: none;
-			}
-			
-			/* 탭 폴더 아이템 선택 스타일 */
-			&.cl-selected {
-				background-color: #ffffff;
-				border-color: #babfc7;
-				box-shadow: none;
-				color: #3f87fd;
-			}
-			
-			/* 탭 폴더 아이템 호버 스타일 */
-			&:not(.cl-selected):hover {
-				background-color: #f5f5f5;
-				color: #333333;
-			}
-		}
-	}
-	
-	/* 탭 폴더 바디 스타일 */
-	.cl-tabfolder-body {
-		/* 탭 폴더 헤더가 바디 아래에 표시될 때 */
-		&.cl-top {
-			border-bottom: none;
-		}
-		
-		/* 탭 폴더 헤더가 바디 위에 표시될 때 */
-		&.cl-bottom {
-			border-top: none;
-		}
-	}
-}
+@import "../settings.part.less";
 
-.cl-tabfolder.tab-basic.tab1{
-		.cl-tabfolder-header {
-		background-image: linear-gradient(#babfc7, #babfc7);
-		background-size: 100% 1px;
-		background-repeat: no-repeat;
-		height: 35px; // 탭 폴더 아이템의 높이
-		
-		/* 탭 폴더 헤더가 위에 표시될 때 */
-		&.cl-top {
-			background-position: 0px 100%; // 라인을 탭 아이템 기준 아래에 표시
-			
-			.cl-tabfolder-item {
-				box-shadow: inset 0px -1px 0px 0px rgb(186, 191, 199, 1); // 탭 아이템 아래 선
-				
-				/* 라인 굵어보인다면 추가 가능 */
-				+ .cl-tabfolder-item {
-					border-left: none;
-				}
+
+/* 탭 폴더 - disabled */
+.cl-tabfolder.cl-disabled {}
+
+/* 탭 폴더 */
+.cl-tabfolder {
+	color: @default-text-color;
+	font: @default-font;
+
+	/* 헤더 */
+	.cl-tabfolder-header {
+
+		/* 좌측 스크롤 버튼 */
+		.cl-tabfolder-prev {
+			border: solid 1px @default-border-color;
+			// background-image: url("icons/prev.png");
+
+			/* 비활성 상태 */
+			&.cl-disabled {
+				// background-image: url("icons/prev-selected.png");
 			}
 		}
-		
-		/* 탭 폴더 헤더가 아래에 표시될 때 */
-		&.cl-bottom {
-			background-position: 100% 0px; // 라인을 탭 아이템 기준 위에 표시
-			
-			.cl-tabfolder-item {
-				box-shadow: inset 0px 1px 0px 0px rgb(186, 191, 199, 1); // 탭 아이템 윗 선
-				
-				/* 라인 굵어보인다면 추가 가능 */
-				+ .cl-tabfolder-item {
-					border-left: none;
-				}
+
+		/* 우측 스크롤 버튼 */
+		.cl-tabfolder-next {
+			border: solid 1px @default-border-color;
+			// background-image: url("icons/next.png");
+
+			/* 비활성 상태 */
+			&.cl-disabled {
+				// background-image: url("icons/next-selected.png");
 			}
 		}
-		
-		/* 탭 폴더 아이템 스타일 */
+
+		/* 탭 아이템 */
 		.cl-tabfolder-item {
-			background-color: #ffffff;
-			color: #666666;
-			
-			/* 탭 폴더 아이템 포커스링 해제 */
-			.cl-text:focus {
-				text-decoration: none;
+			background-color: white;
+			border: solid 1px @default-border-color;
+
+			/* 탭 아이템 체크 박스 */
+			.cl-checkbox {}
+
+			/* 탭 아이템 닫기 버튼 */
+			.cl-tabfolder-button {
+				// background-image: url(icons/close.png);
 			}
-			
-			/* 탭 폴더 아이템 선택 스타일 */
+
+			/* 탭 아이템 - 선택됨 */
 			&.cl-selected {
-				background-color: #ffffff;
-				border-color: #babfc7;
-				box-shadow: none;
-				color: #3f87fd;
+				background-color: @selection-background;
+				color: @selection-foreground;
+				border-color: @focus-border-color;
+
+				/* 선택된 탭 아이템 닫기 버튼 */
+				.cl-tabfolder-button {
+					// background-image: url(icons/close-selected.png);
+				}
 			}
-			
-			/* 탭 폴더 아이템 호버 스타일 */
+
+			/* 탭 아이템 - 호버 */
 			&:not(.cl-selected):hover {
-				background-color: #f5f5f5;
-				color: #333333;
+				background-color: @hover-background;
 			}
+
+			/* 비활성 탭 아이템 */
+			&.cl-disabled {}
 		}
 	}
-	
-	/* 탭 폴더 바디 스타일 */
+
+	/* 탭폴더 바디 */
 	.cl-tabfolder-body {
-		/* 탭 폴더 헤더가 바디 아래에 표시될 때 */
-		&.cl-top {
-			border-bottom: none;
-		}
-		
-		/* 탭 폴더 헤더가 바디 위에 표시될 때 */
-		&.cl-bottom {
-			border-top: none;
-		}
+		background-color: white;
+		color: @default-text-color;
+		border: solid 1px @default-border-color;
 	}
 }

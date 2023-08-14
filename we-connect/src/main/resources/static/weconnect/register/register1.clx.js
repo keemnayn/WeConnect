@@ -33,7 +33,6 @@
 			dataSet_1.parseData({
 				"columns": [{"name": "position"}],
 				"rows": [
-					{"position": "(선택)"},
 					{"position": "사원"},
 					{"position": "주임"},
 					{"position": "선임"},
@@ -48,7 +47,6 @@
 				"sortCondition": "a",
 				"columns": [{"name": "department"}],
 				"rows": [
-					{"department": "(선택)"},
 					{"department": "개발팀"},
 					{"department": "연구부"},
 					{"department": "영업팀"},
@@ -67,7 +65,7 @@
 			var container = app.getContainer();
 			container.style.css({
 				"background-image" : "none",
-				"background-color" : "#F3F2F2",
+				"background-color" : "#F8F8F8",
 				"width" : "100%",
 				"height" : "100%"
 			});
@@ -81,7 +79,7 @@
 			group_1.style.setClasses(["cl-form-group1"]);
 			group_1.style.css({
 				"border-radius" : "30px",
-				"background-color" : "#DCDCDC",
+				"background-color" : "#FEFEFF",
 				"color" : "#FFFFFF",
 				"background-image" : "none"
 			});
@@ -93,7 +91,7 @@
 				inputBox_1.style.css({
 					"border-radius" : "5px",
 					"background-color" : "#FFFFFF",
-					"color" : "#A0A0A0",
+					"color" : "#000000",
 					"font-weight" : "500",
 					"font-style" : "normal",
 					"text-align" : "center"
@@ -108,33 +106,18 @@
 				button_1.value = "중복 확인";
 				button_1.style.setClasses(["button1"]);
 				button_1.style.css({
-					"background-color" : "#4C4C6D",
+					"background-color" : "#EBEBEB",
 					"border-radius" : "5px",
 					"color" : "#070000",
 					"font-size" : "16px",
 					"font-style" : "normal",
-					"background-image" : "linear-gradient(#fcfeff,#e0e1e2)"
+					"background-image" : "none"
 				});
 				container.addChild(button_1, {
 					"top": "156px",
 					"left": "523px",
 					"width": "109px",
 					"height": "48px"
-				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.value = "<div>사원번호<\/div>";
-				hTMLSnippet_1.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_1, {
-					"top": "245px",
-					"left": "157px",
-					"width": "100px",
-					"height": "30px"
 				});
 				var inputBox_2 = new cpr.controls.InputBox("ipb2");
 				inputBox_2.value = "";
@@ -147,7 +130,7 @@
 					"text-align" : "center"
 				});
 				container.addChild(inputBox_2, {
-					"top": "272px",
+					"top": "262px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -163,7 +146,7 @@
 					"text-align" : "center"
 				});
 				container.addChild(inputBox_3, {
-					"top": "407px",
+					"top": "377px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -178,13 +161,28 @@
 					"text-align" : "center"
 				});
 				container.addChild(inputBox_4, {
-					"top": "407px",
-					"left": "701px",
+					"top": "486px",
+					"left": "160px",
 					"width": "352px",
 					"height": "48px"
 				});
+				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_1.value = "<div>비밀번호 <\/div>";
+				hTMLSnippet_1.style.css({
+					"color" : "#070000",
+					"font-weight" : "bold",
+					"font-size" : "16px",
+					"font-family" : "sans-serif",
+					"font-style" : "normal"
+				});
+				container.addChild(hTMLSnippet_1, {
+					"top": "348px",
+					"left": "160px",
+					"width": "100px",
+					"height": "30px"
+				});
 				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_2.value = "<div>비밀번호 <\/div>";
+				hTMLSnippet_2.value = "<div>비밀번호 확인<\/div>";
 				hTMLSnippet_2.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -193,13 +191,13 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_2, {
-					"top": "378px",
-					"left": "157px",
-					"width": "100px",
+					"top": "458px",
+					"left": "160px",
+					"width": "234px",
 					"height": "30px"
 				});
 				var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_3.value = "<div>비밀번호 확인<\/div>";
+				hTMLSnippet_3.value = "<div>성명 <\/div>";
 				hTMLSnippet_3.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -208,28 +206,13 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_3, {
-					"top": "378px",
-					"left": "698px",
-					"width": "234px",
+					"top": "235px",
+					"left": "160px",
+					"width": "100px",
 					"height": "30px"
 				});
-				var inputBox_5 = new cpr.controls.InputBox("ipb5");
-				inputBox_5.placeholder = "\r\n";
-				inputBox_5.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
-					"color" : "#070000",
-					"font-style" : "normal",
-					"text-align" : "center"
-				});
-				container.addChild(inputBox_5, {
-					"top": "272px",
-					"left": "701px",
-					"width": "352px",
-					"height": "48px"
-				});
 				var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_4.value = "<div>성명 <\/div>";
+				hTMLSnippet_4.value = "<div>아이디 <\/div>";
 				hTMLSnippet_4.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -238,13 +221,31 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "245px",
-					"left": "698px",
+					"top": "116px",
+					"left": "160px",
 					"width": "100px",
 					"height": "30px"
 				});
+				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				comboBox_1.placeholder = "(선택)";
+				comboBox_1.style.css({
+					"color" : "#A0A0A0",
+					"font-weight" : "500"
+				});
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("position"), {
+						"label": "position",
+						"value": "position"
+					});
+				})(comboBox_1);
+				container.addChild(comboBox_1, {
+					"top": "729px",
+					"left": "160px",
+					"width": "352px",
+					"height": "48px"
+				});
 				var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_5.value = "<div>아이디 <\/div>";
+				hTMLSnippet_5.value = "<div>직급<\/div>";
 				hTMLSnippet_5.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -253,68 +254,83 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_5, {
-					"top": "116px",
+					"top": "699px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
 				});
 				var hTMLSnippet_6 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_6.value = "<h1>회원가입<\/h1>";
+				hTMLSnippet_6.value = "<div>부서<\/div>";
 				hTMLSnippet_6.style.css({
-					"color" : "#070000",
-					"font-weight" : "bolder",
-					"font-size" : "18px",
-					"font-style" : "normal",
-					"text-align" : "center"
-				});
-				container.addChild(hTMLSnippet_6, {
-					"top": "10px",
-					"left": "20px",
-					"width": "260px",
-					"height": "76px"
-				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-				comboBox_1.placeholder = "(선택)";
-				comboBox_1.style.css({
-					"color" : "#A0A0A0",
-					"font-weight" : "500"
-				});
-				comboBox_1.bind("value").toDataSet(app.lookup("position"), "position", 0);
-				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("position"), {
-						"label": "position",
-						"value": "position"
-					});
-				})(comboBox_1);
-				container.addChild(comboBox_1, {
-					"top": "528px",
-					"left": "703px",
-					"width": "352px",
-					"height": "48px"
-				});
-				var hTMLSnippet_7 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_7.value = "<div>직급<\/div>";
-				hTMLSnippet_7.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
 					"font-size" : "16px",
 					"font-family" : "sans-serif",
 					"font-style" : "normal"
 				});
-				container.addChild(hTMLSnippet_7, {
-					"top": "499px",
-					"left": "701px",
+				container.addChild(hTMLSnippet_6, {
+					"top": "576px",
+					"left": "160px",
 					"width": "100px",
 					"height": "30px"
 				});
+				var button_2 = new cpr.controls.Button();
+				button_2.value = "확인";
+				button_2.style.setClasses(["btn-success"]);
+				button_2.style.css({
+					"background-color" : "#4680FF",
+					"color" : "#FFFFFF",
+					"font-size" : "16px",
+					"font-style" : "normal",
+					"background-image" : "none"
+				});
+				container.addChild(button_2, {
+					"top": "813px",
+					"left": "133px",
+					"width": "150px",
+					"height": "50px"
+				});
+				var button_3 = new cpr.controls.Button();
+				button_3.value = "취소";
+				button_3.style.setClasses(["btn-fail"]);
+				button_3.style.css({
+					"background-color" : "#929292",
+					"color" : "#FFFFFF",
+					"font-size" : "16px",
+					"font-style" : "normal",
+					"background-image" : "none"
+				});
+				container.addChild(button_3, {
+					"top": "813px",
+					"left": "398px",
+					"width": "150px",
+					"height": "50px"
+				});
+				var textArea_1 = new cpr.controls.TextArea("txa1");
+				textArea_1.value = "회원가입";
+				textArea_1.style.css({
+					"border-right-style" : "none",
+					"color" : "#E1E1E1",
+					"border-left-style" : "none",
+					"font-weight" : "900",
+					"font-size" : "45px",
+					"border-bottom-style" : "none",
+					"font-style" : "normal",
+					"border-top-style" : "none",
+					"text-align" : "center"
+				});
+				container.addChild(textArea_1, {
+					"top": "3px",
+					"left": "12px",
+					"width": "229px",
+					"height": "83px"
+				});
 				var comboBox_2 = new cpr.controls.ComboBox("cmb2");
+				comboBox_2.placeholder = "(선택)";
 				comboBox_2.style.css({
 					"color" : "#A0A0A0",
-					"font-weight" : "500",
-					"font-family" : "IBM Plex Sans KR",
-					"text-align" : "left"
+					"font-weight" : "500"
 				});
-				comboBox_2.bind("value").toDataSet(app.lookup("position"), "position", 0);
 				(function(comboBox_2){
 					comboBox_2.setItemSet(app.lookup("department"), {
 						"label": "department",
@@ -322,68 +338,20 @@
 					});
 				})(comboBox_2);
 				container.addChild(comboBox_2, {
-					"top": "528px",
+					"top": "605px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
-				});
-				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_8.value = "<div>부서<\/div>";
-				hTMLSnippet_8.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_8, {
-					"top": "499px",
-					"left": "158px",
-					"width": "100px",
-					"height": "30px"
 				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {
 				group_1.addEventListener("click", onGroupClick);
 			}
 			container.addChild(group_1, {
-				"top": "107px",
-				"left": "352px",
-				"width": "1246px",
-				"height": "615px"
-			});
-			
-			var button_2 = new cpr.controls.Button();
-			button_2.value = "확인";
-			button_2.style.setClasses(["btn-success"]);
-			button_2.style.css({
-				"background-color" : "#6091F7",
-				"color" : "#070000",
-				"font-size" : "16px",
-				"font-style" : "normal",
-				"background-image" : "linear-gradient(#fcfeff,#e0e1e2)"
-			});
-			container.addChild(button_2, {
-				"top": "762px",
-				"left": "656px",
-				"width": "204px",
-				"height": "50px"
-			});
-			
-			var button_3 = new cpr.controls.Button();
-			button_3.value = "취소";
-			button_3.style.setClasses(["btn-fail"]);
-			button_3.style.css({
-				"background-color" : "#929292",
-				"color" : "#070000",
-				"font-size" : "16px",
-				"font-style" : "normal"
-			});
-			container.addChild(button_3, {
-				"top": "762px",
-				"left": "1053px",
-				"width": "204px",
-				"height": "50px"
+				"top": "20px",
+				"left": "605px",
+				"width": "737px",
+				"height": "896px"
 			});
 		}
 	});

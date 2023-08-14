@@ -24,53 +24,8 @@
 			 */
 			function onButtonClick(e) {
 				var button = e.control;
-				window.location.href = "register.clx";
-			}
-
-			/*
-			 * "Google로 계속하기" 버튼에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
-			function onButtonClick2(e) {
-				var button = e.control;
-				var voResourceLoader = new cpr.core.ResourceLoader();
-				voResourceLoader.addScript("https://maps.googleapis.com/maps/api/js?key='424886188874-oo9lbqc9juspl2d84uegvarvafe42tah.apps.googleusercontent.com'").load().then(function(input) {
-					// Google 로그인 초기화 코드는 HTML에 정의되어 있으므로 여기서는 추가 작업이 필요 없습니다.
-					new Goo	
-				});
-			}
-
-			/*
-			 * "카카오 로그인" 버튼에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
-			function onButtonClick4(e) {
-				var button = e.control;
-				var resourceLoader = new cpr.core.ResourceLoader();
-				resourceLoader.addScript("https://developers.kakao.com/sdk/js/kakao.js").load().then(function(input) {
-					// SDK가 로딩된 후, 카카오 앱 키를 사용하여 초기화합니다.
-					// YOUR_APP_KEY는 발급받은 카카오 앱 키로 변경해야 합니다.
-					Kakao.init('dfdc54854ce83ab3b61e2a78ff301e69');
-					// 카카오 로그인 수행
-					Kakao.Auth.login({
-						success: function(authObj) {
-							console.log(authObj); // 로그인 성공 시 Access Token 등의 정보를 받아옴
-							Kakao.API.request({
-								url: '/v2/user/me',
-								success: function(res) {
-									console.log(res); // 사용자 정보 출력
-								},
-								fail: function(error) {
-									console.log(error);
-								}
-							});
-						},
-						fail: function(err) {
-							console.log(err);
-						}
-					});
-				});
-			}
+				window.location.href = "register/register1.clx";
+			};
 			// End - User Script
 			
 			// Header
@@ -82,7 +37,7 @@
 			// Configure root container
 			var container = app.getContainer();
 			container.style.css({
-				"background-color" : "#F3F2F2",
+				"background-color" : "#F8F8F8",
 				"width" : "100%",
 				"height" : "100%"
 			});
@@ -97,7 +52,7 @@
 			group_1.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "9px",
-				"background-color" : "#DCDCDC",
+				"background-color" : "#FEFEFF",
 				"border-left-style" : "solid",
 				"vertical-align" : "middle",
 				"border-bottom-style" : "solid",
@@ -112,7 +67,7 @@
 				inputBox_1.style.css({
 					"border-radius" : "8px",
 					"background-color" : "#FFFFFF",
-					"color" : "#FFFFFF",
+					"color" : "#080808",
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
@@ -128,7 +83,7 @@
 				inputBox_2.style.css({
 					"border-radius" : "8px",
 					"background-color" : "#FFFFFF",
-					"color" : "#FFFFFF",
+					"color" : "#080808",
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
@@ -146,7 +101,8 @@
 					"border-radius" : "8px",
 					"color" : "#FFFFFF",
 					"font-weight" : "600",
-					"font-size" : "16px"
+					"font-size" : "16px",
+					"background-image" : "none"
 				});
 				container.addChild(button_1, {
 					"top": "334px",
@@ -197,7 +153,7 @@
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "210px",
+				"top": "170px",
 				"left": "652px",
 				"width": "600px",
 				"height": "500px"

@@ -452,9 +452,10 @@ body.cl-has-modal {
 .cl-button {
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
-  background-image: none;
-  border: none;
-  text-shadow: none;
+  background-image: linear-gradient(#FCFEFF, #E0E1E2);
+  border-radius: 4px;
+  border: solid 1px #959697;
+  text-shadow: 0px 1px 0px white;
   /* 텍스트 스타일 */
   /* 아이콘 스타일 */
   /* 마우스 호버 스타일 */
@@ -535,9 +536,9 @@ body.cl-has-modal {
 /* 인풋 박스 루트 */
 .cl-inputbox {
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
-  background-image: none;
-  border: none;
-  text-shadow: none;
+  color: #333;
+  border: 1px solid #bbb;
+  background-color: #fff;
   /* 인풋 박스 텍스트 */
   /* 인풋 박스 - 포커스 상태 */
   /* 인풋 박스 - 클리어 버튼 */
@@ -1069,6 +1070,10 @@ body.cl-has-modal {
 .cl-grid .cl-grid-header .cl-grid-cell {
   /* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 }
+.cl-grid .cl-grid-header .cl-grid-cell .cl-checkbox.cl-builtin.cl-disabled .cl-checkbox-icon {
+  cursor: default !important;
+  background-image: none;
+}
 .cl-grid .cl-grid-header .cl-sort {
   /* 그리드 헤더 셀 정렬 인디케이터 - 정렬 가능 */
   /* 그리드 헤더 셀 정렬 인디케이터 - 오름차순 정렬됨 */
@@ -1361,130 +1366,49 @@ body.cl-has-modal {
 .cl-navigationbar-fullmenu {
   /* 서브메뉴에서 나누어진 그룹 영역 */
 }
-.cl-tabfolder.tab-basic {
-  /* 탭 폴더 헤더 스타일 */
-  /* 탭 폴더 바디 스타일 */
+/* 탭 폴더 - disabled */
+/* 탭 폴더 */
+.cl-tabfolder {
+  color: #333;
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
+  /* 헤더 */
+  /* 탭폴더 바디 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header {
-  background-image: linear-gradient(#babfc7, #babfc7);
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  height: 35px;
-  /* 탭 폴더 헤더가 위에 표시될 때 */
-  /* 탭 폴더 헤더가 아래에 표시될 때 */
-  /* 탭 폴더 아이템 스타일 */
+.cl-tabfolder .cl-tabfolder-header {
+  /* 좌측 스크롤 버튼 */
+  /* 우측 스크롤 버튼 */
+  /* 탭 아이템 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-top {
-  background-position: 0px 100%;
+.cl-tabfolder .cl-tabfolder-header .cl-tabfolder-prev {
+  border: solid 1px #bbb;
+  /* 비활성 상태 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-top .cl-tabfolder-item {
-  box-shadow: inset 0px -1px 0px 0px #babfc7;
-  /* 라인 굵어보인다면 추가 가능 */
+.cl-tabfolder .cl-tabfolder-header .cl-tabfolder-next {
+  border: solid 1px #bbb;
+  /* 비활성 상태 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-top .cl-tabfolder-item + .cl-tabfolder-item {
-  border-left: none;
+.cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item {
+  background-color: white;
+  border: solid 1px #bbb;
+  /* 탭 아이템 체크 박스 */
+  /* 탭 아이템 닫기 버튼 */
+  /* 탭 아이템 - 선택됨 */
+  /* 탭 아이템 - 호버 */
+  /* 비활성 탭 아이템 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-bottom {
-  background-position: 100% 0px;
+.cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
+  background-color: #208AED;
+  color: #FFFFFF;
+  border-color: #1369C5;
+  /* 선택된 탭 아이템 닫기 버튼 */
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-bottom .cl-tabfolder-item {
-  box-shadow: inset 0px 1px 0px 0px #babfc7;
-  /* 라인 굵어보인다면 추가 가능 */
+.cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
+  background-color: #DAEFFC;
 }
-.cl-tabfolder.tab-basic .cl-tabfolder-header.cl-bottom .cl-tabfolder-item + .cl-tabfolder-item {
-  border-left: none;
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-header .cl-tabfolder-item {
-  background-color: #ffffff;
-  color: #666666;
-  /* 탭 폴더 아이템 포커스링 해제 */
-  /* 탭 폴더 아이템 선택 스타일 */
-  /* 탭 폴더 아이템 호버 스타일 */
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-header .cl-tabfolder-item .cl-text:focus {
-  text-decoration: none;
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #ffffff;
-  border-color: #babfc7;
-  box-shadow: none;
-  color: #3f87fd;
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
-  background-color: #f5f5f5;
-  color: #333333;
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-body {
-  /* 탭 폴더 헤더가 바디 아래에 표시될 때 */
-  /* 탭 폴더 헤더가 바디 위에 표시될 때 */
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-body.cl-top {
-  border-bottom: none;
-}
-.cl-tabfolder.tab-basic .cl-tabfolder-body.cl-bottom {
-  border-top: none;
-}
-.cl-tabfolder.tab-basic.tab1 {
-  /* 탭 폴더 바디 스타일 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header {
-  background-image: linear-gradient(#babfc7, #babfc7);
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  height: 35px;
-  /* 탭 폴더 헤더가 위에 표시될 때 */
-  /* 탭 폴더 헤더가 아래에 표시될 때 */
-  /* 탭 폴더 아이템 스타일 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-top {
-  background-position: 0px 100%;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-top .cl-tabfolder-item {
-  box-shadow: inset 0px -1px 0px 0px #babfc7;
-  /* 라인 굵어보인다면 추가 가능 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-top .cl-tabfolder-item + .cl-tabfolder-item {
-  border-left: none;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-bottom {
-  background-position: 100% 0px;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-bottom .cl-tabfolder-item {
-  box-shadow: inset 0px 1px 0px 0px #babfc7;
-  /* 라인 굵어보인다면 추가 가능 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header.cl-bottom .cl-tabfolder-item + .cl-tabfolder-item {
-  border-left: none;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header .cl-tabfolder-item {
-  background-color: #ffffff;
-  color: #666666;
-  /* 탭 폴더 아이템 포커스링 해제 */
-  /* 탭 폴더 아이템 선택 스타일 */
-  /* 탭 폴더 아이템 호버 스타일 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header .cl-tabfolder-item .cl-text:focus {
-  text-decoration: none;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #ffffff;
-  border-color: #babfc7;
-  box-shadow: none;
-  color: #3f87fd;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
-  background-color: #f5f5f5;
-  color: #333333;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-body {
-  /* 탭 폴더 헤더가 바디 아래에 표시될 때 */
-  /* 탭 폴더 헤더가 바디 위에 표시될 때 */
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-body.cl-top {
-  border-bottom: none;
-}
-.cl-tabfolder.tab-basic.tab1 .cl-tabfolder-body.cl-bottom {
-  border-top: none;
+.cl-tabfolder .cl-tabfolder-body {
+  background-color: white;
+  color: #333;
+  border: solid 1px #bbb;
 }
 /* 페이지 인덱서 */
 .cl-pageindexer {
@@ -1701,18 +1625,203 @@ body.cl-has-modal {
 .cl-grid-cell:focus {
   /* 웹 접근성 개선 목적으로 포커스 링을 표시하려면 아래 주석을 해제 하십시오. */
 }
+/* 캘린더 */
+.cl-calendar.main-calendar {
+  background-color: #ffffff;
+  border: 1px solid #babfc7;
+  border-radius: 5px;
+  /* 이전 년도 버튼 */
+  /* 다음 년도 버튼 */
+  /* 이전 달 버튼 */
+  /* 다음 달 버튼 */
+  /* 캘린더 헤더 */
+  /* 캘린더 컨텐츠의 일, 월, 년 스타일 */
+  /* 캘린더 컨텐츠 스타일 */
+  /* 캘린더 푸터 날짜 호버 스타일 */
+  /* 캘린더 푸터 */
+  /* font-size로 디테일과 날짜와의 간격을 설정합니다. */
+  /* font-size로 이벤트 막대와의 간격을 설정합니다. 막대의 height보다 커야 합니다. */
+  /* height로 막대의 높이를 설정합니다. */
+  /* 캘린더 아이템, 기념일 스타일 */
+  /* 기념일을 표시하는 캘린더 스타일 */
+  /* 포커스 상태 */
+  /* 데이트인풋 등에 팝업으로 나타날때 스타일 */
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-before {
+  /* 호버 상태 */
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev:hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev.cl-hover {
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next:hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next.cl-hover {
+  background-image: url("../../../images/controls/calendar/icon-chevron-right-on.svg");
+}
+.cl-calendar.main-calendar .cl-calendar-header {
+  background-color: transparent;
+  /* 이전 년도 버튼 */
+  /* 다음 년도 버튼 */
+  /* 이전 달 버튼 */
+  /* 다음 달 버튼 */
+  /* 헤더 텍스트 */
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-before {
+  min-width: 0px;
+  width: 0px;
+  visibility: hidden;
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-after {
+  min-width: 0px;
+  width: 0px;
+  visibility: hidden;
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-prev {
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-next {
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-text {
+  color: #333333;
+  font-weight: bold;
+  font-size: 16px;
+}
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-text:hover,
+.cl-calendar.main-calendar .cl-calendar-header .cl-calendar-header-text.cl-hover {
+  color: #3f87fd;
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month {
+  border-radius: 5px;
+  /* 셀 호버 스타일 */
+  /* 셀 숨김 스타일 */
+  /* 선택된 날짜 셀 */
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day:not(.cl-disabled):hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month:not(.cl-disabled):hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year:not(.cl-disabled):hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month:not(.cl-disabled):hover {
+  background-color: #f8f8fa;
+  color: #3f87fd;
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day.cl-selected,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month.cl-selected,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year.cl-selected,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month.cl-selected {
+  background-color: transparent;
+  color: #ffffff;
+}
+.cl-calendar.main-calendar .cl-calendar-content {
+  /* week of year의 스타일 */
+  /* 날짜 달력의 헤더 스타일 */
+  /* 날짜 선택 모드시 날짜 스타일 */
+  /* 이전 달 또는 다음 달의 날짜 */
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-header {
+  background-color: transparent;
+  font-weight: bold;
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-day {
+  /* 일요일 셀 */
+  /* 토요일 셀 */
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-other-month {
+  background-color: transparent;
+  color: #c0c0c0;
+  /* 비활성화 상태 */
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-other-month.cl-disabled {
+  background-color: transparent;
+  color: #c0c0c0;
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-day,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-month,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-year {
+  /* 기본 날짜 - 오늘 날짜 셀 */
+  /* range 선택에서 선택된 날짜 스타일 */
+  /* 기념일 전역 스타일 */
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-day.cl-calendar-defaultdate,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-month.cl-calendar-defaultdate,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-year.cl-calendar-defaultdate {
+  color: #3f87fd;
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-day.cl-range-selected,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-month.cl-range-selected,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-year.cl-range-selected {
+  background-color: #3f87fd;
+  color: #ffffff;
+}
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-day.cl-selected,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-month.cl-selected,
+.cl-calendar.main-calendar .cl-calendar-content .cl-calendar-content-year.cl-selected {
+  background-color: #3f87fd;
+  color: #ffffff;
+}
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-footer-text:hover {
+  color: #c0c0c0;
+}
+.cl-calendar.main-calendar .cl-calendar-footer {
+  background-color: #f2f4f6;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+.cl-calendar.main-calendar .cl-calendar-footer .cl-calendar-footer-text {
+  color: #333333;
+}
+.cl-calendar.main-calendar .cl-calendar-item,
+.cl-calendar.main-calendar .cl-anniversary,
+.cl-calendar.main-calendar .cl-calendar-more {
+  /* line-height로 텍스트의 위치를 정렬합니다. height와 값이 같으면 가운데 정렬입니다. */
+}
+.cl-calendar.main-calendar .cl-calendar-item,
+.cl-calendar.main-calendar .cl-anniversary {
+  /* 숨김 상태 */
+  /* 선택 상태 */
+}
+.cl-calendar.main-calendar.cl-anniversaries {
+  /* 년월일 달력 스타일 */
+}
+.cl-calendar.main-calendar.cl-anniversaries .cl-calendar-content-day,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-mon,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-tue,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-wed,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-thu,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-fri,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-sat,
+.cl-calendar.main-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-sun {
+  /* 기념일 텍스트 스타일 */
+}
+.cl-calendar.main-calendar.cl-focus {
+  border-color: #1369C5;
+}
+.cl-calendar.main-calendar.cl-focus .cl-calendar-content {
+  /* 키보드 날짜 이동 스타일 */
+}
+.cl-calendar.main-calendar.cl-focus .cl-calendar-content .cl-calendar-current {
+  box-shadow: inset 0px 0px 0px 2px rgba(63, 135, 253, 0.5);
+}
+.cl-calendar.main-calendar.cl-popup {
+  /* 년도 캘린더 */
+  /* 년월 캘린더 */
+  /* 년월일 캘린더 */
+  /* 데이트인풋 위에 표시될때 상태 */
+  /* 데이트인풋 아래에 표시될때 상태 */
+}
+.cl-calendar.main-calendar.cl-popup .cl-calendar-content-day,
+.cl-calendar.main-calendar.cl-popup .cl-calendar-content-month,
+.cl-calendar.main-calendar.cl-popup .cl-calendar-content-year {
+  /* 데이트인풋 캘린더 키보드로 날짜 이동 스타일  */
+}
+/* 캘린더 disabled 상태 */
 /* HTML 오브젝트 */
 a {
   text-decoration-line: none;
   color: inherit;
-}
-.login_layout {
-  border: 1px solid #DCDCDC;
-}
-.cl-form-group1 {
-  border: 1px solid #DCDCDC;
-}
-.main_layout1 {
-  border: 1px solid #bfbfbf;
-  border-radius: 5px;
 }
