@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.arezip.weconnect.mapper.MemberMapper"></mapper>
+<mapper namespace="com.arezip.weconnect.mapper.MemberMapper">
+<insert id="register" parameterType="com.arezip.weconnect.model.vo.MemberVO">
+ INSERT INTO member (member_id, member_name, member_email, member_password, position, member_status, manager_yn, department_id)
+  VALUES (member_seq.NEXTVAL, #{memberName}, #{memberEmail}, #{memberPassword}, #{position}, #{memberStatus}, #{managerYn}, #{departmentVO.departmentId})
+</insert>
+</mapper>

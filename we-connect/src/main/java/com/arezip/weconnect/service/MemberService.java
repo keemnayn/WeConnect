@@ -1,5 +1,10 @@
 package com.arezip.weconnect.service;
 
-public interface MemberService {
+import java.util.Map;
 
+import com.arezip.weconnect.model.vo.MemberVO;
+
+public interface MemberService {
+	int register(MemberVO memberVO);
+	MemberVO convertMapToMemberVO(Map<String, String> map);
 }

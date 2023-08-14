@@ -19,12 +19,13 @@
 			 ************************************************/
 
 			/*
-			 * 그룹에서 click 이벤트 발생 시 호출.
+			 * "확인" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onGroupClick(e){
-				var group = e.control;
-				
+			function onButtonClick(e){
+				var button = e.control;
+				let submission = app.lookup("memberList");
+				submission.send();
 			};
 			// End - User Script
 			
@@ -56,6 +57,53 @@
 				]
 			});
 			app.register(dataSet_2);
+			
+			var dataSet_3 = new cpr.data.DataSet("member");
+			dataSet_3.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "decimal"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "memberEmail",
+						"dataType": "string"
+					},
+					{
+						"name": "memberPassword",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "memberStatus",
+						"dataType": "string"
+					},
+					{
+						"name": "managerYn",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveCount",
+						"dataType": "decimal"
+					},
+					{
+						"name": "departmentVO",
+						"dataType": "decimal"
+					}
+				]
+			});
+			app.register(dataSet_3);
+			var submission_1 = new cpr.protocols.Submission("memberList");
+			submission_1.action = "register.do";
+			submission_1.addResponseData(dataSet_3, false);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1927px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -284,6 +332,9 @@
 					"font-style" : "normal",
 					"background-image" : "none"
 				});
+				if(typeof onButtonClick == "function") {
+					button_2.addEventListener("click", onButtonClick);
+				}
 				container.addChild(button_2, {
 					"top": "813px",
 					"left": "133px",
@@ -353,6 +404,9 @@
 				"width": "737px",
 				"height": "896px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "register1";

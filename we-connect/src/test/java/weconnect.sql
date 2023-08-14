@@ -15,6 +15,11 @@ CREATE TABLE member (
 );
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
+/*멤버 테이블 insert 문 */
+INSERT INTO member (member_id, member_name, member_email, member_password, position, member_status, manager_yn, department_id)
+VALUES (member_seq.NEXTVAL, '김정현', 'john@example.com', 'a', '사원', '승인', 'Y', '2');
+/*멤버 테이블 */
+select * from member;
 
 ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
@@ -756,4 +761,5 @@ ALTER TABLE free_board_comment
     ADD CONSTRAINT FK_free_board_comment_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id);
+    
     
