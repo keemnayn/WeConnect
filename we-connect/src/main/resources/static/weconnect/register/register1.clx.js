@@ -33,7 +33,6 @@
 			dataSet_1.parseData({
 				"columns": [{"name": "position"}],
 				"rows": [
-					{"position": "(선택)"},
 					{"position": "사원"},
 					{"position": "주임"},
 					{"position": "선임"},
@@ -48,7 +47,6 @@
 				"sortCondition": "a",
 				"columns": [{"name": "department"}],
 				"rows": [
-					{"department": "(선택)"},
 					{"department": "개발팀"},
 					{"department": "연구부"},
 					{"department": "영업팀"},
@@ -234,7 +232,6 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
-				comboBox_1.bind("value").toDataSet(app.lookup("position"), "position", 0);
 				(function(comboBox_1){
 					comboBox_1.setItemSet(app.lookup("position"), {
 						"label": "position",
@@ -261,26 +258,6 @@
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
-				});
-				var comboBox_2 = new cpr.controls.ComboBox("cmb2");
-				comboBox_2.style.css({
-					"color" : "#A0A0A0",
-					"font-weight" : "500",
-					"font-family" : "IBM Plex Sans KR",
-					"text-align" : "left"
-				});
-				comboBox_2.bind("value").toDataSet(app.lookup("position"), "position", 0);
-				(function(comboBox_2){
-					comboBox_2.setItemSet(app.lookup("department"), {
-						"label": "department",
-						"value": "department"
-					});
-				})(comboBox_2);
-				container.addChild(comboBox_2, {
-					"top": "605px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
 				});
 				var hTMLSnippet_6 = new cpr.controls.HTMLSnippet();
 				hTMLSnippet_6.value = "<div>부서<\/div>";
@@ -347,6 +324,24 @@
 					"left": "12px",
 					"width": "229px",
 					"height": "83px"
+				});
+				var comboBox_2 = new cpr.controls.ComboBox("cmb2");
+				comboBox_2.placeholder = "(선택)";
+				comboBox_2.style.css({
+					"color" : "#A0A0A0",
+					"font-weight" : "500"
+				});
+				(function(comboBox_2){
+					comboBox_2.setItemSet(app.lookup("department"), {
+						"label": "department",
+						"value": "department"
+					});
+				})(comboBox_2);
+				container.addChild(comboBox_2, {
+					"top": "605px",
+					"left": "160px",
+					"width": "352px",
+					"height": "48px"
 				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {

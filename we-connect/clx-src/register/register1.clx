@@ -12,9 +12,6 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="position"><![CDATA[(선택)]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
             <cl:datavalue columnname="position"><![CDATA[사원]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
@@ -36,9 +33,6 @@
           <cl:datacolumn std:sid="d-column-06f578ad" name="department"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="department"><![CDATA[(선택)]]></cl:datavalue>
-          </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="department"><![CDATA[개발팀]]></cl:datavalue>
           </cl:datarow>
@@ -94,18 +88,12 @@
         <cl:xylayoutdata std:sid="xyl-data-efb9299c" top="116px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:combobox std:sid="c-box-25368156" id="cmb1" style="color:#A0A0A0; font-weight:500;" placeholder="(선택)">
-        <cl:datasetbind property="value" datacontrolid="position" columnname="position" rowindex="0"/>
         <cl:xylayoutdata std:sid="xyl-data-a5b18ca1" top="729px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:itemset datasetid="position" label="position" value="position"/>
       </cl:combobox>
       <cl:htmlsnippet std:sid="htmlsnippet-6bec50ae" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>직급&lt;/div>">
         <cl:xylayoutdata std:sid="xyl-data-7aae5a37" top="699px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:combobox std:sid="c-box-1da4f139" id="cmb2" style="color:#A0A0A0; font-weight:500; font-family:IBM Plex Sans KR; text-align:left;">
-        <cl:datasetbind property="value" datacontrolid="position" columnname="position" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-7fc49386" top="605px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        <cl:itemset datasetid="department" label="department" value="department"/>
-      </cl:combobox>
       <cl:htmlsnippet std:sid="htmlsnippet-3ab647a4" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>부서&lt;/div>">
         <cl:xylayoutdata std:sid="xyl-data-bb298a5c" top="576px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
@@ -118,6 +106,10 @@
       <cl:textarea std:sid="t-area-5f135885" id="txa1" style="border-right-style:none; color:#E1E1E1; border-left-style:none; font-weight:900; font-size:45px; border-bottom-style:none; font-style:normal; border-top-style:none; text-align:center;" value="회원가입">
         <cl:xylayoutdata std:sid="xyl-data-c54cf54f" top="3px" left="12px" width="229px" height="83px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:textarea>
+      <cl:combobox std:sid="c-box-9d874f66" id="cmb2" style="color:#A0A0A0; font-weight:500;" placeholder="(선택)">
+        <cl:xylayoutdata std:sid="xyl-data-ffe0b730" top="605px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:itemset datasetid="department" label="department" value="department"/>
+      </cl:combobox>
       <cl:xylayout std:sid="xylayout-e0d6727c"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-e8b4695f"/>

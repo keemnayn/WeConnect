@@ -20,6 +20,9 @@
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("ds1");
+			dataSet_1.parseData({});
+			app.register(dataSet_1);
 			app.supportMedia("all and (min-width: 1024px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
@@ -36,6 +39,13 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
+			var notifier_1 = new cpr.controls.Notifier();
+			container.addChild(notifier_1, {
+				"top": "82px",
+				"left": "1180px",
+				"width": "311px",
+				"height": "342px"
+			});
 		}
 	});
 	app.title = "alert";
