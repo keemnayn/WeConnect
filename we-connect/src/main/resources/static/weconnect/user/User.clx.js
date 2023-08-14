@@ -132,7 +132,7 @@
 					{"label": "일정", "value": "일정", "icon": "img/user/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
 					{"label": "업무보드", "value": "업무보드", "icon": "img/user/work_board.png", "parent": "프로젝트", "appId": ""},
 					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/RoomReservForm"},
-					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Board"},
+					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/FreeBoard"},
 					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Notice"},
 					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "user/Proposal"},
 					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "user/project/TeamPost"},
