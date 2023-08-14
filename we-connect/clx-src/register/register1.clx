@@ -53,10 +53,27 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-92b3dee5" id="member">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-aa549b39" name="memberId" datatype="decimal"/>
+          <cl:datacolumn std:sid="d-column-3ea62cde" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-194f970d" name="memberEmail" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-75f7833e" name="memberPassword" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-32558897" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-9e6287a4" name="memberStatus" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-f87d5c67" name="managerYn" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-be97529d" name="leaveCount" datatype="decimal"/>
+          <cl:datacolumn std:sid="d-column-a566e2bc" name="departmentVO" datatype="decimal"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-30d8da43" id="memberList" action="register.do">
+        <cl:responsedata dataid="member"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-13f6457c" style="background-color:#F8F8F8; background-image:none;">
+    <cl:listener std:sid="listener-77a7b8f3" name="init" handler="onBodyInit"/>
     <cl:group std:sid="group-6d056694" style="border-radius:30px; background-color:#FEFEFF; color:#FFFFFF; background-image:none;" class="cl-form-group1">
       <cl:listener std:sid="listener-05b5216e" name="click" handler="onGroupClick"/>
       <cl:xylayoutdata std:sid="xyl-data-3ca432d1" top="20px" left="605px" width="737px" height="896px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -98,6 +115,7 @@
         <cl:xylayoutdata std:sid="xyl-data-bb298a5c" top="576px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:button std:sid="button-861d4f5e" style="background-color:#4680FF; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none;" class="btn-success" value="확인">
+        <cl:listener std:sid="listener-1594139f" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-6e3ee8c9" top="813px" left="133px" width="150px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-92e0fc1e" style="background-color:#929292; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none;" class="btn-fail" value="취소">
