@@ -20,6 +20,15 @@
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("ds1");
+			dataSet_1.parseData({
+				"columns" : [{
+					"name": "label",
+					"dataType": "string",
+					"info": "img/header/profile.png"
+				}]
+			});
+			app.register(dataSet_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -155,6 +164,32 @@
 					});
 					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
 					group_4.setLayout(xYLayout_5);
+					(function(container){
+						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_3.value = "<hr>\r\n";
+						container.addChild(hTMLSnippet_3, {
+							"top": "20px",
+							"right": "0px",
+							"left": "0px",
+							"height": "20px"
+						});
+						var textArea_3 = new cpr.controls.TextArea("txa4");
+						textArea_3.value = "관리자프로필";
+						textArea_3.style.css({
+							"border-right-style" : "none",
+							"border-left-style" : "none",
+							"font-weight" : "900",
+							"font-size" : "16px",
+							"border-bottom-style" : "none",
+							"border-top-style" : "none"
+						});
+						container.addChild(textArea_3, {
+							"top": "0px",
+							"left": "0px",
+							"width": "100px",
+							"height": "21px"
+						});
+					})(group_4);
 					container.addChild(group_4, {
 						"top": "0px",
 						"left": "0px",
@@ -177,9 +212,9 @@
 					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
 					group_5.setLayout(xYLayout_6);
 					(function(container){
-						var textArea_3 = new cpr.controls.TextArea("txa3");
-						textArea_3.value = "사내소식";
-						textArea_3.style.css({
+						var textArea_4 = new cpr.controls.TextArea("txa3");
+						textArea_4.value = "사내소식";
+						textArea_4.style.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
 							"font-weight" : "900",
@@ -187,15 +222,15 @@
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
-						container.addChild(textArea_3, {
+						container.addChild(textArea_4, {
 							"top": "0px",
 							"left": "0px",
 							"width": "100px",
 							"height": "30px"
 						});
-						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_3.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_3, {
+						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_4.value = "<hr>\r\n";
+						container.addChild(hTMLSnippet_4, {
 							"top": "20px",
 							"right": "0px",
 							"left": "0px",
@@ -285,7 +320,7 @@
 			container.addChild(tabFolder_1, {
 				"top": "0px",
 				"right": "0px",
-				"bottom": "0px",
+				"bottom": "20px",
 				"left": "0px"
 			});
 		}

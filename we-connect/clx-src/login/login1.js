@@ -11,5 +11,5 @@
  */
 function onButtonClick(e) {
 	var button = e.control;
-	window.location.href = "/register1.clx";
+	window.location.href = "register/register1.clx";
 }

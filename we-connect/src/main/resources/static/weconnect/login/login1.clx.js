@@ -24,7 +24,7 @@
 			 */
 			function onButtonClick(e) {
 				var button = e.control;
-				window.location.href = "/register1.clx";
+				window.location.href = "register/register1.clx";
 			};
 			// End - User Script
 			
@@ -37,7 +37,7 @@
 			// Configure root container
 			var container = app.getContainer();
 			container.style.css({
-				"background-color" : "#F3F2F2",
+				"background-color" : "#F8F8F8",
 				"width" : "100%",
 				"height" : "100%"
 			});
@@ -52,7 +52,7 @@
 			group_1.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "9px",
-				"background-color" : "#DCDCDC",
+				"background-color" : "#FEFEFF",
 				"border-left-style" : "solid",
 				"vertical-align" : "middle",
 				"border-bottom-style" : "solid",
@@ -67,7 +67,7 @@
 				inputBox_1.style.css({
 					"border-radius" : "8px",
 					"background-color" : "#FFFFFF",
-					"color" : "#FFFFFF",
+					"color" : "#080808",
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
@@ -83,7 +83,7 @@
 				inputBox_2.style.css({
 					"border-radius" : "8px",
 					"background-color" : "#FFFFFF",
-					"color" : "#FFFFFF",
+					"color" : "#080808",
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
@@ -153,7 +153,7 @@
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "210px",
+				"top": "170px",
 				"left": "652px",
 				"width": "600px",
 				"height": "500px"

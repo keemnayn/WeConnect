@@ -505,7 +505,9 @@ body {
   word-break: break-all;
   white-space: pre;
   /* columnMovable=true 사용시 컬럼이 이동될 가이드라인 스타일 */
+  
 }
+
 .cl-grid-cell .cl-builtin.cl-checkbox,
 .cl-grid-cell .cl-builtin.cl-radiobutton .cl-radiobutton-item {
   vertical-align: middle;
@@ -2853,7 +2855,7 @@ body {
   /* disabled 체크박스 hover시 아이콘 스타일 */
   /* 체크된 disabled 체크박스 아이콘 스타일 */
 }
-.cl-checkbox.cl-disabled * {
+.sdisabled * {
   cursor: default;
 }
 .cl-checkbox.cl-disabled .cl-text {
@@ -5439,3 +5441,8 @@ a{
 		color: @disabled-selection-foreground;
 	}
 }
+/*login_layout*/
+.login_layout{
+	border: 1px solid #FFFFFF;
+}
+
