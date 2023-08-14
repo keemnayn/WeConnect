@@ -90,7 +90,7 @@
             <cl:datavalue columnname="value"><![CDATA[자유게시판]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/post.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/Board]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[user/FreeBoard]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
