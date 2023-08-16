@@ -26,83 +26,77 @@
 				var button = e.control;
 				let submission = app.lookup("memberList");
 				submission.send();
+			}
+
+			/*
+			 * 콤보 박스에서 selection-change 이벤트 발생 시 호출.
+			 * ComboBox Item을 선택하여 선택된 값이 저장된 후에 발생하는 이벤트.
+			 */
+			function onCmb2SelectionChange(e){
+				var cmb2 = e.control;
+				var control = app.lookup("department");
+				
 			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("position");
+			var dataSet_1 = new cpr.data.DataSet("department");
 			dataSet_1.parseData({
-				"columns": [{"name": "position"}],
-				"rows": [
-					{"position": "사원"},
-					{"position": "주임"},
-					{"position": "선임"},
-					{"position": "책임"},
-					{"position": "수석"}
-				]
+				"columns": [
+					{
+						"name": "DEPARTMENT_ID",
+						"dataType": "string"
+					},
+					{
+						"name": "DEPARTMENT_NAME",
+						"dataType": "string"
+					}
+				],
+				"rows": [{"DEPARTMENT_ID": "DEPARTMENT_ID1", "DEPARTMENT_NAME": "DEPARTMENT_NAME1"}]
 			});
 			app.register(dataSet_1);
-			
-			var dataSet_2 = new cpr.data.DataSet("department");
-			dataSet_2.parseData({
-				"sortCondition": "a",
-				"columns": [{"name": "department"}],
-				"rows": [
-					{"department": "개발팀"},
-					{"department": "연구부"},
-					{"department": "영업팀"},
-					{"department": "인사팀"},
-					{"department": "재무팀"},
-					{"department": "총무팀"}
-				]
-			});
-			app.register(dataSet_2);
-			
-			var dataSet_3 = new cpr.data.DataSet("member");
-			dataSet_3.parseData({
+			var dataMap_1 = new cpr.data.DataMap("member");
+			dataMap_1.parseData({
 				"columns" : [
 					{
-						"name": "memberId",
-						"dataType": "decimal"
-					},
-					{
-						"name": "memberName",
+						"name": "MEMBER_ID",
 						"dataType": "string"
 					},
 					{
-						"name": "memberEmail",
+						"name": "MEMBER_NAME",
 						"dataType": "string"
 					},
 					{
-						"name": "memberPassword",
+						"name": "MEMBER_EMAIL",
 						"dataType": "string"
 					},
 					{
-						"name": "position",
+						"name": "MEMBER_PASSWORD",
 						"dataType": "string"
 					},
 					{
-						"name": "memberStatus",
+						"name": "MEMBER_STATUS",
 						"dataType": "string"
 					},
 					{
-						"name": "managerYn",
+						"name": "MANAGER_YN",
 						"dataType": "string"
 					},
 					{
-						"name": "leaveCount",
-						"dataType": "decimal"
+						"name": "DEPARTMENT_ID",
+						"dataType": "string"
 					},
 					{
-						"name": "departmentVO",
-						"dataType": "decimal"
+						"name": "LEAVE_COUNT",
+						"dataType": "string"
 					}
 				]
 			});
-			app.register(dataSet_3);
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("memberList");
 			submission_1.action = "register.do";
-			submission_1.addResponseData(dataSet_3, false);
+			submission_1.addRequestData(dataMap_1);
+			submission_1.addRequestData(dataSet_1);
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1927px)", "default");
@@ -134,7 +128,7 @@
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var inputBox_1 = new cpr.controls.InputBox("ipb1");
+				var inputBox_1 = new cpr.controls.InputBox("memberId");
 				inputBox_1.placeholder = "이메일 주소는 ID로 사용됩니다.";
 				inputBox_1.style.css({
 					"border-radius" : "5px",
@@ -144,6 +138,10 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_1.bind("value").toDataMap(app.lookup("member"), "MEMBER_EMAIL");
+				if(typeof onMemberIdValueChange == "function") {
+					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
+				}
 				container.addChild(inputBox_1, {
 					"top": "156px",
 					"left": "158px",
@@ -167,8 +165,7 @@
 					"width": "109px",
 					"height": "48px"
 				});
-				var inputBox_2 = new cpr.controls.InputBox("ipb2");
-				inputBox_2.value = "";
+				var inputBox_2 = new cpr.controls.InputBox("memberName");
 				inputBox_2.placeholder = "\r\n";
 				inputBox_2.style.css({
 					"border-radius" : "5px",
@@ -177,6 +174,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_2.bind("value").toDataMap(app.lookup("member"), "MEMBER_NAME");
 				container.addChild(inputBox_2, {
 					"top": "262px",
 					"left": "160px",
@@ -184,7 +182,6 @@
 					"height": "48px"
 				});
 				var inputBox_3 = new cpr.controls.InputBox("ipb3");
-				inputBox_3.value = "";
 				inputBox_3.placeholder = "\r\n";
 				inputBox_3.style.css({
 					"border-radius" : "5px",
@@ -193,6 +190,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_3.bind("value").toDataMap(app.lookup("member"), "MEMBER_PASSWORD");
 				container.addChild(inputBox_3, {
 					"top": "377px",
 					"left": "160px",
@@ -208,6 +206,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_4.bind("value").toDataMap(app.lookup("member"), "MEMBER_PASSWORD");
 				container.addChild(inputBox_4, {
 					"top": "486px",
 					"left": "160px",
@@ -260,7 +259,7 @@
 					"height": "30px"
 				});
 				var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_4.value = "<div>아이디 <\/div>";
+				hTMLSnippet_4.value = "<div>이메일<\/div>\r\n";
 				hTMLSnippet_4.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -269,7 +268,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "116px",
+					"top": "126px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -280,12 +279,6 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
-				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("position"), {
-						"label": "position",
-						"value": "position"
-					});
-				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"top": "729px",
 					"left": "160px",
@@ -384,10 +377,13 @@
 				});
 				(function(comboBox_2){
 					comboBox_2.setItemSet(app.lookup("department"), {
-						"label": "department",
-						"value": "department"
+						"label": "DEPARTMENT_NAME",
+						"value": "DEPARTMENT_ID"
 					});
 				})(comboBox_2);
+				if(typeof onCmb2SelectionChange == "function") {
+					comboBox_2.addEventListener("selection-change", onCmb2SelectionChange);
+				}
 				container.addChild(comboBox_2, {
 					"top": "605px",
 					"left": "160px",
