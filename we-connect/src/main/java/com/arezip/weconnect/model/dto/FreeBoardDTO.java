@@ -8,10 +8,8 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class FreeBoardDTO {
-	private final long freeBoardId;
-	private final String freeBoardTitle;
-	private final String freeBoardContent;
-	private final String freeBoardCreate;
-	private final long freeBoardViews;
-	private final MemberDTO memberVO;
+	private long freeBoardId;
+	private String freeBoardTitle;
+	private String freeBoardCreate;
+	private String memberName;
 }
