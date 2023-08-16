@@ -27,8 +27,8 @@ public class MemberTest {
 	@Test
 	void register() {
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberName("박애준");
-        memberVO.setMemberEmail("hi@naver.com");
+        memberVO.setMemberName("박준1");
+        memberVO.setMemberEmail("erer121@naver.com");
         memberVO.setMemberPassword("a");
         memberVO.setPosition("사원");
         memberVO.setMemberStatus("승인");

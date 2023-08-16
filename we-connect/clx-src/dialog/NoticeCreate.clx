@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-91bfa7ba" version="1.0.4584">
+  <head std:sid="head-972477df">
+    <screen std:sid="screen-1b7ad80c" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="720" customWidth="1280" active="true"/>
+    <screen std:sid="screen-44b9004d" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-b3b4b64d" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-8c9998f9" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-622371a5">
+      <cl:dataset std:sid="d-set-a2a23ee9" id="category">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-5f6619bd" name="category"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="category"><![CDATA[공지]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="category"><![CDATA[점검]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+    </cl:model>
+    <cl:appspec title="공지사항 등록 팝업"/>
+  </head>
+  <body std:sid="body-dd8646b4">
+    <cl:output std:sid="output-fceb3975" value="공지사항 등록">
+      <cl:xylayoutdata std:sid="xyl-data-d9e9a87a" top="20px" right="1060px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:button std:sid="button-204368de" value="등록">
+      <cl:xylayoutdata std:sid="xyl-data-37acaa12" right="660px" bottom="20px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-16f503a5" value="취소">
+      <cl:xylayoutdata std:sid="xyl-data-9af7ed9d" bottom="20px" left="660px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:inputbox std:sid="i-box-abd7800c" id="ipb1" placeholder="제목">
+      <cl:xylayoutdata std:sid="xyl-data-2d4e307b" top="120px" left="20px" width="800px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:inputbox>
+    <cl:textarea std:sid="t-area-8b47dfa8" id="txa1" placeholder="내용">
+      <cl:xylayoutdata std:sid="xyl-data-33e480df" top="220px" right="20px" bottom="100px" left="20px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+    </cl:textarea>
+    <cl:combobox std:sid="c-box-1a852d50" id="cmb1" value="공지">
+      <cl:xylayoutdata std:sid="xyl-data-f30b2fd9" top="120px" right="20px" width="300px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:itemset datasetid="category" label="category" value="category"/>
+    </cl:combobox>
+    <cl:xylayout std:sid="xylayout-014465a9"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

@@ -6,16 +6,13 @@ import org.springframework.context.annotation.Configuration;
 
 import com.cleopatra.XBInitializer;
 
-
 @Configuration
 public class Exbuilder6Listener {
 
-
 	@Bean
 	public ServletListenerRegistrationBean<XBInitializer> getServletListenerRegistrationBean() {
-		ServletListenerRegistrationBean<XBInitializer> listener = new ServletListenerRegistrationBean<XBInitializer>(new XBInitializer());
-		
+		ServletListenerRegistrationBean<XBInitializer> listener = new ServletListenerRegistrationBean<XBInitializer>(
+				new XBInitializer());
 		return listener;
 	}
 }
-
