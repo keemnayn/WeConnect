@@ -12,3 +12,19 @@
 function onBodyInit(e){
 	app.lookup("boardListSub").send();
 }
+
+/*
+ * "새글" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick(e){
+	var button = e.control;
+//	window.location = "boardWriteFrom.do";
+	app.openDialog("dialog/BoardWriteForm", {width : 800, height : 600}, function(dialog){
+		dialog.ready(function(dialogApp){
+			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
+		});
+	}).then(function(returnValue){
+		
+	});
+}

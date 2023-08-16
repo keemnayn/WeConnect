@@ -90,13 +90,17 @@
     <cl:pageindexer std:sid="p-indexer-6fa8328f">
       <cl:xylayoutdata std:sid="xyl-data-df28ea3e" bottom="50px" left="290px" width="1000px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
     </cl:pageindexer>
-    <cl:searchinput std:sid="s-input-e671e07b">
-      <cl:xylayoutdata std:sid="xyl-data-d54a5c1a" top="40px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-    </cl:searchinput>
-    <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
-      <cl:xylayoutdata std:sid="xyl-data-6096096f" top="40px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-      <cl:itemset datasetid="search" label="type" value="type"/>
-    </cl:combobox>
+    <cl:group std:sid="group-2e1d1886">
+      <cl:xylayoutdata std:sid="xyl-data-e2689e96" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
+      <cl:searchinput std:sid="s-input-e671e07b">
+        <cl:xylayoutdata std:sid="xyl-data-4ce1c669" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
+      </cl:searchinput>
+      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+        <cl:xylayoutdata std:sid="xyl-data-74061233" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
+        <cl:itemset datasetid="search" label="type" value="type"/>
+      </cl:combobox>
+      <cl:xylayout std:sid="xylayout-1984a9b7"/>
+    </cl:group>
     <cl:xylayout std:sid="xylayout-ef499770"/>
   </body>
   <std:studiosetting>

@@ -159,25 +159,44 @@
 				"height": "50px"
 			});
 			
-			var searchInput_1 = new cpr.controls.SearchInput();
-			container.addChild(searchInput_1, {
+			var group_1 = new cpr.controls.Container();
+			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
+			group_1.setLayout(xYLayout_2);
+			(function(container){
+				var searchInput_1 = new cpr.controls.SearchInput();
+				container.addChild(searchInput_1, {
+					"top": "0px",
+					"right": "0px",
+					"width": "560px",
+					"height": "30px"
+				});
+				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				comboBox_1.value = "전체";
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("search"), {
+						"label": "type",
+						"value": "type"
+					});
+				})(comboBox_1);
+				container.addChild(comboBox_1, {
+					"top": "0px",
+					"right": "560px",
+					"width": "100px",
+					"height": "30px"
+				});
+			})(group_1);
+			container.addChild(group_1, {
 				"top": "40px",
-				"right": "0px",
-				"width": "560px",
-				"height": "30px"
+				"width": "660px",
+				"height": "30px",
+				"left": "calc(50% - 330px)"
 			});
 			
-			var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-			comboBox_1.value = "전체";
-			(function(comboBox_1){
-				comboBox_1.setItemSet(app.lookup("search"), {
-					"label": "type",
-					"value": "type"
-				});
-			})(comboBox_1);
-			container.addChild(comboBox_1, {
+			var button_1 = new cpr.controls.Button();
+			button_1.value = "새글";
+			container.addChild(button_1, {
 				"top": "40px",
-				"right": "560px",
+				"left": "1130px",
 				"width": "100px",
 				"height": "30px"
 			});
