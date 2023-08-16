@@ -16,37 +16,148 @@
 			 * Created at 2023. 8. 9. 오전 10:03:48.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				app.lookup("noticeListSub").send();
+				var comboBox = app.lookup("searchTypeCmb");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
+			}
+
+			/*
+			 * "등록" 버튼(createBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCreateBtnClick(e) {
+				var createBtn = e.control;
+				var grid = app.lookup("noticeGrd");
+				app.openDialog("dialog/NoticeCreate", {
+					width: 1280,
+					height: 720
+				}, function(dialog) {
+					dialog.ready(function(dialogApp) {});
+				}).then(function(returnValue) {
+					var grid = app.lookup("noticeGrd");
+					grid.insertRow(-1, true);
+					grid.redraw();
+				});
+			}
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchIpbSearch(e) {
+				var searchIpb = e.control;
+				var submission = app.lookup("searchNoticeSub");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchNoticeSubSubmitSuccess(e) {
+				var searchNoticeSub = e.control;
+				app.lookup("noticeGrd").redraw();
+				
+			}
+
+			/*
+			 * "삭제" 버튼(deleteBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onDeleteBtnClick(e) {
+				var deleteBtn = e.control;
+				var grid = app.lookup("noticeGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length > 0) {
+					grid.deleteRow(checkRowIndices);
+					app.lookup("deleteNoticeSub").send();
+				}
+			}
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onDeleteNoticeSubSubmitDone(e) {
+				var deleteNoticeSub = e.control;
+				app.lookup("noticeListSub").send();
+			}
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("noticeList");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "title"},
-					{"name": "content"},
-					{"name": "type"},
-					{"name": "date"}
+					{
+						"name": "noticeId",
+						"dataType": "string"
+					},
+					{"name": "noticeTitle"},
+					{"name": "noticeContent"},
+					{"name": "noticeCategory"},
+					{"name": "noticeCreate"}
 				],
-				"rows": [
-					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"},
-					{"title": "점검", "content": "점검합니다", "type": "점검", "date": "2023-08-27"},
-					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"},
-					{"title": "공지", "content": "공지합니다", "type": "공지", "date": "2023-08-27"}
-				]
+				"rows": []
 			});
 			app.register(dataSet_1);
 			
 			var dataSet_2 = new cpr.data.DataSet("noticeSearch");
 			dataSet_2.parseData({
-				"columns": [{"name": "type"}],
+				"columns": [
+					{"name": "type"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"type": "전체"},
-					{"type": "제목"},
-					{"type": "분류"}
+					{"type": "전체", "value": "all"},
+					{"type": "제목", "value": "title"},
+					{"type": "분류", "value": "category"}
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "searchType"},
+					{"name": "searchText"}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("noticeListSub");
+			submission_1.method = "get";
+			submission_1.action = "admin/notices";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("searchNoticeSub");
+			submission_2.method = "get";
+			submission_2.action = "admin/notices/search";
+			submission_2.addRequestData(dataMap_1);
+			submission_2.addResponseData(dataSet_1, false);
+			if(typeof onSearchNoticeSubSubmitDone == "function") {
+				submission_2.addEventListener("submit-done", onSearchNoticeSubSubmitDone);
+			}
+			if(typeof onSearchNoticeSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onSearchNoticeSubSubmitSuccess);
+			}
+			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("deleteNoticeSub");
+			submission_3.method = "delete";
+			submission_3.action = "admin/notices";
+			submission_3.addRequestData(dataSet_1);
+			if(typeof onDeleteNoticeSubSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onDeleteNoticeSubSubmitSuccess);
+			}
+			if(typeof onDeleteNoticeSubSubmitDone == "function") {
+				submission_3.addEventListener("submit-done", onDeleteNoticeSubSubmitDone);
+			}
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -73,11 +184,12 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var grid_1 = new cpr.controls.Grid("grd1");
+					var grid_1 = new cpr.controls.Grid("noticeGrd");
 					grid_1.init({
 						"dataSet": app.lookup("noticeList"),
 						"columns": [
 							{"width": "25px"},
+							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
@@ -102,8 +214,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "title";
-										cell.text = "제목";
+										cell.targetColumnName = "noticeId";
+										cell.text = "noticeId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -114,8 +226,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "content";
-										cell.text = "내용";
+										cell.targetColumnName = "noticeTitle";
+										cell.text = "noticeTitle";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -126,8 +238,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "type";
-										cell.text = "분류";
+										cell.targetColumnName = "noticeContent";
+										cell.text = "noticeContent";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -138,8 +250,20 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "date";
-										cell.text = "등록일";
+										cell.targetColumnName = "noticeCategory";
+										cell.text = "noticeCategory";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "noticeCreate";
+										cell.text = "noticeCreate";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -162,7 +286,7 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "title";
+										cell.columnName = "noticeId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -171,16 +295,15 @@
 											output_1.style.css({
 												"text-align" : "center"
 											});
-											output_1.bind("value").toDataColumn("title");
+											output_1.bind("value").toDataColumn("noticeId");
 											return output_1;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "content";
+										cell.columnName = "noticeTitle";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -189,16 +312,15 @@
 											output_2.style.css({
 												"text-align" : "center"
 											});
-											output_2.bind("value").toDataColumn("content");
+											output_2.bind("value").toDataColumn("noticeTitle");
 											return output_2;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "type";
+										cell.columnName = "noticeContent";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -207,16 +329,15 @@
 											output_3.style.css({
 												"text-align" : "center"
 											});
-											output_3.bind("value").toDataColumn("type");
+											output_3.bind("value").toDataColumn("noticeContent");
 											return output_3;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "date";
+										cell.columnName = "noticeCategory";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -225,10 +346,26 @@
 											output_4.style.css({
 												"text-align" : "center"
 											});
-											output_4.bind("value").toDataColumn("date");
+											output_4.bind("value").toDataColumn("noticeCategory");
 											return output_4;
 										})();
-										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.columnName = "noticeCreate";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_5 = new cpr.controls.Output();
+											output_5.style.css({
+												"text-align" : "center"
+											});
+											output_5.bind("value").toDataColumn("noticeCreate");
+											return output_5;
+										})();
 									}
 								}
 							]
@@ -250,31 +387,31 @@
 					formLayout_1.leftMargin = "5px";
 					formLayout_1.horizontalSpacing = "10px";
 					formLayout_1.verticalSpacing = "10px";
-					formLayout_1.setColumns(["1fr", "1fr", "1fr", "1fr"]);
+					formLayout_1.setColumns(["1fr", "1fr", "1fr"]);
 					formLayout_1.setRows(["1fr"]);
 					group_2.setLayout(formLayout_1);
 					(function(container){
-						var button_1 = new cpr.controls.Button();
+						var button_1 = new cpr.controls.Button("createBtn");
 						button_1.value = "등록";
+						if(typeof onCreateBtnClick == "function") {
+							button_1.addEventListener("click", onCreateBtnClick);
+						}
 						container.addChild(button_1, {
 							"colIndex": 0,
 							"rowIndex": 0
 						});
-						var button_2 = new cpr.controls.Button();
+						var button_2 = new cpr.controls.Button("updateBtn");
 						button_2.value = "수정";
 						container.addChild(button_2, {
 							"colIndex": 1,
 							"rowIndex": 0
 						});
-						var button_3 = new cpr.controls.Button();
-						button_3.value = "저장";
+						var button_3 = new cpr.controls.Button("deleteBtn");
+						button_3.value = "삭제";
+						if(typeof onDeleteBtnClick == "function") {
+							button_3.addEventListener("click", onDeleteBtnClick);
+						}
 						container.addChild(button_3, {
-							"colIndex": 3,
-							"rowIndex": 0
-						});
-						var button_4 = new cpr.controls.Button();
-						button_4.value = "삭제";
-						container.addChild(button_4, {
 							"colIndex": 2,
 							"rowIndex": 0
 						});
@@ -282,27 +419,38 @@
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "300px",
+						"width": "225px",
 						"height": "40px"
 					});
-					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-					comboBox_1.value = "전체";
+					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+					comboBox_1.style.css({
+						"text-align" : "center"
+					});
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
+					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("noticeSearch"), {
 							"label": "type",
-							"value": "type"
+							"value": "value"
 						});
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "620px",
+						"right": "545px",
 						"width": "100px",
 						"height": "30px"
 					});
-					var searchInput_1 = new cpr.controls.SearchInput();
+					var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_2);
+					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+					if(typeof onSearchIpbSearch == "function") {
+						searchInput_1.addEventListener("search", onSearchIpbSearch);
+					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "320px",
+						"right": "245px",
 						"width": "280px",
 						"height": "30px"
 					});
@@ -318,6 +466,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminNotice";

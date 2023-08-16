@@ -2,19 +2,19 @@ package com.arezip.weconnect.model.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class LeaveRequestVO {
-	private long leaveRequestId;
-	private String leaveRequestType;
-	private Date leaveRequestStart;
-	private Date leaveRequestEnd;
-	private String leaveRequestStatus;
-	private String leaveRequestReason;
-	private MemberVO memberVO;
+	private final long leaveRequestId;
+	private final String leaveRequestType;
+	private final Date leaveRequestStart;
+	private final Date leaveRequestEnd;
+	private final String leaveRequestStatus;
+	private final String leaveRequestReason;
+	private final MemberVO memberVO;
 }

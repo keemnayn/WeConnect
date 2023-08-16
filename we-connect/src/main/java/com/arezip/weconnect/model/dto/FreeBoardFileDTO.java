@@ -1,0 +1,15 @@
+package com.arezip.weconnect.model.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class FreeBoardFileDTO {
+	private long freeBoardFileId;
+	private String freeBoardFile_name;
+	private String freeBoardFilePath;
+	private FreeBoardDTO freeBoardVO;
+}

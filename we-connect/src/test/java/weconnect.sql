@@ -15,12 +15,22 @@ CREATE TABLE member (
 );
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
-
+/*멤버 테이블 insert 문 */
+INSERT INTO member (member_name, member_email, member_password, position, department_id)
+VALUES (member_seq.NEXTVAL, '박정', 'een@example.com', 'a', '사원','2');
+--로그인----
+select member_name from member where member_email='wqeqwere1'and member_password='12';
+/*멤버 테이블 */
+select * from member;
+select * from department;
+select * from member 
 ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
+--member , department =>join 
+select m.member_name, m.member_email, m.position, d.department_name  from member m inner join department d ON m.DEPARTMENT_ID = d.DEPARTMENT_ID;
 
 ALTER TABLE member
-MODIFY member_status DEFAULT 'N';
+MODIFY manager_yn DEFAULT 'N';
 
 COMMENT ON TABLE member IS '회원';
 
@@ -756,4 +766,5 @@ ALTER TABLE free_board_comment
     ADD CONSTRAINT FK_free_board_comment_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id);
+    
     

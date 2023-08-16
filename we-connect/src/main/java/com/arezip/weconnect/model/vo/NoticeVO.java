@@ -1,19 +1,18 @@
 package com.arezip.weconnect.model.vo;
 
-import java.util.Date;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class NoticeVO {
-	private long noticeId;
-	private String noticeTitle;
-	private String noticeContent;
-	private long noticeViews;
-	private Date noticeCreate;
-	private MemberVO memberVO;
+	private final long noticeId;
+	private final String noticeTitle;
+	private final String noticeContent;
+	private final long noticeViews;
+	private final String noticeCreate;
+	private final MemberVO memberVO;
+	private final String noticeCategory;
 }

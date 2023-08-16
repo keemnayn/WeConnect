@@ -684,7 +684,7 @@
 			});
 			
 			var image_3 = new cpr.controls.Image();
-			image_3.src = "user/img/user/attach-file.png";
+			image_3.src = "img/user/attach-file.png";
 			image_3.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});
@@ -722,7 +722,7 @@
 			});
 			
 			var image_4 = new cpr.controls.Image();
-			image_4.src = "user/img/user/bookmark-white.png";
+			image_4.src = "img/user/bookmark-white.png";
 			image_4.style.css({
 				"font-family" : "IBM Plex Sans KR"
 			});

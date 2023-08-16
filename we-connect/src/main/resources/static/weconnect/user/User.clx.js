@@ -21,7 +21,7 @@
 			/**
 			 * UDC 컨트롤이 그리드의 뷰 모드에서 표시할 텍스트를 반환합니다.
 			 */
-			exports.getText = function(){
+			exports.getText = function() {
 				// TODO: 그리드의 뷰 모드에서 표시할 텍스트를 반환하는 하는 코드를 작성해야 합니다.
 				return "";
 			};
@@ -30,7 +30,7 @@
 			 * 트리에서 item-click 이벤트 발생 시 호출.
 			 * 아이템 클릭시 발생하는 이벤트.
 			 */
-			function onTre1ItemClick(/* cpr.events.CItemEvent */ e){
+			function onTre1ItemClick( /* cpr.events.CItemEvent */ e) {
 				/** 
 				 * @type cpr.controls.Tree
 				 */
@@ -38,40 +38,40 @@
 				
 				var vsAppId = e.item.row.getValue("appId");
 				/*앱 아이디가 없는 경우 리턴합니다.*/
-				if(vsAppId == ""){
+				if (vsAppId == "") {
 					return;
 				}
 				
 				var vcEmb = app.lookup("ea1");
 				/*초기값 설정*/
 				var voInitValue = {
-					"value" : e.item.label,
-					"appId" : vsAppId
+					"value": e.item.label,
+					"appId": vsAppId
 				};
 				/*앱을 로드하고 로드된 앱을 임베디드 앱에 설정합니다.*/
-				cpr.core.App.load(vsAppId, function(/*cpr.core.App*/ loadedApp){
+				cpr.core.App.load(vsAppId, function( /*cpr.core.App*/ loadedApp) {
 					/*임베디드앱에 안에 앱이 있는 경우에는 앱을 삭제해줍니다.(다시 앱을 열고싶을때 스크립트 작성)*/
-					if(vcEmb.getEmbeddedAppInstance()){
+					if (vcEmb.getEmbeddedAppInstance()) {
 						vcEmb.getEmbeddedAppInstance().dispose();
 					}
 					/*로드된 앱이 있는 경우에는 임베디드앱 안에 불러온 앱을 넣습니다.*/
-					if(loadedApp){						
-						/*초기값을 전달합니다.*/			
-						vcEmb.ready(function(/*cpr.controls.EmbeddedApp*/embApp){
+					if (loadedApp) {
+						/*초기값을 전달합니다.*/
+						vcEmb.ready(function( /*cpr.controls.EmbeddedApp*/ embApp) {
 							embApp.initValue = voInitValue;
 						})
 						/*임베디드 앱에 내장할 앱을 로드하여 설정합니다*/
 						vcEmb.app = loadedApp;
 					}
-				}); 
+				});
 			}
 
 			/*
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
-					var vcEmb = app.lookup("ea1");
+			function onBodyInit(e) {
+				var vcEmb = app.lookup("ea1");
 				/*초기값 설정*/
 				var voInitValue = {
 					"value": "홈",
@@ -99,10 +99,19 @@
 			 * 임베디드 앱에서 load 이벤트 발생 시 호출.
 			 * 임베디드 앱이 준비되고 그려진 후에 디스패치 되는 이벤트.
 			 */
-			function onEa1Load(e){
+			function onEa1Load(e) {
 				var ea1 = e.control;
 				
-			};
+			}
+
+			/*
+			 * "Button" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e) {
+				var button = e.control;
+				window.location = "admin";
+			}
 			// End - User Script
 			
 			// Header
@@ -122,21 +131,21 @@
 					{"name": "appId"}
 				],
 				"rows": [
-					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "user/UserMain"},
-					{"label": "근태", "value": "근태", "icon": "img/user/attendance.png", "parent": "", "appId": ""},
-					{"label": "프로젝트", "value": "프로젝트", "icon": "img/user/project.png", "parent": "", "appId": ""},
-					{"label": "예약", "value": "예약", "icon": "img/user/reservation.png", "parent": "", "appId": ""},
-					{"label": "게시판", "value": "게시판", "icon": "img/user/board.png", "parent": "", "appId": ""},
-					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "user/AttendForm"},
-					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "user/LeaveRequestForm"},
-					{"label": "일정", "value": "일정", "icon": "img/user/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
-					{"label": "업무보드", "value": "업무보드", "icon": "img/user/work_board.png", "parent": "프로젝트", "appId": ""},
-					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "user/RoomReservForm"},
-					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/FreeBoard"},
-					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "user/Notice"},
-					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "user/Proposal"},
-					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "user/project/TeamPost"},
-					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "user/project/PrivatePost"}
+					{"label": "홈", "value": "홈", "icon": "img/member/home.png", "parent": "", "appId": "member/MemberMain"},
+					{"label": "근태", "value": "근태", "icon": "img/member/attendance.png", "parent": "", "appId": ""},
+					{"label": "프로젝트", "value": "프로젝트", "icon": "img/member/project.png", "parent": "", "appId": ""},
+					{"label": "예약", "value": "예약", "icon": "img/member/reservation.png", "parent": "", "appId": ""},
+					{"label": "게시판", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
+					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/member/commute.png", "parent": "근태", "appId": "member/AttendForm"},
+					{"label": "연차신청", "value": "연차신청", "icon": "img/member/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
+					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
+					{"label": "업무보드", "value": "업무보드", "icon": "img/member/work_board.png", "parent": "프로젝트", "appId": ""},
+					{"label": "회의실예약", "value": "회의실예약", "icon": "img/member/meeting_room.png", "parent": "예약", "appId": "member/RoomReservForm"},
+					{"label": "자유게시판", "value": "자유게시판", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/FreeBoard"},
+					{"label": "공지사항", "value": "공지사항", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/Notice"},
+					{"label": "건의사항", "value": "건의사항", "icon": "img/member/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},
+					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/member/team.png", "parent": "업무보드", "appId": "member/project/TeamPost"},
+					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/member/solo.png", "parent": "업무보드", "appId": "member/project/PrivatePost"}
 				]
 			});
 			app.register(dataSet_1);
@@ -199,6 +208,17 @@
 					"left": "0px",
 					"width": "300px",
 					"height": "40px"
+				});
+				var button_1 = new cpr.controls.Button();
+				button_1.value = "관리자페이지";
+				if(typeof onButtonClick == "function") {
+					button_1.addEventListener("click", onButtonClick);
+				}
+				container.addChild(button_1, {
+					"top": "20px",
+					"left": "1304px",
+					"width": "100px",
+					"height": "20px"
 				});
 			})(group_1);
 			container.addChild(group_1, {

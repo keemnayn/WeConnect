@@ -366,7 +366,6 @@
         <column UUID="Column_7Rb4sDdJEe62a551BIGueQ" logicalName="팀게시글 제목" physicalName="team_post_title" dataType="VARCHAR2(100)" notNull="true"/>
         <column UUID="Column_7uzKIDdJEe62a551BIGueQ" logicalName="팀게시글 내용" physicalName="team_post_content" dataType="CLOB" notNull="true"/>
         <column UUID="Column_60490DpCEe6ZydnV_QY7yw" logicalName="팀게시글 등록일" physicalName="team_post_create" dataType="DATE"/>
-        <column UUID="Column_7FZfADpCEe6ZydnV_QY7yw" logicalName="팀게시글 조회수" physicalName="team_post_views" dataType="NUMBER"/>
         <column UUID="Column_JTxc8DdIEe62a551BIGueQ" logicalName="회원번호" physicalName="member_id" derivedPhysicalName="true" derivedLogicalName="true" dataType="NUMBER">
           <membership UUID="MEntry_JTxc8TdIEe62a551BIGueQ" key="FKCGroup_JTw14DdIEe62a551BIGueQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_JTxc8jdIEe62a551BIGueQ" group="FKCGroup_JTw14DdIEe62a551BIGueQ" parentColumn="Column_COy-UDdIEe62a551BIGueQ"/>

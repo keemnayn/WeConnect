@@ -1,13 +1,13 @@
 package com.arezip.weconnect.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class ProjectMemberVO {
-	private MemberVO memberVO;
-	private ProjectVO projectVO;
+	private final MemberVO memberVO;
+	private final ProjectVO projectVO;
 }

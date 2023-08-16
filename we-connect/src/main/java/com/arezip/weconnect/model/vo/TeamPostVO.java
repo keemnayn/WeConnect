@@ -2,20 +2,20 @@ package com.arezip.weconnect.model.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class TeamPostVO {
-	private long teamPostId;
-	private String teamPostTitle;
-	private String teamPostContent;
-	private long teamPostViews;
-	private Date teamPostCreate;
-	private MemberVO memberVO;
-	private ProjectVO projectVO;
-	
+	private final long teamPostId;
+	private final String teamPostTitle;
+	private final String teamPostContent;
+	private final long teamPostViews;
+	private final Date teamPostCreate;
+	private final MemberVO memberVO;
+	private final ProjectVO projectVO;
+
 }

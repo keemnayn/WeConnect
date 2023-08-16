@@ -19,43 +19,132 @@
 			 ************************************************/
 
 			/*
-			 * 그룹에서 click 이벤트 발생 시 호출.
+			 * "확인" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onGroupClick(e){
-				var group = e.control;
-				
+			function onButtonClick(e){
+				var button = e.control;
+				let submission = app.lookup("memberList");
+				submission.send();
+				alert("회원가입 완료");
+				window.location= "login/login1.clx";
+			}
+
+
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit2(e){
+				let department = app.lookup("deparment");
+				department.send();
 			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("position");
+			var dataSet_1 = new cpr.data.DataSet("departmentList");
 			dataSet_1.parseData({
-				"columns": [{"name": "position"}],
-				"rows": [
-					{"position": "사원"},
-					{"position": "주임"},
-					{"position": "선임"},
-					{"position": "책임"},
-					{"position": "수석"}
-				]
+				"info": "selet",
+				"columns": [
+					{
+						"name": "departmentId",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					}
+				],
+				"rows": []
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("department");
+			var dataSet_2 = new cpr.data.DataSet("positionList");
 			dataSet_2.parseData({
-				"sortCondition": "a",
-				"columns": [{"name": "department"}],
+				"columns": [{
+					"name": "position",
+					"dataType": "string"
+				}],
 				"rows": [
-					{"department": "개발팀"},
-					{"department": "연구부"},
-					{"department": "영업팀"},
-					{"department": "인사팀"},
-					{"department": "재무팀"},
-					{"department": "총무팀"}
+					{"position": "사원"},
+					{"position": "주임"},
+					{"position": "대리"},
+					{"position": "과장"}
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("member");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "memberEmail",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "memberPassword",
+						"dataType": "string"
+					},
+					{
+						"name": "memberStatus",
+						"dataType": "string"
+					},
+					{
+						"name": "managerYn",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentId",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveCount",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("department1");
+			dataMap_2.parseData({
+				"columns" : [
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					},
+					{"name": "departmentId"}
+				]
+			});
+			app.register(dataMap_2);
+			var submission_1 = new cpr.protocols.Submission("memberList");
+			submission_1.method = "post";
+			submission_1.action = "member";
+			submission_1.addRequestData(dataMap_1);
+			submission_1.addRequestData(dataSet_1);
+			submission_1.addRequestData(dataMap_2);
+			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("deparment");
+			submission_2.method = "get";
+			submission_2.action = "member";
+			submission_2.addRequestData(dataMap_2);
+			submission_2.addResponseData(dataSet_1, false);
+			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("position");
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1927px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -86,7 +175,7 @@
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var inputBox_1 = new cpr.controls.InputBox("ipb1");
+				var inputBox_1 = new cpr.controls.InputBox("memberId");
 				inputBox_1.placeholder = "이메일 주소는 ID로 사용됩니다.";
 				inputBox_1.style.css({
 					"border-radius" : "5px",
@@ -96,6 +185,10 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberEmail");
+				if(typeof onMemberIdValueChange == "function") {
+					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
+				}
 				container.addChild(inputBox_1, {
 					"top": "156px",
 					"left": "158px",
@@ -119,8 +212,7 @@
 					"width": "109px",
 					"height": "48px"
 				});
-				var inputBox_2 = new cpr.controls.InputBox("ipb2");
-				inputBox_2.value = "";
+				var inputBox_2 = new cpr.controls.InputBox("memberName");
 				inputBox_2.placeholder = "\r\n";
 				inputBox_2.style.css({
 					"border-radius" : "5px",
@@ -129,6 +221,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberName");
 				container.addChild(inputBox_2, {
 					"top": "262px",
 					"left": "160px",
@@ -136,7 +229,6 @@
 					"height": "48px"
 				});
 				var inputBox_3 = new cpr.controls.InputBox("ipb3");
-				inputBox_3.value = "";
 				inputBox_3.placeholder = "\r\n";
 				inputBox_3.style.css({
 					"border-radius" : "5px",
@@ -145,6 +237,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_3.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_3, {
 					"top": "377px",
 					"left": "160px",
@@ -160,6 +253,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
+				inputBox_4.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_4, {
 					"top": "486px",
 					"left": "160px",
@@ -212,7 +306,7 @@
 					"height": "30px"
 				});
 				var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_4.value = "<div>아이디 <\/div>";
+				hTMLSnippet_4.value = "<div>이메일<\/div>\r\n";
 				hTMLSnippet_4.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -221,7 +315,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "116px",
+					"top": "126px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -232,8 +326,9 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
+				comboBox_1.bind("value").toDataMap(app.lookup("member"), "position");
 				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("position"), {
+					comboBox_1.setItemSet(app.lookup("positionList"), {
 						"label": "position",
 						"value": "position"
 					});
@@ -284,6 +379,9 @@
 					"font-style" : "normal",
 					"background-image" : "none"
 				});
+				if(typeof onButtonClick == "function") {
+					button_2.addEventListener("click", onButtonClick);
+				}
 				container.addChild(button_2, {
 					"top": "813px",
 					"left": "133px",
@@ -331,12 +429,17 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
+				comboBox_2.bind("value").toDataMap(app.lookup("department1"), "departmentId");
 				(function(comboBox_2){
-					comboBox_2.setItemSet(app.lookup("department"), {
-						"label": "department",
-						"value": "department"
+					comboBox_2.addItem(new cpr.controls.Item("", "value3"));
+					comboBox_2.setItemSet(app.lookup("departmentList"), {
+						"label": "departmentName",
+						"value": "departmentId"
 					});
 				})(comboBox_2);
+				if(typeof onCmb2SelectionChange == "function") {
+					comboBox_2.addEventListener("selection-change", onCmb2SelectionChange);
+				}
 				container.addChild(comboBox_2, {
 					"top": "605px",
 					"left": "160px",
@@ -353,6 +456,9 @@
 				"width": "737px",
 				"height": "896px"
 			});
+			if(typeof onBodyInit2 == "function"){
+				app.addEventListener("init", onBodyInit2);
+			}
 		}
 	});
 	app.title = "register1";
