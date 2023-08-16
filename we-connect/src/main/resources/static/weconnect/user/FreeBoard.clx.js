@@ -60,7 +60,7 @@
 						"dataType": "string"
 					},
 					{
-						"name": "TO_CHAR(freeBoardCreate,'YYYY-MM-DD')",
+						"name": "freeBoardCreate",
 						"dataType": "string"
 					}
 				],
@@ -147,7 +147,7 @@
 							"configurator": function(cell){
 								cell.filterable = false;
 								cell.sortable = false;
-								cell.targetColumnName = "TO_CHAR(freeBoardCreate,'YYYY-MM-DD')";
+								cell.targetColumnName = "freeBoardCreate";
 								cell.text = "등록일자";
 							}
 						}
@@ -177,7 +177,7 @@
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 3},
 							"configurator": function(cell){
-								cell.columnName = "TO_CHAR(freeBoardCreate,'YYYY-MM-DD')";
+								cell.columnName = "freeBoardCreate";
 							}
 						}
 					]

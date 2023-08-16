@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FreeBoardVO {
+public class FreeBoardAndMemberVO {
 	private long freeBoardId;
 	private String freeBoardTitle;
-	private String freeBoardContent;
 	private String freeBoardCreate;
-	private long freeBoardViews;
-	private MemberVO memberVO;
+	private String memberName;
 }

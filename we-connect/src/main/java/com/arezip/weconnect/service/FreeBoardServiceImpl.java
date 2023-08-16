@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.FreeBoardMapper;
+import com.arezip.weconnect.model.vo.FreeBoardAndMemberVO;
 import com.arezip.weconnect.model.vo.FreeBoardVO;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardVO> getFreeBoardList() {
+	public List<FreeBoardAndMemberVO> getFreeBoardList() {
 		return freeBoardMapper.getFreeBoardList();
 	}
 
