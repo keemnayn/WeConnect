@@ -1,4 +1,4 @@
-package com.arezip.weconnect.controller;
+package com.arezip.weconnect.controller.member.roomreserv;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/weconnect")
-public class ProjectRestController {
+@RequestMapping("/weconnect/member/room-reserv")
+public class RoomReservRestController {
 
 }

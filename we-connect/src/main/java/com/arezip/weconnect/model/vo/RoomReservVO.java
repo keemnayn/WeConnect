@@ -2,19 +2,19 @@ package com.arezip.weconnect.model.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class RoomReservVO {
-	private long roomReservId;
-	private Date roomReservStartDay;
-	private Date roomReservEndDay;
-	private Date roomReservStartTime;
-	private Date roomReservEndTime;
-	private MemberVO memberVO;
-	private RoomVO roomVO;
+	private final long roomReservId;
+	private final Date roomReservStartDay;
+	private final Date roomReservEndDay;
+	private final Date roomReservStartTime;
+	private final Date roomReservEndTime;
+	private final MemberVO memberVO;
+	private final RoomVO roomVO;
 }

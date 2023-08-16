@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.NoticeMapper;
-import com.arezip.weconnect.model.vo.NoticeVO;
+import com.arezip.weconnect.model.dto.NoticeDTO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,18 +18,18 @@ public class NoticeServiceImpl implements NoticeService {
 	private final NoticeMapper noticeMapper;
 
 	@Override
-	public List<NoticeVO> findAllNotices() {
+	public List<NoticeDTO> findAllNotices() {
 		return noticeMapper.selectAllNotices();
 	}
 
 	@Override
-	public int addNotice(NoticeVO noticeVO) {
-		return noticeMapper.insertNotice(noticeVO);
+	public int addNotice(NoticeDTO noticeDTO) {
+		return noticeMapper.insertNotice(noticeDTO);
 	}
 
 	@Override
-	public int updateNotice(NoticeVO noticeVO) {
-		return noticeMapper.updateNotice(noticeVO);
+	public int updateNotice(NoticeDTO noticeDTO) {
+		return noticeMapper.updateNotice(noticeDTO);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<NoticeVO> searchNotice(Map<String, String> searchParams) {
+	public List<NoticeDTO> searchNotice(Map<String, String> searchParams) {
 		return noticeMapper.selectNoticesBySearchCriteria(searchParams);
 	}
 }

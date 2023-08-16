@@ -5,17 +5,18 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.arezip.weconnect.model.dto.NoticeDTO;
 import com.arezip.weconnect.model.vo.NoticeVO;
 
 @Mapper
 public interface NoticeMapper {
-	List<NoticeVO> selectAllNotices();
+	List<NoticeDTO> selectAllNotices();
 
-	int insertNotice(NoticeVO noticeVO);
+	int insertNotice(NoticeDTO noticeDTO);
 
-	int updateNotice(NoticeVO noticeVO);
+	int updateNotice(NoticeDTO noticeDTO);
 
 	int deleteNotice(long noticeId);
 
-	List<NoticeVO> selectNoticesBySearchCriteria(Map<String, String> searchParams);
+	List<NoticeDTO> selectNoticesBySearchCriteria(Map<String, String> searchParams);
 }

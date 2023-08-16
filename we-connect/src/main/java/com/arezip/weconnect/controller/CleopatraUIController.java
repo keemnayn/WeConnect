@@ -14,7 +14,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @Controller
 public class CleopatraUIController {
 
@@ -31,5 +30,4 @@ public class CleopatraUIController {
 	public View index(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		return new UIView();
 	}
-
 }

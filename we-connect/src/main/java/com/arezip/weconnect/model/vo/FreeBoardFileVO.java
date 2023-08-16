@@ -1,15 +1,15 @@
 package com.arezip.weconnect.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class FreeBoardFileVO {
-	private long freeBoardFileId;
-	private String freeBoardFile_name;
-	private String freeBoardFilePath;
-	private FreeBoardVO freeBoardVO;
+	private final long freeBoardFileId;
+	private final String freeBoardFile_name;
+	private final String freeBoardFilePath;
+	private final FreeBoardVO freeBoardVO;
 }

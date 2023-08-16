@@ -1,9 +1,7 @@
 package com.arezip.weconnect.service;
 
-import java.util.Map;
-
-import com.arezip.weconnect.model.vo.MemberVO;
+import com.arezip.weconnect.model.dto.MemberDTO;
 
 public interface MemberService {
-	int register(MemberVO memberVO);
+	int register(MemberDTO memberDTO);
 }

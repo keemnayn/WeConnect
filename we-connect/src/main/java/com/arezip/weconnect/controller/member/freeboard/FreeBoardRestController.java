@@ -1,4 +1,4 @@
-package com.arezip.weconnect.controller;
+package com.arezip.weconnect.controller.member.freeboard;
 
 import java.util.List;
 
@@ -17,12 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/weconnect")
+@RequestMapping("/weconnect/member/boards")
 @RequiredArgsConstructor
 public class FreeBoardRestController {
-	 private final FreeBoardService freeBoardService;
-	 
-	 //list 보이기
+	private final FreeBoardService freeBoardService;
+
+	// list 보이기
 //	 @GetMapping("board.do")//submission action 도메인과 같음	 
 //	 public View freeBoardListPage(DataRequest dataRequest) {
 //		 List<FreeBoardVO> boardList = freeBoardService.getFreeBoardList();
@@ -30,12 +30,12 @@ public class FreeBoardRestController {
 //		 dataRequest.setResponse("boardList", boardList);//데이터셋 이름과 같음
 //		 return new JSONDataView();
 //	 }
-	 @GetMapping("board.do")//submission action 도메인과 같음	 
-	 public View freeBoardListPage(DataRequest dataRequest) {
-		 List<FreeBoardAndMemberDTO> boardList = freeBoardService.getFreeBoardList();
-		 System.out.println(boardList);
-		 dataRequest.setResponse("boardList", boardList);//데이터셋 이름과 같음
-		 return new JSONDataView();
-	 }
-	
+	@GetMapping // submission action 도메인과 같음
+	public View freeBoardListPage(DataRequest dataRequest) {
+		List<FreeBoardAndMemberDTO> boardList = freeBoardService.getFreeBoardList();
+		System.out.println(boardList);
+		dataRequest.setResponse("boardList", boardList);// 데이터셋 이름과 같음
+		return new JSONDataView();
+	}
+
 }

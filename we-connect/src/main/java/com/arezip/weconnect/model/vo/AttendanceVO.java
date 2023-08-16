@@ -2,18 +2,18 @@ package com.arezip.weconnect.model.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class AttendanceVO {
-	private long attendanceId;
-	private Date workInTime;
-	private Date workOutTime;
-	private Date workDay;
-	private String attendanceStatus;
-	private MemberVO memberVO;
+	private final long attendanceId;
+	private final Date workInTime;
+	private final Date workOutTime;
+	private final Date workDay;
+	private final String attendanceStatus;
+	private final MemberVO memberVO;
 }

@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.arezip.weconnect.mapper.NoticeMapper;
-import com.arezip.weconnect.model.vo.MemberVO;
-import com.arezip.weconnect.model.vo.NoticeVO;
+import com.arezip.weconnect.model.dto.MemberDTO;
+import com.arezip.weconnect.model.dto.NoticeDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +27,7 @@ class NoticeMapperTest {
 //	공지사항 전체 리스트 mapper
 	@Test
 	void selectAllNoticesTest() {
-		List<NoticeVO> list = noticeMapper.selectAllNotices();
+		List<NoticeDTO> list = noticeMapper.selectAllNotices();
 		list.forEach(notice -> log.info(notice.toString()));
 	}
 
@@ -35,26 +35,26 @@ class NoticeMapperTest {
 	@Test
 //	@Transactional // 테스트 이후 롤백을 위해 추가
 	void insertNoticeTest() {
-		NoticeVO noticeVO = new NoticeVO();
-		noticeVO.setNoticeTitle("매퍼 테스트 제목");
-		noticeVO.setNoticeContent("매퍼 테스트 내용");
-		noticeVO.setNoticeCategory("공지");
-		MemberVO memberVO = new MemberVO();
-		memberVO.setMemberId(1);
-		noticeVO.setMemberVO(memberVO);
-		int result = noticeMapper.insertNotice(noticeVO);
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNoticeTitle("매퍼 테스트 제목");
+		noticeDTO.setNoticeContent("매퍼 테스트 내용");
+		noticeDTO.setNoticeCategory("공지");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setMemberId(1);
+		noticeDTO.setMemberVO(memberDTO);
+		int result = noticeMapper.insertNotice(noticeDTO);
 		assertNotEquals(0, result);
 	}
 
 //	공지사항 수정 mapper
 	@Test
 	void updateNoticeTest() {
-		NoticeVO noticeVO = new NoticeVO();
-		noticeVO.setNoticeId(15);
-		noticeVO.setNoticeTitle("매퍼 테스트 제목 수정");
-		noticeVO.setNoticeContent("매퍼 테스트 내용 수정");
-		noticeVO.setNoticeCategory("점검");
-		int result = noticeMapper.updateNotice(noticeVO);
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNoticeId(15);
+		noticeDTO.setNoticeTitle("매퍼 테스트 제목 수정");
+		noticeDTO.setNoticeContent("매퍼 테스트 내용 수정");
+		noticeDTO.setNoticeCategory("점검");
+		int result = noticeMapper.updateNotice(noticeDTO);
 		assertNotEquals(0, result);
 	}
 
@@ -73,7 +73,7 @@ class NoticeMapperTest {
 		searchParams.put("searchType", "all");
 		searchParams.put("searchText", "입니다");
 
-		List<NoticeVO> list = noticeMapper.selectNoticesBySearchCriteria(searchParams);
+		List<NoticeDTO> list = noticeMapper.selectNoticesBySearchCriteria(searchParams);
 
 // 		null 여부 확인
 		assertNotNull(list);

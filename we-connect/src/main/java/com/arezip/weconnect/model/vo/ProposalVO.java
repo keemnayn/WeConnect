@@ -2,18 +2,18 @@ package com.arezip.weconnect.model.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class ProposalVO {
-	private long proposalId;
-	private String proposalTitle;
-	private String proposalContent;
-	private Date proposalCreate;
-	private String proposalStatus;
-	private MemberVO memberVO;
+	private final long proposalId;
+	private final String proposalTitle;
+	private final String proposalContent;
+	private final Date proposalCreate;
+	private final String proposalStatus;
+	private final MemberVO memberVO;
 }

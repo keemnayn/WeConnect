@@ -1,13 +1,13 @@
 package com.arezip.weconnect.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class DepartmentVO {
-	private long departmentId;
-	private String departmentName;
+	private final long departmentId;
+	private final String departmentName;
 }
