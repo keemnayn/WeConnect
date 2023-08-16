@@ -28,6 +28,7 @@
       <cl:xylayoutdata std:sid="xyl-data-056d9ba5" right="280px" bottom="20px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
     </cl:button>
     <cl:button std:sid="button-39198b35" value="등록">
+      <cl:listener std:sid="listener-ec21093c" name="click" handler="onButtonClick2"/>
       <cl:xylayoutdata std:sid="xyl-data-1b9aef2f" bottom="20px" left="280px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
     </cl:button>
     <cl:group std:sid="group-b89c1d4b">

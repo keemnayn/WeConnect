@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.arezip.weconnect.mapper.FreeBoardMapper;
-import com.arezip.weconnect.model.dto.FreeBoardAndMemberDTO;
+import com.arezip.weconnect.model.dto.FreeBoardDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,8 +21,14 @@ public class FreeBoardMapperTest {
 
 	@Test
 	void getListTest() {
-		List<FreeBoardAndMemberDTO> list = freeBoardMapper.getFreeBoardList();
+		List<FreeBoardDTO> list = freeBoardMapper.getFreeBoardList();
 		list.forEach(freeBoard -> log.info(freeBoard.toString()));
 		assertNotNull(list);
+	}
+	@Test
+	void getBoardDetail(long freeBoardId) {
+		FreeBoardDTO boardDetail = freeBoardMapper.getFreeBoardDetail(freeBoardId);
+		
+		
 	}
 }
