@@ -70,12 +70,12 @@
         <cl:xylayoutdata std:sid="sxyl-data-adc42212" top="422px" left="1001px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:button>
-    <cl:img std:sid="image-a91a99be" style="font-family:IBM Plex Sans KR;" src="../../img/user/attach-file.png">
+    <cl:img std:sid="image-a91a99be" style="font-family:IBM Plex Sans KR;" src="../../img/member/attach-file.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-1c3f3bb6">
         <cl:xylayoutdata std:sid="sxyl-data-12d66adf" top="383px" left="1001px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:img std:sid="image-ff317aa3" style="font-family:IBM Plex Sans KR;" src="../../img/user/bookmark-white.png">
+    <cl:img std:sid="image-ff317aa3" style="font-family:IBM Plex Sans KR;" src="../../img/member/bookmark-white.png">
       <cl:responsivexylayoutdata std:sid="rxyl-data-1ae193c0">
         <cl:xylayoutdata std:sid="sxyl-data-54879e8b" top="383px" left="1026px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
