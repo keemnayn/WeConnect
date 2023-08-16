@@ -20,7 +20,7 @@ INSERT INTO member (member_id, member_name, member_email, member_password, posit
 VALUES (member_seq.NEXTVAL, '김정현', 'john@example.com', 'a', '사원', '승인', 'Y', '2');
 /*멤버 테이블 */
 select * from member;
-
+select * from department;
 ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
 
