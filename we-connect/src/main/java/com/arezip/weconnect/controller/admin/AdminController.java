@@ -1,4 +1,4 @@
-package com.arezip.weconnect.controller;
+package com.arezip.weconnect.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -3,16 +3,16 @@ package com.arezip.weconnect.service;
 import java.util.List;
 import java.util.Map;
 
-import com.arezip.weconnect.model.vo.NoticeVO;
+import com.arezip.weconnect.model.dto.NoticeDTO;
 
 public interface NoticeService {
-	List<NoticeVO> findAllNotices();
+	List<NoticeDTO> findAllNotices();
 
-	int addNotice(NoticeVO noticeVO);
+	int addNotice(NoticeDTO noticeDTO);
 
-	int updateNotice(NoticeVO noticeVO);
+	int updateNotice(NoticeDTO noticeDTO);
 
 	int deleteNotice(long noticeId);
 
-	List<NoticeVO> searchNotice(Map<String, String> searchParams);
+	List<NoticeDTO> searchNotice(Map<String, String> searchParams);
 }

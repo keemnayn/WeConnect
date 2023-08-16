@@ -1,15 +1,15 @@
 package com.arezip.weconnect.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class PrivatePostFileVO {
-	private long privatePostFileId;
-	private String privatePostFileName;
-	private String privatePostFilePath;
-	private PrivatePostVO privatePostVO;
+	private final long privatePostFileId;
+	private final String privatePostFileName;
+	private final String privatePostFilePath;
+	private final PrivatePostVO privatePostVO;
 }

@@ -9,8 +9,6 @@ import com.arezip.weconnect.model.vo.TeamPostVO;
 @Mapper
 public interface TeamPostMapper {
 
-	static List<TeamPostVO> getTeamPostList() {
-		return null;
-	}
+	List<TeamPostVO> getTeamPostList();
 
 }

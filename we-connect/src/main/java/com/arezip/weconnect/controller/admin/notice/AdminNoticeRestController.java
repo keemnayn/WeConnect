@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
-import com.arezip.weconnect.model.vo.NoticeVO;
+import com.arezip.weconnect.model.dto.NoticeDTO;
 import com.arezip.weconnect.service.NoticeService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.spring.JSONDataView;
@@ -27,7 +27,7 @@ public class AdminNoticeRestController {
 	@GetMapping
 	public View getAllNotices(DataRequest dataRequest) {
 		log.info("noticeService {}", noticeService.findAllNotices());
-		List<NoticeVO> noticeList = noticeService.findAllNotices();
+		List<NoticeDTO> noticeList = noticeService.findAllNotices();
 		dataRequest.setResponse("noticeList", noticeList);
 		return new JSONDataView();
 	}

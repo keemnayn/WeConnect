@@ -1,14 +1,14 @@
 package com.arezip.weconnect.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@ToString
+@RequiredArgsConstructor
 public class ProfileImageVO {
-	private long profileImageId;
-	private String profileImagePath;
-	private MemberVO memberVO;
+	private final long profileImageId;
+	private final String profileImagePath;
+	private final MemberVO memberVO;
 }
