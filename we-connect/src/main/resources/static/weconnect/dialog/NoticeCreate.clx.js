@@ -16,19 +16,61 @@
 			 * Created at 2023. 8. 14. 오후 4:51:23.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * "등록" 버튼(createBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCreateBtnClick(e) {
+				var createBtn = e.control;
+				var submission = app.lookup("noticeCreateSub");
+				var noticeTitle = app.lookup("noticeTitleIpb").value;
+				var noticeContent = app.lookup("noticeContentTxa").value;
+				var noticeCategory = app.lookup("noticeCategoryCmb").value;
+				if (!noticeTitle || !noticeContent || !noticeCategory) {
+					alert("공지사항의 제목, 내용, 분류를 모두 입력해주세요.");
+				} else {
+					submission.send();
+					app.close();
+				}
+			}
+			/*
+			 * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCancelBtnClick(e) {
+				var cancelBtn = e.control;
+				app.close();
+			}
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("category");
 			dataSet_1.parseData({
-				"columns": [{"name": "category"}],
+				"columns": [
+					{"name": "label"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"category": "공지"},
-					{"category": "점검"}
+					{"label": "공지", "value": "공지"},
+					{"label": "점검", "value": "점검"}
 				]
 			});
 			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("noticeCreateParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "noticeTitle"},
+					{"name": "noticeCategory"},
+					{"name": "noticeContent"}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("noticeCreateSub");
+			submission_1.action = "admin/notices";
+			submission_1.addRequestData(dataMap_1);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -55,8 +97,11 @@
 				"height": "50px"
 			});
 			
-			var button_1 = new cpr.controls.Button();
+			var button_1 = new cpr.controls.Button("createBtn");
 			button_1.value = "등록";
+			if(typeof onCreateBtnClick == "function") {
+				button_1.addEventListener("click", onCreateBtnClick);
+			}
 			container.addChild(button_1, {
 				"right": "660px",
 				"bottom": "20px",
@@ -64,8 +109,11 @@
 				"height": "50px"
 			});
 			
-			var button_2 = new cpr.controls.Button();
+			var button_2 = new cpr.controls.Button("cancelBtn");
 			button_2.value = "취소";
+			if(typeof onCancelBtnClick == "function") {
+				button_2.addEventListener("click", onCancelBtnClick);
+			}
 			container.addChild(button_2, {
 				"bottom": "20px",
 				"left": "660px",
@@ -73,8 +121,11 @@
 				"height": "50px"
 			});
 			
-			var inputBox_1 = new cpr.controls.InputBox("ipb1");
+			var inputBox_1 = new cpr.controls.InputBox("noticeTitleIpb");
 			inputBox_1.placeholder = "제목";
+			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("noticeCreateParam"));
+			inputBox_1.setBindContext(dataMapContext_1);
+			inputBox_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
 				"top": "120px",
 				"left": "20px",
@@ -82,8 +133,11 @@
 				"height": "50px"
 			});
 			
-			var textArea_1 = new cpr.controls.TextArea("txa1");
+			var textArea_1 = new cpr.controls.TextArea("noticeContentTxa");
 			textArea_1.placeholder = "내용";
+			var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("noticeCreateParam"));
+			textArea_1.setBindContext(dataMapContext_2);
+			textArea_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeContent");
 			container.addChild(textArea_1, {
 				"top": "220px",
 				"right": "20px",
@@ -91,12 +145,14 @@
 				"left": "20px"
 			});
 			
-			var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-			comboBox_1.value = "공지";
+			var comboBox_1 = new cpr.controls.ComboBox("noticeCategoryCmb");
+			var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("noticeCreateParam"));
+			comboBox_1.setBindContext(dataMapContext_3);
+			comboBox_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeCategory");
 			(function(comboBox_1){
 				comboBox_1.setItemSet(app.lookup("category"), {
-					"label": "category",
-					"value": "category"
+					"label": "label",
+					"value": "value"
 				});
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
