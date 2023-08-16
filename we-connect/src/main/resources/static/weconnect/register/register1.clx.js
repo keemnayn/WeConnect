@@ -26,78 +26,125 @@
 				var button = e.control;
 				let submission = app.lookup("memberList");
 				submission.send();
+				alert("회원가입 완료");
+				window.location= "login/login1.clx";
 			}
 
+
+
 			/*
-			 * 콤보 박스에서 selection-change 이벤트 발생 시 호출.
-			 * ComboBox Item을 선택하여 선택된 값이 저장된 후에 발생하는 이벤트.
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onCmb2SelectionChange(e){
-				var cmb2 = e.control;
-				var control = app.lookup("department");
-				
+			function onBodyInit2(e){
+				let department = app.lookup("deparment");
+				department.send();
 			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("department");
+			var dataSet_1 = new cpr.data.DataSet("departmentList");
 			dataSet_1.parseData({
+				"info": "selet",
 				"columns": [
 					{
-						"name": "DEPARTMENT_ID",
+						"name": "departmentId",
 						"dataType": "string"
 					},
 					{
-						"name": "DEPARTMENT_NAME",
+						"name": "departmentName",
 						"dataType": "string"
 					}
 				],
-				"rows": [{"DEPARTMENT_ID": "DEPARTMENT_ID1", "DEPARTMENT_NAME": "DEPARTMENT_NAME1"}]
+				"rows": []
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("positionList");
+			dataSet_2.parseData({
+				"columns": [{
+					"name": "position",
+					"dataType": "string"
+				}],
+				"rows": [
+					{"position": "사원"},
+					{"position": "주임"},
+					{"position": "대리"},
+					{"position": "과장"}
+				]
+			});
+			app.register(dataSet_2);
 			var dataMap_1 = new cpr.data.DataMap("member");
 			dataMap_1.parseData({
 				"columns" : [
 					{
-						"name": "MEMBER_ID",
+						"name": "memberId",
 						"dataType": "string"
 					},
 					{
-						"name": "MEMBER_NAME",
+						"name": "memberName",
 						"dataType": "string"
 					},
 					{
-						"name": "MEMBER_EMAIL",
+						"name": "memberEmail",
 						"dataType": "string"
 					},
 					{
-						"name": "MEMBER_PASSWORD",
+						"name": "position",
 						"dataType": "string"
 					},
 					{
-						"name": "MEMBER_STATUS",
+						"name": "memberPassword",
 						"dataType": "string"
 					},
 					{
-						"name": "MANAGER_YN",
+						"name": "memberStatus",
 						"dataType": "string"
 					},
 					{
-						"name": "DEPARTMENT_ID",
+						"name": "managerYn",
 						"dataType": "string"
 					},
 					{
-						"name": "LEAVE_COUNT",
+						"name": "departmentId",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveCount",
 						"dataType": "string"
 					}
 				]
 			});
 			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("department1");
+			dataMap_2.parseData({
+				"columns" : [
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					},
+					{"name": "departmentId"}
+				]
+			});
+			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("memberList");
-			submission_1.action = "register.do";
+			submission_1.method = "post";
+			submission_1.action = "member";
 			submission_1.addRequestData(dataMap_1);
 			submission_1.addRequestData(dataSet_1);
+			submission_1.addRequestData(dataMap_2);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("deparment");
+			submission_2.method = "get";
+			submission_2.action = "member";
+			submission_2.addRequestData(dataMap_2);
+			submission_2.addResponseData(dataSet_1, false);
+			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("position");
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1927px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -138,7 +185,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
-				inputBox_1.bind("value").toDataMap(app.lookup("member"), "MEMBER_EMAIL");
+				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberEmail");
 				if(typeof onMemberIdValueChange == "function") {
 					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
 				}
@@ -174,7 +221,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
-				inputBox_2.bind("value").toDataMap(app.lookup("member"), "MEMBER_NAME");
+				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberName");
 				container.addChild(inputBox_2, {
 					"top": "262px",
 					"left": "160px",
@@ -190,7 +237,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
-				inputBox_3.bind("value").toDataMap(app.lookup("member"), "MEMBER_PASSWORD");
+				inputBox_3.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_3, {
 					"top": "377px",
 					"left": "160px",
@@ -206,7 +253,7 @@
 					"font-style" : "normal",
 					"text-align" : "center"
 				});
-				inputBox_4.bind("value").toDataMap(app.lookup("member"), "MEMBER_PASSWORD");
+				inputBox_4.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_4, {
 					"top": "486px",
 					"left": "160px",
@@ -279,6 +326,13 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
+				comboBox_1.bind("value").toDataMap(app.lookup("member"), "position");
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("positionList"), {
+						"label": "position",
+						"value": "position"
+					});
+				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"top": "729px",
 					"left": "160px",
@@ -375,10 +429,12 @@
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
 				});
+				comboBox_2.bind("value").toDataMap(app.lookup("department1"), "departmentId");
 				(function(comboBox_2){
-					comboBox_2.setItemSet(app.lookup("department"), {
-						"label": "DEPARTMENT_NAME",
-						"value": "DEPARTMENT_ID"
+					comboBox_2.addItem(new cpr.controls.Item("", "value3"));
+					comboBox_2.setItemSet(app.lookup("departmentList"), {
+						"label": "departmentName",
+						"value": "departmentId"
 					});
 				})(comboBox_2);
 				if(typeof onCmb2SelectionChange == "function") {
@@ -400,8 +456,8 @@
 				"width": "737px",
 				"height": "896px"
 			});
-			if(typeof onBodyInit == "function"){
-				app.addEventListener("init", onBodyInit);
+			if(typeof onBodyInit2 == "function"){
+				app.addEventListener("init", onBodyInit2);
 			}
 		}
 	});
