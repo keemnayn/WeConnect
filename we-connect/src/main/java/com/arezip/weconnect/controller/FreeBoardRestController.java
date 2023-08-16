@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
-import com.arezip.weconnect.model.vo.FreeBoardAndMemberVO;
-import com.arezip.weconnect.model.vo.FreeBoardVO;
+import com.arezip.weconnect.model.dto.FreeBoardAndMemberDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.spring.JSONDataView;
-import com.cleopatra.spring.UIView;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +32,7 @@ public class FreeBoardRestController {
 //	 }
 	 @GetMapping("board.do")//submission action 도메인과 같음	 
 	 public View freeBoardListPage(DataRequest dataRequest) {
-		 List<FreeBoardAndMemberVO> boardList = freeBoardService.getFreeBoardList();
+		 List<FreeBoardAndMemberDTO> boardList = freeBoardService.getFreeBoardList();
 		 System.out.println(boardList);
 		 dataRequest.setResponse("boardList", boardList);//데이터셋 이름과 같음
 		 return new JSONDataView();
