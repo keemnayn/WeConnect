@@ -31,7 +31,7 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="board.do">
+      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
         <cl:responsedata dataid="boardList"/>
       </cl:submission>
     </cl:model>
@@ -39,7 +39,8 @@
   </head>
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:listener std:sid="listener-97fda0e4" name="init" handler="onBodyInit"/>
-    <cl:grid std:sid="grid-38750194" id="grd1" datasetid="boardList">
+    <cl:grid std:sid="grid-38750194" id="boardGrd" datasetid="boardList">
+      <cl:listener std:sid="listener-7ab00dcd" name="selection-change" handler="onGrd1SelectionChange2"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-f2cb8e13"/>
       <cl:gridcolumn std:sid="g-column-258ee0bc"/>
@@ -74,7 +75,7 @@
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-57b89231"/>
     </cl:group>
-    <cl:button std:sid="button-ec30af08" value="새글">
+    <cl:button std:sid="button-ec30af08" id="newBoardWrite" value="새글">
       <cl:listener std:sid="listener-fba1224d" name="click" handler="onButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-cbfd465e" top="40px" left="1130px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>

@@ -1,7 +1,7 @@
 /************************************************
- * noticeDetail.js
- * Created at 2023. 8. 5. 오후 7:57:23.
+ * FreeBoardDetail.js
+ * Created at 2023. 8. 16. 오전 11:52:58.
  *
- * @author Axl Rose
+ * @author chwec
  ************************************************/
 

@@ -19,7 +19,6 @@ function onBodyInit(e){
  */
 function onButtonClick(e){
 	var button = e.control;
-//	window.location = "boardWriteFrom.do";
 	app.openDialog("dialog/BoardWriteForm", {width : 800, height : 600}, function(dialog){
 		dialog.ready(function(dialogApp){
 			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
@@ -27,4 +26,16 @@ function onButtonClick(e){
 	}).then(function(returnValue){
 		
 	});
+}
+
+/*
+ * 그리드에서 selection-change 이벤트 발생 시 호출.
+ * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
+ */
+function onGrd1SelectionChange2(e){
+	var grd1 = e.control;
+	//그리드 객체 찾기
+	var grid = app.lookup("boardGrd");
+	//사용자가 선택한 행의 인덱스를 찾는다.
+	var selectedRowIndex = grid.getSelectedRowIndex();
 }

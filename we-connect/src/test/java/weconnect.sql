@@ -13,6 +13,7 @@ CREATE TABLE member (
 	manager_yn CHAR(1) NOT NULL, /* 관리자여부 */
 	department_id NUMBER /* 부서번호 */
 );
+select * from member;
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
 /*멤버 테이블 insert 문 */
@@ -324,8 +325,9 @@ CREATE SEQUENCE room_reserv_seq START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE room_reserv (
 	room_reserv_id NUMBER NOT NULL, /* 회의실 예약 번호 */
-	room_reserv_start TIMESTAMP NOT NULL, /* 회의실 예약 시작일시 */
-	room_reserv_end TIMESTAMP NOT NULL, /* 회의실 예약 종료일시 */
+	room_reserv_date VARCHAR2(100) NOT NULL, /* 회의실 예약 날짜 */
+	room_reserv_start_time VARCHAR2(100) NOT NULL, /* 회의실 예약 시작일시 */
+	room_reserv_end_time VARCHAR2(100) NOT NULL, /* 회의실 예약 종료일시 */
 	member_id NUMBER, /* 회원번호 */
 	room_id NUMBER NOT NULL, /* 회의실 번호 */
 	CONSTRAINT FK_member_reserv FOREIGN KEY (member_id) REFERENCES member(member_id),
@@ -336,9 +338,11 @@ COMMENT ON TABLE room_reserv IS '회의실 예약';
 
 COMMENT ON COLUMN room_reserv.room_reserv_id IS '회의실 예약 번호';
 
-COMMENT ON COLUMN room_reserv.room_reserv_start IS '회의실 예약 시작일시';
+COMMENT ON COLUMN room_reserv.room_reserv_date IS '회의실 예약 날짜';
 
-COMMENT ON COLUMN room_reserv.room_reserv_end IS '회의실 예약 종료일시';
+COMMENT ON COLUMN room_reserv.room_reserv_start_time IS '회의실 예약 시작일시';
+
+COMMENT ON COLUMN room_reserv.room_reserv_end_time IS '회의실 예약 종료일시';
 
 COMMENT ON COLUMN room_reserv.member_id IS '회원번호';
 

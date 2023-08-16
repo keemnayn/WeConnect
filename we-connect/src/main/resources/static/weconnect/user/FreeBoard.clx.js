@@ -32,7 +32,6 @@
 			 */
 			function onButtonClick(e){
 				var button = e.control;
-			//	window.location = "boardWriteFrom.do";
 				app.openDialog("dialog/BoardWriteForm", {width : 800, height : 600}, function(dialog){
 					dialog.ready(function(dialogApp){
 						// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
@@ -40,6 +39,18 @@
 				}).then(function(returnValue){
 					
 				});
+			}
+
+			/*
+			 * 그리드에서 selection-change 이벤트 발생 시 호출.
+			 * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
+			 */
+			function onGrd1SelectionChange2(e){
+				var grd1 = e.control;
+				//그리드 객체 찾기
+				var grid = app.lookup("boardGrd");
+				//사용자가 선택한 행의 인덱스를 찾는다.
+				var selectedRowIndex = grid.getSelectedRowIndex();
 			};
 			// End - User Script
 			
@@ -80,7 +91,7 @@
 			app.register(dataSet_2);
 			var submission_1 = new cpr.protocols.Submission("boardListSub");
 			submission_1.method = "get";
-			submission_1.action = "board.do";
+			submission_1.action = "/weconnect/member/boards";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
@@ -103,7 +114,7 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var grid_1 = new cpr.controls.Grid("grd1");
+			var grid_1 = new cpr.controls.Grid("boardGrd");
 			grid_1.init({
 				"dataSet": app.lookup("boardList"),
 				"columns": [
@@ -183,6 +194,9 @@
 					]
 				}
 			});
+			if(typeof onGrd1SelectionChange2 == "function") {
+				grid_1.addEventListener("selection-change", onGrd1SelectionChange2);
+			}
 			container.addChild(grid_1, {
 				"top": "80px",
 				"right": "0px",
@@ -232,7 +246,7 @@
 				"left": "calc(50% - 330px)"
 			});
 			
-			var button_1 = new cpr.controls.Button();
+			var button_1 = new cpr.controls.Button("newBoardWrite");
 			button_1.value = "새글";
 			if(typeof onButtonClick == "function") {
 				button_1.addEventListener("click", onButtonClick);
