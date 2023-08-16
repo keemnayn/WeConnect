@@ -9,5 +9,4 @@ public class WeConnectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WeConnectApplication.class, args);
 	}
-
 }
