@@ -42,7 +42,7 @@
 		from free_board f join member m on f.member_id = m.member_id
 	</select> -->
 
-	<select id="getFreeBoardList" resultType="com.arezip.weconnect.model.vo.FreeBoardAndMemberVO"> 
+	<select id="getFreeBoardList" resultType="com.arezip.weconnect.model.dto.FreeBoardAndMemberDTO"> 
 		select f.free_board_id as freeBoardId, f.free_board_title as freeBoardTitle, 
 		m.member_name as memberName, to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate
 		from free_board f join member m 
