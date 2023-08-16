@@ -10,7 +10,7 @@ import com.cleopatra.spring.UIView;
 @Controller
 @RequestMapping("/weconnect")
 public class TeamPostController {
-	@GetMapping("project.do")
+	@GetMapping("teamPost")
 	public View listPage() {
 		return new UIView("project/teamPost.clx");
 	}

@@ -17,11 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/weconnect/member/team-post")
+@RequestMapping("/weconnect/member/teamPost")
 @RequiredArgsConstructor
 public class TeamPostRestController {
 	private final TeamPostService teamPostService;
 
+// 팀 워크보드 게시물 목록
 	@GetMapping
 	public View getTeamPostList(DataRequest dataRequest) {
 		List<TeamPostVO> teamPostList = teamPostService.getTeamPostList();

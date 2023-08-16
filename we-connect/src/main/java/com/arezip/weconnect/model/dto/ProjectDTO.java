@@ -14,5 +14,5 @@ public class ProjectDTO {
 	private String projectName;
 	private Date projectStart;
 	private Date projectEnd;
-	private MemberDTO memberVO;
+	private long memberId;
 }

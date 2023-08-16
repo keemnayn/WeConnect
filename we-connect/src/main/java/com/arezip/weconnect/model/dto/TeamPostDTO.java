@@ -13,9 +13,8 @@ public class TeamPostDTO {
 	private long teamPostId;
 	private String teamPostTitle;
 	private String teamPostContent;
-	private long teamPostViews;
 	private Date teamPostCreate;
-	private MemberDTO memberVO;
-	private ProjectDTO projectVO;
+	private long memberId;
+	private long projectId;
 	
 }

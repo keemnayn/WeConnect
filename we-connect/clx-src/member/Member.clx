@@ -6,7 +6,7 @@
     <screen std:sid="screen-d647b167" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-a4f5c99c" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-132c8a15">
-      <cl:dataset std:sid="d-set-0ac86a64" id="userMenu">
+      <cl:dataset std:sid="d-set-0ac86a64" id="memberMenu">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-338dfb04" name="label" datatype="string"/>
           <cl:datacolumn std:sid="d-column-ea9a6b1e" name="value"/>
@@ -20,7 +20,7 @@
             <cl:datavalue columnname="value"><![CDATA[홈]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/home.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/UserMain]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/MemberMain]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[근태]]></cl:datavalue>
@@ -55,14 +55,14 @@
             <cl:datavalue columnname="value"><![CDATA[출/퇴근 기록]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/commute.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/AttendForm]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/AttendForm]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[연차신청]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[연차신청]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/holiday.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/LeaveRequestForm]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/LeaveRequestForm]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[일정]]></cl:datavalue>
@@ -83,42 +83,42 @@
             <cl:datavalue columnname="value"><![CDATA[회의실예약]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/meeting_room.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/RoomReservForm]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/RoomReservForm]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[자유게시판]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[자유게시판]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/post.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/FreeBoard]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/FreeBoard]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/post.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/Notice]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/Notice]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/suggestions.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/Proposal]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/Proposal]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[팀 페이지]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[팀프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/team.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[업무보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/project/TeamPost]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/project/TeamPost]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[개인페이지]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[개인프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/user/solo.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[업무보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[user/project/PrivatePost]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/project/PrivatePost]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -131,7 +131,7 @@
     <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#F1EFFF; border-bottom-color:#f1efff; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff;">
       <cl:listener std:sid="listener-11dd4ffb" name="item-click" handler="onTre1ItemClick"/>
       <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:treeitemset datasetid="userMenu" label="label" value="value" icon="icon" parent="parent"/>
+      <cl:treeitemset datasetid="memberMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
     <cl:group std:sid="group-43e402e0" style="background-color:#F1EFFF;">
       <cl:xylayoutdata std:sid="xyl-data-786e5156" top="0px" right="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
