@@ -8,17 +8,30 @@
     <cl:model std:sid="model-622371a5">
       <cl:dataset std:sid="d-set-a2a23ee9" id="category">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-5f6619bd" name="category"/>
+          <cl:datacolumn std:sid="d-column-5f6619bd" name="label"/>
+          <cl:datacolumn std:sid="d-column-5e39e59a" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="category"><![CDATA[공지]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[공지]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[공지]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="category"><![CDATA[점검]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[점검]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[점검]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-1eabfbb3" id="noticeCreateParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-54d9874e" name="noticeTitle"/>
+          <cl:datacolumn std:sid="d-column-01b2ff30" name="noticeCategory"/>
+          <cl:datacolumn std:sid="d-column-da51ef17" name="noticeContent"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-fdc65fe1" id="noticeCreateSub" action="admin/notices">
+        <cl:requestdata dataid="noticeCreateParam"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec title="공지사항 등록 팝업"/>
   </head>
@@ -26,21 +39,29 @@
     <cl:output std:sid="output-fceb3975" value="공지사항 등록">
       <cl:xylayoutdata std:sid="xyl-data-d9e9a87a" top="20px" right="1060px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
-    <cl:button std:sid="button-204368de" value="등록">
+    <cl:button std:sid="button-204368de" id="createBtn" value="등록">
+      <cl:listener std:sid="listener-4a641930" name="click" handler="onCreateBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-37acaa12" right="660px" bottom="20px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
     </cl:button>
-    <cl:button std:sid="button-16f503a5" value="취소">
+    <cl:button std:sid="button-16f503a5" id="cancelBtn" value="취소">
+      <cl:listener std:sid="listener-424d7cdd" name="click" handler="onCancelBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-9af7ed9d" bottom="20px" left="660px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
     </cl:button>
-    <cl:inputbox std:sid="i-box-abd7800c" id="ipb1" placeholder="제목">
+    <cl:inputbox std:sid="i-box-abd7800c" id="noticeTitleIpb" placeholder="제목">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeTitle"/>
+      <cl:datamapcontext datacontrolid="noticeCreateParam"/>
       <cl:xylayoutdata std:sid="xyl-data-2d4e307b" top="120px" left="20px" width="800px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:inputbox>
-    <cl:textarea std:sid="t-area-8b47dfa8" id="txa1" placeholder="내용">
+    <cl:textarea std:sid="t-area-8b47dfa8" id="noticeContentTxa" placeholder="내용">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeContent"/>
+      <cl:datamapcontext datacontrolid="noticeCreateParam"/>
       <cl:xylayoutdata std:sid="xyl-data-33e480df" top="220px" right="20px" bottom="100px" left="20px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:textarea>
-    <cl:combobox std:sid="c-box-1a852d50" id="cmb1" value="공지">
+    <cl:combobox std:sid="c-box-1a852d50" id="noticeCategoryCmb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeCategory"/>
+      <cl:datamapcontext datacontrolid="noticeCreateParam"/>
       <cl:xylayoutdata std:sid="xyl-data-f30b2fd9" top="120px" right="20px" width="300px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-      <cl:itemset datasetid="category" label="category" value="category"/>
+      <cl:itemset datasetid="category" label="label" value="value"/>
     </cl:combobox>
     <cl:xylayout std:sid="xylayout-014465a9"/>
   </body>

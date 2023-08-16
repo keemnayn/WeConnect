@@ -8,6 +8,7 @@
     <cl:model std:sid="model-2809d8e9">
       <cl:dataset std:sid="d-set-82172b78" id="noticeList">
         <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-59f8ef69" name="noticeId" datatype="string"/>
           <cl:datacolumn std:sid="d-column-a7f7fd94" name="noticeTitle"/>
           <cl:datacolumn std:sid="d-column-3c946ffa" name="noticeContent"/>
           <cl:datacolumn std:sid="d-column-d5a2ef3a" name="noticeCategory"/>
@@ -18,21 +19,42 @@
       <cl:dataset std:sid="d-set-d50e6862" id="noticeSearch">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-a19118fc" name="type"/>
+          <cl:datacolumn std:sid="d-column-8c71dfcd" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
             <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="type"><![CDATA[제목]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="type"><![CDATA[분류]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[category]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-ad004df0" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-f44d0de2" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-b305a204" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-967003f3" id="noticeListSub" method="get" action="admin/notices">
         <cl:responsedata dataid="noticeList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-f5443d81" id="searchNoticeSub" method="get" action="admin/notices/search">
+        <cl:listener std:sid="listener-15f0dd6b" name="submit-done" handler="onSearchNoticeSubSubmitDone"/>
+        <cl:listener std:sid="listener-58ec0988" name="submit-success" handler="onSearchNoticeSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="noticeList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-1340684c" id="deleteNoticeSub" method="delete" action="admin/notices">
+        <cl:listener std:sid="listener-27fb3b82" name="submit-success" handler="onDeleteNoticeSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-5d2f644f" name="submit-done" handler="onDeleteNoticeSubSubmitDone"/>
+        <cl:requestdata dataid="noticeList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -46,57 +68,65 @@
           <std:property key="is-active-item" value="true"/>
         </std:metadata>
         <cl:group std:sid="group-29424da0">
-          <cl:grid std:sid="grid-c21e7c3f" id="grd1" datasetid="noticeList">
+          <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList">
             <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:headerstyle class="Notice_grd1"/>
-            <cl:gridcolumn std:sid="g-column-cd32907a" width="25px"/>
-            <cl:gridcolumn std:sid="g-column-d5521d7d"/>
-            <cl:gridcolumn std:sid="g-column-cb55fed9"/>
-            <cl:gridcolumn std:sid="g-column-bb039ca6"/>
-            <cl:gridcolumn std:sid="g-column-7988b62c"/>
-            <cl:gridheader std:sid="gh-band-f5b2496e">
-              <cl:gridrow std:sid="g-row-e6cd2ac9" height="50px"/>
-              <cl:gridcell std:sid="gh-cell-01e070bd" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
-              <cl:gridcell std:sid="gh-cell-8fe77396" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="noticeTitle" sortable="false" filterable="false" text="제목"/>
-              <cl:gridcell std:sid="gh-cell-4704f721" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="noticeContent" sortable="false" filterable="false" text="내용"/>
-              <cl:gridcell std:sid="gh-cell-22125575" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="noticeCategory" sortable="false" filterable="false" text="분류"/>
-              <cl:gridcell std:sid="gh-cell-dc68cdec" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="noticeCreate" sortable="false" filterable="false" text="작성일"/>
+            <cl:gridcolumn std:sid="g-column-72009018" width="25px"/>
+            <cl:gridcolumn std:sid="g-column-61ecce4b"/>
+            <cl:gridcolumn std:sid="g-column-cb1f2ade"/>
+            <cl:gridcolumn std:sid="g-column-7ddf1b48"/>
+            <cl:gridcolumn std:sid="g-column-45e6a954"/>
+            <cl:gridcolumn std:sid="g-column-6a872ff2"/>
+            <cl:gridheader std:sid="gh-band-8968ab25">
+              <cl:gridrow std:sid="g-row-55a94e22" height="50px"/>
+              <cl:gridcell std:sid="gh-cell-51218933" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
+              <cl:gridcell std:sid="gh-cell-3bac701b" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="noticeId" sortable="false" filterable="false" text="noticeId"/>
+              <cl:gridcell std:sid="gh-cell-218b343b" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="noticeTitle" sortable="false" filterable="false" text="noticeTitle"/>
+              <cl:gridcell std:sid="gh-cell-8dfebc6f" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="noticeContent" sortable="false" filterable="false" text="noticeContent"/>
+              <cl:gridcell std:sid="gh-cell-16390ea7" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="noticeCategory" sortable="false" filterable="false" text="noticeCategory"/>
+              <cl:gridcell std:sid="gh-cell-668c26a8" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="noticeCreate" sortable="false" filterable="false" text="noticeCreate"/>
             </cl:gridheader>
-            <cl:griddetail std:sid="gd-band-98cf6525">
-              <cl:gridrow std:sid="g-row-257b4907" height="50px"/>
-              <cl:gridcell std:sid="gd-cell-04137426" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
-              <cl:gridcell std:sid="gd-cell-fa8fb10b" rowindex="0" colindex="1" style="text-align:center;" columnname="noticeTitle">
-                <cl:output std:sid="output-119c71a4" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-f8835793"/>
+            <cl:griddetail std:sid="gd-band-b4d23a82">
+              <cl:gridrow std:sid="g-row-c9c8f520" height="50px"/>
+              <cl:gridcell std:sid="gd-cell-a4b34fe8" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
+              <cl:gridcell std:sid="gd-cell-6db8de9c" rowindex="0" colindex="1" style="text-align:center;" columnname="noticeId">
+                <cl:output std:sid="output-292e7d72" style="text-align:center;">
+                  <cl:celldata/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-fffeec56" rowindex="0" colindex="2" style="text-align:center;" columnname="noticeContent">
-                <cl:output std:sid="output-d22f9679" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-061e5b97"/>
+              <cl:gridcell std:sid="gd-cell-ccde96b1" rowindex="0" colindex="2" style="text-align:center;" columnname="noticeTitle">
+                <cl:output std:sid="output-41c90364" style="text-align:center;">
+                  <cl:celldata/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-131ccb2e" rowindex="0" colindex="3" style="text-align:center;" columnname="noticeCategory">
-                <cl:output std:sid="output-846dabbe" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-42ab3d78"/>
+              <cl:gridcell std:sid="gd-cell-0933fdfe" rowindex="0" colindex="3" style="text-align:center;" columnname="noticeContent">
+                <cl:output std:sid="output-52ce9bac" style="text-align:center;">
+                  <cl:celldata/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-3839b640" rowindex="0" colindex="4" style="text-align:center;" columnname="noticeCreate">
-                <cl:output std:sid="output-cea18d87" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-414fcb3d"/>
+              <cl:gridcell std:sid="gd-cell-217453b2" rowindex="0" colindex="4" style="text-align:center;" columnname="noticeCategory">
+                <cl:output std:sid="output-054303f4" style="text-align:center;">
+                  <cl:celldata/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-ed75c803" rowindex="0" colindex="5" style="text-align:center;" columnname="noticeCreate">
+                <cl:output std:sid="output-15a4544e" style="text-align:center;">
+                  <cl:celldata/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
           <cl:group std:sid="group-2815f0b4">
             <cl:xylayoutdata std:sid="xyl-data-b0db2694" top="5px" right="0px" width="225px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:button std:sid="button-f2d92f35" value="등록">
-              <cl:listener std:sid="listener-67cb6146" name="click" handler="onButtonClick"/>
+            <cl:button std:sid="button-f2d92f35" id="createBtn" value="등록">
+              <cl:listener std:sid="listener-3f944b5d" name="click" handler="onCreateBtnClick"/>
               <cl:formdata std:sid="f-data-03417d0f" row="0" col="0"/>
             </cl:button>
-            <cl:button std:sid="button-aec78b5f" value="수정">
+            <cl:button std:sid="button-aec78b5f" id="updateBtn" value="수정">
               <cl:formdata std:sid="f-data-ef7fd33c" row="0" col="1"/>
             </cl:button>
-            <cl:button std:sid="button-213da8ec" value="삭제">
+            <cl:button std:sid="button-213da8ec" id="deleteBtn" value="삭제">
+              <cl:listener std:sid="listener-f53a174b" name="click" handler="onDeleteBtnClick"/>
               <cl:formdata std:sid="f-data-40507e93" row="0" col="2"/>
             </cl:button>
             <cl:formlayout std:sid="f-layout-0233582e" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -106,11 +136,16 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" style="text-align:center;" value="전체">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="text-align:center;">
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="545px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:itemset datasetid="noticeSearch" label="type" value="type"/>
+            <cl:itemset datasetid="noticeSearch" label="type" value="value"/>
           </cl:combobox>
-          <cl:searchinput std:sid="s-input-e6af5d2c">
+          <cl:searchinput std:sid="s-input-e6af5d2c" id="searchIpb">
+            <cl:listener std:sid="listener-ba11586f" name="search" handler="onSearchIpbSearch"/>
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-9b06b7e9" top="10px" right="245px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
           </cl:searchinput>
           <cl:xylayout std:sid="xylayout-2dbc9a91"/>
