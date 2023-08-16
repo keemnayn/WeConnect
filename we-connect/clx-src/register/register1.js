@@ -13,14 +13,17 @@ function onButtonClick(e){
 	var button = e.control;
 	let submission = app.lookup("memberList");
 	submission.send();
+	alert("회원가입 완료");
+	window.location= "login/login1.clx";
 }
 
+
+
 /*
- * 콤보 박스에서 selection-change 이벤트 발생 시 호출.
- * ComboBox Item을 선택하여 선택된 값이 저장된 후에 발생하는 이벤트.
+ * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+ * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
  */
-function onCmb2SelectionChange(e){
-	var cmb2 = e.control;
-	var control = app.lookup("department");
-	
+function onBodyInit2(e){
+	let department = app.lookup("deparment");
+	department.send();
 }

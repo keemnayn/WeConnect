@@ -25,10 +25,38 @@
 			function onButtonClick(e) {
 				var button = e.control;
 				window.location.href = "register/register1.clx";
+			}
+
+			/*
+			 * "로그인" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick2(e){
+				var button = e.control;
+				let submission = app.lookup("login");
+				submission.send();
 			};
 			// End - User Script
 			
 			// Header
+			var dataMap_1 = new cpr.data.DataMap("member");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "memberEmail",
+						"dataType": "string"
+					},
+					{
+						"name": "memberPassword",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("login");
+			submission_1.action = "login";
+			submission_1.addRequestData(dataMap_1);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -104,6 +132,9 @@
 					"font-size" : "16px",
 					"background-image" : "none"
 				});
+				if(typeof onButtonClick2 == "function") {
+					button_1.addEventListener("click", onButtonClick2);
+				}
 				container.addChild(button_1, {
 					"top": "334px",
 					"left": "90px",

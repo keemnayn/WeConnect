@@ -13,6 +13,6 @@ public class NoticeDTO {
 	private String noticeContent;
 	private long noticeViews;
 	private String noticeCreate;
-	private MemberDTO memberVO;
 	private String noticeCategory;
+	private long memberId;
 }

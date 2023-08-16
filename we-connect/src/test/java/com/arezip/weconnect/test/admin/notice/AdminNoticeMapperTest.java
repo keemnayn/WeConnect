@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.notice;
+package com.arezip.weconnect.test.admin.notice;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -11,38 +11,38 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.arezip.weconnect.mapper.NoticeMapper;
-import com.arezip.weconnect.model.dto.MemberDTO;
+import com.arezip.weconnect.mapper.admin.AdminNoticeMapper;
 import com.arezip.weconnect.model.dto.NoticeDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-class NoticeMapperTest {
+class AdminNoticeMapperTest {
 	@Autowired
-	NoticeMapper noticeMapper;
+	AdminNoticeMapper adminNoticeMapper;
 
 //	공지사항 전체 리스트 mapper
 	@Test
 	void selectAllNoticesTest() {
-		List<NoticeDTO> list = noticeMapper.selectAllNotices();
+//		List<NoticeDTO> list = adminNoticeMapper.selectAllNotices();
+//		list.forEach(notice -> log.info(notice.toString()));
+		List<NoticeDTO> list = adminNoticeMapper.selectAllNotices();
 		list.forEach(notice -> log.info(notice.toString()));
 	}
 
 //	공지사항 추가 mapper
 	@Test
-//	@Transactional // 테스트 이후 롤백을 위해 추가
+	@Transactional // 테스트 이후 롤백을 위해 추가
 	void insertNoticeTest() {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNoticeTitle("매퍼 테스트 제목");
 		noticeDTO.setNoticeContent("매퍼 테스트 내용");
 		noticeDTO.setNoticeCategory("공지");
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setMemberId(1);
-		noticeDTO.setMemberVO(memberDTO);
-		int result = noticeMapper.insertNotice(noticeDTO);
+		noticeDTO.setMemberId(1);
+		int result = adminNoticeMapper.insertNotice(noticeDTO);
 		assertNotEquals(0, result);
 	}
 
@@ -54,15 +54,16 @@ class NoticeMapperTest {
 		noticeDTO.setNoticeTitle("매퍼 테스트 제목 수정");
 		noticeDTO.setNoticeContent("매퍼 테스트 내용 수정");
 		noticeDTO.setNoticeCategory("점검");
-		int result = noticeMapper.updateNotice(noticeDTO);
+		int result = adminNoticeMapper.updateNotice(noticeDTO);
 		assertNotEquals(0, result);
 	}
 
 //	공지사항 삭제 mapper
 	@Test
 	void deleteNoticeTest() {
-		long noticeId = 16;
-		int result = noticeMapper.deleteNotice(noticeId);
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNoticeId(44);
+		int result = adminNoticeMapper.deleteNotice(noticeDTO);
 		assertNotEquals(0, result);
 	}
 
@@ -73,7 +74,7 @@ class NoticeMapperTest {
 		searchParams.put("searchType", "all");
 		searchParams.put("searchText", "입니다");
 
-		List<NoticeDTO> list = noticeMapper.selectNoticesBySearchCriteria(searchParams);
+		List<NoticeDTO> list = adminNoticeMapper.selectNoticesBySearchCriteria(searchParams);
 
 // 		null 여부 확인
 		assertNotNull(list);
