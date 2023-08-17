@@ -8,7 +8,7 @@ import org.springframework.web.servlet.View;
 import com.cleopatra.spring.UIView;
 
 @Controller
-@RequestMapping("/weconnect")
+@RequestMapping("/teamPost")
 public class TeamPostController {
 	@GetMapping("teamPost")
 	public View listPage() {
