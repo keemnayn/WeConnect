@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PrivatePostFileDTO {
-	private long privatePostFileId;
-	private String privatePostFileName;
-	private String privatePostFilePath;
-	private PrivatePostDTO privatePostVO;
+public class MyPostFileDTO {
+	private long myPostFileId;
+	private String myPostFileName;
+	private String myPostFilePath;
+	private MyPostDTO myPostVO;
 }

@@ -145,7 +145,7 @@
 					{"label": "공지사항", "value": "공지사항", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/Notice"},
 					{"label": "건의사항", "value": "건의사항", "icon": "img/member/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},
 					{"label": "공통", "value": "공통", "icon": "img/member/team.png", "parent": "워크보드", "appId": "member/project/TeamPost"},
-					{"label": "나의 보드", "value": "나의 보드", "icon": "img/member/solo.png", "parent": "워크보드", "appId": "member/project/MyTeamPost"}
+					{"label": "나의 보드", "value": "나의 보드", "icon": "img/member/solo.png", "parent": "워크보드", "appId": "member/project/MyPost"}
 				]
 			});
 			app.register(dataSet_1);
