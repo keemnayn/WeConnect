@@ -772,5 +772,3 @@ ALTER TABLE free_board_comment
     ADD CONSTRAINT FK_free_board_comment_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id);
-    
-    

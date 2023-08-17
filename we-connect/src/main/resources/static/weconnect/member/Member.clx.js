@@ -102,6 +102,15 @@
 			function onEa1Load(e){
 				var ea1 = e.control;
 				
+			}
+
+			/*
+			 * "관리자페이지" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+				window.location = "admin";
 			};
 			// End - User Script
 			
@@ -199,6 +208,17 @@
 					"left": "0px",
 					"width": "300px",
 					"height": "40px"
+				});
+				var button_1 = new cpr.controls.Button();
+				button_1.value = "관리자페이지";
+				if(typeof onButtonClick == "function") {
+					button_1.addEventListener("click", onButtonClick);
+				}
+				container.addChild(button_1, {
+					"top": "20px",
+					"left": "1468px",
+					"width": "100px",
+					"height": "20px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
