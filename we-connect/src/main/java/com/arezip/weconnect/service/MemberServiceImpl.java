@@ -30,9 +30,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDTO login(long email, String password) {
+	public MemberDTO login(String memberEmail, String memberPassword) {
 		// TODO Auto-generated method stub
-		return memberMapper.login(email,password);
+		return memberMapper.login(memberEmail,memberPassword);
 	}
 
 

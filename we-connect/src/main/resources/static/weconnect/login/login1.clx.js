@@ -35,6 +35,40 @@
 				var button = e.control;
 				let submission = app.lookup("login");
 				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLoginSubmitSuccess(e){
+				var login = e.control;
+					/** 
+				 * @type cpr.protocols.Submission
+				 */
+				let submission = app.lookup("login");
+				let member = app.lookup("member");
+				let email = member.getValue("memberEmail");
+				let password = member.getValue("memberPassword");
+				let metadata = submission.getMetadata("url");
+				let login1 = submission.getMetadata("login");
+				
+				// 먼저 비밀번호 입력 유효성 검사
+				if ((password == null || password.trim() === "") || (email == null || email.trim() === "")) {
+					alert("아이디와 비밀번호는 필수 항목입니다!");
+				} else if (login1 == null) {
+					alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요");
+				} else {
+					alert("로그인 성공"); 
+					if (metadata != null) {
+						cpr.core.App.load(metadata, function(newApp) {
+							app.close();
+							let newInst = newApp.createNewInstance();
+							newInst.run();
+						});
+						return;
+					}
+				}
 			};
 			// End - User Script
 			
@@ -56,6 +90,9 @@
 			var submission_1 = new cpr.protocols.Submission("login");
 			submission_1.action = "login";
 			submission_1.addRequestData(dataMap_1);
+			if(typeof onLoginSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onLoginSubmitSuccess);
+			}
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
@@ -99,6 +136,7 @@
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
+				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberEmail");
 				container.addChild(inputBox_1, {
 					"top": "164px",
 					"left": "90px",
@@ -115,6 +153,7 @@
 					"font-size" : "1em",
 					"text-align" : "left"
 				});
+				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_2, {
 					"top": "225px",
 					"left": "90px",
