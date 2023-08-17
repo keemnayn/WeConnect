@@ -1,0 +1,102 @@
+.cl-calendar.main-calendar, .admin_carlendar, .admain_cld {
+	background-color: #ffffff;
+	border: 1px solid #babfc7;
+	border-radius: 5px;
+}
+
+/* 이전 달 버튼 */
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev:hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev.cl-hover {
+	background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+}
+
+/* 다음 달 버튼 */
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next:hover,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next.cl-hover {
+	background-image: url("../../../../images/controls/calendar/icon-chevron-right-on.svg");
+}
+
+/* 캘린더 헤더 */
+.cl-calendar-header {
+	background-color: transparent;
+	.cl-calendar-header-before,
+	.cl-calendar-header-after {
+		min-width: 0px;
+		width: 0px;
+		visibility: hidden;
+	}
+		
+	/* 이전 달 버튼 */
+	.cl-calendar-header-prev {
+		background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+	}
+	
+	/* 다음 달 버튼 */
+	.cl-calendar-header-next {
+		background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
+	}
+
+	/* 헤더 텍스트 */
+	.cl-calendar-header-text {
+		color: #333333;
+		font-weight: bold;
+		font-size: 16px;
+		&:hover, &.cl-hover {
+			color: #3f87fd;
+		}
+	}
+}
+
+/* 캘린더 컨텐츠의 일, 월, 년 스타일 */
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year,
+.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month {
+	border-radius: 5px;
+	&:not(.cl-disabled):hover {
+		background-color: #f8f8fa;
+		color: #3f87fd;
+	}
+	&.cl-selected {
+		background-color: transparent;
+		color: #ffffff;
+	}
+}
+
+/* 캘린더 컨텐츠 스타일 */
+.cl-calendar-content {
+	.cl-calendar-content-day {
+		&.cl-calendar-defaultdate {
+			color: #3f87fd;
+		}
+		&.cl-range-selected,
+		&.cl-selected {
+			background-color: #3f87fd;
+			color: #ffffff;
+		}
+	}
+	.cl-other-month {
+		background-color: transparent;
+		color: #c0c0c0;
+		&.cl-disabled {
+			background-color: transparent;
+			color: #c0c0c0;
+		}
+	}
+}
+
+/* 캘린더 푸터 */
+.cl-calendar-footer {
+	background-color: #f2f4f6;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+	.cl-calendar-footer-text {
+		color: #333333;
+	}
+	&.cl-hover .cl-calendar-footer-text {
+		color: #c0c0c0;
+	}
+}

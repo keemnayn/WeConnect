@@ -43,11 +43,11 @@
       <cl:htmlsnippet std:sid="htmlsnippet-ce90cf54" value="&lt;h3>근태정보&lt;/h3>">
         <cl:xylayoutdata std:sid="xyl-data-f92d6bdc" top="-5px" left="17px" width="150px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:button std:sid="button-385dbe2f" style="border-radius:10px; background-color:#E0E1E2; background-image:none;" class="btn_go" value="출근">
+      <cl:button std:sid="button-385dbe2f" style="border-radius:10px; background-color:#E0E1E2; background-image:none; text-align:center;" class="btn_go" value="출근">
         <cl:listener std:sid="listener-f04ac77a" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-c2a18410" right="80px" bottom="10px" width="59px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none;" value="퇴근">
+      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none; text-align:center;" value="퇴근">
         <cl:listener std:sid="listener-c1551a94" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-b71d16d3" bottom="10px" left="538px" width="60px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>

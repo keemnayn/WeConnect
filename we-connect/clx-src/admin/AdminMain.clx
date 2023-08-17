@@ -30,7 +30,7 @@
             <cl:htmlsnippet std:sid="htmlsnippet-bb036ad5" value="&lt;hr>&#xD;&#xA;">
               <cl:xylayoutdata std:sid="xyl-data-3520cc93" top="30px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             </cl:htmlsnippet>
-            <cl:textarea std:sid="t-area-49b34f60" id="txa1" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; border-top-style:none;" value="회원승인">
+            <cl:textarea std:sid="t-area-49b34f60" id="txa1" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; background-image:none; border-top-style:none;" value="회원승인">
               <cl:xylayoutdata std:sid="xyl-data-b239d4e9" top="5px" left="2px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             </cl:textarea>
             <cl:xylayout std:sid="xylayout-af4a6260"/>
@@ -50,14 +50,14 @@
             <cl:htmlsnippet std:sid="htmlsnippet-bbe55494" value="&lt;hr>&#xD;&#xA;">
               <cl:xylayoutdata std:sid="xyl-data-fd2a8689" top="20px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             </cl:htmlsnippet>
-            <cl:textarea std:sid="t-area-eca1ae8c" id="txa4" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; border-top-style:none;" value="관리자프로필">
+            <cl:textarea std:sid="t-area-eca1ae8c" id="txa4" style="border-right-style:none; color:#333333; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; background-image:none; border-top-style:none;" value="관리자프로필">
               <cl:xylayoutdata std:sid="xyl-data-4b7d68dd" top="0px" left="0px" width="100px" height="21px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             </cl:textarea>
             <cl:xylayout std:sid="xylayout-17b8941c"/>
           </cl:group>
           <cl:group std:sid="group-fa9a77ed" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
             <cl:xylayoutdata std:sid="xyl-data-f731e696" top="0px" right="293px" left="652px" height="210px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-            <cl:textarea std:sid="t-area-9ac4100d" id="txa3" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; border-top-style:none;" value="사내소식">
+            <cl:textarea std:sid="t-area-9ac4100d" id="txa3" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; background-image:none; border-top-style:none;" value="사내소식">
               <cl:xylayoutdata std:sid="xyl-data-d3f911de" top="0px" left="0px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             </cl:textarea>
             <cl:htmlsnippet std:sid="htmlsnippet-c492d4c5" value="&lt;hr>&#xD;&#xA;">
