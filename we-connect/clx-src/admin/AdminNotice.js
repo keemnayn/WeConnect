@@ -27,7 +27,9 @@ function onCreateBtnClick(e) {
 		width: 1280,
 		height: 720
 	}, function(dialog) {
-		
+		dialog.addEventListener("close", function(e) {
+			app.lookup("noticeListSub").send();
+		});
 	});
 }
 /*

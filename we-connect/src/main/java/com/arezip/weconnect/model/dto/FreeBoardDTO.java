@@ -13,7 +13,7 @@ public class FreeBoardDTO {
 	private String freeBoardTitle;
 	private String freeBoardCreate;
 	private String memberName;
-	//게시글 상세 조회시 필요할 지도 모르는 컬럼
+	// 게시글 상세 조회시 필요할 지도 모르는 컬럼
 	private long freeBoardViews;
 	private long memberId;
 }

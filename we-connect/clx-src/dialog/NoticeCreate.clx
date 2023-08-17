@@ -30,12 +30,14 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-fdc65fe1" id="noticeCreateSub" action="admin/notices">
+        <cl:listener std:sid="listener-82874750" name="submit-success" handler="onNoticeCreateSubSubmitSuccess"/>
         <cl:requestdata dataid="noticeCreateParam"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="공지사항 등록 팝업"/>
   </head>
   <body std:sid="body-dd8646b4">
+    <cl:listener std:sid="listener-3ab81c13" name="init" handler="onBodyInit"/>
     <cl:output std:sid="output-fceb3975" value="공지사항 등록">
       <cl:xylayoutdata std:sid="xyl-data-d9e9a87a" top="20px" right="1060px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>

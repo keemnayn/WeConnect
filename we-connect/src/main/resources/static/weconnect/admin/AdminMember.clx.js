@@ -16,28 +16,39 @@
 			 * Created at 2023. 8. 9. 오전 9:55:22.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				app.lookup("memberListSub").send();
+			}
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("memberList");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "id"},
-					{"name": "email"},
-					{"name": "name"},
 					{
-						"name": "date",
-						"dataType": "string"
+						"name": "memberId",
+						"dataType": "number"
 					},
-					{"name": "grade"}
+					{"name": "memberEmail"},
+					{"name": "memberName"},
+					{"name": "position"},
+					{
+						"name": "memberJoinDate",
+						"dataType": "string"
+					}
 				],
 				"rows": [
-					{"id": "1", "email": "a@gmail.com", "name": "박해준", "date": "2023-03-27", "grade": "사원"},
-					{"id": "2", "email": "b@gmail.com", "name": "김정현", "date": "2023-03-27", "grade": "사원"},
-					{"id": "3", "email": "c@gmail.com", "name": "김나연", "date": "2023-03-27", "grade": "사원"},
-					{"id": "4", "email": "d@gmail.com", "name": "최수연", "date": "2023-03-27", "grade": "사원"},
-					{"id": "5", "email": "e@gmail.com", "name": "서정우", "date": "2023-03-27", "grade": "강사"}
+					{"memberEmail": "1", "memberName": "a@gmail.com", "position": "박해준", "memberJoinDate": "2023-03-27"},
+					{"memberEmail": "2", "memberName": "b@gmail.com", "position": "김정현", "memberJoinDate": "2023-03-27"},
+					{"memberEmail": "3", "memberName": "c@gmail.com", "position": "김나연", "memberJoinDate": "2023-03-27"},
+					{"memberEmail": "4", "memberName": "d@gmail.com", "position": "최수연", "memberJoinDate": "2023-03-27"},
+					{"memberEmail": "5", "memberName": "e@gmail.com", "position": "서정우", "memberJoinDate": "2023-03-27"}
 				]
 			});
 			app.register(dataSet_1);
@@ -72,6 +83,11 @@
 				]
 			});
 			app.register(dataSet_3);
+			var submission_1 = new cpr.protocols.Submission("memberListSub");
+			submission_1.method = "get";
+			submission_1.action = "admin/members";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -98,11 +114,12 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var grid_1 = new cpr.controls.Grid("grd1");
+					var grid_1 = new cpr.controls.Grid("memberListGrd1");
 					grid_1.init({
 						"dataSet": app.lookup("memberList"),
 						"columns": [
 							{"width": "25px"},
+							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
@@ -127,8 +144,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "email";
-										cell.text = "이메일";
+										cell.targetColumnName = "memberId";
+										cell.text = "memberId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -139,8 +156,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "name";
-										cell.text = "이름";
+										cell.targetColumnName = "memberEmail";
+										cell.text = "memberEmail";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -151,8 +168,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "date";
-										cell.text = "입사일";
+										cell.targetColumnName = "memberName";
+										cell.text = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -163,8 +180,20 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "grade";
-										cell.text = "직급";
+										cell.targetColumnName = "position";
+										cell.text = "position";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "memberJoinDate";
+										cell.text = "memberJoinDate";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -187,7 +216,7 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "email";
+										cell.columnName = "memberId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -196,16 +225,15 @@
 											output_1.style.css({
 												"text-align" : "center"
 											});
-											output_1.bind("value").toDataColumn("email");
+											output_1.bind("value").toDataColumn("memberId");
 											return output_1;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "name";
+										cell.columnName = "memberEmail";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -214,35 +242,32 @@
 											output_2.style.css({
 												"text-align" : "center"
 											});
-											output_2.bind("value").toDataColumn("name");
+											output_2.bind("value").toDataColumn("memberEmail");
 											return output_2;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "date";
+										cell.columnName = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
 										cell.control = (function(){
 											var output_3 = new cpr.controls.Output();
-											output_3.dateValueFormat = "YYYYMMDDHHmmssSSS";
 											output_3.style.css({
 												"text-align" : "center"
 											});
-											output_3.bind("value").toDataColumn("date");
+											output_3.bind("value").toDataColumn("memberName");
 											return output_3;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "grade";
+										cell.columnName = "position";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -251,10 +276,26 @@
 											output_4.style.css({
 												"text-align" : "center"
 											});
-											output_4.bind("value").toDataColumn("grade");
+											output_4.bind("value").toDataColumn("position");
 											return output_4;
 										})();
-										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.columnName = "memberJoinDate";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_5 = new cpr.controls.Output();
+											output_5.style.css({
+												"text-align" : "center"
+											});
+											output_5.bind("value").toDataColumn("memberJoinDate");
+											return output_5;
+										})();
 									}
 								}
 							]
@@ -266,7 +307,7 @@
 						"bottom": "0px",
 						"left": "0px"
 					});
-					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb1");
 					comboBox_1.value = "전체";
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("search"), {
@@ -276,14 +317,14 @@
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "520px",
+						"right": "453px",
 						"width": "100px",
 						"height": "30px"
 					});
-					var searchInput_1 = new cpr.controls.SearchInput();
+					var searchInput_1 = new cpr.controls.SearchInput("searchTextIpb1");
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "220px",
+						"right": "153px",
 						"width": "280px",
 						"height": "30px"
 					});
@@ -296,33 +337,27 @@
 					formLayout_1.leftMargin = "5px";
 					formLayout_1.horizontalSpacing = "10px";
 					formLayout_1.verticalSpacing = "10px";
-					formLayout_1.setColumns(["1fr", "1fr", "1fr"]);
+					formLayout_1.setColumns(["1fr", "1fr"]);
 					formLayout_1.setRows(["1fr"]);
 					group_2.setLayout(formLayout_1);
 					(function(container){
-						var button_1 = new cpr.controls.Button();
+						var button_1 = new cpr.controls.Button("updateBtn");
 						button_1.value = "수정";
 						container.addChild(button_1, {
 							"colIndex": 0,
 							"rowIndex": 0
 						});
-						var button_2 = new cpr.controls.Button();
+						var button_2 = new cpr.controls.Button("deleteBtn");
 						button_2.value = "삭제";
 						container.addChild(button_2, {
 							"colIndex": 1,
-							"rowIndex": 0
-						});
-						var button_3 = new cpr.controls.Button();
-						button_3.value = "저장";
-						container.addChild(button_3, {
-							"colIndex": 2,
 							"rowIndex": 0
 						});
 					})(group_2);
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "200px",
+						"width": "133px",
 						"height": "40px"
 					});
 				})(group_1);
@@ -338,7 +373,7 @@
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
 				group_3.setLayout(xYLayout_3);
 				(function(container){
-					var grid_2 = new cpr.controls.Grid("grd2");
+					var grid_2 = new cpr.controls.Grid("memberListGrd2");
 					grid_2.init({
 						"dataSet": app.lookup("registerList"),
 						"columns": [
@@ -432,12 +467,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_5 = new cpr.controls.Output();
-											output_5.style.css({
+											var output_6 = new cpr.controls.Output();
+											output_6.style.css({
 												"text-align" : "center"
 											});
-											output_5.bind("value").toDataColumn("name");
-											return output_5;
+											output_6.bind("value").toDataColumn("name");
+											return output_6;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -450,12 +485,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_6 = new cpr.controls.Output();
-											output_6.style.css({
+											var output_7 = new cpr.controls.Output();
+											output_7.style.css({
 												"text-align" : "center"
 											});
-											output_6.bind("value").toDataColumn("email");
-											return output_6;
+											output_7.bind("value").toDataColumn("email");
+											return output_7;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -468,12 +503,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_7 = new cpr.controls.Output();
-											output_7.style.css({
+											var output_8 = new cpr.controls.Output();
+											output_8.style.css({
 												"text-align" : "center"
 											});
-											output_7.bind("value").toDataColumn("date");
-											return output_7;
+											output_8.bind("value").toDataColumn("date");
+											return output_8;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -486,12 +521,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_8 = new cpr.controls.Output();
-											output_8.style.css({
+											var output_9 = new cpr.controls.Output();
+											output_9.style.css({
 												"text-align" : "center"
 											});
-											output_8.bind("value").toDataColumn("grade");
-											return output_8;
+											output_9.bind("value").toDataColumn("grade");
+											return output_9;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -514,36 +549,30 @@
 					formLayout_2.leftMargin = "5px";
 					formLayout_2.horizontalSpacing = "10px";
 					formLayout_2.verticalSpacing = "10px";
-					formLayout_2.setColumns(["1fr", "1fr", "1fr"]);
+					formLayout_2.setColumns(["1fr", "1fr"]);
 					formLayout_2.setRows(["1fr"]);
 					group_4.setLayout(formLayout_2);
 					(function(container){
-						var button_4 = new cpr.controls.Button();
-						button_4.value = "승인";
-						container.addChild(button_4, {
+						var button_3 = new cpr.controls.Button("approvalBtn");
+						button_3.value = "승인";
+						container.addChild(button_3, {
 							"colIndex": 0,
 							"rowIndex": 0
 						});
-						var button_5 = new cpr.controls.Button();
-						button_5.value = "거절";
-						container.addChild(button_5, {
+						var button_4 = new cpr.controls.Button("refusalBtn");
+						button_4.value = "거절";
+						container.addChild(button_4, {
 							"colIndex": 1,
-							"rowIndex": 0
-						});
-						var button_6 = new cpr.controls.Button();
-						button_6.value = "저장";
-						container.addChild(button_6, {
-							"colIndex": 2,
 							"rowIndex": 0
 						});
 					})(group_4);
 					container.addChild(group_4, {
 						"top": "5px",
 						"right": "0px",
-						"width": "200px",
+						"width": "133px",
 						"height": "40px"
 					});
-					var comboBox_2 = new cpr.controls.ComboBox("cmb2");
+					var comboBox_2 = new cpr.controls.ComboBox("searchTypeCmb2");
 					comboBox_2.value = "전체";
 					(function(comboBox_2){
 						comboBox_2.setItemSet(app.lookup("search"), {
@@ -553,14 +582,14 @@
 					})(comboBox_2);
 					container.addChild(comboBox_2, {
 						"top": "10px",
-						"right": "520px",
+						"right": "453px",
 						"width": "100px",
 						"height": "30px"
 					});
-					var searchInput_2 = new cpr.controls.SearchInput();
+					var searchInput_2 = new cpr.controls.SearchInput("searchTextIpb2");
 					container.addChild(searchInput_2, {
 						"top": "10px",
-						"right": "220px",
+						"right": "153px",
 						"width": "280px",
 						"height": "30px"
 					});
@@ -576,6 +605,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminMember";

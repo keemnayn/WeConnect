@@ -138,6 +138,10 @@
       <cl:img std:sid="image-584cd967" src="../img/enjoy.png">
         <cl:xylayoutdata std:sid="xyl-data-63225cd3" top="5px" left="0px" width="300px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
+      <cl:button std:sid="button-612c1b42" value="관리자페이지">
+        <cl:listener std:sid="listener-4f66f697" name="click" handler="onButtonClick"/>
+        <cl:xylayoutdata std:sid="xyl-data-8157d5c7" top="20px" left="1468px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
       <cl:xylayout std:sid="xylayout-67b54889"/>
     </cl:group>
     <cl:group std:sid="group-cedfdf19" style="background-color:#E0E0E0;">
