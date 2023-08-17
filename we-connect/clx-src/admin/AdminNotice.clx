@@ -91,27 +91,27 @@
               <cl:gridcell std:sid="gd-cell-a4b34fe8" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
               <cl:gridcell std:sid="gd-cell-6db8de9c" rowindex="0" colindex="1" style="text-align:center;" columnname="noticeId">
                 <cl:output std:sid="output-292e7d72" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-ccf0c39f"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-ccde96b1" rowindex="0" colindex="2" style="text-align:center;" columnname="noticeTitle">
                 <cl:output std:sid="output-41c90364" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-bd03d0d4"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-0933fdfe" rowindex="0" colindex="3" style="text-align:center;" columnname="noticeContent">
                 <cl:output std:sid="output-52ce9bac" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-a3558012"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-217453b2" rowindex="0" colindex="4" style="text-align:center;" columnname="noticeCategory">
                 <cl:output std:sid="output-054303f4" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-ea545beb"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-ed75c803" rowindex="0" colindex="5" style="text-align:center;" columnname="noticeCreate">
                 <cl:output std:sid="output-15a4544e" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-1b1558a5"/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>

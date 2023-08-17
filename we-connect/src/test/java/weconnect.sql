@@ -1,3 +1,5 @@
+select * from WECONNECT.FREE_BOARD_COMMENT;
+
 /* 회원 */
 CREATE SEQUENCE member_seq
 START WITH 1

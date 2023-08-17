@@ -27,11 +27,7 @@ function onCreateBtnClick(e) {
 		width: 1280,
 		height: 720
 	}, function(dialog) {
-		dialog.ready(function(dialogApp) {});
-	}).then(function(returnValue) {
-		var grid = app.lookup("noticeGrd");
-		grid.insertRow(-1, true);
-		grid.redraw();
+		
 	});
 }
 /*
