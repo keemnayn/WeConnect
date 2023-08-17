@@ -1,4 +1,4 @@
-package com.arezip.weconnect.controller.admin.user;
+package com.arezip.weconnect.controller.admin.member;
 
 
 
