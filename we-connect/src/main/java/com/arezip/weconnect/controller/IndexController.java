@@ -8,9 +8,9 @@ import com.cleopatra.spring.UIView;
 
 @Controller
 public class IndexController {
-	@RequestMapping("/index")
+	@RequestMapping
 	public View index() {
-		return new UIView("weconnect/user/User.clx");
+		return new UIView("weconnect/member/Member.clx");
 	}
 
 	@RequestMapping("weconnect/admin")
