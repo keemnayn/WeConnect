@@ -49,9 +49,9 @@ public class MemberTest {
     
     @Test
     public void login() {
-        long email = Long.parseLong("wqeqwere1");
-        String password = "12";
-        memberService.login(email, password);
-        log.info("로그인 성공 {}", memberService.login(email, password));
+    	String memberEmail = "wqeqwere1";
+    	String memberPassword = "12";
+        memberService.login(memberEmail,memberPassword);
+        log.info("로그인 성공 {}", memberService.login(memberEmail, memberPassword));
     }
 }

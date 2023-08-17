@@ -9,6 +9,6 @@
 	select * from department
 	</select>
 	<select id="login" resultType="com.arezip.weconnect.model.dto.MemberDTO">
-	SELECT member_name from member WHERE member_email=#{memberEmail} AND member_password=#{memberPassword}
+	SELECT member_name from member WHERE member_email= #{memberEmail} AND member_password=#{memberPassword}
 	</select>
 </mapper>

@@ -8,5 +8,5 @@ import com.arezip.weconnect.model.dto.MemberDTO;
 public interface MemberService {
 	int register(MemberDTO memberDTO);
 	List<DepartmentDTO> findByDepartMentNAME();
-	MemberDTO login(long email, String password);
+	MemberDTO login(String memberEmail, String memberPassword);
 }
