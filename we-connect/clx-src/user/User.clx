@@ -72,8 +72,8 @@
             <cl:datavalue columnname="appId"><![CDATA[project/Calendar1]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[업무보드]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[업무보드]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[워크보드]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[워크보드]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/member/work_board.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[프로젝트]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
@@ -107,18 +107,18 @@
             <cl:datavalue columnname="appId"><![CDATA[member/Proposal]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[팀 페이지]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[팀프로젝트]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[보드 목록]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[보드 목록]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/member/team.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[업무보드]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[워크보드]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[member/project/TeamPost]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[개인페이지]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[개인프로젝트]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[나의 보드]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[나의 보드]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/member/solo.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[업무보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/project/PrivatePost]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[워크보드]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/project/MyTeamPost]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>

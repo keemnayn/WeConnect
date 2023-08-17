@@ -11,6 +11,12 @@
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
 			// Start - User Script
+			/************************************************
+			 * noticeDetail.js
+			 * Created at 2023. 8. 5. 오후 7:57:23.
+			 *
+			 * @author Axl Rose
+			 ************************************************/;
 			// End - User Script
 			
 			// Header

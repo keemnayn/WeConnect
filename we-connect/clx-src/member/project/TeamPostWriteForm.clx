@@ -8,21 +8,24 @@
       <cl:dataset std:sid="d-set-e700fd97" id="boardForm">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-1a6657bb" name="boardNo"/>
-          <cl:datacolumn std:sid="d-column-5b816632" name="empName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-5b816632" name="memberName" datatype="string"/>
           <cl:datacolumn std:sid="d-column-e60cf552" name="title"/>
           <cl:datacolumn std:sid="d-column-a081d94d" name="content"/>
           <cl:datacolumn std:sid="d-column-1d7d8539" name="file"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="boardNo">boardNo1</cl:datavalue>
-            <cl:datavalue columnname="empName">empName1</cl:datavalue>
-            <cl:datavalue columnname="title">title1</cl:datavalue>
-            <cl:datavalue columnname="content">content1</cl:datavalue>
+            <cl:datavalue columnname="boardNo"><![CDATA[1]]></cl:datavalue>
+            <cl:datavalue columnname="memberName"><![CDATA[haha]]></cl:datavalue>
+            <cl:datavalue columnname="title"><![CDATA[첫글]]></cl:datavalue>
+            <cl:datavalue columnname="content"><![CDATA[야호]]></cl:datavalue>
             <cl:datavalue columnname="file">file1</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:submission std:sid="submission-b3380cd0" id="subList"/>
+      <cl:submission std:sid="submission-47c3778e" id="subSave"/>
+      <cl:submission std:sid="submission-7a05529e" id="subInit"/>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -37,7 +40,7 @@
         <cl:formdata std:sid="f-data-2dfd7c0d" row="0" col="2"/>
       </cl:output>
       <cl:output std:sid="output-9b9d9e26">
-        <cl:relativebind property="value" columnname="empName"/>
+        <cl:relativebind property="value" columnname="memberName"/>
         <cl:formdata std:sid="f-data-b5375623" row="0" col="1"/>
       </cl:output>
       <cl:inputbox std:sid="i-box-99f4ee2e" id="ipb1">
