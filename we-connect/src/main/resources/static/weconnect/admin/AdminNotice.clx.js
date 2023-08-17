@@ -40,11 +40,7 @@
 					width: 1280,
 					height: 720
 				}, function(dialog) {
-					dialog.ready(function(dialogApp) {});
-				}).then(function(returnValue) {
-					var grid = app.lookup("noticeGrd");
-					grid.insertRow(-1, true);
-					grid.redraw();
+					
 				});
 			}
 			/*
@@ -298,6 +294,7 @@
 											output_1.bind("value").toDataColumn("noticeId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -315,6 +312,7 @@
 											output_2.bind("value").toDataColumn("noticeTitle");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -332,6 +330,7 @@
 											output_3.bind("value").toDataColumn("noticeContent");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -349,6 +348,7 @@
 											output_4.bind("value").toDataColumn("noticeCategory");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -366,6 +366,7 @@
 											output_5.bind("value").toDataColumn("noticeCreate");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]
