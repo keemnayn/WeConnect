@@ -113,19 +113,4 @@ public class AdminNoticeRestController {
 		dataRequest.setResponse("noticeList", noticeList);
 		return new JSONDataView();
 	}
-
-//	응답 생성 메서드
-	private JSONDataView errorResponse(String message) {
-		Map<String, Object> errorResponse = new HashMap<>();
-		errorResponse.put("error", message);
-		return new JSONDataView(errorResponse);
-	}
-
-//	응답 생성 메서드
-	private JSONDataView successResponse(String message) {
-		Map<String, Object> successResponse = new HashMap<>();
-		successResponse.put("success", true);
-		successResponse.put("message", message);
-		return new JSONDataView(successResponse);
-	}
 }

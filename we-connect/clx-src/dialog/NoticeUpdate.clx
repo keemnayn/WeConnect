@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-18732881" version="1.0.4584">
+  <head std:sid="head-0a80de5a">
+    <screen std:sid="screen-681804ed" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="720" customWidth="1280" active="true"/>
+    <screen std:sid="screen-f426e32b" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-44f5a235" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-bd0856a5" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-e83e6667"/>
+    <cl:appspec title="공지사항 수정 팝업"/>
+  </head>
+  <body std:sid="body-87b8e1e1">
+    <cl:output std:sid="output-fceb3975" value="공지사항 수정">
+      <cl:xylayoutdata std:sid="xyl-data-af24a54f" top="10px" right="1070px" left="10px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:button std:sid="button-204368de" id="updateBtn" value="수정">
+      <cl:xylayoutdata std:sid="xyl-data-7d228258" right="670px" bottom="30px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-16f503a5" id="cancelBtn" value="취소">
+      <cl:xylayoutdata std:sid="xyl-data-9b9f26c3" bottom="30px" left="650px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:inputbox std:sid="i-box-abd7800c" id="noticeTitleIpb" placeholder="제목">
+      <cl:xylayoutdata std:sid="xyl-data-ada5873f" top="110px" left="10px" width="800px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:inputbox>
+    <cl:textarea std:sid="t-area-8b47dfa8" id="noticeContentTxa" placeholder="내용">
+      <cl:xylayoutdata std:sid="xyl-data-0410ff14" top="210px" right="30px" bottom="110px" left="10px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+    </cl:textarea>
+    <cl:combobox std:sid="c-box-1a852d50" id="noticeCategoryCmb">
+      <cl:xylayoutdata std:sid="xyl-data-55e26353" top="110px" right="30px" width="300px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+    </cl:combobox>
+    <cl:xylayout std:sid="xylayout-a6721c65"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>
