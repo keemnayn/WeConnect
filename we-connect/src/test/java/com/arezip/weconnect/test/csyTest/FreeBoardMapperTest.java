@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.freeboard;
+package com.arezip.weconnect.test.csyTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

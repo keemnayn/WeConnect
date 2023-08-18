@@ -16,21 +16,51 @@
 			 * Created at 2023. 8. 8. 오후 8:11:24.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * "신청" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+				var submission = app.lookup("roomReservSub").send();
+			}
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				app.lookup("roomInfoSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onRoomReservSubSubmitSuccess(e){
+				var roomReservSub = e.control;
+				alert("회의실 예약 완료");
+			//	app.lookup("reservForm").redraw;
+				var submission = app.lookup("roomReservSub").send();
+			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("room");
+			var dataSet_1 = new cpr.data.DataSet("roomInfo");
 			dataSet_1.parseData({
-				"columns": [{"name": "room"}],
-				"rows": [
-					{"room": "8층 대회의실"},
-					{"room": "8층 소회의실"},
-					{"room": "6층 소회의실"},
-					{"room": "5층 대회의실"},
-					{"room": "5층 소회의실"},
-					{"room": "접견실"}
-				]
+				"columns": [
+					{
+						"name": "roomName",
+						"dataType": "string"
+					},
+					{
+						"name": "roomId",
+						"dataType": "number"
+					}
+				],
+				"rows": []
 			});
 			app.register(dataSet_1);
 			
@@ -56,6 +86,33 @@
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("roomReservParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "roomReservDate"},
+					{"name": "roomReservStartTime"},
+					{"name": "roomReservEndTime"},
+					{"name": "proposal"},
+					{
+						"name": "roomId",
+						"dataType": "number"
+					}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("roomReservSub");
+			submission_1.action = "member/room-reserv";
+			submission_1.addRequestData(dataMap_1);
+			if(typeof onRoomReservSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onRoomReservSubSubmitSuccess);
+			}
+			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("roomInfoSub");
+			submission_2.method = "get";
+			submission_2.action = "member/room-reserv";
+			submission_2.addResponseData(dataSet_1, false);
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -73,7 +130,7 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var group_1 = new cpr.controls.Container();
+			var group_1 = new cpr.controls.Container("reservForm");
 			var formLayout_1 = new cpr.controls.layouts.FormLayout();
 			formLayout_1.scrollable = false;
 			formLayout_1.topMargin = "0px";
@@ -98,18 +155,24 @@
 					"colIndex": 0,
 					"rowIndex": 2
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				var comboBox_1 = new cpr.controls.ComboBox("roomNameCmb");
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
+				comboBox_1.setBindContext(dataMapContext_1);
+				comboBox_1.bind("value").toDataMap(app.lookup("roomReservParam"), "roomId");
 				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("room"), {
-						"label": "room",
-						"value": "room"
+					comboBox_1.setItemSet(app.lookup("roomInfo"), {
+						"label": "roomName",
+						"value": "roomId"
 					});
 				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"colIndex": 1,
 					"rowIndex": 0
 				});
-				var inputBox_1 = new cpr.controls.InputBox("ipb1");
+				var inputBox_1 = new cpr.controls.InputBox("proposalIpb");
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
+				inputBox_1.setBindContext(dataMapContext_2);
+				inputBox_1.bind("value").toDataMap(app.lookup("roomReservParam"), "proposal");
 				container.addChild(inputBox_1, {
 					"colIndex": 1,
 					"rowIndex": 2
@@ -128,6 +191,9 @@
 					});
 					var button_2 = new cpr.controls.Button();
 					button_2.value = "신청";
+					if(typeof onButtonClick == "function") {
+						button_2.addEventListener("click", onButtonClick);
+					}
 					container.addChild(button_2, {
 						"bottom": "88px",
 						"left": "690px",
@@ -160,7 +226,10 @@
 						"colIndex": 3,
 						"rowIndex": 0
 					});
-					var comboBox_2 = new cpr.controls.ComboBox("cmb3");
+					var comboBox_2 = new cpr.controls.ComboBox("endCmd");
+					var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
+					comboBox_2.setBindContext(dataMapContext_3);
+					comboBox_2.bind("value").toDataMap(app.lookup("roomReservParam"), "roomReservEndTime");
 					(function(comboBox_2){
 						comboBox_2.setItemSet(app.lookup("time"), {
 							"label": "time",
@@ -171,7 +240,10 @@
 						"colIndex": 4,
 						"rowIndex": 0
 					});
-					var comboBox_3 = new cpr.controls.ComboBox("cmb2");
+					var comboBox_3 = new cpr.controls.ComboBox("startCmd");
+					var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
+					comboBox_3.setBindContext(dataMapContext_4);
+					comboBox_3.bind("value").toDataMap(app.lookup("roomReservParam"), "roomReservStartTime");
 					(function(comboBox_3){
 						comboBox_3.setItemSet(app.lookup("time"), {
 							"label": "time",
@@ -188,7 +260,10 @@
 						"colIndex": 1,
 						"rowIndex": 0
 					});
-					var dateInput_1 = new cpr.controls.DateInput("dti2");
+					var dateInput_1 = new cpr.controls.DateInput("dateDti");
+					var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
+					dateInput_1.setBindContext(dataMapContext_5);
+					dateInput_1.bind("value").toDataMap(app.lookup("roomReservParam"), "roomReservDate");
 					container.addChild(dateInput_1, {
 						"colIndex": 0,
 						"rowIndex": 0
@@ -211,6 +286,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "RoomReservForm";
