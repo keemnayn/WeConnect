@@ -86,6 +86,32 @@
 				var deleteNoticeSub = e.control;
 				app.lookup("noticeListSub").send();
 			}
+
+			/*
+			 * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onUpdateBtnClick(e) {
+				var updateBtn = e.control;
+				var grid = app.lookup("noticeGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
+				var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
+				var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
+				var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
+				var value = [noticeId, noticeTitle, noticeContent, noticeCategory];
+				console.log(value);
+				app.openDialog("dialog/NoticeUpdate", {
+					width: 1280,
+					height: 720
+				}, function(dialog) {
+					dialog.ready(function(dialogApp) {
+						dialogApp.initValue = value;
+					});
+				}).then(function(returnValue) {
+					;
+				});
+			}
 			// End - User Script
 			
 			// Header
@@ -194,7 +220,7 @@
 							{"width": "100px"}
 						],
 						"header": {
-							"rows": [{"height": "50px"}],
+							"rows": [{"height": "24px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -202,9 +228,6 @@
 										cell.columnType = "checkbox";
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
@@ -214,9 +237,6 @@
 										cell.sortable = false;
 										cell.targetColumnName = "noticeId";
 										cell.text = "noticeId";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
@@ -226,9 +246,6 @@
 										cell.sortable = false;
 										cell.targetColumnName = "noticeTitle";
 										cell.text = "noticeTitle";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
@@ -238,9 +255,6 @@
 										cell.sortable = false;
 										cell.targetColumnName = "noticeContent";
 										cell.text = "noticeContent";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
@@ -250,9 +264,6 @@
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCategory";
 										cell.text = "noticeCategory";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
@@ -262,113 +273,72 @@
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCreate";
 										cell.text = "noticeCreate";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								}
 							]
 						},
 						"detail": {
-							"rows": [{"height": "50px"}],
+							"rows": [{"height": "24px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
 										cell.columnType = "checkbox";
-										cell.style.css({
-											"text-align" : "center"
-										});
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
 										cell.columnName = "noticeId";
-										cell.style.css({
-											"text-align" : "center"
-										});
 										cell.control = (function(){
 											var output_1 = new cpr.controls.Output();
-											output_1.style.css({
-												"text-align" : "center"
-											});
 											output_1.bind("value").toDataColumn("noticeId");
 											return output_1;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
 										cell.columnName = "noticeTitle";
-										cell.style.css({
-											"text-align" : "center"
-										});
 										cell.control = (function(){
 											var output_2 = new cpr.controls.Output();
-											output_2.style.css({
-												"text-align" : "center"
-											});
 											output_2.bind("value").toDataColumn("noticeTitle");
 											return output_2;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
 										cell.columnName = "noticeContent";
-										cell.style.css({
-											"text-align" : "center"
-										});
 										cell.control = (function(){
 											var output_3 = new cpr.controls.Output();
-											output_3.style.css({
-												"text-align" : "center"
-											});
 											output_3.bind("value").toDataColumn("noticeContent");
 											return output_3;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
 										cell.columnName = "noticeCategory";
-										cell.style.css({
-											"text-align" : "center"
-										});
 										cell.control = (function(){
 											var output_4 = new cpr.controls.Output();
-											output_4.style.css({
-												"text-align" : "center"
-											});
 											output_4.bind("value").toDataColumn("noticeCategory");
 											return output_4;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
 										cell.columnName = "noticeCreate";
-										cell.style.css({
-											"text-align" : "center"
-										});
 										cell.control = (function(){
 											var output_5 = new cpr.controls.Output();
-											output_5.style.css({
-												"text-align" : "center"
-											});
 											output_5.bind("value").toDataColumn("noticeCreate");
 											return output_5;
 										})();
-										cell.controlConstraint = {};
 									}
 								}
 							]
@@ -405,6 +375,9 @@
 						});
 						var button_2 = new cpr.controls.Button("updateBtn");
 						button_2.value = "수정";
+						if(typeof onUpdateBtnClick == "function") {
+							button_2.addEventListener("click", onUpdateBtnClick);
+						}
 						container.addChild(button_2, {
 							"colIndex": 1,
 							"rowIndex": 0

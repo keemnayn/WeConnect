@@ -73,3 +73,29 @@ function onDeleteNoticeSubSubmitDone(e) {
 	var deleteNoticeSub = e.control;
 	app.lookup("noticeListSub").send();
 }
+
+/*
+ * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onUpdateBtnClick(e) {
+	var updateBtn = e.control;
+	var grid = app.lookup("noticeGrd");
+	var checkRowIndices = grid.getCheckRowIndices();
+	var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
+	var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
+	var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
+	var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
+	var value = [noticeId, noticeTitle, noticeContent, noticeCategory];
+	console.log(value);
+	app.openDialog("dialog/NoticeUpdate", {
+		width: 1280,
+		height: 720
+	}, function(dialog) {
+		dialog.ready(function(dialogApp) {
+			dialogApp.initValue = value;
+		});
+	}).then(function(returnValue) {
+		;
+	});
+}
