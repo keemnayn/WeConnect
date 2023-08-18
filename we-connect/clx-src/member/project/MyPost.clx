@@ -6,23 +6,23 @@
     <screen std:sid="screen-cf773391" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-bfb438ea" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-bcd22cef">
-      <cl:dataset std:sid="d-set-cb33de6d" id="myteam">
+      <cl:dataset std:sid="d-set-cb33de6d" id="myPost">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-f4fbb83c" name="myTeamNo"/>
-          <cl:datacolumn std:sid="d-column-8d1235f8" name="myTeamName"/>
+          <cl:datacolumn std:sid="d-column-f4fbb83c" name="myPostId"/>
+          <cl:datacolumn std:sid="d-column-8d1235f8" name="myPostName"/>
           <cl:datacolumn std:sid="d-column-825d1a3e" name="memberName"/>
           <cl:datacolumn std:sid="d-column-3e6f705b" name="date" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-d1529523" name="myTeamTitle"/>
-          <cl:datacolumn std:sid="d-column-e5799af7" name="myTeamContent"/>
+          <cl:datacolumn std:sid="d-column-d1529523" name="myPostTitle"/>
+          <cl:datacolumn std:sid="d-column-e5799af7" name="myPostContent"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="myTeamNo"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="myTeamName"><![CDATA[개발팀]]></cl:datavalue>
-            <cl:datavalue columnname="myTeamTitle"><![CDATA[안내사항]]></cl:datavalue>
-            <cl:datavalue columnname="myTeamContent"><![CDATA[오늘 회의실은 3층입니다.]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[김미소]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-16]]></cl:datavalue>
+            <cl:datavalue columnname="myPostId">1</cl:datavalue>
+            <cl:datavalue columnname="myPostName">개발팀</cl:datavalue>
+            <cl:datavalue columnname="myPostTitle">안내사항</cl:datavalue>
+            <cl:datavalue columnname="myPostContent">오늘 회의실은 3층입니다.</cl:datavalue>
+            <cl:datavalue columnname="memberName">김미소</cl:datavalue>
+            <cl:datavalue columnname="date">2023-08-16</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -35,10 +35,10 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="memberId"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[이수지]]></cl:datavalue>
-            <cl:datavalue columnname="myPostComment"><![CDATA[넵 체크했습니다~]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-17]]></cl:datavalue>
+            <cl:datavalue columnname="memberId">1</cl:datavalue>
+            <cl:datavalue columnname="memberName">이수지</cl:datavalue>
+            <cl:datavalue columnname="myPostComment">넵 체크했습니다~</cl:datavalue>
+            <cl:datavalue columnname="date">2023-08-17</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -50,7 +50,7 @@
   </head>
   <body std:sid="body-9e0a9e88">
     <cl:output std:sid="output-745f8f10" style="background-color:#D7E4F2; border-radius:15px;">
-      <cl:datasetbind property="value" datacontrolid="myteam" columnname="myTeamName" rowindex="0"/>
+      <cl:datasetbind property="value" datacontrolid="myPost" columnname="myPostName" rowindex="0"/>
       <cl:xylayoutdata std:sid="xyl-data-f9f25c52" top="20px" left="20px" width="1520px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:inputbox std:sid="i-box-45252f4b" id="ipb1" style="border-right-style:none; color:#7D7878; border-bottom-color:#ffffff; border-left-style:none; border-left-color:#ffffff; border-top-color:#ffffff; border-bottom-style:none; border-right-color:#ffffff; font-family:IBM Plex Sans KR; border-top-style:none;" placeholder="댓글 달기">
@@ -94,22 +94,22 @@
       <cl:xylayoutdata std:sid="xyl-data-2b482de4" top="306px" left="20px" width="1540px" height="260px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:output std:sid="output-55e5d7c2">
         <cl:relativebind property="value" category="PROPERTY" columnname="memberName"/>
-        <cl:datarowcontext datacontrolid="myteam"/>
+        <cl:datarowcontext datacontrolid="myPost"/>
         <cl:xylayoutdata std:sid="xyl-data-499d9791" top="19px" left="19px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:output std:sid="output-5c2a8f66">
         <cl:relativebind property="value" category="PROPERTY" columnname="date"/>
-        <cl:datarowcontext datacontrolid="myteam"/>
+        <cl:datarowcontext datacontrolid="myPost"/>
         <cl:xylayoutdata std:sid="xyl-data-1c7d64d9" top="19px" left="128px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:textarea std:sid="t-area-0669a374" id="txa1" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;">
-        <cl:relativebind property="value" category="PROPERTY" columnname="myTeamContent"/>
-        <cl:datarowcontext datacontrolid="myteam"/>
+        <cl:relativebind property="value" category="PROPERTY" columnname="myPostContent"/>
+        <cl:datarowcontext datacontrolid="myPost"/>
         <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="100px" left="19px" width="1520px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:textarea>
       <cl:output std:sid="output-495bdf11">
-        <cl:relativebind property="value" category="PROPERTY" columnname="myTeamTitle"/>
-        <cl:datarowcontext datacontrolid="myteam"/>
+        <cl:relativebind property="value" category="PROPERTY" columnname="myPostTitle"/>
+        <cl:datarowcontext datacontrolid="myPost"/>
         <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="57px" left="18px" width="1520px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-01e9cfde"/>

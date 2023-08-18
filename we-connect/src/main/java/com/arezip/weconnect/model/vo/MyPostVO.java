@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class PrivatePostVO {
+public class MyPostVO {
 	private final long privatePostId;
 	private final String privatePostTitle;
 	private final String privatePostContent;
