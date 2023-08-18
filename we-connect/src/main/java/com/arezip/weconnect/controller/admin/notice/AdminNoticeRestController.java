@@ -63,7 +63,26 @@ public class AdminNoticeRestController {
 	// 공지사항 수정
 	@PutMapping
 	public View updateNotice(DataRequest dataRequest) {
-		return null;
+		ParameterGroup param = dataRequest.getParameterGroup("noticeUpdateParam");
+		if (param != null) {
+			Long noticeId = Long.parseLong(param.getValue("noticeId"));
+			String noticeTitle = param.getValue("noticeTitle");
+			String noticeContent = param.getValue("noticeContent");
+			String noticeCategory = param.getValue("noticeCategory");
+			log.info("noticeId {}", noticeId);
+			log.info("noticeTitle {}", noticeTitle);
+			log.info("noticeContent {}", noticeContent);
+			log.info("noticeCategory {}", noticeCategory);
+			long memberId = 1;
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNoticeId(noticeId);
+			noticeDTO.setNoticeTitle(noticeTitle);
+			noticeDTO.setNoticeContent(noticeContent);
+			noticeDTO.setNoticeCategory(noticeCategory);
+			noticeDTO.setMemberId(memberId);
+			adminNoticeService.updateNotice(noticeDTO);
+		}
+		return new JSONDataView();
 	}
 
 //	공지사항 삭제

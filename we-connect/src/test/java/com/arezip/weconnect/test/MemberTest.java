@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.arezip.weconnect.mapper.MemberMapper;
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.service.MemberService;
@@ -36,22 +35,23 @@ public class MemberTest {
 		memberDTO.setPosition("사원");
 		DepartmentDTO departmentDTO = new DepartmentDTO();
 		departmentDTO.setDepartmentId(2);
-		memberDTO.setDepartmentVO(departmentDTO);
+//		memberDTO.setDepartmentVO(departmentDTO);
 		memberService.register(memberDTO);
 		log.info("회원가입성공:{}", memberDTO.toString());
 	}
-    @Test
-    public void testFindByDepartmentName() {
-        List<DepartmentDTO> departmentList = memberService.findByDepartMentNAME();
-        log.info("부서이름{}:",departmentList);
-        assertNotNull(departmentList); // 검증: 조회 결과는 null이 아니어야 함 
-    }
-    
-    @Test
-    public void login() {
-    	String memberEmail = "wqeqwere1";
-    	String memberPassword = "12";
-        memberService.login(memberEmail,memberPassword);
-        log.info("로그인 성공 {}", memberService.login(memberEmail, memberPassword));
-    }
+
+	@Test
+	public void testFindByDepartmentName() {
+		List<DepartmentDTO> departmentList = memberService.findByDepartmentName();
+		log.info("부서이름{}:", departmentList);
+		assertNotNull(departmentList); // 검증: 조회 결과는 null이 아니어야 함
+	}
+
+	@Test
+	public void login() {
+		String memberEmail = "wqeqwere1";
+		String memberPassword = "12";
+		memberService.login(memberEmail, memberPassword);
+		log.info("로그인 성공 {}", memberService.login(memberEmail, memberPassword));
+	}
 }

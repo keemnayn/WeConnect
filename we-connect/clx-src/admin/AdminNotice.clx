@@ -68,50 +68,50 @@
           <std:property key="is-active-item" value="true"/>
         </std:metadata>
         <cl:group std:sid="group-29424da0">
-          <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList">
+          <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList" autofit="2, 3, 5">
             <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:headerstyle class="Notice_grd1"/>
-            <cl:gridcolumn std:sid="g-column-a4697205" width="25px"/>
-            <cl:gridcolumn std:sid="g-column-4284b01d"/>
+            <cl:gridcolumn std:sid="g-column-a4697205" width="50px"/>
+            <cl:gridcolumn std:sid="g-column-4284b01d" width="75px"/>
             <cl:gridcolumn std:sid="g-column-4a9b49cd"/>
-            <cl:gridcolumn std:sid="g-column-f5abb798"/>
-            <cl:gridcolumn std:sid="g-column-672cc6fe"/>
+            <cl:gridcolumn std:sid="g-column-f5abb798" width="200px"/>
+            <cl:gridcolumn std:sid="g-column-672cc6fe" width="75px"/>
             <cl:gridcolumn std:sid="g-column-d13d479d"/>
             <cl:gridheader std:sid="gh-band-ab7c14c1">
-              <cl:gridrow std:sid="g-row-2cc4c374"/>
-              <cl:gridcell std:sid="gh-cell-7abea7cf" rowindex="0" colindex="0" sortable="false" filterable="false" columntype="checkbox"/>
-              <cl:gridcell std:sid="gh-cell-24712c60" rowindex="0" colindex="1" targetcolumnname="noticeId" sortable="false" filterable="false" text="noticeId"/>
-              <cl:gridcell std:sid="gh-cell-75ba57e2" rowindex="0" colindex="2" targetcolumnname="noticeTitle" sortable="false" filterable="false" text="noticeTitle"/>
-              <cl:gridcell std:sid="gh-cell-16167fcf" rowindex="0" colindex="3" targetcolumnname="noticeContent" sortable="false" filterable="false" text="noticeContent"/>
-              <cl:gridcell std:sid="gh-cell-481b10b5" rowindex="0" colindex="4" targetcolumnname="noticeCategory" sortable="false" filterable="false" text="noticeCategory"/>
-              <cl:gridcell std:sid="gh-cell-b1677e09" rowindex="0" colindex="5" targetcolumnname="noticeCreate" sortable="false" filterable="false" text="noticeCreate"/>
+              <cl:gridrow std:sid="g-row-2cc4c374" height="50px"/>
+              <cl:gridcell std:sid="gh-cell-7abea7cf" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
+              <cl:gridcell std:sid="gh-cell-24712c60" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="noticeId" sortable="false" filterable="false" text="번호"/>
+              <cl:gridcell std:sid="gh-cell-75ba57e2" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="noticeTitle" sortable="false" filterable="false" text="제목"/>
+              <cl:gridcell std:sid="gh-cell-16167fcf" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="noticeContent" sortable="false" filterable="false" text="내용"/>
+              <cl:gridcell std:sid="gh-cell-481b10b5" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="noticeCategory" sortable="false" filterable="false" text="분류"/>
+              <cl:gridcell std:sid="gh-cell-b1677e09" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="noticeCreate" sortable="false" filterable="false" text="등록일"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-18ce8124">
-              <cl:gridrow std:sid="g-row-3cc6b129"/>
-              <cl:gridcell std:sid="gd-cell-c2a22630" rowindex="0" colindex="0" columntype="checkbox"/>
-              <cl:gridcell std:sid="gd-cell-0a0452a6" rowindex="0" colindex="1" columnname="noticeId">
-                <cl:output std:sid="output-418ff8ee">
-                  <cl:celldata/>
+              <cl:gridrow std:sid="g-row-3cc6b129" height="50px"/>
+              <cl:gridcell std:sid="gd-cell-c2a22630" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
+              <cl:gridcell std:sid="gd-cell-0a0452a6" rowindex="0" colindex="1" style="text-align:center;" columnname="noticeId">
+                <cl:output std:sid="output-418ff8ee" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-ae4d8c51"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-f8547db8" rowindex="0" colindex="2" columnname="noticeTitle">
-                <cl:output std:sid="output-4ae931b1">
-                  <cl:celldata/>
+              <cl:gridcell std:sid="gd-cell-f8547db8" rowindex="0" colindex="2" style="text-align:center;" columnname="noticeTitle">
+                <cl:output std:sid="output-4ae931b1" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-c166e90a"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-40be0759" rowindex="0" colindex="3" columnname="noticeContent">
-                <cl:output std:sid="output-5f4bcfea">
-                  <cl:celldata/>
+              <cl:gridcell std:sid="gd-cell-40be0759" rowindex="0" colindex="3" style="text-align:center;" columnname="noticeContent">
+                <cl:output std:sid="output-5f4bcfea" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-d5ff7aa8"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-8edce8b3" rowindex="0" colindex="4" columnname="noticeCategory">
-                <cl:output std:sid="output-67523591">
-                  <cl:celldata/>
+              <cl:gridcell std:sid="gd-cell-8edce8b3" rowindex="0" colindex="4" style="text-align:center;" columnname="noticeCategory">
+                <cl:output std:sid="output-67523591" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-674a7ae2"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-ad04773a" rowindex="0" colindex="5" columnname="noticeCreate">
-                <cl:output std:sid="output-5137f61c">
-                  <cl:celldata/>
+              <cl:gridcell std:sid="gd-cell-ad04773a" rowindex="0" colindex="5" style="text-align:center;" columnname="noticeCreate">
+                <cl:output std:sid="output-5137f61c" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-c157395f"/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>

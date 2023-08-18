@@ -9,8 +9,10 @@ import com.arezip.weconnect.model.dto.MemberDTO;
 
 @Mapper
 public interface MemberMapper {
- 
+
 	int register(MemberDTO memberDTO);
-	List<DepartmentDTO> findByDepartMentNAME();
+
+	List<DepartmentDTO> findByDepartmentName();
+
 	MemberDTO login(String memberEmail, String memberPassword);
 }

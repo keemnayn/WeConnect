@@ -61,8 +61,10 @@ function onDeleteBtnClick(e) {
 	var grid = app.lookup("noticeGrd");
 	var checkRowIndices = grid.getCheckRowIndices();
 	if (checkRowIndices.length > 0) {
-		grid.deleteRow(checkRowIndices);
-		app.lookup("deleteNoticeSub").send();
+		if (confirm("선택한 공지사항을 삭제 하시겠 습니까?")) {
+			grid.deleteRow(checkRowIndices);
+			app.lookup("deleteNoticeSub").send();
+		}
 	}
 }
 /*
@@ -82,20 +84,33 @@ function onUpdateBtnClick(e) {
 	var updateBtn = e.control;
 	var grid = app.lookup("noticeGrd");
 	var checkRowIndices = grid.getCheckRowIndices();
-	var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
-	var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
-	var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
-	var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
-	var value = [noticeId, noticeTitle, noticeContent, noticeCategory];
-	console.log(value);
-	app.openDialog("dialog/NoticeUpdate", {
-		width: 1280,
-		height: 720
-	}, function(dialog) {
-		dialog.ready(function(dialogApp) {
-			dialogApp.initValue = value;
+	if (checkRowIndices.length == 1) {
+		var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
+		var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
+		var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
+		var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
+		var value = {
+			"noticeId": noticeId,
+			"noticeTitle": noticeTitle,
+			"noticeContent": noticeContent,
+			"noticeCategory": noticeCategory
+		}
+		app.openDialog("dialog/NoticeUpdate", {
+			width: 1280,
+			height: 720
+		}, function(dialog) {
+			dialog.ready(function(dialogApp) {
+				dialogApp.initValue = value;
+			});
+			dialog.addEventListener("close", function(e) {
+				app.lookup("noticeListSub").send();
+			});
 		});
-	}).then(function(returnValue) {
-		;
-	});
+	} else if (checkRowIndices.length > 1) {
+		alert("한개의 공지사항만 선택 주세요");
+		grid.clearAllCheck();
+	} else {
+		alert("수정할 공지사항을 선택해 주세요");
+	}
+	
 }

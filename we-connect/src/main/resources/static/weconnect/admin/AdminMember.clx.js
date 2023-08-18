@@ -24,6 +24,69 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("memberListSub").send();
+				var comboBox = app.lookup("searchTypeCmb1");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
+			}
+
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchTextIpb1Search(e) {
+				var searchTextIpb1 = e.control;
+				var submission = app.lookup("searchMemberSub");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchMemberSubSubmitSuccess(e) {
+				var searchMemberSub = e.control;
+				app.lookup("memberListGrd1").redraw();
+			}
+
+			/*
+			 * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onUpdateBtnClick(e) {
+				var updateBtn = e.control;
+				var grid = app.lookup("memberListGrd1");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length == 1) {
+					var memberId = grid.dataSet.getValue(checkRowIndices[0], "memberId");
+					var memberName = grid.dataSet.getValue(checkRowIndices[0], "memberName");
+					var position = grid.dataSet.getValue(checkRowIndices[0], "position");
+					var departmentId = grid.dataSet.getValue(checkRowIndices[0], "departmentId");
+					var departmentName = grid.dataSet.getValue(checkRowIndices[0], "departmentName");
+					var value = {
+						"memberId": memberId,
+						"memberName": memberName,
+						"position": position,
+						"departmentId": departmentId,
+						"departmentName": departmentName
+					}
+					console.log(value);
+					app.openDialog("dialog/MemberUpdate", {
+						width: 640,
+						height: 480
+					}, function(dialog) {
+						dialog.ready(function(dialogApp) {
+							dialogApp.initValue = value;
+						});
+						dialog.addEventListener("close", function(e) {
+							app.lookup("memberListSub").send();
+						});
+					});
+				} else if (checkRowIndices.length > 1) {
+					alert("한명의 회원만 선택 주세요");
+					grid.clearAllCheck();
+				} else {
+					alert("수정할 회원을 선택해 주세요");
+				}
 			}
 			// End - User Script
 			
@@ -41,7 +104,12 @@
 					{
 						"name": "memberJoinDate",
 						"dataType": "string"
-					}
+					},
+					{
+						"name": "departmentId",
+						"dataType": "number"
+					},
+					{"name": "departmentName"}
 				],
 				"rows": [
 					{"memberEmail": "1", "memberName": "a@gmail.com", "position": "박해준", "memberJoinDate": "2023-03-27"},
@@ -73,21 +141,43 @@
 			});
 			app.register(dataSet_2);
 			
-			var dataSet_3 = new cpr.data.DataSet("search");
+			var dataSet_3 = new cpr.data.DataSet("memberSearch");
 			dataSet_3.parseData({
-				"columns": [{"name": "search"}],
+				"columns": [
+					{"name": "label"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"search": "전체"},
-					{"search": "이름"},
-					{"search": "직급"}
+					{"label": "전체", "value": "all"},
+					{"label": "이름", "value": "name"},
+					{"label": "직급", "value": "position"},
+					{"label": "부서", "value": "departmentName"}
 				]
 			});
 			app.register(dataSet_3);
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "searchType"},
+					{"name": "searchText"}
+				]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("memberListSub");
 			submission_1.method = "get";
 			submission_1.action = "admin/members";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("searchMemberSub");
+			submission_2.method = "get";
+			submission_2.action = "admin/members/search";
+			submission_2.addRequestData(dataMap_1);
+			submission_2.addResponseData(dataSet_1, false);
+			if(typeof onSearchMemberSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onSearchMemberSubSubmitSuccess);
+			}
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -117,13 +207,19 @@
 					var grid_1 = new cpr.controls.Grid("memberListGrd1");
 					grid_1.init({
 						"dataSet": app.lookup("memberList"),
+						"autoFit": "0, 2, 3, 5, 6",
 						"columns": [
 							{"width": "25px"},
+							{"width": "50px"},
 							{"width": "100px"},
 							{"width": "100px"},
+							{"width": "75px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"}
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{"width": "75px"}
 						],
 						"header": {
 							"rows": [{"height": "50px"}],
@@ -145,7 +241,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberId";
-										cell.text = "memberId";
+										cell.text = "번호";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -157,7 +253,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberEmail";
-										cell.text = "memberEmail";
+										cell.text = "이메일";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -169,7 +265,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberName";
-										cell.text = "memberName";
+										cell.text = "이름";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -181,7 +277,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "position";
-										cell.text = "position";
+										cell.text = "직급";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -193,7 +289,31 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberJoinDate";
-										cell.text = "memberJoinDate";
+										cell.text = "가입일";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 6},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "departmentId";
+										cell.text = "부서번호";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "departmentName";
+										cell.text = "부서";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -228,6 +348,7 @@
 											output_1.bind("value").toDataColumn("memberId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -245,6 +366,7 @@
 											output_2.bind("value").toDataColumn("memberEmail");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -262,6 +384,7 @@
 											output_3.bind("value").toDataColumn("memberName");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -279,6 +402,7 @@
 											output_4.bind("value").toDataColumn("position");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -296,6 +420,43 @@
 											output_5.bind("value").toDataColumn("memberJoinDate");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 6},
+									"configurator": function(cell){
+										cell.columnName = "departmentId";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_6 = new cpr.controls.Output();
+											output_6.style.css({
+												"text-align" : "center"
+											});
+											output_6.bind("value").toDataColumn("departmentId");
+											return output_6;
+										})();
+										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.columnName = "departmentName";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_7 = new cpr.controls.Output();
+											output_7.style.css({
+												"text-align" : "center"
+											});
+											output_7.bind("value").toDataColumn("departmentName");
+											return output_7;
+										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]
@@ -308,11 +469,16 @@
 						"left": "0px"
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb1");
-					comboBox_1.value = "전체";
+					comboBox_1.style.css({
+						"text-align" : "center"
+					});
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
+					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 					(function(comboBox_1){
-						comboBox_1.setItemSet(app.lookup("search"), {
-							"label": "search",
-							"value": "search"
+						comboBox_1.setItemSet(app.lookup("memberSearch"), {
+							"label": "label",
+							"value": "value"
 						});
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
@@ -322,6 +488,12 @@
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput("searchTextIpb1");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_2);
+					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+					if(typeof onSearchTextIpb1Search == "function") {
+						searchInput_1.addEventListener("search", onSearchTextIpb1Search);
+					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
 						"right": "153px",
@@ -343,6 +515,9 @@
 					(function(container){
 						var button_1 = new cpr.controls.Button("updateBtn");
 						button_1.value = "수정";
+						if(typeof onUpdateBtnClick == "function") {
+							button_1.addEventListener("click", onUpdateBtnClick);
+						}
 						container.addChild(button_1, {
 							"colIndex": 0,
 							"rowIndex": 0
@@ -467,12 +642,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_6 = new cpr.controls.Output();
-											output_6.style.css({
+											var output_8 = new cpr.controls.Output();
+											output_8.style.css({
 												"text-align" : "center"
 											});
-											output_6.bind("value").toDataColumn("name");
-											return output_6;
+											output_8.bind("value").toDataColumn("name");
+											return output_8;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -485,12 +660,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_7 = new cpr.controls.Output();
-											output_7.style.css({
+											var output_9 = new cpr.controls.Output();
+											output_9.style.css({
 												"text-align" : "center"
 											});
-											output_7.bind("value").toDataColumn("email");
-											return output_7;
+											output_9.bind("value").toDataColumn("email");
+											return output_9;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -503,12 +678,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_8 = new cpr.controls.Output();
-											output_8.style.css({
+											var output_10 = new cpr.controls.Output();
+											output_10.style.css({
 												"text-align" : "center"
 											});
-											output_8.bind("value").toDataColumn("date");
-											return output_8;
+											output_10.bind("value").toDataColumn("date");
+											return output_10;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -521,12 +696,12 @@
 											"text-align" : "center"
 										});
 										cell.control = (function(){
-											var output_9 = new cpr.controls.Output();
-											output_9.style.css({
+											var output_11 = new cpr.controls.Output();
+											output_11.style.css({
 												"text-align" : "center"
 											});
-											output_9.bind("value").toDataColumn("grade");
-											return output_9;
+											output_11.bind("value").toDataColumn("grade");
+											return output_11;
 										})();
 										cell.controlConstraint = {};
 									}
@@ -575,9 +750,9 @@
 					var comboBox_2 = new cpr.controls.ComboBox("searchTypeCmb2");
 					comboBox_2.value = "전체";
 					(function(comboBox_2){
-						comboBox_2.setItemSet(app.lookup("search"), {
-							"label": "search",
-							"value": "search"
+						comboBox_2.setItemSet(app.lookup("memberSearch"), {
+							"label": "label",
+							"value": "label"
 						});
 					})(comboBox_2);
 					container.addChild(comboBox_2, {

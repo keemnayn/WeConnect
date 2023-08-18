@@ -33,7 +33,8 @@
 		UPDATE notice
 		SET notice_title = #{noticeTitle},
 		notice_content = #{noticeContent},
-		notice_category = #{noticeCategory}
+		notice_category = #{noticeCategory},
+		member_id = #{memberId}
 		WHERE notice_id = #{noticeId}
 	</update>
 	<!-- 공지사항 삭제 -->

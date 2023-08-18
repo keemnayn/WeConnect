@@ -74,8 +74,10 @@
 				var grid = app.lookup("noticeGrd");
 				var checkRowIndices = grid.getCheckRowIndices();
 				if (checkRowIndices.length > 0) {
-					grid.deleteRow(checkRowIndices);
-					app.lookup("deleteNoticeSub").send();
+					if (confirm("선택한 공지사항을 삭제 하시겠 습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("deleteNoticeSub").send();
+					}
 				}
 			}
 			/*
@@ -95,22 +97,35 @@
 				var updateBtn = e.control;
 				var grid = app.lookup("noticeGrd");
 				var checkRowIndices = grid.getCheckRowIndices();
-				var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
-				var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
-				var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
-				var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
-				var value = [noticeId, noticeTitle, noticeContent, noticeCategory];
-				console.log(value);
-				app.openDialog("dialog/NoticeUpdate", {
-					width: 1280,
-					height: 720
-				}, function(dialog) {
-					dialog.ready(function(dialogApp) {
-						dialogApp.initValue = value;
+				if (checkRowIndices.length == 1) {
+					var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
+					var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
+					var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
+					var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
+					var value = {
+						"noticeId": noticeId,
+						"noticeTitle": noticeTitle,
+						"noticeContent": noticeContent,
+						"noticeCategory": noticeCategory
+					}
+					app.openDialog("dialog/NoticeUpdate", {
+						width: 1280,
+						height: 720
+					}, function(dialog) {
+						dialog.ready(function(dialogApp) {
+							dialogApp.initValue = value;
+						});
+						dialog.addEventListener("close", function(e) {
+							app.lookup("noticeListSub").send();
+						});
 					});
-				}).then(function(returnValue) {
-					;
-				});
+				} else if (checkRowIndices.length > 1) {
+					alert("한개의 공지사항만 선택 주세요");
+					grid.clearAllCheck();
+				} else {
+					alert("수정할 공지사항을 선택해 주세요");
+				}
+				
 			}
 			// End - User Script
 			
@@ -211,16 +226,17 @@
 					var grid_1 = new cpr.controls.Grid("noticeGrd");
 					grid_1.init({
 						"dataSet": app.lookup("noticeList"),
+						"autoFit": "2, 3, 5",
 						"columns": [
-							{"width": "25px"},
+							{"width": "50px"},
+							{"width": "75px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
+							{"width": "200px"},
+							{"width": "75px"},
 							{"width": "100px"}
 						],
 						"header": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -228,6 +244,9 @@
 										cell.columnType = "checkbox";
 										cell.filterable = false;
 										cell.sortable = false;
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -236,7 +255,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeId";
-										cell.text = "noticeId";
+										cell.text = "번호";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -245,7 +267,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeTitle";
-										cell.text = "noticeTitle";
+										cell.text = "제목";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -254,7 +279,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeContent";
-										cell.text = "noticeContent";
+										cell.text = "내용";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -263,7 +291,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCategory";
-										cell.text = "noticeCategory";
+										cell.text = "분류";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -272,73 +303,114 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCreate";
-										cell.text = "noticeCreate";
+										cell.text = "등록일";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								}
 							]
 						},
 						"detail": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
 										cell.columnType = "checkbox";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
 										cell.columnName = "noticeId";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_1 = new cpr.controls.Output();
+											output_1.style.css({
+												"text-align" : "center"
+											});
 											output_1.bind("value").toDataColumn("noticeId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
 										cell.columnName = "noticeTitle";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_2 = new cpr.controls.Output();
+											output_2.style.css({
+												"text-align" : "center"
+											});
 											output_2.bind("value").toDataColumn("noticeTitle");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
 										cell.columnName = "noticeContent";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_3 = new cpr.controls.Output();
+											output_3.style.css({
+												"text-align" : "center"
+											});
 											output_3.bind("value").toDataColumn("noticeContent");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
 										cell.columnName = "noticeCategory";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_4 = new cpr.controls.Output();
+											output_4.style.css({
+												"text-align" : "center"
+											});
 											output_4.bind("value").toDataColumn("noticeCategory");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
 										cell.columnName = "noticeCreate";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_5 = new cpr.controls.Output();
+											output_5.style.css({
+												"text-align" : "center"
+											});
 											output_5.bind("value").toDataColumn("noticeCreate");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]

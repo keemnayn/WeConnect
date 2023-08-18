@@ -23,11 +23,87 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(e) {
-				var hostProperty = app.get
+				var hostProperty = app.getHostProperty("initValue");
+				var noticeId = hostProperty["noticeId"];
+				var noticeTitle = hostProperty["noticeTitle"];
+				var noticeContent = hostProperty["noticeContent"];
+				var noticeCategory = hostProperty["noticeCategory"];
+				app.lookup("noticeIdOutput").value = noticeId;
+				app.lookup("noticeTitleIpb").value = noticeTitle;
+				app.lookup("noticeContentTxa").value = noticeContent;
+				app.lookup("noticeCategoryCmb").value = noticeCategory;
+			}
+
+			/*
+			 * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCancelBtnClick(e) {
+				var cancelBtn = e.control;
+				app.close();
+			}
+
+			/*
+			 * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onUpdateBtnClick(e) {
+				var updateBtn = e.control;
+				var submission = app.lookup("updateNoticeSub");
+				var noticeTitle = app.lookup("noticeTitleIpb").value;
+				var noticeContent = app.lookup("noticeContentTxa").value;
+				var noticeCategory = app.lookup("noticeCategoryCmb").value;
+				if (!noticeTitle || !noticeContent || !noticeCategory) {
+					alert("공지사항의 제목, 내용, 분류를 모두 입력해주세요.");
+				} else {
+					submission.send();
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onUpdateNoticeSubSubmitSuccess(e) {
+				var updateNoticeSub = e.control;
+				app.close();
 			}
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("category");
+			dataSet_1.parseData({
+				"columns": [
+					{"name": "label"},
+					{"name": "value"}
+				],
+				"rows": [
+					{"label": "공지", "value": "공지"},
+					{"label": "점검", "value": "점검"}
+				]
+			});
+			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("noticeUpdateParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "noticeId",
+						"dataType": "number"
+					},
+					{"name": "noticeTitle"},
+					{"name": "noticeContent"},
+					{"name": "noticeCategory"}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("updateNoticeSub");
+			submission_1.method = "put";
+			submission_1.action = "admin/notices";
+			submission_1.addRequestData(dataMap_1);
+			if(typeof onUpdateNoticeSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onUpdateNoticeSubSubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -56,6 +132,9 @@
 			
 			var button_1 = new cpr.controls.Button("updateBtn");
 			button_1.value = "수정";
+			if(typeof onUpdateBtnClick == "function") {
+				button_1.addEventListener("click", onUpdateBtnClick);
+			}
 			container.addChild(button_1, {
 				"right": "670px",
 				"bottom": "30px",
@@ -65,6 +144,9 @@
 			
 			var button_2 = new cpr.controls.Button("cancelBtn");
 			button_2.value = "취소";
+			if(typeof onCancelBtnClick == "function") {
+				button_2.addEventListener("click", onCancelBtnClick);
+			}
 			container.addChild(button_2, {
 				"bottom": "30px",
 				"left": "650px",
@@ -74,6 +156,9 @@
 			
 			var inputBox_1 = new cpr.controls.InputBox("noticeTitleIpb");
 			inputBox_1.placeholder = "제목";
+			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("noticeUpdateParam"));
+			inputBox_1.setBindContext(dataMapContext_1);
+			inputBox_1.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
 				"top": "110px",
 				"left": "10px",
@@ -83,6 +168,9 @@
 			
 			var textArea_1 = new cpr.controls.TextArea("noticeContentTxa");
 			textArea_1.placeholder = "내용";
+			var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("noticeUpdateParam"));
+			textArea_1.setBindContext(dataMapContext_2);
+			textArea_1.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeContent");
 			container.addChild(textArea_1, {
 				"top": "210px",
 				"right": "30px",
@@ -91,10 +179,39 @@
 			});
 			
 			var comboBox_1 = new cpr.controls.ComboBox("noticeCategoryCmb");
+			var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("noticeUpdateParam"));
+			comboBox_1.setBindContext(dataMapContext_3);
+			comboBox_1.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeCategory");
+			(function(comboBox_1){
+				comboBox_1.setItemSet(app.lookup("category"), {
+					"label": "label",
+					"value": "value"
+				});
+			})(comboBox_1);
 			container.addChild(comboBox_1, {
 				"top": "110px",
 				"right": "30px",
 				"width": "300px",
+				"height": "50px"
+			});
+			
+			var output_2 = new cpr.controls.Output("noticeIdTextOutput");
+			output_2.value = "공지번호 : ";
+			container.addChild(output_2, {
+				"top": "10px",
+				"right": "60px",
+				"left": "1150px",
+				"height": "50px"
+			});
+			
+			var output_3 = new cpr.controls.Output("noticeIdOutput");
+			var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("noticeUpdateParam"));
+			output_3.setBindContext(dataMapContext_4);
+			output_3.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeId");
+			container.addChild(output_3, {
+				"top": "10px",
+				"right": "10px",
+				"left": "1220px",
 				"height": "50px"
 			});
 			if(typeof onBodyLoad == "function"){
