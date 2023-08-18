@@ -209,7 +209,8 @@
 				button_1.style.css({
 					"border-radius" : "10px",
 					"background-color" : "#E0E1E2",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				if(typeof onButtonClick == "function") {
 					button_1.addEventListener("click", onButtonClick);
@@ -226,7 +227,8 @@
 					"border-radius" : "10px",
 					"background-color" : "#F7EEEB",
 					"font-weight" : "500",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				if(typeof onButtonClick2 == "function") {
 					button_2.addEventListener("click", onButtonClick2);

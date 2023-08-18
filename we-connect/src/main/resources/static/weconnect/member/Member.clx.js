@@ -102,6 +102,15 @@
 			function onEa1Load(e){
 				var ea1 = e.control;
 				
+			}
+
+			/*
+			 * "관리자페이지" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+				window.location = "admin";
 			};
 			// End - User Script
 			
@@ -122,21 +131,21 @@
 					{"name": "appId"}
 				],
 				"rows": [
-					{"label": "홈", "value": "홈", "icon": "img/user/home.png", "parent": "", "appId": "member/MemberMain"},
-					{"label": "근태", "value": "근태", "icon": "img/user/attendance.png", "parent": "", "appId": ""},
-					{"label": "프로젝트", "value": "프로젝트", "icon": "img/user/project.png", "parent": "", "appId": ""},
-					{"label": "예약", "value": "예약", "icon": "img/user/reservation.png", "parent": "", "appId": ""},
-					{"label": "게시판", "value": "게시판", "icon": "img/user/board.png", "parent": "", "appId": ""},
-					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/user/commute.png", "parent": "근태", "appId": "member/AttendForm"},
-					{"label": "연차신청", "value": "연차신청", "icon": "img/user/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
-					{"label": "일정", "value": "일정", "icon": "img/user/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
-					{"label": "업무보드", "value": "업무보드", "icon": "img/user/work_board.png", "parent": "프로젝트", "appId": ""},
-					{"label": "회의실예약", "value": "회의실예약", "icon": "img/user/meeting_room.png", "parent": "예약", "appId": "member/RoomReservForm"},
-					{"label": "자유게시판", "value": "자유게시판", "icon": "img/user/post.png", "parent": "게시판", "appId": "member/FreeBoard"},
-					{"label": "공지사항", "value": "공지사항", "icon": "img/user/post.png", "parent": "게시판", "appId": "member/Notice"},
-					{"label": "건의사항", "value": "건의사항", "icon": "img/user/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},
-					{"label": "팀 페이지", "value": "팀프로젝트", "icon": "img/user/team.png", "parent": "업무보드", "appId": "member/project/TeamPost"},
-					{"label": "개인페이지", "value": "개인프로젝트", "icon": "img/user/solo.png", "parent": "업무보드", "appId": "member/project/PrivatePost"}
+					{"label": "홈", "value": "홈", "icon": "img/member/home.png", "parent": "", "appId": "member/MemberMain"},
+					{"label": "근태", "value": "근태", "icon": "img/member/attendance.png", "parent": "", "appId": ""},
+					{"label": "프로젝트", "value": "프로젝트", "icon": "img/member/project.png", "parent": "", "appId": ""},
+					{"label": "예약", "value": "예약", "icon": "img/member/reservation.png", "parent": "", "appId": ""},
+					{"label": "게시판", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
+					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/member/commute.png", "parent": "근태", "appId": "member/AttendForm"},
+					{"label": "연차신청", "value": "연차신청", "icon": "img/member/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
+					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
+					{"label": "워크보드", "value": "워크보드", "icon": "img/member/work_board.png", "parent": "프로젝트", "appId": ""},
+					{"label": "회의실예약", "value": "회의실예약", "icon": "img/member/meeting_room.png", "parent": "예약", "appId": "member/RoomReservForm"},
+					{"label": "자유게시판", "value": "자유게시판", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/FreeBoard"},
+					{"label": "공지사항", "value": "공지사항", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/Notice"},
+					{"label": "건의사항", "value": "건의사항", "icon": "img/member/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},
+					{"label": "공통", "value": "공통", "icon": "img/member/team.png", "parent": "워크보드", "appId": "member/project/TeamPost"},
+					{"label": "나의 보드", "value": "나의 보드", "icon": "img/member/solo.png", "parent": "워크보드", "appId": "member/project/MyPost"}
 				]
 			});
 			app.register(dataSet_1);
@@ -199,6 +208,17 @@
 					"left": "0px",
 					"width": "300px",
 					"height": "40px"
+				});
+				var button_1 = new cpr.controls.Button();
+				button_1.value = "관리자페이지";
+				if(typeof onButtonClick == "function") {
+					button_1.addEventListener("click", onButtonClick);
+				}
+				container.addChild(button_1, {
+					"top": "20px",
+					"left": "1468px",
+					"width": "100px",
+					"height": "20px"
 				});
 			})(group_1);
 			container.addChild(group_1, {

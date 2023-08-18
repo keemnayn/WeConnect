@@ -87,6 +87,7 @@
 							"font-weight" : "900",
 							"font-size" : "16px",
 							"border-bottom-style" : "none",
+							"background-image" : "none",
 							"border-top-style" : "none"
 						});
 						container.addChild(textArea_1, {
@@ -177,10 +178,12 @@
 						textArea_3.value = "관리자프로필";
 						textArea_3.style.css({
 							"border-right-style" : "none",
+							"color" : "#333333",
 							"border-left-style" : "none",
 							"font-weight" : "900",
 							"font-size" : "16px",
 							"border-bottom-style" : "none",
+							"background-image" : "none",
 							"border-top-style" : "none"
 						});
 						container.addChild(textArea_3, {
@@ -220,6 +223,7 @@
 							"font-weight" : "900",
 							"font-size" : "16px",
 							"border-bottom-style" : "none",
+							"background-image" : "none",
 							"border-top-style" : "none"
 						});
 						container.addChild(textArea_4, {
