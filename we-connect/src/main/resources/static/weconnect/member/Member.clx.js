@@ -140,7 +140,7 @@
 					{"label": "연차신청", "value": "연차신청", "icon": "img/member/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
 					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "project/Calendar1"},
 					{"label": "워크보드", "value": "워크보드", "icon": "img/member/work_board.png", "parent": "프로젝트", "appId": ""},
-					{"label": "회의실예약", "value": "회의실예약", "icon": "img/member/meeting_room.png", "parent": "예약", "appId": "member/RoomReservForm"},
+					{"label": "회의실예약", "value": "회의실예약", "icon": "img/member/meeting_room.png", "parent": "예약", "appId": "member/RoomReservList"},
 					{"label": "자유게시판", "value": "자유게시판", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/FreeBoard"},
 					{"label": "공지사항", "value": "공지사항", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/Notice"},
 					{"label": "건의사항", "value": "건의사항", "icon": "img/member/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},

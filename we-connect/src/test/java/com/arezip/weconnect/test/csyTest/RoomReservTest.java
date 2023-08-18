@@ -30,19 +30,6 @@ public class RoomReservTest {
 	
 	//예약 등록
 	@Test
-	void insertRoomReservMapperTest() {
-		RoomReservDTO roomReservDTO = new RoomReservDTO();
-		roomReservDTO.setRoomReservDate("2023-08-09");
-		roomReservDTO.setRoomReservStartTime("9:00");
-		roomReservDTO.setRoomReservEndTime("11:00");
-//		roomReservDTO.setProposal("아이템 회의");
-//		roomReservDTO.setMemberId(24);
-		roomReservDTO.setRoomId(1);
-		int result = roomReservMapper.insertRoomReserv(roomReservDTO);
-		assertNotEquals(0, result);
-	}
-	//예약 등록
-	@Test
 	void insertRoomReserv() {
 		RoomReservDTO roomReservDTO = new RoomReservDTO();
 //		roomReservDTO.setRoomReservId(1);
@@ -50,7 +37,7 @@ public class RoomReservTest {
 		roomReservDTO.setRoomReservStartTime("9:00");
 		roomReservDTO.setRoomReservEndTime("11:00");
 //		roomReservDTO.setProposal("아이템 회의");
-//		roomReservDTO.setMemberId(24);
+//		roomReservDTO.setMemberId(24); 
 		roomReservDTO.setRoomId(1);
 		int result = roomReservService.insertRoomReserv(roomReservDTO);
 		assertNotEquals(0, result);
@@ -58,8 +45,14 @@ public class RoomReservTest {
 	//회의실 조회
 	@Test
 	void findRoomList() {
-//		List<RoomDTO> list = roomService.findRoomNo();
-//		list.forEach(room -> log.info(room.toString()));
+		List<RoomDTO> list = roomService.findRoomNo();
+		list.forEach(room -> log.info(room.toString()));
+	}
+	
+	@Test
+	void findRoomReservList() {
+		List<RoomReservDTO> list = roomReservService.findReservList();
+		list.forEach(reserv -> log.info(reserv.toString()));
 	}
 	
 }

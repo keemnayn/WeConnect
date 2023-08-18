@@ -96,7 +96,7 @@
       <tableRelations UUID="TRelation_LA-loDdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_LA8wcDdIEe62a551BIGueQ">
         <sourceAnchor side="right" offset="27"/>
         <targetAnchor side="left" offset="74"/>
-        <routing>81</routing>
+        <routing>106</routing>
       </tableRelations>
       <tableRelations UUID="TRelation_MH_4EzdIEe62a551BIGueQ" foreignKeyColumnGroup="FKCGroup_MH_RADdIEe62a551BIGueQ">
         <sourceAnchor side="right" offset="57"/>

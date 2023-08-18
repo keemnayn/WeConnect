@@ -26,7 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 public class RoomReservRestController {
 	private final RoomService roomService;
 	private final RoomReservService roomReservService;
-
+	
+	//회의실 예약
 	@PostMapping
 	public View reserveRoom(DataRequest dataRequest) {
 		ParameterGroup param = dataRequest.getParameterGroup("roomReservParam");

@@ -83,7 +83,7 @@
             <cl:datavalue columnname="value"><![CDATA[회의실예약]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/member/meeting_room.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/RoomReservForm]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/RoomReservList]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[자유게시판]]></cl:datavalue>

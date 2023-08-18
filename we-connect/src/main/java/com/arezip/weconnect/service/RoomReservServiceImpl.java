@@ -1,5 +1,7 @@
 package com.arezip.weconnect.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.RoomReservMapper;
@@ -17,6 +19,11 @@ public class RoomReservServiceImpl implements RoomReservService {
 	@Override
 	public int insertRoomReserv(RoomReservDTO roomReservDTO) {
 		return roomReservMapper.insertRoomReserv(roomReservDTO);
+	}
+
+	@Override
+	public List<RoomReservDTO> findReservList() {
+		return roomReservMapper.findReservList();
 	}
 
 }
