@@ -15,5 +15,6 @@ public class ProposalDTO {
 	private String proposalContent;
 	private Date proposalCreate;
 	private String proposalStatus;
-	private MemberDTO memberVO;
+	private String memberName;
+	private long memberId;
 }

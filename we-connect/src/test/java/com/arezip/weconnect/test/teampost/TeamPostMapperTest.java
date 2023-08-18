@@ -1,5 +1,9 @@
 package com.arezip.weconnect.test.teampost;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +20,10 @@ public class TeamPostMapperTest {
 	TeamPostMapper teamPostMapper;
 	
 	@Test
-	void getTeamPost(long teamPostId) {
-		TeamPostDTO teamPost = teamPostMapper.getTeamPost(teamPostId);
-		}
+	void getTeamPostListTest() {
+		long memberId = 44;
+		List<TeamPostDTO> list = teamPostMapper.getTeamPostList(memberId);
+		list.forEach(teamPost -> log.info(teamPost.toString()));
+		assertNotNull(list);
+	}
 }
