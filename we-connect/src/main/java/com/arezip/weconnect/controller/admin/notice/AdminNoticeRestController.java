@@ -63,7 +63,26 @@ public class AdminNoticeRestController {
 	// 공지사항 수정
 	@PutMapping
 	public View updateNotice(DataRequest dataRequest) {
-		return null;
+		ParameterGroup param = dataRequest.getParameterGroup("noticeUpdateParam");
+		if (param != null) {
+			Long noticeId = Long.parseLong(param.getValue("noticeId"));
+			String noticeTitle = param.getValue("noticeTitle");
+			String noticeContent = param.getValue("noticeContent");
+			String noticeCategory = param.getValue("noticeCategory");
+			log.info("noticeId {}", noticeId);
+			log.info("noticeTitle {}", noticeTitle);
+			log.info("noticeContent {}", noticeContent);
+			log.info("noticeCategory {}", noticeCategory);
+			long memberId = 1;
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNoticeId(noticeId);
+			noticeDTO.setNoticeTitle(noticeTitle);
+			noticeDTO.setNoticeContent(noticeContent);
+			noticeDTO.setNoticeCategory(noticeCategory);
+			noticeDTO.setMemberId(memberId);
+			adminNoticeService.updateNotice(noticeDTO);
+		}
+		return new JSONDataView();
 	}
 
 //	공지사항 삭제
@@ -112,20 +131,5 @@ public class AdminNoticeRestController {
 		}
 		dataRequest.setResponse("noticeList", noticeList);
 		return new JSONDataView();
-	}
-
-//	응답 생성 메서드
-	private JSONDataView errorResponse(String message) {
-		Map<String, Object> errorResponse = new HashMap<>();
-		errorResponse.put("error", message);
-		return new JSONDataView(errorResponse);
-	}
-
-//	응답 생성 메서드
-	private JSONDataView successResponse(String message) {
-		Map<String, Object> successResponse = new HashMap<>();
-		successResponse.put("success", true);
-		successResponse.put("message", message);
-		return new JSONDataView(successResponse);
 	}
 }

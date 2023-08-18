@@ -74,8 +74,10 @@
 				var grid = app.lookup("noticeGrd");
 				var checkRowIndices = grid.getCheckRowIndices();
 				if (checkRowIndices.length > 0) {
-					grid.deleteRow(checkRowIndices);
-					app.lookup("deleteNoticeSub").send();
+					if (confirm("선택한 공지사항을 삭제 하시겠 습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("deleteNoticeSub").send();
+					}
 				}
 			}
 			/*
@@ -85,6 +87,45 @@
 			function onDeleteNoticeSubSubmitDone(e) {
 				var deleteNoticeSub = e.control;
 				app.lookup("noticeListSub").send();
+			}
+
+			/*
+			 * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onUpdateBtnClick(e) {
+				var updateBtn = e.control;
+				var grid = app.lookup("noticeGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length == 1) {
+					var noticeId = grid.dataSet.getValue(checkRowIndices[0], "noticeId");
+					var noticeTitle = grid.dataSet.getValue(checkRowIndices[0], "noticeTitle");
+					var noticeContent = grid.dataSet.getValue(checkRowIndices[0], "noticeContent");
+					var noticeCategory = grid.dataSet.getValue(checkRowIndices[0], "noticeCategory");
+					var value = {
+						"noticeId": noticeId,
+						"noticeTitle": noticeTitle,
+						"noticeContent": noticeContent,
+						"noticeCategory": noticeCategory
+					}
+					app.openDialog("dialog/NoticeUpdate", {
+						width: 1280,
+						height: 720
+					}, function(dialog) {
+						dialog.ready(function(dialogApp) {
+							dialogApp.initValue = value;
+						});
+						dialog.addEventListener("close", function(e) {
+							app.lookup("noticeListSub").send();
+						});
+					});
+				} else if (checkRowIndices.length > 1) {
+					alert("한개의 공지사항만 선택 주세요");
+					grid.clearAllCheck();
+				} else {
+					alert("수정할 공지사항을 선택해 주세요");
+				}
+				
 			}
 			// End - User Script
 			
@@ -185,12 +226,13 @@
 					var grid_1 = new cpr.controls.Grid("noticeGrd");
 					grid_1.init({
 						"dataSet": app.lookup("noticeList"),
+						"autoFit": "2, 3, 5",
 						"columns": [
-							{"width": "25px"},
+							{"width": "50px"},
+							{"width": "75px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
+							{"width": "200px"},
+							{"width": "75px"},
 							{"width": "100px"}
 						],
 						"header": {
@@ -213,7 +255,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeId";
-										cell.text = "noticeId";
+										cell.text = "번호";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -225,7 +267,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeTitle";
-										cell.text = "noticeTitle";
+										cell.text = "제목";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -237,7 +279,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeContent";
-										cell.text = "noticeContent";
+										cell.text = "내용";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -249,7 +291,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCategory";
-										cell.text = "noticeCategory";
+										cell.text = "분류";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -261,7 +303,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "noticeCreate";
-										cell.text = "noticeCreate";
+										cell.text = "등록일";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -405,6 +447,9 @@
 						});
 						var button_2 = new cpr.controls.Button("updateBtn");
 						button_2.value = "수정";
+						if(typeof onUpdateBtnClick == "function") {
+							button_2.addEventListener("click", onUpdateBtnClick);
+						}
 						container.addChild(button_2, {
 							"colIndex": 1,
 							"rowIndex": 0

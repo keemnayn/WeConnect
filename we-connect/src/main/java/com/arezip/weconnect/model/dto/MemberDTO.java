@@ -22,6 +22,7 @@ public class MemberDTO implements Serializable {
 	private String memberStatus;
 	private String managerYn;
 	private long leaveCount;
-	private DepartmentDTO departmentVO;
 	private String memberJoinDate;
+	private long departmentId;
+	private String departmentName;
 }

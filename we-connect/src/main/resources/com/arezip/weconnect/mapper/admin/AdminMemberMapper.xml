@@ -5,15 +5,76 @@
 	<select id="selectApprovedMembers"
 		resultType="com.arezip.weconnect.model.dto.MemberDTO">
 		SELECT
-		member_id as memberId,
-		member_email as memberEmail,
-		member_name as memberName,
-		position,
-		TO_CHAR(member_join_date, 'YYYY-MM-DD') as memberJoinDate
+		m.member_id AS memberId,
+		m.member_email AS
+		memberEmail,
+		m.member_name AS memberName,
+		m.position,
+		TO_CHAR(m.member_join_date, 'YYYY-MM-DD') as memberJoinDate,
+		d.department_id AS departmentId,
+		d.department_name AS departmentName
 		FROM
-		member
+		member m
+		JOIN department d ON
+		m.department_id = d.department_id
 		WHERE
-		member_status = '승인'
-		order by member_id desc
+		m.member_status = '승인'
+		ORDER BY
+		m.member_id DESC
 	</select>
+
+	<select id="selectApprovedMembersByCriteria"
+		resultType="com.arezip.weconnect.model.dto.MemberDTO"
+		parameterType="java.util.HashMap">
+		SELECT
+		m.member_id AS memberId,
+		m.member_email AS
+		memberEmail,
+		m.member_name AS memberName,
+		m.position,
+		TO_CHAR(m.member_join_date,
+		'YYYY-MM-DD') as memberJoinDate,
+		d.department_id AS departmentId,
+		d.department_name AS departmentName
+		FROM member m
+		JOIN department d ON
+		m.department_id = d.department_id
+		WHERE 1=1 AND member_status = '승인'
+		<choose>
+			<!-- 전체 검색일 경우 -->
+			<when test="searchType == 'all'">
+				AND (member_name LIKE '%' || #{searchText} || '%'
+				OR
+				position LIKE '%' || #{searchText} || '%'
+				OR
+				department_name LIKE '%'
+				|| #{searchText} || '%')
+			</when>
+			<!-- 이름으로 검색할 경우 -->
+			<when test="searchType == 'name'">
+				AND member_name LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 직급으로 검색할 경우 -->
+			<when test="searchType == 'position'">
+				AND position LIKE '%' || #{searchText} || '%'
+			</when>
+			<when test="searchType == 'departmentName'">
+				AND department_name LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+		<!-- 적절한 컬럼으로 ORDER BY 절 수정 필요 -->
+		ORDER BY member_id DESC
+	</select>
+	<update id="updateMemberDetails"
+		parameterType="com.arezip.weconnect.model.dto.MemberDTO">
+		UPDATE member
+		SET
+		member_name = #{memberName},
+		position =
+		#{position},
+		department_id = #{departmentId}
+		WHERE
+		member_id =
+		#{memberId}
+	</update>
 </mapper>

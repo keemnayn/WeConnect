@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-15d3c97a" version="1.0.4584">
+  <head std:sid="head-90939795">
+    <screen std:sid="screen-418b3120" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="480" customWidth="640" active="true"/>
+    <screen std:sid="screen-2c22be1f" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-a8fe29ae" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-9288d3c1" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-899a923d">
+      <cl:dataset std:sid="d-set-553767bd" id="positionList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-dd30d8bb" name="label"/>
+          <cl:datacolumn std:sid="d-column-18673df9" name="value"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[사원]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[사원]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[주임]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[주임]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[대리]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[대리]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[과장]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[과장]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-be20b4bc" id="departmentList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-50503ef5" name="departmentId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-b1ffa619" name="departmentName"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:datamap std:sid="d-map-e24dd9f4" id="updateMemberParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-68917d21" name="memberId"/>
+          <cl:datacolumn std:sid="d-column-fed3b1be" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-86afa1dd" name="position"/>
+          <cl:datacolumn std:sid="d-column-edf6c538" name="departmentId"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-b48d10eb" id="departmentNameSub" method="get" action="member">
+        <cl:listener std:sid="listener-c98309da" name="submit-success" handler="onDepartmentNameSubSubmitSuccess"/>
+        <cl:responsedata dataid="departmentList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-4a7801ee" id="updateMemberSub" method="put" action="admin/members">
+        <cl:listener std:sid="listener-bb7511c8" name="submit-success" handler="onUpdateMemberSubSubmitSuccess"/>
+        <cl:requestdata dataid="updateMemberParam"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec title="회원 수정 팝업"/>
+  </head>
+  <body std:sid="body-d4993225">
+    <cl:listener std:sid="listener-fd89b09f" name="load" handler="onBodyLoad"/>
+    <cl:output std:sid="output-fceb3975" value="회원 정보 수정">
+      <cl:xylayoutdata std:sid="xyl-data-be9caa1f" top="10px" right="430px" left="100px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:button std:sid="button-204368de" id="updateBtn" value="수정">
+      <cl:listener std:sid="listener-1b3ab671" name="click" handler="onUpdateBtnClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-34ea0d22" right="340px" bottom="20px" left="100px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-16f503a5" id="cancelBtn" value="취소">
+      <cl:listener std:sid="listener-309cc2dd" name="click" handler="onCancelBtnClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-69a2f2ec" right="100px" bottom="20px" left="340px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:inputbox std:sid="i-box-abd7800c" id="memberNameIpb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="updateMemberParam" columnname="memberName"/>
+      <cl:datamapcontext datacontrolid="updateMemberParam"/>
+      <cl:xylayoutdata std:sid="xyl-data-48d96122" top="80px" right="120px" left="120px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:inputbox>
+    <cl:combobox std:sid="c-box-1a852d50" id="positionCmb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="updateMemberParam" columnname="position"/>
+      <cl:datamapcontext datacontrolid="updateMemberParam"/>
+      <cl:xylayoutdata std:sid="xyl-data-2d74b5af" top="180px" right="120px" left="120px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:itemset datasetid="positionList" label="label" value="value"/>
+    </cl:combobox>
+    <cl:output std:sid="output-c3f93e7b" id="memberIdTextOutput" value="회원번호:">
+      <cl:xylayoutdata std:sid="xyl-data-e2f55548" top="10px" right="230px" left="340px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:output std:sid="output-66b9fadc" id="memberIdOutput">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="updateMemberParam" columnname="memberId"/>
+      <cl:datamapcontext datacontrolid="updateMemberParam"/>
+      <cl:xylayoutdata std:sid="xyl-data-4c816935" top="10px" right="110px" left="430px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:combobox std:sid="c-box-9c91d512" id="departmentNameCmb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="updateMemberParam" columnname="departmentId"/>
+      <cl:datamapcontext datacontrolid="updateMemberParam"/>
+      <cl:xylayoutdata std:sid="xyl-data-8ca78dbf" top="280px" right="120px" left="120px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:itemset datasetid="departmentList" label="departmentName" value="departmentId"/>
+    </cl:combobox>
+    <cl:xylayout std:sid="xylayout-fb3e6408"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

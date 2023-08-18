@@ -24,17 +24,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<DepartmentDTO> findByDepartMentNAME() {
-		// TODO Auto-generated method stub
-		return memberMapper.findByDepartMentNAME();
+	public List<DepartmentDTO> findByDepartmentName() {
+		return memberMapper.findByDepartmentName();
 	}
 
 	@Override
 	public MemberDTO login(String memberEmail, String memberPassword) {
 		// TODO Auto-generated method stub
-		return memberMapper.login(memberEmail,memberPassword);
+		return memberMapper.login(memberEmail, memberPassword);
 	}
-
-
 
 }
