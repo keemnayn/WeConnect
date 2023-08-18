@@ -13,7 +13,6 @@ function onButtonClick(e){
 	var button = e.control;
 	let submission = app.lookup("memberList");
 	submission.send();
-	alert("회원가입 완료");
 	window.location= "login/login1.clx";
 }
 
@@ -26,4 +25,22 @@ function onButtonClick(e){
 function onBodyInit2(e){
 	let department = app.lookup("deparment");
 	department.send();
+}
+
+/*
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
+ */
+function onMemberListSubmitError(e){
+	var memberList = e.control;
+	alert("회원가입 실패");
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onMemberListSubmitSuccess(e){
+	var memberList = e.control;
+		alert("회원가입 완료");
 }

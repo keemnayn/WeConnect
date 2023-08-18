@@ -31,7 +31,7 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="board.do">
+      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
         <cl:responsedata dataid="boardList"/>
       </cl:submission>
     </cl:model>
@@ -40,6 +40,7 @@
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:listener std:sid="listener-97fda0e4" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-38750194" id="grd1" datasetid="boardList">
+      <cl:listener std:sid="listener-b8648450" name="dblclick" handler="onGrd1Dblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-f2cb8e13"/>
       <cl:gridcolumn std:sid="g-column-258ee0bc"/>
