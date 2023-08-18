@@ -1,28 +1,48 @@
 @import "../settings.part.less";
 
-
-/* 텍스트 에리어 */
 .cl-textarea {
-	font: @default-font;
-	background-image: none;
-	border: none;
-	color: @default-text-color;
-	
-	
-	/* 텍스트 에리어 텍스트 */
-	.cl-text {
-		//overflow: auto
-	}
-
-	/* 텍스트 에리어 - 비활성화 */
-	&.cl-disabled {
-		border-color: @disabled-border-color;
-		background-color: @disabled-selection-background;
-		color: @disabled-text-color;
-	}
-
-	/* 텍스트 에리어 - 포커스 */
-	&.cl-focus {
-		border-color: @focus-border-color;
-	}
+  border: 1px solid #bbb;
+  background-color: #fff;
+  color: #333;
+  background-image: linear-gradient(#eee, white 3px);
+  text-align: left;
+}
+.cl-textarea .cl-customscrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cl-textarea .cl-customscrollbar::-webkit-scrollbar {
+  display: none;
+}
+.cl-textarea .cl-text {
+  height: 100%;
+  width: 100%;
+  border: 0px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  outline: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px;
+  white-space: pre-wrap;
+  vertical-align: top;
+}
+.cl-textarea .cl-text:disabled {
+  opacity: 1;
+}
+.cl-textarea.cl-disabled {
+  border-color: #ddd;
+  background-image: none;
+  background-color: #ccc;
+  color: #666;
+}
+.cl-textarea.cl-focus {
+  border-color: #1369C5;
 }

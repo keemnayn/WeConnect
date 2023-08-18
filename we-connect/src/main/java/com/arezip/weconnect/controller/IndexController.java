@@ -7,14 +7,14 @@ import org.springframework.web.servlet.View;
 import com.cleopatra.spring.UIView;
   
 @Controller      
-public class IndexController {
+public class IndexController {     
 	@RequestMapping     
 	public View index() {   
 		return new UIView("weconnect/member/Member.clx");
 	}
-
-	@RequestMapping("weconnect/admin")      
+    
+	@RequestMapping("weconnect/admin")        
 	public View admin() {
 		return new UIView("weconnect/admin/Admin.clx");
-	}
-}   
+	}      
+}                                                                                                                                                                                                                                      

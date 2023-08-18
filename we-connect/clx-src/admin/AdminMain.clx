@@ -16,7 +16,7 @@
   </head>
   <body std:sid="body-01826c9f">
     <cl:tabfolder std:sid="t-folder-ee8f4a1b">
-      <cl:xylayoutdata std:sid="xyl-data-25a970f5" top="0px" right="0px" bottom="20px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-25a970f5" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-8b490844" selected="true" text="관리자">
         <std:metadata>
           <std:property key="is-active-item" value="true"/>
@@ -50,16 +50,13 @@
             <cl:htmlsnippet std:sid="htmlsnippet-bbe55494" value="&lt;hr>&#xD;&#xA;">
               <cl:xylayoutdata std:sid="xyl-data-fd2a8689" top="20px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             </cl:htmlsnippet>
-            <cl:textarea std:sid="t-area-eca1ae8c" id="txa4" style="border-right-style:none; color:#333333; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; background-image:none; border-top-style:none;" value="관리자프로필">
-              <cl:xylayoutdata std:sid="xyl-data-4b7d68dd" top="0px" left="0px" width="100px" height="21px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            </cl:textarea>
+            <cl:htmlsnippet std:sid="htmlsnippet-039618ea" style="font-weight:900; font-size:10px;" value="&lt;p>관리자프로필&lt;/p>">
+              <cl:xylayoutdata std:sid="xyl-data-a94585b8" top="0px" left="0px" width="100px" height="95px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+            </cl:htmlsnippet>
             <cl:xylayout std:sid="xylayout-17b8941c"/>
           </cl:group>
           <cl:group std:sid="group-fa9a77ed" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
             <cl:xylayoutdata std:sid="xyl-data-f731e696" top="0px" right="293px" left="652px" height="210px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-            <cl:textarea std:sid="t-area-9ac4100d" id="txa3" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; background-image:none; border-top-style:none;" value="사내소식">
-              <cl:xylayoutdata std:sid="xyl-data-d3f911de" top="0px" left="0px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            </cl:textarea>
             <cl:htmlsnippet std:sid="htmlsnippet-c492d4c5" value="&lt;hr>&#xD;&#xA;">
               <cl:xylayoutdata std:sid="xyl-data-2d89da2e" top="20px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             </cl:htmlsnippet>

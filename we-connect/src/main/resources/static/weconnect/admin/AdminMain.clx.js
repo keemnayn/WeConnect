@@ -174,23 +174,17 @@
 							"left": "0px",
 							"height": "20px"
 						});
-						var textArea_3 = new cpr.controls.TextArea("txa4");
-						textArea_3.value = "관리자프로필";
-						textArea_3.style.css({
-							"border-right-style" : "none",
-							"color" : "#333333",
-							"border-left-style" : "none",
+						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_4.value = "<p>관리자프로필<\/p>";
+						hTMLSnippet_4.style.css({
 							"font-weight" : "900",
-							"font-size" : "16px",
-							"border-bottom-style" : "none",
-							"background-image" : "none",
-							"border-top-style" : "none"
+							"font-size" : "10px"
 						});
-						container.addChild(textArea_3, {
+						container.addChild(hTMLSnippet_4, {
 							"top": "0px",
 							"left": "0px",
 							"width": "100px",
-							"height": "21px"
+							"height": "95px"
 						});
 					})(group_4);
 					container.addChild(group_4, {
@@ -215,26 +209,9 @@
 					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
 					group_5.setLayout(xYLayout_6);
 					(function(container){
-						var textArea_4 = new cpr.controls.TextArea("txa3");
-						textArea_4.value = "사내소식";
-						textArea_4.style.css({
-							"border-right-style" : "none",
-							"border-left-style" : "none",
-							"font-weight" : "900",
-							"font-size" : "16px",
-							"border-bottom-style" : "none",
-							"background-image" : "none",
-							"border-top-style" : "none"
-						});
-						container.addChild(textArea_4, {
-							"top": "0px",
-							"left": "0px",
-							"width": "100px",
-							"height": "30px"
-						});
-						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_4.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_4, {
+						var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_5.value = "<hr>\r\n";
+						container.addChild(hTMLSnippet_5, {
 							"top": "20px",
 							"right": "0px",
 							"left": "0px",
@@ -324,7 +301,7 @@
 			container.addChild(tabFolder_1, {
 				"top": "0px",
 				"right": "0px",
-				"bottom": "20px",
+				"bottom": "0px",
 				"left": "0px"
 			});
 		}

@@ -175,7 +175,8 @@
 				"border-right-style" : "none",
 				"border-left-style" : "none",
 				"border-bottom-style" : "none",
-				"border-top-style" : "none"
+				"border-top-style" : "none",
+				"text-align" : "left"
 			});
 			(function(tree_1){
 				tree_1.setItemSet(app.lookup("adminMenu"), {

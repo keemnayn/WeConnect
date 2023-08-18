@@ -3,42 +3,95 @@
 /* 인풋 박스 루트 */
 .cl-inputbox {
 	font: @default-font;
-	color: @default-text-color;
-	border: 1px solid @default-border-color;
-	background-color: #fff;
-
+	border: 1px solid #FFFFFF;
+	text-shadow: none;
+	//` 기본 버튼 텍스트 그림자 제거
+	background-image: none;
+	// 기본 인풋 그라데이션 제거
+	
+	//` 기본 버튼 텍스트 그림자 제거
 	/* 인풋 박스 텍스트 */
-	.cl-text {}
-
+	.cl-text {
+	}
+	
 	/* 인풋 박스 - 포커스 상태 */
 	&.cl-focus {
 		border-color: @focus-border-color;
 	}
-
+	
 	/* 인풋 박스 - 클리어 버튼 */
 	.cl-inputbox-clear {
 		//background-image: url(icons/clear-button.png);
 	}
-
+	
 	/* 인풋 박스 - disabled 상태 */
 	&.cl-disabled {
-		// border-color: @disabled-border-color;
-		// background-image: none;
-		// background-color: @disabled-selection-background;
-		// color: @default-text-color;
-
+		 border-color: @disabled-border-color;
+		 background-image: none;
+		 background-color: @disabled-selection-background;
+		 color: @default-text-color;
 		.cl-inputbox-clear {
-			// background-image: url(icons/clear-button-disabled.png);
-			// cursor: default;
+			 background-image: url("icon");
+			 cursor: default;
 		}
 	}
-
+	
 	&:not(.cl-disabled) {
-
 		/* 클리어 버튼 hover상태 */
-		.cl-inputbox-clear:hover {}
-
+		.cl-inputbox-clear:hover {
+		}
+		
 		/* 클리어 버튼 active상태 */
-		.cl-inputbox-clear:active {}
+		.cl-inputbox-clear:active {
+		}
 	}
+}
+
+/*정현 추가*/
+.cl-inputbox .cl-text:disabled {
+	opacity: 1;
+}
+
+.cl-inputbox .cl-text:-internal-autofill-selected + [data-role='placeholder'] {
+	visibility: hidden;
+}
+
+.cl-inputbox .cl-inputbox-clear {
+	width: 1em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url("icons/clear-button.png");
+	background-origin: content-box;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+.cl-inputbox .cl-placeholder {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cl-inputbox.cl-focus {
+	border-color: #1369C5;
+}
+
+.cl-inputbox.cl-disabled {
+	background-image: none;
+	background-color: #ccc;
+	color: #666;
+}
+
+.cl-inputbox.cl-disabled .cl-inputbox-clear {
+	background-image: url("icons/clear-button-disabled.png");
+	cursor: default;
+}
+
+.cl-inputbox:not(.cl-disabled) .cl-inputbox-clear:hover {
+	background-image: url("icons/clear-button.png");
+}
+
+.cl-inputbox:not(.cl-disabled) .cl-inputbox-clear:active {
+	background-image: url("icons/clear-button-hover.png");
+	opacity: 70%;
 }

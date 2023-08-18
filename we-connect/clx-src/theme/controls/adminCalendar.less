@@ -1,4 +1,8 @@
-.cl-calendar.main-calendar, .admin_carlendar, .admain_cld {
+@import "../settings.part.less";
+
+.cl-calendar.main-calendar,
+.admin_carlendar,
+.admain_cld {
 	background-color: #ffffff;
 	border: 1px solid #babfc7;
 	border-radius: 5px;
@@ -19,13 +23,14 @@
 /* 캘린더 헤더 */
 .cl-calendar-header {
 	background-color: transparent;
+	
 	.cl-calendar-header-before,
 	.cl-calendar-header-after {
 		min-width: 0px;
 		width: 0px;
 		visibility: hidden;
 	}
-		
+	
 	/* 이전 달 버튼 */
 	.cl-calendar-header-prev {
 		background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
@@ -35,13 +40,15 @@
 	.cl-calendar-header-next {
 		background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
 	}
-
+	
 	/* 헤더 텍스트 */
 	.cl-calendar-header-text {
 		color: #333333;
 		font-weight: bold;
 		font-size: 16px;
-		&:hover, &.cl-hover {
+		
+		&:hover,
+		&.cl-hover {
 			color: #3f87fd;
 		}
 	}
@@ -53,10 +60,12 @@
 .cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year,
 .cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month {
 	border-radius: 5px;
+	
 	&:not(.cl-disabled):hover {
 		background-color: #f8f8fa;
 		color: #3f87fd;
 	}
+	
 	&.cl-selected {
 		background-color: transparent;
 		color: #ffffff;
@@ -69,15 +78,18 @@
 		&.cl-calendar-defaultdate {
 			color: #3f87fd;
 		}
+		
 		&.cl-range-selected,
 		&.cl-selected {
 			background-color: #3f87fd;
 			color: #ffffff;
 		}
 	}
+	
 	.cl-other-month {
 		background-color: transparent;
 		color: #c0c0c0;
+		
 		&.cl-disabled {
 			background-color: transparent;
 			color: #c0c0c0;
@@ -93,9 +105,11 @@
 	padding: 0px;
 	text-align: center;
 	vertical-align: middle;
+	
 	.cl-calendar-footer-text {
 		color: #333333;
 	}
+	
 	&.cl-hover .cl-calendar-footer-text {
 		color: #c0c0c0;
 	}

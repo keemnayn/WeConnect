@@ -26,7 +26,6 @@
 				var button = e.control;
 				let submission = app.lookup("memberList");
 				submission.send();
-				alert("회원가입 완료");
 				window.location= "login/login1.clx";
 			}
 
@@ -39,6 +38,24 @@
 			function onBodyInit2(e){
 				let department = app.lookup("deparment");
 				department.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
+			 * 통신 중 문제가 생기면 발생합니다.
+			 */
+			function onMemberListSubmitError(e){
+				var memberList = e.control;
+				alert("회원가입 실패");
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onMemberListSubmitSuccess(e){
+				var memberList = e.control;
+					alert("회원가입 완료");
 			};
 			// End - User Script
 			
@@ -134,6 +151,12 @@
 			submission_1.addRequestData(dataMap_1);
 			submission_1.addRequestData(dataSet_1);
 			submission_1.addRequestData(dataMap_2);
+			if(typeof onMemberListSubmitError == "function") {
+				submission_1.addEventListener("submit-error", onMemberListSubmitError);
+			}
+			if(typeof onMemberListSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onMemberListSubmitSuccess);
+			}
 			app.register(submission_1);
 			
 			var submission_2 = new cpr.protocols.Submission("deparment");
@@ -175,26 +198,6 @@
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var inputBox_1 = new cpr.controls.InputBox("memberId");
-				inputBox_1.placeholder = "이메일 주소는 ID로 사용됩니다.";
-				inputBox_1.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
-					"color" : "#000000",
-					"font-weight" : "500",
-					"font-style" : "normal",
-					"text-align" : "center"
-				});
-				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberEmail");
-				if(typeof onMemberIdValueChange == "function") {
-					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
-				}
-				container.addChild(inputBox_1, {
-					"top": "156px",
-					"left": "158px",
-					"width": "355px",
-					"height": "48px"
-				});
 				var button_1 = new cpr.controls.Button();
 				button_1.value = "중복 확인";
 				button_1.style.setClasses(["button1"]);
@@ -204,7 +207,8 @@
 					"color" : "#070000",
 					"font-size" : "16px",
 					"font-style" : "normal",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				container.addChild(button_1, {
 					"top": "156px",
@@ -212,49 +216,52 @@
 					"width": "109px",
 					"height": "48px"
 				});
-				var inputBox_2 = new cpr.controls.InputBox("memberName");
+				var inputBox_1 = new cpr.controls.InputBox("memberName");
+				inputBox_1.placeholder = "\r\n";
+				inputBox_1.style.css({
+					"border-radius" : "5px",
+					"background-color" : "#FFFFFF",
+					"color" : "#070000",
+					"font-style" : "normal",
+					"background-image" : "none",
+					"text-align" : "center"
+				});
+				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberName");
+				container.addChild(inputBox_1, {
+					"top": "262px",
+					"left": "160px",
+					"width": "352px",
+					"height": "48px"
+				});
+				var inputBox_2 = new cpr.controls.InputBox("ipb3");
 				inputBox_2.placeholder = "\r\n";
 				inputBox_2.style.css({
 					"border-radius" : "5px",
 					"background-color" : "#FFFFFF",
 					"color" : "#070000",
 					"font-style" : "normal",
+					"background-image" : "none",
 					"text-align" : "center"
 				});
-				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberName");
+				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_2, {
-					"top": "262px",
+					"top": "377px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
 				});
-				var inputBox_3 = new cpr.controls.InputBox("ipb3");
+				var inputBox_3 = new cpr.controls.InputBox("ipb4");
 				inputBox_3.placeholder = "\r\n";
 				inputBox_3.style.css({
 					"border-radius" : "5px",
 					"background-color" : "#FFFFFF",
 					"color" : "#070000",
 					"font-style" : "normal",
+					"background-image" : "none",
 					"text-align" : "center"
 				});
 				inputBox_3.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_3, {
-					"top": "377px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
-				});
-				var inputBox_4 = new cpr.controls.InputBox("ipb4");
-				inputBox_4.placeholder = "\r\n";
-				inputBox_4.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
-					"color" : "#070000",
-					"font-style" : "normal",
-					"text-align" : "center"
-				});
-				inputBox_4.bind("value").toDataMap(app.lookup("member"), "memberPassword");
-				container.addChild(inputBox_4, {
 					"top": "486px",
 					"left": "160px",
 					"width": "352px",
@@ -323,8 +330,12 @@
 				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
 				comboBox_1.placeholder = "(선택)";
 				comboBox_1.style.css({
+					"border-radius" : "5px",
 					"color" : "#A0A0A0",
 					"font-weight" : "500"
+				});
+				comboBox_1.style.button.css({
+					"width" : "30px"
 				});
 				comboBox_1.bind("value").toDataMap(app.lookup("member"), "position");
 				(function(comboBox_1){
@@ -377,7 +388,8 @@
 					"color" : "#FFFFFF",
 					"font-size" : "16px",
 					"font-style" : "normal",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				if(typeof onButtonClick == "function") {
 					button_2.addEventListener("click", onButtonClick);
@@ -396,7 +408,8 @@
 					"color" : "#FFFFFF",
 					"font-size" : "16px",
 					"font-style" : "normal",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				container.addChild(button_3, {
 					"top": "813px",
@@ -414,11 +427,12 @@
 					"font-size" : "45px",
 					"border-bottom-style" : "none",
 					"font-style" : "normal",
+					"background-image" : "none",
 					"border-top-style" : "none",
 					"text-align" : "center"
 				});
 				container.addChild(textArea_1, {
-					"top": "3px",
+					"top": "0px",
 					"left": "12px",
 					"width": "229px",
 					"height": "83px"
@@ -426,8 +440,16 @@
 				var comboBox_2 = new cpr.controls.ComboBox("cmb2");
 				comboBox_2.placeholder = "(선택)";
 				comboBox_2.style.css({
+					"background-color" : "#FFFFFF",
+					"border-radius" : "5px",
 					"color" : "#A0A0A0",
-					"font-weight" : "500"
+					"font-weight" : "500",
+					"line-height" : "none",
+					"text-align" : "left"
+				});
+				comboBox_2.style.button.css({
+					"background-size" : "contain",
+					"width" : "30px"
 				});
 				comboBox_2.bind("value").toDataMap(app.lookup("department1"), "departmentId");
 				(function(comboBox_2){
@@ -446,6 +468,27 @@
 					"width": "352px",
 					"height": "48px"
 				});
+				var inputBox_4 = new cpr.controls.InputBox("memberId");
+				inputBox_4.placeholder = "이메일 주소는 ID로 사용됩니다.";
+				inputBox_4.style.css({
+					"border-radius" : "5px",
+					"background-color" : "#FFFFF",
+					"color" : "#000000",
+					"font-weight" : "500",
+					"font-style" : "normal",
+					"background-image" : "none",
+					"text-align" : "center"
+				});
+				inputBox_4.bind("value").toDataMap(app.lookup("member"), "memberEmail");
+				if(typeof onMemberIdValueChange == "function") {
+					inputBox_4.addEventListener("value-change", onMemberIdValueChange);
+				}
+				container.addChild(inputBox_4, {
+					"top": "156px",
+					"left": "158px",
+					"width": "355px",
+					"height": "48px"
+				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {
 				group_1.addEventListener("click", onGroupClick);
@@ -454,7 +497,7 @@
 				"top": "20px",
 				"left": "605px",
 				"width": "737px",
-				"height": "896px"
+				"height": "874px"
 			});
 			if(typeof onBodyInit2 == "function"){
 				app.addEventListener("init", onBodyInit2);

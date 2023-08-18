@@ -169,7 +169,8 @@
 					"color" : "#FFFFFF",
 					"font-weight" : "600",
 					"font-size" : "16px",
-					"background-image" : "none"
+					"background-image" : "none",
+					"text-align" : "center"
 				});
 				if(typeof onButtonClick2 == "function") {
 					button_1.addEventListener("click", onButtonClick2);
@@ -188,7 +189,8 @@
 					"border-radius" : "8px",
 					"color" : "#FFFFFF",
 					"font-weight" : "600",
-					"font-size" : "16px"
+					"font-size" : "16px",
+					"text-align" : "center"
 				});
 				if(typeof onButtonClick == "function") {
 					button_2.addEventListener("click", onButtonClick);
