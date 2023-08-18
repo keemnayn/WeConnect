@@ -146,7 +146,7 @@
 					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminSuggestions"},
 					{"label": "회의실등록", "value": "회의실등록", "parent": "예약", "appId": "admin/AdminMeetingRoomForm"},
 					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "예약", "appId": "admin/AdminMeetingRoomStatus"},
-					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/schedule", "icon": "img/icon/calendar.png"},
+					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/AdminSchedule", "icon": "img/icon/calendar.png"},
 					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트", "appId": "admin/AdminProjectManagement"}
 				]
 			});

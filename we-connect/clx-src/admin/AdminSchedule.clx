@@ -88,8 +88,13 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:calendar std:sid="calendar-b74becfa" class="admin_carlendar">
+          <cl:calendar std:sid="calendar-b74becfa" id="crd" class="admin_carlendar">
+            <cl:listener std:sid="listener-eca4c7bb" name="date-click" handler="onCalendarDateClick"/>
+            <cl:listener std:sid="listener-71b770c5" name="item-click" handler="onCrdItemClick"/>
             <cl:xylayoutdata std:sid="xyl-data-d7ce4b32" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:itemstyle>
+              <cl:expbind property="color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;주간보고&quot;: &quot;violet&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;: &quot;red&quot;&#xD;&#xA;&#x9;case &quot;연차&quot;: &quot;orange&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;: &quot;blue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;: &quot;green&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;: &quot;gray&quot;&#xD;&#xA;}"/>
+            </cl:itemstyle>
           </cl:calendar>
           <cl:xylayout std:sid="xylayout-b4028147"/>
         </cl:group>

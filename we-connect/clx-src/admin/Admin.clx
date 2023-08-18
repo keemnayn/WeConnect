@@ -110,7 +110,7 @@
             <cl:datavalue columnname="label"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[일정관리]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[일정]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[admin/schedule]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminSchedule]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/icon/calendar.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>

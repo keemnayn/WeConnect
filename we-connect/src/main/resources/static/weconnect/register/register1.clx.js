@@ -22,20 +22,18 @@
 			 * "확인" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick(e){
+			function onButtonClick(e) {
 				var button = e.control;
 				let submission = app.lookup("memberList");
 				submission.send();
-				window.location= "login/login1.clx";
+				window.location = "login/login1.clx";
 			}
-
-
 
 			/*
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit2(e){
+			function onBodyInit2(e) {
 				let department = app.lookup("deparment");
 				department.send();
 			}
@@ -44,7 +42,7 @@
 			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
 			 * 통신 중 문제가 생기면 발생합니다.
 			 */
-			function onMemberListSubmitError(e){
+			function onMemberListSubmitError(e) {
 				var memberList = e.control;
 				alert("회원가입 실패");
 			}
@@ -53,10 +51,56 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onMemberListSubmitSuccess(e){
+			function onMemberListSubmitSuccess(e) {
 				var memberList = e.control;
-					alert("회원가입 완료");
-			};
+				alert("회원가입 완료");
+			}
+
+			/*
+			 * "취소" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick2(e) {
+				var button = e.control;
+			    let result = confirm("작성을 취소하시겠습니까?");
+			    if (result) {
+			        window.location.href = "login/login1.clx"; 
+			    }
+			}
+
+			/*
+			 * "중복 확인" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick3(e) {
+				var button = e.control;
+				let submission = app.lookup("check");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onCheckSubmitSuccess(e) {
+				var check = e.control;
+				let emailCheck = app.lookup("check");
+				let email = emailCheck.getMetadata("email");
+				let memberEmail = app.lookup("memberEmail");
+				
+				// 입력값이 비어있는지 확인
+				if (memberEmail.value.trim() === "") {
+					alert("이메일을 입력하세요");
+					return; // 사용자가 이메일을 입력할 때까지 다음 코드를 실행하지 않음
+				}
+				
+				// 이메일 중복 확인
+				if (email !== null) {
+					alert("중복된 이메일입니다.");
+				} else {
+					alert("사용가능한 이메일입니다.");
+				}
+			}
 			// End - User Script
 			
 			// Header
@@ -91,6 +135,10 @@
 				]
 			});
 			app.register(dataSet_2);
+			
+			var dataSet_3 = new cpr.data.DataSet("email");
+			dataSet_3.parseData({});
+			app.register(dataSet_3);
 			var dataMap_1 = new cpr.data.DataMap("member");
 			dataMap_1.parseData({
 				"columns" : [
@@ -168,6 +216,15 @@
 			
 			var submission_3 = new cpr.protocols.Submission("position");
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("check");
+			submission_4.method = "get";
+			submission_4.action = "email";
+			submission_4.addRequestData(dataMap_1);
+			if(typeof onCheckSubmitSuccess == "function") {
+				submission_4.addEventListener("submit-success", onCheckSubmitSuccess);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1927px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -199,7 +256,7 @@
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var button_1 = new cpr.controls.Button();
-				button_1.value = "중복 확인";
+				button_1.value = "중복확인";
 				button_1.style.setClasses(["button1"]);
 				button_1.style.css({
 					"background-color" : "#EBEBEB",
@@ -210,8 +267,11 @@
 					"background-image" : "none",
 					"text-align" : "center"
 				});
+				if(typeof onButtonClick3 == "function") {
+					button_1.addEventListener("click", onButtonClick3);
+				}
 				container.addChild(button_1, {
-					"top": "156px",
+					"top": "146px",
 					"left": "523px",
 					"width": "109px",
 					"height": "48px"
@@ -228,7 +288,7 @@
 				});
 				inputBox_1.bind("value").toDataMap(app.lookup("member"), "memberName");
 				container.addChild(inputBox_1, {
-					"top": "262px",
+					"top": "242px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -245,7 +305,7 @@
 				});
 				inputBox_2.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_2, {
-					"top": "377px",
+					"top": "357px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -262,7 +322,7 @@
 				});
 				inputBox_3.bind("value").toDataMap(app.lookup("member"), "memberPassword");
 				container.addChild(inputBox_3, {
-					"top": "486px",
+					"top": "466px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -277,7 +337,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_1, {
-					"top": "348px",
+					"top": "328px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -292,7 +352,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_2, {
-					"top": "458px",
+					"top": "438px",
 					"left": "160px",
 					"width": "234px",
 					"height": "30px"
@@ -307,7 +367,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_3, {
-					"top": "235px",
+					"top": "215px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -322,7 +382,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "126px",
+					"top": "116px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -345,7 +405,7 @@
 					});
 				})(comboBox_1);
 				container.addChild(comboBox_1, {
-					"top": "729px",
+					"top": "689px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
@@ -360,7 +420,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_5, {
-					"top": "699px",
+					"top": "659px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -375,7 +435,7 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_6, {
-					"top": "576px",
+					"top": "556px",
 					"left": "160px",
 					"width": "100px",
 					"height": "30px"
@@ -395,10 +455,10 @@
 					button_2.addEventListener("click", onButtonClick);
 				}
 				container.addChild(button_2, {
-					"top": "813px",
-					"left": "133px",
+					"top": "828px",
+					"left": "135px",
 					"width": "150px",
-					"height": "50px"
+					"height": "44px"
 				});
 				var button_3 = new cpr.controls.Button();
 				button_3.value = "취소";
@@ -411,31 +471,14 @@
 					"background-image" : "none",
 					"text-align" : "center"
 				});
+				if(typeof onButtonClick2 == "function") {
+					button_3.addEventListener("click", onButtonClick2);
+				}
 				container.addChild(button_3, {
-					"top": "813px",
-					"left": "398px",
+					"top": "828px",
+					"left": "402px",
 					"width": "150px",
-					"height": "50px"
-				});
-				var textArea_1 = new cpr.controls.TextArea("txa1");
-				textArea_1.value = "회원가입";
-				textArea_1.style.css({
-					"border-right-style" : "none",
-					"color" : "#E1E1E1",
-					"border-left-style" : "none",
-					"font-weight" : "900",
-					"font-size" : "45px",
-					"border-bottom-style" : "none",
-					"font-style" : "normal",
-					"background-image" : "none",
-					"border-top-style" : "none",
-					"text-align" : "center"
-				});
-				container.addChild(textArea_1, {
-					"top": "0px",
-					"left": "12px",
-					"width": "229px",
-					"height": "83px"
+					"height": "44px"
 				});
 				var comboBox_2 = new cpr.controls.ComboBox("cmb2");
 				comboBox_2.placeholder = "(선택)";
@@ -463,12 +506,12 @@
 					comboBox_2.addEventListener("selection-change", onCmb2SelectionChange);
 				}
 				container.addChild(comboBox_2, {
-					"top": "605px",
+					"top": "585px",
 					"left": "160px",
 					"width": "352px",
 					"height": "48px"
 				});
-				var inputBox_4 = new cpr.controls.InputBox("memberId");
+				var inputBox_4 = new cpr.controls.InputBox("memberEmail");
 				inputBox_4.placeholder = "이메일 주소는 ID로 사용됩니다.";
 				inputBox_4.style.css({
 					"border-radius" : "5px",
@@ -484,17 +527,30 @@
 					inputBox_4.addEventListener("value-change", onMemberIdValueChange);
 				}
 				container.addChild(inputBox_4, {
-					"top": "156px",
+					"top": "146px",
 					"left": "158px",
 					"width": "355px",
 					"height": "48px"
+				});
+				var hTMLSnippet_7 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_7.value = "<h3>회원가입<\/h3>";
+				hTMLSnippet_7.style.css({
+					"color" : "#DEDEDE",
+					"font-weight" : "700",
+					"font-size" : "35px"
+				});
+				container.addChild(hTMLSnippet_7, {
+					"top": "-15px",
+					"left": "20px",
+					"width": "180px",
+					"height": "113px"
 				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {
 				group_1.addEventListener("click", onGroupClick);
 			}
 			container.addChild(group_1, {
-				"top": "20px",
+				"top": "30px",
 				"left": "605px",
 				"width": "737px",
 				"height": "874px"

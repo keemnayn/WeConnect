@@ -13,3 +13,4 @@ public interface FreeBoardMapper {
 	int insertFreeBoard(FreeBoardDTO freeBoardDTO);
 	FreeBoardDTO getFreeBoardDetail(long freeBoardId);
 }
+ 

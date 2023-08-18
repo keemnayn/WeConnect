@@ -32,6 +32,7 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-7d3c1f12" id="email"/>
       <cl:datamap std:sid="d-map-548ef8f6" id="member">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-f2f7483f" name="memberId" datatype="string"/>
@@ -63,6 +64,10 @@
         <cl:responsedata dataid="departmentList"/>
       </cl:submission>
       <cl:submission std:sid="submission-154605fd" id="position"/>
+      <cl:submission std:sid="submission-110f94c8" id="check" method="get" action="email">
+        <cl:listener std:sid="listener-836aec51" name="submit-success" handler="onCheckSubmitSuccess"/>
+        <cl:requestdata dataid="member"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -70,69 +75,71 @@
     <cl:listener std:sid="listener-34d31b25" name="init" handler="onBodyInit2"/>
     <cl:group std:sid="group-6d056694" style="border-radius:30px; background-color:#FEFEFF; color:#FFFFFF; background-image:none;" class="cl-form-group1">
       <cl:listener std:sid="listener-05b5216e" name="click" handler="onGroupClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-3ca432d1" top="20px" left="605px" width="737px" height="874px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:button std:sid="button-03baeff4" style="background-color:#EBEBEB; border-radius:5px; color:#070000; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="button1" value="중복 확인">
-        <cl:xylayoutdata std:sid="xyl-data-f7d92360" top="156px" left="523px" width="109px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-3ca432d1" top="30px" left="605px" width="737px" height="874px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:button std:sid="button-03baeff4" style="background-color:#EBEBEB; border-radius:5px; color:#070000; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="button1" value="중복확인">
+        <cl:listener std:sid="listener-9568f651" name="click" handler="onButtonClick3"/>
+        <cl:xylayoutdata std:sid="xyl-data-f7d92360" top="146px" left="523px" width="109px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:inputbox std:sid="i-box-1419f975" id="memberName" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
         <cl:datamapbind property="value" datacontrolid="member" columnname="memberName"/>
-        <cl:xylayoutdata std:sid="xyl-data-c05bbe93" top="262px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-c05bbe93" top="242px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:inputbox std:sid="i-box-db8150a2" id="ipb3" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
         <cl:datamapbind property="value" datacontrolid="member" columnname="memberPassword"/>
-        <cl:xylayoutdata std:sid="xyl-data-a182a70f" top="377px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-a182a70f" top="357px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:inputbox std:sid="i-box-c887dcd3" id="ipb4" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
         <cl:datamapbind property="value" datacontrolid="member" columnname="memberPassword"/>
-        <cl:xylayoutdata std:sid="xyl-data-8f5fa37e" top="486px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-8f5fa37e" top="466px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:htmlsnippet std:sid="htmlsnippet-006ee25f" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>비밀번호 &lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-79a2e94e" top="348px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-79a2e94e" top="328px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-a037999a" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>비밀번호 확인&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-01fe0f86" top="458px" left="160px" width="234px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-01fe0f86" top="438px" left="160px" width="234px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-a98cbb1c" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>성명 &lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-f545e8ce" top="235px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-f545e8ce" top="215px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-e7082d07" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>이메일&lt;/div>&#xD;&#xA;">
-        <cl:xylayoutdata std:sid="xyl-data-efb9299c" top="126px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-efb9299c" top="116px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:combobox std:sid="c-box-25368156" id="cmb1" style="border-radius:5px; color:#A0A0A0; font-weight:500;" placeholder="(선택)">
         <cl:datamapbind property="value" datacontrolid="member" columnname="position"/>
-        <cl:xylayoutdata std:sid="xyl-data-a5b18ca1" top="729px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-a5b18ca1" top="689px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:itemset datasetid="positionList" label="position" value="position"/>
         <cl:buttonstyle style="width:30px;"/>
       </cl:combobox>
       <cl:htmlsnippet std:sid="htmlsnippet-6bec50ae" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>직급&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-7aae5a37" top="699px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-7aae5a37" top="659px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-3ab647a4" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>부서&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-bb298a5c" top="576px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-bb298a5c" top="556px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:button std:sid="button-861d4f5e" style="background-color:#4680FF; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="btn-success" value="확인">
         <cl:listener std:sid="listener-1594139f" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-6e3ee8c9" top="813px" left="133px" width="150px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-6e3ee8c9" top="828px" left="135px" width="150px" height="44px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-92e0fc1e" style="background-color:#929292; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="btn-fail" value="취소">
-        <cl:xylayoutdata std:sid="xyl-data-34901148" top="813px" left="398px" width="150px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:listener std:sid="listener-5df9d8b9" name="click" handler="onButtonClick2"/>
+        <cl:xylayoutdata std:sid="xyl-data-34901148" top="828px" left="402px" width="150px" height="44px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:textarea std:sid="t-area-5f135885" id="txa1" style="border-right-style:none; color:#E1E1E1; border-left-style:none; font-weight:900; font-size:45px; border-bottom-style:none; font-style:normal; background-image:none; border-top-style:none; text-align:center;" value="회원가입">
-        <cl:xylayoutdata std:sid="xyl-data-c54cf54f" top="0px" left="12px" width="229px" height="83px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:textarea>
       <cl:combobox std:sid="c-box-9d874f66" id="cmb2" style="background-color:#FFFFFF; border-radius:5px; color:#A0A0A0; font-weight:500; line-height:none; text-align:left;" placeholder="(선택)">
         <cl:listener std:sid="listener-433d3177" name="selection-change" handler="onCmb2SelectionChange"/>
         <cl:datamapbind property="value" datacontrolid="department1" columnname="departmentId"/>
-        <cl:xylayoutdata std:sid="xyl-data-ffe0b730" top="605px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-ffe0b730" top="585px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:item std:sid="t-item-09e2a729" label="" value="value3"/>
         <cl:itemset datasetid="departmentList" label="departmentName" value="departmentId"/>
         <cl:buttonstyle style="background-size:contain; width:30px;"/>
       </cl:combobox>
-      <cl:inputbox std:sid="i-box-be86d18c" id="memberId" style="border-radius:5px; background-color:#FFFFF; color:#000000; font-weight:500; font-style:normal; background-image:none; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
+      <cl:inputbox std:sid="i-box-be86d18c" id="memberEmail" style="border-radius:5px; background-color:#FFFFF; color:#000000; font-weight:500; font-style:normal; background-image:none; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
         <cl:listener std:sid="listener-e479aeb4" name="value-change" handler="onMemberIdValueChange"/>
         <cl:datamapbind property="value" datacontrolid="member" columnname="memberEmail"/>
-        <cl:xylayoutdata std:sid="xyl-data-9b8f0dea" top="156px" left="158px" width="355px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-9b8f0dea" top="146px" left="158px" width="355px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
+      <cl:htmlsnippet std:sid="htmlsnippet-e39b9d60" style="color:#DEDEDE; font-weight:700; font-size:35px;" value="&lt;h3>회원가입&lt;/h3>">
+        <cl:xylayoutdata std:sid="xyl-data-6ebd41c2" top="-15px" left="20px" width="180px" height="113px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
       <cl:xylayout std:sid="xylayout-e0d6727c"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-e8b4695f"/>

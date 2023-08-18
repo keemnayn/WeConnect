@@ -13,4 +13,5 @@ public interface MemberMapper {
 	int register(MemberDTO memberDTO);
 	List<DepartmentDTO> findByDepartMentNAME();
 	MemberDTO login(String memberEmail, String memberPassword);
+	MemberDTO findByEmail(String memberEmail);
 }

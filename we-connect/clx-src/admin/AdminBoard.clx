@@ -8,55 +8,13 @@
     <cl:model std:sid="model-0fc21a88">
       <cl:dataset std:sid="d-set-82172b78" id="boardList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-a7f7fd94" name="title"/>
-          <cl:datacolumn std:sid="d-column-3c946ffa" name="content"/>
-          <cl:datacolumn std:sid="d-column-56d37566" name="name"/>
-          <cl:datacolumn std:sid="d-column-9bcb0f6c" name="date"/>
+          <cl:datacolumn std:sid="d-column-d3f14298" name="freeBoardId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-c2e701ec" name="freeBoardContent" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-17e1cd90" name="freeBoardTitle" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-0abb9879" name="freeBoardCreate" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-b8351dff" name="memberName" datatype="string"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[2]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[3]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[4]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[5]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[6]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="title"><![CDATA[7]]></cl:datavalue>
-            <cl:datavalue columnname="content"><![CDATA[너무더워]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-27]]></cl:datavalue>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:dataset std:sid="d-set-d50e6862" id="boardSearch">
         <cl:datacolumnlist>
@@ -74,10 +32,15 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:submission std:sid="submission-ecb228f7" id="boardList2" method="get" action="member/boards">
+        <cl:listener std:sid="listener-75377aa9" name="submit-success" handler="onBoardsSubmitSuccess"/>
+        <cl:responsedata dataid="boardList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-c313f3a4">
+    <cl:listener std:sid="listener-0c71d49b" name="init" handler="onBodyInit"/>
     <cl:tabfolder std:sid="t-folder-97c4f958">
       <cl:xylayoutdata std:sid="xyl-data-75dc64fd" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-84e61402" selected="true" text="자유게시판">
@@ -89,8 +52,10 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:grid std:sid="grid-c21e7c3f" id="grd1" datasetid="boardList">
+            <cl:listener std:sid="listener-1fd77039" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-76f73472" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:gridcolumn std:sid="g-column-f5e244b7" width="25px"/>
+            <cl:gridcolumn std:sid="g-column-a1cf40c7"/>
             <cl:gridcolumn std:sid="g-column-152fea57"/>
             <cl:gridcolumn std:sid="g-column-839cc4ef"/>
             <cl:gridcolumn std:sid="g-column-7c425433"/>
@@ -98,30 +63,32 @@
             <cl:gridheader std:sid="gh-band-78bdbbe7">
               <cl:gridrow std:sid="g-row-d7c92cfe" height="50px"/>
               <cl:gridcell std:sid="gh-cell-6b85a2ce" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
-              <cl:gridcell std:sid="gh-cell-047641fb" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="title" sortable="false" filterable="false" text="제목"/>
-              <cl:gridcell std:sid="gh-cell-aa32eda8" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="content" sortable="false" filterable="false" text="내용"/>
-              <cl:gridcell std:sid="gh-cell-438b5373" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="name" sortable="false" filterable="false" text="작성자"/>
-              <cl:gridcell std:sid="gh-cell-ee918d7f" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="date" sortable="false" filterable="false" text="작성일"/>
+              <cl:gridcell std:sid="gh-cell-c5404e4a" rowindex="0" colindex="1" text="보드게시글 수 "/>
+              <cl:gridcell std:sid="gh-cell-047641fb" rowindex="0" colindex="2" style="text-align:center;" sortable="false" filterable="false" text="제목"/>
+              <cl:gridcell std:sid="gh-cell-aa32eda8" rowindex="0" colindex="3" style="text-align:center;" sortable="false" filterable="false" text="내용"/>
+              <cl:gridcell std:sid="gh-cell-438b5373" rowindex="0" colindex="4" style="text-align:center;" sortable="false" filterable="false" text="작성자"/>
+              <cl:gridcell std:sid="gh-cell-ee918d7f" rowindex="0" colindex="5" style="text-align:center;" sortable="false" filterable="false" text="작성일"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-032d4b85">
               <cl:gridrow std:sid="g-row-a46ff759" height="50px"/>
               <cl:gridcell std:sid="gd-cell-24bfcd69" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
-              <cl:gridcell std:sid="gd-cell-a6f01cb7" rowindex="0" colindex="1" style="text-align:center;" columnname="title">
+              <cl:gridcell std:sid="gd-cell-f8bd4873" rowindex="0" colindex="1" columnname="freeBoardId"/>
+              <cl:gridcell std:sid="gd-cell-a6f01cb7" rowindex="0" colindex="2" style="text-align:center;" columnname="freeBoardTitle">
                 <cl:output std:sid="output-8cb8ed77" style="text-align:center;">
                   <cl:celldata std:sid="c-data-cc874366"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-39de3a23" rowindex="0" colindex="2" style="text-align:center;" columnname="content">
+              <cl:gridcell std:sid="gd-cell-39de3a23" rowindex="0" colindex="3" style="text-align:center;" columnname="freeBoardContent">
                 <cl:output std:sid="output-10a3ee21" style="text-align:center;">
                   <cl:celldata std:sid="c-data-b00df00a"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-e7a94664" rowindex="0" colindex="3" style="text-align:center;" columnname="name">
+              <cl:gridcell std:sid="gd-cell-e7a94664" rowindex="0" colindex="4" style="text-align:center;" columnname="memberName">
                 <cl:output std:sid="output-2afe6dc2" style="text-align:center;">
                   <cl:celldata std:sid="c-data-3df20c29"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-14cc640e" rowindex="0" colindex="4" style="text-align:center;" columnname="date">
+              <cl:gridcell std:sid="gd-cell-14cc640e" rowindex="0" colindex="5" style="text-align:center;" columnname="freeBoardCreate">
                 <cl:output std:sid="output-4376576f" style="text-align:center;">
                   <cl:celldata std:sid="c-data-e509abdf"/>
                 </cl:output>
@@ -131,7 +98,7 @@
           <cl:group std:sid="group-2815f0b4">
             <cl:xylayoutdata std:sid="xyl-data-62ac4764" top="5px" right="0px" width="200px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:button std:sid="button-aec78b5f" value="수정">
-              <cl:formdata std:sid="f-data-ef7fd33c" row="0" col="0"/>
+              <cl:formdata std:sid="f-data-d5072733" row="0" col="0" rowspan="1" colspan="1"/>
             </cl:button>
             <cl:button std:sid="button-ebbace3a" value="저장">
               <cl:formdata std:sid="f-data-e0922636" row="0" col="2"/>
@@ -147,11 +114,11 @@
             </cl:formlayout>
           </cl:group>
           <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" value="전체">
-            <cl:xylayoutdata std:sid="xyl-data-efe62557" top="10px" right="520px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-efe62557" top="10px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             <cl:itemset datasetid="boardSearch" label="type" value="type"/>
           </cl:combobox>
-          <cl:searchinput std:sid="s-input-e6af5d2c">
-            <cl:xylayoutdata std:sid="xyl-data-a3736fc6" top="10px" right="220px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+          <cl:searchinput std:sid="s-input-e6af5d2c" style="border-radius:5px;">
+            <cl:xylayoutdata std:sid="xyl-data-a3736fc6" top="10px" right="320px" width="1060px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
           </cl:searchinput>
           <cl:xylayout std:sid="xylayout-a9301f54"/>
         </cl:group>

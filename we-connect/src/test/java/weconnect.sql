@@ -1,5 +1,7 @@
 select * from WECONNECT.FREE_BOARD_COMMENT;
 
+select * from free_board;
+
 /* 회원 */
 CREATE SEQUENCE member_seq
 START WITH 1
@@ -31,7 +33,8 @@ ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
 --member , department =>join 
 select m.member_name, m.member_email, m.position, d.department_name  from member m inner join department d ON m.DEPARTMENT_ID = d.DEPARTMENT_ID;
-
+ 
+select * from member where member_email ='1212';
 ALTER TABLE member
 MODIFY manager_yn DEFAULT 'N';
 
@@ -671,6 +674,7 @@ CREATE TABLE free_board (
 	free_board_views NUMBER DEFAULT 0 NOT NULL,
 	member_id NUMBER NOT NULL
 );
+select * from free_board;
 
 COMMENT ON TABLE free_board IS '자유게시판';
 

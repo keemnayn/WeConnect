@@ -2,83 +2,109 @@
 
 /* 데이트 인풋 */
 .cl-dateinput {
-	font: @default-font;
-	color: @default-text-color;
-	border: 1px solid @default-border-color;
-	text-align: left;
-
-	/* 텍스트 */
-	.cl-text {}
-
-	/* 버튼 */
-	.cl-dateinput-button {
-		// background-image: url(icons/calendar-button.png);
-	}
-
-	/* 클리어 버튼 */
-	.cl-dateinput-clear {
-		&:hover {}
-	}
-
-	/* 스핀 버튼 */
-	.cl-dateinput-spinbuttons {
-		border-left: solid 1px @default-border-color;
-		// width:16px;
-
-		/* 증가 버튼 */
-		.cl-dateinput-increase {
-			// background-image: url(icons/up-spin.png);
-			// background-repeat: no-repeat;
-			// background-size: 16px auto;
-			// background-position: center;
-			// cursor: pointer;
-		}
-
-		/* 감소 버튼 */
-		.cl-dateinput-decrease {
-			// background-image: url(icons/down-spin.png);
-			// background-repeat: no-repeat;
-			// background-size: 16px auto;
-			// background-position: center;
-			// cursor:pointer;
-		}
-	}
-
-	&:not(.cl-disabled) {
-		.cl-dateinput-increase:hover {
-			// background-image: url(icons/up-spin-hover.png);
-			// background-color: @tint-normal-color;
-		}
-
-		.cl-dateinput-increase:active {
-			// background-image: url(icons/up-spin-active.png);
-			// background-color: @tint-darker-color;
-		}
-
-		.cl-dateinput-decrease:hover {
-			// background-image: url(icons/down-spin-hover.png);
-			// background-color: @tint-normal-color;
-		}
-
-		.cl-dateinput-decrease:active {
-			// background-image: url(icons/down-spin-active.png);
-			// background-color: @tint-darker-color;
-		}
-	}
-
-	/* 비활성화 상태 */
-	&.cl-disabled {
-		color: @disabled-text-color;
-		background-color: @disabled-selection-background;
-		border-color: @disabled-border-color;
-
-		.cl-dateinput-button {
-			// background-image: url(icons/calendar-button-disabled.png);
-		}
-	}
-
-	/* 포커스 상태 */
-	&.cl-focus {
-		border-color: @focus-border-color;
-	}
+  border: 1px solid #bbb;
+  background-color: #fff;
+  text-align: left;
+  color: #333;
+}
+.cl-dateinput .cl-text {
+  border: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  outline: none;
+  background-color: transparent;
+  vertical-align: middle;
+  font-family: inherit;
+  font-size: 1em;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: center;
+  text-decoration: inherit;
+}
+.cl-dateinput .cl-text.cl-preventinput {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cl-dateinput .cl-text:disabled {
+  opacity: 1;
+}
+.cl-dateinput .cl-dateinput-clear {
+  width: 1em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("icons/clear-button.png");
+  background-origin: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.cl-dateinput .cl-placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cl-dateinput .cl-dateinput-spinbuttons {
+  border-left: solid 1px #bbb;
+  width: 16px;
+}
+.cl-dateinput .cl-dateinput-spinbuttons .cl-dateinput-increase {
+  background-image: url("icons/up-spin.png");
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+  background-position: center;
+  cursor: pointer;
+}
+.cl-dateinput .cl-dateinput-spinbuttons .cl-dateinput-decrease {
+  background-image: url("icons/down-spin.png");
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+  background-position: center;
+  cursor: pointer;
+}
+.cl-dateinput:not(.cl-disabled) .cl-dateinput-increase:hover {
+  background-image: url("icons/up-spin-hover.png");
+  background-color: #1F8BF0;
+}
+.cl-dateinput:not(.cl-disabled) .cl-dateinput-increase:active {
+  background-image: url("icons/up-spin-active.png");
+  background-color: #1369C5;
+}
+.cl-dateinput:not(.cl-disabled) .cl-dateinput-decrease:hover {
+  background-image: url(icons/down-spin-hover.png);
+  background-color: #1F8BF0;
+}
+.cl-dateinput:not(.cl-disabled) .cl-dateinput-decrease:active {
+  background-image: url("icons/down-spin-active.png");
+  background-color: #1369C5;
+}
+.cl-dateinput .cl-dateinput-button {
+  width: 16px;
+  border: 0px;
+  background-image: url("icons/calendar-button.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-origin: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.cl-dateinput.cl-disabled {
+  color: #666;
+  background-color: #ccc;
+  border-color: #ddd;
+}
+.cl-dateinput.cl-disabled .cl-dateinput-button {
+  background-image: url("icons/calendar-button-disabled.png");
+  cursor: default;
+}
+.cl-dateinput.cl-disabled .cl-dateinput-spinbuttons .cl-dateinput-increase,
+.cl-dateinput.cl-disabled .cl-dateinput-spinbuttons .cl-dateinput-decrease {
+  cursor: default;
+}
+.cl-dateinput.cl-focus {
+  border: #1369C5 solid 1px;
 }

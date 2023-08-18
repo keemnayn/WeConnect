@@ -16,27 +16,54 @@
 			 * Created at 2023. 8. 9. 오전 9:45:56.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				let submission = app.lookup("boardList2");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onBoardsSubmitSuccess(e){
+				var boards = e.control;
+				let boardList = app.lookup("grd1");
+				boardList.redraw();
+			};
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("boardList");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "title"},
-					{"name": "content"},
-					{"name": "name"},
-					{"name": "date"}
+					{
+						"name": "freeBoardId",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardContent",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardTitle",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardCreate",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					}
 				],
-				"rows": [
-					{"title": "1", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "2", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "3", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "4", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "5", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "6", "content": "너무더워", "date": "2023-08-27", "name": "박해준"},
-					{"title": "7", "content": "너무더워", "date": "2023-08-27", "name": "박해준"}
-				]
+				"rows": []
 			});
 			app.register(dataSet_1);
 			
@@ -50,6 +77,14 @@
 				]
 			});
 			app.register(dataSet_2);
+			var submission_1 = new cpr.protocols.Submission("boardList2");
+			submission_1.method = "get";
+			submission_1.action = "member/boards";
+			submission_1.addResponseData(dataSet_1, false);
+			if(typeof onBoardsSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onBoardsSubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -84,6 +119,7 @@
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
+							{"width": "100px"},
 							{"width": "100px"}
 						],
 						"header": {
@@ -103,13 +139,7 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.filterable = false;
-										cell.sortable = false;
-										cell.targetColumnName = "title";
-										cell.text = "제목";
-										cell.style.css({
-											"text-align" : "center"
-										});
+										cell.text = "보드게시글 수 ";
 									}
 								},
 								{
@@ -117,8 +147,7 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "content";
-										cell.text = "내용";
+										cell.text = "제목";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -129,8 +158,7 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "name";
-										cell.text = "작성자";
+										cell.text = "내용";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -141,7 +169,17 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "date";
+										cell.text = "작성자";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 5},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
 										cell.text = "작성일";
 										cell.style.css({
 											"text-align" : "center"
@@ -165,7 +203,13 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "title";
+										cell.columnName = "freeBoardId";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 2},
+									"configurator": function(cell){
+										cell.columnName = "freeBoardTitle";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -174,16 +218,16 @@
 											output_1.style.css({
 												"text-align" : "center"
 											});
-											output_1.bind("value").toDataColumn("title");
+											output_1.bind("value").toDataColumn("freeBoardTitle");
 											return output_1;
 										})();
 										cell.controlConstraint = {};
 									}
 								},
 								{
-									"constraint": {"rowIndex": 0, "colIndex": 2},
+									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "content";
+										cell.columnName = "freeBoardContent";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -192,16 +236,16 @@
 											output_2.style.css({
 												"text-align" : "center"
 											});
-											output_2.bind("value").toDataColumn("content");
+											output_2.bind("value").toDataColumn("freeBoardContent");
 											return output_2;
 										})();
 										cell.controlConstraint = {};
 									}
 								},
 								{
-									"constraint": {"rowIndex": 0, "colIndex": 3},
+									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "name";
+										cell.columnName = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -210,16 +254,16 @@
 											output_3.style.css({
 												"text-align" : "center"
 											});
-											output_3.bind("value").toDataColumn("name");
+											output_3.bind("value").toDataColumn("memberName");
 											return output_3;
 										})();
 										cell.controlConstraint = {};
 									}
 								},
 								{
-									"constraint": {"rowIndex": 0, "colIndex": 4},
+									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
-										cell.columnName = "date";
+										cell.columnName = "freeBoardCreate";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -228,7 +272,7 @@
 											output_4.style.css({
 												"text-align" : "center"
 											});
-											output_4.bind("value").toDataColumn("date");
+											output_4.bind("value").toDataColumn("freeBoardCreate");
 											return output_4;
 										})();
 										cell.controlConstraint = {};
@@ -237,6 +281,9 @@
 							]
 						}
 					});
+					if(typeof onGrd1SelectionChange == "function") {
+						grid_1.addEventListener("selection-change", onGrd1SelectionChange);
+					}
 					container.addChild(grid_1, {
 						"top": "50px",
 						"right": "0px",
@@ -260,7 +307,9 @@
 						button_1.value = "수정";
 						container.addChild(button_1, {
 							"colIndex": 0,
-							"rowIndex": 0
+							"rowIndex": 0,
+							"colSpan": 1,
+							"rowSpan": 1
 						});
 						var button_2 = new cpr.controls.Button();
 						button_2.value = "저장";
@@ -291,15 +340,18 @@
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "520px",
+						"left": "20px",
 						"width": "100px",
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
+					searchInput_1.style.css({
+						"border-radius" : "5px"
+					});
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "220px",
-						"width": "280px",
+						"right": "320px",
+						"width": "1060px",
 						"height": "30px"
 					});
 				})(group_1);
@@ -314,6 +366,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminBoard";

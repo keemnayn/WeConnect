@@ -40,7 +40,7 @@
         <cl:xylayoutdata std:sid="xyl-data-7cabb74d" top="385px" left="90px" width="420px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:htmlsnippet std:sid="htmlsnippet-9dbaf886" style="color:#5B6B79; font-weight:400; font-size:15px;" class="password_reset" value="&lt;a href=&quot;#&quot;  class=&quot;password-_reset&quot;>비밀번호 찾기&lt;/a>">
-        <cl:xylayoutdata std:sid="xyl-data-df80211f" top="280px" right="10px" left="428px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-df80211f" top="290px" right="10px" left="428px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:img std:sid="image-46b73639" src="../img/enjoy.png">
         <cl:xylayoutdata std:sid="xyl-data-ad51960d" top="49px" left="93px" width="411px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>

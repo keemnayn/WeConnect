@@ -35,6 +35,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.login(memberEmail,memberPassword);
 	}
 
+	@Override
+	public MemberDTO findByEmail(String memberEmail) {
+		// TODO Auto-generated method stub
+		return memberMapper.findByEmail(memberEmail);
+	}
+
 
 
 }

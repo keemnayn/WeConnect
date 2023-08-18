@@ -54,4 +54,10 @@ public class MemberTest {
         memberService.login(memberEmail,memberPassword);
         log.info("로그인 성공 {}", memberService.login(memberEmail, memberPassword));
     }
+    @Test
+    public void email() {
+    	String memberEmail = "1212";
+    	memberService.findByEmail(memberEmail);
+    	log.info("이메일 확인{}", memberService.findByEmail(memberEmail));
+    }
 }
