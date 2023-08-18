@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Data 
 @AllArgsConstructor
-@NoArgsConstructor
-public class FreeBoardDTO {
-	private long freeBoardId;
-	private String freeBoardContent;
+@NoArgsConstructor 
+public class FreeBoardDTO {  
+	private long freeBoardId; 
+	private String freeBoardContent;  
 	private String freeBoardTitle;
 	private String freeBoardCreate;
 	private String memberName;

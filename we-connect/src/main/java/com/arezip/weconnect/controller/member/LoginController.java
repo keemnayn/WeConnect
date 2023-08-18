@@ -23,12 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class LoginController {
 	private final MemberService memberService;
-
-	@RequestMapping("weconnect/login")
+     
+	@RequestMapping("weconnect/login")  
 	public View login(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("member");
 		// parameterGroup이 null인지 확인
-		if (parameterGroup == null) {
+		if (parameterGroup == null) {    
 			log.error("parameterGroup is null");
 			return new JSONDataView();
 		}

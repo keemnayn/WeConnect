@@ -11,7 +11,7 @@
 /* 내부에 아이템을 갖는 컨트롤이 Disabled된 경우, 각 아이템에 선택된 경우 텍스트 색상 */
 /* 내부에 아이템을 갖는 컨트롤의 Disabled된 경우, 각 아이템이 선택된 경우 배경 색상 */
 .cl-tree.admin_tree {
-  border: 1px solid #bbb;
+  border: 1px solid #ffffff;
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   background-color: #fff;
@@ -21,6 +21,7 @@
   /* 트리 아이템간 라인 */
 }
 .cl-tree.admin_tree .cl-tree-item {
+  border: none;
   height: 120px;
   font-weight: 500;
   padding: 0px;
@@ -95,7 +96,6 @@
 }
 .cl-tree.cl-disabled .cl-tree-item.cl-selected {
   background-color: #ccc;
-  color: #777;
 }
 /*login_layout*/
 .login_layout {

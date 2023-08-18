@@ -24,11 +24,11 @@ public class FreeBoardMapperTest {
 		List<FreeBoardDTO> list = freeBoardMapper.getFreeBoardList();
 		list.forEach(freeBoard -> log.info(freeBoard.toString()));
 		assertNotNull(list);
+		
 	}
 	@Test
 	void getBoardDetail(long freeBoardId) {
 		FreeBoardDTO boardDetail = freeBoardMapper.getFreeBoardDetail(freeBoardId);
-		
 		
 	}
 }

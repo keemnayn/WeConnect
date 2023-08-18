@@ -236,6 +236,7 @@
 											output_1.bind("value").toDataColumn("name");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -253,6 +254,7 @@
 											output_2.bind("value").toDataColumn("grade");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -270,6 +272,7 @@
 											output_3.bind("value").toDataColumn("department");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -287,6 +290,7 @@
 											output_4.bind("value").toDataColumn("departure");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -304,6 +308,7 @@
 											output_5.bind("value").toDataColumn("return");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -321,6 +326,7 @@
 											output_6.bind("value").toDataColumn("state");
 											return output_6;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]

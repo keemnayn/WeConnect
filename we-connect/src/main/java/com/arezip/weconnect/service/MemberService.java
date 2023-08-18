@@ -11,4 +11,5 @@ public interface MemberService {
 	List<DepartmentDTO> findByDepartmentName();
 
 	MemberDTO login(String memberEmail, String memberPassword);
+	MemberDTO findByEmail(String memberEmail);
 }

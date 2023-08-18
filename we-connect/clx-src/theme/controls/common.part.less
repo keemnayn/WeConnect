@@ -5,17 +5,23 @@
 .cl-control {
 	font: @default-font;
 	color: @default-text-color;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font: 14px sans-serif;
+	color: #333;
 }
 
 /* 오류 발생시 표시되는 메시지 스타일 */
 .cl-unavailable {
-	// border: 1px solid red;
+	 border: 1px solid red;
 	.cl-text {
-		// color: red;
-		// font-weight: bold;
+		 color: red;
+		 font-weight: bold;
 	}
+	
 	.cl-text:before {
-		// content: "X";
+		 content: "X";
 	}
 }
 
@@ -24,24 +30,27 @@
 	width: 5px;
 	height: 5px;
 }
+
 .cl-scrollbar.cl-touchdevice::-moz-scrollbar {
 	-moz-appearance: none;
 	width: 5px;
 	height: 5px;
 }
+
 .cl-scrollbar.cl-touchdevice::-webkit-scrollbar-thumb {
 	border-radius: 4px;
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, .3);
 	border: solid 1px transparent;
 	background-clip: content-box;
 }
+
 .cl-scrollbar.cl-touchdevice::-moz-scrollbar-thumb {
 	border-radius: 4px;
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, .3);
 	border: solid 1px transparent;
 	background-clip: content-box;
 }
 
 body.cl-has-modal {
-	overflow:hidden;
+	overflow: hidden;
 }

@@ -16,7 +16,25 @@
 			 * Created at 2023. 8. 7. 오전 10:51:08.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * "저장" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e){
+				var button = e.control;
+				app.close(true);
+			}
+
+			/*
+			 * "취소" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick2(e){
+				var button = e.control;
+				app.close(true);
+			};
 			// End - User Script
 			
 			// Header
@@ -71,6 +89,11 @@
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
 				comboBox_1.value = "선택";
+				comboBox_1.style.css({
+					"color" : "#080808",
+					"font-size" : "15px",
+					"font-style" : "normal"
+				});
 				(function(comboBox_1){
 					comboBox_1.setItemSet(app.lookup("type"), {
 						"label": "type",
@@ -123,6 +146,12 @@
 			
 			var button_1 = new cpr.controls.Button();
 			button_1.value = "취소";
+			button_1.style.css({
+				"text-align" : "center"
+			});
+			if(typeof onButtonClick2 == "function") {
+				button_1.addEventListener("click", onButtonClick2);
+			}
 			container.addChild(button_1, {
 				"right": "280px",
 				"bottom": "20px",
@@ -132,6 +161,12 @@
 			
 			var button_2 = new cpr.controls.Button();
 			button_2.value = "저장";
+			button_2.style.css({
+				"text-align" : "center"
+			});
+			if(typeof onButtonClick == "function") {
+				button_2.addEventListener("click", onButtonClick);
+			}
 			container.addChild(button_2, {
 				"bottom": "20px",
 				"left": "280px",

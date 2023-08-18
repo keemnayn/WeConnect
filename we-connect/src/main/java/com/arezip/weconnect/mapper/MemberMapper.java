@@ -15,4 +15,5 @@ public interface MemberMapper {
 	List<DepartmentDTO> findByDepartmentName();
 
 	MemberDTO login(String memberEmail, String memberPassword);
+	MemberDTO findByEmail(String memberEmail);
 }

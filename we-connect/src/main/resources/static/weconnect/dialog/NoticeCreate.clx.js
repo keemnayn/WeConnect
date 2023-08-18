@@ -120,6 +120,9 @@
 			
 			var button_1 = new cpr.controls.Button("createBtn");
 			button_1.value = "등록";
+			button_1.style.css({
+				"text-align" : "center"
+			});
 			if(typeof onCreateBtnClick == "function") {
 				button_1.addEventListener("click", onCreateBtnClick);
 			}
@@ -132,6 +135,9 @@
 			
 			var button_2 = new cpr.controls.Button("cancelBtn");
 			button_2.value = "취소";
+			button_2.style.css({
+				"text-align" : "center"
+			});
 			if(typeof onCancelBtnClick == "function") {
 				button_2.addEventListener("click", onCancelBtnClick);
 			}
@@ -148,9 +154,9 @@
 			inputBox_1.setBindContext(dataMapContext_1);
 			inputBox_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
-				"top": "120px",
-				"left": "20px",
-				"width": "800px",
+				"top": "123px",
+				"right": "20px",
+				"width": "998px",
 				"height": "50px"
 			});
 			
@@ -177,9 +183,9 @@
 				});
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
-				"top": "120px",
-				"right": "20px",
-				"width": "300px",
+				"top": "123px",
+				"right": "1066px",
+				"width": "194px",
 				"height": "50px"
 			});
 			if(typeof onBodyInit == "function"){

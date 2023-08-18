@@ -23,15 +23,15 @@ import lombok.extern.slf4j.Slf4j;
 public class FreeBoardRestController {
 	private final FreeBoardService freeBoardService;
 
-	//자유게시판 게시글 리스트 보이기
+	//자유게시판 게시글 리스트 보이기 
 	@GetMapping
 	public View freeBoardListPage(DataRequest dataRequest) {
 		List<FreeBoardDTO> boardList = freeBoardService.getFreeBoardList();
-		System.out.println(boardList);
+		log.info("게시글 리스트{}",boardList);
 		dataRequest.setResponse("boardList", boardList);// 데이터셋 이름과 같음
 		return new JSONDataView();
 	}
-	
+	 
 	//자유게시판 새글 쓰기
 	@PostMapping
 	public View newBoardSave() {
