@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.arezip.weconnect.mapper.TeamPostMapper">
-	<select id="getTeamPostList"
+<!-- 	<select id="getTeamPostList"
 		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
-		SELECT TEAMPOSTID, TEAMPOSTTITLE, TEAMPOSTCONTENT,
-		TEAMPOSTCREATE, MEMBERID, PROJECTID
-		FROM team_post
+		select t.team_post as teamPostId, t.team_post_title as
+		teamPostTitle, m.member_name as memberName,
+		to_char(t.team_post_create,'YYYY-MM-DD') as teamPostCreate from
+		team_post t join member m on t.member_id=m.member_id
+	</select> -->
+	<select id="getTeamPost"
+		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		select t.team_post_id, t.team_post_title,
+		t.team_post_content, t.team_post_create, m.member_id,
+		tc.team_post_comment_id, tc.team_post_comment_content,
+		tc.team_post_comment_date from member m join team_post t on
+		m.member_id=t.member_id join team_post_comment tc on
+		t.team_post_id=tc.team_post_id where t.team_board_id=#{teamPostId};
 	</select>
-	<insert id="insertTeamPost"
+<!--	<insert id="insertTeamPost"
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
-		insert into TEAM_POST(TEAMPOSTID, TEAMPOSTTITLE,
-		TEAMPOSTCONTENT, TEAMPOSTCREATE, MEMBERID, PROJECTID)
-		values(team_post_seq.NEXTVAL, #{teamPostTitle}, #{teamPostContent},
-		#{teamPostCreate}, #{memberId}, #{projectId});
-	</insert>
-
+		insert into team_post(team_post_id, team_post_title,
+		team_post_content, member_id, project_id)
+		values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent},
+		#{memberId}, #{projectId});
+	</insert>-->
+<!-- 	<select id="getTeamPostDetail"
+		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		select t.team_post_id, t.team_post_title,
+		t.team_post_content, t.team_post_create, m.member_id,
+		tc.team_post_comment_id, tc.team_post_comment_content,
+		tc.team_post_comment_date from member m join team_post t on
+		m.member_id=t.member_id join team_post_comment tc on
+		t.team_post_id=tc.team_post_id
+	</select> -->
 </mapper>
