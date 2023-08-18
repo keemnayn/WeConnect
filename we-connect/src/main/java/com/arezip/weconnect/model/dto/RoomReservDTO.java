@@ -12,6 +12,7 @@ public class RoomReservDTO {
 	private String roomReservDate;
 	private String roomReservStartTime;
 	private String roomReservEndTime;
-	private String memberId;
+	private String proposal;
+	private long memberId;
 	private long roomId;
 }

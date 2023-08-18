@@ -335,12 +335,12 @@ CREATE TABLE room_reserv (
 	room_reserv_date VARCHAR2(100) NOT NULL, /* 회의실 예약 날짜 */
 	room_reserv_start_time VARCHAR2(100) NOT NULL, /* 회의실 예약 시작일시 */
 	room_reserv_end_time VARCHAR2(100) NOT NULL, /* 회의실 예약 종료일시 */
+	proposal VARCHAR2(500),
 	member_id NUMBER, /* 회원번호 */
 	room_id NUMBER NOT NULL, /* 회의실 번호 */
 	CONSTRAINT FK_member_reserv FOREIGN KEY (member_id) REFERENCES member(member_id),
 	CONSTRAINT FK_room_reserv FOREIGN KEY (room_id) REFERENCES room(room_id)
 );
-
 COMMENT ON TABLE room_reserv IS '회의실 예약';
 
 COMMENT ON COLUMN room_reserv.room_reserv_id IS '회의실 예약 번호';
