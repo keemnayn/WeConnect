@@ -5,7 +5,7 @@
  * @author keemn
  ************************************************/
 
-/*'
+/*
  * 루트 컨테이너에서 init 이벤트 발생 시 호출.
  * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
  */
@@ -19,8 +19,5 @@ function onBodyInit(e) {
  */
 function onTeamPostSubSubmitSuccess(e){
 	var teamPostSub = e.control;
-	app.lookup("memberName").redraw();
-	app.lookup("teamPostContent").redraw();
-	app.lookup("teamPostTitle").redraw();
-	app.lookup("teamPostCreate").redraw();
+//	app.lookup("memberName").value = 
 }

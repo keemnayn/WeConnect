@@ -33,7 +33,7 @@
     <cl:datarowcontext datacontrolid="boardForm"/>
     <cl:group std:sid="group-c4e03b7b">
       <cl:xylayoutdata std:sid="xyl-data-54366de1" top="0px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-97f9864f" value="작성자">
+      <cl:output std:sid="output-97f9864f" value="제목">
         <cl:formdata std:sid="f-data-fe63aa82" row="0" col="0"/>
       </cl:output>
       <cl:output std:sid="output-2df9f268" value="제목">
@@ -50,9 +50,9 @@
       <cl:formlayout std:sid="f-layout-b224a93e" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
         <cl:rows length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="150" unit="PIXEL"/>
+        <cl:columns length="1200" unit="PIXEL"/>
         <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="200" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
       </cl:formlayout>
     </cl:group>
     <cl:group std:sid="group-89c426b4">
