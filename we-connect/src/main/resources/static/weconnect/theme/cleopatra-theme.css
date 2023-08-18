@@ -105,6 +105,10 @@ body.cl-has-modal {
 .cl-calendar {
   border: 1px solid #bbb;
   background-color: #fff;
+  height: 100%;
+  text-align: center;
+  /*정현 추가 */
+  /***********/
   /* 이전 년도 버튼 */
   /* 다음 년도 버튼 */
   /* 이전 달 버튼 */
@@ -122,15 +126,85 @@ body.cl-has-modal {
   /* 포커스 상태 */
   /* 데이트인풋 등에 팝업으로 나타날때 스타일 */
 }
+.cl-calendar .cl-calendar .cl-calendar-content .cl-calendar-content-header {
+  overflow: hidden;
+  height: 30px;
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: center;
+  background-color: #f5f5f5;
+  cursor: default;
+  overflow: hidden;
+  height: 30px;
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: center;
+  background-color: #f5f5f5;
+  cursor: default;
+}
 .cl-calendar:not(.cl-disabled) .cl-calendar-header-before {
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px auto;
+  width: 30px;
+  cursor: pointer;
+  visibility: hidden;
   /* 호버 상태 */
 }
+.cl-calendar:not(.cl-disabled) .cl-calendar-header-after {
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px auto;
+  width: 30px;
+  cursor: pointer;
+  visibility: hidden;
+}
+.cl-calendar:not(.cl-disabled) .cl-calendar-header-prev {
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px auto;
+  width: 30px;
+  cursor: pointer;
+}
+.cl-calendar:not(.cl-disabled) .cl-calendar-header-next {
+  cursor: pointer;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px auto;
+  width: 30px;
+}
 .cl-calendar .cl-calendar-header {
-  /* 이전 년도 버튼 */
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  text-align: center;
   /* 다음 년도 버튼 */
   /* 이전 달 버튼 */
   /* 다음 달 버튼 */
   /* 헤더 텍스트 */
+}
+.cl-calendar .cl-calendar-header .cl-calendar-header-text {
+  color: #333333;
+  font-weight: bold;
+  font-size: 16px;
 }
 .cl-calendar .cl-calendar-header .cl-calendar-header-text:hover,
 .cl-calendar .cl-calendar-header .cl-calendar-header-text.cl-hover {
@@ -153,6 +227,8 @@ body.cl-has-modal {
 }
 .cl-calendar .cl-calendar-content {
   /* week of year의 스타일 */
+  height: 100%;
+  text-align: center;
   /* 날짜 달력의 헤더 스타일 */
   /* 날짜 선택 모드시 날짜 스타일 */
   /* 이전 달 또는 다음 달의 날짜 */
@@ -170,6 +246,34 @@ body.cl-has-modal {
   /* 기본 날짜 - 오늘 날짜 셀 */
   /* range 선택에서 선택된 날짜 스타일 */
   /* 기념일 전역 스타일 */
+}
+.cl-calendar .cl-calendar-content .cl-calendar-content-day.cl-calendar-defaultdate,
+.cl-calendar .cl-calendar-content .cl-calendar-content-month.cl-calendar-defaultdate,
+.cl-calendar .cl-calendar-content .cl-calendar-content-year.cl-calendar-defaultdate {
+  color: #3f87fd;
+}
+.cl-calendar .cl-calendar-content .cl-calendar-content-day.cl-range-selected,
+.cl-calendar .cl-calendar-content .cl-calendar-content-month.cl-range-selected,
+.cl-calendar .cl-calendar-content .cl-calendar-content-year.cl-range-selected {
+  background-color: #3f87fd;
+  color: #ffffff;
+}
+.cl-calendar .cl-calendar-content .cl-calendar-content-day.cl-selected,
+.cl-calendar .cl-calendar-content .cl-calendar-content-month.cl-selected,
+.cl-calendar .cl-calendar-content .cl-calendar-content-year.cl-selected {
+  background-color: #3f87fd;
+  color: #ffffff;
+}
+.cl-calendar .cl-calendar-footer {
+  background-color: #f2f4f6;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.cl-calendar .cl-calendar-footer .cl-calendar-footer-text {
+  color: #333333;
 }
 .cl-calendar .cl-calendar-item,
 .cl-calendar .cl-anniversary,
@@ -193,12 +297,16 @@ body.cl-has-modal {
 .cl-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-sat,
 .cl-calendar.cl-anniversaries .cl-other-month.cl-calendar-content-sun {
   /* 기념일 텍스트 스타일 */
+  border-radius: 5px;
 }
 .cl-calendar.cl-focus {
   border-color: #1369C5;
 }
 .cl-calendar.cl-focus .cl-calendar-content {
   /* 키보드 날짜 이동 스타일 */
+}
+.cl-calendar.cl-focus .cl-calendar-content .cl-calendar-current {
+  box-shadow: inset 0px 0px 0px 2px rgba(63, 135, 253, 0.5);
 }
 .cl-calendar.cl-popup {
   /* 년도 캘린더 */
@@ -535,9 +643,9 @@ body.cl-has-modal {
 /* 인풋 박스 루트 */
 .cl-inputbox {
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
-  color: #333;
-  border: 1px solid #bbb;
-  background-color: #fff;
+  border: 1px solid #FFFFFF;
+  text-shadow: none;
+  background-image: none;
   /* 인풋 박스 텍스트 */
   /* 인풋 박스 - 포커스 상태 */
   /* 인풋 박스 - 클리어 버튼 */
@@ -546,9 +654,59 @@ body.cl-has-modal {
 .cl-inputbox.cl-focus {
   border-color: #1369C5;
 }
+.cl-inputbox.cl-disabled {
+  border-color: #ddd;
+  background-image: none;
+  background-color: #ccc;
+  color: #333;
+}
+.cl-inputbox.cl-disabled .cl-inputbox-clear {
+  background-image: url("controls/icon");
+  cursor: default;
+}
 .cl-inputbox:not(.cl-disabled) {
   /* 클리어 버튼 hover상태 */
   /* 클리어 버튼 active상태 */
+}
+/*정현 추가*/
+.cl-inputbox .cl-text:disabled {
+  opacity: 1;
+}
+.cl-inputbox .cl-text:-internal-autofill-selected + [data-role='placeholder'] {
+  visibility: hidden;
+}
+.cl-inputbox .cl-inputbox-clear {
+  width: 1em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("controls/icons/clear-button.png");
+  background-origin: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.cl-inputbox .cl-placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cl-inputbox.cl-focus {
+  border-color: #1369C5;
+}
+.cl-inputbox.cl-disabled {
+  background-image: none;
+  background-color: #ccc;
+  color: #666;
+}
+.cl-inputbox.cl-disabled .cl-inputbox-clear {
+  background-image: url("controls/icons/clear-button-disabled.png");
+  cursor: default;
+}
+.cl-inputbox:not(.cl-disabled) .cl-inputbox-clear:hover {
+  background-image: url("controls/icons/clear-button.png");
+}
+.cl-inputbox:not(.cl-disabled) .cl-inputbox-clear:active {
+  background-image: url("controls/icons/clear-button-hover.png");
+  opacity: 70%;
 }
 /* 서치 인풋 */
 .cl-searchinput {
@@ -623,18 +781,46 @@ body.cl-has-modal {
 .cl-output.cl-disabled {
   color: #666;
 }
-/* 텍스트 에리어 */
 .cl-textarea {
-  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
-  background-image: none;
-  border: none;
+  border: 1px solid #bbb;
+  background-color: #fff;
   color: #333;
-  /* 텍스트 에리어 텍스트 */
-  /* 텍스트 에리어 - 비활성화 */
-  /* 텍스트 에리어 - 포커스 */
+  background-image: linear-gradient(#eee, white 3px);
+  text-align: left;
+}
+.cl-textarea .cl-customscrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cl-textarea .cl-customscrollbar::-webkit-scrollbar {
+  display: none;
+}
+.cl-textarea .cl-text {
+  height: 100%;
+  width: 100%;
+  border: 0px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  line-height: inherit;
+  outline: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px;
+  white-space: pre-wrap;
+  vertical-align: top;
+}
+.cl-textarea .cl-text:disabled {
+  opacity: 1;
 }
 .cl-textarea.cl-disabled {
   border-color: #ddd;
+  background-image: none;
   background-color: #ccc;
   color: #666;
 }
@@ -774,21 +960,53 @@ body.cl-has-modal {
 }
 /* 콤보 박스 스타일 */
 .cl-combobox {
-  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
-  color: #333;
-  border: 1px solid #bbb;
-  background-color: #fff;
+  background-color: #ffffff;
+  border: 1px solid #babfc7;
+  border-radius: 3px;
+  color: #333333;
   /* 선택된 아이템의 아이콘 */
   /* 텍스트 영역 스타일 */
   /* 콤보 박스 펼침 버튼 */
   /* 포커스 상태 */
   /* 비활성화 상태 */
 }
+.cl-combobox .cl-icon {
+  background-position: center center;
+  background-size: 16px auto;
+  background-repeat: no-repeat;
+  width: 20px;
+}
+.cl-combobox .cl-combobox-list .cl-combobox-item.cl-treeitem .cl-checkbox {
+  background-image: url("controls/icons/checkbox.png");
+  background-size: 16px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  padding: 0px;
+}
+.cl-combobox .cl-combobox-list .cl-combobox-item .cl-checkbox.cl-checked {
+  background-image: url("controls/icons/checkbox-selected.png");
+}
+.cl-combobox .cl-combobox-list .cl-combobox-item.cl-selected {
+  background-color: rgba(32, 138, 237, 0.5);
+  color: #FFFFFF;
+}
 .cl-combobox .cl-text {
   /* preventInput=true인 경우 */
 }
+.cl-combobox .cl-combobox-button {
+  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/combobox/icon-arrow-down-s-line.svg");
+  width: 25px;
+  border: 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-origin: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+}
 .cl-combobox.cl-focus {
-  border-color: #1369C5;
+  border-color: #1E9FF2;
 }
 .cl-combobox.cl-disabled {
   border-color: #ddd;
@@ -797,8 +1015,11 @@ body.cl-has-modal {
 }
 /* 콤보 박스의 리스트 스타일 */
 .cl-combobox-list {
-  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
-  border: 1px solid #1369C5;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
   color: #333;
   /* 리스트의 쉐도우 */
   /* 콤보박스 위에 표시될때 상태 */
@@ -807,13 +1028,24 @@ body.cl-has-modal {
   /* 콤보박스 리스트 아이템 */
   /* 체크박스 다중선택 아이템 스타일 */
 }
+.cl-combobox-list .cl-viewport {
+  max-height: 150px;
+}
 .cl-combobox-list .cl-combobox-item {
+  min-height: 30px;
   /* 아이템 체크박스 */
   /* 아이템 아이콘 */
   /* 아이템 텍스트 */
   /* 선택 상태 */
   /* 비활성화 상태 */
   /* 콤보박스 트리 아이템 스타일 */
+}
+.cl-combobox-list .cl-combobox-item .cl-checkbox {
+  width: 16px;
+  height: 16px;
+  background-image: url("controls/icons/checkbox.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .cl-combobox-list .cl-combobox-item.cl-selected {
   background-color: #208AED;
@@ -833,7 +1065,8 @@ body.cl-has-modal {
 .cl-combobox-list .cl-combobox-item:not(.cl-disabled):not(.cl-selected):hover,
 .cl-combobox-list .cl-combobox-item:not(.cl-disabled):not(.cl-selected).cl-hover {
   color: #333435;
-  background-color: #DAEFFC;
+  background-color: inherit;
+  color: inherit;
 }
 .cl-combobox-list .cl-combobox-item.cl-treeitem {
   /* 트리 아이콘 스타일 */
@@ -847,18 +1080,73 @@ body.cl-has-modal {
 }
 .cl-combobox-list .cl-combobox-item.cl-treeitem .cl-treeicon {
   /*트리 확장 아이콘 스타일*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: auto;
 }
 .cl-combobox-list .cl-combobox-item.cl-treeitem .cl-checkbox {
+  background-image: url("controls/icons/checkbox.png");
+  background-size: 16px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  padding: 0px;
   /* 체크 상태 */
   /* 부분 체크 상태 */
 }
-.cl-combobox-list.cl-multi-select .cl-combobox-item:not(.cl-disabled).cl-selected:hover {
-  color: #333435;
-  background-color: #DAEFFC;
+.cl-combobox-list .cl-combobox-item.cl-treeitem .cl-checkbox.cl-checked {
+  background-image: url("controls/icons/checkbox-selected.png");
 }
-.cl-combobox-list.cl-multi-select .cl-combobox-item:not(.cl-disabled).cl-hover.cl-selected {
-  color: #DAEFFC;
-  background-color: #333435;
+.cl-combobox-list .cl-combobox-item.cl-treeitem .cl-checkbox.cl-partialchecked {
+  background-image: url("controls/icons/checkbox-partial-selected.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem .cl-text {
+  border: 0;
+  outline: none;
+  padding: 0px 3px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 1em;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-expanded .cl-treeicon {
+  background-image: url("controls/icons/node-expanded-black.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-expanded.cl-selected .cl-treeicon {
+  background-image: url("controls/icons/node-expanded-white.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-collapsed .cl-treeicon {
+  background-image: url("controls/icons/node-collapsed-black.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-collapsed.cl-selected .cl-treeicon {
+  background-image: url("controls/icons/node-collapsed-white.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem .cl-line {
+  background-image: url("controls/icons/tree-line.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem .cl-treeicon-line {
+  background-image: url("controls/icons/tree-line-child.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-first .cl-treeicon-line {
+  background-image: url("controls/icons/tree-line-first.png");
+}
+.cl-combobox-list .cl-combobox-item.cl-treeitem.cl-first.cl-last .cl-treeicon-line {
+  background-image: url("controls/icons/tree-line-first-last.png");
+}
+.cl-combobox-list.cl-multi-select .cl-combobox-item:not(.cl-disabled).cl-selected:hover {
+  background-color: inherit;
+  color: inherit;
+}
+.cl-combobox-list.cl-multi-select .cl-combobox-item.cl-treeitem.cl-expanded.cl-selected .cl-treeicon {
+  background-image: url("controls/icons/node-expanded-black.png");
+}
+.cl-combobox-list.cl-multi-select .cl-combobox-item.cl-treeitem.cl-collapsed.cl-selected .cl-treeicon {
+  background-image: url("controls/icons/node-collapsed-black.png");
 }
 /* 링크드 콤보 박스 루트 */
 .cl-linkedcombobox {
@@ -1690,7 +1978,7 @@ body.cl-has-modal {
   /* 트리 아이템간 라인 */
 }
 .cl-tree.admin_tree .cl-tree-item {
-  height: 100px;
+  height: 120px;
   font-weight: 500;
   padding: 0px;
   border-radius: 8px;
@@ -1744,6 +2032,9 @@ body.cl-has-modal {
   background-color: #208AED;
   color: #FFFFFF;
 }
+.cl-tree.admin_tree.cl-tree-lines .cl-tree-item .cl-tree-iconline {
+  margin-left: 5px;
+}
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled) {
   /* 트리 아이템 - hover */
   /* 드래그 아이템 위치에 따른 표시 - 아래 */
@@ -1753,7 +2044,6 @@ body.cl-has-modal {
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected).cl-hover,
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected):hover {
   background-color: #DAEFFC;
-  color: #333435;
 }
 /* 트리 - 비활성화 */
 .cl-tree.cl-disabled {
@@ -1977,101 +2267,8 @@ body.cl-has-modal {
 .login_layout {
   border: 1px solid #FFFFFF;
 }
-.cl-calendar.main-calendar,
-.admin_carlendar,
-.admain_cld {
-  background-color: #ffffff;
-  border: 1px solid #babfc7;
-  border-radius: 5px;
-}
-/* 이전 달 버튼 */
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev:hover,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-prev.cl-hover {
-  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
-}
-/* 다음 달 버튼 */
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next:hover,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-header-next.cl-hover {
-  background-image: url("../../../images/controls/calendar/icon-chevron-right-on.svg");
-}
-/* 캘린더 헤더 */
-.cl-calendar-header {
-  background-color: transparent;
-  /* 이전 달 버튼 */
-  /* 다음 달 버튼 */
-  /* 헤더 텍스트 */
-}
-.cl-calendar-header .cl-calendar-header-before,
-.cl-calendar-header .cl-calendar-header-after {
-  min-width: 0px;
-  width: 0px;
-  visibility: hidden;
-}
-.cl-calendar-header .cl-calendar-header-prev {
-  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
-}
-.cl-calendar-header .cl-calendar-header-next {
-  background-image: url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
-}
-.cl-calendar-header .cl-calendar-header-text {
-  color: #333333;
-  font-weight: bold;
-  font-size: 16px;
-}
-.cl-calendar-header .cl-calendar-header-text:hover,
-.cl-calendar-header .cl-calendar-header-text.cl-hover {
-  color: #3f87fd;
-}
-/* 캘린더 컨텐츠의 일, 월, 년 스타일 */
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month {
-  border-radius: 5px;
-}
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day:not(.cl-disabled):hover,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month:not(.cl-disabled):hover,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year:not(.cl-disabled):hover,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month:not(.cl-disabled):hover {
-  background-color: #f8f8fa;
-  color: #3f87fd;
-}
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-day.cl-selected,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-month.cl-selected,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-calendar-content-year.cl-selected,
-.cl-calendar.main-calendar:not(.cl-disabled) .cl-other-month.cl-selected {
-  background-color: transparent;
-  color: #ffffff;
-}
-/* 캘린더 컨텐츠 스타일 */
-.cl-calendar-content .cl-calendar-content-day.cl-calendar-defaultdate {
-  color: #3f87fd;
-}
-.cl-calendar-content .cl-calendar-content-day.cl-range-selected,
-.cl-calendar-content .cl-calendar-content-day.cl-selected {
-  background-color: #3f87fd;
-  color: #ffffff;
-}
-.cl-calendar-content .cl-other-month {
-  background-color: transparent;
-  color: #c0c0c0;
-}
-.cl-calendar-content .cl-other-month.cl-disabled {
-  background-color: transparent;
-  color: #c0c0c0;
-}
-/* 캘린더 푸터 */
-.cl-calendar-footer {
-  background-color: #f2f4f6;
-  border-radius: 5px;
-  font-size: 13px;
-  padding: 0px;
-  text-align: center;
-  vertical-align: middle;
-}
-.cl-calendar-footer .cl-calendar-footer-text {
-  color: #333333;
-}
-.cl-calendar-footer.cl-hover .cl-calendar-footer-text {
-  color: #c0c0c0;
+/* HTML 오브젝트 */
+a {
+  text-decoration-line: none;
+  color: inherit;
 }

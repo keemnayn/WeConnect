@@ -127,7 +127,7 @@
   <body std:sid="body-84664d5f">
     <cl:listener std:sid="listener-3bad8a05" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-5e56734a" name="load" handler="onBodyLoad"/>
-    <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" class="admin_tree">
+    <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none; text-align:left;" class="admin_tree">
       <cl:listener std:sid="listener-3e8bb458" name="item-click" handler="onTre1ItemClick"/>
       <cl:listener std:sid="listener-5364dcf8" name="selection-change" handler="onTre1SelectionChange"/>
       <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>

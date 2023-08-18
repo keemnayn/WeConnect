@@ -31,11 +31,11 @@
         <cl:datamapbind property="value" datacontrolid="member" columnname="memberPassword"/>
         <cl:xylayoutdata std:sid="xyl-data-15a0244e" top="225px" left="90px" width="420px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:button std:sid="button-6b0dee13" style="background-color:#4680FF; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px; background-image:none;" class="btn_login" value="로그인">
+      <cl:button std:sid="button-6b0dee13" style="background-color:#4680FF; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px; background-image:none; text-align:center;" class="btn_login" value="로그인">
         <cl:listener std:sid="listener-8e0f0e93" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-ad6289fc" top="334px" left="90px" width="420px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:button std:sid="button-e4bed6c2" style="background-color:#4D5B67; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px;" class="btn_register" value="회원가입">
+      <cl:button std:sid="button-e4bed6c2" style="background-color:#4D5B67; border-radius:8px; color:#FFFFFF; font-weight:600; font-size:16px; text-align:center;" class="btn_register" value="회원가입">
         <cl:listener std:sid="listener-5a09d708" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-7cabb74d" top="385px" left="90px" width="420px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
