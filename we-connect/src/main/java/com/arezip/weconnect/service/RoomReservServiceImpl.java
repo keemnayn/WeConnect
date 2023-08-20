@@ -26,4 +26,9 @@ public class RoomReservServiceImpl implements RoomReservService {
 		return roomReservMapper.findReservList();
 	}
 
+	@Override
+	public List<RoomReservDTO> findBookedRoom() {
+		return roomReservMapper.findBookedRoom();
+	}
+
 }

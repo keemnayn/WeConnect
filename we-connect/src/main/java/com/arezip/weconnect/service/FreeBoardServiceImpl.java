@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.FreeBoardMapper;
+import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public FreeBoardDTO getFreeBoardDetail(long freeBoardId) {
 		return freeBoardMapper.getFreeBoardDetail(freeBoardId);
+	}
+
+	@Override
+	public List<FreeBoardCommentDTO> getFreeBoardDetailComment(long freeBoardId) {
+		return freeBoardMapper.getFreeBoardDetailComment(freeBoardId);
 	}
 
 }

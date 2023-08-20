@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FreeBoardDTO {
 	private long freeBoardId;
-	private String freeBoardContent;
 	private String freeBoardTitle;
+	private String freeBoardContent;
 	private String freeBoardCreate;
-	private String memberName;
-	// 게시글 상세 조회시 필요할 지도 모르는 컬럼
+	private String freeBoardFileName;
 	private long freeBoardViews;
+	private String memberName;
 	private long memberId;
 }

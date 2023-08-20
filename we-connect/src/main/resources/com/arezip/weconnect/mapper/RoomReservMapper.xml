@@ -13,15 +13,19 @@
 	</insert>
 	<select id="findReservList" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
 		SELECT
-		    ROW_NUMBER() OVER (ORDER BY rr.room_reserv_id) AS room_reserv_id,
+			ROW_NUMBER() OVER (ORDER BY rr.room_reserv_id) AS room_reserv_id,
 		    r.room_name,
 		    m.member_name,
-		    rr.room_reserv_date,
+		    REGEXP_REPLACE(rr.room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date,
 		    rr.room_reserv_start_time,
 		    rr.room_reserv_end_time
 		FROM
 		    room r
 		    JOIN room_reserv rr ON r.room_id = rr.room_id
 		    JOIN member m ON m.member_id = rr.member_id
+	</select>
+	<select id="findBookedRoom" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
+		select REGEXP_REPLACE(room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date, room_reserv_start_time, room_reserv_end_time
+		from room_reserv
 	</select>
 </mapper>

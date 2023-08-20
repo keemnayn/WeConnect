@@ -22,7 +22,7 @@
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
+			function onBodyInit(e) {
 				app.lookup("boardListSub").send();
 			}
 
@@ -30,26 +30,43 @@
 			 * "새글" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick(e){
+			function onButtonClick(e) {
 				var button = e.control;
-			//	window.location = "boardWriteFrom.do";
-				app.openDialog("dialog/BoardWriteForm", {width : 1280, height : 720}, function(dialog){
-					dialog.ready(function(dialogApp){
+				//	window.location = "boardWriteFrom.do";
+				app.openDialog("dialog/BoardWriteForm", {
+					width: 1280,
+					height: 720
+				}, function(dialog) {
+					dialog.ready(function(dialogApp) {
 						// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
 					});
-				}).then(function(returnValue){
+				}).then(function(returnValue) {
 					
 				});
 			}
 
 			/*
-			 * 그리드에서 dblclick 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+			 * 그리드에서 row-dblclick 이벤트 발생 시 호출.
+			 * detail이 row를 더블클릭 한 경우 발생하는 이벤트.
 			 */
-			function onGrd1Dblclick(e){
-				var grd1 = e.control;
-				
-			};
+			function onBoardListGrdRowDblclick(e) {
+				var boardListGrd = e.control;
+				var grid = app.lookup("boardListGrd");
+				var value = grid.getSelectedRow().getValue("freeBoardId");
+				var dataMap = app.lookup("boardParam");
+				dataMap.setValue("freeBoardId", value);
+				app.lookup("boardParamSub").send();
+			}
+
+			///*
+			// * 그리드에서 cell-click 이벤트 발생 시 호출.
+			// * Grid의 Cell 클릭시 발생하는 이벤트.
+			// */
+			//function onBoardListGrdCellClick(e){
+			//	var boardListGrd = e.control;
+			//	var boardId = boardListGrd.getSelectedRow().getValue("boardId");
+			//	location.href = "weconnect/member/boards/" + boardId;
+			//}
 			// End - User Script
 			
 			// Header
@@ -87,11 +104,25 @@
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("boardParam");
+			dataMap_1.parseData({
+				"columns" : [{
+					"name": "freeBoardId",
+					"dataType": "number"
+				}]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("boardListSub");
 			submission_1.method = "get";
 			submission_1.action = "/weconnect/member/boards";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("boardParamSub");
+			submission_2.method = "get";
+			submission_2.action = "member/boards/detail";
+			submission_2.addRequestData(dataMap_1);
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -112,11 +143,14 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var grid_1 = new cpr.controls.Grid("grd1");
+			var grid_1 = new cpr.controls.Grid("boardListGrd");
 			grid_1.init({
 				"dataSet": app.lookup("boardList"),
 				"columns": [
-					{"width": "100px"},
+					{
+						"width": "100px",
+						"visible": false
+					},
 					{"width": "100px"},
 					{"width": "100px"},
 					{"width": "100px"}
@@ -130,7 +164,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardId";
-								cell.text = "번호";
+								cell.text = "freeBoardId";
 							}
 						},
 						{
@@ -139,7 +173,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardTitle";
-								cell.text = "제목";
+								cell.text = "freeBoardTitle";
 							}
 						},
 						{
@@ -148,7 +182,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "memberName";
-								cell.text = "작성자";
+								cell.text = "memberName";
 							}
 						},
 						{
@@ -157,7 +191,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardCreate";
-								cell.text = "등록일자";
+								cell.text = "freeBoardCreate";
 							}
 						}
 					]
@@ -192,8 +226,14 @@
 					]
 				}
 			});
-			if(typeof onGrd1Dblclick == "function") {
-				grid_1.addEventListener("dblclick", onGrd1Dblclick);
+			if(typeof onBoardListGrdRowDblclick == "function") {
+				grid_1.addEventListener("row-dblclick", onBoardListGrdRowDblclick);
+			}
+			if(typeof onBoardListGrdCellClick == "function") {
+				grid_1.addEventListener("cell-click", onBoardListGrdCellClick);
+			}
+			if(typeof onBoardListGrdDblclick == "function") {
+				grid_1.addEventListener("dblclick", onBoardListGrdDblclick);
 			}
 			container.addChild(grid_1, {
 				"top": "80px",

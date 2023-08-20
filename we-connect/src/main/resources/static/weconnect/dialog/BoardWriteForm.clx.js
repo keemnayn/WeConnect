@@ -38,6 +38,14 @@
 			// End - User Script
 			
 			// Header
+			var dataMap_1 = new cpr.data.DataMap("boardInsertParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "FreeBoardTitle"},
+					{"name": "FreeBoardCotent"}
+				]
+			});
+			app.register(dataMap_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -93,10 +101,10 @@
 				button_1.addEventListener("click", onButtonClick);
 			}
 			container.addChild(button_1, {
-				"right": "280px",
 				"bottom": "20px",
-				"width": "100px",
-				"height": "30px"
+				"left": "660px",
+				"width": "200px",
+				"height": "50px"
 			});
 			
 			var button_2 = new cpr.controls.Button();
@@ -105,10 +113,10 @@
 				button_2.addEventListener("click", onButtonClick2);
 			}
 			container.addChild(button_2, {
+				"right": "660px",
 				"bottom": "20px",
-				"left": "280px",
-				"width": "100px",
-				"height": "30px"
+				"width": "200px",
+				"height": "50px"
 			});
 			
 			var group_2 = new cpr.controls.Container();
@@ -120,22 +128,27 @@
 			formLayout_2.leftMargin = "5px";
 			formLayout_2.horizontalSpacing = "10px";
 			formLayout_2.verticalSpacing = "10px";
-			formLayout_2.setColumns(["1fr"]);
+			formLayout_2.setColumns(["100px", "1fr"]);
 			formLayout_2.setRows(["1fr"]);
 			group_2.setLayout(formLayout_2);
 			(function(container){
 				var output_2 = new cpr.controls.Output();
-				output_2.value = "자유게시판";
+				output_2.value = "제목";
 				container.addChild(output_2, {
 					"colIndex": 0,
 					"rowIndex": 0
 				});
+				var inputBox_2 = new cpr.controls.InputBox("ipb2");
+				container.addChild(inputBox_2, {
+					"colIndex": 1,
+					"rowIndex": 0
+				});
 			})(group_2);
 			container.addChild(group_2, {
-				"top": "30px",
-				"right": "670px",
+				"top": "90px",
+				"right": "20px",
 				"left": "20px",
-				"height": "40px"
+				"height": "50px"
 			});
 			
 			var group_3 = new cpr.controls.Container();
@@ -152,40 +165,8 @@
 			group_3.setLayout(formLayout_3);
 			(function(container){
 				var output_3 = new cpr.controls.Output();
-				output_3.value = "제목";
+				output_3.value = "파일첨부";
 				container.addChild(output_3, {
-					"colIndex": 0,
-					"rowIndex": 0
-				});
-				var inputBox_2 = new cpr.controls.InputBox("ipb2");
-				container.addChild(inputBox_2, {
-					"colIndex": 1,
-					"rowIndex": 0
-				});
-			})(group_3);
-			container.addChild(group_3, {
-				"top": "90px",
-				"right": "20px",
-				"left": "20px",
-				"height": "50px"
-			});
-			
-			var group_4 = new cpr.controls.Container();
-			var formLayout_4 = new cpr.controls.layouts.FormLayout();
-			formLayout_4.scrollable = false;
-			formLayout_4.topMargin = "5px";
-			formLayout_4.rightMargin = "5px";
-			formLayout_4.bottomMargin = "5px";
-			formLayout_4.leftMargin = "5px";
-			formLayout_4.horizontalSpacing = "10px";
-			formLayout_4.verticalSpacing = "10px";
-			formLayout_4.setColumns(["100px", "1fr"]);
-			formLayout_4.setRows(["1fr"]);
-			group_4.setLayout(formLayout_4);
-			(function(container){
-				var output_4 = new cpr.controls.Output();
-				output_4.value = "파일첨부";
-				container.addChild(output_4, {
 					"colIndex": 0,
 					"rowIndex": 0
 				});
@@ -194,15 +175,24 @@
 					"colIndex": 1,
 					"rowIndex": 0
 				});
-			})(group_4);
-			container.addChild(group_4, {
+			})(group_3);
+			container.addChild(group_3, {
 				"right": "20px",
 				"bottom": "120px",
 				"left": "20px",
 				"height": "50px"
 			});
+			
+			var output_4 = new cpr.controls.Output();
+			output_4.value = "게시글 작성";
+			container.addChild(output_4, {
+				"top": "20px",
+				"right": "1060px",
+				"left": "20px",
+				"height": "50px"
+			});
 		}
 	});
-	app.title = "글쓰기";
+	app.title = "게시글 작성";
 	cpr.core.Platform.INSTANCE.register(app);
 })();
