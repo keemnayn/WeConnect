@@ -32,7 +32,6 @@ public class RoomReservTest {
 	@Test
 	void insertRoomReserv() {
 		RoomReservDTO roomReservDTO = new RoomReservDTO();
-//		roomReservDTO.setRoomReservId(1);
 		roomReservDTO.setRoomReservDate("2023-08-09");
 		roomReservDTO.setRoomReservStartTime("9:00");
 		roomReservDTO.setRoomReservEndTime("11:00");
@@ -49,6 +48,7 @@ public class RoomReservTest {
 		list.forEach(room -> log.info(room.toString()));
 	}
 	
+	//회의실 예약 조회
 	@Test
 	void findRoomReservList() {
 		List<RoomReservDTO> list = roomReservService.findReservList();

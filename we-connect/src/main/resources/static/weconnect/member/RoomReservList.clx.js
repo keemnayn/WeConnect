@@ -24,7 +24,7 @@
 			 */
 			function onNewReservClick(e){
 				var newReserv = e.control;
-				app.openDialog("dialog/RoomReserv", {width : 1280, height : 720}, function(dialog){
+				app.openDialog("dialog/RoomReserv", {width : 640, height : 480}, function(dialog){
 					dialog.addEventListener("close", function(e){
 						app.lookup("reservListSub").send();
 					});

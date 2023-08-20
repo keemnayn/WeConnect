@@ -10,4 +10,5 @@ import com.arezip.weconnect.model.dto.RoomReservDTO;
 public interface RoomReservMapper {
 	int insertRoomReserv(RoomReservDTO roomReservDTO);
 	List<RoomReservDTO> findReservList();
+	List<RoomReservDTO> findBookedRoom();
 }

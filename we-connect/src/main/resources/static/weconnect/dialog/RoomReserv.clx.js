@@ -134,24 +134,15 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var output_1 = new cpr.controls.Output();
-			output_1.value = "회의실 예약";
-			container.addChild(output_1, {
-				"top": "20px",
-				"right": "1060px",
-				"left": "20px",
-				"height": "50px"
-			});
-			
 			var button_1 = new cpr.controls.Button("reservBtn");
 			button_1.value = "예약";
 			if(typeof onReservBtnClick == "function") {
 				button_1.addEventListener("click", onReservBtnClick);
 			}
 			container.addChild(button_1, {
-				"right": "670px",
+				"right": "340px",
 				"bottom": "30px",
-				"width": "200px",
+				"left": "100px",
 				"height": "50px"
 			});
 			
@@ -161,23 +152,19 @@
 				button_2.addEventListener("click", onCancelBtnClick);
 			}
 			container.addChild(button_2, {
+				"right": "100px",
 				"bottom": "30px",
-				"left": "650px",
-				"width": "200px",
+				"left": "340px",
 				"height": "50px"
 			});
 			
 			var group_1 = new cpr.controls.Container();
 			var formLayout_1 = new cpr.controls.layouts.FormLayout();
 			formLayout_1.scrollable = false;
-			formLayout_1.topMargin = "0px";
-			formLayout_1.rightMargin = "0px";
-			formLayout_1.bottomMargin = "0px";
-			formLayout_1.leftMargin = "0px";
 			formLayout_1.horizontalSpacing = "0px";
 			formLayout_1.verticalSpacing = "0px";
-			formLayout_1.setColumns(["200px", "1fr", "200px", "1fr"]);
-			formLayout_1.setRows(["1fr", "1fr"]);
+			formLayout_1.setColumns(["100px", "1fr", "100px", "1fr"]);
+			formLayout_1.setRows(["50px", "30px", "50px"]);
 			group_1.setLayout(formLayout_1);
 			(function(container){
 				var dateInput_1 = new cpr.controls.DateInput("dateDti");
@@ -188,11 +175,14 @@
 					"colIndex": 3,
 					"rowIndex": 0
 				});
-				var output_2 = new cpr.controls.Output();
-				output_2.value = "종료 시간";
-				container.addChild(output_2, {
+				var output_1 = new cpr.controls.Output();
+				output_1.value = "종료 시간";
+				output_1.style.css({
+					"text-align" : "center"
+				});
+				container.addChild(output_1, {
 					"colIndex": 2,
-					"rowIndex": 1
+					"rowIndex": 2
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("startCmd");
 				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
@@ -206,7 +196,7 @@
 				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"colIndex": 1,
-					"rowIndex": 1
+					"rowIndex": 2
 				});
 				var comboBox_2 = new cpr.controls.ComboBox("endCmd");
 				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
@@ -220,21 +210,30 @@
 				})(comboBox_2);
 				container.addChild(comboBox_2, {
 					"colIndex": 3,
-					"rowIndex": 1
+					"rowIndex": 2
+				});
+				var output_2 = new cpr.controls.Output();
+				output_2.value = "시작 시간";
+				output_2.style.css({
+					"text-align" : "center"
+				});
+				container.addChild(output_2, {
+					"colIndex": 0,
+					"rowIndex": 2
 				});
 				var output_3 = new cpr.controls.Output();
-				output_3.value = "시작 시간";
-				container.addChild(output_3, {
-					"colIndex": 0,
-					"rowIndex": 1
+				output_3.value = "회의실";
+				output_3.style.css({
+					"text-align" : "center"
 				});
-				var output_4 = new cpr.controls.Output();
-				output_4.value = "회의실";
-				container.addChild(output_4, {
+				container.addChild(output_3, {
 					"colIndex": 0,
 					"rowIndex": 0
 				});
 				var comboBox_3 = new cpr.controls.ComboBox("roomNameCmb");
+				comboBox_3.style.css({
+					"text-align" : "center"
+				});
 				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
 				comboBox_3.setBindContext(dataMapContext_4);
 				comboBox_3.bind("value").toDataMap(app.lookup("roomReservParam"), "roomId");
@@ -248,18 +247,21 @@
 					"colIndex": 1,
 					"rowIndex": 0
 				});
-				var output_5 = new cpr.controls.Output();
-				output_5.value = "예약 날짜";
-				container.addChild(output_5, {
+				var output_4 = new cpr.controls.Output();
+				output_4.value = "예약 날짜";
+				output_4.style.css({
+					"text-align" : "center"
+				});
+				container.addChild(output_4, {
 					"colIndex": 2,
 					"rowIndex": 0
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "120px",
+				"top": "100px",
 				"right": "20px",
 				"left": "20px",
-				"height": "218px"
+				"height": "150px"
 			});
 			
 			var group_2 = new cpr.controls.Container();
@@ -271,8 +273,8 @@
 			formLayout_2.leftMargin = "0px";
 			formLayout_2.horizontalSpacing = "0px";
 			formLayout_2.verticalSpacing = "0px";
-			formLayout_2.setColumns(["200px", "1fr"]);
-			formLayout_2.setRows(["1fr"]);
+			formLayout_2.setColumns(["100px", "1fr"]);
+			formLayout_2.setRows(["50px"]);
 			group_2.setLayout(formLayout_2);
 			(function(container){
 				var inputBox_1 = new cpr.controls.InputBox("ipb1");
@@ -283,9 +285,12 @@
 					"colIndex": 1,
 					"rowIndex": 0
 				});
-				var output_6 = new cpr.controls.Output();
-				output_6.value = "목적";
-				container.addChild(output_6, {
+				var output_5 = new cpr.controls.Output();
+				output_5.value = "목적";
+				output_5.style.css({
+					"text-align" : "center"
+				});
+				container.addChild(output_5, {
 					"colIndex": 0,
 					"rowIndex": 0,
 					"colSpan": 1,
@@ -293,10 +298,19 @@
 				});
 			})(group_2);
 			container.addChild(group_2, {
-				"top": "348px",
 				"right": "20px",
+				"bottom": "130px",
 				"left": "20px",
-				"height": "200px"
+				"height": "50px"
+			});
+			
+			var output_6 = new cpr.controls.Output();
+			output_6.value = "회의실 예약";
+			container.addChild(output_6, {
+				"top": "20px",
+				"right": "420px",
+				"left": "20px",
+				"height": "50px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);

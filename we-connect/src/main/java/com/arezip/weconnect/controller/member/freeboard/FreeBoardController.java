@@ -1,5 +1,8 @@
 package com.arezip.weconnect.controller.member.freeboard;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.servlet.View;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
+import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 import com.cleopatra.spring.UIView;
 
@@ -18,19 +22,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FreeBoardController {
 	private final FreeBoardService freeBoardService;
-	
-	//상세 조회 페이지 열기
-	@GetMapping("/{freeBoardId}")
-	public View boardDetail() {
-		return new UIView("weconnect/user/FreeBoardDetail.clx");
+
+	// 자유게시판 상세 조회
+	@GetMapping("detail")
+	public View boardDetail(DataRequest dataRequest) {
+		System.out.println("==============boardDetail===============");
+		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+		System.out.println("param->" + param.toString());
+		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+		System.out.println("freeBoardId -> " + freeBoardId);
+		FreeBoardDTO freeBoardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
+		Map<String, Object> initParam = new HashMap<String, Object>();
+		initParam.put("freeBoardDetail", freeBoardDetail);
+		return new UIView("weconnect/member/FreeBoardDetail.clx");
 	}
-	
-//	//자유게시판 상세 조회
-//	@GetMapping
-//	public View getBoardPostDetail(DataRequest dataRequest, long freeBoardId) {
-//		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
-//		
-//		return new JSONDataView();
-//	}
-//	
-}
+
+} 

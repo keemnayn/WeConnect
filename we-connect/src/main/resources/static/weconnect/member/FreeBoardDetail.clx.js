@@ -16,11 +16,43 @@
 			 * Created at 2023. 8. 16. 오전 11:52:58.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				app.lookup("boardDetailSub").send();
+				app.lookup("boardCommentSub").send();
+				
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onBoardDetailSubSubmitSuccess(e) {
+				var boardDetailSub = e.control;
+				app.lookup("freeBoardTitle").redraw();
+				app.lookup("freeBoardContent").redraw();
+				app.lookup("freeBoardCreate").redraw();
+				app.lookup("freeBoardViews").redraw();
+				app.lookup("memberName").redraw();
+			}
+
+			/*
+			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+			 */
+			function onBodyLoad(e) {
+				app.lookup("boardDetailSub").send();
+				app.lookup("boardCommentSub").send();
+			}
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("comment");
+			var dataSet_1 = new cpr.data.DataSet("freeBoardComment");
 			dataSet_1.parseData({
 				"columns" : [
 					{
@@ -34,7 +66,7 @@
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("bordDetail");
+			var dataSet_2 = new cpr.data.DataSet("freeBoardDetail");
 			dataSet_2.parseData({
 				"columns" : [
 					{
@@ -60,10 +92,25 @@
 					{
 						"name": "freeBoardCommentDate",
 						"dataType": "number"
-					}
+					},
+					{"name": "freeBoardFileName"}
 				]
 			});
 			app.register(dataSet_2);
+			var submission_1 = new cpr.protocols.Submission("boardDetailSub");
+			submission_1.method = "get";
+			submission_1.action = "member/boards/detail";
+			submission_1.addResponseData(dataSet_2, false);
+			if(typeof onBoardDetailSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onBoardDetailSubSubmitSuccess);
+			}
+			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("boardCommentSub");
+			submission_2.method = "get";
+			submission_2.action = "member/boards/comment";
+			submission_2.addResponseData(dataSet_1, false);
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -81,8 +128,8 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var output_1 = new cpr.controls.Output();
-			output_1.bind("value").toDataSet(app.lookup("bordDetail"), "freeBoardTitle", 0);
+			var output_1 = new cpr.controls.Output("freeBoardTitle");
+			output_1.bind("value").toDataSet(app.lookup("freeBoardDetail"), "freeBoardTitle", 0);
 			container.addChild(output_1, {
 				"top": "0px",
 				"left": "0px",
@@ -90,9 +137,9 @@
 				"height": "50px"
 			});
 			
-			var grid_1 = new cpr.controls.Grid("grd1");
+			var grid_1 = new cpr.controls.Grid("commentGrd");
 			grid_1.init({
-				"dataSet": app.lookup("comment"),
+				"dataSet": app.lookup("freeBoardComment"),
 				"columns": [
 					{"width": "100px"},
 					{"width": "100px"},
@@ -177,7 +224,7 @@
 				"height": "288px"
 			});
 			
-			var inputBox_1 = new cpr.controls.InputBox("ipb1");
+			var inputBox_1 = new cpr.controls.InputBox("commentIpb");
 			inputBox_1.placeholder = "댓글을 입력해주세요.";
 			container.addChild(inputBox_1, {
 				"top": "542px",
@@ -186,7 +233,7 @@
 				"height": "100px"
 			});
 			
-			var button_1 = new cpr.controls.Button();
+			var button_1 = new cpr.controls.Button("commnetBtn");
 			button_1.value = "등록";
 			container.addChild(button_1, {
 				"top": "542px",
@@ -195,8 +242,8 @@
 				"height": "100px"
 			});
 			
-			var output_2 = new cpr.controls.Output();
-			output_2.bind("value").toDataSet(app.lookup("bordDetail"), "freeBoardContent", 0);
+			var output_2 = new cpr.controls.Output("freeBoardContent");
+			output_2.bind("value").toDataSet(app.lookup("freeBoardDetail"), "freeBoardContent", 0);
 			container.addChild(output_2, {
 				"top": "142px",
 				"left": "0px",
@@ -235,22 +282,22 @@
 					"colIndex": 4,
 					"rowIndex": 0
 				});
-				var output_3 = new cpr.controls.Output();
-				output_3.bind("value").toDataSet(app.lookup("bordDetail"), "memberName", 0);
+				var output_3 = new cpr.controls.Output("memberName");
+				output_3.bind("value").toDataSet(app.lookup("freeBoardDetail"), "memberName", 0);
 				container.addChild(output_3, {
 					"colIndex": 1,
 					"rowIndex": 0
 				});
-				var output_4 = new cpr.controls.Output();
-				output_4.bind("value").toDataSet(app.lookup("bordDetail"), "freeBoardCreate", 0);
+				var output_4 = new cpr.controls.Output("freeBoardCreate");
+				output_4.bind("value").toDataSet(app.lookup("freeBoardDetail"), "freeBoardCreate", 0);
 				container.addChild(output_4, {
 					"colIndex": 3,
 					"rowIndex": 0,
 					"colSpan": 1,
 					"rowSpan": 1
 				});
-				var output_5 = new cpr.controls.Output();
-				output_5.bind("value").toDataSet(app.lookup("bordDetail"), "freeBoardViews", 0);
+				var output_5 = new cpr.controls.Output("freeBoardViews");
+				output_5.bind("value").toDataSet(app.lookup("freeBoardDetail"), "freeBoardViews", 0);
 				container.addChild(output_5, {
 					"colIndex": 5,
 					"rowIndex": 0
@@ -262,6 +309,12 @@
 				"width": "1580px",
 				"height": "50px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
+			}
 		}
 	});
 	app.title = "FreeBoardDetail";

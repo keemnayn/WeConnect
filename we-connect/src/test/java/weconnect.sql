@@ -672,6 +672,7 @@ CREATE TABLE free_board (
 	free_board_content CLOB NOT NULL,
 	free_board_create DATE DEFAULT SYSDATE NOT NULL,
 	free_board_views NUMBER DEFAULT 0 NOT NULL,
+	free_board_file_name VARCHAR2(1000),
 	member_id NUMBER NOT NULL
 );
 select * from free_board;
@@ -688,6 +689,8 @@ COMMENT ON COLUMN free_board.free_board_create IS '자유게시판 등록일';
 
 COMMENT ON COLUMN free_board.free_board_views IS '자유게시판 조회수';
 
+COMMENT ON COLUMN free_board.free_board_file_name IS '자유게시판 첨부파일';
+
 COMMENT ON COLUMN free_board.member_id IS '회원번호';
 
 CREATE UNIQUE INDEX PK_free_board ON free_board (free_board_id ASC);
@@ -700,40 +703,6 @@ ALTER TABLE free_board
     ADD CONSTRAINT FK_free_board_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id); -- 'member'는 예시입니다. 실제 회원 테이블 이름에 맞게 수정해야 합니다.
-    
-    
-    
-/* 자유게시판 첨부파일 */
-CREATE SEQUENCE free_board_file_seq START WITH 1 INCREMENT BY 1;
-
-CREATE TABLE free_board_file (
-	free_board_file_id NUMBER NOT NULL,
-	free_board_file_name VARCHAR2(1000) NOT NULL,
-	free_board_file_path VARCHAR2(1000) NOT NULL,
-	free_board_id NUMBER NOT NULL
-);
-
-COMMENT ON TABLE free_board_file IS '자유게시판 첨부파일';
-
-COMMENT ON COLUMN free_board_file.free_board_file_id IS '자유게시판 첨부파일 번호';
-
-COMMENT ON COLUMN free_board_file.free_board_file_name IS '자유게시판 첨부파일 이름';
-
-COMMENT ON COLUMN free_board_file.free_board_file_path IS '자유게시판 첨부파일 경로';
-
-COMMENT ON COLUMN free_board_file.free_board_id IS '자유게시판 번호';
-
-CREATE UNIQUE INDEX PK_free_board_file ON free_board_file (free_board_file_id ASC);
-
-ALTER TABLE free_board_file
-	ADD CONSTRAINT PK_free_board_file PRIMARY KEY (free_board_file_id);
-
--- 자유게시판과의 관계를 나타내는 외래키 제약조건 추가.
-ALTER TABLE free_board_file
-    ADD CONSTRAINT FK_free_board_file
-    FOREIGN KEY (free_board_id) 
-    REFERENCES free_board(free_board_id);
-
     
     
 /* 자유게시판 댓글 */
