@@ -146,4 +146,19 @@
 		<!-- 적절한 컬럼으로 ORDER BY 절 수정 필요 -->
 		ORDER BY member_id DESC
 	</select>
+	<update id="approveMember"
+		parameterType="com.arezip.weconnect.model.dto.MemberDTO">
+		UPDATE
+		MEMBER
+		SET
+		MEMBER_STATUS = '승인'
+		WHERE
+		MEMBER_ID =
+		#{memberId}
+	</update>
+	<delete id="rejectMember"
+		parameterType="com.arezip.weconnect.model.dto.MemberDTO">
+		DELETE FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</delete>
 </mapper>

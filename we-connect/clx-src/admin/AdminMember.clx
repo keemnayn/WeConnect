@@ -167,10 +167,18 @@
       <cl:submission std:sid="submission-f280e5c2" id="pendingListSub" method="get" action="admin/members/pending">
         <cl:responsedata dataid="pendingList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-2aacde54" id="pendingSearchSub" method="get" action="admin/members/search/pending">
+      <cl:submission std:sid="submission-2aacde54" id="pendingSearchSub" method="get" action="admin/members/pending/search">
         <cl:listener std:sid="listener-73790016" name="submit-success" handler="onPendingSearchSubSubmitSuccess"/>
         <cl:requestdata dataid="pendingSearchParam"/>
         <cl:responsedata dataid="pendingList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-110d1b94" id="pendingApproveSub" method="put" action="admin/members/pending">
+        <cl:listener std:sid="listener-4c77a8e8" name="submit-success" handler="onPendingApproveSubSubmitSuccess"/>
+        <cl:requestdata dataid="pendingList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-f6742d23" id="pendingRejectSub" method="delete" action="admin/members/pending">
+        <cl:listener std:sid="listener-e91ae89c" name="submit-success" handler="onPendingRejectSubSubmitSuccess"/>
+        <cl:requestdata dataid="pendingList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -180,9 +188,6 @@
     <cl:tabfolder std:sid="t-folder-30fb2ba2">
       <cl:xylayoutdata std:sid="xyl-data-2a17394c" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-7e250f44" selected="true" text="회원명단">
-        <std:metadata>
-          <std:property key="is-active-item" value="true"/>
-        </std:metadata>
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-dafc8668" id="memberListGrd1" datasetid="memberList" autofit="0, 2, 3, 5, 6">
             <cl:xylayoutdata std:sid="xyl-data-613ff43d" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
@@ -277,6 +282,9 @@
         </cl:group>
       </cl:tabitem>
       <cl:tabitem std:sid="t-item-34f385bf" text="회원승인">
+        <std:metadata>
+          <std:property key="is-active-item" value="true"/>
+        </std:metadata>
         <cl:group std:sid="group-52081770">
           <std:metadata>
             <std:property key="locked" value="true"/>
@@ -345,9 +353,11 @@
           <cl:group std:sid="group-2815f0b4">
             <cl:xylayoutdata std:sid="xyl-data-d7dbfa07" top="5px" right="0px" width="133px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:button std:sid="button-f2d92f35" id="approvalBtn" value="승인">
+              <cl:listener std:sid="listener-3a6d77bb" name="click" handler="onApprovalBtnClick"/>
               <cl:formdata std:sid="f-data-03417d0f" row="0" col="0"/>
             </cl:button>
             <cl:button std:sid="button-aec78b5f" id="refusalBtn" value="거절">
+              <cl:listener std:sid="listener-b3c90b10" name="click" handler="onRefusalBtnClick"/>
               <cl:formdata std:sid="f-data-ef7fd33c" row="0" col="1"/>
             </cl:button>
             <cl:formlayout std:sid="f-layout-0233582e" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">

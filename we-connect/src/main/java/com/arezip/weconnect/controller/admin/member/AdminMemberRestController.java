@@ -121,7 +121,7 @@ public class AdminMemberRestController {
 	}
 
 //	승인 대기 회원 검색
-	@GetMapping("search/pending")
+	@GetMapping("pending/search")
 	public View getPendingMembersByCriteria(DataRequest dataRequest) {
 		ParameterGroup param = dataRequest.getParameterGroup("pendingSearchParam");
 		Map<String, String> searchParams = new HashMap<String, String>();
@@ -143,6 +143,36 @@ public class AdminMemberRestController {
 			pendingList = adminMemberService.getPendingMembersByCriteria(searchParams);
 		}
 		dataRequest.setResponse("pendingList", pendingList);
+		return new JSONDataView();
+	}
+
+//	회원 가입 승인
+	@PutMapping("pending")
+	public View approveMember(DataRequest dataRequest) {
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("pendingList");
+		if (parameterGroup != null) {
+			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
+			while (iter.hasNext()) {
+				Map<String, String> rowMap = iter.next().toMap();
+				MemberDTO memberDTO = mapToMemberDTO(rowMap);
+				adminMemberService.approveMember(memberDTO);
+			}
+		}
+		return new JSONDataView();
+	}
+
+//	회원 가입 거절
+	@DeleteMapping("pending")
+	public View rejectMember(DataRequest dataRequest) {
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("pendingList");
+		if (parameterGroup != null) {
+			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
+			while (iter.hasNext()) {
+				Map<String, String> rowMap = iter.next().toMap();
+				MemberDTO memberDTO = mapToMemberDTO(rowMap);
+				adminMemberService.rejectMember(memberDTO);
+			}
+		}
 		return new JSONDataView();
 	}
 }

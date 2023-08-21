@@ -107,7 +107,7 @@
 						app.lookup("deleteMemberSub").send();
 					}
 				} else {
-					alert("회원을 선택해주세요");
+					alert("삭제할 회원을 선택해주세요");
 				}
 			}
 
@@ -137,6 +137,61 @@
 			function onPendingSearchSubSubmitSuccess(e) {
 				var pendingSearchSub = e.control;
 				app.lookup("memberListGrd2").redraw();
+			}
+
+			/*
+			 * "승인" 버튼(approvalBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onApprovalBtnClick(e) {
+				var approvalBtn = e.control;
+				var grid = app.lookup("memberListGrd2");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length > 0) {
+					if (confirm("선택한 회원가입을 승인 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("pendingApproveSub").send();
+					}
+				} else {
+					alert("승인할 회원을 선택해주세요");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onPendingApproveSubSubmitSuccess(e) {
+				var pendingApproveSub = e.control;
+				app.lookup("pendingListSub").send();
+				app.lookup("memberListSub").send();
+			}
+
+			/*
+			 * "거절" 버튼(refusalBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onRefusalBtnClick(e) {
+				var refusalBtn = e.control;
+				var grid = app.lookup("memberListGrd2");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length > 0) {
+					if (confirm("선택한 회원가입을 거절 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("pendingRejectSub").send();
+					}
+				} else {
+					alert("거절할 회원을 선택해주세요");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onPendingRejectSubSubmitSuccess(e) {
+				var pendingRejectSub = e.control;
+				app.lookup("pendingListSub").send();
 			}
 			// End - User Script
 			
@@ -280,13 +335,31 @@
 			
 			var submission_5 = new cpr.protocols.Submission("pendingSearchSub");
 			submission_5.method = "get";
-			submission_5.action = "admin/members/search/pending";
+			submission_5.action = "admin/members/pending/search";
 			submission_5.addRequestData(dataMap_2);
 			submission_5.addResponseData(dataSet_3, false);
 			if(typeof onPendingSearchSubSubmitSuccess == "function") {
 				submission_5.addEventListener("submit-success", onPendingSearchSubSubmitSuccess);
 			}
 			app.register(submission_5);
+			
+			var submission_6 = new cpr.protocols.Submission("pendingApproveSub");
+			submission_6.method = "put";
+			submission_6.action = "admin/members/pending";
+			submission_6.addRequestData(dataSet_3);
+			if(typeof onPendingApproveSubSubmitSuccess == "function") {
+				submission_6.addEventListener("submit-success", onPendingApproveSubSubmitSuccess);
+			}
+			app.register(submission_6);
+			
+			var submission_7 = new cpr.protocols.Submission("pendingRejectSub");
+			submission_7.method = "delete";
+			submission_7.action = "admin/members/pending";
+			submission_7.addRequestData(dataSet_3);
+			if(typeof onPendingRejectSubSubmitSuccess == "function") {
+				submission_7.addEventListener("submit-success", onPendingRejectSubSubmitSuccess);
+			}
+			app.register(submission_7);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -944,12 +1017,18 @@
 					(function(container){
 						var button_3 = new cpr.controls.Button("approvalBtn");
 						button_3.value = "승인";
+						if(typeof onApprovalBtnClick == "function") {
+							button_3.addEventListener("click", onApprovalBtnClick);
+						}
 						container.addChild(button_3, {
 							"colIndex": 0,
 							"rowIndex": 0
 						});
 						var button_4 = new cpr.controls.Button("refusalBtn");
 						button_4.value = "거절";
+						if(typeof onRefusalBtnClick == "function") {
+							button_4.addEventListener("click", onRefusalBtnClick);
+						}
 						container.addChild(button_4, {
 							"colIndex": 1,
 							"rowIndex": 0

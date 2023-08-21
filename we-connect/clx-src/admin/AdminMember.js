@@ -94,7 +94,7 @@ function onDeleteBtnClick(e) {
 			app.lookup("deleteMemberSub").send();
 		}
 	} else {
-		alert("회원을 선택해주세요");
+		alert("삭제할 회원을 선택해주세요");
 	}
 }
 
@@ -124,4 +124,59 @@ function onSearchTextIpb2Search(e) {
 function onPendingSearchSubSubmitSuccess(e) {
 	var pendingSearchSub = e.control;
 	app.lookup("memberListGrd2").redraw();
+}
+
+/*
+ * "승인" 버튼(approvalBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onApprovalBtnClick(e) {
+	var approvalBtn = e.control;
+	var grid = app.lookup("memberListGrd2");
+	var checkRowIndices = grid.getCheckRowIndices();
+	if (checkRowIndices.length > 0) {
+		if (confirm("선택한 회원가입을 승인 하시겠습니까?")) {
+			grid.deleteRow(checkRowIndices);
+			app.lookup("pendingApproveSub").send();
+		}
+	} else {
+		alert("승인할 회원을 선택해주세요");
+	}
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onPendingApproveSubSubmitSuccess(e) {
+	var pendingApproveSub = e.control;
+	app.lookup("pendingListSub").send();
+	app.lookup("memberListSub").send();
+}
+
+/*
+ * "거절" 버튼(refusalBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onRefusalBtnClick(e) {
+	var refusalBtn = e.control;
+	var grid = app.lookup("memberListGrd2");
+	var checkRowIndices = grid.getCheckRowIndices();
+	if (checkRowIndices.length > 0) {
+		if (confirm("선택한 회원가입을 거절 하시겠습니까?")) {
+			grid.deleteRow(checkRowIndices);
+			app.lookup("pendingRejectSub").send();
+		}
+	} else {
+		alert("거절할 회원을 선택해주세요");
+	}
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onPendingRejectSubSubmitSuccess(e) {
+	var pendingRejectSub = e.control;
+	app.lookup("pendingListSub").send();
 }
