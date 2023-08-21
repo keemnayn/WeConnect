@@ -6,55 +6,30 @@
     <screen std:sid="screen-74f199e6" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-eef43841" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-c3c2c698">
-      <cl:dataset std:sid="d-set-201248b8" id="search">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-00f3ee91" name="type"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[내용]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[작성자]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
-      </cl:dataset>
-      <cl:dataset std:sid="d-set-768a4900" id="proposal">
+      <cl:dataset std:sid="d-set-768a4900" id="proposalList">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
           <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
           <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
           <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="proposalId">proposalId1</cl:datavalue>
-            <cl:datavalue columnname="proposalTitle">proposalTitle1</cl:datavalue>
-            <cl:datavalue columnname="proposalStatus">proposalStatus1</cl:datavalue>
-            <cl:datavalue columnname="proposalCreate">proposalCreate1</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="proposalId">proposalId2</cl:datavalue>
-            <cl:datavalue columnname="proposalTitle">proposalTitle2</cl:datavalue>
-            <cl:datavalue columnname="proposalStatus">proposalStatus2</cl:datavalue>
-            <cl:datavalue columnname="proposalCreate">proposalCreate2</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="proposalId">proposalId3</cl:datavalue>
-            <cl:datavalue columnname="proposalTitle">proposalTitle3</cl:datavalue>
-            <cl:datavalue columnname="proposalStatus">proposalStatus3</cl:datavalue>
-            <cl:datavalue columnname="proposalCreate">proposalCreate3</cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-eb1b40b2" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-152fa33a" name="searchStatus"/>
+          <cl:datacolumn std:sid="d-column-afb5a89c" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
+        <cl:responsedata dataid="proposalList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-dd250691">
-    <cl:grid std:sid="grid-2fb52cbb" id="grd1" datasetid="proposal">
+    <cl:listener std:sid="listener-dc43e72e" name="init" handler="onBodyInit"/>
+    <cl:grid std:sid="grid-2fb52cbb" id="proposalGrd" datasetid="proposalList">
       <cl:xylayoutdata std:sid="xyl-data-077c59ca" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-3f56fdb5" width="20px"/>
       <cl:gridcolumn std:sid="g-column-8af67537"/>
@@ -83,9 +58,8 @@
       <cl:searchinput std:sid="s-input-e671e07b">
         <cl:xylayoutdata std:sid="xyl-data-5b7db7b3" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+      <cl:combobox std:sid="c-box-64b21162" id="searchStatusCmb" value="all">
         <cl:xylayoutdata std:sid="xyl-data-486da7f1" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="type" value="type"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-79e361e1"/>
     </cl:group>
