@@ -13,39 +13,48 @@
 			// Start - User Script
 			/************************************************
 			 * Proposal.js
-			 * Created at 2023. 8. 11. 오전 10:25:21.
+			 * Created at 2023. 8. 21. 오전 03:25:21.
 			 *
-			 * @author chwec
-			 ************************************************/;
+			 * @author keemnayn
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				app.lookup("proposalListSub").send();
+				var comboBox = app.lookup("searchStatusCmb");
+				comboBox.fieldLabel="전체";
+				comboBox.value="all";
+			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("search");
+			var dataSet_1 = new cpr.data.DataSet("proposalList");
 			dataSet_1.parseData({
-				"columns": [{"name": "type"}],
-				"rows": [
-					{"type": "전체"},
-					{"type": "내용"},
-					{"type": "작성자"}
-				]
-			});
-			app.register(dataSet_1);
-			
-			var dataSet_2 = new cpr.data.DataSet("proposal");
-			dataSet_2.parseData({
 				"columns": [
 					{"name": "proposalId"},
 					{"name": "proposalTitle"},
 					{"name": "proposalStatus"},
 					{"name": "proposalCreate"}
 				],
-				"rows": [
-					{"proposalId": "proposalId1", "proposalTitle": "proposalTitle1", "proposalStatus": "proposalStatus1", "proposalCreate": "proposalCreate1"},
-					{"proposalId": "proposalId2", "proposalTitle": "proposalTitle2", "proposalStatus": "proposalStatus2", "proposalCreate": "proposalCreate2"},
-					{"proposalId": "proposalId3", "proposalTitle": "proposalTitle3", "proposalStatus": "proposalStatus3", "proposalCreate": "proposalCreate3"}
+				"rows": []
+			});
+			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "searchStatus"},
+					{"name": "searchText"}
 				]
 			});
-			app.register(dataSet_2);
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("proposalListSub");
+			submission_1.method = "get";
+			submission_1.action = "member/proposals";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -63,9 +72,9 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var grid_1 = new cpr.controls.Grid("grd1");
+			var grid_1 = new cpr.controls.Grid("proposalGrd");
 			grid_1.init({
-				"dataSet": app.lookup("proposal"),
+				"dataSet": app.lookup("proposalList"),
 				"columns": [
 					{"width": "20px"},
 					{"width": "100px"},
@@ -170,14 +179,8 @@
 					"width": "560px",
 					"height": "30px"
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-				comboBox_1.value = "전체";
-				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("search"), {
-						"label": "type",
-						"value": "type"
-					});
-				})(comboBox_1);
+				var comboBox_1 = new cpr.controls.ComboBox("searchStatusCmb");
+				comboBox_1.value = "all";
 				container.addChild(comboBox_1, {
 					"top": "0px",
 					"right": "560px",
@@ -200,6 +203,9 @@
 				"width": "100px",
 				"height": "30px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "Proposal";

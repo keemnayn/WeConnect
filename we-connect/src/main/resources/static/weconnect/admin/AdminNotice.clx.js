@@ -420,9 +420,9 @@
 					});
 					grid_1.style.header.setClasses(["Notice_grd1"]);
 					container.addChild(grid_1, {
-						"top": "50px",
+						"top": "55px",
 						"right": "0px",
-						"bottom": "0px",
+						"bottom": "-5px",
 						"left": "0px"
 					});
 					var group_2 = new cpr.controls.Container();

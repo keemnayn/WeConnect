@@ -51,7 +51,10 @@
 					{"name": "teamPostContent"},
 					{"name": "teamPostCreateDate"},
 					{"name": "memberName"},
-					{"name": "projectId"}
+					{
+						"name": "projectName",
+						"dataType": "string"
+					}
 				],
 				"rows": []
 			});
@@ -68,11 +71,6 @@
 				"rows": [{"memberId": "1", "memberName": "최훈", "teamPostComment": "유익한 정보 감사합니다!", "date": "2023-08-18"}]
 			});
 			app.register(dataSet_2);
-			var dataMap_1 = new cpr.data.DataMap("dm1");
-			dataMap_1.parseData({
-				"columns" : [{"name": "memberName"}]
-			});
-			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("teamPostSub");
 			submission_1.method = "get";
 			submission_1.action = "member/teams/memberName";
@@ -312,6 +310,7 @@
 			group_1.setLayout(xYLayout_1);
 			(function(container){
 				var output_2 = new cpr.controls.Output();
+				output_2.bind("value").toDataSet(app.lookup("comment"), "memberName", 0);
 				container.addChild(output_2, {
 					"top": "20px",
 					"left": "20px",
@@ -322,6 +321,7 @@
 				output_3.style.css({
 					"border-radius" : "20px"
 				});
+				output_3.bind("value").toDataSet(app.lookup("comment"), "teamPostComment", 0);
 				container.addChild(output_3, {
 					"top": "49px",
 					"left": "20px",
@@ -329,6 +329,7 @@
 					"height": "100px"
 				});
 				var output_4 = new cpr.controls.Output();
+				output_4.bind("value").toDataSet(app.lookup("comment"), "date", 0);
 				container.addChild(output_4, {
 					"top": "20px",
 					"left": "119px",
@@ -374,8 +375,6 @@
 			group_2.setLayout(xYLayout_2);
 			(function(container){
 				var output_5 = new cpr.controls.Output("memberName");
-				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("dm1"));
-				output_5.setBindContext(dataMapContext_1);
 				output_5.bind("value").toDataSet(app.lookup("teamPostList"), "memberName", 0);
 				container.addChild(output_5, {
 					"top": "19px",
@@ -423,7 +422,7 @@
 					"border-bottom-style" : "none",
 					"text-align" : "right"
 				});
-				hTMLSnippet_1.bind("value").toDataSet(app.lookup("teamPostList"), "projectId", 0);
+				hTMLSnippet_1.bind("value").toDataSet(app.lookup("teamPostList"), "projectName", 0);
 				container.addChild(hTMLSnippet_1, {
 					"top": "19px",
 					"left": "1419px",
