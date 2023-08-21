@@ -37,11 +37,10 @@
 					width: 1280,
 					height: 720
 				}, function(dialog) {
-					dialog.ready(function(dialogApp) {
-						// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
+					//팝업이 닫히면 리스트를 다시 send해서 reload 해줌.
+					dialog.addEventListener("close", function(e){
+						app.lookup("boardListSub").send();
 					});
-				}).then(function(returnValue) {
-					
 				});
 			}
 

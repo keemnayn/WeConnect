@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class RoomReservDTO {
 	private long roomReservId;
 	private String roomReservDate;
-	private String roomReservStartTime;
-	private String roomReservEndTime;
+	private long roomReservStartTime;
+	private long roomReservEndTime;
 	private String proposal;
 	private long memberId;
 	private String memberName;

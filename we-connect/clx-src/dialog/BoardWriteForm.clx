@@ -8,20 +8,28 @@
     <cl:model std:sid="model-142d2c80">
       <cl:datamap std:sid="d-map-771b898e" id="boardInsertParam">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-e107e9b2" name="FreeBoardTitle"/>
-          <cl:datacolumn std:sid="d-column-6e2fb3db" name="FreeBoardCotent"/>
+          <cl:datacolumn std:sid="d-column-e107e9b2" name="freeBoardTitle"/>
+          <cl:datacolumn std:sid="d-column-6e2fb3db" name="freeBoardContent"/>
+          <cl:datacolumn std:sid="d-column-bbd00885" name="freeBoardFileName"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:submission std:sid="submission-fe568741" id="boardSub" action="member/boards">
+        <cl:listener std:sid="listener-df63160c" name="submit-success" handler="onBoardSubSubmitSuccess"/>
+        <cl:requestdata dataid="boardInsertParam"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec title="게시글 작성"/>
   </head>
   <body std:sid="body-e21f5298">
+    <cl:listener std:sid="listener-1bce61f9" name="init" handler="onBodyInit"/>
     <cl:group std:sid="group-018838cb">
       <cl:xylayoutdata std:sid="xyl-data-21436370" top="160px" right="20px" bottom="200px" left="20px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:output std:sid="output-d4483102" value="내용">
         <cl:formdata std:sid="f-data-6e415ad2" row="0" col="0"/>
       </cl:output>
       <cl:inputbox std:sid="i-box-cbe7f8f3" id="ipb1">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="boardInsertParam" columnname="freeBoardContent"/>
+        <cl:datamapcontext datacontrolid="boardInsertParam"/>
         <cl:formdata std:sid="f-data-64343db5" row="0" col="1"/>
       </cl:inputbox>
       <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -44,6 +52,8 @@
         <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
       </cl:output>
       <cl:inputbox std:sid="i-box-395afaa7" id="ipb2">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="boardInsertParam" columnname="freeBoardTitle"/>
+        <cl:datamapcontext datacontrolid="boardInsertParam"/>
         <cl:formdata std:sid="f-data-752eefec" row="0" col="1"/>
       </cl:inputbox>
       <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -58,6 +68,8 @@
         <cl:formdata std:sid="f-data-d1c79a8a" row="0" col="0"/>
       </cl:output>
       <cl:fileinput std:sid="f-input-44bca784" id="fi1">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="boardInsertParam" columnname="freeBoardFileName"/>
+        <cl:datamapcontext datacontrolid="boardInsertParam"/>
         <cl:formdata std:sid="f-data-6e490431" row="0" col="1"/>
       </cl:fileinput>
       <cl:formlayout std:sid="f-layout-e88d976d" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">

@@ -28,6 +28,11 @@
           <cl:datacolumn std:sid="d-column-9e4da67a" name="freeBoardFileName"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-ef763166" id="dmFreeBoardId">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-956a01bb" name="freeBoardId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-a9452ba0" id="boardDetailSub" method="get" action="member/boards/detail">
         <cl:listener std:sid="listener-0905ba2a" name="submit-success" handler="onBoardDetailSubSubmitSuccess"/>
         <cl:responsedata dataid="freeBoardDetail"/>
@@ -69,7 +74,7 @@
     <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">
       <cl:xylayoutdata std:sid="xyl-data-bdd42318" top="542px" left="0px" width="1480px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:inputbox>
-    <cl:button std:sid="button-885eafae" id="commnetBtn" value="등록">
+    <cl:button std:sid="button-885eafae" id="commentBtn" value="등록">
       <cl:xylayoutdata std:sid="xyl-data-2c6112ee" top="542px" left="1479px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:output std:sid="output-9e404d9e" id="freeBoardContent">

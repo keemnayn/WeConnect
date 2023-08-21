@@ -51,8 +51,14 @@
 					{"name": "roomName"},
 					{"name": "memberName"},
 					{"name": "roomReservDate"},
-					{"name": "roomReservStartTime"},
-					{"name": "roomReservEndTime"}
+					{
+						"name": "roomReservStartTime",
+						"dataType": "number"
+					},
+					{
+						"name": "roomReservEndTime",
+						"dataType": "number"
+					}
 				]
 			});
 			app.register(dataSet_1);
@@ -138,7 +144,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "roomReservDate";
-								cell.text = "예약 날짜";
+								cell.text = "예약일자";
 							}
 						},
 						{
@@ -147,7 +153,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "roomReservStartTime";
-								cell.text = "회의 시작 시간";
+								cell.text = "시작시간";
 							}
 						},
 						{
@@ -156,7 +162,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "roomReservEndTime";
-								cell.text = "회의 종료 시간";
+								cell.text = "종료시간";
 							}
 						}
 					]

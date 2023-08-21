@@ -46,6 +46,14 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(e) {
+				var freeBoardDetail = cpr.core.Platform.INSTANCE.getParameter("freeBoardDetail");
+				console.log(freeBoardDetail);
+				app.lookup("freeBoardTitle").value = freeBoardDetail.freeBoardTitle;
+				app.lookup("memberName").value = freeBoardDetail.memberName;
+				app.lookup("freeBoardContent").value = freeBoardDetail.freeBoardContent;
+				app.lookup("freeBoardCreate").value = freeBoardDetail.freeBoardCreate;
+				app.lookup("freeBoardViews").value = freeBoardDetail.freeBoardViews;
+				app.lookup("dmFreeBoardId").setValue("freeBoardId", freeBoardDetail.freeBoardId);
 				app.lookup("boardDetailSub").send();
 				app.lookup("boardCommentSub").send();
 			}
@@ -97,6 +105,14 @@
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("dmFreeBoardId");
+			dataMap_1.parseData({
+				"columns" : [{
+					"name": "freeBoardId",
+					"dataType": "number"
+				}]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("boardDetailSub");
 			submission_1.method = "get";
 			submission_1.action = "member/boards/detail";
@@ -233,7 +249,7 @@
 				"height": "100px"
 			});
 			
-			var button_1 = new cpr.controls.Button("commnetBtn");
+			var button_1 = new cpr.controls.Button("commentBtn");
 			button_1.value = "등록";
 			container.addChild(button_1, {
 				"top": "542px",

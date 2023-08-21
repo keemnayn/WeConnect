@@ -336,8 +336,8 @@ CREATE SEQUENCE room_reserv_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE room_reserv (
 	room_reserv_id NUMBER NOT NULL, /* 회의실 예약 번호 */
 	room_reserv_date VARCHAR2(100) NOT NULL, /* 회의실 예약 날짜 */
-	room_reserv_start_time VARCHAR2(100) NOT NULL, /* 회의실 예약 시작일시 */
-	room_reserv_end_time VARCHAR2(100) NOT NULL, /* 회의실 예약 종료일시 */
+	room_reserv_start_time number NOT NULL, /* 회의실 예약 시작일시 */
+	room_reserv_end_time number NOT NULL, /* 회의실 예약 종료일시 */
 	proposal VARCHAR2(500),
 	member_id NUMBER, /* 회원번호 */
 	room_id NUMBER NOT NULL, /* 회의실 번호 */

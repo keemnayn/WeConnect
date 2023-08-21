@@ -33,7 +33,17 @@
 			 */
 			function onButtonClick2(e){
 				var button = e.control;
-				
+				app.lookup("boardSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onBoardSubSubmitSuccess(e){
+				var boardSub = e.control;
+				alert("게시글 등록 완료");
+				app.close();
 			};
 			// End - User Script
 			
@@ -41,11 +51,19 @@
 			var dataMap_1 = new cpr.data.DataMap("boardInsertParam");
 			dataMap_1.parseData({
 				"columns" : [
-					{"name": "FreeBoardTitle"},
-					{"name": "FreeBoardCotent"}
+					{"name": "freeBoardTitle"},
+					{"name": "freeBoardContent"},
+					{"name": "freeBoardFileName"}
 				]
 			});
 			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("boardSub");
+			submission_1.action = "member/boards";
+			submission_1.addRequestData(dataMap_1);
+			if(typeof onBoardSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onBoardSubSubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -83,6 +101,9 @@
 					"rowIndex": 0
 				});
 				var inputBox_1 = new cpr.controls.InputBox("ipb1");
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("boardInsertParam"));
+				inputBox_1.setBindContext(dataMapContext_1);
+				inputBox_1.bind("value").toDataMap(app.lookup("boardInsertParam"), "freeBoardContent");
 				container.addChild(inputBox_1, {
 					"colIndex": 1,
 					"rowIndex": 0
@@ -139,6 +160,9 @@
 					"rowIndex": 0
 				});
 				var inputBox_2 = new cpr.controls.InputBox("ipb2");
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("boardInsertParam"));
+				inputBox_2.setBindContext(dataMapContext_2);
+				inputBox_2.bind("value").toDataMap(app.lookup("boardInsertParam"), "freeBoardTitle");
 				container.addChild(inputBox_2, {
 					"colIndex": 1,
 					"rowIndex": 0
@@ -171,6 +195,9 @@
 					"rowIndex": 0
 				});
 				var fileInput_1 = new cpr.controls.FileInput("fi1");
+				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("boardInsertParam"));
+				fileInput_1.setBindContext(dataMapContext_3);
+				fileInput_1.bind("value").toDataMap(app.lookup("boardInsertParam"), "freeBoardFileName");
 				container.addChild(fileInput_1, {
 					"colIndex": 1,
 					"rowIndex": 0
@@ -191,6 +218,9 @@
 				"left": "20px",
 				"height": "50px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "게시글 작성";

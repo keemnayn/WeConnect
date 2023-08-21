@@ -33,10 +33,9 @@ public class RoomReservRestController {
 		ParameterGroup param = dataRequest.getParameterGroup("roomReservParam");
 
 		String roomReservDate = param.getValue("roomReservDate");
-		String roomReservStartTime = param.getValue("roomReservStartTime");
-		String roomReservEndTime = param.getValue("roomReservEndTime");
+		long roomReservStartTime = Long.parseLong(param.getValue("roomReservStartTime"));
+		long roomReservEndTime = Long.parseLong(param.getValue("roomReservEndTime"));
 		String proposal = param.getValue("proposal");
-
 		long roomId = Long.parseLong(param.getValue("roomId"));
 		long memberId = 24;
 

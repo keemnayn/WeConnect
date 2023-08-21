@@ -27,5 +27,7 @@
 	<select id="findBookedRoom" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
 		select REGEXP_REPLACE(room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date, room_reserv_start_time, room_reserv_end_time
 		from room_reserv
+<!-- 	select room_reserv_date, room_reserv_start_time, room_reserv_end_time
+		from room_reserv -->
 	</select>
 </mapper>
