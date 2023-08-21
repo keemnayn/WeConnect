@@ -52,4 +52,53 @@ public class AdminMemberMapperTest {
 		int result = adminMemberMapper.updateMemberDetails(memberDTO);
 		assertNotEquals(0, result);
 	}
+
+//	회원 삭제
+	@Test
+	void deleteMemberByIdTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 101;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberMapper.deleteMember(memberDTO);
+		assertNotEquals(0, result);
+	}
+
+//	승인 대기 회원 리스트
+	@Test
+	void selectPendingMembersTest() {
+		List<MemberDTO> list = adminMemberMapper.selectPendingMembers();
+		list.forEach(members -> log.info(members.toString()));
+		assertNotNull(list);
+	}
+
+//	승인 대기 회원 검색
+	@Test
+	void selectPendingMembersByCriteriaTest() {
+		Map<String, String> searchParams = new HashMap<>();
+		searchParams.put("searchType", "all");
+		searchParams.put("searchText", "박");
+		List<MemberDTO> list = adminMemberMapper.selectPendingMembersByCriteria(searchParams);
+		list.forEach(members -> log.info(members.toString()));
+		assertNotNull(list);
+	}
+
+//	회원 가입 승인
+	@Test
+	void approveMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 61;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberMapper.approveMember(memberDTO);
+		assertNotEquals(0, result);
+	}
+
+//	회원 가입 거절
+	@Test
+	void rejectMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 113;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberMapper.rejectMember(memberDTO);
+		assertNotEquals(0, result);
+	}
 }
