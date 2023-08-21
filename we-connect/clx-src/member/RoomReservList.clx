@@ -12,8 +12,8 @@
           <cl:datacolumn std:sid="d-column-a8294cfe" name="roomName"/>
           <cl:datacolumn std:sid="d-column-06dfc851" name="memberName"/>
           <cl:datacolumn std:sid="d-column-deddbc0e" name="roomReservDate"/>
-          <cl:datacolumn std:sid="d-column-2749fbf6" name="roomReservStartTime"/>
-          <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime"/>
+          <cl:datacolumn std:sid="d-column-2749fbf6" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:dataset std:sid="d-set-8af293f6" id="search">
@@ -42,29 +42,29 @@
     <cl:listener std:sid="listener-e3b3b88b" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-38750194" id="grd1" datasetid="reservList">
       <cl:xylayoutdata std:sid="xyl-data-97df155a" top="50px" bottom="130px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-c3755a8f"/>
-      <cl:gridcolumn std:sid="g-column-c1d292b8"/>
-      <cl:gridcolumn std:sid="g-column-a7edc134"/>
-      <cl:gridcolumn std:sid="g-column-14f7f210"/>
-      <cl:gridcolumn std:sid="g-column-ace1b477"/>
-      <cl:gridcolumn std:sid="g-column-29b17210"/>
-      <cl:gridheader std:sid="gh-band-0c267e28">
-        <cl:gridrow std:sid="g-row-53077c29" height="50px"/>
-        <cl:gridcell std:sid="gh-cell-bec7fe9d" rowindex="0" colindex="0" targetcolumnname="roomReservId" sortable="false" filterable="false" text="번호"/>
-        <cl:gridcell std:sid="gh-cell-45715ed3" rowindex="0" colindex="1" targetcolumnname="roomName" sortable="false" filterable="false" text="회의실"/>
-        <cl:gridcell std:sid="gh-cell-dc548630" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="예약자"/>
-        <cl:gridcell std:sid="gh-cell-3f042c38" rowindex="0" colindex="3" targetcolumnname="roomReservDate" sortable="false" filterable="false" text="예약 날짜"/>
-        <cl:gridcell std:sid="gh-cell-3f73fc6e" rowindex="0" colindex="4" targetcolumnname="roomReservStartTime" sortable="false" filterable="false" text="회의 시작 시간"/>
-        <cl:gridcell std:sid="gh-cell-75aab33e" rowindex="0" colindex="5" targetcolumnname="roomReservEndTime" sortable="false" filterable="false" text="회의 종료 시간"/>
+      <cl:gridcolumn std:sid="g-column-9dca41c6"/>
+      <cl:gridcolumn std:sid="g-column-99a3d07b"/>
+      <cl:gridcolumn std:sid="g-column-08d99dda"/>
+      <cl:gridcolumn std:sid="g-column-8269ac61"/>
+      <cl:gridcolumn std:sid="g-column-f6e6f28f"/>
+      <cl:gridcolumn std:sid="g-column-925b3e7c"/>
+      <cl:gridheader std:sid="gh-band-48e101f9">
+        <cl:gridrow std:sid="g-row-673de0c7" height="50px"/>
+        <cl:gridcell std:sid="gh-cell-7b8e21fb" rowindex="0" colindex="0" targetcolumnname="roomReservId" sortable="false" filterable="false" text="번호"/>
+        <cl:gridcell std:sid="gh-cell-2e1469ee" rowindex="0" colindex="1" targetcolumnname="roomName" sortable="false" filterable="false" text="회의실"/>
+        <cl:gridcell std:sid="gh-cell-fddfd184" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="예약자"/>
+        <cl:gridcell std:sid="gh-cell-6034632b" rowindex="0" colindex="3" targetcolumnname="roomReservDate" sortable="false" filterable="false" text="예약일자"/>
+        <cl:gridcell std:sid="gh-cell-916b6bea" rowindex="0" colindex="4" targetcolumnname="roomReservStartTime" sortable="false" filterable="false" text="시작시간"/>
+        <cl:gridcell std:sid="gh-cell-983f84c1" rowindex="0" colindex="5" targetcolumnname="roomReservEndTime" sortable="false" filterable="false" text="종료시간"/>
       </cl:gridheader>
-      <cl:griddetail std:sid="gd-band-1dcacee1">
-        <cl:gridrow std:sid="g-row-e100eaad" height="50px"/>
-        <cl:gridcell std:sid="gd-cell-cd1db798" rowindex="0" colindex="0" columnname="roomReservId"/>
-        <cl:gridcell std:sid="gd-cell-ce8e9f90" rowindex="0" colindex="1" columnname="roomName"/>
-        <cl:gridcell std:sid="gd-cell-3cdb8bda" rowindex="0" colindex="2" columnname="memberName"/>
-        <cl:gridcell std:sid="gd-cell-049472fb" rowindex="0" colindex="3" columnname="roomReservDate"/>
-        <cl:gridcell std:sid="gd-cell-4d31fda9" rowindex="0" colindex="4" columnname="roomReservStartTime"/>
-        <cl:gridcell std:sid="gd-cell-25d600dc" rowindex="0" colindex="5" columnname="roomReservEndTime"/>
+      <cl:griddetail std:sid="gd-band-24a92e81">
+        <cl:gridrow std:sid="g-row-a0609e20" height="50px"/>
+        <cl:gridcell std:sid="gd-cell-eb2184e1" rowindex="0" colindex="0" columnname="roomReservId"/>
+        <cl:gridcell std:sid="gd-cell-a4446a0a" rowindex="0" colindex="1" columnname="roomName"/>
+        <cl:gridcell std:sid="gd-cell-7e77ea78" rowindex="0" colindex="2" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-223dbc2b" rowindex="0" colindex="3" columnname="roomReservDate"/>
+        <cl:gridcell std:sid="gd-cell-3c8d3455" rowindex="0" colindex="4" columnname="roomReservStartTime"/>
+        <cl:gridcell std:sid="gd-cell-699044f6" rowindex="0" colindex="5" columnname="roomReservEndTime"/>
       </cl:griddetail>
     </cl:grid>
     <cl:group std:sid="group-d208eff7">

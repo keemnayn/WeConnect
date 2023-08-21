@@ -1,8 +1,11 @@
 package com.arezip.weconnect.controller.member.freeboard;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
@@ -27,26 +30,49 @@ public class FreeBoardRestController {
 	@GetMapping
 	public View freeBoardListPage(DataRequest dataRequest) {
 		List<FreeBoardDTO> boardList = freeBoardService.getFreeBoardList();
-		log.info("게시글 리스트{}",boardList);
 		dataRequest.setResponse("boardList", boardList);// 데이터셋 이름과 같음
 		return new JSONDataView();
 	}
-	 
 
-//	// 자유게시판 상세 조회
-//	@GetMapping("detail")
-//	public View boardDetail(DataRequest dataRequest) {
-//		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+	// 자유게시판 새글 쓰기
+	@PostMapping
+	public View newBoardSave(DataRequest dataRequest) {
+		ParameterGroup param = dataRequest.getParameterGroup("boardInsertParam");
+
+		long memberId = 24;
+		String freeBoardTitle = param.getValue("freeBoardTitle");
+		String freeBoardContent = param.getValue("freeBoardContent");
+		String freeBoardFileName = param.getValue("freeBoardFileName");
+
+		log.info("freeBoardTitle: {}", freeBoardTitle);
+		log.info("freeBoardContent: {}", freeBoardContent);
+		log.info("freeBoardFileName: {}", freeBoardFileName);
+
+		FreeBoardDTO freeBoardDTO = new FreeBoardDTO();
+		freeBoardDTO.setMemberId(memberId);
+		freeBoardDTO.setFreeBoardTitle(freeBoardTitle);
+		freeBoardDTO.setFreeBoardContent(freeBoardContent);
+		freeBoardDTO.setFreeBoardFileName(freeBoardFileName);
+
+		freeBoardService.insertFreeBoard(freeBoardDTO);
+		return new JSONDataView();
+
+	}
+
+	// 자유게시판 상세 조회
+	@GetMapping("detail")
+	public View boardDetail(DataRequest dataRequest, String freeBoardId) {
+		System.out.println("==============boardDetail===============");
+		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+//		System.out.println("param->" + param.toString());
+		System.out.println(freeBoardId);
 //		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+		System.out.println("freeBoardId -> " + freeBoardId);
 //		FreeBoardDTO freeBoardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
-//		dataRequest.setResponse("freeBoardDetail", freeBoardDetail);//상세 페이지에서 받음
-//		return new JSONDataView();
-//	}
-
-//	//자유게시판 새글 쓰기
-//	@PostMapping
-//	public View newBoardSave() {
-//		return null;
-//		
-//	}
+		Map<String, Object> message = new HashMap<>();
+		message.put("url", "boardDetail");
+		dataRequest.setMetadata(true, message);
+//		dataRequest.setResponse("freeBoardDetail", freeBoardDetail);
+		return new JSONDataView();
+	}
 }

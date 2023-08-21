@@ -39,7 +39,8 @@
       <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
         <cl:responsedata dataid="boardList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-a3a2dffc" id="boardParamSub" method="get" action="member/boards/detail">
+      <cl:submission std:sid="submission-a3a2dffc" id="boardParamSub" method="get" action="member/boards/detail" mediatype="application/x-www-form-urlencoded;simple">
+        <cl:listener std:sid="listener-b4ef99ca" name="submit-success" handler="onBoardParamSubSubmitSuccess"/>
         <cl:requestdata dataid="boardParam"/>
       </cl:submission>
     </cl:model>

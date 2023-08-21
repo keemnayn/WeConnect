@@ -42,6 +42,7 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("roomInfoSub").send();
+				//
 			}
 
 			/*
@@ -53,6 +54,15 @@
 				alert("회의실 예약 완료");
 				app.close();
 			}
+
+			/*
+			 * 콤보 박스에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onStartCmdClick(e){
+				var startCmd = e.control;
+			//	app.lookup("startCmd").getin
+			};
 			// End - User Script
 			
 			// Header
@@ -70,7 +80,10 @@
 			
 			var dataSet_2 = new cpr.data.DataSet("time");
 			dataSet_2.parseData({
-				"columns": [{"name": "time"}],
+				"columns": [{
+					"name": "time",
+					"dataType": "number"
+				}],
 				"rows": [
 					{"time": "9"},
 					{"time": "10"},
@@ -91,8 +104,14 @@
 			dataMap_1.parseData({
 				"columns" : [
 					{"name": "roomReservDate"},
-					{"name": "roomReservStartTime"},
-					{"name": "roomReservEndTime"},
+					{
+						"name": "roomReservStartTime",
+						"dataType": "number"
+					},
+					{
+						"name": "roomReservEndTime",
+						"dataType": "number"
+					},
 					{"name": "proposal"},
 					{
 						"name": "roomId",
@@ -194,6 +213,9 @@
 						"value": "time"
 					});
 				})(comboBox_1);
+				if(typeof onStartCmdClick == "function") {
+					comboBox_1.addEventListener("click", onStartCmdClick);
+				}
 				container.addChild(comboBox_1, {
 					"colIndex": 1,
 					"rowIndex": 2
@@ -231,9 +253,6 @@
 					"rowIndex": 0
 				});
 				var comboBox_3 = new cpr.controls.ComboBox("roomNameCmb");
-				comboBox_3.style.css({
-					"text-align" : "center"
-				});
 				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("roomReservParam"));
 				comboBox_3.setBindContext(dataMapContext_4);
 				comboBox_3.bind("value").toDataMap(app.lookup("roomReservParam"), "roomId");
@@ -261,7 +280,7 @@
 				"top": "100px",
 				"right": "20px",
 				"left": "20px",
-				"height": "150px"
+				"height": "130px"
 			});
 			
 			var group_2 = new cpr.controls.Container();

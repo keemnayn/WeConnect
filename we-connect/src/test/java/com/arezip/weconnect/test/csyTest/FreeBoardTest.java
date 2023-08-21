@@ -29,11 +29,11 @@ public class FreeBoardTest {
 	@Test
 	void insertFreeBoardPost() {
 		FreeBoardDTO freeBoardDTO = new FreeBoardDTO();
-		freeBoardDTO.setFreeBoardTitle("StTestTitl4");
-		freeBoardDTO.setFreeBoardContent("StTestContent4");
-//		freeBoardDTO.setFreeBoardFileName("a3.jpg");
+		freeBoardDTO.setFreeBoardTitle("TESTTitle2");
+		freeBoardDTO.setFreeBoardContent("TESTContent2");
+		freeBoardDTO.setFreeBoardFileName("TEST2.jpg");
 		freeBoardDTO.setMemberId(24);
-		int result = freeBoardService.insertFreeBoard(freeBoardDTO);
+		int result = freeBoardMapper.insertFreeBoard(freeBoardDTO);
 		assertNotEquals(0, result);
 	}
 

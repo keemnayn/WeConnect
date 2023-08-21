@@ -20,5 +20,15 @@ function onButtonClick(e){
  */
 function onButtonClick2(e){
 	var button = e.control;
-	
+	app.lookup("boardSub").send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onBoardSubSubmitSuccess(e){
+	var boardSub = e.control;
+	alert("게시글 등록 완료");
+	app.close();
 }

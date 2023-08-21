@@ -23,13 +23,13 @@ import lombok.extern.slf4j.Slf4j;
 public class FreeBoardCommentController {
 	private final FreeBoardService freeBoardService;
 	
-	//자유게시판 댓글 조회
-	@GetMapping
-	public View boardDetailComment(DataRequest dataRequest) {
-		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
-		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
-		List<FreeBoardCommentDTO> freeBoardComment = freeBoardService.getFreeBoardDetailComment(freeBoardId);
-		dataRequest.setResponse("freeBoardComment", freeBoardComment);
-		return new JSONDataView();
-	} 
+//	//자유게시판 댓글 조회
+//	@GetMapping
+//	public View boardDetailComment(DataRequest dataRequest) {
+//		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+//		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+//		List<FreeBoardCommentDTO> freeBoardComment = freeBoardService.getFreeBoardDetailComment(freeBoardId);
+//		dataRequest.setResponse("freeBoardComment", freeBoardComment);
+//		return new JSONDataView();
+//	} 
 }

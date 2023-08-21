@@ -29,6 +29,7 @@ function onReservBtnClick(e) {
  */
 function onBodyInit(e) {
 	app.lookup("roomInfoSub").send();
+	//
 }
 
 /*
@@ -39,4 +40,13 @@ function onRoomReservSubSubmitSuccess(e) {
 	var roomReservSub = e.control;
 	alert("회의실 예약 완료");
 	app.close();
+}
+
+/*
+ * 콤보 박스에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onStartCmdClick(e){
+	var startCmd = e.control;
+//	app.lookup("startCmd").getin
 }

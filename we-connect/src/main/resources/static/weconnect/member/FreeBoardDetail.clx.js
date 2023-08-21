@@ -24,7 +24,7 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("boardDetailSub").send();
-				app.lookup("boardCommentSub").send();
+			//	app.lookup("boardCommentSub").send();
 				
 			}
 
@@ -45,10 +45,18 @@
 			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
-			function onBodyLoad(e) {
-				app.lookup("boardDetailSub").send();
-				app.lookup("boardCommentSub").send();
-			}
+			//function onBodyLoad(e) {
+			//	var freeBoardDetail = cpr.core.Platform.INSTANCE.getParameter("freeBoardDetail");
+			//	console.log(freeBoardDetail);
+			//	app.lookup("freeBoardTitle").value = freeBoardDetail.freeBoardTitle;
+			//	app.lookup("memberName").value = freeBoardDetail.memberName;
+			//	app.lookup("freeBoardContent").value = freeBoardDetail.freeBoardContent;
+			//	app.lookup("freeBoardCreate").value = freeBoardDetail.freeBoardCreate;
+			//	app.lookup("freeBoardViews").value = freeBoardDetail.freeBoardViews;
+			//	app.lookup("dmFreeBoardId").setValue("freeBoardId", freeBoardDetail.freeBoardId);
+			//	app.lookup("boardDetailSub").send();
+			//	app.lookup("boardCommentSub").send();
+			//}
 			// End - User Script
 			
 			// Header
@@ -233,7 +241,7 @@
 				"height": "100px"
 			});
 			
-			var button_1 = new cpr.controls.Button("commnetBtn");
+			var button_1 = new cpr.controls.Button("commentBtn");
 			button_1.value = "등록";
 			container.addChild(button_1, {
 				"top": "542px",
