@@ -19,6 +19,22 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-19991b3f" id="ds1"/>
+      <cl:datamap std:sid="d-map-3df707f8" id="leaveRequest">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a331cdbb" name="leaveRequestId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-284ef351" name="leaveRequestType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-00aa6376" name="leaveRequestStart" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-522caf61" name="leaveRequestEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-4796b528" name="leaveRequestStatus" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-2b011e21" name="leaveRequestReason" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-543b7f4f" name="memberId" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-22cca2e3" id="Leave" action="member/leave-request">
+        <cl:listener std:sid="listener-81d29135" name="submit-success" handler="onLeaveSubmitSuccess"/>
+        <cl:requestdata dataid="leaveRequest"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -32,12 +48,15 @@
         <cl:formdata std:sid="f-data-09fc5d97" row="0" col="2"/>
       </cl:output>
       <cl:dateinput std:sid="d-input-332ca669" id="dti1">
+        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestStart"/>
         <cl:formdata std:sid="f-data-a4ef86c0" row="0" col="3"/>
       </cl:dateinput>
       <cl:dateinput std:sid="d-input-6c273717" id="dti2">
+        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestEnd"/>
         <cl:formdata std:sid="f-data-7c984f7c" row="0" col="5"/>
       </cl:dateinput>
       <cl:combobox std:sid="c-box-e348d553" id="cmb1">
+        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestType"/>
         <cl:formdata std:sid="f-data-9fac92e0" row="0" col="1"/>
         <cl:itemset datasetid="type" label="type" value="type"/>
       </cl:combobox>
@@ -59,6 +78,10 @@
       <cl:output std:sid="output-4c902b40" value="목적">
         <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
       </cl:output>
+      <cl:textarea std:sid="t-area-d560cf87" id="txa1">
+        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestReason"/>
+        <cl:formdata std:sid="f-data-56e2b625" row="0" col="1"/>
+      </cl:textarea>
       <cl:formlayout std:sid="f-layout-675b5c21" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
         <cl:rows length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
@@ -68,6 +91,7 @@
     <cl:group std:sid="group-9921eabb">
       <cl:xylayoutdata std:sid="xyl-data-8db6732b" top="800px" left="0px" width="1580px" height="60px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:button std:sid="button-6dcdf7fe" value="신청">
+        <cl:listener std:sid="listener-7c203474" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-90c496c9" top="10px" left="656px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-daaf79eb" value="취소">

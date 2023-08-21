@@ -16,5 +16,10 @@ public class LeaveRequestDTO {
 	private Date leaveRequestEnd;
 	private String leaveRequestStatus;
 	private String leaveRequestReason;
-	private MemberDTO memberVO;
+	private String memberName;
+	private String departmentName;
+	private String position; 
+	private long leaveCount; 
+	private long memberId;
 }
+    

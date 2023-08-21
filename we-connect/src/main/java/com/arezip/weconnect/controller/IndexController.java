@@ -18,13 +18,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
+ 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
 public class IndexController {
 	private final MemberService memberService;
-
+ 
 	@RequestMapping
 	public View index() {
 		return new UIView("weconnect/member/Member.clx");
@@ -60,12 +60,12 @@ public class IndexController {
 		}
 
 		return new JSONDataView();
-	}
+	} 
 
 	@RequestMapping("weconnect/admin/dashboard")
 	public View admin() {
 		return new UIView("weconnect/admin/Admin.clx");
-	}
+	} 
 
 	@RequestMapping("weconnect/register")
 	public View register() {

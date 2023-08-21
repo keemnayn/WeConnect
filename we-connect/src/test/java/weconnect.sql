@@ -20,11 +20,17 @@ CREATE TABLE member (
 select * from member;
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
+update member set Leave_count = 
 /*멤버 테이블 insert 문 */
 INSERT INTO member (member_name, member_email, member_password, position, department_id)
 VALUES (member_seq.NEXTVAL, '박정', 'een@example.com', 'a', '사원','2');
 --로그인----
 select member_name from member where member_email='wqeqwere1'and member_password='12';
+--업데이트--
+UPDATE member
+SET  LEAVE_COUNT= LEAVE_COUNT -3
+where member_name = '박애준1';
+
 /*멤버 테이블 */
 select * from member;
 select * from department;
@@ -33,7 +39,7 @@ ALTER TABLE member
 MODIFY member_status DEFAULT '대기';
 --member , department =>join 
 select m.member_name, m.member_email, m.position, d.department_name  from member m inner join department d ON m.DEPARTMENT_ID = d.DEPARTMENT_ID;
- 
+
 select * from member where member_email ='1212';
 ALTER TABLE member
 MODIFY manager_yn DEFAULT 'N';
@@ -260,6 +266,7 @@ CREATE SEQUENCE leave_request_seq
 START WITH 1
 INCREMENT BY 1;
 
+select * from leave_request;
 CREATE TABLE leave_request (
 	leave_request_id NUMBER NOT NULL, /* 연차신청 번호 */
 	leave_request_type VARCHAR2(50) NOT NULL CHECK (leave_request_type IN ('연차', '반차')), /* 연차 구분 */
@@ -271,6 +278,7 @@ CREATE TABLE leave_request (
 	CONSTRAINT FK_leave_request_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
 
+select * from member;
 ALTER TABLE leave_request
 MODIFY leave_request_status DEFAULT '승인 대기';
 
