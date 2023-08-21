@@ -103,7 +103,7 @@ public class AdminNoticeRestController {
 //	Map을 DTO 타입으로 변경하는 메서드
 	private NoticeDTO mapToNoticeDTO(Map<String, String> rowMap) {
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNoticeId(Long.parseLong(rowMap.get("noticeId"))); // 여기서 'noticeId'는 map에서의 키를 가정한 것입니다.
+		noticeDTO.setNoticeId(Long.parseLong(rowMap.get("noticeId"))); // map에서의 키
 		return noticeDTO;
 	}
 

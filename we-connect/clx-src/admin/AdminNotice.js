@@ -65,6 +65,8 @@ function onDeleteBtnClick(e) {
 			grid.deleteRow(checkRowIndices);
 			app.lookup("deleteNoticeSub").send();
 		}
+	} else {
+		alert("공지사항을 선택해주세요");
 	}
 }
 /*

@@ -52,4 +52,33 @@ public class AdminMemberServiceTest {
 		int result = adminMemberService.updateMemberDetails(memberDTO);
 		assertNotEquals(0, result);
 	}
+
+//	회원 삭제
+	@Test
+	void removeMemberById() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 102;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberService.removeMember(memberDTO);
+		assertNotEquals(0, result);
+	}
+
+//	승인 대기 회원 조회
+	@Test
+	void getPendingMembersTest() {
+		List<MemberDTO> list = adminMemberService.getPendingMembers();
+		list.forEach(members -> log.info(members.toString()));
+		assertNotNull(list);
+	}
+
+//	회원 검색
+	@Test
+	void getPendingMembersByCriteriaTest() {
+		Map<String, String> searchParams = new HashMap<>();
+		searchParams.put("searchType", "all");
+		searchParams.put("searchText", "박");
+		List<MemberDTO> list = adminMemberService.getPendingMembersByCriteria(searchParams);
+		list.forEach(members -> log.info(members.toString()));
+		assertNotNull(list);
+	}
 }
