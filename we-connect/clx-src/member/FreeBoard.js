@@ -25,7 +25,7 @@ function onButtonClick(e) {
 		height: 720
 	}, function(dialog) {
 		//팝업이 닫히면 리스트를 다시 send해서 reload 해줌.
-		dialog.addEventListener("close", function(e){
+		dialog.addEventListener("close", function(e) {
 			app.lookup("boardListSub").send();
 		});
 	});
@@ -38,10 +38,13 @@ function onButtonClick(e) {
 function onBoardListGrdRowDblclick(e) {
 	var boardListGrd = e.control;
 	var grid = app.lookup("boardListGrd");
-	var value = grid.getSelectedRow().getValue("freeBoardId");
+	//	var value = grid.getSelectedRow().getValue("freeBoardId");
+	var freeBoardId = grid.getSelectedRow().getValue("freeBoardId");
+	console.log(freeBoardId);
 	var dataMap = app.lookup("boardParam");
-	dataMap.setValue("freeBoardId", value);
-	app.lookup("boardParamSub").send();
+	dataMap.setValue("freeBoardId", freeBoardId);
+	var submission = app.lookup("boardParamSub");
+	submission.send();
 }
 
 ///*
@@ -53,3 +56,16 @@ function onBoardListGrdRowDblclick(e) {
 //	var boardId = boardListGrd.getSelectedRow().getValue("boardId");
 //	location.href = "weconnect/member/boards/" + boardId;
 //}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onBoardParamSubSubmitSuccess(e) {
+	var boardParamSub = e.control;
+	var submission = app.lookup("boardParamSub");
+	var url = submission.getMetadata("url");
+	if (url != null) {
+		window.location = url;
+	}
+}

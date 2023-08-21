@@ -28,11 +28,6 @@
           <cl:datacolumn std:sid="d-column-9e4da67a" name="freeBoardFileName"/>
         </cl:datacolumnlist>
       </cl:dataset>
-      <cl:datamap std:sid="d-map-ef763166" id="dmFreeBoardId">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-956a01bb" name="freeBoardId" datatype="number"/>
-        </cl:datacolumnlist>
-      </cl:datamap>
       <cl:submission std:sid="submission-a9452ba0" id="boardDetailSub" method="get" action="member/boards/detail">
         <cl:listener std:sid="listener-0905ba2a" name="submit-success" handler="onBoardDetailSubSubmitSuccess"/>
         <cl:responsedata dataid="freeBoardDetail"/>

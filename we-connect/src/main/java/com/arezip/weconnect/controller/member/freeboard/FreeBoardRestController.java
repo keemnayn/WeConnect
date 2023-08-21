@@ -1,6 +1,8 @@
 package com.arezip.weconnect.controller.member.freeboard;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,5 +57,22 @@ public class FreeBoardRestController {
 		freeBoardService.insertFreeBoard(freeBoardDTO);
 		return new JSONDataView();
 
+	}
+
+	// 자유게시판 상세 조회
+	@GetMapping("detail")
+	public View boardDetail(DataRequest dataRequest, String freeBoardId) {
+		System.out.println("==============boardDetail===============");
+		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+//		System.out.println("param->" + param.toString());
+		System.out.println(freeBoardId);
+//		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+		System.out.println("freeBoardId -> " + freeBoardId);
+//		FreeBoardDTO freeBoardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
+		Map<String, Object> message = new HashMap<>();
+		message.put("url", "boardDetail");
+		dataRequest.setMetadata(true, message);
+//		dataRequest.setResponse("freeBoardDetail", freeBoardDetail);
+		return new JSONDataView();
 	}
 }
