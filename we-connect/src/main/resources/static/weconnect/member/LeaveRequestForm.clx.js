@@ -16,7 +16,26 @@
 			 * Created at 2023. 8. 9. 오후 12:06:33.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * "신청" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(e) {
+				var button = e.control;
+				let submission = app.lookup("Leave");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLeaveSubmitSuccess(e) {
+				var leave = e.control;
+				alert("작성완료");
+			}
 			// End - User Script
 			
 			// Header
@@ -29,6 +48,51 @@
 				]
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("ds1");
+			dataSet_2.parseData({});
+			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("leaveRequest");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "leaveRequestId",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestType",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestStart",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestEnd",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestStatus",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestReason",
+						"dataType": "string"
+					},
+					{
+						"name": "memberId",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("Leave");
+			submission_1.action = "member/leave-request";
+			submission_1.addRequestData(dataMap_1);
+			if(typeof onLeaveSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onLeaveSubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -72,16 +136,19 @@
 					"rowIndex": 0
 				});
 				var dateInput_1 = new cpr.controls.DateInput("dti1");
+				dateInput_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestStart");
 				container.addChild(dateInput_1, {
 					"colIndex": 3,
 					"rowIndex": 0
 				});
 				var dateInput_2 = new cpr.controls.DateInput("dti2");
+				dateInput_2.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestEnd");
 				container.addChild(dateInput_2, {
 					"colIndex": 5,
 					"rowIndex": 0
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				comboBox_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestType");
 				(function(comboBox_1){
 					comboBox_1.setItemSet(app.lookup("type"), {
 						"label": "type",
@@ -128,6 +195,12 @@
 					"colIndex": 0,
 					"rowIndex": 0
 				});
+				var textArea_1 = new cpr.controls.TextArea("txa1");
+				textArea_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestReason");
+				container.addChild(textArea_1, {
+					"colIndex": 1,
+					"rowIndex": 0
+				});
 			})(group_2);
 			container.addChild(group_2, {
 				"top": "200px",
@@ -142,6 +215,9 @@
 			(function(container){
 				var button_1 = new cpr.controls.Button();
 				button_1.value = "신청";
+				if(typeof onButtonClick == "function") {
+					button_1.addEventListener("click", onButtonClick);
+				}
 				container.addChild(button_1, {
 					"top": "10px",
 					"left": "656px",
