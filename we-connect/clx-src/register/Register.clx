@@ -52,7 +52,16 @@
           <cl:datacolumn std:sid="d-column-7455a14e" name="departmentId"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:submission std:sid="submission-30d8da43" id="memberList" method="post" action="member">
+      <cl:datamap std:sid="d-map-56006ec7" id="registerMemberParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-9a78b264" name="memberEmail"/>
+          <cl:datacolumn std:sid="d-column-05d6bcbf" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-6646e572" name="memberPassword"/>
+          <cl:datacolumn std:sid="d-column-ee2bfb9c" name="departmentId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-a5f16407" name="position"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-30d8da43" id="memberList" method="post" action="">
         <cl:listener std:sid="listener-55cf0795" name="submit-error" handler="onMemberListSubmitError"/>
         <cl:listener std:sid="listener-0094ecc0" name="submit-success" handler="onMemberListSubmitSuccess"/>
         <cl:requestdata dataid="member"/>
@@ -68,11 +77,16 @@
         <cl:listener std:sid="listener-836aec51" name="submit-success" handler="onCheckSubmitSuccess"/>
         <cl:requestdata dataid="member"/>
       </cl:submission>
+      <cl:submission std:sid="submission-22f56a6e" id="registerSub" action="member">
+        <cl:listener std:sid="listener-9a101a60" name="submit-error" handler="onRegisterSubSubmitError"/>
+        <cl:listener std:sid="listener-a05ce364" name="submit-success" handler="onRegisterSubSubmitSuccess"/>
+        <cl:requestdata dataid="registerMemberParam"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-13f6457c" style="background-color:#F8F8F8; background-image:none;">
-    <cl:listener std:sid="listener-34d31b25" name="init" handler="onBodyInit2"/>
+    <cl:listener std:sid="listener-34d31b25" name="init" handler="onBodyInit"/>
     <cl:group std:sid="group-6d056694" style="border-radius:30px; background-color:#FEFEFF; color:#FFFFFF; background-image:none;" class="cl-form-group1">
       <cl:listener std:sid="listener-05b5216e" name="click" handler="onGroupClick"/>
       <cl:xylayoutdata std:sid="xyl-data-3ca432d1" top="30px" left="605px" width="737px" height="874px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -80,16 +94,17 @@
         <cl:listener std:sid="listener-9568f651" name="click" handler="onButtonClick3"/>
         <cl:xylayoutdata std:sid="xyl-data-f7d92360" top="146px" left="523px" width="109px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:inputbox std:sid="i-box-1419f975" id="memberName" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
-        <cl:datamapbind property="value" datacontrolid="member" columnname="memberName"/>
+      <cl:inputbox std:sid="i-box-1419f975" id="memberName" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" secret="false" placeholder="성명">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="memberName"/>
+        <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-c05bbe93" top="242px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:inputbox std:sid="i-box-db8150a2" id="ipb3" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
-        <cl:datamapbind property="value" datacontrolid="member" columnname="memberPassword"/>
+      <cl:inputbox std:sid="i-box-db8150a2" id="passwordIpb" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" secret="true" placeholder="비밀번호">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="memberPassword"/>
+        <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-a182a70f" top="357px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:inputbox std:sid="i-box-c887dcd3" id="ipb4" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" placeholder="&#xD;&#xA;">
-        <cl:datamapbind property="value" datacontrolid="member" columnname="memberPassword"/>
+      <cl:inputbox std:sid="i-box-c887dcd3" id="checkPasswordIpb" style="border-radius:5px; background-color:#FFFFFF; color:#070000; font-style:normal; background-image:none; text-align:center;" secret="true" placeholder="비밀번호 확인">
         <cl:xylayoutdata std:sid="xyl-data-8f5fa37e" top="466px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:htmlsnippet std:sid="htmlsnippet-006ee25f" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>비밀번호 &lt;/div>">
@@ -104,8 +119,9 @@
       <cl:htmlsnippet std:sid="htmlsnippet-e7082d07" style="color:#070000; font-weight:bold; font-size:16px; font-family:sans-serif; font-style:normal;" value="&lt;div>이메일&lt;/div>&#xD;&#xA;">
         <cl:xylayoutdata std:sid="xyl-data-efb9299c" top="116px" left="160px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:combobox std:sid="c-box-25368156" id="cmb1" style="border-radius:5px; color:#A0A0A0; font-weight:500;" placeholder="(선택)">
-        <cl:datamapbind property="value" datacontrolid="member" columnname="position"/>
+      <cl:combobox std:sid="c-box-25368156" id="positionCmb" style="border-radius:5px; color:#A0A0A0; font-weight:500;" placeholder="(선택)">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="position"/>
+        <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-a5b18ca1" top="689px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:itemset datasetid="positionList" label="position" value="position"/>
         <cl:buttonstyle style="width:30px;"/>
@@ -124,17 +140,19 @@
         <cl:listener std:sid="listener-5df9d8b9" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-34901148" top="828px" left="402px" width="150px" height="44px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:combobox std:sid="c-box-9d874f66" id="cmb2" style="background-color:#FFFFFF; border-radius:5px; color:#A0A0A0; font-weight:500; line-height:none; text-align:left;" placeholder="(선택)">
+      <cl:combobox std:sid="c-box-9d874f66" id="departmentCmb" style="background-color:#FFFFFF; border-radius:5px; color:#A0A0A0; font-weight:500; line-height:none; text-align:left;" placeholder="(선택)">
         <cl:listener std:sid="listener-433d3177" name="selection-change" handler="onCmb2SelectionChange"/>
-        <cl:datamapbind property="value" datacontrolid="department1" columnname="departmentId"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="departmentId"/>
+        <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-ffe0b730" top="585px" left="160px" width="352px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:item std:sid="t-item-09e2a729" label="" value="value3"/>
         <cl:itemset datasetid="departmentList" label="departmentName" value="departmentId"/>
         <cl:buttonstyle style="background-size:contain; width:30px;"/>
       </cl:combobox>
-      <cl:inputbox std:sid="i-box-be86d18c" id="memberEmail" style="border-radius:5px; background-color:#FFFFF; color:#000000; font-weight:500; font-style:normal; background-image:none; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
+      <cl:inputbox std:sid="i-box-be86d18c" id="memberEmailIpb" style="border-radius:5px; background-color:#FFFFF; color:#000000; font-weight:500; font-style:normal; background-image:none; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
         <cl:listener std:sid="listener-e479aeb4" name="value-change" handler="onMemberIdValueChange"/>
-        <cl:datamapbind property="value" datacontrolid="member" columnname="memberEmail"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="memberEmail"/>
+        <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-9b8f0dea" top="146px" left="158px" width="355px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:htmlsnippet std:sid="htmlsnippet-e39b9d60" style="color:#DEDEDE; font-weight:700; font-size:35px;" value="&lt;h3>회원가입&lt;/h3>">

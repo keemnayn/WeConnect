@@ -25,44 +25,22 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberRestController {
 	private final MemberService memberService;
 
-	// 회원가입
+//	회원가입
 	@PostMapping
 	public View register(DataRequest dataRequest) {
-		ParameterGroup parameterGroup = dataRequest.getParameterGroup("member");
-		log.info("멤버리스트: {}", parameterGroup);
-
-		// 멤버 정보 추출
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("registerMemberParam");
 		String memberName = parameterGroup.getValue("memberName");
 		String memberEmail = parameterGroup.getValue("memberEmail");
 		String memberPassword = parameterGroup.getValue("memberPassword");
 		String position = parameterGroup.getValue("position");
-
-		// 부서 정보 추출
-		ParameterGroup departmentGroup = dataRequest.getParameterGroup("department1");
-		long departmentID = Long.parseLong(departmentGroup.getValue("departmentId"));
-
-		// DepartmentDTO 객체 생성 및 값 설정
-		DepartmentDTO departmentDTO = new DepartmentDTO();
-		departmentDTO.setDepartmentId(departmentID);
-
-		// MemberDTO 객체 생성 및 값 설정
+		long departmentId = Long.parseLong(parameterGroup.getValue("departmentId"));
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMemberName(memberName);
 		memberDTO.setMemberEmail(memberEmail);
 		memberDTO.setMemberPassword(memberPassword);
 		memberDTO.setPosition(position);
-//	    memberDTO.setDepartmentVO(departmentDTO); // DepartmentDTO 객체를 MemberDTO에 설정
-
-		// 회원 등록 서비스 호출
-		memberService.register(memberDTO);
-
-		// 로깅
-		log.info("직급: {}", position);
-		log.info("부서: {}", departmentID);
-		log.info("이메일 값: {}", memberEmail);
-		log.info("이름 값: {}", memberName);
-		log.info("비밀번호: {}", memberPassword);
-		log.info("회원가입완료:{}", memberDTO);
+		memberDTO.setDepartmentId(departmentId);
+		memberService.registerMember(memberDTO);
 		return new JSONDataView();
 	}
 

@@ -71,7 +71,7 @@ public class AdminMemberServiceTest {
 		assertNotNull(list);
 	}
 
-//	회원 검색
+//	승인 대기 회원 검색
 	@Test
 	void getPendingMembersByCriteriaTest() {
 		Map<String, String> searchParams = new HashMap<>();
@@ -80,5 +80,25 @@ public class AdminMemberServiceTest {
 		List<MemberDTO> list = adminMemberService.getPendingMembersByCriteria(searchParams);
 		list.forEach(members -> log.info(members.toString()));
 		assertNotNull(list);
+	}
+
+//	회원 가입 승인
+	@Test
+	void approveMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 81;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberService.approveMember(memberDTO);
+		assertNotEquals(0, result);
+	}
+
+//	회원 가입 거절
+	@Test
+	void rejectMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 112;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberService.rejectMember(memberDTO);
+		assertNotEquals(0, result);
 	}
 }

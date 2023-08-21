@@ -11,36 +11,16 @@
  */
 function onButtonClick(e) {
 	var button = e.control;
-	let submission = app.lookup("memberList");
-	submission.send();
-	window.location = "login/login1.clx";
+	app.lookup("registerSub").send();
 }
 
 /*
  * 루트 컨테이너에서 init 이벤트 발생 시 호출.
  * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
  */
-function onBodyInit2(e) {
+function onBodyInit(e) {
 	let department = app.lookup("deparment");
 	department.send();
-}
-
-/*
- * 서브미션에서 submit-error 이벤트 발생 시 호출.
- * 통신 중 문제가 생기면 발생합니다.
- */
-function onMemberListSubmitError(e) {
-	var memberList = e.control;
-	alert("회원가입 실패");
-}
-
-/*
- * 서브미션에서 submit-success 이벤트 발생 시 호출.
- * 통신이 성공하면 발생합니다.
- */
-function onMemberListSubmitSuccess(e) {
-	var memberList = e.control;
-	alert("회원가입 완료");
 }
 
 /*
@@ -49,10 +29,10 @@ function onMemberListSubmitSuccess(e) {
  */
 function onButtonClick2(e) {
 	var button = e.control;
-    let result = confirm("작성을 취소하시겠습니까?");
-    if (result) {
-        window.location.href = "login/login1.clx"; 
-    }
+	let result = confirm("작성을 취소하시겠습니까?");
+	if (result) {
+		window.location.href = "login";
+	}
 }
 
 /*
@@ -73,7 +53,7 @@ function onCheckSubmitSuccess(e) {
 	var check = e.control;
 	let emailCheck = app.lookup("check");
 	let email = emailCheck.getMetadata("email");
-	let memberEmail = app.lookup("memberEmail");
+	let memberEmail = app.lookup("memberEmailIpb");
 	
 	// 입력값이 비어있는지 확인
 	if (memberEmail.value.trim() === "") {
@@ -87,4 +67,23 @@ function onCheckSubmitSuccess(e) {
 	} else {
 		alert("사용가능한 이메일입니다.");
 	}
+}
+
+/*
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
+ */
+function onRegisterSubSubmitError(e) {
+	var registerSub = e.control;
+	alert("회원가입 실패");
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onRegisterSubSubmitSuccess(e) {
+	var registerSub = e.control;
+	alert("회원가입 완료");
+	window.location.href = "login";
 }
