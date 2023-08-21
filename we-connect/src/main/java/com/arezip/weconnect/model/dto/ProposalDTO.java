@@ -13,6 +13,6 @@ public class ProposalDTO {
 	private long proposalId;
 	private String proposalTitle;
 	private String proposalContent;
-	private Date proposalCreate;
+	private String proposalCreate;
 	private String proposalStatus;
 }

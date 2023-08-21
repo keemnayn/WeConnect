@@ -73,215 +73,146 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var output_1 = new cpr.controls.Output();
-			output_1.style.css({
-				"background-color" : "#D7E4F2",
-				"border-radius" : "15px"
-			});
-			output_1.bind("value").toDataSet(app.lookup("myPost"), "myPostName", 0);
-			container.addChild(output_1, {
-				"top": "20px",
-				"left": "20px",
-				"width": "1520px",
-				"height": "100px"
-			});
-			
-			var inputBox_1 = new cpr.controls.InputBox("ipb1");
-			inputBox_1.placeholder = "댓글 달기";
-			inputBox_1.style.css({
-				"border-right-style" : "none",
-				"color" : "#7D7878",
-				"border-bottom-color" : "#ffffff",
-				"border-left-style" : "none",
-				"border-left-color" : "#ffffff",
-				"border-top-color" : "#ffffff",
-				"border-bottom-style" : "none",
-				"border-right-color" : "#ffffff",
-				"font-family" : "IBM Plex Sans KR",
-				"border-top-style" : "none"
-			});
-			container.addChild(inputBox_1, {
-				"top": "596px",
-				"left": "20px",
-				"width": "1450px",
-				"height": "50px"
-			});
-			
-			var button_1 = new cpr.controls.Button();
-			button_1.value = "등록";
-			button_1.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(button_1, {
-				"top": "616px",
-				"left": "1482px",
-				"width": "45px",
-				"height": "40px"
-			});
-			
-			var image_1 = new cpr.controls.Image();
-			image_1.src = "img/member/attach-file.png";
-			image_1.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_1, {
-				"top": "577px",
-				"left": "1482px",
-				"width": "20px",
-				"height": "20px"
-			});
-			
-			var image_2 = new cpr.controls.Image();
-			image_2.src = "img/member/bookmark-white.png";
-			image_2.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_2, {
-				"top": "577px",
-				"left": "1507px",
-				"width": "20px",
-				"height": "20px"
-			});
-			
 			var group_1 = new cpr.controls.Container();
-			group_1.style.css({
-				"background-color" : "#D7E4F2",
-				"border-radius" : "20px"
-			});
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
+				var output_1 = new cpr.controls.Output();
+				output_1.value = "Output";
+				container.addChild(output_1, {
+					"top": "20px",
+					"left": "20px",
+					"width": "260px",
+					"height": "324px"
+				});
 				var output_2 = new cpr.controls.Output();
-				var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("comment"), 0);
-				output_2.setBindContext(dataRowContext_1);
-				output_2.bind("value").toDataColumn("memberName");
+				output_2.value = "+";
+				output_2.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#F4F9FE",
+					"font-size" : "80px",
+					"text-align" : "center"
+				});
 				container.addChild(output_2, {
 					"top": "20px",
 					"left": "20px",
-					"width": "100px",
-					"height": "30px"
+					"width": "260px",
+					"height": "324px"
 				});
 				var output_3 = new cpr.controls.Output();
+				output_3.value = "Output";
 				output_3.style.css({
-					"border-radius" : "20px"
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
 				});
-				var dataRowContext_2 = new cpr.bind.DataRowContext(app.lookup("comment"), 0);
-				output_3.setBindContext(dataRowContext_2);
-				output_3.bind("value").toDataColumn("myPostComment");
 				container.addChild(output_3, {
-					"top": "49px",
-					"left": "20px",
-					"width": "1500px",
-					"height": "100px"
+					"top": "20px",
+					"left": "323px",
+					"width": "260px",
+					"height": "324px"
 				});
 				var output_4 = new cpr.controls.Output();
-				var dataRowContext_3 = new cpr.bind.DataRowContext(app.lookup("comment"), 0);
-				output_4.setBindContext(dataRowContext_3);
-				output_4.bind("value").toDataColumn("date");
+				output_4.value = "Output";
+				output_4.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
 				container.addChild(output_4, {
 					"top": "20px",
-					"left": "119px",
-					"width": "100px",
-					"height": "30px"
+					"left": "635px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_5 = new cpr.controls.Output();
+				output_5.value = "Output";
+				output_5.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_5, {
+					"top": "20px",
+					"left": "947px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_6 = new cpr.controls.Output();
+				output_6.value = "Output";
+				output_6.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_6, {
+					"top": "20px",
+					"left": "1259px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_7 = new cpr.controls.Output();
+				output_7.value = "Output";
+				output_7.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_7, {
+					"top": "382px",
+					"left": "20px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_8 = new cpr.controls.Output();
+				output_8.value = "Output";
+				output_8.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_8, {
+					"top": "382px",
+					"left": "322px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_9 = new cpr.controls.Output();
+				output_9.value = "Output";
+				output_9.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_9, {
+					"top": "382px",
+					"left": "634px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_10 = new cpr.controls.Output();
+				output_10.value = "Output";
+				output_10.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_10, {
+					"top": "382px",
+					"left": "945px",
+					"width": "260px",
+					"height": "324px"
+				});
+				var output_11 = new cpr.controls.Output();
+				output_11.value = "Output";
+				output_11.style.css({
+					"border-radius" : "20px",
+					"background-color" : "#D7E4F2"
+				});
+				container.addChild(output_11, {
+					"top": "382px",
+					"left": "1258px",
+					"width": "260px",
+					"height": "324px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "666px",
+				"top": "20px",
 				"left": "20px",
 				"width": "1540px",
-				"height": "170px"
-			});
-			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				"top": "130px",
-				"left": "435px",
-				"width": "200px",
-				"height": "40px"
-			});
-			
-			var inputBox_2 = new cpr.controls.InputBox("ipb2");
-			inputBox_2.placeholder = "보드 멤버들과 공유할 내용을 입력해보세요.";
-			inputBox_2.style.css({
-				"font-family" : "'IBM Plex Sans KR'"
-			});
-			container.addChild(inputBox_2, {
-				"top": "180px",
-				"left": "20px",
-				"width": "1520px",
-				"height": "112px"
-			});
-			
-			var group_2 = new cpr.controls.Container();
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			(function(container){
-				var output_5 = new cpr.controls.Output();
-				var dataRowContext_4 = new cpr.bind.DataRowContext(app.lookup("myPost"), 0);
-				output_5.setBindContext(dataRowContext_4);
-				output_5.bind("value").toDataColumn("memberName");
-				container.addChild(output_5, {
-					"top": "19px",
-					"left": "19px",
-					"width": "100px",
-					"height": "30px"
-				});
-				var output_6 = new cpr.controls.Output();
-				var dataRowContext_5 = new cpr.bind.DataRowContext(app.lookup("myPost"), 0);
-				output_6.setBindContext(dataRowContext_5);
-				output_6.bind("value").toDataColumn("date");
-				container.addChild(output_6, {
-					"top": "19px",
-					"left": "128px",
-					"width": "220px",
-					"height": "30px"
-				});
-				var textArea_1 = new cpr.controls.TextArea("txa1");
-				textArea_1.style.css({
-					"border-right-style" : "none",
-					"border-left-style" : "none",
-					"border-bottom-style" : "none",
-					"font-family" : "IBM Plex Sans KR",
-					"border-top-style" : "none"
-				});
-				var dataRowContext_6 = new cpr.bind.DataRowContext(app.lookup("myPost"), 0);
-				textArea_1.setBindContext(dataRowContext_6);
-				textArea_1.bind("value").toDataColumn("myPostContent");
-				container.addChild(textArea_1, {
-					"top": "100px",
-					"left": "19px",
-					"width": "1520px",
-					"height": "150px"
-				});
-				var output_7 = new cpr.controls.Output();
-				var dataRowContext_7 = new cpr.bind.DataRowContext(app.lookup("myPost"), 0);
-				output_7.setBindContext(dataRowContext_7);
-				output_7.bind("value").toDataColumn("myPostTitle");
-				container.addChild(output_7, {
-					"top": "57px",
-					"left": "18px",
-					"width": "1520px",
-					"height": "30px"
-				});
-			})(group_2);
-			container.addChild(group_2, {
-				"top": "306px",
-				"left": "20px",
-				"width": "1540px",
-				"height": "260px"
-			});
-			
-			var button_2 = new cpr.controls.Button();
-			button_2.value = "작성";
-			button_2.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(button_2, {
-				"top": "216px",
-				"left": "1482px",
-				"width": "45px",
-				"height": "40px"
+				"height": "801px"
 			});
 		}
 	});

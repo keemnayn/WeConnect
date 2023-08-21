@@ -12,19 +12,19 @@
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
 		select proposal_id AS proposalId, proposal_title AS
 		proposalTitle,
-		proposal_content AS proposalContent, proposal_create
+		proposal_content AS proposalContent, to_char(proposal_create,'YYYY-MM-DD')
 		AS
 		proposalCreate,
 		proposal_status AS proposalStatus
-		from proposal
+		from proposal 	ORDER BY proposal_create ASC
 	</select>
 	<!-- 건의사항 추가 -->
 	<insert id="insertProposal"
 		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
 		insert into PROPOSAL(proposal_id, proposal_title,
-		proposal_content, proposal_status)
+		proposal_content)
 		values(proposal_seq.NEXTVAL,
-		#{proposalTitle}, #{proposalContent}, #{proposalStatus})
+		#{proposalTitle}, #{proposalContent})
 	</insert>
 	<!-- 건의사항 수정 -->
 	<update id="updateProposal"

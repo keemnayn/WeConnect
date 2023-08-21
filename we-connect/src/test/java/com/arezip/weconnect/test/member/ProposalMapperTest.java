@@ -7,7 +7,6 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.arezip.weconnect.mapper.ProposalMapper;
 import com.arezip.weconnect.model.dto.ProposalDTO;
@@ -25,18 +24,21 @@ public class ProposalMapperTest {
 	void selectAllProposalsTest() {
 		List<ProposalDTO> list = proposalMapper.selectAllProposals();
 		list.forEach(proposal -> log.info(proposal.toString()));
+		/*
+		 * void getListTest() {
+		 * List<FreeBoardDTO> list = freeBoardMapper.getFreeBoardList();
+		 * list.forEach(freeBoard -> log.info(freeBoard.toString())); assertNotNull(list); }
+		 */
 	}
 
 // 건의사항 추가 mapper
 	@Test
-	@Transactional // 테스트 이후 롤백을 위해
 	void insertProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalContent("매퍼 테스트 제목");
+		proposalDTO.setProposalTitle("매퍼 테스트 제목");
 		proposalDTO.setProposalContent("매퍼 테스트 내용");
-		proposalDTO.setProposalStatus("처리중");
-		// int result = proposalMapper.insertProposal(proposalDTO);
-		// assertNotEquals(0, result);
+		int result = proposalMapper.insertProposal(proposalDTO);
+		log.info("result {}", result);
 	}
 
 // 건의사항 수정 mapper

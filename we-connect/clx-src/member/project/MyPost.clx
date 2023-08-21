@@ -49,74 +49,43 @@
     <cl:appspec/>
   </head>
   <body std:sid="body-9e0a9e88">
-    <cl:output std:sid="output-745f8f10" style="background-color:#D7E4F2; border-radius:15px;">
-      <cl:datasetbind property="value" datacontrolid="myPost" columnname="myPostName" rowindex="0"/>
-      <cl:xylayoutdata std:sid="xyl-data-f9f25c52" top="20px" left="20px" width="1520px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:output>
-    <cl:inputbox std:sid="i-box-45252f4b" id="ipb1" style="border-right-style:none; color:#7D7878; border-bottom-color:#ffffff; border-left-style:none; border-left-color:#ffffff; border-top-color:#ffffff; border-bottom-style:none; border-right-color:#ffffff; font-family:IBM Plex Sans KR; border-top-style:none;" placeholder="댓글 달기">
-      <cl:xylayoutdata std:sid="xyl-data-c85fb4d2" top="596px" left="20px" width="1450px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:inputbox>
-    <cl:button std:sid="button-514dd614" style="font-family:IBM Plex Sans KR;" value="등록">
-      <cl:xylayoutdata std:sid="xyl-data-22319e37" top="616px" left="1482px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:button>
-    <cl:img std:sid="image-a91a99be" style="font-family:IBM Plex Sans KR;" src="../../img/member/attach-file.png">
-      <cl:xylayoutdata std:sid="xyl-data-11e4ef89" top="577px" left="1482px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:img>
-    <cl:img std:sid="image-ff317aa3" style="font-family:IBM Plex Sans KR;" src="../../img/member/bookmark-white.png">
-      <cl:xylayoutdata std:sid="xyl-data-2a67f028" top="577px" left="1507px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:img>
-    <cl:group std:sid="group-125ca7f3" style="background-color:#D7E4F2; border-radius:20px;">
-      <cl:xylayoutdata std:sid="xyl-data-6f40ac14" top="666px" left="20px" width="1540px" height="170px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-bcddb739">
-        <cl:relativebind property="value" category="PROPERTY" columnname="memberName"/>
-        <cl:datarowcontext datacontrolid="comment"/>
-        <cl:xylayoutdata std:sid="xyl-data-48eaa5fe" top="20px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    <cl:group std:sid="group-a95bd496">
+      <cl:xylayoutdata std:sid="xyl-data-62d5c38e" top="20px" left="20px" width="1540px" height="801px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-49351d1d" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-889fd5ab" top="20px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:output std:sid="output-f4837898" style="border-radius:20px;">
-        <cl:relativebind property="value" category="PROPERTY" columnname="myPostComment"/>
-        <cl:datarowcontext datacontrolid="comment"/>
-        <cl:xylayoutdata std:sid="xyl-data-a64acfd9" top="49px" left="20px" width="1500px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-b8ccb128" style="border-radius:20px; background-color:#F4F9FE; font-size:80px; text-align:center;" value="+">
+        <cl:xylayoutdata std:sid="xyl-data-d606324d" top="20px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:output std:sid="output-a3aa5deb">
-        <cl:relativebind property="value" category="PROPERTY" columnname="date"/>
-        <cl:datarowcontext datacontrolid="comment"/>
-        <cl:xylayoutdata std:sid="xyl-data-a5a1362b" top="20px" left="119px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-2baa1903" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-3283e3a5" top="20px" left="323px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:xylayout std:sid="xylayout-8f6039ef"/>
+      <cl:output std:sid="output-5b91a181" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-d6ea02da" top="20px" left="635px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-2be5d5b7" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-7ae85f7b" top="20px" left="947px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-3db6b4f7" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-8de91a4b" top="20px" left="1259px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-becb2bd6" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-b1df0023" top="382px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-51a17a7d" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-c617324c" top="382px" left="322px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-614b2fd1" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-4d7f3fb4" top="382px" left="634px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-af00837b" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-b8c5acc5" top="382px" left="945px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-fc1ac200" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-083ed909" top="382px" left="1258px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:xylayout std:sid="xylayout-27e2ba90"/>
     </cl:group>
-    <cl:pageindexer std:sid="p-indexer-c03ca084">
-      <cl:xylayoutdata std:sid="xyl-data-c15f6a3b" top="130px" left="435px" width="200px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:pageindexer>
-    <cl:inputbox std:sid="i-box-0b27bbbf" id="ipb2" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
-      <cl:xylayoutdata std:sid="xyl-data-85695d06" top="180px" left="20px" width="1520px" height="112px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:inputbox>
-    <cl:group std:sid="group-6c29afe4">
-      <cl:xylayoutdata std:sid="xyl-data-2b482de4" top="306px" left="20px" width="1540px" height="260px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-55e5d7c2">
-        <cl:relativebind property="value" category="PROPERTY" columnname="memberName"/>
-        <cl:datarowcontext datacontrolid="myPost"/>
-        <cl:xylayoutdata std:sid="xyl-data-499d9791" top="19px" left="19px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:output std:sid="output-5c2a8f66">
-        <cl:relativebind property="value" category="PROPERTY" columnname="date"/>
-        <cl:datarowcontext datacontrolid="myPost"/>
-        <cl:xylayoutdata std:sid="xyl-data-1c7d64d9" top="19px" left="128px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:textarea std:sid="t-area-0669a374" id="txa1" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;">
-        <cl:relativebind property="value" category="PROPERTY" columnname="myPostContent"/>
-        <cl:datarowcontext datacontrolid="myPost"/>
-        <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="100px" left="19px" width="1520px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:textarea>
-      <cl:output std:sid="output-495bdf11">
-        <cl:relativebind property="value" category="PROPERTY" columnname="myPostTitle"/>
-        <cl:datarowcontext datacontrolid="myPost"/>
-        <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="57px" left="18px" width="1520px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:xylayout std:sid="xylayout-01e9cfde"/>
-    </cl:group>
-    <cl:button std:sid="button-556a8793" style="font-family:IBM Plex Sans KR;" value="작성">
-      <cl:xylayoutdata std:sid="xyl-data-dc3bfb6a" top="216px" left="1482px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:button>
     <cl:xylayout std:sid="xylayout-8235c6e9"/>
   </body>
   <std:studiosetting>

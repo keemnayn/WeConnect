@@ -42,6 +42,17 @@
 				"rows": []
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("search");
+			dataSet_2.parseData({
+				"columns": [{"name": "status"}],
+				"rows": [
+					{"status": "전체"},
+					{"status": "처리중"},
+					{"status": "완료"}
+				]
+			});
+			app.register(dataSet_2);
 			var dataMap_1 = new cpr.data.DataMap("searchParam");
 			dataMap_1.parseData({
 				"columns" : [
@@ -53,6 +64,7 @@
 			var submission_1 = new cpr.protocols.Submission("proposalListSub");
 			submission_1.method = "get";
 			submission_1.action = "member/proposals";
+			submission_1.addRequestData(dataSet_1);
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
@@ -152,6 +164,9 @@
 					]
 				}
 			});
+			if(typeof onProposalGrdDblclick == "function") {
+				grid_1.addEventListener("dblclick", onProposalGrdDblclick);
+			}
 			container.addChild(grid_1, {
 				"top": "80px",
 				"right": "0px",
@@ -180,7 +195,13 @@
 					"height": "30px"
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("searchStatusCmb");
-				comboBox_1.value = "all";
+				comboBox_1.bind("value").toDataSet(app.lookup("search"), "status", 0);
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("search"), {
+						"label": "status",
+						"value": "status"
+					});
+				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"top": "0px",
 					"right": "560px",
@@ -195,8 +216,11 @@
 				"left": "calc(50% - 330px)"
 			});
 			
-			var button_1 = new cpr.controls.Button();
+			var button_1 = new cpr.controls.Button("createBtn");
 			button_1.value = "새글";
+			if(typeof onCreateBtnClick == "function") {
+				button_1.addEventListener("click", onCreateBtnClick);
+			}
 			container.addChild(button_1, {
 				"top": "40px",
 				"left": "1130px",

@@ -15,6 +15,22 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-0fdd174e" id="search">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-9d9e1713" name="status"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[전체]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[처리중]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[완료]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-eb1b40b2" id="searchParam">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-152fa33a" name="searchStatus"/>
@@ -22,6 +38,7 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
+        <cl:requestdata dataid="proposalList"/>
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
     </cl:model>
@@ -30,6 +47,7 @@
   <body std:sid="body-dd250691">
     <cl:listener std:sid="listener-dc43e72e" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-2fb52cbb" id="proposalGrd" datasetid="proposalList">
+      <cl:listener std:sid="listener-449e111a" name="dblclick" handler="onProposalGrdDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-077c59ca" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-3f56fdb5" width="20px"/>
       <cl:gridcolumn std:sid="g-column-8af67537"/>
@@ -58,12 +76,15 @@
       <cl:searchinput std:sid="s-input-e671e07b">
         <cl:xylayoutdata std:sid="xyl-data-5b7db7b3" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchStatusCmb" value="all">
+      <cl:combobox std:sid="c-box-64b21162" id="searchStatusCmb">
+        <cl:datasetbind property="value" datacontrolid="search" columnname="status" rowindex="0"/>
         <cl:xylayoutdata std:sid="xyl-data-486da7f1" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
+        <cl:itemset datasetid="search" label="status" value="status"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-79e361e1"/>
     </cl:group>
-    <cl:button std:sid="button-ec30af08" value="새글">
+    <cl:button std:sid="button-ec30af08" id="createBtn" value="새글">
+      <cl:listener std:sid="listener-3a5da49a" name="click" handler="onCreateBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-9b44591c" top="40px" left="1130px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:xylayout std:sid="xylayout-9553b47a"/>
