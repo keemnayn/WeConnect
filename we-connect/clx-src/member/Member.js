@@ -164,5 +164,7 @@ function onAdminSubSubmitError(e) {
 	var error = submission.getMetadata("error");
 	var url = submission.getMetadata("url");
 	alert(error);
-	window.location = url;
+	if (url != null) {
+		window.location = url;
+	}
 }
