@@ -26,4 +26,10 @@ public interface AdminMemberMapper {
 
 //	승인 대기 회원 검색
 	List<MemberDTO> selectPendingMembersByCriteria(Map<String, String> searchParams);
+
+//	회원 가입 승인
+	int approveMember(MemberDTO memberDTO);
+
+//	회원 가입 거절
+	int rejectMember(MemberDTO memberDTO);
 }

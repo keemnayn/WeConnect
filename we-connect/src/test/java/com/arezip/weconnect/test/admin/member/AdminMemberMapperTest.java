@@ -81,4 +81,24 @@ public class AdminMemberMapperTest {
 		list.forEach(members -> log.info(members.toString()));
 		assertNotNull(list);
 	}
+
+//	회원 가입 승인
+	@Test
+	void approveMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 61;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberMapper.approveMember(memberDTO);
+		assertNotEquals(0, result);
+	}
+
+//	회원 가입 거절
+	@Test
+	void rejectMemberTest() {
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = 113;
+		memberDTO.setMemberId(memberId);
+		int result = adminMemberMapper.rejectMember(memberDTO);
+		assertNotEquals(0, result);
+	}
 }

@@ -50,4 +50,17 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public List<MemberDTO> getPendingMembersByCriteria(Map<String, String> searchParams) {
 		return adminMemberMapper.selectPendingMembersByCriteria(searchParams);
 	}
+
+//	회원 가입 승인
+	@Override
+	public int approveMember(MemberDTO memberDTO) {
+		return adminMemberMapper.approveMember(memberDTO);
+	}
+
+//	회원 가입 거절
+	@Override
+	public int rejectMember(MemberDTO memberDTO) {
+		return adminMemberMapper.rejectMember(memberDTO);
+	}
+
 }
