@@ -19,12 +19,11 @@ import com.cleopatra.protocol.data.ParameterRow;
 import com.cleopatra.spring.JSONDataView;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("weconnect/admin/free-boards")
 @RequiredArgsConstructor
-@Slf4j
+//@Slf4j
 public class AdminFreeBoardRestController {
 	private final AdminFreeBoardService adminFreeBoardService;
 
