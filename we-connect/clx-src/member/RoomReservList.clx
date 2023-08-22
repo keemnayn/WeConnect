@@ -32,7 +32,7 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv-list">
+      <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv/list">
         <cl:responsedata dataid="reservList"/>
       </cl:submission>
     </cl:model>
