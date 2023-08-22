@@ -39,7 +39,7 @@ public class LeaveRequestRestController {
 		String leaveRequestStart = parameterGroup.getValue("leaveRequestStart");
 		String leaveRequestEnd = parameterGroup.getValue("leaveRequestEnd");
 		String leaveRequestReason = parameterGroup.getValue("leaveRequestReason");
-		long memberId = 22;
+		long memberId = 131;
 
 		// 값 확인 로그 출력
 		log.info("구분: {}", leaveRequestType);
@@ -58,7 +58,6 @@ public class LeaveRequestRestController {
 			leaveRequestDTO.setLeaveRequestEnd(Date.from(endDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 			leaveRequestDTO.setLeaveRequestReason(leaveRequestReason);
 			leaveRequestDTO.setMemberId(memberId);
-			leaveRequestDTO.setLeaveRequestStatus("승인 대기");
 		} catch (DateTimeParseException e) {
 			log.error("날짜 파싱 에러", e);
 		}
@@ -66,6 +65,8 @@ public class LeaveRequestRestController {
 		// 연차 신청 서비스 호출 및 로그 출력
 		leaveRequestService.LeaveRequest(leaveRequestDTO);
 		log.info("연차 등록: {}", leaveRequestDTO);
+		leaveRequestService.updateLeaveCount(memberId);
+		log.info("연차 카운트성공:{}",leaveRequestService.updateLeaveCount(memberId));
 		return new JSONDataView();
 	}
 

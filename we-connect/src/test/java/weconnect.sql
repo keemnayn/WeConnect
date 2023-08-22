@@ -31,6 +31,17 @@ UPDATE member
 SET  LEAVE_COUNT= LEAVE_COUNT -3
 where member_name = '박애준1';
 
+
+UPDATE member
+SET leave_count = leave_count - 
+    (SELECT SUM(leave_request_end - leave_request_start + 1)
+     FROM leave_request
+     WHERE member_id = 
+           (SELECT member_id FROM member WHERE member_id = 131))
+WHERE member_id = 131;
+
+
+
 /*멤버 테이블 */
 select * from member;
 select * from department;
@@ -260,6 +271,7 @@ ALTER TABLE attendance
 		PRIMARY KEY (
 			attendance_id
 );
+
 
 /* 연차신청 */
 CREATE SEQUENCE leave_request_seq
