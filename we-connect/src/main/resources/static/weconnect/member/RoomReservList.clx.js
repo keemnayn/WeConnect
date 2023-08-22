@@ -77,7 +77,7 @@
 			app.register(dataSet_2);
 			var submission_1 = new cpr.protocols.Submission("reservListSub");
 			submission_1.method = "get";
-			submission_1.action = "/weconnect/member/room-reserv-list";
+			submission_1.action = "/weconnect/member/room-reserv/list";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");

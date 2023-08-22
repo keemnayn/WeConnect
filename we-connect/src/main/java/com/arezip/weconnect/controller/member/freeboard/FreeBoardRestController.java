@@ -1,8 +1,6 @@
 package com.arezip.weconnect.controller.member.freeboard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
+import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
@@ -58,21 +57,40 @@ public class FreeBoardRestController {
 		return new JSONDataView();
 
 	}
-
-	// 자유게시판 상세 조회
+	
+	//자유게시판 상세 조회 dialog 사용
 	@GetMapping("detail")
-	public View boardDetail(DataRequest dataRequest, String freeBoardId) {
-		System.out.println("==============boardDetail===============");
-		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
-//		System.out.println("param->" + param.toString());
-		System.out.println(freeBoardId);
-//		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
-		System.out.println("freeBoardId -> " + freeBoardId);
-//		FreeBoardDTO freeBoardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
-		Map<String, Object> message = new HashMap<>();
-		message.put("url", "boardDetail");
-		dataRequest.setMetadata(true, message);
-//		dataRequest.setResponse("freeBoardDetail", freeBoardDetail);
+	public View freeBoardDetail(DataRequest dataRequest) {
+		System.out.println("dataRequest"+dataRequest);
+		ParameterGroup param =dataRequest.getParameterGroup("detailBoardParam");
+		System.out.println("param"+param);
+		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId")); 
+		log.info("freeBoardId {}", freeBoardId);
+		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
+		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardDetailComment(freeBoardId);
+		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);
+		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
+		log.info("{freeBoardDTO} {}",freeBoardDTO);
+		log.info("{freeBoardCommentDTO} {}", freeBoardCommentDTO);
+		log.info("상세 목록{}",freeBoardService.getFreeBoardDetail(freeBoardId));
 		return new JSONDataView();
 	}
+	
+	
+	// 자유게시판 상세 조회 UIView 사용
+//	@GetMapping("detail")
+//	public View boardDetail(DataRequest dataRequest, String freeBoardId) {
+//		System.out.println("==============boardDetail===============");
+//		ParameterGroup param = dataRequest.getParameterGroup("boardParam");
+//		System.out.println("param->" + param.toString());
+//		System.out.println(freeBoardId);
+//		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+//		System.out.println("freeBoardId -> " + freeBoardId);
+//		FreeBoardDTO freeBoardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
+//		Map<String, Object> message = new HashMap<>();
+//		message.put("url", "boardDetail");
+//		dataRequest.setMetadata(true, message);
+//		dataRequest.setResponse("freeBoardDetail", freeBoardDetail);
+//		return new JSONDataView();
+//	}
 }

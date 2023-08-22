@@ -13,6 +13,20 @@
           <cl:datacolumn std:sid="d-column-5e44732a" name="freeBoardCommentContent"/>
           <cl:datacolumn std:sid="d-column-1e84a1cc" name="freeBoardCommentDate"/>
         </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="freeBoardCommentId">1</cl:datavalue>
+            <cl:datavalue columnname="memberName">memberName1</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentContent">freeBoardCommentContent1</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentDate">freeBoardCommentDate1</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="freeBoardCommentId">2</cl:datavalue>
+            <cl:datavalue columnname="memberName">memberName2</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentContent">freeBoardCommentContent2</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentDate">freeBoardCommentDate2</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
       </cl:dataset>
       <cl:dataset std:sid="d-set-572f7e75" id="freeBoardDetail">
         <cl:datacolumnlist>
@@ -22,9 +36,6 @@
           <cl:datacolumn std:sid="d-column-06a0acf2" name="freeBoardCreate" datatype="number"/>
           <cl:datacolumn std:sid="d-column-26658c8c" name="freeBoardViews" datatype="number"/>
           <cl:datacolumn std:sid="d-column-b6e50a8e" name="freeBoardContent"/>
-          <cl:datacolumn std:sid="d-column-823be5e3" name="freeBoardCommentId" datatype="number"/>
-          <cl:datacolumn std:sid="d-column-6442f7a9" name="freeBoardCommentContent"/>
-          <cl:datacolumn std:sid="d-column-60c5df38" name="freeBoardCommentDate" datatype="number"/>
           <cl:datacolumn std:sid="d-column-9e4da67a" name="freeBoardFileName"/>
         </cl:datacolumnlist>
       </cl:dataset>
@@ -47,16 +58,20 @@
     </cl:output>
     <cl:grid std:sid="grid-66ad97c6" id="commentGrd" datasetid="freeBoardComment">
       <cl:xylayoutdata std:sid="xyl-data-5e873ecb" top="652px" left="0px" width="1580px" height="288px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:gridcolumn std:sid="g-column-de7ff524"/>
-      <cl:gridcolumn std:sid="g-column-0828116d"/>
-      <cl:gridcolumn std:sid="g-column-3d6e2f6b"/>
-      <cl:gridcolumn std:sid="g-column-191677e6"/>
+      <cl:gridcolumn std:sid="g-column-de7ff524" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-0828116d" width="20px"/>
+      <cl:gridcolumn std:sid="g-column-3d6e2f6b" width="150px"/>
+      <cl:gridcolumn std:sid="g-column-191677e6" width="30px"/>
+      <cl:gridcolumn std:sid="g-column-ed0f2487" width="10px"/>
+      <cl:gridcolumn std:sid="g-column-21e84633" width="10px"/>
       <cl:gridheader std:sid="gh-band-f7189cda">
         <cl:gridrow std:sid="g-row-63205fee"/>
-        <cl:gridcell std:sid="gh-cell-320703f4" rowindex="0" colindex="0" targetcolumnname="freeBoardCommentId" sortable="false" filterable="false" text="freeBoardCommentId"/>
-        <cl:gridcell std:sid="gh-cell-da686de6" rowindex="0" colindex="1" targetcolumnname="memberName" sortable="false" filterable="false" text="memberName"/>
-        <cl:gridcell std:sid="gh-cell-93884ade" rowindex="0" colindex="2" targetcolumnname="freeBoardCommentContent" sortable="false" filterable="false" text="freeBoardCommentContent"/>
-        <cl:gridcell std:sid="gh-cell-e1788772" rowindex="0" colindex="3" targetcolumnname="freeBoardCommentDate" sortable="false" filterable="false" text="freeBoardCommentDate"/>
+        <cl:gridcell std:sid="gh-cell-320703f4" rowindex="0" colindex="0" targetcolumnname="freeBoardCommentId" sortable="false" filterable="false" text="번호"/>
+        <cl:gridcell std:sid="gh-cell-da686de6" rowindex="0" colindex="1" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-93884ade" rowindex="0" colindex="2" targetcolumnname="freeBoardCommentContent" sortable="false" filterable="false" text="내용"/>
+        <cl:gridcell std:sid="gh-cell-e1788772" rowindex="0" colindex="3" targetcolumnname="freeBoardCommentDate" sortable="false" filterable="false" text="등록일자"/>
+        <cl:gridcell std:sid="gh-cell-f2128c31" rowindex="0" colindex="4"/>
+        <cl:gridcell std:sid="gh-cell-6488e3e9" rowindex="0" colindex="5"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-3029487d">
         <cl:gridrow std:sid="g-row-a9287ab7"/>
@@ -64,6 +79,16 @@
         <cl:gridcell std:sid="gd-cell-85ccef42" rowindex="0" colindex="1" columnname="memberName"/>
         <cl:gridcell std:sid="gd-cell-e4789be6" rowindex="0" colindex="2" columnname="freeBoardCommentContent"/>
         <cl:gridcell std:sid="gd-cell-f6cd50e6" rowindex="0" colindex="3" columnname="freeBoardCommentDate"/>
+        <cl:gridcell std:sid="gd-cell-9b75f396" rowindex="0" colindex="4">
+          <cl:button std:sid="button-e2e03193" value="수정">
+            <cl:celldata std:sid="c-data-85e2a1df"/>
+          </cl:button>
+        </cl:gridcell>
+        <cl:gridcell std:sid="gd-cell-d49be01a" rowindex="0" colindex="5">
+          <cl:button std:sid="button-fc5a3ad6" value="삭제">
+            <cl:celldata std:sid="c-data-4f70f574"/>
+          </cl:button>
+        </cl:gridcell>
       </cl:griddetail>
     </cl:grid>
     <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">

@@ -27,12 +27,5 @@ public class RoomReservListRestController {
 	private final RoomService roomService;
 	private final RoomReservService roomReservService;
 	
-	//회의실 예약 리스트
-	@GetMapping
-	public View roomReservList(DataRequest dataRequest) {
-		List<RoomReservDTO> reservList = roomReservService.findReservList();
-		dataRequest.setResponse("reservList", reservList);
-		return new JSONDataView();
-	}
 
 }

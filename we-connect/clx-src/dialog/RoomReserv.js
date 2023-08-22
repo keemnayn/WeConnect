@@ -29,7 +29,6 @@ function onReservBtnClick(e) {
  */
 function onBodyInit(e) {
 	app.lookup("roomInfoSub").send();
-	//
 }
 
 /*
