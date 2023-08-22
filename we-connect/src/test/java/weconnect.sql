@@ -237,16 +237,32 @@ REFERENCES project(project_id);
 CREATE SEQUENCE attendance_seq
 START WITH 1
 INCREMENT BY 1;
+drop SEQUENCE attendance_seq
+drop table attendance
 
 CREATE TABLE attendance (
 	attendance_id NUMBER NOT NULL, /* 근태 번호 */
 	work_in_time TIMESTAMP NOT NULL, /* 출근시간 */
 	work_out_time TIMESTAMP, /* 퇴근시간 */
 	work_day DATE NOT NULL, /* 출근일 */
-	attendance_status VARCHAR2(20) NOT NULL CHECK (attendance_status IN ('출근', '퇴근', '지각', '결근')), /* 근태 상태 */
+	attendance_status VARCHAR2(20) NOT NULL CHECK (attendance_status IN ('정상', '지각', '결근')), /* 근태 상태 */
 	member_id NUMBER, /* 회원번호 */
 	CONSTRAINT FK_attendance_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
+
+--출근 insert
+INSERT INTO attendance (attendance_id, work_in_time, work_day, member_id)
+VALUES (attendance_seq.NEXTVAL, SYSTIMESTAMP, TRUNC(SYSDATE), 131);
+
+INSERT INTO attendance (attendance_id, work_in_time, work_day, member_id)
+VALUES (attendance_seq.NEXTVAL, TO_TIMESTAMP('2023-08-22 08:50:00', 'YYYY-MM-DD HH24:MI:SS'), TRUNC(SYSDATE), 131);
+
+--퇴근버튼 눌렀을 때 업데이트 
+UPDATE attendance
+SET work_out_time = SYSTIMESTAMP
+WHERE work_out_time IS NULL AND member_id = 131;
+
+select * from attendance;
 
 COMMENT ON TABLE attendance IS '근태';
 
