@@ -1,7 +1,9 @@
-select * from WECONNECT.FREE_BOARD_COMMENT;
+ select * from WECONNECT.FREE_BOARD_COMMENT;
 
 select * from free_board;
 
+
+ 
 /* 회원 */
 CREATE SEQUENCE member_seq
 START WITH 1
@@ -289,6 +291,10 @@ CREATE TABLE leave_request (
 	member_id NUMBER, /* 회원번호 */
 	CONSTRAINT FK_leave_request_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
+
+update leave_request
+set leave_request_status = '승인'
+where member_id =131;
 
 select * from member;
 ALTER TABLE leave_request
