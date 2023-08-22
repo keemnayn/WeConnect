@@ -180,3 +180,15 @@ function onPendingRejectSubSubmitSuccess(e) {
 	var pendingRejectSub = e.control;
 	app.lookup("pendingListSub").send();
 }
+
+/*
+ * 탭 폴더에서 selection-change 이벤트 발생 시 호출.
+ * Tab Item을 선택한 후에 발생하는 이벤트.
+ */
+function onTabFolderSelectionChange(e) {
+	var tabFolder = e.control;
+	app.lookup("memberListSub").send();
+	app.lookup("pendingListSub").send();
+	app.lookup("memberListGrd1").redraw();
+	app.lookup("memberListGrd2").redraw();
+}
