@@ -20,4 +20,6 @@ public interface ProposalService {
 	
 // 건의사항 검색
 	List<ProposalDTO> selectProposal(Map<String, String> searchParams);
+
+	
 }

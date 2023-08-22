@@ -1,7 +1,5 @@
 package com.arezip.weconnect.model.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +13,5 @@ public class ProposalDTO {
 	private String proposalContent;
 	private String proposalCreate;
 	private String proposalStatus;
+	private long memberId;
 }

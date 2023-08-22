@@ -37,6 +37,7 @@ public class ProposalMapperTest {
 		ProposalDTO proposalDTO = new ProposalDTO();
 		proposalDTO.setProposalTitle("매퍼 테스트 제목");
 		proposalDTO.setProposalContent("매퍼 테스트 내용");
+		proposalDTO.setMemberId(128);
 		int result = proposalMapper.insertProposal(proposalDTO);
 		log.info("result {}", result);
 	}
@@ -49,7 +50,9 @@ public class ProposalMapperTest {
 		proposalDTO.setProposalTitle("매퍼 테스트 제목 수정");
 		proposalDTO.setProposalContent("매퍼 테스트 내용 수정");
 		proposalDTO.setProposalStatus("처리중");
-		// int result = proposalMapper.updateProposal(proposalDTO);
+		proposalDTO.setMemberId(128);
+		int result = proposalMapper.updateProposal(proposalDTO);
+		
 		// assertNotEquals(0, result);
 	}
 

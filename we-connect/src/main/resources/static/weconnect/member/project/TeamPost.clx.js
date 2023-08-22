@@ -73,7 +73,7 @@
 			app.register(dataSet_2);
 			var submission_1 = new cpr.protocols.Submission("teamPostSub");
 			submission_1.method = "get";
-			submission_1.action = "member/teams/memberName";
+			submission_1.action = "member/teams";
 			submission_1.addResponseData(dataSet_1, false);
 			if(typeof onTeamPostSubSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onTeamPostSubSubmitSuccess);

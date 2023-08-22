@@ -35,11 +35,12 @@ public class ProposalServiceImpl implements ProposalService {
 		return proposalMapper.updateProposal(proposalDTO);
 	}
 
+// 건의사항 삭제
 	@Override
 	public int deleteProposal(ProposalDTO proposalDTO) {
 		return proposalMapper.deleteProposal(proposalDTO);
 	}
-
+// 건의사항 검색
 	@Override
 	public List<ProposalDTO> selectProposal(Map<String, String> searchParams) {
 		return proposalMapper.selectProposalBySearchCriteria(searchParams);

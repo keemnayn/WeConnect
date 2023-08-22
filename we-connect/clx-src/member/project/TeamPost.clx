@@ -33,7 +33,7 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams/memberName">
+      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams">
         <cl:listener std:sid="listener-5c19a34c" name="submit-success" handler="onTeamPostSubSubmitSuccess"/>
         <cl:responsedata dataid="teamPostList"/>
       </cl:submission>

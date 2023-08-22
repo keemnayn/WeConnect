@@ -12,6 +12,8 @@
           <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
           <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
           <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
+          <cl:datacolumn std:sid="d-column-5d935672" name="memberId"/>
+          <cl:datacolumn std:sid="d-column-ac96c3d8" name="proposalContent"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
@@ -41,13 +43,17 @@
         <cl:requestdata dataid="proposalList"/>
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
+      <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="proposalList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-dd250691">
     <cl:listener std:sid="listener-dc43e72e" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-2fb52cbb" id="proposalGrd" datasetid="proposalList">
-      <cl:listener std:sid="listener-449e111a" name="dblclick" handler="onProposalGrdDblclick"/>
+      <cl:listener std:sid="listener-449e111a" name="dblclick" handler="onProposalGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-077c59ca" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-3f56fdb5" width="20px"/>
       <cl:gridcolumn std:sid="g-column-8af67537"/>
@@ -73,11 +79,13 @@
     </cl:pageindexer>
     <cl:group std:sid="group-e89323ed">
       <cl:xylayoutdata std:sid="xyl-data-5f7b7b49" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
+        <cl:listener std:sid="listener-037457d5" name="search" handler="onSearchIpbSearch"/>
+        <cl:datamapbind property="value" datacontrolid="searchParam" columnname="searchText"/>
         <cl:xylayoutdata std:sid="xyl-data-5b7db7b3" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
       <cl:combobox std:sid="c-box-64b21162" id="searchStatusCmb">
-        <cl:datasetbind property="value" datacontrolid="search" columnname="status" rowindex="0"/>
+        <cl:datamapbind property="value" datacontrolid="searchParam" columnname="searchStatus"/>
         <cl:xylayoutdata std:sid="xyl-data-486da7f1" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
         <cl:itemset datasetid="search" label="status" value="status"/>
       </cl:combobox>
@@ -91,6 +99,8 @@
   </body>
   <std:studiosetting>
     <std:hruler/>
-    <std:vruler/>
+    <std:vruler>
+      <std:guide position="180"/>
+    </std:vruler>
   </std:studiosetting>
 </html>
