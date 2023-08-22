@@ -125,8 +125,8 @@
 			output_1.value = "공지사항 수정";
 			container.addChild(output_1, {
 				"top": "10px",
-				"right": "1070px",
-				"left": "10px",
+				"right": "1050px",
+				"left": "30px",
 				"height": "50px"
 			});
 			
@@ -161,7 +161,7 @@
 			inputBox_1.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
 				"top": "110px",
-				"left": "10px",
+				"right": "30px",
 				"width": "800px",
 				"height": "50px"
 			});
@@ -175,7 +175,7 @@
 				"top": "210px",
 				"right": "30px",
 				"bottom": "110px",
-				"left": "10px"
+				"left": "30px"
 			});
 			
 			var comboBox_1 = new cpr.controls.ComboBox("noticeCategoryCmb");
@@ -190,7 +190,7 @@
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
 				"top": "110px",
-				"right": "30px",
+				"left": "30px",
 				"width": "300px",
 				"height": "50px"
 			});
@@ -199,8 +199,8 @@
 			output_2.value = "공지번호 : ";
 			container.addChild(output_2, {
 				"top": "10px",
-				"right": "60px",
-				"left": "1150px",
+				"right": "80px",
+				"left": "1130px",
 				"height": "50px"
 			});
 			
@@ -210,8 +210,8 @@
 			output_3.bind("value").toDataMap(app.lookup("noticeUpdateParam"), "noticeId");
 			container.addChild(output_3, {
 				"top": "10px",
-				"right": "10px",
-				"left": "1220px",
+				"right": "30px",
+				"left": "1200px",
 				"height": "50px"
 			});
 			if(typeof onBodyLoad == "function"){

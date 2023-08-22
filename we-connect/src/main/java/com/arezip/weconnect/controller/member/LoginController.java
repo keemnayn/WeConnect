@@ -37,7 +37,7 @@ public class LoginController {
 	private static final long INVALID_LOGIN = 0;
 	private static final long NON_APPROVED_MEMBER = -1;
 
-	@PostMapping
+	@PostMapping("login")
 	public View login(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("loginParam");
 

@@ -39,7 +39,7 @@
   <body std:sid="body-dd8646b4">
     <cl:listener std:sid="listener-3ab81c13" name="init" handler="onBodyInit"/>
     <cl:output std:sid="output-fceb3975" value="공지사항 등록">
-      <cl:xylayoutdata std:sid="xyl-data-d9e9a87a" top="20px" right="1060px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-d9e9a87a" top="20px" right="1060px" left="30px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
     <cl:button std:sid="button-204368de" id="createBtn" style="text-align:center;" value="등록">
       <cl:listener std:sid="listener-4a641930" name="click" handler="onCreateBtnClick"/>
@@ -52,17 +52,17 @@
     <cl:inputbox std:sid="i-box-abd7800c" id="noticeTitleIpb" placeholder="제목">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeTitle"/>
       <cl:datamapcontext datacontrolid="noticeCreateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-2d4e307b" top="123px" right="20px" width="998px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-2d4e307b" top="110px" right="30px" width="800px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:textarea std:sid="t-area-8b47dfa8" id="noticeContentTxa" placeholder="내용">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeContent"/>
       <cl:datamapcontext datacontrolid="noticeCreateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-33e480df" top="220px" right="20px" bottom="100px" left="20px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-33e480df" top="220px" right="20px" bottom="110px" left="30px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:textarea>
     <cl:combobox std:sid="c-box-1a852d50" id="noticeCategoryCmb">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeCreateParam" columnname="noticeCategory"/>
       <cl:datamapcontext datacontrolid="noticeCreateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-f30b2fd9" top="123px" right="1066px" width="194px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-f30b2fd9" top="110px" left="30px" width="300px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:itemset datasetid="category" label="label" value="value"/>
     </cl:combobox>
     <cl:xylayout std:sid="xylayout-014465a9"/>
