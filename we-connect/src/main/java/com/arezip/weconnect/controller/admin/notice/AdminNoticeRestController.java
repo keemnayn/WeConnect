@@ -20,6 +20,8 @@ import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.protocol.data.ParameterRow;
 import com.cleopatra.spring.JSONDataView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +42,7 @@ public class AdminNoticeRestController {
 
 	// 공지사항 등록
 	@PostMapping
-	public View postNotice(DataRequest dataRequest) {
+	public View postNotice(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("noticeCreateParam");
 		if (param != null) {
 			String noticeTitle = param.getValue("noticeTitle");
@@ -49,7 +51,8 @@ public class AdminNoticeRestController {
 			log.info("noticeTitle {}", noticeTitle);
 			log.info("noticeContent {}", noticeContent);
 			log.info("noticeCategory {}", noticeCategory);
-			long memberId = 1;
+			HttpSession session = request.getSession();
+			Long memberId = (Long) session.getAttribute("memberId");
 			NoticeDTO noticeDTO = new NoticeDTO();
 			noticeDTO.setNoticeTitle(noticeTitle);
 			noticeDTO.setNoticeContent(noticeContent);
@@ -62,7 +65,7 @@ public class AdminNoticeRestController {
 
 	// 공지사항 수정
 	@PutMapping
-	public View updateNotice(DataRequest dataRequest) {
+	public View updateNotice(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("noticeUpdateParam");
 		if (param != null) {
 			Long noticeId = Long.parseLong(param.getValue("noticeId"));
@@ -73,7 +76,8 @@ public class AdminNoticeRestController {
 			log.info("noticeTitle {}", noticeTitle);
 			log.info("noticeContent {}", noticeContent);
 			log.info("noticeCategory {}", noticeCategory);
-			long memberId = 1;
+			HttpSession session = request.getSession();
+			Long memberId = (Long) session.getAttribute("memberId");
 			NoticeDTO noticeDTO = new NoticeDTO();
 			noticeDTO.setNoticeId(noticeId);
 			noticeDTO.setNoticeTitle(noticeTitle);

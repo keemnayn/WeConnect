@@ -40,7 +40,7 @@
   <body std:sid="body-87b8e1e1">
     <cl:listener std:sid="listener-9d0fbf46" name="load" handler="onBodyLoad"/>
     <cl:output std:sid="output-fceb3975" value="공지사항 수정">
-      <cl:xylayoutdata std:sid="xyl-data-af24a54f" top="10px" right="1070px" left="10px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-af24a54f" top="10px" right="1050px" left="30px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
     <cl:button std:sid="button-204368de" id="updateBtn" value="수정">
       <cl:listener std:sid="listener-7fa9601c" name="click" handler="onUpdateBtnClick"/>
@@ -53,26 +53,26 @@
     <cl:inputbox std:sid="i-box-abd7800c" id="noticeTitleIpb" placeholder="제목">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeUpdateParam" columnname="noticeTitle"/>
       <cl:datamapcontext datacontrolid="noticeUpdateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-ada5873f" top="110px" left="10px" width="800px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-ada5873f" top="110px" right="30px" width="800px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:textarea std:sid="t-area-8b47dfa8" id="noticeContentTxa" placeholder="내용">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeUpdateParam" columnname="noticeContent"/>
       <cl:datamapcontext datacontrolid="noticeUpdateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-0410ff14" top="210px" right="30px" bottom="110px" left="10px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-0410ff14" top="210px" right="30px" bottom="110px" left="30px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:textarea>
     <cl:combobox std:sid="c-box-1a852d50" id="noticeCategoryCmb">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeUpdateParam" columnname="noticeCategory"/>
       <cl:datamapcontext datacontrolid="noticeUpdateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-55e26353" top="110px" right="30px" width="300px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-55e26353" top="110px" left="30px" width="300px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:itemset datasetid="category" label="label" value="value"/>
     </cl:combobox>
     <cl:output std:sid="output-c3f93e7b" id="noticeIdTextOutput" value="공지번호 : ">
-      <cl:xylayoutdata std:sid="xyl-data-477c80a4" top="10px" right="60px" left="1150px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-477c80a4" top="10px" right="80px" left="1130px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
     <cl:output std:sid="output-66b9fadc" id="noticeIdOutput">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="noticeUpdateParam" columnname="noticeId"/>
       <cl:datamapcontext datacontrolid="noticeUpdateParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-7f0eb1de" top="10px" right="10px" left="1220px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-7f0eb1de" top="10px" right="30px" left="1200px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
     <cl:xylayout std:sid="xylayout-a6721c65"/>
   </body>

@@ -102,7 +102,7 @@
 			});
 			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("loginSub");
-			submission_1.action = "login";
+			submission_1.action = "login/login";
 			submission_1.addRequestData(dataMap_1);
 			if(typeof onLoginSubSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onLoginSubSubmitSuccess);

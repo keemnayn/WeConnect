@@ -114,7 +114,7 @@
 			container.addChild(output_1, {
 				"top": "20px",
 				"right": "1060px",
-				"left": "20px",
+				"left": "30px",
 				"height": "50px"
 			});
 			
@@ -154,9 +154,9 @@
 			inputBox_1.setBindContext(dataMapContext_1);
 			inputBox_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
-				"top": "123px",
-				"right": "20px",
-				"width": "998px",
+				"top": "110px",
+				"right": "30px",
+				"width": "800px",
 				"height": "50px"
 			});
 			
@@ -168,8 +168,8 @@
 			container.addChild(textArea_1, {
 				"top": "220px",
 				"right": "20px",
-				"bottom": "100px",
-				"left": "20px"
+				"bottom": "110px",
+				"left": "30px"
 			});
 			
 			var comboBox_1 = new cpr.controls.ComboBox("noticeCategoryCmb");
@@ -183,9 +183,9 @@
 				});
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
-				"top": "123px",
-				"right": "1066px",
-				"width": "194px",
+				"top": "110px",
+				"left": "30px",
+				"width": "300px",
 				"height": "50px"
 			});
 			if(typeof onBodyInit == "function"){

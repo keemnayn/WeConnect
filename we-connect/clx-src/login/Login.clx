@@ -12,7 +12,7 @@
           <cl:datacolumn std:sid="d-column-d29cff36" name="memberPassword" datatype="string"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:submission std:sid="submission-0d36f266" id="loginSub" action="login">
+      <cl:submission std:sid="submission-0d36f266" id="loginSub" action="login/login">
         <cl:listener std:sid="listener-4d894620" name="submit-success" handler="onLoginSubSubmitSuccess"/>
         <cl:listener std:sid="listener-253cc425" name="submit-error" handler="onLoginSubSubmitError"/>
         <cl:requestdata dataid="loginParam"/>
