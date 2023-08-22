@@ -1,7 +1,9 @@
-select * from WECONNECT.FREE_BOARD_COMMENT;
+ select * from WECONNECT.FREE_BOARD_COMMENT;
 
 select * from free_board;
 
+
+ 
 /* 회원 */
 CREATE SEQUENCE member_seq
 START WITH 1
@@ -30,6 +32,17 @@ select member_name from member where member_email='wqeqwere1'and member_password
 UPDATE member
 SET  LEAVE_COUNT= LEAVE_COUNT -3
 where member_name = '박애준1';
+
+
+UPDATE member
+SET leave_count = leave_count - 
+    (SELECT SUM(leave_request_end - leave_request_start + 1)
+     FROM leave_request
+     WHERE member_id = 
+           (SELECT member_id FROM member WHERE member_id = 131))
+WHERE member_id = 131;
+
+
 
 /*멤버 테이블 */
 select * from member;
@@ -261,6 +274,7 @@ ALTER TABLE attendance
 			attendance_id
 );
 
+
 /* 연차신청 */
 CREATE SEQUENCE leave_request_seq
 START WITH 1
@@ -277,6 +291,10 @@ CREATE TABLE leave_request (
 	member_id NUMBER, /* 회원번호 */
 	CONSTRAINT FK_leave_request_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
+
+update leave_request
+set leave_request_status = '승인'
+where member_id =131;
 
 select * from member;
 ALTER TABLE leave_request
