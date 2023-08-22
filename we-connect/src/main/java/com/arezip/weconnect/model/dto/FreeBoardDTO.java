@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data 
+@Data
 @AllArgsConstructor
-@NoArgsConstructor 
-public class FreeBoardDTO {  
-	private long freeBoardId; 
+@NoArgsConstructor
+public class FreeBoardDTO {
+	private long freeBoardId;
 	private String freeBoardTitle;
 	private String freeBoardContent;
 	private String freeBoardCreate;
@@ -16,4 +16,5 @@ public class FreeBoardDTO {
 	private long freeBoardViews;
 	private String memberName;
 	private long memberId;
+	private int freeBoardCommentCount;
 }

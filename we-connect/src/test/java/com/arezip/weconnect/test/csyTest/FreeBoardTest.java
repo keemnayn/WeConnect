@@ -46,8 +46,8 @@ public class FreeBoardTest {
 	//게시물 상세 조회
 	@Test
 	void getBoardDetail() {
-		long freeBoardId = 3;
-		FreeBoardDTO boardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
+		long freeBoardId = 5;
+		FreeBoardDTO boardDetail = freeBoardMapper.getFreeBoardDetail(freeBoardId);
 		log.info(boardDetail.toString());
 		assertNotNull(boardDetail);
 	}

@@ -47,4 +47,11 @@ public class LeaveRequest {
             log.info("리스트:{}", leaveRequest);
         }
     }
+	@Test
+	//테스트하는 곳에서
+	void update() {
+	    long memberId = 131;
+	    Object hi = leaveRequestService.updateLeaveCount(memberId);
+	    log.info("업데이트 성공:{}", hi); 
+	}
 }

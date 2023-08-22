@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.arezip.weconnect.mapper.admin.AdminProjectMapper">
+	<select id="getAllProjects"
+		resultType="com.arezip.weconnect.model.dto.ProjectDTO">
+		SELECT
+		p.PROJECT_ID AS projectId,
+		p.PROJECT_NAME AS projectName,
+		TO_CHAR(p.PROJECT_START, 'yyyy-mm-dd') AS projectStart,
+		TO_CHAR(p.PROJECT_END, 'yyyy-mm-dd') AS projectEnd,
+		COUNT(pm.MEMBER_ID) AS projectMemberCount
+		FROM
+		PROJECT p
+		LEFT JOIN
+		PROJECT_MEMBER pm ON p.PROJECT_ID = pm.PROJECT_ID
+		GROUP BY
+		p.PROJECT_ID,
+		p.PROJECT_NAME,
+		p.PROJECT_START,
+		p.PROJECT_END
+		ORDER BY
+		p.PROJECT_ID DESC
+	</select>
+
+</mapper>

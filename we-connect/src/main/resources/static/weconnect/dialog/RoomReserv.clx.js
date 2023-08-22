@@ -42,7 +42,6 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("roomInfoSub").send();
-				//
 			}
 
 			/*

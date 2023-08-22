@@ -10,4 +10,6 @@ public interface LeaveRequestService {
 
 	// 관리자 페이지 연차관리 조회
 	List<LeaveRequestDTO> leaveRequestData();
+	
+	int updateLeaveCount(long memberId);
 }

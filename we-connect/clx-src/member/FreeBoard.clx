@@ -49,20 +49,18 @@
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:listener std:sid="listener-97fda0e4" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-38750194" id="boardListGrd" datasetid="boardList">
-      <cl:listener std:sid="listener-ddb69501" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
-      <cl:listener std:sid="listener-fb67691f" name="cell-click" handler="onBoardListGrdCellClick"/>
-      <cl:listener std:sid="listener-ccca8f76" name="dblclick" handler="onBoardListGrdDblclick"/>
+      <cl:listener std:sid="listener-08c67cf7" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-61e98a7d" visible="false"/>
-      <cl:gridcolumn std:sid="g-column-e9b2ce68"/>
-      <cl:gridcolumn std:sid="g-column-c6b83768"/>
-      <cl:gridcolumn std:sid="g-column-bd15e783"/>
+      <cl:gridcolumn std:sid="g-column-e9b2ce68" width="130px"/>
+      <cl:gridcolumn std:sid="g-column-c6b83768" width="20px"/>
+      <cl:gridcolumn std:sid="g-column-bd15e783" width="20px"/>
       <cl:gridheader std:sid="gh-band-ac17de43">
         <cl:gridrow std:sid="g-row-874bd0de" height="50px"/>
         <cl:gridcell std:sid="gh-cell-9ec62119" rowindex="0" colindex="0" targetcolumnname="freeBoardId" sortable="false" filterable="false" text="freeBoardId"/>
-        <cl:gridcell std:sid="gh-cell-be71229b" rowindex="0" colindex="1" targetcolumnname="freeBoardTitle" sortable="false" filterable="false" text="freeBoardTitle"/>
-        <cl:gridcell std:sid="gh-cell-1864d4da" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="memberName"/>
-        <cl:gridcell std:sid="gh-cell-cbd8cb94" rowindex="0" colindex="3" targetcolumnname="freeBoardCreate" sortable="false" filterable="false" text="freeBoardCreate"/>
+        <cl:gridcell std:sid="gh-cell-be71229b" rowindex="0" colindex="1" targetcolumnname="freeBoardTitle" sortable="false" filterable="false" text="제목"/>
+        <cl:gridcell std:sid="gh-cell-1864d4da" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-cbd8cb94" rowindex="0" colindex="3" targetcolumnname="freeBoardCreate" sortable="false" filterable="false" text="작성일"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-6ff52329">
         <cl:gridrow std:sid="g-row-ed4de6c9" height="50px"/>

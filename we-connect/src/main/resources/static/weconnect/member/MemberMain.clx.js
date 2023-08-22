@@ -21,32 +21,40 @@
 
 			function clock() {
 				const clockTarget = app.lookup("user_clock");
-				console.log(clockTarget);
 				const user_day = app.lookup("day");
 				const date = new Date();
 				const hours = date.getHours();
-				const month = date.getMonth();
-				const clockDate = date.getDate();
-				const day = date.getDay();
 				const minutes = date.getMinutes();
 				const seconds = date.getSeconds();
+				const day = date.getDate();
+				const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+				
+				// 날짜와 월을 2자리 형식으로 포맷팅합니다.
+				const formattedDay = String(day).padStart(2, '0');
+				const formattedMonth = String(month).padStart(2, '0');
+				
 				const week = ['일', '월', '화', '수', '목', '금', '토'];
-				clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`
-				user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`
+				clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`;
+				user_day.value = `"${formattedMonth}${formattedDay}"`;
+				
 			}
-
+			 
 			/*
 			 * "출근" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
 			function onButtonClick(e) {
 				var button = e.control;
-				const go = app.lookup("go");
-				const date = new Date();
-				const hours = date.getHours();
-				const minutes = date.getMinutes();
-				const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-				go.value = `${hours}: ${formattedMinutes}`
+			   const go = app.lookup("go");
+			   const date = new Date();
+			   const hours = date.getHours();
+			   const minutes = date.getMinutes();
+			   const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+			   go.value = `"${hours}: ${formattedMinutes}"`
+			   if(confirm("출근 하시겠습니까")){
+			   let submission = app.lookup("Attendance1");
+			   submission.send();
+			   }
 			}
 
 			/*
@@ -60,7 +68,7 @@
 				const hours = date.getHours();
 				const minutes = date.getMinutes();
 				const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-				back.value = `${hours}: ${formattedMinutes}`
+				back.value = `"${hours}: ${formattedMinutes}""`
 				back.redraw();
 			}
 
@@ -79,10 +87,29 @@
 			 */
 			function onBodyBeforeUnload(e){
 				clearInterval(intervalID);
+			}
+			/*
+			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
+			 * 통신 중 문제가 생기면 발생합니다.
+			 */
+			function onAttendance1SubmitError(e){
+				var attendance1 = e.control;
+				var submission = app.lookup("Attendance1");
+				let error = submission.getMetadata("error");
+				alert(error);
 			};
 			// End - User Script
 			
 			// Header
+			var submission_1 = new cpr.protocols.Submission("Attendance1");
+			submission_1.action = "member/attendance";
+			if(typeof onAttendance1SubmitSuccess2 == "function") {
+				submission_1.addEventListener("submit-success", onAttendance1SubmitSuccess2);
+			}
+			if(typeof onAttendance1SubmitError == "function") {
+				submission_1.addEventListener("submit-error", onAttendance1SubmitError);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -255,7 +282,6 @@
 					"height": "47px"
 				});
 				var hTMLSnippet_9 = new cpr.controls.HTMLSnippet("day");
-				hTMLSnippet_9.value = "<div id=\"day\">요일<\/div>";
 				hTMLSnippet_9.style.css({
 					"color" : "#8A8989",
 					"font-size" : "16px"
@@ -294,10 +320,17 @@
 					"height": "20px"
 				});
 				var hTMLSnippet_13 = new cpr.controls.HTMLSnippet("go");
-				hTMLSnippet_13.value = "<span>00:00<\/span>";
 				container.addChild(hTMLSnippet_13, {
 					"top": "194px",
 					"left": "54px",
+					"width": "100px",
+					"height": "20px"
+				});
+				var output_1 = new cpr.controls.Output();
+				output_1.visible = false;
+				container.addChild(output_1, {
+					"top": "66px",
+					"left": "270px",
 					"width": "100px",
 					"height": "20px"
 				});

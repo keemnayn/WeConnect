@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.arezip.weconnect.mapper.admin.AdminFreeBoardMapper">
+	<select id="getAllFreeBoards"
+		resultType="com.arezip.weconnect.model.dto.FreeBoardDTO">
+		SELECT
+		fb.FREE_BOARD_ID AS freeBoardId,
+		fb.FREE_BOARD_TITLE
+		AS freeBoardTitle,
+		fb.FREE_BOARD_CONTENT AS freeBoardContent,
+		m.MEMBER_NAME AS memberName,
+		TO_CHAR(fb.FREE_BOARD_CREATE,
+		'yyyy-mm-dd') AS freeBoardCreate,
+		coalesce(commentData.freeBoardCommentCount, 0) AS
+		freeBoardCommentCount
+		FROM
+		FREE_BOARD fb
+		JOIN
+		MEMBER m ON fb.MEMBER_ID =
+		m.MEMBER_ID
+		LEFT JOIN (
+		SELECT
+		FREE_BOARD_ID,
+		COUNT(FREE_BOARD_COMMENT_ID) AS freeBoardCommentCount
+		FROM
+		FREE_BOARD_COMMENT
+		GROUP BY
+		FREE_BOARD_ID
+		) commentData ON
+		fb.FREE_BOARD_ID = commentData.FREE_BOARD_ID
+		ORDER BY fb.FREE_BOARD_ID
+		DESC
+	</select>
+	<select id="searchFreeBoardList"
+		resultType="com.arezip.weconnect.model.dto.FreeBoardDTO"
+		parameterType="java.util.Map">
+		SELECT
+		fb.FREE_BOARD_ID AS freeBoardId,
+		fb.FREE_BOARD_TITLE AS
+		freeBoardTitle,
+		fb.FREE_BOARD_CONTENT AS freeBoardContent,
+		m.MEMBER_NAME AS memberName,
+		TO_CHAR(fb.FREE_BOARD_CREATE,
+		'yyyy-mm-dd') AS freeBoardCreate,
+		coalesce(commentData.freeBoardCommentCount, 0) AS
+		freeBoardCommentCount
+		FROM
+		FREE_BOARD fb
+		JOIN
+		MEMBER m ON fb.MEMBER_ID =
+		m.MEMBER_ID
+		LEFT JOIN (
+		SELECT
+		FREE_BOARD_ID,
+		COUNT(FREE_BOARD_COMMENT_ID) AS freeBoardCommentCount
+		FROM
+		FREE_BOARD_COMMENT
+		GROUP BY
+		FREE_BOARD_ID
+		) commentData ON
+		fb.FREE_BOARD_ID = commentData.FREE_BOARD_ID
+		WHERE
+		1=1
+		<choose>
+			<when test="searchType == 'all'">
+				AND (fb.FREE_BOARD_TITLE LIKE '%' || #{searchText} ||
+				'%'
+				OR m.MEMBER_NAME LIKE '%' || #{searchText} || '%')
+			</when>
+			<when test="searchType == 'title'">
+				AND fb.FREE_BOARD_TITLE LIKE '%' || #{searchText} ||
+				'%'
+			</when>
+			<when test="searchType == 'writer'">
+				AND m.MEMBER_NAME LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+		ORDER BY fb.FREE_BOARD_ID DESC
+	</select>
+	<delete id="deleteFreeBoards"
+		parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
+		DELETE FROM FREE_BOARD
+		WHERE
+		FREE_BOARD_ID = #{freeBoardId}
+	</delete>
+</mapper>

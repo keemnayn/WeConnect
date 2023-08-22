@@ -27,7 +27,10 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 		// TODO 관리자 페이지 연차 조회 
 		return leaveRequestMapper.leaveRequestData();
 	}
-		
-	
-	
+
+	@Override
+	public int updateLeaveCount(long memberId) {
+		// TODO 연차 카운트 차감 
+		return leaveRequestMapper.updateLeaveCount(memberId);
+	}
 }

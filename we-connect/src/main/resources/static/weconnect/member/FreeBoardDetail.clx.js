@@ -62,7 +62,7 @@
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("freeBoardComment");
 			dataSet_1.parseData({
-				"columns" : [
+				"columns": [
 					{
 						"name": "freeBoardCommentId",
 						"dataType": "number"
@@ -70,6 +70,10 @@
 					{"name": "memberName"},
 					{"name": "freeBoardCommentContent"},
 					{"name": "freeBoardCommentDate"}
+				],
+				"rows": [
+					{"freeBoardCommentId": "1", "memberName": "memberName1", "freeBoardCommentContent": "freeBoardCommentContent1", "freeBoardCommentDate": "freeBoardCommentDate1"},
+					{"freeBoardCommentId": "2", "memberName": "memberName2", "freeBoardCommentContent": "freeBoardCommentContent2", "freeBoardCommentDate": "freeBoardCommentDate2"}
 				]
 			});
 			app.register(dataSet_1);
@@ -92,15 +96,6 @@
 						"dataType": "number"
 					},
 					{"name": "freeBoardContent"},
-					{
-						"name": "freeBoardCommentId",
-						"dataType": "number"
-					},
-					{"name": "freeBoardCommentContent"},
-					{
-						"name": "freeBoardCommentDate",
-						"dataType": "number"
-					},
 					{"name": "freeBoardFileName"}
 				]
 			});
@@ -149,10 +144,15 @@
 			grid_1.init({
 				"dataSet": app.lookup("freeBoardComment"),
 				"columns": [
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"}
+					{
+						"width": "100px",
+						"visible": false
+					},
+					{"width": "20px"},
+					{"width": "150px"},
+					{"width": "30px"},
+					{"width": "10px"},
+					{"width": "10px"}
 				],
 				"header": {
 					"rows": [{"height": "24px"}],
@@ -163,7 +163,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardCommentId";
-								cell.text = "freeBoardCommentId";
+								cell.text = "번호";
 							}
 						},
 						{
@@ -172,7 +172,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "memberName";
-								cell.text = "memberName";
+								cell.text = "작성자";
 							}
 						},
 						{
@@ -181,7 +181,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardCommentContent";
-								cell.text = "freeBoardCommentContent";
+								cell.text = "내용";
 							}
 						},
 						{
@@ -190,7 +190,17 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "freeBoardCommentDate";
-								cell.text = "freeBoardCommentDate";
+								cell.text = "등록일자";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 4},
+							"configurator": function(cell){
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 5},
+							"configurator": function(cell){
 							}
 						}
 					]
@@ -221,6 +231,28 @@
 							"configurator": function(cell){
 								cell.columnName = "freeBoardCommentDate";
 							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 4},
+							"configurator": function(cell){
+								cell.control = (function(){
+									var button_1 = new cpr.controls.Button();
+									button_1.value = "수정";
+									return button_1;
+								})();
+								cell.controlConstraint = {};
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 5},
+							"configurator": function(cell){
+								cell.control = (function(){
+									var button_2 = new cpr.controls.Button();
+									button_2.value = "삭제";
+									return button_2;
+								})();
+								cell.controlConstraint = {};
+							}
 						}
 					]
 				}
@@ -241,9 +273,9 @@
 				"height": "100px"
 			});
 			
-			var button_1 = new cpr.controls.Button("commentBtn");
-			button_1.value = "등록";
-			container.addChild(button_1, {
+			var button_3 = new cpr.controls.Button("commentBtn");
+			button_3.value = "등록";
+			container.addChild(button_3, {
 				"top": "542px",
 				"left": "1479px",
 				"width": "100px",
