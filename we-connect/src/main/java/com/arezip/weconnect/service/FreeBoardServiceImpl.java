@@ -33,8 +33,23 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardCommentDTO> getFreeBoardDetailComment(long freeBoardId) {
-		return freeBoardMapper.getFreeBoardDetailComment(freeBoardId);
+	public List<FreeBoardCommentDTO> getFreeBoardComment(long freeBoardId) {
+		return freeBoardMapper.getFreeBoardComment(freeBoardId);
+	}
+
+	@Override
+	public int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
+		return freeBoardMapper.insertFreeBoardComment(freeBoardCommentDTO);
+	}
+
+	@Override
+	public int updateFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
+		return freeBoardMapper.updateFreeBoardComment(freeBoardCommentDTO);
+	}
+
+	@Override
+	public int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
+		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentDTO);
 	}
 
 }

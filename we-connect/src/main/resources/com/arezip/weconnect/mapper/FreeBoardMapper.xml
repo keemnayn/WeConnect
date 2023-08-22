@@ -9,6 +9,7 @@
 		freeBoardCreate
 		from free_board f join member m
 		on f.member_id = m.member_id
+		order by free_board_id desc 
 	</select>
 	<!-- 자유게시판 상세 페이지 조회-->
 	<select id="getFreeBoardDetail" resultType="com.arezip.weconnect.model.dto.FreeBoardDTO">
@@ -24,14 +25,15 @@
 		WHERE f.free_board_id = #{freeBoardId}
 	</select>
 	<!-- 자유게시판 댓글 조회 -->
-	<select id="getFreeBoardDetailComment" resultType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+	<select id="getFreeBoardComment" resultType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		SELECT f.free_board_id, fc.free_board_comment_id,
 		fc.free_board_comment_content,
-		to_char( fc.free_board_comment_date,'YYYY-MM-DD') as freeBoardCommentDate
+		to_char( fc.free_board_comment_date,'YYYY-MM-DD HH24:MI') as freeBoardCommentDate
 		,m.member_name
 		FROM free_board f JOIN member m ON f.member_id = m.member_id
 		JOIN free_board_comment fc ON f.free_board_id = fc.free_board_id
 		WHERE f.free_board_id = #{freeBoardId}
+		order by free_board_comment_id desc 
 	</select>
 	<!-- 자유게시판 글 등록 -->
 	<insert id="insertFreeBoard" parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
@@ -39,8 +41,17 @@
 		free_board_content, free_board_file_name, member_id)
 		VALUES (free_board_seq.nextval, #{freeBoardTitle}, #{freeBoardContent},
 		<choose>
+			<!-- 첨부 파일이 null이 아닌 경우 -->
 			<when test="freeBoardFileName != null"> #{freeBoardFileName} </when>
+			<!-- 첨부 파일이 null인 경우 -->
 			<otherwise> NULL </otherwise>
 		</choose>, #{memberId})
 	</insert>
+	<insert id="insertFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		insert into free_board_comment(free_board_comment_id,free_board_comment_content,member_id,free_board_id)
+		values(free_board_comment_seq.nextval,#{freeBoardCommentContent},#{memberId},#{freeBoardId})
+	</insert>
+	<delete id="deleteFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		delete from free_board_comment where free_board_comment_id = #{freeBoardCommentId}
+	</delete>
 </mapper>

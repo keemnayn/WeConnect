@@ -55,8 +55,26 @@ public class FreeBoardTest {
 	@Test
 	void getBoardDetailComment() {
 		long freeBoardId = 5;
-		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardDetailComment(freeBoardId);
+		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardComment(freeBoardId);
 		boardDetail.forEach(comment -> log.info(comment.toString()));
 		assertNotNull(boardDetail);
+	}
+	//댓글 등록
+	@Test
+	void insertComment() {
+		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
+		freeBoardCommentDTO.setFreeBoardCommentContent("ServiceTest");
+		freeBoardCommentDTO.setMemberId(24);
+		freeBoardCommentDTO.setFreeBoardId(61);
+		int result = freeBoardService.insertFreeBoardComment(freeBoardCommentDTO);
+		assertNotEquals(0, result);
+	}
+	//댓글 삭제 
+	@Test
+	void deleteComment() {
+		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
+		freeBoardCommentDTO.setFreeBoardCommentId(42);
+		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
+		assertNotEquals(0, result);
 	}
 }

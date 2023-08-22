@@ -41,6 +41,25 @@
 				app.lookup("memberName").redraw();
 				app.lookup("freeBoardViews").redraw();
 				app.lookup("freeBoardCreate").redraw();
+			}
+
+			/*
+			 * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCommentBtnClick(e){
+				var commentBtn = e.control;
+				app.lookup("commentParamSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onCommentParamSubSubmitSuccess(e){
+				var commentParamSub = e.control;
+				alert("댓글 등록 완료");
+				app.close();
 			};
 			// End - User Script
 			
@@ -90,6 +109,18 @@
 				]
 			});
 			app.register(dataMap_2);
+			
+			var dataMap_3 = new cpr.data.DataMap("commentInsertParam");
+			dataMap_3.parseData({
+				"columns" : [
+					{"name": "freeBoardCommentContent"},
+					{
+						"name": "freeBoardId",
+						"dataType": "number"
+					}
+				]
+			});
+			app.register(dataMap_3);
 			var submission_1 = new cpr.protocols.Submission("boardDetailSub");
 			submission_1.method = "get";
 			submission_1.action = "member/boards/detail";
@@ -105,6 +136,15 @@
 			submission_2.action = "member/boards";
 			submission_2.addRequestData(dataMap_1);
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("commentParamSub");
+			submission_3.action = "member/boards/comments";
+			submission_3.addRequestData(dataMap_3);
+			submission_3.addRequestData(dataMap_1);
+			if(typeof onCommentParamSubSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onCommentParamSubSubmitSuccess);
+			}
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -143,6 +183,9 @@
 			
 			var inputBox_1 = new cpr.controls.InputBox("commentIpb");
 			inputBox_1.placeholder = "댓글을 입력해주세요.";
+			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("commentInsertParam"));
+			inputBox_1.setBindContext(dataMapContext_1);
+			inputBox_1.bind("value").toDataMap(app.lookup("commentInsertParam"), "freeBoardCommentContent");
 			container.addChild(inputBox_1, {
 				"top": "440px",
 				"right": "110px",
@@ -152,6 +195,9 @@
 			
 			var button_1 = new cpr.controls.Button("commentBtn");
 			button_1.value = "등록";
+			if(typeof onCommentBtnClick == "function") {
+				button_1.addEventListener("click", onCommentBtnClick);
+			}
 			container.addChild(button_1, {
 				"top": "440px",
 				"right": "10px",
@@ -333,8 +379,8 @@
 					"rowIndex": 0
 				});
 				var output_9 = new cpr.controls.Output("freeBoardId");
-				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("detailBoardParam"));
-				output_9.setBindContext(dataMapContext_1);
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("detailBoardParam"));
+				output_9.setBindContext(dataMapContext_2);
 				output_9.bind("value").toDataMap(app.lookup("detailBoardParam"), "freeBoardId");
 				container.addChild(output_9, {
 					"colIndex": 0,

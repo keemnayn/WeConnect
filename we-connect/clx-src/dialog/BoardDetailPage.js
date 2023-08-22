@@ -29,3 +29,22 @@ function onBoardDetailSubSubmitSuccess(e){
 	app.lookup("freeBoardViews").redraw();
 	app.lookup("freeBoardCreate").redraw();
 }
+
+/*
+ * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onCommentBtnClick(e){
+	var commentBtn = e.control;
+	app.lookup("commentParamSub").send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onCommentParamSubSubmitSuccess(e){
+	var commentParamSub = e.control;
+	alert("댓글 등록 완료");
+	app.close();
+}
