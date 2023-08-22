@@ -22,64 +22,37 @@
 			 * 그리드에서 selection-change 이벤트 발생 시 호출.
 			 * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
 			 */
-			function onGrd1SelectionChange(e){
+			function onGrd1SelectionChange(e) {
 				var grd1 = e.control;
 				
-			};
+			}
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				app.lookup("attendanceListSub").send();
+			}
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("attendanceList");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "name"},
-					{"name": "grade"},
-					{"name": "department"},
-					{"name": "attendance"},
-					{"name": "leaveWork"},
-					{"name": "state"}
+					{
+						"name": "attendanceId",
+						"dataType": "number"
+					},
+					{"name": "memberName"},
+					{"name": "position"},
+					{"name": "departmentName"},
+					{"name": "workDay"},
+					{"name": "workInTime"},
+					{"name": "workOutTime"},
+					{"name": "attendanceStatus"}
 				],
-				"rows": [
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "18:03", "state": "정상"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "09:10", "leaveWork": "18:03", "state": "지각"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "attendance": "08:56", "leaveWork": "14:20", "state": "조퇴"}
-				]
+				"rows": []
 			});
 			app.register(dataSet_1);
 			
@@ -95,6 +68,11 @@
 				]
 			});
 			app.register(dataSet_2);
+			var submission_1 = new cpr.protocols.Submission("attendanceListSub");
+			submission_1.method = "get";
+			submission_1.action = "admin/attendances";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -125,12 +103,17 @@
 					grid_1.init({
 						"dataSet": app.lookup("attendanceList"),
 						"columns": [
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{"width": "75px"},
+							{"width": "75px"},
+							{"width": "75px"},
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"}
+							{"width": "75px"}
 						],
 						"header": {
 							"rows": [{"height": "50px"}],
@@ -140,8 +123,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "name";
-										cell.text = "이름";
+										cell.targetColumnName = "attendanceId";
+										cell.text = "attendanceId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -152,8 +135,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "grade";
-										cell.text = "직급";
+										cell.targetColumnName = "memberName";
+										cell.text = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -164,8 +147,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "department";
-										cell.text = "부서";
+										cell.targetColumnName = "position";
+										cell.text = "position";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -176,8 +159,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "attendance";
-										cell.text = "출근";
+										cell.targetColumnName = "departmentName";
+										cell.text = "departmentName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -188,8 +171,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "leaveWork";
-										cell.text = "퇴근";
+										cell.targetColumnName = "workDay";
+										cell.text = "workDay";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -200,8 +183,32 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "state";
-										cell.text = "상태";
+										cell.targetColumnName = "workInTime";
+										cell.text = "workInTime";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 6},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "workOutTime";
+										cell.text = "workOutTime";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "attendanceStatus";
+										cell.text = "attendanceStatus";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -215,7 +222,7 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
-										cell.columnName = "name";
+										cell.columnName = "attendanceId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -224,16 +231,15 @@
 											output_1.style.css({
 												"text-align" : "center"
 											});
-											output_1.bind("value").toDataColumn("name");
+											output_1.bind("value").toDataColumn("attendanceId");
 											return output_1;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "grade";
+										cell.columnName = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -242,16 +248,15 @@
 											output_2.style.css({
 												"text-align" : "center"
 											});
-											output_2.bind("value").toDataColumn("grade");
+											output_2.bind("value").toDataColumn("memberName");
 											return output_2;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "department";
+										cell.columnName = "position";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -260,16 +265,15 @@
 											output_3.style.css({
 												"text-align" : "center"
 											});
-											output_3.bind("value").toDataColumn("department");
+											output_3.bind("value").toDataColumn("position");
 											return output_3;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "attendance";
+										cell.columnName = "departmentName";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -278,16 +282,15 @@
 											output_4.style.css({
 												"text-align" : "center"
 											});
-											output_4.bind("value").toDataColumn("attendance");
+											output_4.bind("value").toDataColumn("departmentName");
 											return output_4;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "leaveWork";
+										cell.columnName = "workDay";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -296,16 +299,15 @@
 											output_5.style.css({
 												"text-align" : "center"
 											});
-											output_5.bind("value").toDataColumn("leaveWork");
+											output_5.bind("value").toDataColumn("workDay");
 											return output_5;
 										})();
-										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
-										cell.columnName = "state";
+										cell.columnName = "workInTime";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -314,10 +316,43 @@
 											output_6.style.css({
 												"text-align" : "center"
 											});
-											output_6.bind("value").toDataColumn("state");
+											output_6.bind("value").toDataColumn("workInTime");
 											return output_6;
 										})();
-										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 6},
+									"configurator": function(cell){
+										cell.columnName = "workOutTime";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_7 = new cpr.controls.Output();
+											output_7.style.css({
+												"text-align" : "center"
+											});
+											output_7.bind("value").toDataColumn("workOutTime");
+											return output_7;
+										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.columnName = "attendanceStatus";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_8 = new cpr.controls.Output();
+											output_8.style.css({
+												"text-align" : "center"
+											});
+											output_8.bind("value").toDataColumn("attendanceStatus");
+											return output_8;
+										})();
 									}
 								}
 							]
@@ -342,14 +377,14 @@
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "300px",
+						"right": "310px",
 						"width": "100px",
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "0px",
+						"right": "10px",
 						"width": "280px",
 						"height": "30px"
 					});
@@ -365,6 +400,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminAttendance";
