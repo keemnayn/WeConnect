@@ -18,15 +18,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
- 
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
 public class IndexController {
 	private final MemberService memberService;
- 
+
 	@RequestMapping
-	public View index() {
+	public View index(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			return new UIView("weconnect/login/Login.clx");
+		}
 		return new UIView("weconnect/member/Member.clx");
 	}
 
@@ -60,15 +64,15 @@ public class IndexController {
 		}
 
 		return new JSONDataView();
-	} 
+	}
 
 	@RequestMapping("weconnect/admin/dashboard")
 	public View admin() {
 		return new UIView("weconnect/admin/Admin.clx");
-	} 
+	}
 
 	@RequestMapping("weconnect/register")
-	public View register() {
+	public View register(HttpServletRequest request) {
 		return new UIView("weconnect/register/Register.clx");
 	}
 }
