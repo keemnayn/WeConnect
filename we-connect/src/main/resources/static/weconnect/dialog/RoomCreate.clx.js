@@ -16,10 +16,50 @@
 			 * Created at 2023. 8. 23. 오후 7:48:11.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCancelBtnClick(e){
+				var cancelBtn = e.control;
+				app.close();
+			}
+
+			/*
+			 * "등록" 버튼(reservBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onReservBtnClick(e){
+				var reservBtn = e.control;
+				app.lookup("roomInfoSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onRoomInfoSubSubmitSuccess(e){
+				var roomInfoSub = e.control;
+				alert("회의실 등록을 완료 했습니다.");
+				app.close();
+			};
 			// End - User Script
 			
 			// Header
+			var dataMap_1 = new cpr.data.DataMap("roomInfoParam");
+			dataMap_1.parseData({
+				"columns" : [{"name": "roomName"}]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("roomInfoSub");
+			submission_1.action = "admin/room-reserv";
+			submission_1.addRequestData(dataMap_1);
+			if(typeof onRoomInfoSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onRoomInfoSubSubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -39,6 +79,9 @@
 			// UI Configuration
 			var button_1 = new cpr.controls.Button("reservBtn");
 			button_1.value = "등록";
+			if(typeof onReservBtnClick == "function") {
+				button_1.addEventListener("click", onReservBtnClick);
+			}
 			container.addChild(button_1, {
 				"right": "350px",
 				"bottom": "40px",
@@ -48,6 +91,9 @@
 			
 			var button_2 = new cpr.controls.Button("cancelBtn");
 			button_2.value = "취소";
+			if(typeof onCancelBtnClick == "function") {
+				button_2.addEventListener("click", onCancelBtnClick);
+			}
 			container.addChild(button_2, {
 				"right": "100px",
 				"bottom": "40px",
@@ -64,11 +110,14 @@
 				"height": "50px"
 			});
 			
-			var inputBox_1 = new cpr.controls.InputBox("ipb1");
+			var inputBox_1 = new cpr.controls.InputBox("roomNameIpb");
+			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("roomInfoParam"));
+			inputBox_1.setBindContext(dataMapContext_1);
+			inputBox_1.bind("value").toDataMap(app.lookup("roomInfoParam"), "roomName");
 			container.addChild(inputBox_1, {
 				"top": "150px",
-				"left": "110px",
-				"width": "480px",
+				"right": "10px",
+				"left": "130px",
 				"height": "50px"
 			});
 			
@@ -80,7 +129,7 @@
 			container.addChild(output_2, {
 				"top": "150px",
 				"left": "10px",
-				"width": "100px",
+				"width": "120px",
 				"height": "50px"
 			});
 		}
