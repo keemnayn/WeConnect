@@ -9,8 +9,10 @@ import com.arezip.weconnect.mapper.admin.AdminNoticeMapper;
 import com.arezip.weconnect.model.dto.NoticeDTO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class AdminNoticeServiceImpl implements AdminNoticeService {
 	private final AdminNoticeMapper adminNoticeMapper;
