@@ -2,7 +2,9 @@ package com.arezip.weconnect.test.admin.attendance;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,17 @@ public class AdminAttendanceServiceTest {
 	@Test
 	void selectAllAttendanceTest() {
 		List<AttendanceDTO> list = adminAttendanceService.getAllAttendance();
+		list.forEach(attendances -> log.info(attendances.toString()));
+		assertNotNull(list);
+	}
+
+//	근태 검색
+	@Test
+	void searchAttendanceByCriteriaTest() {
+		Map<String, String> searchParams = new HashMap<>();
+		searchParams.put("searchType", "all");
+		searchParams.put("searchText", "지각");
+		List<AttendanceDTO> list = adminAttendanceService.searchAttendanceByCriteria(searchParams);
 		list.forEach(attendances -> log.info(attendances.toString()));
 		assertNotNull(list);
 	}
