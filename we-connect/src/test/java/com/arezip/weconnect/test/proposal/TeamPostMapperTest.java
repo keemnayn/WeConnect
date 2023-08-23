@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.member;
+package com.arezip.weconnect.test.proposal;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

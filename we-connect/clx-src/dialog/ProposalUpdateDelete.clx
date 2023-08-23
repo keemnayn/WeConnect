@@ -38,13 +38,6 @@
           <cl:datacolumn std:sid="d-column-957fa7c7" name="proposalId"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:datamap std:sid="d-map-fa2dd86b" id="proposalUpdateDeleteParam2">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-c6c9c26b" name="proposalTitle"/>
-          <cl:datacolumn std:sid="d-column-04a7a372" name="proposalContent"/>
-          <cl:datacolumn std:sid="d-column-6662ef60" name="proposalId" datatype="number"/>
-        </cl:datacolumnlist>
-      </cl:datamap>
       <cl:submission std:sid="submission-c219b33d" id="proposalUpdateSub" method="put" action="member/proposals">
         <cl:listener std:sid="listener-9e2e3c10" name="submit-success" handler="onProposalUpdateSubSubmitSuccess"/>
         <cl:requestdata dataid="proposalUpdateDeleteParam"/>

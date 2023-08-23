@@ -69,7 +69,7 @@
             <cl:datavalue columnname="value"><![CDATA[일정]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/member/calender.png]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[프로젝트]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[project/Calendar1]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[member/project/Calendar1]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[워크보드]]></cl:datavalue>

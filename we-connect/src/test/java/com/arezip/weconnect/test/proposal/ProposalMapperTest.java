@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.member;
+package com.arezip.weconnect.test.proposal;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,18 +24,13 @@ public class ProposalMapperTest {
 	void selectAllProposalsTest() {
 		List<ProposalDTO> list = proposalMapper.selectAllProposals();
 		list.forEach(proposal -> log.info(proposal.toString()));
-		/*
-		 * void getListTest() {
-		 * List<FreeBoardDTO> list = freeBoardMapper.getFreeBoardList();
-		 * list.forEach(freeBoard -> log.info(freeBoard.toString())); assertNotNull(list); }
-		 */
 	}
 
 // 건의사항 추가 mapper
 	@Test
 	void insertProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalTitle("매퍼 테스트 제목");
+		proposalDTO.setProposalTitle("매퍼 테스트");
 		proposalDTO.setProposalContent("매퍼 테스트 내용");
 		proposalDTO.setMemberId(128);
 		int result = proposalMapper.insertProposal(proposalDTO);
@@ -62,7 +57,7 @@ public class ProposalMapperTest {
 		proposalDTO.setProposalId(8);
 		proposalDTO.setMemberId(141);
 		int result = proposalMapper.deleteProposal(proposalDTO);
-		// log.info("result {}", result);
+		log.info("result {}", result);
 		// assertNotEquals(0, result);
 	}
 

@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.member;
+package com.arezip.weconnect.test.proposal;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +32,8 @@ public class ProposalServiceTest {
 	@Transactional // 테스트 이후 롤백을 위해
 	void addProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalContent("매퍼 테스트 제목");
-		proposalDTO.setProposalContent("매퍼 테스트 내용");
+		proposalDTO.setProposalContent("서비스 테스트 제목");
+		proposalDTO.setProposalContent("서비스 테스트 내용");
 		proposalDTO.setProposalStatus("처리중");
 		// int result = proposalService.addProposal(proposalDTO);
 		// assertNotEquals(0, result);
