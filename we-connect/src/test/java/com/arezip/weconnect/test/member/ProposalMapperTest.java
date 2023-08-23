@@ -47,12 +47,11 @@ public class ProposalMapperTest {
 	void updateProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
 		proposalDTO.setProposalId(1);
-		proposalDTO.setProposalTitle("매퍼 테스트 제목 수정");
+		proposalDTO.setProposalTitle("매퍼 테스트 제목 수정수서");
 		proposalDTO.setProposalContent("매퍼 테스트 내용 수정");
-		proposalDTO.setProposalStatus("처리중");
 		proposalDTO.setMemberId(128);
 		int result = proposalMapper.updateProposal(proposalDTO);
-		
+		log.info("result {}", result);
 		// assertNotEquals(0, result);
 	}
 
@@ -60,8 +59,10 @@ public class ProposalMapperTest {
 	@Test
 	void deleteProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalId(2);
-		// int result = proposalMapper.deleteProposal(proposalDTO);
+		proposalDTO.setProposalId(8);
+		proposalDTO.setMemberId(141);
+		int result = proposalMapper.deleteProposal(proposalDTO);
+		// log.info("result {}", result);
 		// assertNotEquals(0, result);
 	}
 

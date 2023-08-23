@@ -4,13 +4,17 @@
 	<!-- 건의사항 전체 조회 -->
 	<select id="selectAllProposals"
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
-		select p.proposal_id AS proposalId, p.proposal_title AS proposalTitle,
+		select p.proposal_id AS proposalId, p.proposal_title AS
+		proposalTitle,
 		p.proposal_content
-		AS proposalContent, p.proposal_create AS proposalCreate,
+		AS proposalContent, p.proposal_create
+		AS proposalCreate,
 		p.proposal_status
-		AS proposalStatus, m.member_name AS memberName from proposal p join
+		AS proposalStatus, m.member_name AS
+		memberName from proposal p join
 		member
-		m on m.member_id=p.member_id ORDER BY proposal_create ASC
+		m on m.member_id=p.member_id
+		ORDER BY proposal_create ASC
 	</select>
 	<!-- <select id="selectAllProposals" resultType="com.arezip.weconnect.model.dto.ProposalDTO"> 
 		select proposal_id AS proposalId, proposal_title AS proposalTitle, proposal_content 
@@ -32,15 +36,14 @@
 		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
 		UPDATE proposal
 		SET proposal_title = #{proposalTitle},
-		proposal_content = #{proposalContent},
-		proposal_status =
-		#{proposalStatus}
-		WHERE proposal_id = #{proposalId};
+		proposal_content = #{proposalContent}
+		WHERE proposal_id = #{proposalId}
+		AND member_id = #{memberId}
 	</update>
 	<!-- 건의사항 삭제 -->
 	<delete id="deleteProposal"
 		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
-		delete proposal where proposal_id = #{proposalId};
+		delete proposal where proposal_id = #{proposalId} AND member_id = #{memberId}
 	</delete>
 	<!-- 건의사항 검색 -->
 	<select id="selectProposalBySearchCriteria"

@@ -39,21 +39,25 @@ public class ProposalServiceTest {
 		// assertNotEquals(0, result);
 	}
 
-// 건의사항 수정 service --> 왜 여기는 VO로 받는지???
+// 건의사항 수정 service
 	@Test
 	void updateProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
 		proposalDTO.setProposalId(1);
 		proposalDTO.setProposalTitle("서비스 테스트 제목 수정");
 		proposalDTO.setProposalContent("서비스 테스트 내용 수정");
-		proposalDTO.setProposalStatus("처리중");
+		proposalDTO.setMemberId(128);
+		int result = proposalService.updateProposal(proposalDTO);
+		log.info("result {}", result);
 	}
 
 // 건의사항 삭제 service
 	@Test
 	void deleteProposalTest() {
 		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalId(2);
+		proposalDTO.setProposalId(5);
+		int result = proposalService.deleteProposal(proposalDTO);
+		log.info("result {}", result);
 	}
 
 // 	건의사항 검색 service

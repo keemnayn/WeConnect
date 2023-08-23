@@ -31,19 +31,30 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
-      <cl:datamap std:sid="d-map-54218d79" id="proposalUpdateParam">
+      <cl:datamap std:sid="d-map-54218d79" id="proposalUpdateDeleteParam">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-26abd329" name="proposalTitle"/>
           <cl:datacolumn std:sid="d-column-91911d49" name="proposalContent"/>
           <cl:datacolumn std:sid="d-column-957fa7c7" name="proposalId"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:submission std:sid="submission-c219b33d" id="proposalUpdateDeleteSub" action="member/proposals">
-        <cl:listener std:sid="listener-1e1aed00" name="submit-success" handler="onProposalCreateSubSubmitSuccess"/>
-        <cl:requestdata dataid="proposalUpdateParam"/>
+      <cl:datamap std:sid="d-map-fa2dd86b" id="proposalUpdateDeleteParam2">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-c6c9c26b" name="proposalTitle"/>
+          <cl:datacolumn std:sid="d-column-04a7a372" name="proposalContent"/>
+          <cl:datacolumn std:sid="d-column-6662ef60" name="proposalId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-c219b33d" id="proposalUpdateSub" method="put" action="member/proposals">
+        <cl:listener std:sid="listener-9e2e3c10" name="submit-success" handler="onProposalUpdateSubSubmitSuccess"/>
+        <cl:requestdata dataid="proposalUpdateDeleteParam"/>
       </cl:submission>
       <cl:submission std:sid="submission-05f34d9c" id="proposalReadSub" method="get" action="member/proposals">
         <cl:responsedata dataid="proposalReadList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-eef45600" id="proposalDeleteSub" method="delete" action="member/proposals">
+        <cl:listener std:sid="listener-dd399d15" name="submit-success" handler="onProposalDeleteSubSubmitSuccess"/>
+        <cl:requestdata dataid="proposalUpdateDeleteParam"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="건의사항 수정삭제 팝업"/>
@@ -58,8 +69,8 @@
           <cl:formdata std:sid="f-data-6a12d6e2" row="0" col="0" rowspan="1" colspan="1"/>
         </cl:output>
         <cl:inputbox std:sid="i-box-cbe7f8f3" id="proposalContentIpb">
-          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateParam" columnname="proposalContent"/>
-          <cl:datamapcontext datacontrolid="proposalUpdateParam"/>
+          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalContent"/>
+          <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
           <cl:formdata std:sid="f-data-f7e9c85b" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:inputbox>
         <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -74,8 +85,8 @@
           <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
         </cl:output>
         <cl:inputbox std:sid="i-box-395afaa7" id="proposalTitleIpb">
-          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateParam" columnname="proposalTitle"/>
-          <cl:datamapcontext datacontrolid="proposalUpdateParam"/>
+          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalTitle"/>
+          <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
           <cl:formdata std:sid="f-data-752eefec" row="0" col="1"/>
         </cl:inputbox>
         <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -88,7 +99,7 @@
         <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="773px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       </cl:output>
       <cl:button std:sid="button-0446aba0" id="btnRevert" value="삭제">
-        <cl:listener std:sid="listener-beb9d4c5" name="click" handler="onBtnRevertClick"/>
+        <cl:listener std:sid="listener-5cfdf77a" name="click" handler="onBtnRevertClick"/>
         <cl:xylayoutdata std:sid="xyl-data-e0193aaf" right="506px" bottom="10px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:button std:sid="button-39198b35" id="btnUpdate" value="수정">
@@ -96,8 +107,8 @@
         <cl:xylayoutdata std:sid="xyl-data-1bf9ef05" bottom="10px" left="506px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:output std:sid="output-0296e3f6" id="proposalIdOpb" style="text-align:right;">
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateParam" columnname="proposalId"/>
-        <cl:datamapcontext datacontrolid="proposalUpdateParam"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalId"/>
+        <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
         <cl:xylayoutdata std:sid="xyl-data-e5407eae" top="21px" left="1375px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-fd4b5e98"/>

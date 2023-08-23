@@ -22,15 +22,15 @@
 			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
-			function onBodyLoad(e){
-				var hostProperty=app.getHostProperty("initValue");
-				var proposalId=hostProperty["proposalId"];
-				var proposalTitle=hostProperty["proposalTitle"];
-				var proposalContent=hostProperty["proposalContent"];
-				var proposalStatus=hostProperty["proposalStatus"];
-				app.lookup("proposalIdOpb").value=proposalId;
-				app.lookup("proposalTitleIpb").value=proposalTitle;
-				app.lookup("proposalContentIpb").value=proposalContent;
+			function onBodyLoad(e) {
+				var hostProperty = app.getHostProperty("initValue");
+				var proposalId = hostProperty["proposalId"];
+				var proposalTitle = hostProperty["proposalTitle"];
+				var proposalContent = hostProperty["proposalContent"];
+				var proposalStatus = hostProperty["proposalStatus"];
+				app.lookup("proposalIdOpb").value = proposalId;
+				app.lookup("proposalTitleIpb").value = proposalTitle;
+				app.lookup("proposalContentIpb").value = proposalContent;
 			}
 
 			/*
@@ -39,7 +39,7 @@
 			 */
 			function onBtnUpdateClick(e) {
 				var btnUpdate = e.control;
-				var submission = app.lookup("proposalUpdateDeleteSub");
+				var submission = app.lookup("proposalUpdateSub");
 				var proposalTitle = app.lookup("proposalTitleIpb").value;
 				var proposalContent = app.lookup("proposalContentIpb").value;
 				if (!proposalTitle || !proposalContent) {
@@ -47,7 +47,41 @@
 				} else {
 					submission.send();
 				}
-			};
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onProposalUpdateSubSubmitSuccess(e) {
+				var proposalUpdateSub = e.control;
+				alert("건의사항 수정 완료");
+				app.close();
+			}
+
+			/*
+			 * "삭제" 버튼(btnRevert)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onBtnRevertClick(e) {
+				var btnRevert = e.control;
+				app.lookup("proposalDeleteSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onProposalDeleteSubSubmitSuccess(e) {
+				var proposalDeleteSub = e.control;
+				if (!confirm("해당 글을 삭제하시겠습니까?")) {
+					// 취소(아니오) 버튼 클릭 시 이벤트
+					alert("취소를 누르셨습니다");
+				} else {
+					alert("건의사항 삭제 완료");
+					app.close();
+				}
+			}
 			// End - User Script
 			
 			// Header
@@ -74,7 +108,7 @@
 				"rows": []
 			});
 			app.register(dataSet_2);
-			var dataMap_1 = new cpr.data.DataMap("proposalUpdateParam");
+			var dataMap_1 = new cpr.data.DataMap("proposalUpdateDeleteParam");
 			dataMap_1.parseData({
 				"columns" : [
 					{"name": "proposalTitle"},
@@ -83,11 +117,25 @@
 				]
 			});
 			app.register(dataMap_1);
-			var submission_1 = new cpr.protocols.Submission("proposalUpdateDeleteSub");
+			
+			var dataMap_2 = new cpr.data.DataMap("proposalUpdateDeleteParam2");
+			dataMap_2.parseData({
+				"columns" : [
+					{"name": "proposalTitle"},
+					{"name": "proposalContent"},
+					{
+						"name": "proposalId",
+						"dataType": "number"
+					}
+				]
+			});
+			app.register(dataMap_2);
+			var submission_1 = new cpr.protocols.Submission("proposalUpdateSub");
+			submission_1.method = "put";
 			submission_1.action = "member/proposals";
 			submission_1.addRequestData(dataMap_1);
-			if(typeof onProposalCreateSubSubmitSuccess == "function") {
-				submission_1.addEventListener("submit-success", onProposalCreateSubSubmitSuccess);
+			if(typeof onProposalUpdateSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onProposalUpdateSubSubmitSuccess);
 			}
 			app.register(submission_1);
 			
@@ -96,6 +144,15 @@
 			submission_2.action = "member/proposals";
 			submission_2.addResponseData(dataSet_2, false);
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("proposalDeleteSub");
+			submission_3.method = "delete";
+			submission_3.action = "member/proposals";
+			submission_3.addRequestData(dataMap_1);
+			if(typeof onProposalDeleteSubSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onProposalDeleteSubSubmitSuccess);
+			}
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1024px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
@@ -138,9 +195,9 @@
 						"rowSpan": 1
 					});
 					var inputBox_1 = new cpr.controls.InputBox("proposalContentIpb");
-					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateParam"));
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateDeleteParam"));
 					inputBox_1.setBindContext(dataMapContext_1);
-					inputBox_1.bind("value").toDataMap(app.lookup("proposalUpdateParam"), "proposalContent");
+					inputBox_1.bind("value").toDataMap(app.lookup("proposalUpdateDeleteParam"), "proposalContent");
 					container.addChild(inputBox_1, {
 						"colIndex": 1,
 						"rowIndex": 0,
@@ -174,9 +231,9 @@
 						"rowIndex": 0
 					});
 					var inputBox_2 = new cpr.controls.InputBox("proposalTitleIpb");
-					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateParam"));
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateDeleteParam"));
 					inputBox_2.setBindContext(dataMapContext_2);
-					inputBox_2.bind("value").toDataMap(app.lookup("proposalUpdateParam"), "proposalTitle");
+					inputBox_2.bind("value").toDataMap(app.lookup("proposalUpdateDeleteParam"), "proposalTitle");
 					container.addChild(inputBox_2, {
 						"colIndex": 1,
 						"rowIndex": 0
@@ -222,9 +279,9 @@
 				output_4.style.css({
 					"text-align" : "right"
 				});
-				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateParam"));
+				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateDeleteParam"));
 				output_4.setBindContext(dataMapContext_3);
-				output_4.bind("value").toDataMap(app.lookup("proposalUpdateParam"), "proposalId");
+				output_4.bind("value").toDataMap(app.lookup("proposalUpdateDeleteParam"), "proposalId");
 				container.addChild(output_4, {
 					"top": "21px",
 					"left": "1375px",
