@@ -104,7 +104,7 @@
             <cl:datavalue columnname="label"><![CDATA[회의실예약현황]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[회의실예약현황]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[admin/AdminMeetingRoomStatus]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminRoomReserv]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[일정관리]]></cl:datavalue>

@@ -162,7 +162,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "roomReservEndTime";
-								cell.text = "종료시간";
+								cell.text = "예약시간";
 							}
 						}
 					]

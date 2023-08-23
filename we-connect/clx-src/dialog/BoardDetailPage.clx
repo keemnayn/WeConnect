@@ -70,7 +70,7 @@
         <cl:requestdata dataid="freeBoardDetail"/>
       </cl:submission>
     </cl:model>
-    <cl:appspec title="상세 페이지"/>
+    <cl:appspec title="상세 페이지 팝업"/>
   </head>
   <body std:sid="body-81158049">
     <cl:listener std:sid="listener-f0bc33b2" name="init" handler="onBodyInit"/>

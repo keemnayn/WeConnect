@@ -607,6 +607,6 @@
 			}
 		}
 	});
-	app.title = "상세 페이지";
+	app.title = "상세 페이지 팝업";
 	cpr.core.Platform.INSTANCE.register(app);
 })();
