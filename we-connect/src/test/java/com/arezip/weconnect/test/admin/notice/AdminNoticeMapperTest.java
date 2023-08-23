@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-class AdminNoticeMapperTest {
+public class AdminNoticeMapperTest {
 	@Autowired
 	AdminNoticeMapper adminNoticeMapper;
 

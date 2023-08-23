@@ -123,8 +123,7 @@
 			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("proposalListSub");
 			submission_1.method = "get";
-			submission_1.action = "member/proposals";
-			submission_1.addRequestData(dataSet_1);
+			submission_1.action = "admin/proposals";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
 			

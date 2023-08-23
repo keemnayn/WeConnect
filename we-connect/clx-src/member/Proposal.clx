@@ -39,8 +39,7 @@
           <cl:datacolumn std:sid="d-column-afb5a89c" name="searchText"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
-        <cl:requestdata dataid="proposalList"/>
+      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="admin/proposals">
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">

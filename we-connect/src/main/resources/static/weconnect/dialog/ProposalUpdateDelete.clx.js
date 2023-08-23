@@ -117,19 +117,6 @@
 				]
 			});
 			app.register(dataMap_1);
-			
-			var dataMap_2 = new cpr.data.DataMap("proposalUpdateDeleteParam2");
-			dataMap_2.parseData({
-				"columns" : [
-					{"name": "proposalTitle"},
-					{"name": "proposalContent"},
-					{
-						"name": "proposalId",
-						"dataType": "number"
-					}
-				]
-			});
-			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("proposalUpdateSub");
 			submission_1.method = "put";
 			submission_1.action = "member/proposals";

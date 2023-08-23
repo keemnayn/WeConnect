@@ -92,7 +92,7 @@
             <cl:datavalue columnname="label"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[admin/AdminSuggestions]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminProposal]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[회의실등록]]></cl:datavalue>
