@@ -17,9 +17,22 @@
 		SET work_out_time = SYSTIMESTAMP
 		WHERE work_out_time IS NULL AND member_id = #{memberId}
 	</update>
-	<select id="attendanceCheck" resultType="int" parameterType="long">
+	<select id="attendanceCheck" resultType="int"
+		parameterType="long">
 		SELECT COUNT(*)
 		FROM WECONNECT.ATTENDANCE
-		WHERE MEMBER_ID = #{memberId} AND WORK_DAY = TRUNC(SYSDATE)
+		WHERE MEMBER_ID
+		= #{memberId} AND WORK_DAY = TRUNC(SYSDATE)
 	</select>
+
+<select id="AttendanceList" resultType="com.arezip.weconnect.model.dto.AttendanceDTO">
+    SELECT TO_CHAR(A.work_Day, 'YYYY-MM-DD') AS work_Day,
+           M.member_name,
+           TO_CHAR(A.work_in_time, 'HH24:MI') AS work_in_time,
+           TO_CHAR(A.work_out_time, 'HH24:MI') AS work_out_time,
+           A.Attendance_STATUS
+    FROM Attendance A
+    INNER JOIN member M ON A.member_id = M.member_id
+    WHERE A.member_id = #{memberId}
+</select>
 </mapper> 

@@ -112,8 +112,14 @@ CREATE TABLE profile_images (
     FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
 
-	
-		
+INSERT INTO profile_images (profile_images_id, profile_images_name, profile_images_path, member_id)
+VALUES (1, 'profile.png', 'img/header/profile.png', 131);	
+
+select * from profile_images;
+
+SELECT profile_images_path FROM profile_images WHERE member_id = 131;
+
+
 /* 부서 */
 CREATE SEQUENCE department_seq
 START WITH 1
@@ -290,6 +296,13 @@ ALTER TABLE attendance
 			attendance_id
 );
 
+SELECT TO_CHAR(A.work_Day, 'YYYY-MM-DD') AS work_Day,
+       m.member_name,
+       TO_CHAR(A.work_in_time, ' HH24:MI') AS work_in_time,
+       TO_CHAR(A.work_out_time, ' HH24:MI') AS work_out_time,
+       A.Attendance_STATUS
+FROM Attendance A
+INNER JOIN member M ON A.member_id = M.member_id;
 
 /* 연차신청 */
 CREATE SEQUENCE leave_request_seq

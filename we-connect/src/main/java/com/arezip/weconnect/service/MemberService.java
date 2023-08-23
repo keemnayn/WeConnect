@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.model.dto.MemberDTO;
+import com.arezip.weconnect.model.dto.ProfileImageDTO;
 
 public interface MemberService {
 //	int register(MemberDTO memberDTO);

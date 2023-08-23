@@ -11,14 +11,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.service.MemberService;
+import com.arezip.weconnect.service.ProfileService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
 public class MemberTest {
-	@Autowired
-	MemberService memberService;
+    @Autowired
+    MemberService memberService;
+    
 
 	@Test
 	void testDI() {

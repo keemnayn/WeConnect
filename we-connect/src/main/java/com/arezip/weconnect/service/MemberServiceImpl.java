@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.arezip.weconnect.mapper.MemberMapper;
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.model.dto.MemberDTO;
+import com.arezip.weconnect.model.dto.ProfileImageDTO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -75,5 +76,4 @@ public class MemberServiceImpl implements MemberService {
 		char role = memberMapper.findRoleByMemberId(memberId);
 		return 'Y' == role;
 	}
-
 }

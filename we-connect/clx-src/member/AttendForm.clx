@@ -8,25 +8,24 @@
     <cl:model std:sid="model-4298160b">
       <cl:dataset std:sid="d-set-885f7bef" id="attend">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-b54e81b2" name="name" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-b8db9684" name="column2"/>
-          <cl:datacolumn std:sid="d-column-2706e92d" name="attendTime"/>
-          <cl:datacolumn std:sid="d-column-f6286ba4" name="workOutTime"/>
+          <cl:datacolumn std:sid="d-column-f265ca48" name="workInTime" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-e8364ce6" name="workOutTime" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-8913864c" name="workDay" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-c778c4ae" name="attendanceStatus" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-6ff42b29" name="memberName" datatype="string"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[최수연]]></cl:datavalue>
-            <cl:datavalue columnname="column2">column21</cl:datavalue>
-            <cl:datavalue columnname="attendTime"><![CDATA[08:56]]></cl:datavalue>
-            <cl:datavalue columnname="workOutTime"><![CDATA[18:03]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
+      <cl:submission std:sid="submission-459a1b9c" id="attend1" method="get" action="member/attendance">
+        <cl:listener std:sid="listener-59b3582e" name="submit-success" handler="onAttend1SubmitSuccess"/>
+        <cl:responsedata dataid="attend"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-497bf1f2">
-    <cl:grid std:sid="grid-ebf80db0" id="grd1">
+    <cl:listener std:sid="listener-bd0e60d9" name="init" handler="onBodyInit"/>
+    <cl:grid std:sid="grid-ebf80db0" id="grd1" datasetid="attend">
       <cl:xylayoutdata std:sid="xyl-data-e2657142" top="230px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-b9503507"/>
       <cl:gridcolumn std:sid="g-column-cccf9c68"/>
@@ -34,20 +33,20 @@
       <cl:gridcolumn std:sid="g-column-d333111e"/>
       <cl:gridcolumn std:sid="g-column-cf9fa6bb"/>
       <cl:gridheader std:sid="gh-band-3d2d7e41">
-        <cl:gridrow std:sid="g-row-912b89d8"/>
-        <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0"/>
-        <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="1"/>
-        <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="2"/>
-        <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="3"/>
-        <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4"/>
+        <cl:gridrow std:sid="g-row-912b89d8" height="50px"/>
+        <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" text="날짜"/>
+        <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="1" text="이름"/>
+        <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="2" text="출근"/>
+        <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="3" text="퇴근"/>
+        <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" text="정상"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-1616b1d5">
-        <cl:gridrow std:sid="g-row-48a04b08"/>
-        <cl:gridcell std:sid="gd-cell-b15d20d3" rowindex="0" colindex="0"/>
-        <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="1"/>
-        <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="2"/>
-        <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="3"/>
-        <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4"/>
+        <cl:gridrow std:sid="g-row-48a04b08" height="50px"/>
+        <cl:gridcell std:sid="gd-cell-b15d20d3" rowindex="0" colindex="0" columnname="workDay"/>
+        <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="1" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="2" columnname="workInTime"/>
+        <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="3" columnname="workOutTime"/>
+        <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" columnname="attendanceStatus"/>
       </cl:griddetail>
     </cl:grid>
     <cl:group std:sid="group-b1ca9fca" style="border-right-style:solid; border-bottom-color:black; border-top-width:1px; border-left-style:solid; border-right-width:1px; border-left-color:black; border-bottom-width:1px; border-top-color:black; border-bottom-style:solid; border-right-color:black; border-left-width:1px; border-top-style:solid;">
@@ -59,7 +58,6 @@
         <cl:xylayoutdata std:sid="xyl-data-e37bd5f6" right="20px" bottom="20px" width="100px" height="100px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:output std:sid="output-4c3ddb84">
-        <cl:relativebind property="value" columnname="name"/>
         <cl:datarowcontext datacontrolid="attend"/>
         <cl:xylayoutdata std:sid="xyl-data-016f7d85" bottom="158px" left="10px" width="300px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:output>
@@ -67,12 +65,10 @@
         <cl:xylayoutdata std:sid="xyl-data-0c1fb098" right="388px" bottom="118px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
       </cl:output>
       <cl:output std:sid="output-60378a4c">
-        <cl:relativebind property="value" columnname="attendTime"/>
         <cl:datarowcontext datacontrolid="attend"/>
         <cl:xylayoutdata std:sid="xyl-data-2438bdc2" right="388px" bottom="68px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
       </cl:output>
       <cl:output std:sid="output-11397607">
-        <cl:relativebind property="value" columnname="workOutTime"/>
         <cl:datarowcontext datacontrolid="attend"/>
         <cl:xylayoutdata std:sid="xyl-data-21448e62" right="388px" bottom="18px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
       </cl:output>

@@ -54,4 +54,5 @@ public class LeaveRequest {
 	    Object hi = leaveRequestService.updateLeaveCount(memberId);
 	    log.info("업데이트 성공:{}", hi); 
 	}
+
 }

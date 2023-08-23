@@ -1,8 +1,11 @@
 package com.arezip.weconnect.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.AttendanceMapper;
+import com.arezip.weconnect.model.dto.AttendanceDTO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,4 +33,15 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return check; 
 	}
 
+	@Override
+	public void updateAttendance(long memberId) {
+		// TODO 퇴근 버튼 
+		attendanceMapper.updateAttendance(memberId);
+	}
+	
+	@Override
+	public List<AttendanceDTO> AttendanceList(long memberId) {
+		// TODO 리스트화면
+		return attendanceMapper.AttendanceList(memberId);
+	}
 }
