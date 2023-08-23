@@ -44,18 +44,6 @@
 				});
 			}
 
-				
-				//페이지 이동식
-			//	var grid = app.lookup("boardListGrd");
-			//	//	var value = grid.getSelectedRow().getValue("freeBoardId");
-			//	var freeBoardId = grid.getSelectedRow().getValue("freeBoardId");
-			//	console.log(freeBoardId);
-			//	var dataMap = app.lookup("boardParam");
-			//	dataMap.setValue("freeBoardId", freeBoardId);
-			//	var submission = app.lookup("boardParamSub");
-			//	submission.send();
-
-
 			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.

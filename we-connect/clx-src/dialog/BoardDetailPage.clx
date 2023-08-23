@@ -13,6 +13,7 @@
           <cl:datacolumn std:sid="d-column-fdf52b2a" name="freeBoardCommentContent"/>
           <cl:datacolumn std:sid="d-column-496349ac" name="freeBoardCommentDate"/>
           <cl:datacolumn std:sid="d-column-a7080d0e" name="freeBoardId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-79459c7e" name="memberId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-7c6c0efc" id="detailBoardParam">
@@ -31,6 +32,17 @@
           <cl:datacolumn std:sid="d-column-ca876517" name="freeBoardCreate"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-84be7b30" id="commentInsertParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-17c1d584" name="freeBoardCommentContent"/>
+          <cl:datacolumn std:sid="d-column-10acf421" name="freeBoardId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-c0698e00" id="commentIdParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-b74b4395" name="freeBoardCommentId"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-c6451574" id="boardDetailSub" method="get" action="member/boards/detail">
         <cl:listener std:sid="listener-a026cb56" name="submit-success" handler="onBoardDetailSubSubmitSuccess"/>
         <cl:requestdata dataid="detailBoardParam"/>
@@ -39,6 +51,14 @@
       </cl:submission>
       <cl:submission std:sid="submission-d02b9449" id="boardParamSub" action="member/boards">
         <cl:requestdata dataid="detailBoardParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-92831120" id="commentParamSub" action="member/boards/comments">
+        <cl:listener std:sid="listener-60cd73cb" name="submit-success" handler="onCommentParamSubSubmitSuccess"/>
+        <cl:requestdata dataid="commentInsertParam"/>
+        <cl:requestdata dataid="detailBoardParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-11f57d56" id="deleteCommentSub" method="delete" action="member/boards/comments">
+        <cl:requestdata dataid="freeBoardComment"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="상세 페이지"/>
@@ -56,14 +76,19 @@
       <cl:xylayoutdata std:sid="xyl-data-5af622ae" top="80px" right="10px" left="10px" height="350px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>
     <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="commentInsertParam" columnname="freeBoardCommentContent"/>
+      <cl:datamapcontext datacontrolid="commentInsertParam"/>
       <cl:xylayoutdata std:sid="xyl-data-ea37006f" top="440px" right="110px" left="10px" height="70px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:button std:sid="button-885eafae" id="commentBtn" value="등록">
+      <cl:listener std:sid="listener-f2441ed2" name="click" handler="onCommentBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-cf704e84" top="440px" right="10px" width="100px" height="70px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:grid std:sid="grid-66ad97c6" id="commentGrd" datasetid="freeBoardComment">
+      <cl:listener std:sid="listener-62904f4b" name="cell-click" handler="onCommentGrdCellClick"/>
       <cl:xylayoutdata std:sid="xyl-data-aed98dba" top="520px" right="10px" bottom="10px" left="10px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-cc32da59" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-cc32da59" width="100px" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-261b0a37" visible="false"/>
       <cl:gridcolumn std:sid="g-column-af929768" width="20px"/>
       <cl:gridcolumn std:sid="g-column-21608d50" width="150px"/>
       <cl:gridcolumn std:sid="g-column-4e047e11" width="20px"/>
@@ -71,26 +96,30 @@
       <cl:gridcolumn std:sid="g-column-481fbe85" width="10px"/>
       <cl:gridheader std:sid="gh-band-7ca1557b">
         <cl:gridrow std:sid="g-row-5357b48e"/>
-        <cl:gridcell std:sid="gh-cell-f20a1a72" rowindex="0" colindex="0" targetcolumnname="freeBoardCommentId" sortable="false" filterable="false" text="번호"/>
-        <cl:gridcell std:sid="gh-cell-a04dedfe" rowindex="0" colindex="1" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
-        <cl:gridcell std:sid="gh-cell-cd6ba675" rowindex="0" colindex="2" targetcolumnname="freeBoardCommentContent" sortable="false" filterable="false" text="내용"/>
-        <cl:gridcell std:sid="gh-cell-8e3c0917" rowindex="0" colindex="3" targetcolumnname="freeBoardCommentDate" sortable="false" filterable="false" text="작성일"/>
-        <cl:gridcell std:sid="gh-cell-dfbd1cee" rowindex="0" colindex="4"/>
-        <cl:gridcell std:sid="gh-cell-12eef976" rowindex="0" colindex="5"/>
+        <cl:gridcell std:sid="gh-cell-f20a1a72" rowindex="0" colindex="0" targetcolumnname="freeBoardCommentId" sortable="false" filterable="false" text="댓글 번호"/>
+        <cl:gridcell std:sid="gh-cell-10b52b8b" rowindex="0" colindex="1" text="멤버 번호"/>
+        <cl:gridcell std:sid="gh-cell-a04dedfe" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-cd6ba675" rowindex="0" colindex="3" targetcolumnname="freeBoardCommentContent" sortable="false" filterable="false" text="내용"/>
+        <cl:gridcell std:sid="gh-cell-8e3c0917" rowindex="0" colindex="4" targetcolumnname="freeBoardCommentDate" sortable="false" filterable="false" text="작성일"/>
+        <cl:gridcell std:sid="gh-cell-dfbd1cee" rowindex="0" colindex="5"/>
+        <cl:gridcell std:sid="gh-cell-12eef976" rowindex="0" colindex="6"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-c52ae242">
         <cl:gridrow std:sid="g-row-a6b32b02"/>
         <cl:gridcell std:sid="gd-cell-8323a321" rowindex="0" colindex="0" columnname="freeBoardCommentId"/>
-        <cl:gridcell std:sid="gd-cell-b7955278" rowindex="0" colindex="1" columnname="memberName"/>
-        <cl:gridcell std:sid="gd-cell-caf7ac55" rowindex="0" colindex="2" columnname="freeBoardCommentContent"/>
-        <cl:gridcell std:sid="gd-cell-9fd0f133" rowindex="0" colindex="3" columnname="freeBoardCommentDate"/>
-        <cl:gridcell std:sid="gd-cell-8aede84e" rowindex="0" colindex="4">
+        <cl:gridcell std:sid="gd-cell-e4acaf8e" rowindex="0" colindex="1" columnname="memberId"/>
+        <cl:gridcell std:sid="gd-cell-b7955278" rowindex="0" colindex="2" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-caf7ac55" rowindex="0" colindex="3" columnname="freeBoardCommentContent"/>
+        <cl:gridcell std:sid="gd-cell-9fd0f133" rowindex="0" colindex="4" columnname="freeBoardCommentDate"/>
+        <cl:gridcell std:sid="gd-cell-8aede84e" rowindex="0" colindex="5">
           <cl:button std:sid="button-b43cfc3b" value="수정">
+            <cl:listener std:sid="listener-b3d4c925" name="click" handler="onButtonClick2"/>
             <cl:celldata std:sid="c-data-2f680b5f"/>
           </cl:button>
         </cl:gridcell>
-        <cl:gridcell std:sid="gd-cell-8fba1cf9" rowindex="0" colindex="5">
+        <cl:gridcell std:sid="gd-cell-8fba1cf9" rowindex="0" colindex="6">
           <cl:button std:sid="button-5c11ddd5" value="삭제">
+            <cl:listener std:sid="listener-393e2897" name="click" handler="onButtonClick"/>
             <cl:celldata std:sid="c-data-a7a12c0a"/>
           </cl:button>
         </cl:gridcell>
@@ -135,6 +164,12 @@
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
+    <cl:button std:sid="button-9c3af295" value="수정">
+      <cl:xylayoutdata std:sid="xyl-data-fc89b37a" top="0px" left="1370px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
+    <cl:button std:sid="button-56f8a030" value="삭제">
+      <cl:xylayoutdata std:sid="xyl-data-c43d84f8" top="0px" left="1470px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
     <cl:xylayout std:sid="xylayout-e77f2c61"/>
   </body>
   <std:studiosetting>

@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class FreeBoardRestController {
 	private final FreeBoardService freeBoardService;
 
-	// 자유게시판 게시글 리스트 보이기
+	// 자유게시판 게시글 리스트 조회
 	@GetMapping
 	public View freeBoardListPage(DataRequest dataRequest) {
 		List<FreeBoardDTO> boardList = freeBoardService.getFreeBoardList();
@@ -64,14 +64,14 @@ public class FreeBoardRestController {
 		System.out.println("dataRequest"+dataRequest);
 		ParameterGroup param =dataRequest.getParameterGroup("detailBoardParam");
 		System.out.println("param"+param);
-		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId")); 
+		long freeBoardId = Long.parseLong(param.getValue("freeBoardId")); 
 		log.info("freeBoardId {}", freeBoardId);
 		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
-		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardDetailComment(freeBoardId);
+		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
 		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);
 		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
-		log.info("{freeBoardDTO} {}",freeBoardDTO);
-		log.info("{freeBoardCommentDTO} {}", freeBoardCommentDTO);
+		log.info("freeBoardDTO {}",freeBoardDTO);
+		log.info("freeBoardCommentDTO {}", freeBoardCommentDTO);
 		log.info("상세 목록{}",freeBoardService.getFreeBoardDetail(freeBoardId));
 		return new JSONDataView();
 	}
