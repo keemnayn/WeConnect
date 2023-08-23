@@ -5,10 +5,32 @@
 	<select id="getFreeBoardList" resultType="com.arezip.weconnect.model.dto.FreeBoardDTO">
 		select f.free_board_id as freeBoardId, f.free_board_title as
 		freeBoardTitle,f.free_board_content as freeBoardContent,
-		m.member_name as memberName, to_char(f.free_board_create,'YYYY-MM-DD') as
-		freeBoardCreate
+		m.member_name as memberName, to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate
 		from free_board f join member m
 		on f.member_id = m.member_id
+		order by free_board_id desc 
+	</select>
+	<!-- 자유게시판 검색 -->
+	<select id="searchFreeBoardList" resultType="com.arezip.weconnect.model.dto.FreeBoardDTO"
+		parameterType="java.util.Map">
+		select f.free_board_id as freeBoardId, f.free_board_title as freeBoardTitle, f.free_board_content as freeBoardContent,
+		m.member_name as memberName, to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate
+		from free_board f join member m on f.member_id = m.member_id
+		where
+		1 = 1
+		<!-- 검색 옵션 -->
+	    <choose>
+	        <when test="searchType == 'all'">
+	            AND (f.free_board_title LIKE '%' || #{searchText} || '%'
+	                 OR m.member_name LIKE '%' || #{searchText} || '%')
+	        </when>
+	        <when test="searchType == 'title'">
+	            AND f.free_board_title LIKE '%' || #{searchText} || '%'
+	        </when>
+	        <when test="searchType == 'writer'">
+	            AND m.member_name LIKE '%' || #{searchText} || '%'
+	        </when>
+	    </choose>
 		order by free_board_id desc 
 	</select>
 	<!-- 자유게시판 상세 페이지 조회-->
@@ -17,7 +39,7 @@
 		f.free_board_id,
 		f.free_board_title,
 		f.free_board_content,
-		f.free_board_create,
+		to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate,
 		f.free_board_views,
 		f.free_board_file_name,
 		m.member_name
@@ -51,10 +73,22 @@
 			<otherwise> NULL </otherwise>
 		</choose>, #{memberId})
 	</insert>
+	<!-- 자유게시판 글 삭제 -->
+	<delete id="deleteFreeBoard" parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
+		delete from free_board where free_board_id = #{freeBoardId} and member_id = #{memberId}
+	</delete>
+	<!-- 자유게시판 글 수정  -->
+	<update id="updateFreeBoard" parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
+		update free_board 
+		set free_board_title = #{freeBoardTitle},free_board_content =#{freeBoardContent}<!-- , free_board_file_name = #{freeBoardFileName} -->
+		where free_board_id = #{freeBoardId} and member_id = #{memberId}
+	</update>
+	<!-- 댓글 등록 -->
 	<insert id="insertFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		insert into free_board_comment(free_board_comment_id,free_board_comment_content,member_id,free_board_id)
 		values(free_board_comment_seq.nextval,#{freeBoardCommentContent},#{memberId},#{freeBoardId})
 	</insert>
+	<!-- 댓글 삭제 -->
 	<delete id="deleteFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		delete from free_board_comment where free_board_comment_id = #{freeBoardCommentId}
 	</delete>

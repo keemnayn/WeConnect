@@ -15,25 +15,35 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
-      <cl:dataset std:sid="d-set-497fc88c" id="search">
+      <cl:dataset std:sid="d-set-497fc88c" id="boardSearch">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-e0a9870d" name="type"/>
+          <cl:datacolumn std:sid="d-column-e0a9870d" name="label"/>
+          <cl:datacolumn std:sid="d-column-f985a779" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type">전체</cl:datavalue>
+            <cl:datavalue columnname="label">전체</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">내용</cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[제목]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">작성자</cl:datavalue>
+            <cl:datavalue columnname="label">작성자</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[writer]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-ba34d6e7" id="boardParam">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-59eb9ad3" name="freeBoardId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-d857343e" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-063a6037" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-d6790022" name="searchText"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
@@ -43,11 +53,17 @@
         <cl:listener std:sid="listener-b4ef99ca" name="submit-success" handler="onBoardParamSubSubmitSuccess"/>
         <cl:requestdata dataid="boardParam"/>
       </cl:submission>
+      <cl:submission std:sid="submission-d5d7dfb1" id="searchParamSub" method="get" action="member/boards/search">
+        <cl:listener std:sid="listener-3a28a5a1" name="submit-success" handler="onSearchParamSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="boardList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:listener std:sid="listener-97fda0e4" name="init" handler="onBodyInit"/>
+    <cl:datamapcontext datacontrolid="searchParam"/>
     <cl:grid std:sid="grid-38750194" id="boardListGrd" datasetid="boardList">
       <cl:listener std:sid="listener-08c67cf7" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
@@ -75,12 +91,17 @@
     </cl:pageindexer>
     <cl:group std:sid="group-d208eff7">
       <cl:xylayoutdata std:sid="xyl-data-c7a31631" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchTextIpb" style="border-radius:5px;">
+        <cl:listener std:sid="listener-4221aa72" name="search" handler="onSearchTextIpbSearch"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-702602b6" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+      <cl:combobox std:sid="c-box-64b21162" id="searchCmb">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-ed4bdd06" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="type" value="type"/>
+        <cl:itemset datasetid="boardSearch" label="label" value="value"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-57b89231"/>
     </cl:group>

@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
@@ -8,6 +9,9 @@ import com.arezip.weconnect.model.dto.FreeBoardDTO;
 public interface FreeBoardService {
 	//자유 게시판 전체 조회
 	List<FreeBoardDTO> getFreeBoardList();
+	//자유 게시판 검색
+	List<FreeBoardDTO> searchFreeBoardList(Map<String, String> searchParams);
+	
 	//자유 게시판 글 등록
 	int insertFreeBoard(FreeBoardDTO freeBoardDTO);
 	//자유 게시판 상세 페이지 조회

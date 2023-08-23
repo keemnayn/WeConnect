@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.csyTest;
+package com.arezip.weconnect.test.roomReserv;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 

@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
 		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentDTO);
+	}
+
+	@Override
+	public List<FreeBoardDTO> searchFreeBoardList(Map<String, String> searchParams) {
+		return freeBoardMapper.searchFreeBoardList(searchParams);
 	}
 
 

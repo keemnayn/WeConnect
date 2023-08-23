@@ -58,7 +58,16 @@
         <cl:requestdata dataid="detailBoardParam"/>
       </cl:submission>
       <cl:submission std:sid="submission-11f57d56" id="deleteCommentSub" method="delete" action="member/boards/comments">
+        <cl:listener std:sid="listener-598a2160" name="submit-success" handler="onDeleteCommentSubSubmitSuccess"/>
         <cl:requestdata dataid="freeBoardComment"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-f4c118fa" id="deleteBoardSub" method="delete" action="member/boards">
+        <cl:listener std:sid="listener-8e5a431d" name="submit-success" handler="onDeleteBoardSubSubmitSuccess"/>
+        <cl:requestdata dataid="freeBoardDetail"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-facb4de7" id="updateBoardSub" method="put" action="member/boards">
+        <cl:listener std:sid="listener-44f54673" name="submit-success" handler="onUpdateBoardSubSubmitSuccess"/>
+        <cl:requestdata dataid="freeBoardDetail"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="상세 페이지"/>
@@ -67,14 +76,11 @@
     <cl:listener std:sid="listener-f0bc33b2" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-ed6384a1" name="load" handler="onBodyLoad"/>
     <cl:datamapbind property="readOnly" datacontrolid="freeBoardDetail" columnname="memberName"/>
-    <cl:output std:sid="output-ace5f3cd" id="freeBoardTitle">
-      <cl:datamapbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardTitle"/>
-      <cl:xylayoutdata std:sid="xyl-data-35d1ae6b" top="0px" right="10px" left="10px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-    </cl:output>
-    <cl:output std:sid="output-9e404d9e" id="freeBoardContent">
-      <cl:datamapbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardContent"/>
-      <cl:xylayoutdata std:sid="xyl-data-5af622ae" top="80px" right="10px" left="10px" height="350px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-    </cl:output>
+    <cl:inputbox std:sid="i-box-5156f7e2" id="boardTitleIpb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardTitle"/>
+      <cl:datamapcontext datacontrolid="freeBoardDetail"/>
+      <cl:xylayoutdata std:sid="xyl-data-05e59855" top="0px" right="210px" left="10px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:inputbox>
     <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="commentInsertParam" columnname="freeBoardCommentContent"/>
       <cl:datamapcontext datacontrolid="commentInsertParam"/>
@@ -112,14 +118,14 @@
         <cl:gridcell std:sid="gd-cell-caf7ac55" rowindex="0" colindex="3" columnname="freeBoardCommentContent"/>
         <cl:gridcell std:sid="gd-cell-9fd0f133" rowindex="0" colindex="4" columnname="freeBoardCommentDate"/>
         <cl:gridcell std:sid="gd-cell-8aede84e" rowindex="0" colindex="5">
-          <cl:button std:sid="button-b43cfc3b" value="수정">
-            <cl:listener std:sid="listener-b3d4c925" name="click" handler="onButtonClick2"/>
+          <cl:button std:sid="button-b43cfc3b" id="commentUpdateBtn" value="수정">
+            <cl:listener std:sid="listener-ea4b9afe" name="click" handler="onCommentUpdateBtnClick"/>
             <cl:celldata std:sid="c-data-2f680b5f"/>
           </cl:button>
         </cl:gridcell>
         <cl:gridcell std:sid="gd-cell-8fba1cf9" rowindex="0" colindex="6">
-          <cl:button std:sid="button-5c11ddd5" value="삭제">
-            <cl:listener std:sid="listener-393e2897" name="click" handler="onButtonClick"/>
+          <cl:button std:sid="button-5c11ddd5" id="commentDeleteBtn" value="삭제">
+            <cl:listener std:sid="listener-aa468c81" name="click" handler="onCommentDeleteBtnClick"/>
             <cl:celldata std:sid="c-data-a7a12c0a"/>
           </cl:button>
         </cl:gridcell>
@@ -130,29 +136,32 @@
       <cl:output std:sid="output-8a770495" value="작성자">
         <cl:formdata std:sid="f-data-72f7003c" row="0" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-1d54ebbc" id="memberName">
-        <cl:datamapbind property="value" datacontrolid="freeBoardDetail" columnname="memberName"/>
-        <cl:formdata std:sid="f-data-6ea94f06" row="0" col="2"/>
-      </cl:output>
       <cl:output std:sid="output-befca506" value="작성일">
         <cl:formdata std:sid="f-data-bbf1fc46" row="0" col="3"/>
-      </cl:output>
-      <cl:output std:sid="output-df04894d" id="freeBoardCreate">
-        <cl:datamapbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardCreate"/>
-        <cl:formdata std:sid="f-data-829d8d71" row="0" col="4"/>
       </cl:output>
       <cl:output std:sid="output-e633b823" value="조회수">
         <cl:formdata std:sid="f-data-43bb5378" row="0" col="5"/>
       </cl:output>
-      <cl:output std:sid="output-a6a99ebb" id="freeBoardViews">
-        <cl:datamapbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardViews"/>
-        <cl:formdata std:sid="f-data-1820f6d2" row="0" col="6"/>
-      </cl:output>
       <cl:output std:sid="output-7b69813d" id="freeBoardId">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="detailBoardParam" columnname="freeBoardId"/>
         <cl:datamapcontext datacontrolid="detailBoardParam"/>
-        <cl:formdata std:sid="f-data-acd68169" row="0" col="0"/>
+        <cl:formdata std:sid="f-data-e9b075b9" row="0" col="0"/>
       </cl:output>
+      <cl:inputbox std:sid="i-box-3395e0dd" id="memberNameIpb" readonly="true">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="memberName"/>
+        <cl:datamapcontext datacontrolid="freeBoardDetail"/>
+        <cl:formdata std:sid="f-data-02afb543" row="0" col="2"/>
+      </cl:inputbox>
+      <cl:inputbox std:sid="i-box-6760834f" id="boardCreateIpb" readonly="true">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardCreate"/>
+        <cl:datamapcontext datacontrolid="freeBoardDetail"/>
+        <cl:formdata std:sid="f-data-aef7d38d" row="0" col="4"/>
+      </cl:inputbox>
+      <cl:inputbox std:sid="i-box-7f37a769" id="boardViewsIpb" readonly="true">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardViews"/>
+        <cl:datamapcontext datacontrolid="freeBoardDetail"/>
+        <cl:formdata std:sid="f-data-d6227963" row="0" col="6"/>
+      </cl:inputbox>
       <cl:formlayout std:sid="f-layout-d0fac913" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
         <cl:rows length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
@@ -164,12 +173,19 @@
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
-    <cl:button std:sid="button-9c3af295" value="수정">
+    <cl:button std:sid="button-9c3af295" id="boardUpdateBtn" value="수정">
+      <cl:listener std:sid="listener-4b467050" name="click" handler="onBoardUpdateBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-fc89b37a" top="0px" left="1370px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
-    <cl:button std:sid="button-56f8a030" value="삭제">
+    <cl:button std:sid="button-56f8a030" id="boardDeleteBtn" value="삭제">
+      <cl:listener std:sid="listener-5d5dc9a6" name="click" handler="onBoardDeleteBtnClick"/>
       <cl:xylayoutdata std:sid="xyl-data-c43d84f8" top="0px" left="1470px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
+    <cl:inputbox std:sid="i-box-48a1add4" id="boardContentIpb">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardContent"/>
+      <cl:datamapcontext datacontrolid="freeBoardDetail"/>
+      <cl:xylayoutdata std:sid="xyl-data-072d7864" top="80px" right="10px" left="10px" height="350px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:inputbox>
     <cl:xylayout std:sid="xylayout-e77f2c61"/>
   </body>
   <std:studiosetting>

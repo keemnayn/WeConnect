@@ -43,6 +43,7 @@
 			function onBoardSubSubmitSuccess(e){
 				var boardSub = e.control;
 				alert("게시글 등록 완료");
+				app.close();
 			};
 			// End - User Script
 			

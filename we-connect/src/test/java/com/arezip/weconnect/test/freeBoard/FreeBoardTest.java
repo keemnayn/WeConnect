@@ -1,9 +1,11 @@
-package com.arezip.weconnect.test.csyTest;
+package com.arezip.weconnect.test.freeBoard;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,19 @@ public class FreeBoardTest {
 		assertNotEquals(0, result);
 	}
 
+	//	검색
+	@Test
+	void searchFreeBoardListTest() {
+		String searchType = "all";
+		String searchText = "Title";
+		Map<String, String> searchParams = new HashMap<>();
+		searchParams.put("searchType", searchType);
+		searchParams.put("searchText", searchText);
+		List<FreeBoardDTO> list = freeBoardService.searchFreeBoardList(searchParams);
+		list.forEach(freeBoards -> log.info(freeBoards.toString()));
+		assertNotNull(list);
+	}
+	
 	@Test
 	void getListTest() {
 		List<FreeBoardDTO> list = freeBoardMapper.getFreeBoardList();
