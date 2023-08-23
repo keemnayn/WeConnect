@@ -57,7 +57,6 @@ function onLoginSubSubmitError(e) {
 	var loginSub = e.control;
 	var submission = app.lookup("loginSub");
 	var error = submission.getMetadata("error");
-	console.log(error);
 	alert(error);
 }
 

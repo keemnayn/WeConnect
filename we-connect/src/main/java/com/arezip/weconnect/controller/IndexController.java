@@ -28,7 +28,7 @@ public class IndexController {
 	@RequestMapping
 	public View index(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
-		if (session == null) {
+		if (session == null || session.getAttribute("memberId") == null) {
 			return new UIView("weconnect/login/Login.clx");
 		}
 		return new UIView("weconnect/member/Member.clx");
@@ -67,7 +67,11 @@ public class IndexController {
 	}
 
 	@RequestMapping("weconnect/admin/dashboard")
-	public View admin() {
+	public View admin(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("memberId") == null) {
+			return new UIView("weconnect/login/Login.clx");
+		}
 		return new UIView("weconnect/admin/Admin.clx");
 	}
 
