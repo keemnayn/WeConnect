@@ -26,14 +26,18 @@
 	</select>
 	<!-- 자유게시판 댓글 조회 -->
 	<select id="getFreeBoardComment" resultType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
-		SELECT f.free_board_id, fc.free_board_comment_id,
-		fc.free_board_comment_content,
-		to_char( fc.free_board_comment_date,'YYYY-MM-DD HH24:MI') as freeBoardCommentDate
-		,m.member_name
-		FROM free_board f JOIN member m ON f.member_id = m.member_id
-		JOIN free_board_comment fc ON f.free_board_id = fc.free_board_id
-		WHERE f.free_board_id = #{freeBoardId}
-		order by free_board_comment_id desc 
+		SELECT
+		    fbc.FREE_BOARD_COMMENT_ID,
+		    fbc.MEMBER_ID,
+		    m.MEMBER_NAME,
+		    fbc.FREE_BOARD_COMMENT_CONTENT,
+		    to_char( fbc.FREE_BOARD_COMMENT_DATE,'YYYY-MM-DD HH24:MI') as freeBoardCommentDate
+		FROM
+		    FREE_BOARD_COMMENT fbc
+		INNER JOIN MEMBER m ON fbc.MEMBER_ID = m.MEMBER_ID
+		WHERE fbc.FREE_BOARD_ID = #{freeBoardId}
+		ORDER BY 
+		    fbc.FREE_BOARD_COMMENT_ID DESC
 	</select>
 	<!-- 자유게시판 글 등록 -->
 	<insert id="insertFreeBoard" parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">

@@ -33,6 +33,16 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
+	public int updateFreeBoard(FreeBoardDTO freeBoardDTO) {
+		return freeBoardMapper.updateFreeBoard(freeBoardDTO);
+	}
+
+	@Override
+	public int deleteFreeBoard(FreeBoardDTO freeBoardDTO) {
+		return freeBoardMapper.deleteFreeBoard(freeBoardDTO);
+	}
+	
+	@Override
 	public List<FreeBoardCommentDTO> getFreeBoardComment(long freeBoardId) {
 		return freeBoardMapper.getFreeBoardComment(freeBoardId);
 	}
@@ -51,5 +61,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
 		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentDTO);
 	}
+
 
 }
