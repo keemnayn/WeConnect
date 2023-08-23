@@ -16,7 +16,26 @@
 			 * Created at 2023. 8. 9. 오후 12:33:33.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				let submission = app.lookup("attend1");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onAttend1SubmitSuccess(e){
+				var attend1 = e.control;
+				let grid = app.lookup("grd1");
+				grid.redraw();
+			};
 			// End - User Script
 			
 			// Header
@@ -24,16 +43,37 @@
 			dataSet_1.parseData({
 				"columns": [
 					{
-						"name": "name",
+						"name": "workInTime",
 						"dataType": "string"
 					},
-					{"name": "column2"},
-					{"name": "attendTime"},
-					{"name": "workOutTime"}
+					{
+						"name": "workOutTime",
+						"dataType": "string"
+					},
+					{
+						"name": "workDay",
+						"dataType": "string"
+					},
+					{
+						"name": "attendanceStatus",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					}
 				],
-				"rows": [{"name": "최수연", "column2": "column21", "attendTime": "08:56", "workOutTime": "18:03"}]
+				"rows": []
 			});
 			app.register(dataSet_1);
+			var submission_1 = new cpr.protocols.Submission("attend1");
+			submission_1.method = "get";
+			submission_1.action = "member/attendance";
+			submission_1.addResponseData(dataSet_1, false);
+			if(typeof onAttend1SubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onAttend1SubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -53,6 +93,7 @@
 			// UI Configuration
 			var grid_1 = new cpr.controls.Grid("grd1");
 			grid_1.init({
+				"dataSet": app.lookup("attend"),
 				"columns": [
 					{"width": "100px"},
 					{"width": "100px"},
@@ -61,61 +102,71 @@
 					{"width": "100px"}
 				],
 				"header": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
 							"configurator": function(cell){
+								cell.text = "날짜";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 1},
 							"configurator": function(cell){
+								cell.text = "이름";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 2},
 							"configurator": function(cell){
+								cell.text = "출근";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 3},
 							"configurator": function(cell){
+								cell.text = "퇴근";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 4},
 							"configurator": function(cell){
+								cell.text = "정상";
 							}
 						}
 					]
 				},
 				"detail": {
-					"rows": [{"height": "24px"}],
+					"rows": [{"height": "50px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
 							"configurator": function(cell){
+								cell.columnName = "workDay";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 1},
 							"configurator": function(cell){
+								cell.columnName = "memberName";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 2},
 							"configurator": function(cell){
+								cell.columnName = "workInTime";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 3},
 							"configurator": function(cell){
+								cell.columnName = "workOutTime";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 4},
 							"configurator": function(cell){
+								cell.columnName = "attendanceStatus";
 							}
 						}
 					]
@@ -165,7 +216,6 @@
 				var output_1 = new cpr.controls.Output();
 				var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("attend"), 0);
 				output_1.setBindContext(dataRowContext_1);
-				output_1.bind("value").toDataColumn("name");
 				container.addChild(output_1, {
 					"bottom": "158px",
 					"left": "10px",
@@ -183,7 +233,6 @@
 				var output_3 = new cpr.controls.Output();
 				var dataRowContext_2 = new cpr.bind.DataRowContext(app.lookup("attend"), 0);
 				output_3.setBindContext(dataRowContext_2);
-				output_3.bind("value").toDataColumn("attendTime");
 				container.addChild(output_3, {
 					"right": "388px",
 					"bottom": "68px",
@@ -193,7 +242,6 @@
 				var output_4 = new cpr.controls.Output();
 				var dataRowContext_3 = new cpr.bind.DataRowContext(app.lookup("attend"), 0);
 				output_4.setBindContext(dataRowContext_3);
-				output_4.bind("value").toDataColumn("workOutTime");
 				container.addChild(output_4, {
 					"right": "388px",
 					"bottom": "18px",
@@ -207,6 +255,9 @@
 				"left": "440px",
 				"height": "200px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AttendForm";

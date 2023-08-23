@@ -3,14 +3,14 @@ package com.arezip.weconnect.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-         
+             
 @Data                  
-@NoArgsConstructor 
-@AllArgsConstructor  
+@NoArgsConstructor     
+@AllArgsConstructor   
 public class AttendanceDTO { 
-	private long attendanceId;
+	private long attendanceId; 
 	private String workInTime;
-	private String workOutTime;
+	private String workOutTime; 
 	private String workDay;
 	private String attendanceStatus;
 	private long memberId;
@@ -18,3 +18,4 @@ public class AttendanceDTO {
 	private String position;
 	private String departmentName;
 }
+ 

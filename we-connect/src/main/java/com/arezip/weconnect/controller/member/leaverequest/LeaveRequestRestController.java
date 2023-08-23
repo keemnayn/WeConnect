@@ -70,7 +70,7 @@ public class LeaveRequestRestController {
 		return new JSONDataView();
 	}
 
-	// 관리자페이지 리스트 조회
+	// 관리자페이지 리스트 조회 
 	@GetMapping("/leave-request-list")
 	public View leaveRequestList(DataRequest dataRequest) {
 		List<LeaveRequestDTO> LeaveRequest = leaveRequestService.leaveRequestData();
