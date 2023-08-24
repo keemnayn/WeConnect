@@ -1,49 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-40d2d1e5" version="1.0.4584">
   <head std:sid="head-a181575b">
-    <screen std:sid="screen-ec76f37e" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-ec76f37e" id="new-screen" name="new-screen" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1513" active="true"/>
     <screen std:sid="screen-decf1fa7" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-d99c37fc" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-f1edd463" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-11991c37">
       <cl:dataset std:sid="d-set-e66859ae" id="search">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-64224c6f" name="type"/>
+          <cl:datacolumn std:sid="d-column-7f370d7b" name="label"/>
+          <cl:datacolumn std:sid="d-column-64224c6f" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[전체]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[이름]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[memberName]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[이름]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[직급]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[position]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[직급]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[부서]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[departmentName]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[부서]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[상태]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[분류]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[leaveRequestType]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="value"><![CDATA[leaveRequestStatus]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[상태]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:dataset std:sid="d-set-2f6c6ce4" id="LeaveRequest">
+      <cl:dataset std:sid="d-set-2f6c6ce4" id="leaveRequestList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-99d13469" name="leaveRequestType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-93b43ba3" name="leaveRequestId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-060e761c" name="memberId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-3acf7591" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-de05da16" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-cdede43c" name="departmentName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-12a510dd" name="leaveRequestReason" datatype="string"/>
           <cl:datacolumn std:sid="d-column-30824483" name="leaveRequestStart" datatype="string"/>
           <cl:datacolumn std:sid="d-column-e7803bb8" name="leaveRequestEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-895b717d" name="formattedLeaveCount"/>
+          <cl:datacolumn std:sid="d-column-99d13469" name="leaveRequestType" datatype="string"/>
           <cl:datacolumn std:sid="d-column-a16b30a7" name="leaveRequestStatus" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-12a510dd" name="leaveRequestReason" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-3acf7591" name="memberName" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-cdede43c" name="departmentName" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-de05da16" name="position" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-879ba785" name="leaveCount" datatype="string"/>
         </cl:datacolumnlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-0abaafad" id="LeaveRequest2" async="false" method="get" action="member/leave-request/leave-request-list">
-        <cl:listener std:sid="listener-94226893" name="submit-success" handler="onLeaveRequest2SubmitSuccess"/>
-        <cl:responsedata dataid="LeaveRequest"/>
+      <cl:datamap std:sid="d-map-463664f0" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-22dbc690" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-4fed0082" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-0abaafad" id="leaveRequestListSub" async="false" method="get" action="admin/leave-request">
+        <cl:responsedata dataid="leaveRequestList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-77da4059" id="leaveRequestApproveSub" method="put" action="admin/leave-request">
+        <cl:listener std:sid="listener-f60a2686" name="submit-error" handler="onLeaveRequestApproveSubSubmitError2"/>
+        <cl:listener std:sid="listener-dafd85e4" name="submit-success" handler="onLeaveRequestApproveSubSubmitSuccess2"/>
+        <cl:requestdata dataid="leaveRequestList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-f983cc72" id="leaveRequestRejectSub" action="admin/leave-request">
+        <cl:listener std:sid="listener-65ddd5d8" name="submit-error" handler="onLeaveRequestRejectSubSubmitError"/>
+        <cl:listener std:sid="listener-a4ef28c5" name="submit-success" handler="onLeaveRequestRejectSubSubmitSuccess"/>
+        <cl:requestdata dataid="leaveRequestList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-52a59d7d" id="leaveRequestSearchSub" method="get" action="admin/leave-request/search">
+        <cl:listener std:sid="listener-4fff39e7" name="submit-success" handler="onLeaveRequestSearchSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="leaveRequestList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -60,66 +92,122 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:grid std:sid="grid-be2e867b" id="grd1" datasetid="LeaveRequest">
+          <cl:grid std:sid="grid-be2e867b" id="leaveRequestListGrd" datasetid="leaveRequestList">
             <cl:xylayoutdata std:sid="xyl-data-2f4dfaa2" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:gridcolumn std:sid="g-column-cfdfbc14" width="25px"/>
-            <cl:gridcolumn std:sid="g-column-c32b0f68"/>
-            <cl:gridcolumn std:sid="g-column-ede45708"/>
-            <cl:gridcolumn std:sid="g-column-22e23471"/>
-            <cl:gridcolumn std:sid="g-column-36e77680"/>
-            <cl:gridcolumn std:sid="g-column-0f4ab41d"/>
-            <cl:gridcolumn std:sid="g-column-15bf3e00"/>
-            <cl:gridcolumn std:sid="g-column-266740d6"/>
-            <cl:gridcolumn std:sid="g-column-a9dc04b2"/>
-            <cl:gridheader std:sid="gh-band-49e730ce">
-              <cl:gridrow std:sid="g-row-de64f762" height="50px"/>
-              <cl:gridcell std:sid="gh-cell-ea08214c" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
-              <cl:gridcell std:sid="gh-cell-42546967" rowindex="0" colindex="1" style="text-align:center;" sortable="false" filterable="false" text="이름"/>
-              <cl:gridcell std:sid="gh-cell-477e6332" rowindex="0" colindex="2" style="text-align:center;" sortable="false" filterable="false" text="직급"/>
-              <cl:gridcell std:sid="gh-cell-480bfd15" rowindex="0" colindex="3" style="text-align:center;" sortable="false" filterable="false" text="부서"/>
-              <cl:gridcell std:sid="gh-cell-0310f619" rowindex="0" colindex="4" text="사유"/>
-              <cl:gridcell std:sid="gh-cell-46cc5457" rowindex="0" colindex="5" style="text-align:center;" sortable="false" filterable="false" text="출발"/>
-              <cl:gridcell std:sid="gh-cell-fffacb42" rowindex="0" colindex="6" style="text-align:center;" sortable="false" filterable="false" text="복귀"/>
-              <cl:gridcell std:sid="gh-cell-ee72058a" rowindex="0" colindex="7" text="잔여일수"/>
-              <cl:gridcell std:sid="gh-cell-8f655919" rowindex="0" colindex="8" style="text-align:center;" sortable="false" filterable="false" text="상태"/>
+            <cl:gridcolumn std:sid="g-column-42239e6e" width="25px"/>
+            <cl:gridcolumn std:sid="g-column-606e0982"/>
+            <cl:gridcolumn std:sid="g-column-afd42e56"/>
+            <cl:gridcolumn std:sid="g-column-f0b6547f"/>
+            <cl:gridcolumn std:sid="g-column-15948a98"/>
+            <cl:gridcolumn std:sid="g-column-c9114ea6"/>
+            <cl:gridcolumn std:sid="g-column-18c51f25"/>
+            <cl:gridcolumn std:sid="g-column-bbc54d3b"/>
+            <cl:gridcolumn std:sid="g-column-ba57ca8f"/>
+            <cl:gridcolumn std:sid="g-column-e1ca526c"/>
+            <cl:gridcolumn std:sid="g-column-59043124"/>
+            <cl:gridcolumn std:sid="g-column-0e571b81"/>
+            <cl:gridheader std:sid="gh-band-4968f721">
+              <cl:gridrow std:sid="g-row-2d4570eb"/>
+              <cl:gridcell std:sid="gh-cell-993e9484" rowindex="0" colindex="0" sortable="false" filterable="false" columntype="checkbox"/>
+              <cl:gridcell std:sid="gh-cell-8ab3ec39" rowindex="0" colindex="1" targetcolumnname="leaveRequestId" sortable="false" filterable="false" text="leaveRequestId"/>
+              <cl:gridcell std:sid="gh-cell-2ba24c3b" rowindex="0" colindex="2" targetcolumnname="memberId" sortable="false" filterable="false" text="memberId"/>
+              <cl:gridcell std:sid="gh-cell-f0d78e07" rowindex="0" colindex="3" targetcolumnname="memberName" sortable="false" filterable="false" text="memberName"/>
+              <cl:gridcell std:sid="gh-cell-9b8999ca" rowindex="0" colindex="4" targetcolumnname="position" sortable="false" filterable="false" text="position"/>
+              <cl:gridcell std:sid="gh-cell-31e9ae5e" rowindex="0" colindex="5" targetcolumnname="departmentName" sortable="false" filterable="false" text="departmentName"/>
+              <cl:gridcell std:sid="gh-cell-064e739c" rowindex="0" colindex="6" targetcolumnname="leaveRequestReason" sortable="false" filterable="false" text="leaveRequestReason"/>
+              <cl:gridcell std:sid="gh-cell-e09f1c19" rowindex="0" colindex="7" targetcolumnname="leaveRequestStart" sortable="false" filterable="false" text="leaveRequestStart"/>
+              <cl:gridcell std:sid="gh-cell-0899dd9d" rowindex="0" colindex="8" targetcolumnname="leaveRequestEnd" sortable="false" filterable="false" text="leaveRequestEnd"/>
+              <cl:gridcell std:sid="gh-cell-151a344d" rowindex="0" colindex="9" targetcolumnname="formattedLeaveCount" sortable="false" filterable="false" text="formattedLeaveCount"/>
+              <cl:gridcell std:sid="gh-cell-0dffc6cb" rowindex="0" colindex="10" targetcolumnname="leaveRequestType" sortable="false" filterable="false" text="leaveRequestType"/>
+              <cl:gridcell std:sid="gh-cell-2f5c68cf" rowindex="0" colindex="11" targetcolumnname="leaveRequestStatus" sortable="false" filterable="false" text="leaveRequestStatus"/>
             </cl:gridheader>
-            <cl:griddetail std:sid="gd-band-438a0e97">
-              <cl:gridrow std:sid="g-row-5ce730a5" height="50px"/>
-              <cl:gridcell std:sid="gd-cell-d7cc9312" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
-              <cl:gridcell std:sid="gd-cell-a16471d2" rowindex="0" colindex="1" style="text-align:center;" columnname="memberName"/>
-              <cl:gridcell std:sid="gd-cell-3dae5576" rowindex="0" colindex="2" style="text-align:center;" columnname="position"/>
-              <cl:gridcell std:sid="gd-cell-59bc015f" rowindex="0" colindex="3" style="text-align:center;" columnname="departmentName"/>
-              <cl:gridcell std:sid="gd-cell-4d1d279a" rowindex="0" colindex="4" columnname="leaveRequestReason"/>
-              <cl:gridcell std:sid="gd-cell-8091df4b" rowindex="0" colindex="5" style="text-align:center;" columnname="leaveRequestStart"/>
-              <cl:gridcell std:sid="gd-cell-c3863d9f" rowindex="0" colindex="6" style="text-align:center;" columnname="leaveRequestEnd"/>
-              <cl:gridcell std:sid="gd-cell-7a554598" rowindex="0" colindex="7" columnname="leaveCount"/>
-              <cl:gridcell std:sid="gd-cell-9e0a13a9" rowindex="0" colindex="8" style="text-align:center;" columnname="leaveRequestStatus"/>
+            <cl:griddetail std:sid="gd-band-1e20dde0">
+              <cl:gridrow std:sid="g-row-6db3a540"/>
+              <cl:gridcell std:sid="gd-cell-2a453c4b" rowindex="0" colindex="0" columntype="checkbox"/>
+              <cl:gridcell std:sid="gd-cell-1387544f" rowindex="0" colindex="1" columnname="leaveRequestId">
+                <cl:output std:sid="output-e8c64c03">
+                  <cl:celldata std:sid="c-data-43341f62"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-0a000314" rowindex="0" colindex="2" columnname="memberId">
+                <cl:output std:sid="output-69a4740c">
+                  <cl:celldata std:sid="c-data-3c848bb0"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-e2e6d6a2" rowindex="0" colindex="3" columnname="memberName">
+                <cl:output std:sid="output-d5b3b096">
+                  <cl:celldata std:sid="c-data-cf085c7a"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-df00c852" rowindex="0" colindex="4" columnname="position">
+                <cl:output std:sid="output-8fc39723">
+                  <cl:celldata std:sid="c-data-eb0a5407"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-8b50f750" rowindex="0" colindex="5" columnname="departmentName">
+                <cl:output std:sid="output-17fe341e">
+                  <cl:celldata std:sid="c-data-5d1827e1"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-3c57e26c" rowindex="0" colindex="6" columnname="leaveRequestReason">
+                <cl:output std:sid="output-2f24febd">
+                  <cl:celldata std:sid="c-data-f2a1fcc4"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-a0801b46" rowindex="0" colindex="7" columnname="leaveRequestStart">
+                <cl:output std:sid="output-b6a3a12c">
+                  <cl:celldata std:sid="c-data-78198192"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-534f8c46" rowindex="0" colindex="8" columnname="leaveRequestEnd">
+                <cl:output std:sid="output-1f81d651">
+                  <cl:celldata std:sid="c-data-4d71146b"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-ce54cd00" rowindex="0" colindex="9" columnname="formattedLeaveCount">
+                <cl:output std:sid="output-058cf3aa">
+                  <cl:celldata std:sid="c-data-071f1fbf"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-0326ccf8" rowindex="0" colindex="10" columnname="leaveRequestType">
+                <cl:output std:sid="output-08f02d14">
+                  <cl:celldata std:sid="c-data-48724fb7"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-faa962e3" rowindex="0" colindex="11" columnname="leaveRequestStatus">
+                <cl:output std:sid="output-505a0978">
+                  <cl:celldata std:sid="c-data-50022087"/>
+                </cl:output>
+              </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
           <cl:group std:sid="group-2815f0b4">
-            <cl:xylayoutdata std:sid="xyl-data-7531fed2" top="5px" right="0px" width="200px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:button std:sid="button-ebbace3a" value="저장">
-              <cl:formdata std:sid="f-data-e0922636" row="0" col="2"/>
-            </cl:button>
-            <cl:button std:sid="button-213da8ec" value="거절">
+            <cl:xylayoutdata std:sid="xyl-data-7531fed2" top="5px" right="0px" width="133px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:button std:sid="button-213da8ec" id="refusalBtn" value="거절">
+              <cl:listener std:sid="listener-da5bf474" name="click" handler="onRefusalBtnClick"/>
               <cl:formdata std:sid="f-data-40507e93" row="0" col="1"/>
             </cl:button>
-            <cl:button std:sid="button-3e650736" value="승인">
+            <cl:button std:sid="button-3e650736" id="approvalBtn" value="승인">
+              <cl:listener std:sid="listener-d470c7d4" name="click" handler="onApprovalBtnClick2"/>
               <cl:formdata std:sid="f-data-41f63c03" row="0" col="0"/>
             </cl:button>
             <cl:formlayout std:sid="f-layout-0233582e" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
               <cl:rows length="1" unit="FRACTION"/>
               <cl:columns length="1" unit="FRACTION"/>
               <cl:columns length="1" unit="FRACTION"/>
-              <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" value="전체">
-            <cl:xylayoutdata std:sid="xyl-data-3f6a6e67" top="10px" right="520px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:itemset datasetid="search" label="type" value="type"/>
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb">
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
+            <cl:xylayoutdata std:sid="xyl-data-3f6a6e67" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:itemset datasetid="search" label="label" value="value"/>
           </cl:combobox>
-          <cl:searchinput std:sid="s-input-e6af5d2c">
-            <cl:xylayoutdata std:sid="xyl-data-c4569f35" top="10px" right="220px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+          <cl:searchinput std:sid="s-input-e6af5d2c" id="searchTextIpb">
+            <cl:listener std:sid="listener-4cee6864" name="search" handler="onSearchTextIpbSearch"/>
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
+            <cl:xylayoutdata std:sid="xyl-data-c4569f35" top="10px" right="153px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
           </cl:searchinput>
           <cl:xylayout std:sid="xylayout-7a013006"/>
         </cl:group>

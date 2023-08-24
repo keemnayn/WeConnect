@@ -32,4 +32,7 @@ public interface AdminMemberMapper {
 
 //	회원 가입 거절
 	int rejectMember(MemberDTO memberDTO);
+
+//	연차개수
+	int getLeaveCountByMemberId(long memberId);
 }
