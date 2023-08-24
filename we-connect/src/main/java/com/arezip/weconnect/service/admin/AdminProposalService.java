@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import com.arezip.weconnect.model.dto.ProposalDTO;
 
@@ -14,4 +15,7 @@ public interface AdminProposalService {
 
 // 건의사항 삭제
 	int deleteProposal(ProposalDTO proposalDTO);
+
+// 건의사항 검색
+	List<ProposalDTO> searchProposal(Map<String, String> searchParams);
 }

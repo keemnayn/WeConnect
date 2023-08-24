@@ -49,7 +49,7 @@
 		member_id = #{memberId}
 	</delete>
 	<!-- 건의사항 검색 -->
-	<select id="selectProposalBySearchCriteria"
+	<select id="searchProposal"
 		parameterType="HashMap"
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
 		SELECT proposal_id AS proposalId, proposal_title AS
@@ -72,6 +72,6 @@
 				AND proposa_title LIKE '%' || #{searchText} || '%'
 			</when>
 		</choose>
-		ORDER BY proposal_create DESC
+		ORDER BY proposal_id DESC
 	</select>
 </mapper>

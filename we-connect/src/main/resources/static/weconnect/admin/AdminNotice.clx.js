@@ -74,7 +74,7 @@
 				var grid = app.lookup("noticeGrd");
 				var checkRowIndices = grid.getCheckRowIndices();
 				if (checkRowIndices.length > 0) {
-					if (confirm("선택한 공지사항을 삭제 하시겠 습니까?")) {
+					if (confirm("선택한 공지사항을 삭제 하시겠습니까?")) {
 						grid.deleteRow(checkRowIndices);
 						app.lookup("deleteNoticeSub").send();
 					}

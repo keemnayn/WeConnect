@@ -15,7 +15,7 @@
 			 * Proposal.js
 			 * Created at 2023. 8. 21. 오전 03:25:21.
 			 *
-			 * @author keemnayn
+			 * @author keemn
 			 ************************************************/
 
 			/*
@@ -86,6 +86,15 @@
 				var submission = app.lookup("searchProposalSub");
 				submission.send();
 			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchProposalSubSubmitSuccess(e){
+				var searchProposalSub = e.control;
+				app.lookup("proposalGrd").redraw();
+			};
 			// End - User Script
 			
 			// Header
@@ -121,6 +130,12 @@
 				]
 			});
 			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("updateMemberParam");
+			dataMap_2.parseData({
+				"columns" : [{"name": "status"}]
+			});
+			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("proposalListSub");
 			submission_1.method = "get";
 			submission_1.action = "admin/proposals";
@@ -132,6 +147,9 @@
 			submission_2.action = "member/proposals/search";
 			submission_2.addRequestData(dataMap_1);
 			submission_2.addResponseData(dataSet_1, false);
+			if(typeof onSearchProposalSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onSearchProposalSubSubmitSuccess);
+			}
 			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
