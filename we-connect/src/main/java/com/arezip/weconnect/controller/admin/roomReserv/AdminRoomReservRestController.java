@@ -25,6 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminRoomReservRestController {
 	private final AdminRoomService adminRoomService;
 	
+	//회의실 조회
+	@GetMapping("/room")
+	public View getRoomList(DataRequest dataRequest) {
+		List<RoomDTO> roomList = adminRoomService.getRoomList();
+		dataRequest.setResponse("roomList", roomList);
+		return new JSONDataView();
+	}
+	
 	//회의실 예약 조회
 	@GetMapping
 	public View getRoomReservList(DataRequest dataRequest) {
@@ -32,6 +40,7 @@ public class AdminRoomReservRestController {
 		dataRequest.setResponse("reservList", roomReservList);
 		return new JSONDataView();
 	}
+	
 	@PostMapping
 	public View insertRoom(DataRequest dataRequest) {
 		ParameterGroup param = dataRequest.getParameterGroup("roomInfoParam");

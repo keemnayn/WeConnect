@@ -17,4 +17,5 @@ public class FreeBoardDTO {
 	private String memberName;
 	private long memberId;
 	private int freeBoardCommentCount;
+	private long CMemberId;
 }

@@ -41,6 +41,7 @@
 		to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate,
 		f.free_board_views,
 		f.free_board_file_name,
+		m.member_id as CMemberId,
 		m.member_name
 		FROM free_board f JOIN member m ON f.member_id = m.member_id
 		WHERE f.free_board_id = #{freeBoardId}
@@ -49,7 +50,7 @@
 	<select id="getFreeBoardComment" resultType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		SELECT
 		    fbc.FREE_BOARD_COMMENT_ID,
-		    fbc.MEMBER_ID,
+		    fbc.MEMBER_ID as CMemberId,
 		    m.MEMBER_NAME,
 		    fbc.FREE_BOARD_COMMENT_CONTENT,
 		    to_char( fbc.FREE_BOARD_COMMENT_DATE,'YYYY-MM-DD HH24:MI') as freeBoardCommentDate
@@ -91,4 +92,8 @@
 	<delete id="deleteFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		delete from free_board_comment where free_board_comment_id = #{freeBoardCommentId}
 	</delete>
+	<!-- 댓글 수정 -->
+	<update id="updateFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		update free_board_comment set free_board_comment_content = #{freeBoardCommentContent} where free_board_comment_id = #{freeBoardCommentId}
+	</update>
 </mapper>
