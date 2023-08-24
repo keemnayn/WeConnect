@@ -1,7 +1,5 @@
 package com.arezip.weconnect.model.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FreeBoardCommentDTO {
+	private long freeBoardId;
 	private long freeBoardCommentId;
 	private String freeBoardCommentContent;
-	private Date freeBoardCommentDate;
-	private MemberDTO memberVO;
-	private FreeBoardDTO freeBoardVO;
+	private String freeBoardCommentDate;
+	private String memberName;
+	private long memberId;
 }

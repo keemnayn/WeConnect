@@ -40,8 +40,8 @@
       <cl:output std:sid="output-1d111ff7" value="일정구분">
         <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
       </cl:output>
-      <cl:combobox std:sid="c-box-73f5625e" id="cmb1" value="선택">
-        <cl:formdata std:sid="f-data-f398ee34" row="0" col="1"/>
+      <cl:combobox std:sid="c-box-73f5625e" id="cmb1" style="color:#080808; font-size:15px; font-style:normal;" value="선택">
+        <cl:formdata std:sid="f-data-62e0319f" row="0" col="1"/>
         <cl:itemset datasetid="type" label="type" value="type"/>
       </cl:combobox>
       <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -64,10 +64,12 @@
         <cl:columns length="1" unit="FRACTION" autoSizing="true"/>
       </cl:formlayout>
     </cl:group>
-    <cl:button std:sid="button-0446aba0" value="취소">
+    <cl:button std:sid="button-0446aba0" style="text-align:center;" value="취소">
+      <cl:listener std:sid="listener-d6fb8d70" name="click" handler="onButtonClick2"/>
       <cl:xylayoutdata std:sid="xyl-data-6b776e3f" right="280px" bottom="20px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
     </cl:button>
-    <cl:button std:sid="button-39198b35" value="저장">
+    <cl:button std:sid="button-39198b35" style="text-align:center;" value="저장">
+      <cl:listener std:sid="listener-67be1f5e" name="click" handler="onButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-56bce2de" bottom="20px" left="280px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
     </cl:button>
     <cl:group std:sid="group-b89c1d4b">

@@ -1,7 +1,5 @@
 package com.arezip.weconnect.model.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +10,8 @@ import lombok.NoArgsConstructor;
 public class ProjectDTO {
 	private long projectId;
 	private String projectName;
-	private Date projectStart;
-	private Date projectEnd;
+	private String projectStart;
+	private String projectEnd;
+	private int projectMemberCount;
 	private long memberId;
 }

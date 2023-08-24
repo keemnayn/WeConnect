@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arezip.weconnect.mapper.ProfileMapper">
+	<select id="findImgPath"
+		resultType="com.arezip.weconnect.model.dto.ProfileImageDTO">
+		SELECT
+		profile_images_path as profileImagePath
+		FROM
+		profile_images WHERE MEMBER_ID = #{memberId}
+	</select>
+</mapper> 

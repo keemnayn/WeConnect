@@ -38,7 +38,7 @@
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("ds1");
+			var dataSet_1 = new cpr.data.DataSet("reservList");
 			dataSet_1.parseData({
 				"stateRestore": false,
 				"columns": [
@@ -88,7 +88,7 @@
 				(function(container){
 					var grid_1 = new cpr.controls.Grid("grd1");
 					grid_1.init({
-						"dataSet": app.lookup("ds1"),
+						"dataSet": app.lookup("reservList"),
 						"columns": [
 							{"width": "100px"},
 							{"width": "100px"},

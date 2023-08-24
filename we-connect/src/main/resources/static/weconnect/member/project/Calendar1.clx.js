@@ -38,10 +38,10 @@
 			// UI Configuration
 			var calendar_1 = new cpr.controls.Calendar();
 			container.addChild(calendar_1, {
-				"top": "20px",
-				"left": "20px",
-				"width": "819px",
-				"height": "472px"
+				"top": "5px",
+				"left": "10px",
+				"width": "1540px",
+				"height": "800px"
 			});
 			
 			var textArea_1 = new cpr.controls.TextArea("txa3");

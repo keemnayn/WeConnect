@@ -16,63 +16,30 @@
 			 * Created at 2023. 8. 9. 오전 10:47:05.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				let submission = app.lookup("LeaveRequest2");
+				submission.send();
+			}
+			 
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLeaveRequest2SubmitSuccess(e){
+				var leaveRequest2 = e.control;
+				app.lookup("grd1").redraw();
+			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("vacationList");
+			var dataSet_1 = new cpr.data.DataSet("search");
 			dataSet_1.parseData({
-				"columns": [
-					{"name": "name"},
-					{"name": "grade"},
-					{"name": "department"},
-					{"name": "departure"},
-					{"name": "return"},
-					{"name": "state"}
-				],
-				"rows": [
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "승인"},
-					{"name": "박해준", "grade": "사원", "department": "인사", "departure": "2023-08-08", "return": "2023-08-10", "state": "거절"}
-				]
-			});
-			app.register(dataSet_1);
-			
-			var dataSet_2 = new cpr.data.DataSet("search");
-			dataSet_2.parseData({
 				"columns": [{"name": "type"}],
 				"rows": [
 					{"type": "전체"},
@@ -82,7 +49,59 @@
 					{"type": "상태"}
 				]
 			});
+			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("LeaveRequest");
+			dataSet_2.parseData({
+				"columns" : [
+					{
+						"name": "leaveRequestType",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestStart",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestEnd",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestStatus",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestReason",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveCount",
+						"dataType": "string"
+					}
+				]
+			});
 			app.register(dataSet_2);
+			var submission_1 = new cpr.protocols.Submission("LeaveRequest2");
+			submission_1.async = false;
+			submission_1.method = "get";
+			submission_1.action = "member/leave-request/leave-request-list";
+			submission_1.addResponseData(dataSet_2, false);
+			if(typeof onLeaveRequest2SubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onLeaveRequest2SubmitSuccess);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -111,9 +130,11 @@
 				(function(container){
 					var grid_1 = new cpr.controls.Grid("grd1");
 					grid_1.init({
-						"dataSet": app.lookup("vacationList"),
+						"dataSet": app.lookup("LeaveRequest"),
 						"columns": [
 							{"width": "25px"},
+							{"width": "100px"},
+							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
@@ -140,7 +161,6 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "name";
 										cell.text = "이름";
 										cell.style.css({
 											"text-align" : "center"
@@ -152,7 +172,6 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "grade";
 										cell.text = "직급";
 										cell.style.css({
 											"text-align" : "center"
@@ -164,7 +183,6 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "department";
 										cell.text = "부서";
 										cell.style.css({
 											"text-align" : "center"
@@ -174,13 +192,7 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.filterable = false;
-										cell.sortable = false;
-										cell.targetColumnName = "departure";
-										cell.text = "출발";
-										cell.style.css({
-											"text-align" : "center"
-										});
+										cell.text = "사유";
 									}
 								},
 								{
@@ -188,8 +200,7 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "return";
-										cell.text = "복귀";
+										cell.text = "출발";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -200,7 +211,23 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.targetColumnName = "state";
+										cell.text = "복귀";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.text = "잔여일수";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 8},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
 										cell.text = "상태";
 										cell.style.css({
 											"text-align" : "center"
@@ -224,103 +251,67 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "name";
+										cell.columnName = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
-										cell.control = (function(){
-											var output_1 = new cpr.controls.Output();
-											output_1.style.css({
-												"text-align" : "center"
-											});
-											output_1.bind("value").toDataColumn("name");
-											return output_1;
-										})();
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "grade";
+										cell.columnName = "position";
 										cell.style.css({
 											"text-align" : "center"
 										});
-										cell.control = (function(){
-											var output_2 = new cpr.controls.Output();
-											output_2.style.css({
-												"text-align" : "center"
-											});
-											output_2.bind("value").toDataColumn("grade");
-											return output_2;
-										})();
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "department";
+										cell.columnName = "departmentName";
 										cell.style.css({
 											"text-align" : "center"
 										});
-										cell.control = (function(){
-											var output_3 = new cpr.controls.Output();
-											output_3.style.css({
-												"text-align" : "center"
-											});
-											output_3.bind("value").toDataColumn("department");
-											return output_3;
-										})();
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "departure";
-										cell.style.css({
-											"text-align" : "center"
-										});
-										cell.control = (function(){
-											var output_4 = new cpr.controls.Output();
-											output_4.style.css({
-												"text-align" : "center"
-											});
-											output_4.bind("value").toDataColumn("departure");
-											return output_4;
-										})();
+										cell.columnName = "leaveRequestReason";
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
-										cell.columnName = "return";
+										cell.columnName = "leaveRequestStart";
 										cell.style.css({
 											"text-align" : "center"
 										});
-										cell.control = (function(){
-											var output_5 = new cpr.controls.Output();
-											output_5.style.css({
-												"text-align" : "center"
-											});
-											output_5.bind("value").toDataColumn("return");
-											return output_5;
-										})();
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 6},
 									"configurator": function(cell){
-										cell.columnName = "state";
+										cell.columnName = "leaveRequestEnd";
 										cell.style.css({
 											"text-align" : "center"
 										});
-										cell.control = (function(){
-											var output_6 = new cpr.controls.Output();
-											output_6.style.css({
-												"text-align" : "center"
-											});
-											output_6.bind("value").toDataColumn("state");
-											return output_6;
-										})();
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 7},
+									"configurator": function(cell){
+										cell.columnName = "leaveCount";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 8},
+									"configurator": function(cell){
+										cell.columnName = "leaveRequestStatus";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								}
 							]
@@ -403,6 +394,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminVacation";

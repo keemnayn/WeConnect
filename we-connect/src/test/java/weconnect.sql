@@ -1,3 +1,9 @@
+ select * from WECONNECT.FREE_BOARD_COMMENT;
+
+select * from free_board;
+
+
+ 
 /* 회원 */
 CREATE SEQUENCE member_seq
 START WITH 1
@@ -13,13 +19,31 @@ CREATE TABLE member (
 	manager_yn CHAR(1) NOT NULL, /* 관리자여부 */
 	department_id NUMBER /* 부서번호 */
 );
+select * from member;
 ALTER TABLE member
 ADD leave_count NUMBER DEFAULT 12 NOT NULL;
+update member set Leave_count = 
 /*멤버 테이블 insert 문 */
 INSERT INTO member (member_name, member_email, member_password, position, department_id)
 VALUES (member_seq.NEXTVAL, '박정', 'een@example.com', 'a', '사원','2');
 --로그인----
 select member_name from member where member_email='wqeqwere1'and member_password='12';
+--업데이트--
+UPDATE member
+SET  LEAVE_COUNT= LEAVE_COUNT -3
+where member_name = '박애준1';
+
+
+UPDATE member
+SET leave_count = leave_count - 
+    (SELECT SUM(leave_request_end - leave_request_start + 1)
+     FROM leave_request
+     WHERE member_id = 
+           (SELECT member_id FROM member WHERE member_id = 131))
+WHERE member_id = 131;
+
+
+
 /*멤버 테이블 */
 select * from member;
 select * from department;
@@ -29,6 +53,7 @@ MODIFY member_status DEFAULT '대기';
 --member , department =>join 
 select m.member_name, m.member_email, m.position, d.department_name  from member m inner join department d ON m.DEPARTMENT_ID = d.DEPARTMENT_ID;
 
+select * from member where member_email ='1212';
 ALTER TABLE member
 MODIFY manager_yn DEFAULT 'N';
 
@@ -87,8 +112,14 @@ CREATE TABLE profile_images (
     FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
 
-	
-		
+INSERT INTO profile_images (profile_images_id, profile_images_name, profile_images_path, member_id)
+VALUES (1, 'profile.png', 'img/header/profile.png', 131);	
+
+select * from profile_images;
+
+SELECT profile_images_path FROM profile_images WHERE member_id = 131;
+
+
 /* 부서 */
 CREATE SEQUENCE department_seq
 START WITH 1
@@ -212,16 +243,32 @@ REFERENCES project(project_id);
 CREATE SEQUENCE attendance_seq
 START WITH 1
 INCREMENT BY 1;
+drop SEQUENCE attendance_seq
+drop table attendance
 
 CREATE TABLE attendance (
 	attendance_id NUMBER NOT NULL, /* 근태 번호 */
 	work_in_time TIMESTAMP NOT NULL, /* 출근시간 */
 	work_out_time TIMESTAMP, /* 퇴근시간 */
 	work_day DATE NOT NULL, /* 출근일 */
-	attendance_status VARCHAR2(20) NOT NULL CHECK (attendance_status IN ('출근', '퇴근', '지각', '결근')), /* 근태 상태 */
+	attendance_status VARCHAR2(20) NOT NULL CHECK (attendance_status IN ('정상', '지각', '결근')), /* 근태 상태 */
 	member_id NUMBER, /* 회원번호 */
 	CONSTRAINT FK_attendance_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
+
+--출근 insert
+INSERT INTO attendance (attendance_id, work_in_time, work_day, member_id)
+VALUES (attendance_seq.NEXTVAL, SYSTIMESTAMP, TRUNC(SYSDATE), 131);
+
+INSERT INTO attendance (attendance_id, work_in_time, work_day, member_id)
+VALUES (attendance_seq.NEXTVAL, TO_TIMESTAMP('2023-08-22 08:50:00', 'YYYY-MM-DD HH24:MI:SS'), TRUNC(SYSDATE), 131);
+
+--퇴근버튼 눌렀을 때 업데이트 
+UPDATE attendance
+SET work_out_time = SYSTIMESTAMP
+WHERE work_out_time IS NULL AND member_id = 131;
+
+select * from attendance;
 
 COMMENT ON TABLE attendance IS '근태';
 
@@ -249,11 +296,20 @@ ALTER TABLE attendance
 			attendance_id
 );
 
+SELECT TO_CHAR(A.work_Day, 'YYYY-MM-DD') AS work_Day,
+       m.member_name,
+       TO_CHAR(A.work_in_time, ' HH24:MI') AS work_in_time,
+       TO_CHAR(A.work_out_time, ' HH24:MI') AS work_out_time,
+       A.Attendance_STATUS
+FROM Attendance A
+INNER JOIN member M ON A.member_id = M.member_id;
+
 /* 연차신청 */
 CREATE SEQUENCE leave_request_seq
 START WITH 1
 INCREMENT BY 1;
 
+select * from leave_request;
 CREATE TABLE leave_request (
 	leave_request_id NUMBER NOT NULL, /* 연차신청 번호 */
 	leave_request_type VARCHAR2(50) NOT NULL CHECK (leave_request_type IN ('연차', '반차')), /* 연차 구분 */
@@ -265,6 +321,11 @@ CREATE TABLE leave_request (
 	CONSTRAINT FK_leave_request_member FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
 
+update leave_request
+set leave_request_status = '승인'
+where member_id =131;
+
+select * from member;
 ALTER TABLE leave_request
 MODIFY leave_request_status DEFAULT '승인 대기';
 
@@ -323,27 +384,30 @@ ALTER TABLE room
 			room_id
 );
 
-
+--
 /* 회의실 예약 */
 CREATE SEQUENCE room_reserv_seq START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE room_reserv (
 	room_reserv_id NUMBER NOT NULL, /* 회의실 예약 번호 */
-	room_reserv_start TIMESTAMP NOT NULL, /* 회의실 예약 시작일시 */
-	room_reserv_end TIMESTAMP NOT NULL, /* 회의실 예약 종료일시 */
+	room_reserv_date VARCHAR2(100) NOT NULL, /* 회의실 예약 날짜 */
+	room_reserv_start_time number NOT NULL, /* 회의실 예약 시작일시 */
+	room_reserv_end_time number NOT NULL, /* 회의실 예약 종료일시 */
+	proposal VARCHAR2(500),
 	member_id NUMBER, /* 회원번호 */
 	room_id NUMBER NOT NULL, /* 회의실 번호 */
 	CONSTRAINT FK_member_reserv FOREIGN KEY (member_id) REFERENCES member(member_id),
 	CONSTRAINT FK_room_reserv FOREIGN KEY (room_id) REFERENCES room(room_id)
 );
-
 COMMENT ON TABLE room_reserv IS '회의실 예약';
 
 COMMENT ON COLUMN room_reserv.room_reserv_id IS '회의실 예약 번호';
 
-COMMENT ON COLUMN room_reserv.room_reserv_start IS '회의실 예약 시작일시';
+COMMENT ON COLUMN room_reserv.room_reserv_date IS '회의실 예약 날짜';
 
-COMMENT ON COLUMN room_reserv.room_reserv_end IS '회의실 예약 종료일시';
+COMMENT ON COLUMN room_reserv.room_reserv_start_time IS '회의실 예약 시작일시';
+
+COMMENT ON COLUMN room_reserv.room_reserv_end_time IS '회의실 예약 종료일시';
 
 COMMENT ON COLUMN room_reserv.member_id IS '회원번호';
 
@@ -663,8 +727,10 @@ CREATE TABLE free_board (
 	free_board_content CLOB NOT NULL,
 	free_board_create DATE DEFAULT SYSDATE NOT NULL,
 	free_board_views NUMBER DEFAULT 0 NOT NULL,
+	free_board_file_name VARCHAR2(1000),
 	member_id NUMBER NOT NULL
 );
+select * from free_board;
 
 COMMENT ON TABLE free_board IS '자유게시판';
 
@@ -678,6 +744,8 @@ COMMENT ON COLUMN free_board.free_board_create IS '자유게시판 등록일';
 
 COMMENT ON COLUMN free_board.free_board_views IS '자유게시판 조회수';
 
+COMMENT ON COLUMN free_board.free_board_file_name IS '자유게시판 첨부파일';
+
 COMMENT ON COLUMN free_board.member_id IS '회원번호';
 
 CREATE UNIQUE INDEX PK_free_board ON free_board (free_board_id ASC);
@@ -690,40 +758,6 @@ ALTER TABLE free_board
     ADD CONSTRAINT FK_free_board_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id); -- 'member'는 예시입니다. 실제 회원 테이블 이름에 맞게 수정해야 합니다.
-    
-    
-    
-/* 자유게시판 첨부파일 */
-CREATE SEQUENCE free_board_file_seq START WITH 1 INCREMENT BY 1;
-
-CREATE TABLE free_board_file (
-	free_board_file_id NUMBER NOT NULL,
-	free_board_file_name VARCHAR2(1000) NOT NULL,
-	free_board_file_path VARCHAR2(1000) NOT NULL,
-	free_board_id NUMBER NOT NULL
-);
-
-COMMENT ON TABLE free_board_file IS '자유게시판 첨부파일';
-
-COMMENT ON COLUMN free_board_file.free_board_file_id IS '자유게시판 첨부파일 번호';
-
-COMMENT ON COLUMN free_board_file.free_board_file_name IS '자유게시판 첨부파일 이름';
-
-COMMENT ON COLUMN free_board_file.free_board_file_path IS '자유게시판 첨부파일 경로';
-
-COMMENT ON COLUMN free_board_file.free_board_id IS '자유게시판 번호';
-
-CREATE UNIQUE INDEX PK_free_board_file ON free_board_file (free_board_file_id ASC);
-
-ALTER TABLE free_board_file
-	ADD CONSTRAINT PK_free_board_file PRIMARY KEY (free_board_file_id);
-
--- 자유게시판과의 관계를 나타내는 외래키 제약조건 추가.
-ALTER TABLE free_board_file
-    ADD CONSTRAINT FK_free_board_file
-    FOREIGN KEY (free_board_id) 
-    REFERENCES free_board(free_board_id);
-
     
     
 /* 자유게시판 댓글 */
@@ -766,5 +800,3 @@ ALTER TABLE free_board_comment
     ADD CONSTRAINT FK_free_board_comment_member
     FOREIGN KEY (member_id) 
     REFERENCES member(member_id);
-    
-    

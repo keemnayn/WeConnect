@@ -3,11 +3,11 @@ package com.arezip.weconnect.service;
 import java.util.List;
 
 import com.arezip.weconnect.model.dto.TeamPostDTO;
-import com.arezip.weconnect.model.vo.TeamPostVO;
 
 public interface TeamPostService {
+	//TeamPostDTO getTeamPost(long teamPostId);
 
-	List<TeamPostVO> getTeamPostList();
-	
-	int insertTeamPost(TeamPostDTO teamPostDTO);
+	List<TeamPostDTO> getTeamPostList(long memberId);
+ 
+	/* int insertTeamPost(TeamPostDTO teamPostDTO); */
 }

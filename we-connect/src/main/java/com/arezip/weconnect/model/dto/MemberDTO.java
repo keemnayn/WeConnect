@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MemberDTO implements Serializable {
 	/**
-	 * memberVO 직렬화 
+	 * 
 	 */
-	private static final long serialVersionUID = 3518804505456304614L;
+	private static final long serialVersionUID = -6564935665966002718L;
 	private long memberId;
 	private String memberName;
 	private String memberEmail;
@@ -22,5 +22,7 @@ public class MemberDTO implements Serializable {
 	private String memberStatus;
 	private String managerYn;
 	private long leaveCount;
-	private DepartmentDTO departmentVO;
-}
+	private String memberJoinDate; 
+	private long departmentId;
+	private String departmentName; 
+} 

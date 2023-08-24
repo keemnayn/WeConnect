@@ -32,7 +32,6 @@
 					alert("공지사항의 제목, 내용, 분류를 모두 입력해주세요.");
 				} else {
 					submission.send();
-					app.close();
 				}
 			}
 			/*
@@ -41,6 +40,25 @@
 			 */
 			function onCancelBtnClick(e) {
 				var cancelBtn = e.control;
+				app.close();
+			}
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				var comboBox = app.lookup("noticeCategoryCmb");
+				comboBox.fieldLabel = "공지";
+				comboBox.value = "공지";
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onNoticeCreateSubSubmitSuccess(e) {
+				var noticeCreateSub = e.control;
 				app.close();
 			}
 			// End - User Script
@@ -70,6 +88,9 @@
 			var submission_1 = new cpr.protocols.Submission("noticeCreateSub");
 			submission_1.action = "admin/notices";
 			submission_1.addRequestData(dataMap_1);
+			if(typeof onNoticeCreateSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onNoticeCreateSubSubmitSuccess);
+			}
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
@@ -93,12 +114,15 @@
 			container.addChild(output_1, {
 				"top": "20px",
 				"right": "1060px",
-				"left": "20px",
+				"left": "30px",
 				"height": "50px"
 			});
 			
 			var button_1 = new cpr.controls.Button("createBtn");
 			button_1.value = "등록";
+			button_1.style.css({
+				"text-align" : "center"
+			});
 			if(typeof onCreateBtnClick == "function") {
 				button_1.addEventListener("click", onCreateBtnClick);
 			}
@@ -111,6 +135,9 @@
 			
 			var button_2 = new cpr.controls.Button("cancelBtn");
 			button_2.value = "취소";
+			button_2.style.css({
+				"text-align" : "center"
+			});
 			if(typeof onCancelBtnClick == "function") {
 				button_2.addEventListener("click", onCancelBtnClick);
 			}
@@ -127,8 +154,8 @@
 			inputBox_1.setBindContext(dataMapContext_1);
 			inputBox_1.bind("value").toDataMap(app.lookup("noticeCreateParam"), "noticeTitle");
 			container.addChild(inputBox_1, {
-				"top": "120px",
-				"left": "20px",
+				"top": "110px",
+				"right": "30px",
 				"width": "800px",
 				"height": "50px"
 			});
@@ -141,8 +168,8 @@
 			container.addChild(textArea_1, {
 				"top": "220px",
 				"right": "20px",
-				"bottom": "100px",
-				"left": "20px"
+				"bottom": "110px",
+				"left": "30px"
 			});
 			
 			var comboBox_1 = new cpr.controls.ComboBox("noticeCategoryCmb");
@@ -156,11 +183,14 @@
 				});
 			})(comboBox_1);
 			container.addChild(comboBox_1, {
-				"top": "120px",
-				"right": "20px",
+				"top": "110px",
+				"left": "30px",
 				"width": "300px",
 				"height": "50px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "공지사항 등록 팝업";

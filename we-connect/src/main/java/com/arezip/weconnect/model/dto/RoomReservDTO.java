@@ -1,7 +1,5 @@
 package com.arezip.weconnect.model.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RoomReservDTO {
 	private long roomReservId;
-	private Date roomReservStartDay;
-	private Date roomReservEndDay;
-	private Date roomReservStartTime;
-	private Date roomReservEndTime;
-	private MemberDTO memberVO;
-	private RoomDTO roomVO;
+	private String roomReservDate;
+	private long roomReservStartTime;
+	private long roomReservEndTime;
+	private String proposal;
+	private long memberId;
+	private String memberName;
+	private String roomName;
+	private long roomId;
 }

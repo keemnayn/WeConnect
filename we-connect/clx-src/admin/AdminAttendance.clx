@@ -8,354 +8,65 @@
     <cl:model std:sid="model-7ec00089">
       <cl:dataset std:sid="d-set-9a08867f" id="attendanceList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-09022fec" name="name"/>
-          <cl:datacolumn std:sid="d-column-a853a4d2" name="grade"/>
-          <cl:datacolumn std:sid="d-column-afd05a6a" name="department"/>
-          <cl:datacolumn std:sid="d-column-d7b24153" name="attendance"/>
-          <cl:datacolumn std:sid="d-column-081521f3" name="leaveWork"/>
-          <cl:datacolumn std:sid="d-column-fe5b88f2" name="state"/>
+          <cl:datacolumn std:sid="d-column-bb72cdfe" name="attendanceId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-1b35681c" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-881de560" name="position"/>
+          <cl:datacolumn std:sid="d-column-9d7f70dc" name="departmentName"/>
+          <cl:datacolumn std:sid="d-column-a6bf77d6" name="workDay"/>
+          <cl:datacolumn std:sid="d-column-03c4675c" name="workInTime"/>
+          <cl:datacolumn std:sid="d-column-1c1f7a2b" name="workOutTime"/>
+          <cl:datacolumn std:sid="d-column-02645c54" name="attendanceStatus"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">정상</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">09:10</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">18:03</cl:datavalue>
-            <cl:datavalue columnname="state">지각</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name">박해준</cl:datavalue>
-            <cl:datavalue columnname="grade">사원</cl:datavalue>
-            <cl:datavalue columnname="department">인사</cl:datavalue>
-            <cl:datavalue columnname="attendance">08:56</cl:datavalue>
-            <cl:datavalue columnname="leaveWork">14:20</cl:datavalue>
-            <cl:datavalue columnname="state">조퇴</cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:dataset std:sid="d-set-e6f4d3da" id="search">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-76007c53" name="type"/>
+          <cl:datacolumn std:sid="d-column-76007c53" name="label"/>
+          <cl:datacolumn std:sid="d-column-7f049296" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type">전체</cl:datavalue>
+            <cl:datavalue columnname="label">전체</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">이름</cl:datavalue>
+            <cl:datavalue columnname="label">이름</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[memberName]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">직급</cl:datavalue>
+            <cl:datavalue columnname="label">직급</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[position]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">부서</cl:datavalue>
+            <cl:datavalue columnname="label">부서</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[departmentName]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">상태</cl:datavalue>
+            <cl:datavalue columnname="label">상태</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[attendanceStatus]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-b53df813" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-f860bcde" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-d27c9b02" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-055b4061" id="attendanceListSub" method="get" action="admin/attendances">
+        <cl:listener std:sid="listener-dde58773" name="submit-error" handler="onAttendanceListSubSubmitError"/>
+        <cl:responsedata dataid="attendanceList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-7dc69aa2" id="searchAttendanceSub" method="get" action="admin/attendances/search">
+        <cl:listener std:sid="listener-4f2c66dd" name="submit-success" handler="onSearchAttendanceSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="attendanceList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-6e7541e6">
+    <cl:listener std:sid="listener-58e78d6d" name="init" handler="onBodyInit"/>
     <cl:tabfolder std:sid="t-folder-373b940a">
       <cl:xylayoutdata std:sid="xyl-data-b6e110b0" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-0fef08b5" selected="true" text="근태관리">
@@ -366,64 +77,83 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:grid std:sid="grid-f2646872" id="grd1" datasetid="attendanceList">
+          <cl:grid std:sid="grid-f2646872" id="attendanceListGrd" datasetid="attendanceList">
             <cl:listener std:sid="listener-edd8d071" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-858ffeb0" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:gridcolumn std:sid="g-column-1a242a0e"/>
-            <cl:gridcolumn std:sid="g-column-238614ae"/>
-            <cl:gridcolumn std:sid="g-column-a12e1e71"/>
-            <cl:gridcolumn std:sid="g-column-25a7c4fe"/>
-            <cl:gridcolumn std:sid="g-column-64b49100"/>
-            <cl:gridcolumn std:sid="g-column-3c8c6013"/>
-            <cl:gridheader std:sid="gh-band-8ef0d99e">
-              <cl:gridrow std:sid="g-row-4182f3a1" height="50px"/>
-              <cl:gridcell std:sid="gh-cell-77dfa5b7" rowindex="0" colindex="0" style="text-align:center;" targetcolumnname="name" sortable="false" filterable="false" text="이름"/>
-              <cl:gridcell std:sid="gh-cell-b914043d" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="grade" sortable="false" filterable="false" text="직급"/>
-              <cl:gridcell std:sid="gh-cell-20be945c" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="department" sortable="false" filterable="false" text="부서"/>
-              <cl:gridcell std:sid="gh-cell-ca3646e3" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="attendance" sortable="false" filterable="false" text="출근"/>
-              <cl:gridcell std:sid="gh-cell-16a9bfdd" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="leaveWork" sortable="false" filterable="false" text="퇴근"/>
-              <cl:gridcell std:sid="gh-cell-bcb228d2" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="state" sortable="false" filterable="false" text="상태"/>
+            <cl:gridcolumn std:sid="g-column-c3b5b58f" visible="false"/>
+            <cl:gridcolumn std:sid="g-column-c5d939f5" width="75px"/>
+            <cl:gridcolumn std:sid="g-column-19092c83" width="75px"/>
+            <cl:gridcolumn std:sid="g-column-49039f3d" width="75px"/>
+            <cl:gridcolumn std:sid="g-column-9fd80e3c"/>
+            <cl:gridcolumn std:sid="g-column-8aa8afe8"/>
+            <cl:gridcolumn std:sid="g-column-749153b2"/>
+            <cl:gridcolumn std:sid="g-column-e588da35" width="75px"/>
+            <cl:gridheader std:sid="gh-band-a2643a8e">
+              <cl:gridrow std:sid="g-row-574c7555" height="50px"/>
+              <cl:gridcell std:sid="gh-cell-28db5dbe" rowindex="0" colindex="0" style="text-align:center;" targetcolumnname="attendanceId" sortable="false" filterable="false" text="attendanceId"/>
+              <cl:gridcell std:sid="gh-cell-e32558ed" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="memberName" sortable="false" filterable="false" text="memberName"/>
+              <cl:gridcell std:sid="gh-cell-2c735cf1" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="position" sortable="false" filterable="false" text="position"/>
+              <cl:gridcell std:sid="gh-cell-342bfab7" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="departmentName" sortable="false" filterable="false" text="departmentName"/>
+              <cl:gridcell std:sid="gh-cell-c7d242eb" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="workDay" sortable="false" filterable="false" text="workDay"/>
+              <cl:gridcell std:sid="gh-cell-5a7aba77" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="workInTime" sortable="false" filterable="false" text="workInTime"/>
+              <cl:gridcell std:sid="gh-cell-5f44f4db" rowindex="0" colindex="6" style="text-align:center;" targetcolumnname="workOutTime" sortable="false" filterable="false" text="workOutTime"/>
+              <cl:gridcell std:sid="gh-cell-3d846a6d" rowindex="0" colindex="7" style="text-align:center;" targetcolumnname="attendanceStatus" sortable="false" filterable="false" text="attendanceStatus"/>
             </cl:gridheader>
-            <cl:griddetail std:sid="gd-band-fa2941b8">
-              <cl:gridrow std:sid="g-row-a3f782ed" height="50px"/>
-              <cl:gridcell std:sid="gd-cell-ea3ae81d" rowindex="0" colindex="0" style="text-align:center;" columnname="name">
-                <cl:output std:sid="output-2b71af85" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-202e6ed5"/>
+            <cl:griddetail std:sid="gd-band-4b1373d8">
+              <cl:gridrow std:sid="g-row-3bce33dc" height="50px"/>
+              <cl:gridcell std:sid="gd-cell-98468fb9" rowindex="0" colindex="0" style="text-align:center;" columnname="attendanceId">
+                <cl:output std:sid="output-17916cda" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-b9532631"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-7dc4d2ba" rowindex="0" colindex="1" style="text-align:center;" columnname="grade">
-                <cl:output std:sid="output-212289cf" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-afc32c39"/>
+              <cl:gridcell std:sid="gd-cell-c2a4188a" rowindex="0" colindex="1" style="text-align:center;" columnname="memberName">
+                <cl:output std:sid="output-c9b4cabc" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-bf62a864"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-f5fd93f8" rowindex="0" colindex="2" style="text-align:center;" columnname="department">
-                <cl:output std:sid="output-7eb50f22" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-222a8f50"/>
+              <cl:gridcell std:sid="gd-cell-aad85b5e" rowindex="0" colindex="2" style="text-align:center;" columnname="position">
+                <cl:output std:sid="output-0a875cf7" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-968d9018"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-5758b617" rowindex="0" colindex="3" style="text-align:center;" columnname="attendance">
-                <cl:output std:sid="output-52610867" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-75cc6f02"/>
+              <cl:gridcell std:sid="gd-cell-a50d4409" rowindex="0" colindex="3" style="text-align:center;" columnname="departmentName">
+                <cl:output std:sid="output-a33ee5db" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-d3e6b496"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-49422362" rowindex="0" colindex="4" style="text-align:center;" columnname="leaveWork">
-                <cl:output std:sid="output-77d8f3fb" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-a663db63"/>
+              <cl:gridcell std:sid="gd-cell-ececc105" rowindex="0" colindex="4" style="text-align:center;" columnname="workDay">
+                <cl:output std:sid="output-e5325998" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-8582c066"/>
                 </cl:output>
               </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-1155073e" rowindex="0" colindex="5" style="text-align:center;" columnname="state">
-                <cl:output std:sid="output-b153a320" style="text-align:center;">
-                  <cl:celldata std:sid="c-data-d191b113"/>
+              <cl:gridcell std:sid="gd-cell-17e5d5a7" rowindex="0" colindex="5" style="text-align:center;" columnname="workInTime">
+                <cl:output std:sid="output-0bf47fff" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-056738ae"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-c6131588" rowindex="0" colindex="6" style="text-align:center;" columnname="workOutTime">
+                <cl:output std:sid="output-bd3d997d" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-4ec04894"/>
+                </cl:output>
+              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-dad18257" rowindex="0" colindex="7" style="text-align:center;" columnname="attendanceStatus">
+                <cl:output std:sid="output-96be0d6b" style="text-align:center;">
+                  <cl:celldata std:sid="c-data-b10caaab"/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" value="전체">
-            <cl:xylayoutdata std:sid="xyl-data-ea1aa8f3" top="10px" right="300px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:itemset datasetid="search" label="type" value="type"/>
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb">
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
+            <cl:xylayoutdata std:sid="xyl-data-ea1aa8f3" top="10px" right="310px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:itemset datasetid="search" label="label" value="value"/>
           </cl:combobox>
-          <cl:searchinput std:sid="s-input-e6af5d2c">
-            <cl:xylayoutdata std:sid="xyl-data-f82879e0" top="10px" right="0px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+          <cl:searchinput std:sid="s-input-e6af5d2c" id="searchTextIpb">
+            <cl:listener std:sid="listener-ba72a80e" name="search" handler="onSearchTextIpbSearch"/>
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
+            <cl:xylayoutdata std:sid="xyl-data-f82879e0" top="10px" right="10px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
           </cl:searchinput>
           <cl:xylayout std:sid="xylayout-f023fd5d"/>
         </cl:group>

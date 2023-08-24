@@ -1,5 +1,11 @@
 package com.arezip.weconnect.service;
 
-public interface RoomReservService {
+import java.util.List;
 
+import com.arezip.weconnect.model.dto.RoomReservDTO;
+
+public interface RoomReservService {
+	int insertRoomReserv(RoomReservDTO roomReservDTO);
+	List<RoomReservDTO> findReservList();
+	List<RoomReservDTO> findBookedRoom();
 }

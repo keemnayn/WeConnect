@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-a046dfcd" version="1.0.4584">
+  <head std:sid="head-7814d24a">
+    <screen std:sid="screen-d27e1a9d" id="default" name="default" minwidth="1024px" width="1024px" height="768px" useCustomWidth="true" useCustomHeight="true" customHeight="780" customWidth="1580" active="true"/>
+    <screen std:sid="screen-810a6c6b" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-f62d2691" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-bd944b98">
+      <cl:dataset std:sid="d-set-0fdd174e" id="status">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-9d9e1713" name="status"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[(선택)]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[처리중]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="status"><![CDATA[완료]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-768a4900" id="proposalReadList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
+          <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
+          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
+          <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
+          <cl:datacolumn std:sid="d-column-42552b48" name="memberId"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:datamap std:sid="d-map-54218d79" id="proposalUpdateDeleteParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-26abd329" name="proposalTitle"/>
+          <cl:datacolumn std:sid="d-column-91911d49" name="proposalContent"/>
+          <cl:datacolumn std:sid="d-column-957fa7c7" name="proposalId"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-c219b33d" id="proposalUpdateSub" method="put" action="member/proposals">
+        <cl:listener std:sid="listener-9e2e3c10" name="submit-success" handler="onProposalUpdateSubSubmitSuccess"/>
+        <cl:requestdata dataid="proposalUpdateDeleteParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-05f34d9c" id="proposalReadSub" method="get" action="member/proposals">
+        <cl:responsedata dataid="proposalReadList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-eef45600" id="proposalDeleteSub" method="delete" action="member/proposals">
+        <cl:listener std:sid="listener-dd399d15" name="submit-success" handler="onProposalDeleteSubSubmitSuccess"/>
+        <cl:requestdata dataid="proposalUpdateDeleteParam"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec title="건의사항 수정삭제 팝업"/>
+  </head>
+  <body std:sid="body-62d740d2">
+    <cl:listener std:sid="listener-fb8d76d2" name="load" handler="onBodyLoad"/>
+    <cl:group std:sid="group-fd904a1a">
+      <cl:xylayoutdata std:sid="xyl-data-cf50002f" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:group std:sid="group-018838cb">
+        <cl:xylayoutdata std:sid="xyl-data-0d153af4" top="138px" right="5px" bottom="60px" left="5px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:output std:sid="output-d4483102" value="내용">
+          <cl:formdata std:sid="f-data-6a12d6e2" row="0" col="0" rowspan="1" colspan="1"/>
+        </cl:output>
+        <cl:inputbox std:sid="i-box-cbe7f8f3" id="proposalContentIpb">
+          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalContent"/>
+          <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
+          <cl:formdata std:sid="f-data-f7e9c85b" row="0" col="1" rowspan="1" colspan="1"/>
+        </cl:inputbox>
+        <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+          <cl:rows length="1" unit="FRACTION" autoSizing="true" shadetype="NONE" shadecolor="transparent"/>
+          <cl:columns length="100" unit="PIXEL"/>
+          <cl:columns length="1" unit="FRACTION" autoSizing="true"/>
+        </cl:formlayout>
+      </cl:group>
+      <cl:group std:sid="group-ccc9925a">
+        <cl:xylayoutdata std:sid="xyl-data-a4b5a61f" top="70px" right="5px" left="5px" height="60px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:output std:sid="output-1d111ff7" value="제목">
+          <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
+        </cl:output>
+        <cl:inputbox std:sid="i-box-395afaa7" id="proposalTitleIpb">
+          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalTitle"/>
+          <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
+          <cl:formdata std:sid="f-data-752eefec" row="0" col="1"/>
+        </cl:inputbox>
+        <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+          <cl:rows length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+          <cl:columns length="100" unit="PIXEL"/>
+          <cl:columns length="1" unit="FRACTION"/>
+        </cl:formlayout>
+      </cl:group>
+      <cl:output std:sid="output-fceb3975" value="해당 게시판은 익명으로 운영됩니다. 자유롭게 남겨주세요.">
+        <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="773px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:button std:sid="button-0446aba0" id="btnRevert" value="삭제">
+        <cl:listener std:sid="listener-5cfdf77a" name="click" handler="onBtnRevertClick"/>
+        <cl:xylayoutdata std:sid="xyl-data-e0193aaf" right="506px" bottom="10px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+      </cl:button>
+      <cl:button std:sid="button-39198b35" id="btnUpdate" value="수정">
+        <cl:listener std:sid="listener-4f84834c" name="click" handler="onBtnUpdateClick"/>
+        <cl:xylayoutdata std:sid="xyl-data-1bf9ef05" bottom="10px" left="506px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+      </cl:button>
+      <cl:output std:sid="output-0296e3f6" id="proposalIdOpb" style="text-align:right;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalId"/>
+        <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
+        <cl:xylayoutdata std:sid="xyl-data-e5407eae" top="21px" left="1375px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:xylayout std:sid="xylayout-fd4b5e98"/>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-20f19164"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

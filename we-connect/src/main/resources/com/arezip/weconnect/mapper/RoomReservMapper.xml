@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.arezip.weconnect.mapper.RoomReservMapper">
+	<insert id="insertRoomReserv" parameterType="com.arezip.weconnect.model.dto.RoomReservDTO">
+		INSERT INTO room_reserv (room_reserv_id,	room_reserv_date,room_reserv_start_time,room_reserv_end_time,proposal,member_id,room_id)
+		VALUES (room_reserv_seq.nextval,
+		#{roomReservDate},
+		#{roomReservStartTime},
+		#{roomReservEndTime},
+		#{proposal},
+		#{memberId},
+		#{roomId})
+	</insert>
+	<select id="findReservList" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
+		SELECT
+			ROW_NUMBER() OVER (ORDER BY rr.room_reserv_id) AS room_reserv_id,
+		    r.room_name,
+		    m.member_name,
+		    REGEXP_REPLACE(rr.room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date,
+		    rr.room_reserv_start_time,
+		    rr.room_reserv_end_time - rr.room_reserv_start_time as room_reserv_end_time
+		FROM
+		    room r JOIN room_reserv rr ON r.room_id = rr.room_id
+		    JOIN member m ON m.member_id = rr.member_id
+	</select>
+	<select id="findBookedRoom" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
+		select REGEXP_REPLACE(room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date, room_reserv_start_time, room_reserv_end_time
+		from room_reserv
+<!-- 	select room_reserv_date, room_reserv_start_time, room_reserv_end_time
+		from room_reserv -->
+	</select>
 </mapper>

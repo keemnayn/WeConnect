@@ -20,6 +20,8 @@ import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.protocol.data.ParameterRow;
 import com.cleopatra.spring.JSONDataView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +42,7 @@ public class AdminNoticeRestController {
 
 	// 공지사항 등록
 	@PostMapping
-	public View postNotice(DataRequest dataRequest) {
+	public View postNotice(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("noticeCreateParam");
 		if (param != null) {
 			String noticeTitle = param.getValue("noticeTitle");
@@ -49,7 +51,8 @@ public class AdminNoticeRestController {
 			log.info("noticeTitle {}", noticeTitle);
 			log.info("noticeContent {}", noticeContent);
 			log.info("noticeCategory {}", noticeCategory);
-			long memberId = 1;
+			HttpSession session = request.getSession();
+			Long memberId = (Long) session.getAttribute("memberId");
 			NoticeDTO noticeDTO = new NoticeDTO();
 			noticeDTO.setNoticeTitle(noticeTitle);
 			noticeDTO.setNoticeContent(noticeContent);
@@ -62,8 +65,28 @@ public class AdminNoticeRestController {
 
 	// 공지사항 수정
 	@PutMapping
-	public View updateNotice(DataRequest dataRequest) {
-		return null;
+	public View updateNotice(DataRequest dataRequest, HttpServletRequest request) {
+		ParameterGroup param = dataRequest.getParameterGroup("noticeUpdateParam");
+		if (param != null) {
+			Long noticeId = Long.parseLong(param.getValue("noticeId"));
+			String noticeTitle = param.getValue("noticeTitle");
+			String noticeContent = param.getValue("noticeContent");
+			String noticeCategory = param.getValue("noticeCategory");
+			log.info("noticeId {}", noticeId);
+			log.info("noticeTitle {}", noticeTitle);
+			log.info("noticeContent {}", noticeContent);
+			log.info("noticeCategory {}", noticeCategory);
+			HttpSession session = request.getSession();
+			Long memberId = (Long) session.getAttribute("memberId");
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNoticeId(noticeId);
+			noticeDTO.setNoticeTitle(noticeTitle);
+			noticeDTO.setNoticeContent(noticeContent);
+			noticeDTO.setNoticeCategory(noticeCategory);
+			noticeDTO.setMemberId(memberId);
+			adminNoticeService.updateNotice(noticeDTO);
+		}
+		return new JSONDataView();
 	}
 
 //	공지사항 삭제
@@ -84,7 +107,7 @@ public class AdminNoticeRestController {
 //	Map을 DTO 타입으로 변경하는 메서드
 	private NoticeDTO mapToNoticeDTO(Map<String, String> rowMap) {
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNoticeId(Long.parseLong(rowMap.get("noticeId"))); // 여기서 'noticeId'는 map에서의 키를 가정한 것입니다.
+		noticeDTO.setNoticeId(Long.parseLong(rowMap.get("noticeId"))); // map에서의 키
 		return noticeDTO;
 	}
 
@@ -112,20 +135,5 @@ public class AdminNoticeRestController {
 		}
 		dataRequest.setResponse("noticeList", noticeList);
 		return new JSONDataView();
-	}
-
-//	응답 생성 메서드
-	private JSONDataView errorResponse(String message) {
-		Map<String, Object> errorResponse = new HashMap<>();
-		errorResponse.put("error", message);
-		return new JSONDataView(errorResponse);
-	}
-
-//	응답 생성 메서드
-	private JSONDataView successResponse(String message) {
-		Map<String, Object> successResponse = new HashMap<>();
-		successResponse.put("success", true);
-		successResponse.put("message", message);
-		return new JSONDataView(successResponse);
 	}
 }

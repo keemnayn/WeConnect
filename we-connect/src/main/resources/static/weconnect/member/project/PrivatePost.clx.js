@@ -12,8 +12,8 @@
 			var linker = {};
 			// Start - User Script
 			/************************************************
-			 * myBoard.js
-			 * Created at 2023. 8. 9. 오전 11:55:00.
+			 * PrivatePost.js
+			 * Created at 2023. 8. 21. 오후 5:19:31.
 			 *
 			 * @author keemn
 			 ************************************************/;

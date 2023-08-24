@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-dda6d8e7" version="1.0.4584">
+  <head std:sid="head-cf21ba4c">
+    <screen std:sid="screen-3654a9a8" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-61b343b7" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-01930832" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-014af070" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-4ed0718f">
+      <cl:dataset std:sid="d-set-eb5d2490" id="freeBoardComment">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1139334d" name="freeBoardCommentId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-e3f9dccf" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-5e44732a" name="freeBoardCommentContent"/>
+          <cl:datacolumn std:sid="d-column-1e84a1cc" name="freeBoardCommentDate"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="freeBoardCommentId">1</cl:datavalue>
+            <cl:datavalue columnname="memberName">memberName1</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentContent">freeBoardCommentContent1</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentDate">freeBoardCommentDate1</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="freeBoardCommentId">2</cl:datavalue>
+            <cl:datavalue columnname="memberName">memberName2</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentContent">freeBoardCommentContent2</cl:datavalue>
+            <cl:datavalue columnname="freeBoardCommentDate">freeBoardCommentDate2</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-572f7e75" id="freeBoardDetail">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-48b27f6e" name="freeBoardId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-44a6fbb7" name="freeBoardTitle"/>
+          <cl:datacolumn std:sid="d-column-ae552b97" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-06a0acf2" name="freeBoardCreate" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-26658c8c" name="freeBoardViews" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-b6e50a8e" name="freeBoardContent"/>
+          <cl:datacolumn std:sid="d-column-9e4da67a" name="freeBoardFileName"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-a9452ba0" id="boardDetailSub" method="get" action="member/boards/detail">
+        <cl:listener std:sid="listener-0905ba2a" name="submit-success" handler="onBoardDetailSubSubmitSuccess"/>
+        <cl:responsedata dataid="freeBoardDetail"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-6acd96ce" id="boardCommentSub" method="get" action="member/boards/comment">
+        <cl:responsedata dataid="freeBoardComment"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-f1c462a8">
+    <cl:listener std:sid="listener-8b950747" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-16563e36" name="load" handler="onBodyLoad"/>
+    <cl:output std:sid="output-ace5f3cd" id="freeBoardTitle">
+      <cl:datasetbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardTitle" rowindex="0"/>
+      <cl:xylayoutdata std:sid="xyl-data-f7724195" top="0px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:grid std:sid="grid-66ad97c6" id="commentGrd" datasetid="freeBoardComment">
+      <cl:xylayoutdata std:sid="xyl-data-5e873ecb" top="652px" left="0px" width="1580px" height="288px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:gridcolumn std:sid="g-column-de7ff524" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-0828116d" width="20px"/>
+      <cl:gridcolumn std:sid="g-column-3d6e2f6b" width="150px"/>
+      <cl:gridcolumn std:sid="g-column-191677e6" width="30px"/>
+      <cl:gridcolumn std:sid="g-column-ed0f2487" width="10px"/>
+      <cl:gridcolumn std:sid="g-column-21e84633" width="10px"/>
+      <cl:gridheader std:sid="gh-band-f7189cda">
+        <cl:gridrow std:sid="g-row-63205fee"/>
+        <cl:gridcell std:sid="gh-cell-320703f4" rowindex="0" colindex="0" targetcolumnname="freeBoardCommentId" sortable="false" filterable="false" text="번호"/>
+        <cl:gridcell std:sid="gh-cell-da686de6" rowindex="0" colindex="1" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-93884ade" rowindex="0" colindex="2" targetcolumnname="freeBoardCommentContent" sortable="false" filterable="false" text="내용"/>
+        <cl:gridcell std:sid="gh-cell-e1788772" rowindex="0" colindex="3" targetcolumnname="freeBoardCommentDate" sortable="false" filterable="false" text="등록일자"/>
+        <cl:gridcell std:sid="gh-cell-f2128c31" rowindex="0" colindex="4"/>
+        <cl:gridcell std:sid="gh-cell-6488e3e9" rowindex="0" colindex="5"/>
+      </cl:gridheader>
+      <cl:griddetail std:sid="gd-band-3029487d">
+        <cl:gridrow std:sid="g-row-a9287ab7"/>
+        <cl:gridcell std:sid="gd-cell-8a577dce" rowindex="0" colindex="0" columnname="freeBoardCommentId"/>
+        <cl:gridcell std:sid="gd-cell-85ccef42" rowindex="0" colindex="1" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-e4789be6" rowindex="0" colindex="2" columnname="freeBoardCommentContent"/>
+        <cl:gridcell std:sid="gd-cell-f6cd50e6" rowindex="0" colindex="3" columnname="freeBoardCommentDate"/>
+        <cl:gridcell std:sid="gd-cell-9b75f396" rowindex="0" colindex="4">
+          <cl:button std:sid="button-e2e03193" value="수정">
+            <cl:celldata std:sid="c-data-85e2a1df"/>
+          </cl:button>
+        </cl:gridcell>
+        <cl:gridcell std:sid="gd-cell-d49be01a" rowindex="0" colindex="5">
+          <cl:button std:sid="button-fc5a3ad6" value="삭제">
+            <cl:celldata std:sid="c-data-4f70f574"/>
+          </cl:button>
+        </cl:gridcell>
+      </cl:griddetail>
+    </cl:grid>
+    <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">
+      <cl:xylayoutdata std:sid="xyl-data-bdd42318" top="542px" left="0px" width="1480px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:inputbox>
+    <cl:button std:sid="button-885eafae" id="commentBtn" value="등록">
+      <cl:xylayoutdata std:sid="xyl-data-2c6112ee" top="542px" left="1479px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
+    <cl:output std:sid="output-9e404d9e" id="freeBoardContent">
+      <cl:datasetbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardContent" rowindex="0"/>
+      <cl:xylayoutdata std:sid="xyl-data-2ee5451a" top="142px" left="0px" width="1580px" height="390px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:group std:sid="group-528ba0ed">
+      <cl:xylayoutdata std:sid="xyl-data-42fd4b77" top="82px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:textarea std:sid="t-area-32ea6377" id="txa1" value="작성자">
+        <cl:formdata std:sid="f-data-f61599a4" row="0" col="0"/>
+      </cl:textarea>
+      <cl:textarea std:sid="t-area-d45e0bd2" id="txa2" value="등록일자">
+        <cl:formdata std:sid="f-data-9b99a017" row="0" col="2"/>
+      </cl:textarea>
+      <cl:textarea std:sid="t-area-a3ee45ac" id="txa3" value="조회수">
+        <cl:formdata std:sid="f-data-bc80e3f6" row="0" col="4"/>
+      </cl:textarea>
+      <cl:output std:sid="output-0a3925cb" id="memberName">
+        <cl:datasetbind property="value" datacontrolid="freeBoardDetail" columnname="memberName" rowindex="0"/>
+        <cl:formdata std:sid="f-data-fe79ad94" row="0" col="1"/>
+      </cl:output>
+      <cl:output std:sid="output-def01160" id="freeBoardCreate">
+        <cl:datasetbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardCreate" rowindex="0"/>
+        <cl:formdata std:sid="f-data-839d4e5c" row="0" col="3" rowspan="1" colspan="1"/>
+      </cl:output>
+      <cl:output std:sid="output-8e402bd5" id="freeBoardViews">
+        <cl:datasetbind property="value" datacontrolid="freeBoardDetail" columnname="freeBoardViews" rowindex="0"/>
+        <cl:formdata std:sid="f-data-690a099e" row="0" col="5"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-68fed560" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-cb1752a4"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-ac8f1a98" version="1.0.4584">
+  <head std:sid="head-e9e56015">
+    <screen std:sid="screen-1455a858" id="default" name="default" minwidth="1024px" width="1024px" height="768px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1589" active="true"/>
+    <screen std:sid="screen-1be80b28" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-ebb53826" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-2de2af82">
+      <cl:dataset std:sid="d-set-e700fd97" id="boardForm">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1a6657bb" name="boardNo"/>
+          <cl:datacolumn std:sid="d-column-5b816632" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-e60cf552" name="title"/>
+          <cl:datacolumn std:sid="d-column-a081d94d" name="content"/>
+          <cl:datacolumn std:sid="d-column-1d7d8539" name="file"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="boardNo"><![CDATA[1]]></cl:datavalue>
+            <cl:datavalue columnname="memberName"><![CDATA[haha]]></cl:datavalue>
+            <cl:datavalue columnname="title"><![CDATA[첫글]]></cl:datavalue>
+            <cl:datavalue columnname="content"><![CDATA[야호]]></cl:datavalue>
+            <cl:datavalue columnname="file">file1</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-b3380cd0" id="subList"/>
+      <cl:submission std:sid="submission-47c3778e" id="subSave"/>
+      <cl:submission std:sid="submission-7a05529e" id="subInit"/>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-d1c48df9">
+    <cl:datarowcontext datacontrolid="boardForm"/>
+    <cl:group std:sid="group-c4e03b7b">
+      <cl:xylayoutdata std:sid="xyl-data-54366de1" top="0px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-97f9864f" value="제목">
+        <cl:formdata std:sid="f-data-fe63aa82" row="0" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-2df9f268" value="제목">
+        <cl:formdata std:sid="f-data-2dfd7c0d" row="0" col="2"/>
+      </cl:output>
+      <cl:output std:sid="output-9b9d9e26">
+        <cl:relativebind property="value" columnname="memberName"/>
+        <cl:formdata std:sid="f-data-b5375623" row="0" col="1"/>
+      </cl:output>
+      <cl:inputbox std:sid="i-box-99f4ee2e" id="ipb1">
+        <cl:relativebind property="value" columnname="title"/>
+        <cl:formdata std:sid="f-data-a1bea72c" row="0" col="3"/>
+      </cl:inputbox>
+      <cl:formlayout std:sid="f-layout-b224a93e" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1200" unit="PIXEL"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="200" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-89c426b4">
+      <cl:xylayoutdata std:sid="xyl-data-49de3b90" top="50px" bottom="145px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:output std:sid="output-5a1e551b" value="내용">
+        <cl:formdata std:sid="f-data-1fd93b5c" row="0" col="0"/>
+      </cl:output>
+      <cl:inputbox std:sid="i-box-9eae7537" id="ipb2">
+        <cl:relativebind property="value" columnname="content"/>
+        <cl:formdata std:sid="f-data-22215505" row="0" col="1"/>
+      </cl:inputbox>
+      <cl:formlayout std:sid="f-layout-0f36db1f" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-9221c033">
+      <cl:xylayoutdata std:sid="xyl-data-179bb27d" bottom="100px" left="0px" width="1580px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+      <cl:fileinput std:sid="f-input-81c12b34" id="fi1">
+        <cl:formdata std:sid="f-data-66b8d241" row="0" col="1"/>
+      </cl:fileinput>
+      <cl:output std:sid="output-f268fa6f" value="파일 첨부">
+        <cl:formdata std:sid="f-data-8006f9cc" row="0" col="0"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-8a59a387" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-69d14d92">
+      <cl:xylayoutdata std:sid="xyl-data-67064e9f" bottom="0px" left="0px" width="1580px" height="100px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+      <cl:button std:sid="button-0446aba0" value="취소">
+        <cl:xylayoutdata std:sid="xyl-data-9dec7b9b" right="675px" bottom="20px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+      </cl:button>
+      <cl:button std:sid="button-39198b35" value="등록">
+        <cl:xylayoutdata std:sid="xyl-data-d482cbab" bottom="20px" left="665px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+      </cl:button>
+      <cl:xylayout std:sid="xylayout-2cb2dfa8"/>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-75d543df"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

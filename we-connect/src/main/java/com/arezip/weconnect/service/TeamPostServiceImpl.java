@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.arezip.weconnect.mapper.TeamPostMapper;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
-import com.arezip.weconnect.model.vo.TeamPostVO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,14 +15,23 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class TeamPostServiceImpl implements TeamPostService {
 	private final TeamPostMapper teamPostMapper;
-
-	@Override
-	public List<TeamPostVO> getTeamPostList() {
-		return teamPostMapper.getTeamPostList();
+	
+	
+	@Override 
+	public List<TeamPostDTO> getTeamPostList(long memberId) {
+		return teamPostMapper.getTeamPostList(memberId);
 	}
 
-	@Override
-	public int insertTeamPost(TeamPostDTO teamPostDTO) {
-		return teamPostMapper.insertTeamPost(teamPostDTO);
-	}
+
+	/*
+	 * @Override public TeamPostDTO getTeamPost(long teamPostId) { return
+	 * teamPostMapper.getTeamPost(teamPostId); }
+	 */
+
+	
+	/*
+	 * @Override public int insertTeamPost(TeamPostDTO teamPostDTO) { return
+	 * teamPostMapper.insertTeamPost(teamPostDTO); }
+	 */
+
 }

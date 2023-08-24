@@ -6,306 +6,6 @@
     <screen std:sid="screen-d99c37fc" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-f1edd463" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-11991c37">
-      <cl:dataset std:sid="d-set-adf7fc88" id="vacationList">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-c245dc24" name="name"/>
-          <cl:datacolumn std:sid="d-column-4e525c38" name="grade"/>
-          <cl:datacolumn std:sid="d-column-7b5b251c" name="department"/>
-          <cl:datacolumn std:sid="d-column-fdde6baa" name="departure"/>
-          <cl:datacolumn std:sid="d-column-8a1b3f3e" name="return"/>
-          <cl:datacolumn std:sid="d-column-8cf2fc00" name="state"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[승인]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="name"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="grade"><![CDATA[사원]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[인사]]></cl:datavalue>
-            <cl:datavalue columnname="departure"><![CDATA[2023-08-08]]></cl:datavalue>
-            <cl:datavalue columnname="return"><![CDATA[2023-08-10]]></cl:datavalue>
-            <cl:datavalue columnname="state"><![CDATA[거절]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
-      </cl:dataset>
       <cl:dataset std:sid="d-set-e66859ae" id="search">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-64224c6f" name="type"/>
@@ -328,10 +28,28 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-2f6c6ce4" id="LeaveRequest">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-99d13469" name="leaveRequestType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-30824483" name="leaveRequestStart" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-e7803bb8" name="leaveRequestEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a16b30a7" name="leaveRequestStatus" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-12a510dd" name="leaveRequestReason" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-3acf7591" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-cdede43c" name="departmentName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-de05da16" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-879ba785" name="leaveCount" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-0abaafad" id="LeaveRequest2" async="false" method="get" action="member/leave-request/leave-request-list">
+        <cl:listener std:sid="listener-94226893" name="submit-success" handler="onLeaveRequest2SubmitSuccess"/>
+        <cl:responsedata dataid="LeaveRequest"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-828ef9bf">
+    <cl:listener std:sid="listener-d053f4e1" name="init" handler="onBodyInit"/>
     <cl:tabfolder std:sid="t-folder-bcef6e56">
       <cl:xylayoutdata std:sid="xyl-data-bd7c557d" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-063ac703" selected="true" text="연차관리">
@@ -342,58 +60,40 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:grid std:sid="grid-be2e867b" id="grd1" datasetid="vacationList">
+          <cl:grid std:sid="grid-be2e867b" id="grd1" datasetid="LeaveRequest">
             <cl:xylayoutdata std:sid="xyl-data-2f4dfaa2" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:gridcolumn std:sid="g-column-cfdfbc14" width="25px"/>
             <cl:gridcolumn std:sid="g-column-c32b0f68"/>
             <cl:gridcolumn std:sid="g-column-ede45708"/>
             <cl:gridcolumn std:sid="g-column-22e23471"/>
+            <cl:gridcolumn std:sid="g-column-36e77680"/>
             <cl:gridcolumn std:sid="g-column-0f4ab41d"/>
             <cl:gridcolumn std:sid="g-column-15bf3e00"/>
+            <cl:gridcolumn std:sid="g-column-266740d6"/>
             <cl:gridcolumn std:sid="g-column-a9dc04b2"/>
             <cl:gridheader std:sid="gh-band-49e730ce">
               <cl:gridrow std:sid="g-row-de64f762" height="50px"/>
               <cl:gridcell std:sid="gh-cell-ea08214c" rowindex="0" colindex="0" style="text-align:center;" sortable="false" filterable="false" columntype="checkbox"/>
-              <cl:gridcell std:sid="gh-cell-42546967" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="name" sortable="false" filterable="false" text="이름"/>
-              <cl:gridcell std:sid="gh-cell-477e6332" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="grade" sortable="false" filterable="false" text="직급"/>
-              <cl:gridcell std:sid="gh-cell-480bfd15" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="department" sortable="false" filterable="false" text="부서"/>
-              <cl:gridcell std:sid="gh-cell-46cc5457" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="departure" sortable="false" filterable="false" text="출발"/>
-              <cl:gridcell std:sid="gh-cell-fffacb42" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="return" sortable="false" filterable="false" text="복귀"/>
-              <cl:gridcell std:sid="gh-cell-8f655919" rowindex="0" colindex="6" style="text-align:center;" targetcolumnname="state" sortable="false" filterable="false" text="상태"/>
+              <cl:gridcell std:sid="gh-cell-42546967" rowindex="0" colindex="1" style="text-align:center;" sortable="false" filterable="false" text="이름"/>
+              <cl:gridcell std:sid="gh-cell-477e6332" rowindex="0" colindex="2" style="text-align:center;" sortable="false" filterable="false" text="직급"/>
+              <cl:gridcell std:sid="gh-cell-480bfd15" rowindex="0" colindex="3" style="text-align:center;" sortable="false" filterable="false" text="부서"/>
+              <cl:gridcell std:sid="gh-cell-0310f619" rowindex="0" colindex="4" text="사유"/>
+              <cl:gridcell std:sid="gh-cell-46cc5457" rowindex="0" colindex="5" style="text-align:center;" sortable="false" filterable="false" text="출발"/>
+              <cl:gridcell std:sid="gh-cell-fffacb42" rowindex="0" colindex="6" style="text-align:center;" sortable="false" filterable="false" text="복귀"/>
+              <cl:gridcell std:sid="gh-cell-ee72058a" rowindex="0" colindex="7" text="잔여일수"/>
+              <cl:gridcell std:sid="gh-cell-8f655919" rowindex="0" colindex="8" style="text-align:center;" sortable="false" filterable="false" text="상태"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-438a0e97">
               <cl:gridrow std:sid="g-row-5ce730a5" height="50px"/>
               <cl:gridcell std:sid="gd-cell-d7cc9312" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
-              <cl:gridcell std:sid="gd-cell-a16471d2" rowindex="0" colindex="1" style="text-align:center;" columnname="name">
-                <cl:output std:sid="output-a29ab14e" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-3dae5576" rowindex="0" colindex="2" style="text-align:center;" columnname="grade">
-                <cl:output std:sid="output-f688fc4a" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-59bc015f" rowindex="0" colindex="3" style="text-align:center;" columnname="department">
-                <cl:output std:sid="output-3f6b59bc" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-8091df4b" rowindex="0" colindex="4" style="text-align:center;" columnname="departure">
-                <cl:output std:sid="output-dd79503c" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-c3863d9f" rowindex="0" colindex="5" style="text-align:center;" columnname="return">
-                <cl:output std:sid="output-608bbbcd" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
-              <cl:gridcell std:sid="gd-cell-9e0a13a9" rowindex="0" colindex="6" style="text-align:center;" columnname="state">
-                <cl:output std:sid="output-f2a52086" style="text-align:center;">
-                  <cl:celldata/>
-                </cl:output>
-              </cl:gridcell>
+              <cl:gridcell std:sid="gd-cell-a16471d2" rowindex="0" colindex="1" style="text-align:center;" columnname="memberName"/>
+              <cl:gridcell std:sid="gd-cell-3dae5576" rowindex="0" colindex="2" style="text-align:center;" columnname="position"/>
+              <cl:gridcell std:sid="gd-cell-59bc015f" rowindex="0" colindex="3" style="text-align:center;" columnname="departmentName"/>
+              <cl:gridcell std:sid="gd-cell-4d1d279a" rowindex="0" colindex="4" columnname="leaveRequestReason"/>
+              <cl:gridcell std:sid="gd-cell-8091df4b" rowindex="0" colindex="5" style="text-align:center;" columnname="leaveRequestStart"/>
+              <cl:gridcell std:sid="gd-cell-c3863d9f" rowindex="0" colindex="6" style="text-align:center;" columnname="leaveRequestEnd"/>
+              <cl:gridcell std:sid="gd-cell-7a554598" rowindex="0" colindex="7" columnname="leaveCount"/>
+              <cl:gridcell std:sid="gd-cell-9e0a13a9" rowindex="0" colindex="8" style="text-align:center;" columnname="leaveRequestStatus"/>
             </cl:griddetail>
           </cl:grid>
           <cl:group std:sid="group-2815f0b4">

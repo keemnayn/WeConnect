@@ -4,12 +4,34 @@
  *
  * @author Axl Rose
  ************************************************/
+/*
+ * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+ * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+ */
+function onBodyInit(e) {
+	app.lookup("attendanceListSub").send();
+	var comboBox = app.lookup("searchTypeCmb");
+	comboBox.fieldLabel = "전체";
+	comboBox.value = "all";
+}
 
 /*
- * 그리드에서 selection-change 이벤트 발생 시 호출.
- * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
  */
-function onGrd1SelectionChange(e){
-	var grd1 = e.control;
-	
+function onAttendanceListSubSubmitError(e) {
+	var attendanceListSub = e.control;
+	var error = attendanceListSub.getMetadata("error");
+	var url = attendanceListSub.getMetadata("url");
+	alert(error);
+	window.location = url;
+}
+
+/*
+ * 서치 인풋에서 search 이벤트 발생 시 호출.
+ * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+ */
+function onSearchTextIpbSearch(e) {
+	var searchTextIpb = e.control;
+	app.lookup("searchAttendanceSub").send();
 }

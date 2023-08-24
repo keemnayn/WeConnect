@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-938411d6" version="1.0.4584">
+  <head std:sid="head-403ed1af">
+    <screen std:sid="screen-f382c67d" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-a6eb9115" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-a0145b04" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-522e3481" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-de1c2792">
+      <cl:dataset std:sid="d-set-d918fbf9" id="reservList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fb1c563d" name="roomReservId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-a8294cfe" name="roomName"/>
+          <cl:datacolumn std:sid="d-column-06dfc851" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-deddbc0e" name="roomReservDate"/>
+          <cl:datacolumn std:sid="d-column-2749fbf6" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-8af293f6" id="search">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-19c65121" name="type"/>
+          <cl:datacolumn std:sid="d-column-e3014913" name="value"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[회의실]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[roomName]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[예약자]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[memberName]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv/list">
+        <cl:responsedata dataid="reservList"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-35656362">
+    <cl:listener std:sid="listener-e3b3b88b" name="init" handler="onBodyInit"/>
+    <cl:grid std:sid="grid-38750194" id="grd1" datasetid="reservList">
+      <cl:xylayoutdata std:sid="xyl-data-97df155a" top="50px" bottom="130px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:gridcolumn std:sid="g-column-9dca41c6"/>
+      <cl:gridcolumn std:sid="g-column-99a3d07b"/>
+      <cl:gridcolumn std:sid="g-column-08d99dda"/>
+      <cl:gridcolumn std:sid="g-column-8269ac61"/>
+      <cl:gridcolumn std:sid="g-column-f6e6f28f"/>
+      <cl:gridcolumn std:sid="g-column-925b3e7c"/>
+      <cl:gridheader std:sid="gh-band-48e101f9">
+        <cl:gridrow std:sid="g-row-673de0c7" height="50px"/>
+        <cl:gridcell std:sid="gh-cell-7b8e21fb" rowindex="0" colindex="0" targetcolumnname="roomReservId" sortable="false" filterable="false" text="번호"/>
+        <cl:gridcell std:sid="gh-cell-2e1469ee" rowindex="0" colindex="1" targetcolumnname="roomName" sortable="false" filterable="false" text="회의실"/>
+        <cl:gridcell std:sid="gh-cell-fddfd184" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="예약자"/>
+        <cl:gridcell std:sid="gh-cell-6034632b" rowindex="0" colindex="3" targetcolumnname="roomReservDate" sortable="false" filterable="false" text="예약일자"/>
+        <cl:gridcell std:sid="gh-cell-916b6bea" rowindex="0" colindex="4" targetcolumnname="roomReservStartTime" sortable="false" filterable="false" text="시작시간"/>
+        <cl:gridcell std:sid="gh-cell-983f84c1" rowindex="0" colindex="5" targetcolumnname="roomReservEndTime" sortable="false" filterable="false" text="예약시간"/>
+      </cl:gridheader>
+      <cl:griddetail std:sid="gd-band-24a92e81">
+        <cl:gridrow std:sid="g-row-a0609e20" height="50px"/>
+        <cl:gridcell std:sid="gd-cell-eb2184e1" rowindex="0" colindex="0" columnname="roomReservId"/>
+        <cl:gridcell std:sid="gd-cell-a4446a0a" rowindex="0" colindex="1" columnname="roomName"/>
+        <cl:gridcell std:sid="gd-cell-7e77ea78" rowindex="0" colindex="2" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-223dbc2b" rowindex="0" colindex="3" columnname="roomReservDate"/>
+        <cl:gridcell std:sid="gd-cell-3c8d3455" rowindex="0" colindex="4" columnname="roomReservStartTime"/>
+        <cl:gridcell std:sid="gd-cell-699044f6" rowindex="0" colindex="5" columnname="roomReservEndTime"/>
+      </cl:griddetail>
+    </cl:grid>
+    <cl:group std:sid="group-d208eff7">
+      <cl:xylayoutdata std:sid="xyl-data-489fe943" top="10px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
+      <cl:searchinput std:sid="s-input-e671e07b">
+        <cl:xylayoutdata std:sid="xyl-data-702602b6" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
+      </cl:searchinput>
+      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+        <cl:xylayoutdata std:sid="xyl-data-ed4bdd06" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
+        <cl:itemset datasetid="search" label="type" value="value"/>
+      </cl:combobox>
+      <cl:xylayout std:sid="xylayout-57b89231"/>
+    </cl:group>
+    <cl:button std:sid="button-ec30af08" id="newReserv" value="예약">
+      <cl:listener std:sid="listener-10550e1a" name="click" handler="onNewReservClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-14c47545" top="10px" left="1140px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
+    <cl:xylayout std:sid="xylayout-3413265b"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

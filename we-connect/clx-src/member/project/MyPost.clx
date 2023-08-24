@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-1be7b9ac" version="1.0.4584">
+  <head std:sid="head-cc24c75a">
+    <screen std:sid="screen-4e00c289" id="new-screen" name="new-screen" minwidth="1580px" width="1580px" height="940px" customHeight="600" customWidth="800" active="true"/>
+    <screen std:sid="screen-fe98889c" id="default" name="default" minwidth="1024px" maxwidth="1579px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-cf773391" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-bfb438ea" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-bcd22cef">
+      <cl:dataset std:sid="d-set-cb33de6d" id="myPost">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-f4fbb83c" name="myPostId"/>
+          <cl:datacolumn std:sid="d-column-8d1235f8" name="myPostName"/>
+          <cl:datacolumn std:sid="d-column-825d1a3e" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-3e6f705b" name="date" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-d1529523" name="myPostTitle"/>
+          <cl:datacolumn std:sid="d-column-e5799af7" name="myPostContent"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="myPostId">1</cl:datavalue>
+            <cl:datavalue columnname="myPostName">개발팀</cl:datavalue>
+            <cl:datavalue columnname="myPostTitle">안내사항</cl:datavalue>
+            <cl:datavalue columnname="myPostContent">오늘 회의실은 3층입니다.</cl:datavalue>
+            <cl:datavalue columnname="memberName">김미소</cl:datavalue>
+            <cl:datavalue columnname="date">2023-08-16</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-0c6222cb" id="comment">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1e3ca719" name="memberId"/>
+          <cl:datacolumn std:sid="d-column-cdd0b56b" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-75de75ca" name="myPostComment"/>
+          <cl:datacolumn std:sid="d-column-bcbf928e" name="date"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="memberId">1</cl:datavalue>
+            <cl:datavalue columnname="memberName">이수지</cl:datavalue>
+            <cl:datavalue columnname="myPostComment">넵 체크했습니다~</cl:datavalue>
+            <cl:datavalue columnname="date">2023-08-17</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-5c79a7b8" id="subInit"/>
+      <cl:submission std:sid="submission-b65d280d" id="subList"/>
+      <cl:submission std:sid="submission-e88ddc9e" id="subSave"/>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-9e0a9e88">
+    <cl:group std:sid="group-a95bd496">
+      <cl:xylayoutdata std:sid="xyl-data-62d5c38e" top="20px" left="20px" width="1540px" height="801px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-49351d1d" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-889fd5ab" top="20px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-b8ccb128" style="border-radius:20px; background-color:#F4F9FE; font-size:80px; text-align:center;" value="+">
+        <cl:xylayoutdata std:sid="xyl-data-d606324d" top="20px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-2baa1903" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-3283e3a5" top="20px" left="323px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-5b91a181" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-d6ea02da" top="20px" left="635px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-2be5d5b7" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-7ae85f7b" top="20px" left="947px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-3db6b4f7" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-8de91a4b" top="20px" left="1259px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-becb2bd6" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-b1df0023" top="382px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-51a17a7d" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-c617324c" top="382px" left="322px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-614b2fd1" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-4d7f3fb4" top="382px" left="634px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-af00837b" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-b8c5acc5" top="382px" left="945px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-fc1ac200" style="border-radius:20px; background-color:#D7E4F2;" value="Output">
+        <cl:xylayoutdata std:sid="xyl-data-083ed909" top="382px" left="1258px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:xylayout std:sid="xylayout-27e2ba90"/>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-8235c6e9"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

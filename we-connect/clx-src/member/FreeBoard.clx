@@ -15,23 +15,47 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
-      <cl:dataset std:sid="d-set-497fc88c" id="search">
+      <cl:dataset std:sid="d-set-497fc88c" id="boardSearch">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-e0a9870d" name="type"/>
+          <cl:datacolumn std:sid="d-column-e0a9870d" name="label"/>
+          <cl:datacolumn std:sid="d-column-f985a779" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type">전체</cl:datavalue>
+            <cl:datavalue columnname="label">전체</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">내용</cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[제목]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type">작성자</cl:datavalue>
+            <cl:datavalue columnname="label">작성자</cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[writer]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="board.do">
+      <cl:datamap std:sid="d-map-ba34d6e7" id="boardParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-59eb9ad3" name="freeBoardId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-d857343e" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-063a6037" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-d6790022" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
+        <cl:responsedata dataid="boardList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-a3a2dffc" id="boardParamSub" method="get" action="member/boards/detail" mediatype="application/x-www-form-urlencoded;simple">
+        <cl:listener std:sid="listener-b4ef99ca" name="submit-success" handler="onBoardParamSubSubmitSuccess"/>
+        <cl:requestdata dataid="boardParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-d5d7dfb1" id="searchParamSub" method="get" action="member/boards/search">
+        <cl:listener std:sid="listener-3a28a5a1" name="submit-success" handler="onSearchParamSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="boardList"/>
       </cl:submission>
     </cl:model>
@@ -39,25 +63,27 @@
   </head>
   <body std:sid="body-b26e14f2" style="font-weight:bold; font-size:30px; line-height:0px;">
     <cl:listener std:sid="listener-97fda0e4" name="init" handler="onBodyInit"/>
-    <cl:grid std:sid="grid-38750194" id="grd1" datasetid="boardList">
+    <cl:datamapcontext datacontrolid="searchParam"/>
+    <cl:grid std:sid="grid-38750194" id="boardListGrd" datasetid="boardList">
+      <cl:listener std:sid="listener-08c67cf7" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-f2cb8e13"/>
-      <cl:gridcolumn std:sid="g-column-258ee0bc"/>
-      <cl:gridcolumn std:sid="g-column-7c214d3c"/>
-      <cl:gridcolumn std:sid="g-column-8983904e"/>
-      <cl:gridheader std:sid="gh-band-0ec63cc8">
-        <cl:gridrow std:sid="g-row-38e41177" height="50px"/>
-        <cl:gridcell std:sid="gh-cell-c8aaa318" rowindex="0" colindex="0" targetcolumnname="freeBoardId" sortable="false" filterable="false" text="번호"/>
-        <cl:gridcell std:sid="gh-cell-cfbcd38c" rowindex="0" colindex="1" targetcolumnname="freeBoardTitle" sortable="false" filterable="false" text="제목"/>
-        <cl:gridcell std:sid="gh-cell-1217eaef" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
-        <cl:gridcell std:sid="gh-cell-9d38bdf0" rowindex="0" colindex="3" targetcolumnname="freeBoardCreate" sortable="false" filterable="false" text="등록일자"/>
+      <cl:gridcolumn std:sid="g-column-61e98a7d" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-e9b2ce68" width="130px"/>
+      <cl:gridcolumn std:sid="g-column-c6b83768" width="20px"/>
+      <cl:gridcolumn std:sid="g-column-bd15e783" width="20px"/>
+      <cl:gridheader std:sid="gh-band-ac17de43">
+        <cl:gridrow std:sid="g-row-874bd0de" height="50px"/>
+        <cl:gridcell std:sid="gh-cell-9ec62119" rowindex="0" colindex="0" targetcolumnname="freeBoardId" sortable="false" filterable="false" text="freeBoardId"/>
+        <cl:gridcell std:sid="gh-cell-be71229b" rowindex="0" colindex="1" targetcolumnname="freeBoardTitle" sortable="false" filterable="false" text="제목"/>
+        <cl:gridcell std:sid="gh-cell-1864d4da" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-cbd8cb94" rowindex="0" colindex="3" targetcolumnname="freeBoardCreate" sortable="false" filterable="false" text="작성일"/>
       </cl:gridheader>
-      <cl:griddetail std:sid="gd-band-1172ba1e">
-        <cl:gridrow std:sid="g-row-7ed0c6c1" height="50px"/>
-        <cl:gridcell std:sid="gd-cell-96ae4496" rowindex="0" colindex="0" columnname="freeBoardId"/>
-        <cl:gridcell std:sid="gd-cell-32e3b758" rowindex="0" colindex="1" columnname="freeBoardTitle"/>
-        <cl:gridcell std:sid="gd-cell-eeb7f1a7" rowindex="0" colindex="2" columnname="memberName"/>
-        <cl:gridcell std:sid="gd-cell-6e456052" rowindex="0" colindex="3" columnname="freeBoardCreate"/>
+      <cl:griddetail std:sid="gd-band-6ff52329">
+        <cl:gridrow std:sid="g-row-ed4de6c9" height="50px"/>
+        <cl:gridcell std:sid="gd-cell-24865b1b" rowindex="0" colindex="0" columnname="freeBoardId"/>
+        <cl:gridcell std:sid="gd-cell-2916c6dd" rowindex="0" colindex="1" columnname="freeBoardTitle"/>
+        <cl:gridcell std:sid="gd-cell-dd4d4022" rowindex="0" colindex="2" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-45335b99" rowindex="0" colindex="3" columnname="freeBoardCreate"/>
       </cl:griddetail>
     </cl:grid>
     <cl:pageindexer std:sid="p-indexer-6fa8328f">
@@ -65,12 +91,17 @@
     </cl:pageindexer>
     <cl:group std:sid="group-d208eff7">
       <cl:xylayoutdata std:sid="xyl-data-c7a31631" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchTextIpb" style="border-radius:5px;">
+        <cl:listener std:sid="listener-4221aa72" name="search" handler="onSearchTextIpbSearch"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-702602b6" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+      <cl:combobox std:sid="c-box-64b21162" id="searchCmb">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-ed4bdd06" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="type" value="type"/>
+        <cl:itemset datasetid="boardSearch" label="label" value="value"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-57b89231"/>
     </cl:group>

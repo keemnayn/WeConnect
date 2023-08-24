@@ -4,11 +4,10 @@
  *
  * @author kjh970605
  ************************************************/
-let intervalID; 
+let intervalID;
 
 function clock() {
 	const clockTarget = app.lookup("user_clock");
-	console.log(clockTarget);
 	const user_day = app.lookup("day");
 	const date = new Date();
 	const hours = date.getHours();
@@ -20,6 +19,7 @@ function clock() {
 	const week = ['일', '월', '화', '수', '목', '금', '토'];
 	clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`
 	user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`
+	
 }
 
 /*
@@ -33,7 +33,11 @@ function onButtonClick(e) {
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	go.value = `${hours}: ${formattedMinutes}`
+	go.value = `"${hours}: ${formattedMinutes}"`
+	if (confirm("입실처리하시겠습니까")) {
+		let submission = app.lookup("Attendance1");
+		submission.send();
+	}
 }
 
 /*
@@ -47,23 +51,56 @@ function onButtonClick2(e) {
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	back.value = `${hours}: ${formattedMinutes}`
-	back.redraw();
+	back.value = `"${hours}: ${formattedMinutes}""`
+	if (confirm("퇴실하시겠습니까?")) {
+		let UpdateAttendance = app.lookup("UpdateAttendance");
+		UpdateAttendance.send();
+	}
 }
 
 /*
  * 루트 컨테이너에서 load 이벤트 발생 시 호출.
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
-function onBodyLoad2(e){
-	 clock();
-	 intervalID = setInterval(clock, 1000);
+function onBodyLoad2(e) {
+	clock();
+	intervalID = setInterval(clock, 1000);
 }
 
 /*
  * 루트 컨테이너에서 before-unload 이벤트 발생 시 호출.
  * 앱이 언로드되기 전에 발생하는 이벤트 입니다. 취소할 수 있습니다.
  */
-function onBodyBeforeUnload(e){
+function onBodyBeforeUnload(e) {
 	clearInterval(intervalID);
+}
+/*
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
+ */
+function onAttendance1SubmitError(e) {
+	var attendance1 = e.control;
+	var submission = app.lookup("Attendance1");
+	let error = submission.getMetadata("error");
+	let button = app.lookup("Btn_workIn");
+	button.enabled = false;
+	alert(error);
+}
+
+/*
+ * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+ * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+ */
+function onBodyInit2(e){
+	var submission = app.lookup("Img");
+	submission.send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onImgSubmitSuccess(e){
+	var img = e.control;
+	app.lookup("profile").redraw();
 }

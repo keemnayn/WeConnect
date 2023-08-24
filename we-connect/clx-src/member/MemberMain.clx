@@ -5,24 +5,36 @@
     <screen std:sid="screen-9121d77a" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-152b1774" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-f3fe1cf3" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
-    <cl:model std:sid="model-9f47174e"/>
+    <cl:model std:sid="model-9f47174e">
+      <cl:dataset std:sid="d-set-fba731c1" id="img">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-08c4235a" name="profileImagePath" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-37639b91" id="Attendance1" action="member/attendance">
+        <cl:listener std:sid="listener-4aeacf02" name="submit-success" handler="onAttendance1SubmitSuccess2"/>
+        <cl:listener std:sid="listener-dcced485" name="submit-error" handler="onAttendance1SubmitError"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-3be3c330" id="UpdateAttendance" method="put" action="member/attendance"/>
+      <cl:submission std:sid="submission-13215d8f" id="Img" method="get" action="member/profile">
+        <cl:listener std:sid="listener-661ce042" name="submit-success" handler="onImgSubmitSuccess"/>
+        <cl:responsedata dataid="img"/>
+      </cl:submission>
+    </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-03e545be" style="font-weight:400;">
-    <cl:listener std:sid="listener-5b865503" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-22c66bce" name="property-change" handler="onBodyPropertyChange"/>
     <cl:listener std:sid="listener-d0d1952a" name="host-change" handler="onBodyHostChange2"/>
     <cl:listener std:sid="listener-a63fce4f" name="load" handler="onBodyLoad2"/>
     <cl:listener std:sid="listener-8ca09816" name="unload" handler="onBodyUnload"/>
     <cl:listener std:sid="listener-b930c8e3" name="click" handler="onBodyClick"/>
     <cl:listener std:sid="listener-6b1cbd05" name="before-unload" handler="onBodyBeforeUnload"/>
+    <cl:listener std:sid="listener-d1f72acd" name="init" handler="onBodyInit2"/>
     <cl:group std:sid="group-b4f5da64" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="4px" width="470px" height="230px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:htmlsnippet std:sid="htmlsnippet-50aa948b" value="&lt;h3>사용자 프로필&lt;/h3>">
         <cl:xylayoutdata std:sid="xyl-data-f1efe090" top="-16px" left="12px" width="150px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-26bfa1b7" value="&lt;img src=&quot;img/header/profile.png&quot; alt=&quot;사용자&quot;  width=80px height=80px>">
-        <cl:xylayoutdata std:sid="xyl-data-d2d7680f" top="58px" left="22px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-1e2b0abe" value="&lt;h3>사원: 김정현&lt;/h3>">
         <cl:xylayoutdata std:sid="xyl-data-76baebf8" top="8px" left="150px" width="100px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -36,6 +48,14 @@
       <cl:htmlsnippet std:sid="htmlsnippet-200f1678" style="border-top-width:1px; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-width:1px;" class="line" value="&lt;p>&lt;/p>">
         <cl:xylayoutdata std:sid="xyl-data-a690711c" top="0px" bottom="0px" left="134px" width="13px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:htmlsnippet>
+      <cl:img std:sid="image-2e6efa1d" id="profile">
+        <cl:listener std:sid="listener-3b6d99c7" name="value-change" handler="onProfileValueChange2"/>
+        <cl:datasetbind property="src" datacontrolid="img" columnname="profileImagePath" rowindex="0"/>
+        <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="44px" left="12px" width="111px" height="115px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:img>
+      <cl:fileinput std:sid="f-input-908aa111" id="fi1" placeholder="프로필 수정">
+        <cl:xylayoutdata std:sid="xyl-data-301afad9" top="183px" left="12px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:fileinput>
       <cl:xylayout std:sid="xylayout-0003050b"/>
     </cl:group>
     <cl:group std:sid="group-e1bd1b76" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
@@ -43,11 +63,11 @@
       <cl:htmlsnippet std:sid="htmlsnippet-ce90cf54" value="&lt;h3>근태정보&lt;/h3>">
         <cl:xylayoutdata std:sid="xyl-data-f92d6bdc" top="-5px" left="17px" width="150px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:button std:sid="button-385dbe2f" style="border-radius:10px; background-color:#E0E1E2; background-image:none;" class="btn_go" value="출근">
+      <cl:button std:sid="button-385dbe2f" id="Btn_workIn" style="border-radius:10px; background-color:#E0E1E2; background-image:none; text-align:center;" class="btn_go" value="출근">
         <cl:listener std:sid="listener-f04ac77a" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-c2a18410" right="80px" bottom="10px" width="59px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none;" value="퇴근">
+      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none; text-align:center;" value="퇴근">
         <cl:listener std:sid="listener-c1551a94" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-b71d16d3" bottom="10px" left="538px" width="60px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
@@ -55,7 +75,7 @@
         <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
         <cl:xylayoutdata std:sid="xyl-data-cc86a7b1" top="122px" left="17px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:16px;" value="&lt;div id=&quot;day&quot;>요일&lt;/div>">
+      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:16px;">
         <cl:listener std:sid="listener-1566cbe3" name="value-change" handler="onDayValueChange"/>
         <cl:xylayoutdata std:sid="xyl-data-dd388c1c" top="85px" left="17px" width="228px" height="31px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
@@ -68,7 +88,7 @@
       <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" value="&lt;span>기록없음&lt;/span>">
         <cl:xylayoutdata std:sid="xyl-data-91fc5872" top="194px" left="220px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go" value="&lt;span>00:00&lt;/span>">
+      <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go">
         <cl:xylayoutdata std:sid="xyl-data-843d47e7" top="194px" left="54px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:xylayout std:sid="xylayout-215244ed"/>

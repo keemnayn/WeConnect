@@ -1,3 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.arezip.weconnect.mapper.ProposalMapper"></mapper>
+<mapper namespace="com.arezip.weconnect.mapper.ProposalMapper">
+	<!-- 건의사항 전체 조회 -->
+	<select id="selectAllProposals"
+		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
+		select p.proposal_id AS proposalId, p.proposal_title AS
+		proposalTitle,
+		p.proposal_content
+		AS proposalContent,
+		to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
+		p.proposal_status
+		AS proposalStatus, m.member_name AS
+		memberName from
+		proposal p join
+		member
+		m on m.member_id=p.member_id
+		ORDER BY proposal_id
+		DESC
+	</select>
+	<!-- <select id="selectAllProposals" resultType="com.arezip.weconnect.model.dto.ProposalDTO"> 
+		select proposal_id AS proposalId, proposal_title AS proposalTitle, proposal_content 
+		AS proposalContent, to_char(proposal_create,'YYYY-MM-DD') AS proposalCreate, 
+		proposal_status AS proposalStatus from proposal ORDER BY proposal_create 
+		ASC </select> -->
+
+	<!-- 건의사항 추가 -->
+	<insert id="insertProposal"
+		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
+		insert into PROPOSAL(proposal_id, proposal_title,
+		proposal_content, member_id)
+		values(proposal_seq.NEXTVAL,
+		#{proposalTitle},
+		#{proposalContent}, #{memberId})
+	</insert>
+	<!-- 건의사항 수정 -->
+	<update id="updateProposal"
+		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
+		UPDATE proposal
+		SET proposal_title = #{proposalTitle},
+		proposal_content = #{proposalContent}
+		WHERE proposal_id = #{proposalId}
+		AND member_id = #{memberId}
+	</update>
+	<!-- 건의사항 삭제 -->
+	<delete id="deleteProposal"
+		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
+		delete proposal where proposal_id = #{proposalId} AND
+		member_id = #{memberId}
+	</delete>
+	<!-- 건의사항 검색 -->
+	<select id="searchProposal"
+		parameterType="HashMap"
+		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
+		SELECT proposal_id AS proposalId, proposal_title AS
+		proposalTitle,
+		proposal_content AS proposalContent, proposal_create AS
+		proposalCreate,
+		proposal_status AS proposalStatus
+		FROM proposal WHERE
+		1=1
+		<choose>
+			<!-- 전체 검색일 경우 -->
+			<when test="searchType == 'all'">
+				AND (proposal_title LIKE '%' || #{searchText} || '%'
+				OR
+				proposal_content
+				LIKE '%' || #{searchText} || '%')
+			</when>
+			<!-- 제목으로만 검색할 경우 -->
+			<when test="searchType == 'title'">
+				AND proposa_title LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+		ORDER BY proposal_id DESC
+	</select>
+</mapper>

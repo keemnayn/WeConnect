@@ -1,15 +1,20 @@
 package com.arezip.weconnect.model.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@ToString
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class FreeBoardDTO {
 	private long freeBoardId;
 	private String freeBoardTitle;
+	private String freeBoardContent;
 	private String freeBoardCreate;
+	private String freeBoardFileName;
+	private long freeBoardViews;
 	private String memberName;
+	private long memberId;
+	private int freeBoardCommentCount;
 }
