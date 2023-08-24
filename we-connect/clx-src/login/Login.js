@@ -70,3 +70,12 @@ function onMemberPasswordIpbKeydown(e) {
 		app.lookup("loginBtn").click();
 	}
 }
+
+/*
+ * 인풋 박스에서 focus 이벤트 발생 시 호출.
+ * 컨트롤이 포커스를 획득한 후 발생하는 이벤트.
+ */
+function onMemberPasswordIpbFocus(e) {
+	var memberPasswordIpb = e.control;
+	memberPasswordIpb.autoSelect = true;
+}
