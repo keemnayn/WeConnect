@@ -8,12 +8,14 @@ import com.arezip.weconnect.model.dto.TeamPostDTO;
 
 @Mapper
 public interface TeamPostMapper {
+// 팀포스트 전체 조회
+	List<TeamPostDTO> selectTeamPostList();
 
-	 List<TeamPostDTO> getTeamPostList(long memberId);
+// 팀포스트 추가
+	// TeamPostDTO insertTeamPost(long teamPostId);
 
-	TeamPostDTO getTeamPost(long teamPostId);
-
-
+// 팀포스트 수정
 	// int insertTeamPost(TeamPostDTO teamPostDTO);
 
+// 팀포스트 삭제
 }

@@ -149,7 +149,7 @@
 			
 			var submission_2 = new cpr.protocols.Submission("searchProposalSub");
 			submission_2.method = "get";
-			submission_2.action = "member/proposals/search";
+			submission_2.action = "admin/proposals/search";
 			submission_2.addRequestData(dataMap_1);
 			submission_2.addResponseData(dataSet_2, false);
 			if(typeof onSearchProposalSubSubmitSuccess == "function") {
@@ -377,7 +377,9 @@
 						"height": "40px"
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-					comboBox_1.bind("value").toDataSet(app.lookup("proposalSearch"), "type", 0);
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
+					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("proposalSearch"), {
 							"label": "type",
@@ -391,8 +393,8 @@
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
-					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
-					searchInput_1.setBindContext(dataMapContext_1);
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_2);
 					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
 					if(typeof onSearchInputValueChange == "function") {
 						searchInput_1.addEventListener("value-change", onSearchInputValueChange);

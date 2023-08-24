@@ -50,7 +50,7 @@
       <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">
+      <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="admin/proposals/search">
         <cl:listener std:sid="listener-05fd9dd5" name="submit-success" handler="onSearchProposalSubSubmitSuccess"/>
         <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="proposalList"/>
@@ -122,7 +122,8 @@
             </cl:formlayout>
           </cl:group>
           <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1">
-            <cl:datasetbind property="value" datacontrolid="proposalSearch" columnname="type" rowindex="0"/>
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="520px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:itemset datasetid="proposalSearch" label="type" value="value"/>
           </cl:combobox>

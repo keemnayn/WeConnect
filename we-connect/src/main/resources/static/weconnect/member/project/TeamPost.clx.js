@@ -52,7 +52,7 @@
 					{"name": "teamPostCreateDate"},
 					{"name": "memberName"},
 					{
-						"name": "projectName",
+						"name": "projectId",
 						"dataType": "string"
 					}
 				],
@@ -262,12 +262,14 @@
 			});
 			
 			var output_1 = new cpr.controls.Output();
+			output_1.readOnly = true;
 			output_1.style.css({
 				"font-weight" : "bold",
 				"font-size" : "30px"
 			});
 			var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("teamPostList"), 0);
 			output_1.setBindContext(dataRowContext_1);
+			output_1.bind("value").toDataColumn("projectId");
 			container.addChild(output_1, {
 				positions: [
 					{
@@ -422,7 +424,7 @@
 					"border-bottom-style" : "none",
 					"text-align" : "right"
 				});
-				hTMLSnippet_1.bind("value").toDataSet(app.lookup("teamPostList"), "projectName", 0);
+				hTMLSnippet_1.bind("value").toDataSet(app.lookup("teamPostList"), "projectId", 0);
 				container.addChild(hTMLSnippet_1, {
 					"top": "19px",
 					"left": "1419px",
@@ -436,6 +438,14 @@
 					"left": "18px",
 					"width": "1520px",
 					"height": "30px"
+				});
+				var pageIndexer_1 = new cpr.controls.PageIndexer();
+				pageIndexer_1.init(1, 1, 1);
+				container.addChild(pageIndexer_1, {
+					"top": "14px",
+					"left": "475px",
+					"width": "200px",
+					"height": "40px"
 				});
 			})(group_2);
 			container.addChild(group_2, {
@@ -467,41 +477,6 @@
 						"left": "7px",
 						"width": "526px",
 						"height": "260px"
-					}
-				]
-			});
-			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "90px",
-						"left": "435px",
-						"width": "200px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "90px",
-						"left": "435px",
-						"width": "200px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "90px",
-						"left": "212px",
-						"width": "98px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "90px",
-						"left": "149px",
-						"width": "68px",
-						"height": "40px"
 					}
 				]
 			});
@@ -578,6 +553,46 @@
 						"left": "507px",
 						"width": "15px",
 						"height": "40px"
+					}
+				]
+			});
+			
+			var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
+			hTMLSnippet_2.visible = true;
+			hTMLSnippet_2.value = "<div>새소식<\/div>";
+			hTMLSnippet_2.style.css({
+				"font-size" : "30px",
+				"font-family" : "IBM Plex Sans KR SemiBold"
+			});
+			container.addChild(hTMLSnippet_2, {
+				positions: [
+					{
+						"media": "all and (min-width: 1920px)",
+						"top": "77px",
+						"left": "20px",
+						"width": "1520px",
+						"height": "50px"
+					}, 
+					{
+						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
+						"top": "77px",
+						"left": "20px",
+						"width": "1520px",
+						"height": "50px"
+					}, 
+					{
+						"media": "all and (min-width: 500px) and (max-width: 1023px)",
+						"top": "77px",
+						"left": "10px",
+						"width": "742px",
+						"height": "50px"
+					}, 
+					{
+						"media": "all and (max-width: 499px)",
+						"top": "77px",
+						"left": "7px",
+						"width": "520px",
+						"height": "50px"
 					}
 				]
 			});

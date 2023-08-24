@@ -18,8 +18,8 @@ public class TeamPostServiceImpl implements TeamPostService {
 	
 	
 	@Override 
-	public List<TeamPostDTO> getTeamPostList(long memberId) {
-		return teamPostMapper.getTeamPostList(memberId);
+	public List<TeamPostDTO> getTeamPostList() {
+		return teamPostMapper.selectTeamPostList();
 	}
 
 

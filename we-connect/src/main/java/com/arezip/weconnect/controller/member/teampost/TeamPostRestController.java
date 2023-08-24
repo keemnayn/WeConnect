@@ -28,21 +28,12 @@ public class TeamPostRestController {
 // 팀 워크보드 게시물 목록
 	@GetMapping
 	public View teamPostListPage(DataRequest dataRequest) {
-		long memberId = 44;
-		List<TeamPostDTO> teamPostList=teamPostService.getTeamPostList(memberId);
+		List<TeamPostDTO> teamPostList=teamPostService.getTeamPostList();
 		System.out.println(teamPostList);
 		dataRequest.setResponse("teamPostList", teamPostList); //데이터셋 이름과 같음
 		return new JSONDataView();
 	} 
-   
- 
-	/*  
-	@GetMapping("/team")
-	public View teamPostPheed() {
-		return new UIView("weconnect/member/TeamPost.clx");
-	}
-	*/
-	  
+}
 	/*
 	// 팀 워크보드 새 글 쓰기
 	@PostMapping
@@ -51,11 +42,11 @@ public class TeamPostRestController {
 	}
 	
 	*/
-	@GetMapping("memberName")
-	public View memberName(DataRequest dataRequest) {
-		List<TeamPostDTO> teamPostList = teamPostService.getTeamPostList(44); 
-		dataRequest.setResponse("teamPostList", teamPostList);
-		return new JSONDataView();
-	}
-	
-}
+	/*
+	 * @GetMapping("memberName") public View memberName(DataRequest dataRequest) {
+	 * List<TeamPostDTO> teamPostList = teamPostService.getTeamPostList(434);
+	 * dataRequest.setResponse("teamPostList", teamPostList); return new
+	 * JSONDataView(); }
+	 * 
+	 * }
+	 */

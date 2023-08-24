@@ -24,7 +24,8 @@
 		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
 		UPDATE proposal
 		SET proposal_status = '완료'
-		WHERE proposal_id = #{proposalId}
+		WHERE
+		proposal_id = #{proposalId}
 	</update>
 	<!-- 건의사항 삭제 -->
 	<delete id="deleteProposal"
@@ -35,11 +36,10 @@
 	<select id="searchProposal"
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
 		SELECT proposal_id AS proposalId, proposal_title AS proposalTitle,
-		proposal_content AS proposalContent, proposal_create AS
-		proposalCreate,
+		proposal_content AS proposalContent, to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
 		proposal_status AS proposalStatus
 		FROM proposal
-		WHERE 1=1
+		WHERE
 		<choose>
 			<!-- 전체 검색일 경우 -->
 			<when test="searchType == 'all'">
@@ -58,8 +58,13 @@
 			<when test="searchType == 'status'">
 				proposal_status LIKE '%' || #{searchText} || '%'
 			</when>
+			<!-- 기본 처리 -->
+			<otherwise>
+				1=1 <!-- 빈 조건을 추가하여 아무 조건 없이도 쿼리가 실행될 수 있도록 함 -->
+			</otherwise>
 		</choose>
-		ORDER BY proposal_id DESC;
+
+		ORDER BY proposal_id DESC
 	</select>
 
 </mapper>

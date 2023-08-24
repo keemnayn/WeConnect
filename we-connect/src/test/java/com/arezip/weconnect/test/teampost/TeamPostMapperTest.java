@@ -1,4 +1,4 @@
-package com.arezip.weconnect.test.proposal;
+package com.arezip.weconnect.test.teampost;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -20,9 +20,8 @@ public class TeamPostMapperTest {
 	TeamPostMapper teamPostMapper;
 	
 	@Test
-	void getTeamPostListTest() {
-		long memberId = 44;
-		List<TeamPostDTO> list = teamPostMapper.getTeamPostList(memberId);
+	void selectTeamPostListTest() {
+		List<TeamPostDTO> list = teamPostMapper.selectTeamPostList();
 		list.forEach(teamPost -> log.info(teamPost.toString()));
 		assertNotNull(list);
 	}

@@ -13,7 +13,7 @@
           <cl:datacolumn std:sid="d-column-f0b228ab" name="teamPostContent"/>
           <cl:datacolumn std:sid="d-column-049b3f03" name="teamPostCreateDate"/>
           <cl:datacolumn std:sid="d-column-b819f8fe" name="memberName"/>
-          <cl:datacolumn std:sid="d-column-941c0a8b" name="projectName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-941c0a8b" name="projectId" datatype="string"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
@@ -62,7 +62,8 @@
         <cl:xylayoutdata std:sid="sxyl-data-54879e8b" top="561px" left="1507px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:img>
-    <cl:output std:sid="output-1fa5fb0a" style="font-weight:bold; font-size:30px;">
+    <cl:output std:sid="output-1fa5fb0a" style="font-weight:bold; font-size:30px;" readonly="true">
+      <cl:relativebind property="value" columnname="projectId"/>
       <cl:datarowcontext datacontrolid="teamPostList"/>
       <cl:responsivexylayoutdata std:sid="rxyl-data-0f7513a7">
         <cl:xylayoutdata std:sid="sxyl-data-3f443432" top="20px" right="40px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP" screenid="new-screen"/>
@@ -103,20 +104,18 @@
         <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="100px" left="19px" width="1520px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:textarea>
       <cl:htmlsnippet std:sid="htmlsnippet-3caadb14" style="border-right-style:none; color:#010101; border-bottom-color:#686565; font-weight:normal; border-left-color:#686565; font-size:14px; border-right-color:#686565; font-style:normal; border-top-style:none; border-left-style:none; border-top-color:#686565; font-family:IBM Plex Sans KR; border-bottom-style:none; text-align:right;">
-        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="projectName" rowindex="0"/>
+        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="projectId" rowindex="0"/>
         <cl:xylayoutdata std:sid="xyl-data-24ff88a7" top="19px" left="1419px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:output std:sid="output-495bdf11" id="teamPostTitle">
         <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="teamPostTitle" rowindex="0"/>
         <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="57px" left="18px" width="1520px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
+      <cl:pageindexer std:sid="p-indexer-c03ca084">
+        <cl:xylayoutdata std:sid="xyl-data-0f36959f" top="14px" left="475px" width="200px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:pageindexer>
       <cl:xylayout std:sid="xylayout-01e9cfde"/>
     </cl:group>
-    <cl:pageindexer std:sid="p-indexer-c03ca084">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-84d517e1">
-        <cl:xylayoutdata std:sid="sxyl-data-761d86ea" top="90px" left="435px" width="200px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:pageindexer>
     <cl:inputbox std:sid="i-box-0b27bbbf" id="ipb2" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
       <cl:responsivexylayoutdata std:sid="rxyl-data-2902a6e0">
         <cl:xylayoutdata std:sid="sxyl-data-a30279fa" top="140px" left="20px" width="1520px" height="131px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
@@ -127,6 +126,11 @@
         <cl:xylayoutdata std:sid="sxyl-data-b21efb7c" top="176px" left="1482px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
       </cl:responsivexylayoutdata>
     </cl:button>
+    <cl:htmlsnippet std:sid="htmlsnippet-766db94e" style="font-size:30px; font-family:IBM Plex Sans KR SemiBold;" visible="true" value="&lt;div>새소식&lt;/div>">
+      <cl:responsivexylayoutdata std:sid="rxyl-data-d283da67">
+        <cl:xylayoutdata std:sid="sxyl-data-c89b3645" top="77px" left="20px" width="1520px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
+      </cl:responsivexylayoutdata>
+    </cl:htmlsnippet>
     <cl:responsivexylayout std:sid="r-xylayout-a158ec9b"/>
   </body>
   <std:studiosetting>
