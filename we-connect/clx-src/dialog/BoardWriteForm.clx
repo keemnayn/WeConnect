@@ -18,7 +18,7 @@
         <cl:requestdata dataid="boardInsertParam"/>
       </cl:submission>
     </cl:model>
-    <cl:appspec title="게시글 작성"/>
+    <cl:appspec title="게시글 작성 팝업"/>
   </head>
   <body std:sid="body-e21f5298">
     <cl:listener std:sid="listener-1bce61f9" name="init" handler="onBodyInit"/>

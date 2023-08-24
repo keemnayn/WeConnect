@@ -223,6 +223,6 @@
 			}
 		}
 	});
-	app.title = "게시글 작성";
+	app.title = "게시글 작성 팝업";
 	cpr.core.Platform.INSTANCE.register(app);
 })();

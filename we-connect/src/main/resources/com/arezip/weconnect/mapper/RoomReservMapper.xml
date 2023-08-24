@@ -18,7 +18,7 @@
 		    m.member_name,
 		    REGEXP_REPLACE(rr.room_reserv_date, '(.{4})(.{2})(.{2})', '\1-\2-\3') AS room_reserv_date,
 		    rr.room_reserv_start_time,
-		    rr.room_reserv_end_time
+		    rr.room_reserv_end_time - rr.room_reserv_start_time as room_reserv_end_time
 		FROM
 		    room r
 		    JOIN room_reserv rr ON r.room_id = rr.room_id

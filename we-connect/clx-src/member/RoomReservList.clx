@@ -55,7 +55,7 @@
         <cl:gridcell std:sid="gh-cell-fddfd184" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="예약자"/>
         <cl:gridcell std:sid="gh-cell-6034632b" rowindex="0" colindex="3" targetcolumnname="roomReservDate" sortable="false" filterable="false" text="예약일자"/>
         <cl:gridcell std:sid="gh-cell-916b6bea" rowindex="0" colindex="4" targetcolumnname="roomReservStartTime" sortable="false" filterable="false" text="시작시간"/>
-        <cl:gridcell std:sid="gh-cell-983f84c1" rowindex="0" colindex="5" targetcolumnname="roomReservEndTime" sortable="false" filterable="false" text="종료시간"/>
+        <cl:gridcell std:sid="gh-cell-983f84c1" rowindex="0" colindex="5" targetcolumnname="roomReservEndTime" sortable="false" filterable="false" text="예약시간"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-24a92e81">
         <cl:gridrow std:sid="g-row-a0609e20" height="50px"/>

@@ -384,7 +384,7 @@ ALTER TABLE room
 			room_id
 );
 
-
+--
 /* 회의실 예약 */
 CREATE SEQUENCE room_reserv_seq START WITH 1 INCREMENT BY 1;
 

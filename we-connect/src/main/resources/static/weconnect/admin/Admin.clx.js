@@ -136,7 +136,7 @@
 					{"label": "프로젝트", "value": "프로젝트", "parent": "", "icon": "img/icon/project.png"},
 					{"label": "게시판", "value": "게시판", "parent": "", "icon": "img/icon/board.png"},
 					{"label": "일정", "value": "일정", "parent": "", "icon": "img/icon/calendar.png", "appId": ""},
-					{"label": "예약", "value": "예약", "parent": ""},
+					{"label": "회의실", "value": "회의실", "parent": ""},
 					{"label": "회원관리", "value": "회원관리", "parent": "회원", "appId": "admin/AdminMember"},
 					{"label": "근태관리", "value": "근태관리", "parent": "회원", "appId": "admin/AdminAttendance"},
 					{"label": "연차관리", "value": "연차관리", "parent": "회원", "appId": "admin/AdminVacation"},
@@ -144,8 +144,7 @@
 					{"label": "공지사항", "value": "공지사항", "parent": "게시판", "appId": "admin/AdminNotice"},
 					{"label": "자유게시판", "value": "자유게시판", "parent": "게시판", "appId": "admin/AdminBoard"},
 					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminProposal"},
-					{"label": "회의실등록", "value": "회의실등록", "parent": "예약", "appId": "admin/AdminMeetingRoomForm"},
-					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "예약", "appId": "admin/AdminMeetingRoomStatus"},
+					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "회의실", "appId": "admin/AdminRoomReserv"},
 					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/AdminSchedule", "icon": "img/icon/calendar.png"},
 					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트", "appId": "admin/AdminProjectManagement"}
 				]
