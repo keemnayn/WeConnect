@@ -6,8 +6,7 @@
 		select f.free_board_id as freeBoardId, f.free_board_title as
 		freeBoardTitle,f.free_board_content as freeBoardContent,
 		m.member_name as memberName, to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate
-		from free_board f join member m
-		on f.member_id = m.member_id
+		from free_board f join member m on f.member_id = m.member_id
 		order by free_board_id desc 
 	</select>
 	<!-- 자유게시판 검색 -->

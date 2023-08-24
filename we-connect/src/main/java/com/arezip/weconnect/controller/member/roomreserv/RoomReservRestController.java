@@ -16,6 +16,8 @@ import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,32 +40,34 @@ public class RoomReservRestController {
 	
 	//회의실 예약
 	@PostMapping
-	public View reserveRoom(DataRequest dataRequest) {
+	public View reserveRoom(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("roomReservParam");
+		if(param != null) {
+			HttpSession session = request.getSession();
+			Long memberId=(Long) session.getAttribute("memberId");
 
-		String roomReservDate = param.getValue("roomReservDate");
-		long roomReservStartTime = Long.parseLong(param.getValue("roomReservStartTime"));
-		long roomReservEndTime = Long.parseLong(param.getValue("roomReservEndTime"));
-		String proposal = param.getValue("proposal");
-		long roomId = Long.parseLong(param.getValue("roomId"));
-		long memberId = 24;
-
-		log.info("roomReservDate: {}", roomReservDate);
-		log.info("roomReservStartTime: {}", roomReservStartTime);
-		log.info("roomReservEndTime: {}", roomReservEndTime);
-		log.info("proposal: {}", proposal);
-		log.info("roomId: {}", roomId);
-
-		RoomReservDTO roomReservDTO = new RoomReservDTO();
-		roomReservDTO.setMemberId(memberId);
-		roomReservDTO.setRoomReservDate(roomReservDate);
-		roomReservDTO.setRoomReservStartTime(roomReservStartTime);
-		roomReservDTO.setRoomReservEndTime(roomReservEndTime);
-		roomReservDTO.setProposal(proposal);
-		roomReservDTO.setRoomId(roomId);
-
-		roomReservService.insertRoomReserv(roomReservDTO);
-
+			String roomReservDate = param.getValue("roomReservDate");
+			long roomReservStartTime = Long.parseLong(param.getValue("roomReservStartTime"));
+			long roomReservEndTime = Long.parseLong(param.getValue("roomReservEndTime"));
+			String proposal = param.getValue("proposal");
+			long roomId = Long.parseLong(param.getValue("roomId"));
+	
+			log.info("roomReservDate: {}", roomReservDate);
+			log.info("roomReservStartTime: {}", roomReservStartTime);
+			log.info("roomReservEndTime: {}", roomReservEndTime);
+			log.info("proposal: {}", proposal);
+			log.info("roomId: {}", roomId);
+	
+			RoomReservDTO roomReservDTO = new RoomReservDTO();
+			roomReservDTO.setMemberId(memberId);
+			roomReservDTO.setRoomReservDate(roomReservDate);
+			roomReservDTO.setRoomReservStartTime(roomReservStartTime);
+			roomReservDTO.setRoomReservEndTime(roomReservEndTime);
+			roomReservDTO.setProposal(proposal);
+			roomReservDTO.setRoomId(roomId);
+	
+			roomReservService.insertRoomReserv(roomReservDTO);
+		}
 		return new JSONDataView(); 
 	}
 

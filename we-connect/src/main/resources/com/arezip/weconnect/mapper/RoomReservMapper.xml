@@ -20,8 +20,7 @@
 		    rr.room_reserv_start_time,
 		    rr.room_reserv_end_time - rr.room_reserv_start_time as room_reserv_end_time
 		FROM
-		    room r
-		    JOIN room_reserv rr ON r.room_id = rr.room_id
+		    room r JOIN room_reserv rr ON r.room_id = rr.room_id
 		    JOIN member m ON m.member_id = rr.member_id
 	</select>
 	<select id="findBookedRoom" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
