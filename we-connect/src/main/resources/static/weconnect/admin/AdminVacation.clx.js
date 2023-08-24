@@ -260,20 +260,26 @@
 						"dataSet": app.lookup("leaveRequestList"),
 						"columns": [
 							{"width": "25px"},
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{"width": "75px"},
+							{"width": "75px"},
+							{"width": "75px"},
+							{"width": "125px"},
 							{"width": "100px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
+							{"width": "75px"},
+							{"width": "75px"},
 							{"width": "100px"}
 						],
 						"header": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -281,6 +287,9 @@
 										cell.columnType = "checkbox";
 										cell.filterable = false;
 										cell.sortable = false;
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -290,6 +299,9 @@
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestId";
 										cell.text = "leaveRequestId";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -299,6 +311,9 @@
 										cell.sortable = false;
 										cell.targetColumnName = "memberId";
 										cell.text = "memberId";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -307,7 +322,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberName";
-										cell.text = "memberName";
+										cell.text = "이름";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -316,7 +334,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "position";
-										cell.text = "position";
+										cell.text = "직급";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -325,7 +346,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "departmentName";
-										cell.text = "departmentName";
+										cell.text = "부서";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -334,7 +358,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestReason";
-										cell.text = "leaveRequestReason";
+										cell.text = "연차 사유";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -343,7 +370,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestStart";
-										cell.text = "leaveRequestStart";
+										cell.text = "출발";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -352,7 +382,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestEnd";
-										cell.text = "leaveRequestEnd";
+										cell.text = "복귀";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -361,7 +394,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "formattedLeaveCount";
-										cell.text = "formattedLeaveCount";
+										cell.text = "남은 연차";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -370,7 +406,10 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestType";
-										cell.text = "leaveRequestType";
+										cell.text = "분류";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -379,26 +418,38 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "leaveRequestStatus";
-										cell.text = "leaveRequestStatus";
+										cell.text = "상태";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								}
 							]
 						},
 						"detail": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
 										cell.columnType = "checkbox";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestId";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_1 = new cpr.controls.Output();
+											output_1.style.css({
+												"text-align" : "center"
+											});
 											output_1.bind("value").toDataColumn("leaveRequestId");
 											return output_1;
 										})();
@@ -409,8 +460,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
 										cell.columnName = "memberId";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_2 = new cpr.controls.Output();
+											output_2.style.css({
+												"text-align" : "center"
+											});
 											output_2.bind("value").toDataColumn("memberId");
 											return output_2;
 										})();
@@ -421,8 +478,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
 										cell.columnName = "memberName";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_3 = new cpr.controls.Output();
+											output_3.style.css({
+												"text-align" : "center"
+											});
 											output_3.bind("value").toDataColumn("memberName");
 											return output_3;
 										})();
@@ -433,8 +496,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
 										cell.columnName = "position";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_4 = new cpr.controls.Output();
+											output_4.style.css({
+												"text-align" : "center"
+											});
 											output_4.bind("value").toDataColumn("position");
 											return output_4;
 										})();
@@ -445,8 +514,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
 										cell.columnName = "departmentName";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_5 = new cpr.controls.Output();
+											output_5.style.css({
+												"text-align" : "center"
+											});
 											output_5.bind("value").toDataColumn("departmentName");
 											return output_5;
 										})();
@@ -457,8 +532,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 6},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestReason";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_6 = new cpr.controls.Output();
+											output_6.style.css({
+												"text-align" : "center"
+											});
 											output_6.bind("value").toDataColumn("leaveRequestReason");
 											return output_6;
 										})();
@@ -469,8 +550,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 7},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestStart";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_7 = new cpr.controls.Output();
+											output_7.style.css({
+												"text-align" : "center"
+											});
 											output_7.bind("value").toDataColumn("leaveRequestStart");
 											return output_7;
 										})();
@@ -481,8 +568,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 8},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestEnd";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_8 = new cpr.controls.Output();
+											output_8.style.css({
+												"text-align" : "center"
+											});
 											output_8.bind("value").toDataColumn("leaveRequestEnd");
 											return output_8;
 										})();
@@ -493,8 +586,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 9},
 									"configurator": function(cell){
 										cell.columnName = "formattedLeaveCount";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_9 = new cpr.controls.Output();
+											output_9.style.css({
+												"text-align" : "center"
+											});
 											output_9.bind("value").toDataColumn("formattedLeaveCount");
 											return output_9;
 										})();
@@ -505,8 +604,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 10},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestType";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_10 = new cpr.controls.Output();
+											output_10.style.css({
+												"text-align" : "center"
+											});
 											output_10.bind("value").toDataColumn("leaveRequestType");
 											return output_10;
 										})();
@@ -517,8 +622,14 @@
 									"constraint": {"rowIndex": 0, "colIndex": 11},
 									"configurator": function(cell){
 										cell.columnName = "leaveRequestStatus";
+										cell.style.css({
+											"text-align" : "center"
+										});
 										cell.control = (function(){
 											var output_11 = new cpr.controls.Output();
+											output_11.style.css({
+												"text-align" : "center"
+											});
 											output_11.bind("value").toDataColumn("leaveRequestStatus");
 											return output_11;
 										})();
