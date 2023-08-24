@@ -25,11 +25,13 @@
     <cl:group std:sid="group-0f7a11bd" style="border-right-style:solid; border-radius:9px; background-color:#FEFEFF; border-left-style:solid; vertical-align:middle; border-bottom-style:solid; border-top-style:solid;" class="login_layout">
       <cl:xylayoutdata std:sid="xyl-data-7432f8ef" top="170px" left="652px" width="600px" height="500px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:inputbox std:sid="i-box-8de0f2f7" id="memberEmailIpb" style="border-radius:8px; background-color:#FFFFFF; color:#080808; font-size:1em; text-align:left;" class="input_id" placeholder="아이디">
+        <cl:listener std:sid="listener-e1edb3fc" name="focus" handler="onMemberEmailIpbFocus"/>
         <cl:datamapbind property="value" datacontrolid="loginParam" columnname="memberEmail"/>
         <cl:xylayoutdata std:sid="xyl-data-d1c69c56" top="164px" left="90px" width="420px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:inputbox std:sid="i-box-47d3b79d" id="memberPasswordIpb" style="border-radius:8px; background-color:#FFFFFF; color:#080808; font-size:1em; text-align:left;" class="input_password" secret="true" placeholder="비밀번호">
         <cl:listener std:sid="listener-a97f1952" name="keydown" handler="onMemberPasswordIpbKeydown"/>
+        <cl:listener std:sid="listener-8811c3b7" name="focus" handler="onMemberPasswordIpbFocus"/>
         <cl:datamapbind property="value" datacontrolid="loginParam" columnname="memberPassword"/>
         <cl:xylayoutdata std:sid="xyl-data-15a0244e" top="225px" left="90px" width="420px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
