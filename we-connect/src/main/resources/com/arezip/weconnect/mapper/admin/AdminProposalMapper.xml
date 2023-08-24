@@ -35,36 +35,39 @@
 	<!-- 건의사항 검색 -->
 	<select id="searchProposal"
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
-		SELECT proposal_id AS proposalId, proposal_title AS proposalTitle,
-		proposal_content AS proposalContent, to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
+		SELECT
+		proposal_id AS proposalId,
+		proposal_title AS proposalTitle,
+		proposal_content AS proposalContent,
+		to_char(proposal_create,'YYYY-MM-DD') AS proposalCreate,
 		proposal_status AS proposalStatus
-		FROM proposal
-		WHERE
+		FROM
+		proposal
+		WHERE 1=1
 		<choose>
 			<!-- 전체 검색일 경우 -->
 			<when test="searchType == 'all'">
-				(proposal_title LIKE '%' || #{searchText} || '%' OR proposal_status LIKE '%' ||
-				#{searchText} || '%')
+				AND (
+				proposal_title LIKE '%' || #{searchText} || '%'
+				OR proposal_content LIKE '%' || #{searchText} || '%'
+				OR proposal_status LIKE '%' || #{searchText} || '%'
+				)
 			</when>
 			<!-- 제목으로만 검색할 경우 -->
 			<when test="searchType == 'title'">
-				proposal_title LIKE '%' || #{searchText} || '%'
+				AND proposal_title LIKE '%' || #{searchText} || '%'
 			</when>
 			<!-- 내용으로만 검색할 경우 -->
 			<when test="searchType == 'content'">
-				proposal_content LIKE '%' || #{searchText} || '%'
+				AND proposal_content LIKE '%' || #{searchText} || '%'
 			</when>
 			<!-- 건의사항 처리상태로 검색할 경우 -->
 			<when test="searchType == 'status'">
-				proposal_status LIKE '%' || #{searchText} || '%'
+				AND proposal_status LIKE '%' || #{searchText} || '%'
 			</when>
-			<!-- 기본 처리 -->
-			<otherwise>
-				1=1 <!-- 빈 조건을 추가하여 아무 조건 없이도 쿼리가 실행될 수 있도록 함 -->
-			</otherwise>
 		</choose>
-
 		ORDER BY proposal_id DESC
 	</select>
+
 
 </mapper>

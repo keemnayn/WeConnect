@@ -24,6 +24,9 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("proposalListSub").send();
+				var comboBox = app.lookup("cmb1");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
 			}
 
 			/*
@@ -88,7 +91,7 @@
 			 * 서치 인풋에서 search 이벤트 발생 시 호출.
 			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
 			 */
-			function onSearchInputSearch(e){
+			function onSearchInputSearch(e) {
 				var searchInput = e.control;
 				var submission = app.lookup("searchProposalSub");
 				submission.send();
@@ -98,10 +101,10 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onSearchProposalSubSubmitSuccess(e){
+			function onSearchProposalSubSubmitSuccess(e) {
 				var searchProposalSub = e.control;
 				app.lookup("proposalGrd").redraw();
-			};
+			}
 			// End - User Script
 			
 			// Header

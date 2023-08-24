@@ -14,7 +14,7 @@ public interface AdminProposalMapper {
 
 // 건의사항 처리 상태 변경
 	int updateProposalStatus(ProposalDTO proposalDTO);
-	
+
 // 건의사항 삭제
 	int deleteProposal(ProposalDTO proposalDTO);
 

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
-import com.arezip.weconnect.model.dto.NoticeDTO;
 import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.service.admin.AdminProposalService;
 import com.cleopatra.protocol.data.DataRequest;
@@ -45,26 +44,27 @@ public class AdminProposalRestController {
 	public View updateProposalStatus(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("proposalList");
 		if (parameterGroup != null) {
-			Iterator<ParameterRow> iter=parameterGroup.getDeletedRows();
+			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
 			while (iter.hasNext()) {
-				Map<String, String> rowMap=iter.next().toMap();
-				ProposalDTO proposalDTO=mapToProposalDTO(rowMap);
+				Map<String, String> rowMap = iter.next().toMap();
+				ProposalDTO proposalDTO = mapToProposalDTO(rowMap);
 				adminProposalService.updateProposalStatus(proposalDTO);
 			}
 		}
 		return new JSONDataView();
 	}
-	
+
 // Map을 DTO 타입으로 변경하는 메서드
 	private ProposalDTO mapToProposalDTO(Map<String, String> rowMap) {
-		ProposalDTO proposalDTO=new ProposalDTO();
-		proposalDTO.setProposalId(Long.parseLong(rowMap.get("proposalId"))); //map에서의 키
+		ProposalDTO proposalDTO = new ProposalDTO();
+		proposalDTO.setProposalId(Long.parseLong(rowMap.get("proposalId"))); // map에서의 키
 		return proposalDTO;
 	}
+
 // 건의사항 삭제
 	@DeleteMapping
 	public View deleteProposal(DataRequest dataRequest) {
-		ParameterGroup parameterGroup=dataRequest.getParameterGroup("proposalList");
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("proposalList");
 		if (parameterGroup != null) {
 			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
 			while (iter.hasNext()) {
@@ -75,6 +75,7 @@ public class AdminProposalRestController {
 		}
 		return new JSONDataView();
 	}
+
 	// 건의사항 검색
 	@GetMapping("search")
 	public View searchNotices(DataRequest dataRequest) {
