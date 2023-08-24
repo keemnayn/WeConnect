@@ -19,14 +19,47 @@
 		ORDER BY proposal_id
 		DESC
 	</select>
-	<!-- 건의사항 처리 상태 변경-->
-	<update id="updateProposalStatus" parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
-	UPDATE proposal
-	SET proposal_status = #{proposalStatus}
-	WHERE proposal_id = #{proposalId}
+	<!-- 건의사항 처리 상태 변경 -->
+	<update id="updateProposalStatus"
+		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
+		UPDATE proposal
+		SET proposal_status = '완료'
+		WHERE proposal_id = #{proposalId}
 	</update>
 	<!-- 건의사항 삭제 -->
-	<delete id="deleteProposal" parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
-	delete proposal where proposal_id=#{proposalId}
+	<delete id="deleteProposal"
+		parameterType="com.arezip.weconnect.model.dto.ProposalDTO">
+		delete proposal where proposal_id=#{proposalId}
 	</delete>
+	<!-- 건의사항 검색 -->
+	<select id="searchProposal"
+		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
+		SELECT proposal_id AS proposalId, proposal_title AS proposalTitle,
+		proposal_content AS proposalContent, proposal_create AS
+		proposalCreate,
+		proposal_status AS proposalStatus
+		FROM proposal
+		WHERE 1=1
+		<choose>
+			<!-- 전체 검색일 경우 -->
+			<when test="searchType == 'all'">
+				(proposal_title LIKE '%' || #{searchText} || '%' OR proposal_status LIKE '%' ||
+				#{searchText} || '%')
+			</when>
+			<!-- 제목으로만 검색할 경우 -->
+			<when test="searchType == 'title'">
+				proposal_title LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 내용으로만 검색할 경우 -->
+			<when test="searchType == 'content'">
+				proposal_content LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 건의사항 처리상태로 검색할 경우 -->
+			<when test="searchType == 'status'">
+				proposal_status LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+		ORDER BY proposal_id DESC;
+	</select>
+
 </mapper>

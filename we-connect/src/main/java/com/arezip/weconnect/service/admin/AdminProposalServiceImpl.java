@@ -2,6 +2,7 @@
 package com.arezip.weconnect.service.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,12 @@ public class AdminProposalServiceImpl implements AdminProposalService {
 	@Override
 	public int deleteProposal(ProposalDTO proposalDTO) {
 		return adminProposalMapper.deleteProposal(proposalDTO);
+	}
+	
+	// 건의사항 검색
+	@Override
+	public List<ProposalDTO> searchProposal(Map<String, String> searchParams) {
+		return adminProposalMapper.searchProposal(searchParams);
 	}
 
 }

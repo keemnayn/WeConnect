@@ -22,7 +22,7 @@
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
+			function onBodyInit(e) {
 				app.lookup("proposalListSub").send();
 			}
 
@@ -30,30 +30,92 @@
 			 * "처리" 버튼(updateStatusBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onUpdateStatusBtnClick(e){
+			function onUpdateStatusBtnClick(e) {
 				var updateStatusBtn = e.control;
-				var grid=app.lookup("proposalGrd");
+				var grid = app.lookup("proposalGrd");
 				var checkRowIndices = grid.getCheckRowIndices();
-				if (checkRowIndices.length == 1) {
-					if(confirm("처리완료 하시겠습니까?")) {
-						grid.updateRow(checkRowIndices);
-						app.lookup("updateStateSub").send();
+				if (checkRowIndices.length === 1) {
+					if (confirm("처리완료 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("updateStatusSub").send();
+					}
+				} else if (checkRowIndices.length === 0) {
+					alert("하나 이상 선택하셔야 합니다.");
+				} else {
+					alert("처리는 하나씩만 가능합니다.");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onUpdateStatusSubSubmitSuccess(e) {
+				var updateStatusSub = e.control;
+				app.lookup("updateStatusSub").send();
+				app.lookup("proposalListSub").send();
+				app.lookup("proposalGrd").redraw();
+			}
+
+			/*
+			 * "삭제" 버튼(deleteBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onDeleteBtnClick(e) {
+				var deleteBtn = e.control;
+				var grid = app.lookup("proposalGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length > 0) {
+					if (confirm("선택한 건의사항을 삭제하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("deleteProposalSub").send();
 					}
 				} else {
-					alert("처리는 하나의 열만 선택 가능합니다");
+					alert("건의사항을 선택해주세요");
 				}
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onDeleteProposalSubSubmitDone(e) {
+				var deleteProposalSub = e.control;
+				app.lookup("deleteProposalSub").send();
+			}
+
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchInputSearch(e){
+				var searchInput = e.control;
+				var submission = app.lookup("searchProposalSub");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchProposalSubSubmitSuccess(e){
+				var searchProposalSub = e.control;
+				app.lookup("proposalGrd").redraw();
 			};
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("proposalSearch");
 			dataSet_1.parseData({
-				"columns": [{"name": "type"}],
+				"columns": [
+					{"name": "type"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"type": "전체"},
-					{"type": "제목"},
-					{"type": "분류"},
-					{"type": "상태"}
+					{"type": "전체", "value": "all"},
+					{"type": "제목", "value": "title"},
+					{"type": "내용", "value": "content"},
+					{"type": "상태", "value": "status"}
 				]
 			});
 			app.register(dataSet_1);
@@ -88,14 +150,30 @@
 			var submission_2 = new cpr.protocols.Submission("searchProposalSub");
 			submission_2.method = "get";
 			submission_2.action = "member/proposals/search";
+			submission_2.addRequestData(dataMap_1);
 			submission_2.addResponseData(dataSet_2, false);
+			if(typeof onSearchProposalSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onSearchProposalSubSubmitSuccess);
+			}
 			app.register(submission_2);
 			
-			var submission_3 = new cpr.protocols.Submission("updateStateSub");
+			var submission_3 = new cpr.protocols.Submission("updateStatusSub");
 			submission_3.method = "put";
 			submission_3.action = "admin/proposals";
 			submission_3.addRequestData(dataSet_2);
+			if(typeof onUpdateStatusSubSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onUpdateStatusSubSubmitSuccess);
+			}
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("deleteProposalSub");
+			submission_4.method = "delete";
+			submission_4.action = "admin/proposals";
+			submission_4.addRequestData(dataSet_2);
+			if(typeof onDeleteProposalSubSubmitDone == "function") {
+				submission_4.addEventListener("submit-done", onDeleteProposalSubSubmitDone);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -271,8 +349,11 @@
 					formLayout_1.setRows(["1fr"]);
 					group_2.setLayout(formLayout_1);
 					(function(container){
-						var button_1 = new cpr.controls.Button();
+						var button_1 = new cpr.controls.Button("deleteBtn");
 						button_1.value = "삭제";
+						if(typeof onDeleteBtnClick == "function") {
+							button_1.addEventListener("click", onDeleteBtnClick);
+						}
 						container.addChild(button_1, {
 							"colIndex": 1,
 							"rowIndex": 0
@@ -300,7 +381,7 @@
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("proposalSearch"), {
 							"label": "type",
-							"value": "type"
+							"value": "value"
 						});
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
@@ -310,7 +391,15 @@
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_1);
 					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+					if(typeof onSearchInputValueChange == "function") {
+						searchInput_1.addEventListener("value-change", onSearchInputValueChange);
+					}
+					if(typeof onSearchInputSearch == "function") {
+						searchInput_1.addEventListener("search", onSearchInputSearch);
+					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
 						"right": "220px",

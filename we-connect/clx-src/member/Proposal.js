@@ -2,7 +2,7 @@
  * Proposal.js
  * Created at 2023. 8. 21. 오전 03:25:21.
  *
- * @author keemnayn
+ * @author keemn
  ************************************************/
 
 /*
@@ -72,4 +72,13 @@ function onSearchIpbSearch(e) {
 	var searchIpb = e.control;
 	var submission = app.lookup("searchProposalSub");
 	submission.send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onSearchProposalSubSubmitSuccess(e){
+	var searchProposalSub = e.control;
+	app.lookup("proposalGrd").redraw();
 }
