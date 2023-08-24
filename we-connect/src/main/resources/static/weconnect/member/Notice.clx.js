@@ -11,6 +11,12 @@
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
 			// Start - User Script
+			/************************************************
+			 * notice.js
+			 * Created at 2023. 8. 5. 오후 7:26:53.
+			 *
+			 * @author Axl Rose
+			 ************************************************/;
 			// End - User Script
 			
 			// Header
@@ -147,15 +153,6 @@
 				"right": "0px",
 				"bottom": "100px",
 				"left": "0px"
-			});
-			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				"bottom": "50px",
-				"left": "290px",
-				"width": "1000px",
-				"height": "50px"
 			});
 			
 			var group_1 = new cpr.controls.Container();

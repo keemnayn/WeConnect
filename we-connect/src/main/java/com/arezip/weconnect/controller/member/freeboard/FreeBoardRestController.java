@@ -14,12 +14,14 @@ import org.springframework.web.servlet.View;
 
 import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
+import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -89,9 +91,17 @@ public class FreeBoardRestController {
 		return new JSONDataView();
 	}
 	
-	//자유게시판 상세 조회 dialog 사용
+	//자유게시판 상세 조회 
 	@GetMapping("detail")
-	public View freeBoardDetail(DataRequest dataRequest) {
+	public View freeBoardDetail(DataRequest dataRequest, HttpServletResponse response,
+			HttpServletRequest request) {
+//		boolean success = false;
+		HttpSession session = request.getSession();
+//		//로그인한 회원 정보 담음
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = (long)session.getAttribute("memberId");
+		memberDTO.setMemberId(memberId);
+		log.info("memberId {}",memberId);
 		System.out.println("dataRequest"+dataRequest);
 		ParameterGroup param =dataRequest.getParameterGroup("detailBoardParam");
 		System.out.println("param"+param);
@@ -99,11 +109,10 @@ public class FreeBoardRestController {
 		log.info("freeBoardId {}", freeBoardId);
 		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
 		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
+
 		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);
 		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
-		log.info("freeBoardDTO {}",freeBoardDTO);
-		log.info("freeBoardCommentDTO {}", freeBoardCommentDTO);
-		log.info("상세 목록{}",freeBoardService.getFreeBoardDetail(freeBoardId));
+		dataRequest.setResponse("memberDTO", memberDTO);
 		return new JSONDataView();
 	}
 	

@@ -23,17 +23,19 @@
 			 */
 			function onBodyInit(e){
 				app.lookup("reservListSub").send();
+				app.lookup("roomListSub").send();
 			}
 
 			/*
-			 * "회의실 등록" 버튼에서 click 이벤트 발생 시 호출.
+			 * "회의실 등록" 버튼(addRoomBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick(e){
+			function onAddRoomBtnClick(e){
+				var addRoomBtn = e.control;
 				var button = e.control;
 				app.openDialog("dialog/RoomCreate", {width : 600, height : 400}, function(dialog){
 					dialog.addEventListener("close", function(e) {
-						app.lookup("reservListSub").send();
+						app.lookup("roomListSub").send();
 					});
 				});
 			};
@@ -68,11 +70,29 @@
 				]
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("roomList");
+			dataSet_2.parseData({
+				"columns" : [
+					{
+						"name": "roomId",
+						"dataType": "number"
+					},
+					{"name": "roomName"}
+				]
+			});
+			app.register(dataSet_2);
 			var submission_1 = new cpr.protocols.Submission("reservListSub");
 			submission_1.method = "get";
 			submission_1.action = "admin/room-reserv";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("roomListSub");
+			submission_2.method = "get";
+			submission_2.action = "admin/room-reserv/room";
+			submission_2.addResponseData(dataSet_2, false);
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -94,13 +114,91 @@
 			
 			var tabItem_1 = (function(tabFolder){
 				var tabItem_1 = new cpr.controls.TabItem();
-				tabItem_1.text = "회의실예약현황";
+				tabItem_1.text = "회의실 목록";
 				var group_1 = new cpr.controls.Container();
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var grid_1 = new cpr.controls.Grid("grd1");
+					var button_1 = new cpr.controls.Button("addRoomBtn");
+					button_1.value = "회의실 등록";
+					if(typeof onAddRoomBtnClick == "function") {
+						button_1.addEventListener("click", onAddRoomBtnClick);
+					}
+					container.addChild(button_1, {
+						"top": "5px",
+						"right": "5px",
+						"width": "100px",
+						"height": "45px"
+					});
+					var grid_1 = new cpr.controls.Grid("grd2");
 					grid_1.init({
+						"dataSet": app.lookup("roomList"),
+						"columns": [
+							{"width": "20px"},
+							{"width": "80px"}
+						],
+						"header": {
+							"rows": [{"height": "50px"}],
+							"cells": [
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 0},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "roomId";
+										cell.text = "번호";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "roomName";
+										cell.text = "회의실명";
+									}
+								}
+							]
+						},
+						"detail": {
+							"rows": [{"height": "50px"}],
+							"cells": [
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 0},
+									"configurator": function(cell){
+										cell.columnName = "roomId";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
+										cell.columnName = "roomName";
+									}
+								}
+							]
+						}
+					});
+					container.addChild(grid_1, {
+						"top": "55px",
+						"right": "0px",
+						"bottom": "0px",
+						"left": "0px"
+					});
+				})(group_1);
+				tabItem_1.content = group_1;
+				return tabItem_1;
+			})(tabFolder_1);
+			tabFolder_1.addTabItem(tabItem_1);
+			
+			var tabItem_2 = (function(tabFolder){
+				var tabItem_2 = new cpr.controls.TabItem();
+				tabItem_2.text = "예약 현황";
+				var group_2 = new cpr.controls.Container();
+				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
+				group_2.setLayout(xYLayout_3);
+				(function(container){
+					var grid_2 = new cpr.controls.Grid("grd1");
+					grid_2.init({
 						"dataSet": app.lookup("reservList"),
 						"columns": [
 							{"width": "100px"},
@@ -228,31 +326,20 @@
 						}
 					});
 					if(typeof onGrd1SelectionChange == "function") {
-						grid_1.addEventListener("selection-change", onGrd1SelectionChange);
+						grid_2.addEventListener("selection-change", onGrd1SelectionChange);
 					}
-					container.addChild(grid_1, {
+					container.addChild(grid_2, {
 						"top": "55px",
 						"right": "0px",
-						"bottom": "1px",
+						"bottom": "0px",
 						"left": "0px"
 					});
-					var button_1 = new cpr.controls.Button();
-					button_1.value = "회의실 등록";
-					if(typeof onButtonClick == "function") {
-						button_1.addEventListener("click", onButtonClick);
-					}
-					container.addChild(button_1, {
-						"top": "5px",
-						"right": "5px",
-						"width": "100px",
-						"height": "45px"
-					});
-				})(group_1);
-				tabItem_1.content = group_1;
-				return tabItem_1;
+				})(group_2);
+				tabItem_2.content = group_2;
+				return tabItem_2;
 			})(tabFolder_1);
-			tabFolder_1.addTabItem(tabItem_1);
-			tabFolder_1.setSelectedTabItem(tabItem_1);
+			tabFolder_1.addTabItem(tabItem_2);
+			tabFolder_1.setSelectedTabItem(tabItem_2);
 			container.addChild(tabFolder_1, {
 				"top": "0px",
 				"right": "0px",

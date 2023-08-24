@@ -92,4 +92,13 @@ public class FreeBoardTest {
 		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
 		assertNotEquals(0, result);
 	}
+	//댓글 수정
+	@Test
+	void updateComment() {
+		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
+		freeBoardCommentDTO.setFreeBoardCommentId(455);
+		freeBoardCommentDTO.setFreeBoardCommentContent("test수정test");
+		int result = freeBoardService.updateFreeBoardComment(freeBoardCommentDTO);
+		assertNotEquals(0, result);
+	}
 }

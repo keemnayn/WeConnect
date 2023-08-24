@@ -121,6 +121,10 @@
 					{
 						"name": "freeBoardCreate",
 						"dataType": "string"
+					},
+					{
+						"name": "CMemberId",
+						"dataType": "number"
 					}
 				],
 				"rows": []
@@ -295,15 +299,6 @@
 				"right": "0px",
 				"bottom": "100px",
 				"left": "0px"
-			});
-			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				"bottom": "50px",
-				"left": "290px",
-				"width": "1000px",
-				"height": "51px"
 			});
 			
 			var group_1 = new cpr.controls.Container();

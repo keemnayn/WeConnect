@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
 import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
-import com.arezip.weconnect.model.dto.NoticeDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
@@ -68,14 +67,18 @@ public class FreeBoardCommentRestController {
 	//댓글 수정 
 	@PutMapping
 	public View updateFreeBoardComment(HttpServletResponse response, HttpServletRequest request, DataRequest dataRequest) {
-		ParameterGroup parameterGroup = dataRequest.getParameterGroup("commentInsertParam");
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("freeBoardComment");
+		log.info("parameterGroup {}",parameterGroup);
 		if(parameterGroup != null) {
-			Iterator<ParameterRow> iter = parameterGroup.getUpdatedRows();
-			while (iter.hasNext()) {
-				Map<String, String> rowMap = iter.next().toMap();
-				FreeBoardCommentDTO freeBoardCommentDTO = mapToFreeBoardCommentDTO(rowMap);
-				freeBoardService.updateFreeBoardComment(freeBoardCommentDTO);
-			}
+			HttpSession session = request.getSession();
+			Long memberId = (Long) session.getAttribute("memberId");
+			Long freeBoardCommentId = Long.parseLong(parameterGroup.getValue("freeBoardCommentId"));
+			String freeBoardCommentContent = parameterGroup.getValue("freeBoardCommentContent");
+			FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
+			freeBoardCommentDTO.setMemberId(memberId);
+			freeBoardCommentDTO.setFreeBoardCommentId(freeBoardCommentId);
+			freeBoardCommentDTO.setFreeBoardCommentContent(freeBoardCommentContent);
+			freeBoardService.updateFreeBoardComment(freeBoardCommentDTO);
 		}
 		return new JSONDataView();
 	}

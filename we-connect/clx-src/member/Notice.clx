@@ -87,9 +87,6 @@
         <cl:gridcell std:sid="gd-cell-867f8e93" rowindex="0" colindex="3" columnname="noticeContent"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:pageindexer std:sid="p-indexer-6fa8328f">
-      <cl:xylayoutdata std:sid="xyl-data-df28ea3e" bottom="50px" left="290px" width="1000px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:pageindexer>
     <cl:group std:sid="group-2e1d1886">
       <cl:xylayoutdata std:sid="xyl-data-e2689e96" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
       <cl:searchinput std:sid="s-input-e671e07b">

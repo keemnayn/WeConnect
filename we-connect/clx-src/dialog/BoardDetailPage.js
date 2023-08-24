@@ -4,13 +4,6 @@
  *
  * @author chwec
  ************************************************/
-//function get session(key) {
-//	var item = sessionStorage.getItem(Key);
-//
-//}
-//
-//	
-	
 /*
  * 루트 컨테이너에서 load 이벤트 발생 시 호출.
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
@@ -24,14 +17,15 @@ function onBodyLoad(e) {
 	var freeBoardViews = hostProperty["freeBoardViews"];
 	var freeBoardCreate = hostProperty["freeBoardCreate"];
 	var freeBoardContent = hostProperty["freeBoardContent"];
+	var CMemberId = hostProperty["CMemberId"];
 	app.lookup("freeBoardId").value = freeBoardId;
-	app.lookup("boardTitleIpb").value = freeBoardTitle;
-	app.lookup("memberNameIpb").value = memberName;
-	app.lookup("boardViewsIpb").value = freeBoardViews;
-	app.lookup("boardCreateIpb").value = freeBoardCreate;
-	app.lookup("boardContentIpb").value = freeBoardContent;
+//	app.lookup("boardTitleIpb").value = freeBoardTitle;
+//	app.lookup("memberNameIpb").value = memberName;
+//	app.lookup("boardViewsIpb").value = freeBoardViews;
+//	app.lookup("boardCreateIpb").value = freeBoardCreate;
+//	app.lookup("boardContentIpb").value = freeBoardContent;
+//	app.lookup("CMemberId").value = CMemberId;
 	app.lookup("boardDetailSub").send();
-	
 }
 
 /*
@@ -45,6 +39,8 @@ function onBoardDetailSubSubmitSuccess(e) {
 	app.lookup("memberNameIpb").redraw();
 	app.lookup("boardViewsIpb").redraw();
 	app.lookup("boardContentIpb").redraw();
+	app.lookup("CMemberId").redraw();
+	alert(app.lookup("freeBoardDetail").getValue("CMemberId"));
 }
 
 /*
@@ -64,6 +60,7 @@ function onCommentBtnClick(e) {
 function onCommentParamSubSubmitSuccess(e) {
 	var commentParamSub = e.control;
 	app.lookup("boardDetailSub").send();
+
 	return;
 }
 
@@ -101,6 +98,11 @@ function onBoardDeleteBtnClick(e){
  */
 function onCommentUpdateBtnClick(e){
 	var commentUpdateBtn = e.control;
+	var grid = app.lookup("commentGrd");
+	var selectedRowIndices = grid.getSelectedRowIndex();
+	confirm("댓글을 수정하시겠습니까?");
+	grid.updateRow(selectedRowIndices);
+	app.lookup("updateCommentSub").send();
 	
 }
 
@@ -123,7 +125,7 @@ function onCommentDeleteBtnClick(e){
  */
 function onDeleteCommentSubSubmitSuccess(e){
 	var deleteCommentSub = e.control;
-	app.lookup("commentGrd").redraw();
+	app.lookup("boardDetailSub").send();
 }
 
 /*

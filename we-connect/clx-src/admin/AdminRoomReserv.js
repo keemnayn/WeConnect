@@ -10,17 +10,19 @@
  */
 function onBodyInit(e){
 	app.lookup("reservListSub").send();
+	app.lookup("roomListSub").send();
 }
 
 /*
- * "회의실 등록" 버튼에서 click 이벤트 발생 시 호출.
+ * "회의실 등록" 버튼(addRoomBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onButtonClick(e){
+function onAddRoomBtnClick(e){
+	var addRoomBtn = e.control;
 	var button = e.control;
 	app.openDialog("dialog/RoomCreate", {width : 600, height : 400}, function(dialog){
 		dialog.addEventListener("close", function(e) {
-			app.lookup("reservListSub").send();
+			app.lookup("roomListSub").send();
 		});
 	});
 }
