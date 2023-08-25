@@ -1,5 +1,5 @@
 /************************************************
- * teamPost.js
+ * teamPostUdc.js
  * Created at 2023. 8. 21. 오전 3:28:51.
  *
  * @author keemn
