@@ -83,6 +83,15 @@
 					app.lookup("loginBtn").click();
 				}
 			}
+
+			/*
+			 * 인풋 박스에서 focus 이벤트 발생 시 호출.
+			 * 컨트롤이 포커스를 획득한 후 발생하는 이벤트.
+			 */
+			function onMemberPasswordIpbFocus(e) {
+				var memberPasswordIpb = e.control;
+				memberPasswordIpb.autoSelect = true;
+			}
 			// End - User Script
 			
 			// Header
@@ -153,6 +162,9 @@
 					"text-align" : "left"
 				});
 				inputBox_1.bind("value").toDataMap(app.lookup("loginParam"), "memberEmail");
+				if(typeof onMemberEmailIpbFocus == "function") {
+					inputBox_1.addEventListener("focus", onMemberEmailIpbFocus);
+				}
 				container.addChild(inputBox_1, {
 					"top": "164px",
 					"left": "90px",
@@ -173,6 +185,9 @@
 				inputBox_2.bind("value").toDataMap(app.lookup("loginParam"), "memberPassword");
 				if(typeof onMemberPasswordIpbKeydown == "function") {
 					inputBox_2.addEventListener("keydown", onMemberPasswordIpbKeydown);
+				}
+				if(typeof onMemberPasswordIpbFocus == "function") {
+					inputBox_2.addEventListener("focus", onMemberPasswordIpbFocus);
 				}
 				container.addChild(inputBox_2, {
 					"top": "225px",

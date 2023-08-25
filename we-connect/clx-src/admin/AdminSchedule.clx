@@ -74,10 +74,24 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-ccb8e458" id="project">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-5906a1b8" name="projectStart" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-bb16434f" name="projectEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-d58d18ec" name="label"/>
+          <cl:datacolumn std:sid="d-column-55f0c449" name="value"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-59627984" id="calrendar" method="get" action="admin/carlendar">
+        <cl:listener std:sid="listener-7bf3f4a0" name="submit-progress" handler="onCalrendarSubmitProgress"/>
+        <cl:responsedata dataid="project"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-903b7a96">
+    <cl:listener std:sid="listener-4ad7518e" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-ce05306a" name="load" handler="onBodyLoad"/>
     <cl:tabfolder std:sid="t-folder-b89edc7b">
       <cl:xylayoutdata std:sid="xyl-data-895989ca" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-b609801d" selected="true" text="일정관리">

@@ -16,10 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 public class TeamPostServiceImpl implements TeamPostService {
 	private final TeamPostMapper teamPostMapper;
 	
-	
+// 팀포스트 전체 조회
 	@Override 
-	public List<TeamPostDTO> getTeamPostList(long memberId) {
-		return teamPostMapper.getTeamPostList(memberId);
+	public List<TeamPostDTO> getTeamPostList() {
+		return teamPostMapper.selectTeamPostList();
 	}
 
 

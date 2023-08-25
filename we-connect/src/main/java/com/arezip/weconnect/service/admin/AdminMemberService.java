@@ -29,4 +29,6 @@ public interface AdminMemberService {
 
 //	회원 가입 거절
 	int rejectMember(MemberDTO memberDTO);
+
+	int getLeaveCountByMemberId(long memberId);
 }

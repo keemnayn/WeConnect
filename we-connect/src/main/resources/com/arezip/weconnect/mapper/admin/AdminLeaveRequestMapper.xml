@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.arezip.weconnect.mapper.admin.AdminLeaveRequestMapper">
+	<select id="selectAllLeaveRequests"
+		resultType="com.arezip.weconnect.model.dto.LeaveRequestDTO">
+		SELECT
+		lr.LEAVE_REQUEST_ID AS leaveRequestId,
+		m.MEMBER_ID AS
+		memberId,
+		m.MEMBER_NAME AS memberName,
+		m.POSITION AS position,
+		d.DEPARTMENT_NAME AS departmentName,
+		lr.LEAVE_REQUEST_REASON AS
+		leaveRequestReason,
+		lr.LEAVE_REQUEST_TYPE AS leaveRequestType,
+		TO_CHAR(lr.LEAVE_REQUEST_START, 'YYYY-MM-DD') AS leaveRequestStart,
+		TO_CHAR(lr.LEAVE_REQUEST_END, 'YYYY-MM-DD') AS leaveRequestEnd,
+		m.LEAVE_COUNT AS leaveCount,
+		lr.LEAVE_REQUEST_STATUS AS
+		leaveRequestStatus
+		FROM LEAVE_REQUEST lr
+		JOIN "MEMBER" m ON
+		lr.member_id
+		= m.member_id
+		JOIN DEPARTMENT d ON m.department_id =
+		d.department_id
+		ORDER BY lr.LEAVE_REQUEST_ID DESC
+	</select>
+	<!-- 연차 승인 로직 -->
+	<update id="approveLeaveRequest" parameterType="long">
+		UPDATE LEAVE_REQUEST
+		SET LEAVE_REQUEST_STATUS = '승인'
+		WHERE
+		LEAVE_REQUEST_ID = #{leaveRequestId}
+		AND LEAVE_REQUEST_STATUS = '승인 대기'  <!-- 
+			승인 대기 상태일 때만 승인 진행 -->
+	</update>
+
+	<!-- 연차 개수 감소 로직 -->
+	<update id="decrementLeaveCount"
+		parameterType="com.arezip.weconnect.model.dto.LeaveRequestDTO">
+		UPDATE MEMBER
+		SET LEAVE_COUNT = LEAVE_COUNT -
+		#{daysBetween}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	<update id="rejectLeaveRequest"
+		parameterType="com.arezip.weconnect.model.dto.LeaveRequestDTO">
+		UPDATE LEAVE_REQUEST
+		SET LEAVE_REQUEST_STATUS = '거절'
+		WHERE LEAVE_REQUEST_ID = #{leaveRequestId}
+		AND LEAVE_REQUEST_STATUS =
+		'승인 대기'
+	</update>
+	<select id="selectLeaveRequestByCriteria"
+		resultType="com.arezip.weconnect.model.dto.LeaveRequestDTO"
+		parameterType="HashMap">
+		SELECT
+		lr.LEAVE_REQUEST_ID AS leaveRequestId,
+		m.MEMBER_ID
+		AS
+		memberId,
+		m.MEMBER_NAME AS memberName,
+		m.POSITION AS position,
+		d.DEPARTMENT_NAME
+		AS departmentName,
+		lr.LEAVE_REQUEST_REASON AS
+		leaveRequestReason,
+		lr.LEAVE_REQUEST_TYPE AS leaveRequestType,
+		TO_CHAR(lr.LEAVE_REQUEST_START, 'YYYY-MM-DD') AS leaveRequestStart,
+		TO_CHAR(lr.LEAVE_REQUEST_END, 'YYYY-MM-DD') AS leaveRequestEnd,
+		m.LEAVE_COUNT AS leaveCount,
+		lr.LEAVE_REQUEST_STATUS AS
+		leaveRequestStatus
+		FROM LEAVE_REQUEST lr
+		JOIN "MEMBER" m ON
+		lr.member_id
+		= m.member_id
+		JOIN DEPARTMENT d ON m.department_id =
+		d.department_id
+		<choose>
+			<when test="searchType == 'all'">
+				AND (m.MEMBER_NAME LIKE '%' || #{searchText} || '%'
+				OR
+				m.POSITION
+				LIKE '%' || #{searchText} || '%'OR
+				d.DEPARTMENT_NAME
+				LIKE
+				'%' ||
+				#{searchText} || '%'OR
+				lr.LEAVE_REQUEST_TYPE
+				LIKE '%' ||
+				#{searchText} ||
+				'%'OR
+				lr.LEAVE_REQUEST_STATUS
+				LIKE '%' ||
+				#{searchText} ||
+				'%')
+			</when>
+			<when test="searchType == 'memberName'">
+				AND m.MEMBER_NAME LIKE '%' || #{searchText} || '%'
+			</when>
+			<when test="searchType == 'position'">
+				AND m.POSITION LIKE '%' || #{searchText} || '%'
+			</when>
+			<when test="searchType == 'departmentName'">
+				AND d.DEPARTMENT_NAME LIKE '%' || #{searchText} ||
+				'%'
+			</when>
+			<when test="searchType == 'leaveRequestType'">
+				AND lr.LEAVE_REQUEST_TYPE LIKE '%' || #{searchText}
+				||
+				'%'
+			</when>
+			<when test="searchType == 'leaveRequestStatus'">
+				AND lr.LEAVE_REQUEST_STATUS LIKE '%' || #{searchText}
+				||
+				'%'
+			</when>
+		</choose>
+		ORDER BY lr.LEAVE_REQUEST_ID DESC
+	</select>
+</mapper>

@@ -5,9 +5,8 @@ import java.util.List;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
 
 public interface TeamPostService {
-	//TeamPostDTO getTeamPost(long teamPostId);
+// 팀포스트 전체 조회
+	List<TeamPostDTO> getTeamPostList();
 
-	List<TeamPostDTO> getTeamPostList(long memberId);
- 
 	/* int insertTeamPost(TeamPostDTO teamPostDTO); */
 }

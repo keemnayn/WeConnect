@@ -30,13 +30,33 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onTeamPostSubSubmitSuccess(e){
+			function onTeamPostSubSubmitSuccess(e) {
 				var teamPostSub = e.control;
-				app.lookup("memberName").redraw();
-				app.lookup("teamPostContent").redraw();
 				app.lookup("teamPostTitle").redraw();
-				app.lookup("teamPostCreate").redraw();
-			};
+				app.lookup("teamPostContent").redraw();
+				app.lookup("teamPostCreateDate").redraw();
+				app.lookup("memberName").redraw();
+				app.lookup("projectName").redraw();
+				app.lookup("departmentName").redraw();
+			}
+
+			/*
+			 * 인풋 박스에서 mousedown 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤 위에 포인터를 위치한 상태로 마우스 버튼을 누를 때 발생하는 이벤트.
+			 */
+			function onInsertIpbMousedown(e) {
+				var insertIpb = e.control;
+				app.openDialog("dialog/TeamPostCreate", {
+					width: 400,
+					height: 300
+				}, function(dialog) {
+					dialog.ready(function(dialogApp) {
+						// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
+					});
+				}).then(function(returnValue) {
+					;
+				});
+			}
 			// End - User Script
 			
 			// Header
@@ -54,7 +74,8 @@
 					{
 						"name": "projectName",
 						"dataType": "string"
-					}
+					},
+					{"name": "departmentName"}
 				],
 				"rows": []
 			});
@@ -68,7 +89,7 @@
 					{"name": "teamPostComment"},
 					{"name": "date"}
 				],
-				"rows": [{"memberId": "1", "memberName": "최훈", "teamPostComment": "유익한 정보 감사합니다!", "date": "2023-08-18"}]
+				"rows": []
 			});
 			app.register(dataSet_2);
 			var submission_1 = new cpr.protocols.Submission("teamPostSub");
@@ -79,6 +100,12 @@
 				submission_1.addEventListener("submit-success", onTeamPostSubSubmitSuccess);
 			}
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("commentSub");
+			submission_2.method = "get";
+			submission_2.action = "member/comments";
+			submission_2.addResponseData(dataSet_2, false);
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -118,28 +145,28 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "580px",
+						"top": "520px",
 						"left": "20px",
 						"width": "1450px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "580px",
+						"top": "520px",
 						"left": "20px",
 						"width": "1450px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "580px",
+						"top": "520px",
 						"left": "10px",
 						"width": "708px",
 						"height": "50px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "580px",
+						"top": "520px",
 						"left": "7px",
 						"width": "496px",
 						"height": "50px"
@@ -156,28 +183,28 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "600px",
+						"top": "540px",
 						"left": "1482px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "600px",
+						"top": "540px",
 						"left": "1482px",
 						"width": "45px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "600px",
+						"top": "540px",
 						"left": "724px",
 						"width": "22px",
 						"height": "40px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "600px",
+						"top": "540px",
 						"left": "507px",
 						"width": "15px",
 						"height": "40px"
@@ -185,118 +212,44 @@
 				]
 			});
 			
-			var image_1 = new cpr.controls.Image();
-			image_1.src = "img/member/attach-file.png";
-			image_1.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_1, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "561px",
-						"left": "1482px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "561px",
-						"left": "1482px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "561px",
-						"left": "724px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "561px",
-						"left": "507px",
-						"width": "7px",
-						"height": "20px"
-					}
-				]
-			});
-			
-			var image_2 = new cpr.controls.Image();
-			image_2.src = "img/member/bookmark-white.png";
-			image_2.style.css({
-				"font-family" : "IBM Plex Sans KR"
-			});
-			container.addChild(image_2, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "561px",
-						"left": "1507px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "561px",
-						"left": "1507px",
-						"width": "20px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "561px",
-						"left": "736px",
-						"width": "10px",
-						"height": "20px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "561px",
-						"left": "515px",
-						"width": "7px",
-						"height": "20px"
-					}
-				]
-			});
-			
-			var output_1 = new cpr.controls.Output();
+			var output_1 = new cpr.controls.Output("projectName");
+			output_1.readOnly = true;
 			output_1.style.css({
 				"font-weight" : "bold",
 				"font-size" : "30px"
 			});
 			var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("teamPostList"), 0);
 			output_1.setBindContext(dataRowContext_1);
+			output_1.bind("value").toDataColumn("projectName");
 			container.addChild(output_1, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
 						"top": "20px",
-						"right": "40px",
+						"right": "41px",
 						"left": "20px",
-						"height": "50px"
+						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
 						"top": "20px",
-						"right": "40px",
+						"right": "41px",
 						"left": "20px",
-						"height": "50px"
+						"height": "80px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
 						"top": "20px",
 						"right": "20px",
 						"left": "10px",
-						"height": "50px"
+						"height": "80px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
 						"top": "20px",
 						"right": "14px",
 						"left": "7px",
-						"height": "50px"
+						"height": "80px"
 					}
 				]
 			});
@@ -341,28 +294,28 @@
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "650px",
+						"top": "590px",
 						"left": "17px",
 						"width": "1545px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "650px",
+						"top": "590px",
 						"left": "17px",
 						"width": "1545px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "650px",
+						"top": "590px",
 						"left": "8px",
 						"width": "754px",
 						"height": "170px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "650px",
+						"top": "590px",
 						"left": "6px",
 						"width": "528px",
 						"height": "170px"
@@ -382,7 +335,7 @@
 					"width": "100px",
 					"height": "30px"
 				});
-				var output_6 = new cpr.controls.Output("teamPostCreate");
+				var output_6 = new cpr.controls.Output("teamPostCreateDate");
 				output_6.bind("value").toDataSet(app.lookup("teamPostList"), "teamPostCreateDate", 0);
 				container.addChild(output_6, {
 					"top": "19px",
@@ -405,30 +358,6 @@
 					"width": "1520px",
 					"height": "150px"
 				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.style.css({
-					"border-right-style" : "none",
-					"color" : "#010101",
-					"border-bottom-color" : "#686565",
-					"font-weight" : "normal",
-					"border-left-color" : "#686565",
-					"font-size" : "14px",
-					"border-right-color" : "#686565",
-					"font-style" : "normal",
-					"border-top-style" : "none",
-					"border-left-style" : "none",
-					"border-top-color" : "#686565",
-					"font-family" : "IBM Plex Sans KR",
-					"border-bottom-style" : "none",
-					"text-align" : "right"
-				});
-				hTMLSnippet_1.bind("value").toDataSet(app.lookup("teamPostList"), "projectName", 0);
-				container.addChild(hTMLSnippet_1, {
-					"top": "19px",
-					"left": "1419px",
-					"width": "100px",
-					"height": "30px"
-				});
 				var output_7 = new cpr.controls.Output("teamPostTitle");
 				output_7.bind("value").toDataSet(app.lookup("teamPostList"), "teamPostTitle", 0);
 				container.addChild(output_7, {
@@ -437,106 +366,82 @@
 					"width": "1520px",
 					"height": "30px"
 				});
+				var output_8 = new cpr.controls.Output("departmentName");
+				output_8.bind("value").toDataSet(app.lookup("teamPostList"), "departmentName", 0);
+				container.addChild(output_8, {
+					"top": "19px",
+					"left": "1368px",
+					"width": "150px",
+					"height": "30px"
+				});
 			})(group_2);
 			container.addChild(group_2, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "280px",
-						"left": "20px",
+						"top": "250px",
+						"left": "10px",
 						"width": "1540px",
 						"height": "260px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "280px",
-						"left": "20px",
+						"top": "250px",
+						"left": "10px",
 						"width": "1540px",
 						"height": "260px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "280px",
-						"left": "10px",
+						"top": "250px",
+						"left": "5px",
 						"width": "752px",
 						"height": "260px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "280px",
-						"left": "7px",
+						"top": "250px",
+						"left": "3px",
 						"width": "526px",
 						"height": "260px"
 					}
 				]
 			});
 			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				positions: [
-					{
-						"media": "all and (min-width: 1920px)",
-						"top": "90px",
-						"left": "435px",
-						"width": "200px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "90px",
-						"left": "435px",
-						"width": "200px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "90px",
-						"left": "212px",
-						"width": "98px",
-						"height": "40px"
-					}, 
-					{
-						"media": "all and (max-width: 499px)",
-						"top": "90px",
-						"left": "149px",
-						"width": "68px",
-						"height": "40px"
-					}
-				]
-			});
-			
-			var inputBox_2 = new cpr.controls.InputBox("ipb2");
+			var inputBox_2 = new cpr.controls.InputBox("insertIpb");
 			inputBox_2.placeholder = "보드 멤버들과 공유할 내용을 입력해보세요.";
 			inputBox_2.style.css({
 				"font-family" : "'IBM Plex Sans KR'"
 			});
+			if(typeof onInsertIpbMousedown == "function") {
+				inputBox_2.addEventListener("mousedown", onInsertIpbMousedown);
+			}
 			container.addChild(inputBox_2, {
 				positions: [
 					{
 						"media": "all and (min-width: 1920px)",
-						"top": "140px",
+						"top": "111px",
 						"left": "20px",
 						"width": "1520px",
 						"height": "131px"
 					}, 
 					{
 						"media": "all and (min-width: 1024px) and (max-width: 1919px)",
-						"top": "140px",
+						"top": "111px",
 						"left": "20px",
 						"width": "1520px",
 						"height": "131px"
 					}, 
 					{
 						"media": "all and (min-width: 500px) and (max-width: 1023px)",
-						"top": "140px",
+						"top": "111px",
 						"left": "10px",
 						"width": "742px",
 						"height": "131px"
 					}, 
 					{
 						"media": "all and (max-width: 499px)",
-						"top": "140px",
+						"top": "111px",
 						"left": "7px",
 						"width": "520px",
 						"height": "131px"

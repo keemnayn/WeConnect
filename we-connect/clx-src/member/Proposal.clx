@@ -39,10 +39,16 @@
           <cl:datacolumn std:sid="d-column-afb5a89c" name="searchText"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-203763a5" id="updateMemberParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-c4fa4b48" name="status"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="admin/proposals">
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">
+        <cl:listener std:sid="listener-96799b0c" name="submit-success" handler="onSearchProposalSubSubmitSuccess"/>
         <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
