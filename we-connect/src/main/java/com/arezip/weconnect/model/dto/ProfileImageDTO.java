@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
    
 @Data 
-@NoArgsConstructor  
+@NoArgsConstructor   
 @AllArgsConstructor
 public class ProfileImageDTO {
 	private long profileImageId; 
 	private String profileImagePath;
 	private long memberId; 
 }                 
-                                                                             
+                                                                                          

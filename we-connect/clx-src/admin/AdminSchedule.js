@@ -1,45 +1,32 @@
-/************************************************
- * MeetingRoomReserv.js
- * Created at 2023. 8. 8. 오후 8:11:24.
- *
- * @author chwec
- ************************************************/
-
 /*
- * 캘린더에서 date-click 이벤트 발생 시 호출.
- * Calendar의 날짜를 클릭 했을때 발생하는 이벤트.
+ * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+ * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
-function onCalendarDateClick(e) {
-	let crd = e.control;
+function onBodyLoad(e) {
+	/** 
+	 * @type cpr.controls.Calendar
+	 */
 	let calendar = app.lookup("crd");
-	//날짜를 클릭한 경우 해당 값이 들어감 
-	let value = calendar.value;
-	let type = e.type;
-	app.openDialog("dialog/Schedule", {
-		width: 800,
-		height: 600
-	}, function(dialog) {
-		dialog.ready(function(dialogApp) {
-			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
-			dialogApp.initValue = {
-				vsType: type,
-				vsDate: value
-			}
-		});
-	}).then(function(returnValue) {
-		if (returnValue != null || returnValue != "") {
-			//calendar에 새로운 일정이 추가된다.
-			calendar.addItem(new cpr.controls.CalendarItem(returnValue.Label, returnValue.STAT_DTHR, returnValue.END_DTHR, returnValue.EXVALUE));
-		}
-	});
-}
-
-/*
- * 캘린더에서 item-click 이벤트 발생 시 호출.
- * Calendar의 아이템을 클릭 할 때 발생하는 이벤트. relativeTargetName, item을 통해 정보를 얻을 수 있습니다.
- */
-function onCrdItemClick(e) {
-	var crd = e.control;
-	var type = e.type;
-	var relativeTargetName = e.relativeTargetName;
+	let dataSet = app.lookup("project");
+	var submission = app.lookup("calrendar");
+	submission.send();
+	var date = e.targetObject.date;
+	var voCalendarItems = calendar.getItemsByDate(dataSet); //1.0.2210(2020.07.10릴리즈) 부터 사용가능
+	var voAnniversaries = calendar.getAnniversariesByDate(date);
+	
+	var voInitValue = {
+		date: moment(date).format("YYYY-MM-DD"),
+		item: voCalendarItems,
+		anniversary: voAnniversaries
+	};
+	/*
+	 * 서브미션에서 submit-progress 이벤트 발생 시 호출.
+	 * 서버로 부터 일정 크기의 데이터를 전송받았을 때 발생합니다. 하나의 응답에 대해 여러 번 발생할 수 있습니다.
+	 */
+	function onCalrendarSubmitProgress(e) {
+		var calrendar = e.control;
+		alert("성공");
+		app.lookup("crd").redraw();
+		
+	}
 }

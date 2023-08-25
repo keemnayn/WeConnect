@@ -182,7 +182,15 @@ CREATE UNIQUE INDEX PK_project
 	ON project (
 		project_id ASC
 	);
-	
+select * from project
+
+
+INSERT INTO WECONNECT.PROJECT
+(PROJECT_ID, PROJECT_NAME, PROJECT_START, PROJECT_END, MEMBER_ID)
+VALUES(project_seq.NEXTVAL, '테스트', TO_DATE('2023-08-24', 'YYYY-MM-DD'), TO_DATE('2023-08-25', 'YYYY-MM-DD'), 131);
+
+--프로젝트 시작일 , 마감일 보여주는 select 
+select project.project_start, project.project_end from project where member_id = 131;
 ALTER TABLE project
 ADD CONSTRAINT CHK_project_dates
 CHECK (project_start <= project_end);
