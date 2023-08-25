@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.arezip.weconnect.mapper.MemberMapper;
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.model.dto.MemberDTO;
-import com.arezip.weconnect.model.dto.ProfileImageDTO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +27,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.findByDepartmentName();
 	}
 
+//	이메일 중복확인
 	@Override
-	public MemberDTO findByEmail(String memberEmail) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean isEmailDuplicated(String memberEmail) {
+		int result = memberMapper.checkEmailExists(memberEmail);
+// 		중복되지 않았을 때 true를 반환
+		return result == 0;
 	}
 
 //	회원가입 수정
