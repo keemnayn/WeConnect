@@ -17,13 +17,6 @@
 			 *
 			 * @author chwec
 			 ************************************************/
-			//function get session(key) {
-			//	var item = sessionStorage.getItem(Key);
-			//
-			//}
-			//
-			//	
-				
 			/*
 			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
@@ -37,14 +30,15 @@
 				var freeBoardViews = hostProperty["freeBoardViews"];
 				var freeBoardCreate = hostProperty["freeBoardCreate"];
 				var freeBoardContent = hostProperty["freeBoardContent"];
+				var CMemberId = hostProperty["CMemberId"];
 				app.lookup("freeBoardId").value = freeBoardId;
-				app.lookup("boardTitleIpb").value = freeBoardTitle;
-				app.lookup("memberNameIpb").value = memberName;
-				app.lookup("boardViewsIpb").value = freeBoardViews;
-				app.lookup("boardCreateIpb").value = freeBoardCreate;
-				app.lookup("boardContentIpb").value = freeBoardContent;
+			//	app.lookup("boardTitleIpb").value = freeBoardTitle;
+			//	app.lookup("memberNameIpb").value = memberName;
+			//	app.lookup("boardViewsIpb").value = freeBoardViews;
+			//	app.lookup("boardCreateIpb").value = freeBoardCreate;
+			//	app.lookup("boardContentIpb").value = freeBoardContent;
+			//	app.lookup("CMemberId").value = CMemberId;
 				app.lookup("boardDetailSub").send();
-				
 			}
 
 			/*
@@ -58,6 +52,8 @@
 				app.lookup("memberNameIpb").redraw();
 				app.lookup("boardViewsIpb").redraw();
 				app.lookup("boardContentIpb").redraw();
+				app.lookup("CMemberId").redraw();
+				alert(app.lookup("freeBoardDetail").getValue("CMemberId"));
 			}
 
 			/*
@@ -77,6 +73,7 @@
 			function onCommentParamSubSubmitSuccess(e) {
 				var commentParamSub = e.control;
 				app.lookup("boardDetailSub").send();
+
 				return;
 			}
 
@@ -114,6 +111,11 @@
 			 */
 			function onCommentUpdateBtnClick(e){
 				var commentUpdateBtn = e.control;
+				var grid = app.lookup("commentGrd");
+				var selectedRowIndices = grid.getSelectedRowIndex();
+				confirm("댓글을 수정하시겠습니까?");
+				grid.updateRow(selectedRowIndices);
+				app.lookup("updateCommentSub").send();
 				
 			}
 
@@ -136,7 +138,7 @@
 			 */
 			function onDeleteCommentSubSubmitSuccess(e){
 				var deleteCommentSub = e.control;
-				app.lookup("commentGrd").redraw();
+				app.lookup("boardDetailSub").send();
 			}
 
 			/*
@@ -186,7 +188,7 @@
 						"dataType": "number"
 					},
 					{
-						"name": "memberId",
+						"name": "CMemberId",
 						"dataType": "number"
 					}
 				]
@@ -216,7 +218,8 @@
 					},
 					{"name": "memberName"},
 					{"name": "freeBoardFileName"},
-					{"name": "freeBoardCreate"}
+					{"name": "freeBoardCreate"},
+					{"name": "CMemberId"}
 				]
 			});
 			app.register(dataMap_2);
@@ -238,12 +241,22 @@
 				"columns" : [{"name": "freeBoardCommentId"}]
 			});
 			app.register(dataMap_4);
+			
+			var dataMap_5 = new cpr.data.DataMap("memberDTO");
+			dataMap_5.parseData({
+				"columns" : [{
+					"name": "memberId",
+					"dataType": "number"
+				}]
+			});
+			app.register(dataMap_5);
 			var submission_1 = new cpr.protocols.Submission("boardDetailSub");
 			submission_1.method = "get";
 			submission_1.action = "member/boards/detail";
 			submission_1.addRequestData(dataMap_1);
 			submission_1.addResponseData(dataMap_2, false);
 			submission_1.addResponseData(dataSet_1, false);
+			submission_1.addResponseData(dataMap_5, false);
 			if(typeof onBoardDetailSubSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onBoardDetailSubSubmitSuccess);
 			}
@@ -289,6 +302,12 @@
 				submission_6.addEventListener("submit-success", onUpdateBoardSubSubmitSuccess);
 			}
 			app.register(submission_6);
+			
+			var submission_7 = new cpr.protocols.Submission("updateCommentSub");
+			submission_7.method = "put";
+			submission_7.action = "member/boards/comments";
+			submission_7.addRequestData(dataSet_1);
+			app.register(submission_7);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -311,6 +330,7 @@
 			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
 			inputBox_1.setBindContext(dataMapContext_1);
 			inputBox_1.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardTitle");
+			inputBox_1.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
 			container.addChild(inputBox_1, {
 				"top": "0px",
 				"right": "210px",
@@ -429,7 +449,7 @@
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 1},
 							"configurator": function(cell){
-								cell.columnName = "memberId";
+								cell.columnName = "CMemberId";
 							}
 						},
 						{
@@ -442,6 +462,13 @@
 							"constraint": {"rowIndex": 0, "colIndex": 3},
 							"configurator": function(cell){
 								cell.columnName = "freeBoardCommentContent";
+								cell.control = (function(){
+									var inputBox_3 = new cpr.controls.InputBox("ipb1");
+									inputBox_3.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
+									inputBox_3.bind("value").toDataColumn("freeBoardCommentContent");
+									return inputBox_3;
+								})();
+								cell.controlConstraint = {};
 							}
 						},
 						{
@@ -456,6 +483,7 @@
 								cell.control = (function(){
 									var button_2 = new cpr.controls.Button("commentUpdateBtn");
 									button_2.value = "수정";
+									button_2.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 									if(typeof onCommentUpdateBtnClick == "function") {
 										button_2.addEventListener("click", onCommentUpdateBtnClick);
 									}
@@ -470,6 +498,7 @@
 								cell.control = (function(){
 									var button_3 = new cpr.controls.Button("commentDeleteBtn");
 									button_3.value = "삭제";
+									button_3.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 									if(typeof onCommentDeleteBtnClick == "function") {
 										button_3.addEventListener("click", onCommentDeleteBtnClick);
 									}
@@ -500,7 +529,7 @@
 			formLayout_1.leftMargin = "0px";
 			formLayout_1.horizontalSpacing = "0px";
 			formLayout_1.verticalSpacing = "0px";
-			formLayout_1.setColumns(["100px", "100px", "1fr", "100px", "1fr", "100px", "1fr"]);
+			formLayout_1.setColumns(["100px", "100px", "1fr", "100px", "1fr", "100px", "1fr", "1fr"]);
 			formLayout_1.setRows(["1fr"]);
 			group_1.setLayout(formLayout_1);
 			(function(container){
@@ -525,36 +554,44 @@
 				var output_4 = new cpr.controls.Output("freeBoardId");
 				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("detailBoardParam"));
 				output_4.setBindContext(dataMapContext_3);
-				output_4.bind("value").toDataMap(app.lookup("detailBoardParam"), "freeBoardId");
+				output_4.bind("value").toDataColumn("freeBoardId");
 				container.addChild(output_4, {
 					"colIndex": 0,
 					"rowIndex": 0
 				});
-				var inputBox_3 = new cpr.controls.InputBox("memberNameIpb");
-				inputBox_3.readOnly = true;
+				var inputBox_4 = new cpr.controls.InputBox("memberNameIpb");
+				inputBox_4.readOnly = true;
 				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_3.setBindContext(dataMapContext_4);
-				inputBox_3.bind("value").toDataMap(app.lookup("freeBoardDetail"), "memberName");
-				container.addChild(inputBox_3, {
+				inputBox_4.setBindContext(dataMapContext_4);
+				inputBox_4.bind("value").toDataMap(app.lookup("freeBoardDetail"), "memberName");
+				container.addChild(inputBox_4, {
 					"colIndex": 2,
 					"rowIndex": 0
 				});
-				var inputBox_4 = new cpr.controls.InputBox("boardCreateIpb");
-				inputBox_4.readOnly = true;
+				var inputBox_5 = new cpr.controls.InputBox("boardCreateIpb");
+				inputBox_5.readOnly = true;
 				var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_4.setBindContext(dataMapContext_5);
-				inputBox_4.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardCreate");
-				container.addChild(inputBox_4, {
+				inputBox_5.setBindContext(dataMapContext_5);
+				inputBox_5.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardCreate");
+				container.addChild(inputBox_5, {
 					"colIndex": 4,
 					"rowIndex": 0
 				});
-				var inputBox_5 = new cpr.controls.InputBox("boardViewsIpb");
-				inputBox_5.readOnly = true;
+				var inputBox_6 = new cpr.controls.InputBox("boardViewsIpb");
+				inputBox_6.readOnly = true;
 				var dataMapContext_6 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_5.setBindContext(dataMapContext_6);
-				inputBox_5.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardViews");
-				container.addChild(inputBox_5, {
+				inputBox_6.setBindContext(dataMapContext_6);
+				inputBox_6.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardViews");
+				container.addChild(inputBox_6, {
 					"colIndex": 6,
+					"rowIndex": 0
+				});
+				var output_5 = new cpr.controls.Output("CMemberId");
+				var dataMapContext_7 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				output_5.setBindContext(dataMapContext_7);
+				output_5.bind("value").toDataMap(app.lookup("freeBoardDetail"), "CMemberId");
+				container.addChild(output_5, {
+					"colIndex": 7,
 					"rowIndex": 0
 				});
 			})(group_1);
@@ -567,6 +604,7 @@
 			
 			var button_4 = new cpr.controls.Button("boardUpdateBtn");
 			button_4.value = "수정";
+			button_4.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 			if(typeof onBoardUpdateBtnClick == "function") {
 				button_4.addEventListener("click", onBoardUpdateBtnClick);
 			}
@@ -579,6 +617,7 @@
 			
 			var button_5 = new cpr.controls.Button("boardDeleteBtn");
 			button_5.value = "삭제";
+			button_5.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 			if(typeof onBoardDeleteBtnClick == "function") {
 				button_5.addEventListener("click", onBoardDeleteBtnClick);
 			}
@@ -589,11 +628,12 @@
 				"height": "30px"
 			});
 			
-			var inputBox_6 = new cpr.controls.InputBox("boardContentIpb");
-			var dataMapContext_7 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-			inputBox_6.setBindContext(dataMapContext_7);
-			inputBox_6.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardContent");
-			container.addChild(inputBox_6, {
+			var inputBox_7 = new cpr.controls.InputBox("boardContentIpb");
+			var dataMapContext_8 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+			inputBox_7.setBindContext(dataMapContext_8);
+			inputBox_7.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardContent");
+			inputBox_7.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
+			container.addChild(inputBox_7, {
 				"top": "80px",
 				"right": "10px",
 				"left": "10px",

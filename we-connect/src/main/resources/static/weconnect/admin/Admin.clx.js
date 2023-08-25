@@ -144,7 +144,7 @@
 					{"label": "공지사항", "value": "공지사항", "parent": "게시판", "appId": "admin/AdminNotice"},
 					{"label": "자유게시판", "value": "자유게시판", "parent": "게시판", "appId": "admin/AdminBoard"},
 					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminProposal"},
-					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "회의실", "appId": "admin/AdminRoomReserv"},
+					{"label": "회의실 관리", "value": "회의실 관리", "parent": "회의실", "appId": "admin/AdminRoomReserv"},
 					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/AdminSchedule", "icon": "img/icon/calendar.png"},
 					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트", "appId": "admin/AdminProjectManagement"}
 				]
