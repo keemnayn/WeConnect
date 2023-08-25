@@ -1514,7 +1514,77 @@
 				
 				// Header
 				app.supportMedia("all and (min-width: 1024px)", "default");
-=======
+				app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
+				app.supportMedia("all and (max-width: 499px)", "mobile");
+				
+				// Configure root container
+				var container = app.getContainer();
+				container.style.css({
+					"width" : "100%",
+					"top" : "0px",
+					"height" : "100%",
+					"left" : "0px"
+				});
+				
+				// Layout
+				var xYLayout_1 = new cpr.controls.layouts.XYLayout();
+				container.setLayout(xYLayout_1);
+				
+				// UI Configuration
+				var group_1 = new cpr.controls.Container();
+				group_1.style.css({
+					"background-color" : "#D7E4F2",
+					"border-radius" : "20px"
+				});
+				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
+				group_1.setLayout(xYLayout_2);
+				(function(container){
+					var output_1 = new cpr.controls.Output();
+					output_1.value = "myPostTitle";
+					container.addChild(output_1, {
+						"top": "20px",
+						"left": "20px",
+						"width": "220px",
+						"height": "20px"
+					});
+					var output_2 = new cpr.controls.Output();
+					output_2.value = "myPostContent";
+					container.addChild(output_2, {
+						"top": "50px",
+						"left": "20px",
+						"width": "220px",
+						"height": "254px"
+					});
+				})(group_1);
+				container.addChild(group_1, {
+					"top": "20px",
+					"left": "20px",
+					"width": "260px",
+					"height": "324px"
+				});
+			}
+		});
+	internalApp.title = "myPostList";
+	
+	// Type declaration for myPostList
+	cpr.utils.Util.ensurePackage("udc").myPostList = function(id){
+		cpr.controls.UDCBase.call(this, "udc.myPostList", internalApp, id);
+	};
+	
+	udc.myPostList.prototype = Object.create(cpr.controls.UDCBase.prototype);
+	Object.defineProperty(udc.myPostList.prototype, "type", {
+		get : function(){
+			return "udc.myPostList";
+		},
+		
+		configurable: true
+	});
+	
+	// App Properties
+	
+	// Register type into the Platform and package
+	cpr.core.Platform.INSTANCE.register(internalApp);
+})();
 /// end - udc.myPostList
 /// start - udc.search
 /*
