@@ -12,10 +12,10 @@ public interface TeamPostMapper {
 	List<TeamPostDTO> selectTeamPostList();
 
 // 팀포스트 추가
-	TeamPostDTO insertTeamPost(long teamPostId);
+	int insertTeamPost(TeamPostDTO teamPostDTO);
 
 // 팀포스트 수정
-	// int insertTeamPost(TeamPostDTO teamPostDTO);
+
 
 // 팀포스트 삭제
 }

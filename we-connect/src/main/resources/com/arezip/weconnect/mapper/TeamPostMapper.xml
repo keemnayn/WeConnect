@@ -27,10 +27,16 @@
 		as memberName, to_char(t.team_post_create,'YYYY-MM-DD') as teamPostCreate 
 		from team_post t join member m on t.member_id=m.member_id </select> -->
 	<!-- 팀포스트 추가 -->		
+<!-- 	<insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
+		insert into team_post(team_post_id, team_post_title, team_post_content, member_id) 
+		values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, 
+		#{memberId})
+	</insert> -->
 	<insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		insert into team_post(team_post_id, team_post_title, team_post_content, member_id, 
 		project_id) values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, 
-		#{memberId}, #{projectId}); </insert>
+		#{memberId}, #{projectId})
+	</insert>
 	<!-- <select id="getTeamPostDetail" resultType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		select t.team_post_id, t.team_post_title, t.team_post_content, t.team_post_create, 
 		m.member_id, tc.team_post_comment_id, tc.team_post_comment_content, tc.team_post_comment_date 
