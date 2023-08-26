@@ -11,6 +11,14 @@
           <cl:datacolumn std:sid="d-column-08c4235a" name="profileImagePath" datatype="string"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-ac3b02f9" id="profileImage">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a1e70239" name="profileImageId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-5288da62" name="profileImagesName"/>
+          <cl:datacolumn std:sid="d-column-f78882c5" name="profileImagePath" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-38c398ee" name="memberId" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-37639b91" id="Attendance1" action="member/attendance">
         <cl:listener std:sid="listener-4aeacf02" name="submit-success" handler="onAttendance1SubmitSuccess2"/>
         <cl:listener std:sid="listener-dcced485" name="submit-error" handler="onAttendance1SubmitError"/>
@@ -19,6 +27,10 @@
       <cl:submission std:sid="submission-13215d8f" id="Img" method="get" action="member/profile">
         <cl:listener std:sid="listener-661ce042" name="submit-success" handler="onImgSubmitSuccess"/>
         <cl:responsedata dataid="img"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-b4779119" id="imgSend" method="put" action="member/profile" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-faa62406" name="submit-success" handler="onImgSendSubmitSuccess2"/>
+        <cl:requestdata dataid="profileImage"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -54,6 +66,8 @@
         <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="44px" left="12px" width="111px" height="115px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
       <cl:fileinput std:sid="f-input-908aa111" id="fi1" placeholder="프로필 수정">
+        <cl:listener std:sid="listener-d98a66fc" name="value-change" handler="onFi1ValueChange"/>
+        <cl:datamapbind property="value" datacontrolid="profileImage" columnname="profileImagePath"/>
         <cl:xylayoutdata std:sid="xyl-data-301afad9" top="183px" left="12px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:fileinput>
       <cl:xylayout std:sid="xylayout-0003050b"/>
