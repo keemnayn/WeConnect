@@ -95,27 +95,26 @@ public class FreeBoardRestController {
 	@GetMapping("detail")
 	public View freeBoardDetail(DataRequest dataRequest, HttpServletResponse response,
 			HttpServletRequest request) {
-//		boolean success = false;
 		HttpSession session = request.getSession();
 //		//로그인한 회원 정보 담음
 		MemberDTO memberDTO = new MemberDTO();
 		long memberId = (long)session.getAttribute("memberId");
 		memberDTO.setMemberId(memberId);
-		log.info("memberId {}",memberId);
+		log.info("memberId {}",memberId); 
 		System.out.println("dataRequest"+dataRequest);
 		ParameterGroup param =dataRequest.getParameterGroup("detailBoardParam");
 		System.out.println("param"+param);
 		long freeBoardId = Long.parseLong(param.getValue("freeBoardId")); 
 		log.info("freeBoardId {}", freeBoardId);
+		freeBoardService.updateFreeBoardViews(freeBoardId);
 		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
 		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
-
 		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);
 		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
 		dataRequest.setResponse("memberDTO", memberDTO);
-		return new JSONDataView();
+		return new JSONDataView(); 
 	}
-	
+
 	//자유게시판 글 삭제
 	@DeleteMapping
 	public View deleteFreeBoard(DataRequest dataRequest, HttpServletRequest request) {

@@ -49,7 +49,9 @@ function onTre1ItemClick( /* cpr.events.CItemEvent */ e) {
 			})
 			/*임베디드 앱에 내장할 앱을 로드하여 설정합니다*/
 			vcEmb.app = loadedApp;
+			vcEmb.redraw();
 		}
+		
 	});
 }
 

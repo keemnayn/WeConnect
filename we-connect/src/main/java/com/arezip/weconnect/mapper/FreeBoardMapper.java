@@ -24,6 +24,8 @@ public interface FreeBoardMapper {
 	int updateFreeBoard(FreeBoardDTO freeBoardDTO);
 	//자유 게시판 글 삭제
 	int deleteFreeBoard(FreeBoardDTO freeBoardDTO);
+	//자유 게시판 조회수
+	int updateFreeBoardViews(long freeBoardId);
 	
 	//자유 게시판 댓글 등록
 	int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
