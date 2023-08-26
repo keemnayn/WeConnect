@@ -9,7 +9,7 @@
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
 function onBodyLoad(e) {
-//	var sessionval = getSessionStorage("memsession");
+	//	var sessionval = getSessionStorage("memsession");
 	var hostProperty = app.getHostProperty("initValue");
 	var freeBoardId = hostProperty["freeBoardId"];
 	var freeBoardTitle = hostProperty["freeBoardTitle"];
@@ -17,15 +17,16 @@ function onBodyLoad(e) {
 	var freeBoardViews = hostProperty["freeBoardViews"];
 	var freeBoardCreate = hostProperty["freeBoardCreate"];
 	var freeBoardContent = hostProperty["freeBoardContent"];
-	var CMemberId = hostProperty["CMemberId"];
+	var CMemberId = hostProperty["FMemberId"];
 	app.lookup("freeBoardId").value = freeBoardId;
-//	app.lookup("boardTitleIpb").value = freeBoardTitle;
-//	app.lookup("memberNameIpb").value = memberName;
-//	app.lookup("boardViewsIpb").value = freeBoardViews;
-//	app.lookup("boardCreateIpb").value = freeBoardCreate;
-//	app.lookup("boardContentIpb").value = freeBoardContent;
-//	app.lookup("CMemberId").value = CMemberId;
+	//	app.lookup("boardTitleIpb").value = freeBoardTitle;
+	//	app.lookup("memberNameIpb").value = memberName;
+	//	app.lookup("boardViewsIpb").value = freeBoardViews;
+	//	app.lookup("boardCreateIpb").value = freeBoardCreate;
+	//	app.lookup("boardContentIpb").value = freeBoardContent;
+	//	app.lookup("FMemberId").value = CMemberId;
 	app.lookup("boardDetailSub").send();
+	app.lookup("boardUpdateBtn").redraw();
 }
 
 /*
@@ -39,8 +40,17 @@ function onBoardDetailSubSubmitSuccess(e) {
 	app.lookup("memberNameIpb").redraw();
 	app.lookup("boardViewsIpb").redraw();
 	app.lookup("boardContentIpb").redraw();
-	app.lookup("CMemberId").redraw();
-	alert(app.lookup("freeBoardDetail").getValue("CMemberId"));
+	app.lookup("boardViewsIpb").redraw();
+	app.lookup("fMemberId").redraw();
+	var FMemberId = app.lookup("freeBoardDetail").getValue("FMemberId");
+	var memberId = app.lookup("memberDTO").getValue("memberId");
+	var boardUpdateBtn = app.lookup("boardUpdateBtn");
+	var boardDeleteBtn = app.lookup("boardDeleteBtn");
+	console.log(memberId == FMemberId);
+	if (memberId == FMemberId) {
+		boardUpdateBtn.visible = true;
+		boardDeleteBtn.visible = true;
+	}
 }
 
 /*
@@ -60,25 +70,14 @@ function onCommentBtnClick(e) {
 function onCommentParamSubSubmitSuccess(e) {
 	var commentParamSub = e.control;
 	app.lookup("boardDetailSub").send();
-
-	return;
-}
-
-/*
- * 그리드에서 cell-click 이벤트 발생 시 호출.
- * Grid의 Cell 클릭시 발생하는 이벤트.
- */
-function onCommentGrdCellClick(e){
-	var commentGrd = e.control;
-	var grid = app.lookup("commentGrd");
-
+	//	return;
 }
 
 /*
  * "수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onBoardUpdateBtnClick(e){
+function onBoardUpdateBtnClick(e) {
 	var boardUpdateBtn = e.control;
 	app.lookup("updateBoardSub").send();
 }
@@ -87,7 +86,7 @@ function onBoardUpdateBtnClick(e){
  * "삭제" 버튼(boardDeleteBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onBoardDeleteBtnClick(e){
+function onBoardDeleteBtnClick(e) {
 	var boardDeleteBtn = e.control;
 	app.lookup("deleteBoardSub").send();
 }
@@ -96,21 +95,20 @@ function onBoardDeleteBtnClick(e){
  * "댓글 수정" 버튼(commentUpdateBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onCommentUpdateBtnClick(e){
+function onCommentUpdateBtnClick(e) {
 	var commentUpdateBtn = e.control;
 	var grid = app.lookup("commentGrd");
 	var selectedRowIndices = grid.getSelectedRowIndex();
 	confirm("댓글을 수정하시겠습니까?");
 	grid.updateRow(selectedRowIndices);
 	app.lookup("updateCommentSub").send();
-	
 }
 
 /*
  * "댓글 삭제" 버튼(commentDeleteBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onCommentDeleteBtnClick(e){
+function onCommentDeleteBtnClick(e) {
 	var commentDeleteBtn = e.control;
 	var grid = app.lookup("commentGrd");
 	var selectedRowIndices = grid.getSelectedRowIndex();
@@ -123,7 +121,7 @@ function onCommentDeleteBtnClick(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onDeleteCommentSubSubmitSuccess(e){
+function onDeleteCommentSubSubmitSuccess(e) {
 	var deleteCommentSub = e.control;
 	app.lookup("boardDetailSub").send();
 }
@@ -132,7 +130,7 @@ function onDeleteCommentSubSubmitSuccess(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onDeleteBoardSubSubmitSuccess(e){
+function onDeleteBoardSubSubmitSuccess(e) {
 	var deleteBoardSub = e.control;
 	if (!confirm("해당 글을 삭제하시겠습니까?")) {
 		// 취소(아니오) 버튼 클릭 시 이벤트
@@ -147,13 +145,13 @@ function onDeleteBoardSubSubmitSuccess(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onUpdateBoardSubSubmitSuccess(e){
+function onUpdateBoardSubSubmitSuccess(e) {
 	var updateBoardSub = e.control;
 	if (!confirm("해당 글을 수정하시겠습니까?")) {
 		// 취소(아니오) 버튼 클릭 시 이벤트
 		alert("취소를 누르셨습니다");
 	} else {
 		alert("게시글 수정 완료");
-		app.close();
+//		app.close();
 	}
 }

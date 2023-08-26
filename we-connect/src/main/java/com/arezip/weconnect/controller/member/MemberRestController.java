@@ -1,6 +1,8 @@
 package com.arezip.weconnect.controller.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +52,22 @@ public class MemberRestController {
 		List<DepartmentDTO> departmentList = memberService.findByDepartmentName();
 		dataRequest.setResponse("departmentList", departmentList);
 		log.info("부서리스트{}:", departmentList);
+		return new JSONDataView();
+	}
+
+	@GetMapping("check")
+	public View checkEmailDuplication(DataRequest dataRequest) {
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("registerMemberParam");
+		String memberEmail = parameterGroup.getValue("memberEmail");
+		log.info("memberEmail {}", memberEmail);
+		boolean isNotDuplicated = memberService.isEmailDuplicated(memberEmail);
+		Map<String, Object> message = new HashMap<>();
+		if (isNotDuplicated) {
+			message.put("message", "사용 가능한 이메일 입니다");
+		} else {
+			message.put("message", "중복된 이메일 입니다");
+		}
+		dataRequest.setMetadata(isNotDuplicated, message);
 		return new JSONDataView();
 	}
 }

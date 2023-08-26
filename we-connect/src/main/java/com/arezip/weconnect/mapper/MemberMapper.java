@@ -9,14 +9,11 @@ import com.arezip.weconnect.model.dto.MemberDTO;
 
 @Mapper
 public interface MemberMapper {
-
-//	int register(MemberDTO memberDTO);
-
+//	부서명
 	List<DepartmentDTO> findByDepartmentName();
 
-//	MemberDTO login(String memberEmail, String memberPassword);
-
-	MemberDTO findByEmail(String memberEmail);
+//	이메일 중복확인
+	int checkEmailExists(String memberEmail);
 
 //	회원가입 수정
 	int insertMember(MemberDTO memberDTO);

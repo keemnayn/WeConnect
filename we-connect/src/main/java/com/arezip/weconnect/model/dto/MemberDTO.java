@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDTO implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6564935665966002718L;
 	private long memberId;
 	private String memberName;
@@ -22,7 +19,7 @@ public class MemberDTO implements Serializable {
 	private String memberStatus;
 	private String managerYn;
 	private long leaveCount;
-	private String memberJoinDate; 
+	private String memberJoinDate;
 	private long departmentId;
-	private String departmentName; 
-} 
+	private String departmentName;
+}

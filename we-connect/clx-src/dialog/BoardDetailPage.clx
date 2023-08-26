@@ -13,7 +13,7 @@
           <cl:datacolumn std:sid="d-column-fdf52b2a" name="freeBoardCommentContent"/>
           <cl:datacolumn std:sid="d-column-496349ac" name="freeBoardCommentDate"/>
           <cl:datacolumn std:sid="d-column-a7080d0e" name="freeBoardId" datatype="number"/>
-          <cl:datacolumn std:sid="d-column-79459c7e" name="CMemberId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-79459c7e" name="fbcMemberId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-7c6c0efc" id="detailBoardParam">
@@ -30,7 +30,7 @@
           <cl:datacolumn std:sid="d-column-fecd4340" name="memberName"/>
           <cl:datacolumn std:sid="d-column-ce3dc02e" name="freeBoardFileName"/>
           <cl:datacolumn std:sid="d-column-ca876517" name="freeBoardCreate"/>
-          <cl:datacolumn std:sid="d-column-c84c4b29" name="CMemberId"/>
+          <cl:datacolumn std:sid="d-column-c84c4b29" name="FMemberId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:datamap std:sid="d-map-84be7b30" id="commentInsertParam">
@@ -88,9 +88,9 @@
     <cl:datamapbind property="readOnly" datacontrolid="freeBoardDetail" columnname="memberName"/>
     <cl:inputbox std:sid="i-box-5156f7e2" id="boardTitleIpb">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardTitle"/>
-      <cl:expbind property="readOnly" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? false:true"/>
+      <cl:expbind property="readOnly" category="PROPERTY" expression="FMemberId == #memberDTO.memberId ? false:true"/>
       <cl:datamapcontext datacontrolid="freeBoardDetail"/>
-      <cl:xylayoutdata std:sid="xyl-data-05e59855" top="0px" right="210px" left="10px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-05e59855" top="0px" right="10px" left="10px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:inputbox std:sid="i-box-baadc9e3" id="commentIpb" placeholder="댓글을 입력해주세요.">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="commentInsertParam" columnname="freeBoardCommentContent"/>
@@ -124,11 +124,11 @@
       <cl:griddetail std:sid="gd-band-c52ae242">
         <cl:gridrow std:sid="g-row-a6b32b02"/>
         <cl:gridcell std:sid="gd-cell-8323a321" rowindex="0" colindex="0" columnname="freeBoardCommentId"/>
-        <cl:gridcell std:sid="gd-cell-e4acaf8e" rowindex="0" colindex="1" columnname="CMemberId"/>
+        <cl:gridcell std:sid="gd-cell-e4acaf8e" rowindex="0" colindex="1" columnname="fbcMemberId"/>
         <cl:gridcell std:sid="gd-cell-b7955278" rowindex="0" colindex="2" columnname="memberName"/>
         <cl:gridcell std:sid="gd-cell-caf7ac55" rowindex="0" colindex="3" columnname="freeBoardCommentContent">
           <cl:inputbox std:sid="i-box-94608a2b" id="ipb1">
-            <cl:expbind property="readOnly" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? false:true"/>
+            <cl:expbind property="readOnly" category="PROPERTY" expression="fbcMemberId == #memberDTO.memberId ? false:true"/>
             <cl:celldata std:sid="c-data-c8cb7c0a"/>
           </cl:inputbox>
         </cl:gridcell>
@@ -136,14 +136,14 @@
         <cl:gridcell std:sid="gd-cell-8aede84e" rowindex="0" colindex="5">
           <cl:button std:sid="button-b43cfc3b" id="commentUpdateBtn" value="수정">
             <cl:listener std:sid="listener-ea4b9afe" name="click" handler="onCommentUpdateBtnClick"/>
-            <cl:expbind property="visible" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? true:false"/>
+            <cl:expbind property="visible" category="PROPERTY" expression="fbcMemberId == #memberDTO.memberId ? true:false"/>
             <cl:celldata std:sid="c-data-2f680b5f"/>
           </cl:button>
         </cl:gridcell>
         <cl:gridcell std:sid="gd-cell-8fba1cf9" rowindex="0" colindex="6">
           <cl:button std:sid="button-5c11ddd5" id="commentDeleteBtn" value="삭제">
             <cl:listener std:sid="listener-aa468c81" name="click" handler="onCommentDeleteBtnClick"/>
-            <cl:expbind property="visible" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? true:false"/>
+            <cl:expbind property="visible" category="PROPERTY" expression="fbcMemberId == #memberDTO.memberId ? true:false"/>
             <cl:celldata std:sid="c-data-a7a12c0a"/>
           </cl:button>
         </cl:gridcell>
@@ -180,8 +180,8 @@
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
         <cl:formdata std:sid="f-data-d6227963" row="0" col="6"/>
       </cl:inputbox>
-      <cl:output std:sid="output-d9b97878" id="CMemberId">
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="CMemberId"/>
+      <cl:output std:sid="output-d9b97878" id="fMemberId">
+        <cl:relativebind property="value" columnname="FMemberId"/>
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
         <cl:formdata std:sid="f-data-03203348" row="0" col="7"/>
       </cl:output>
@@ -197,19 +197,17 @@
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
-    <cl:button std:sid="button-9c3af295" id="boardUpdateBtn" value="수정">
+    <cl:button std:sid="button-9c3af295" id="boardUpdateBtn" visible="false" value="수정">
       <cl:listener std:sid="listener-4b467050" name="click" handler="onBoardUpdateBtnClick"/>
-      <cl:expbind property="visible" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? true:false"/>
-      <cl:xylayoutdata std:sid="xyl-data-fc89b37a" top="0px" left="1370px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-fc89b37a" top="0px" right="110px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>
-    <cl:button std:sid="button-56f8a030" id="boardDeleteBtn" value="삭제">
+    <cl:button std:sid="button-56f8a030" id="boardDeleteBtn" visible="false" value="삭제">
       <cl:listener std:sid="listener-5d5dc9a6" name="click" handler="onBoardDeleteBtnClick"/>
-      <cl:expbind property="visible" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? true:false"/>
-      <cl:xylayoutdata std:sid="xyl-data-c43d84f8" top="0px" left="1470px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-c43d84f8" top="0px" right="10px" left="1470px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:button>
     <cl:inputbox std:sid="i-box-48a1add4" id="boardContentIpb">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardContent"/>
-      <cl:expbind property="readOnly" category="PROPERTY" expression="CMemberId == #memberDTO.memberId ? false:true"/>
+      <cl:expbind property="readOnly" category="PROPERTY" expression="FMemberId == #memberDTO.memberId ? false:true"/>
       <cl:datamapcontext datacontrolid="freeBoardDetail"/>
       <cl:xylayoutdata std:sid="xyl-data-072d7864" top="80px" right="10px" left="10px" height="350px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:inputbox>
