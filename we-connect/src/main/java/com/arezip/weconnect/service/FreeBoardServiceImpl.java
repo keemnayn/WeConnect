@@ -68,5 +68,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return freeBoardMapper.searchFreeBoardList(searchParams);
 	}
 
+	@Override
+	public int updateFreeBoardViews(long freeBoardId) {
+		return freeBoardMapper.updateFreeBoardViews(freeBoardId);
+	}
+
 
 }

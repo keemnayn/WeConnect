@@ -22,7 +22,7 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(e) {
-			//	var sessionval = getSessionStorage("memsession");
+				//	var sessionval = getSessionStorage("memsession");
 				var hostProperty = app.getHostProperty("initValue");
 				var freeBoardId = hostProperty["freeBoardId"];
 				var freeBoardTitle = hostProperty["freeBoardTitle"];
@@ -30,15 +30,16 @@
 				var freeBoardViews = hostProperty["freeBoardViews"];
 				var freeBoardCreate = hostProperty["freeBoardCreate"];
 				var freeBoardContent = hostProperty["freeBoardContent"];
-				var CMemberId = hostProperty["CMemberId"];
+				var CMemberId = hostProperty["FMemberId"];
 				app.lookup("freeBoardId").value = freeBoardId;
-			//	app.lookup("boardTitleIpb").value = freeBoardTitle;
-			//	app.lookup("memberNameIpb").value = memberName;
-			//	app.lookup("boardViewsIpb").value = freeBoardViews;
-			//	app.lookup("boardCreateIpb").value = freeBoardCreate;
-			//	app.lookup("boardContentIpb").value = freeBoardContent;
-			//	app.lookup("CMemberId").value = CMemberId;
+				//	app.lookup("boardTitleIpb").value = freeBoardTitle;
+				//	app.lookup("memberNameIpb").value = memberName;
+				//	app.lookup("boardViewsIpb").value = freeBoardViews;
+				//	app.lookup("boardCreateIpb").value = freeBoardCreate;
+				//	app.lookup("boardContentIpb").value = freeBoardContent;
+				//	app.lookup("FMemberId").value = CMemberId;
 				app.lookup("boardDetailSub").send();
+				app.lookup("boardUpdateBtn").redraw();
 			}
 
 			/*
@@ -52,8 +53,17 @@
 				app.lookup("memberNameIpb").redraw();
 				app.lookup("boardViewsIpb").redraw();
 				app.lookup("boardContentIpb").redraw();
-				app.lookup("CMemberId").redraw();
-				alert(app.lookup("freeBoardDetail").getValue("CMemberId"));
+				app.lookup("boardViewsIpb").redraw();
+				app.lookup("fMemberId").redraw();
+				var FMemberId = app.lookup("freeBoardDetail").getValue("FMemberId");
+				var memberId = app.lookup("memberDTO").getValue("memberId");
+				var boardUpdateBtn = app.lookup("boardUpdateBtn");
+				var boardDeleteBtn = app.lookup("boardDeleteBtn");
+				console.log(memberId == FMemberId);
+				if (memberId == FMemberId) {
+					boardUpdateBtn.visible = true;
+					boardDeleteBtn.visible = true;
+				}
 			}
 
 			/*
@@ -73,25 +83,14 @@
 			function onCommentParamSubSubmitSuccess(e) {
 				var commentParamSub = e.control;
 				app.lookup("boardDetailSub").send();
-
-				return;
-			}
-
-			/*
-			 * 그리드에서 cell-click 이벤트 발생 시 호출.
-			 * Grid의 Cell 클릭시 발생하는 이벤트.
-			 */
-			function onCommentGrdCellClick(e){
-				var commentGrd = e.control;
-				var grid = app.lookup("commentGrd");
-
+				//	return;
 			}
 
 			/*
 			 * "수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onBoardUpdateBtnClick(e){
+			function onBoardUpdateBtnClick(e) {
 				var boardUpdateBtn = e.control;
 				app.lookup("updateBoardSub").send();
 			}
@@ -100,7 +99,7 @@
 			 * "삭제" 버튼(boardDeleteBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onBoardDeleteBtnClick(e){
+			function onBoardDeleteBtnClick(e) {
 				var boardDeleteBtn = e.control;
 				app.lookup("deleteBoardSub").send();
 			}
@@ -109,21 +108,20 @@
 			 * "댓글 수정" 버튼(commentUpdateBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onCommentUpdateBtnClick(e){
+			function onCommentUpdateBtnClick(e) {
 				var commentUpdateBtn = e.control;
 				var grid = app.lookup("commentGrd");
 				var selectedRowIndices = grid.getSelectedRowIndex();
 				confirm("댓글을 수정하시겠습니까?");
 				grid.updateRow(selectedRowIndices);
 				app.lookup("updateCommentSub").send();
-				
 			}
 
 			/*
 			 * "댓글 삭제" 버튼(commentDeleteBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onCommentDeleteBtnClick(e){
+			function onCommentDeleteBtnClick(e) {
 				var commentDeleteBtn = e.control;
 				var grid = app.lookup("commentGrd");
 				var selectedRowIndices = grid.getSelectedRowIndex();
@@ -136,7 +134,7 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onDeleteCommentSubSubmitSuccess(e){
+			function onDeleteCommentSubSubmitSuccess(e) {
 				var deleteCommentSub = e.control;
 				app.lookup("boardDetailSub").send();
 			}
@@ -145,7 +143,7 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onDeleteBoardSubSubmitSuccess(e){
+			function onDeleteBoardSubSubmitSuccess(e) {
 				var deleteBoardSub = e.control;
 				if (!confirm("해당 글을 삭제하시겠습니까?")) {
 					// 취소(아니오) 버튼 클릭 시 이벤트
@@ -160,16 +158,16 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onUpdateBoardSubSubmitSuccess(e){
+			function onUpdateBoardSubSubmitSuccess(e) {
 				var updateBoardSub = e.control;
 				if (!confirm("해당 글을 수정하시겠습니까?")) {
 					// 취소(아니오) 버튼 클릭 시 이벤트
 					alert("취소를 누르셨습니다");
 				} else {
 					alert("게시글 수정 완료");
-					app.close();
+			//		app.close();
 				}
-			};
+			}
 			// End - User Script
 			
 			// Header
@@ -188,7 +186,7 @@
 						"dataType": "number"
 					},
 					{
-						"name": "CMemberId",
+						"name": "fbcMemberId",
 						"dataType": "number"
 					}
 				]
@@ -219,7 +217,10 @@
 					{"name": "memberName"},
 					{"name": "freeBoardFileName"},
 					{"name": "freeBoardCreate"},
-					{"name": "CMemberId"}
+					{
+						"name": "FMemberId",
+						"dataType": "number"
+					}
 				]
 			});
 			app.register(dataMap_2);
@@ -330,10 +331,10 @@
 			var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
 			inputBox_1.setBindContext(dataMapContext_1);
 			inputBox_1.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardTitle");
-			inputBox_1.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
+			inputBox_1.bind("readOnly").toExpression("FMemberId == #memberDTO.memberId ? false:true");
 			container.addChild(inputBox_1, {
 				"top": "0px",
-				"right": "210px",
+				"right": "10px",
 				"left": "10px",
 				"height": "30px"
 			});
@@ -449,7 +450,7 @@
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 1},
 							"configurator": function(cell){
-								cell.columnName = "CMemberId";
+								cell.columnName = "fbcMemberId";
 							}
 						},
 						{
@@ -464,7 +465,7 @@
 								cell.columnName = "freeBoardCommentContent";
 								cell.control = (function(){
 									var inputBox_3 = new cpr.controls.InputBox("ipb1");
-									inputBox_3.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
+									inputBox_3.bind("readOnly").toExpression("fbcMemberId == #memberDTO.memberId ? false:true");
 									inputBox_3.bind("value").toDataColumn("freeBoardCommentContent");
 									return inputBox_3;
 								})();
@@ -483,7 +484,7 @@
 								cell.control = (function(){
 									var button_2 = new cpr.controls.Button("commentUpdateBtn");
 									button_2.value = "수정";
-									button_2.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
+									button_2.bind("visible").toExpression("fbcMemberId == #memberDTO.memberId ? true:false");
 									if(typeof onCommentUpdateBtnClick == "function") {
 										button_2.addEventListener("click", onCommentUpdateBtnClick);
 									}
@@ -498,7 +499,7 @@
 								cell.control = (function(){
 									var button_3 = new cpr.controls.Button("commentDeleteBtn");
 									button_3.value = "삭제";
-									button_3.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
+									button_3.bind("visible").toExpression("fbcMemberId == #memberDTO.memberId ? true:false");
 									if(typeof onCommentDeleteBtnClick == "function") {
 										button_3.addEventListener("click", onCommentDeleteBtnClick);
 									}
@@ -586,10 +587,10 @@
 					"colIndex": 6,
 					"rowIndex": 0
 				});
-				var output_5 = new cpr.controls.Output("CMemberId");
+				var output_5 = new cpr.controls.Output("fMemberId");
 				var dataMapContext_7 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
 				output_5.setBindContext(dataMapContext_7);
-				output_5.bind("value").toDataMap(app.lookup("freeBoardDetail"), "CMemberId");
+				output_5.bind("value").toDataColumn("FMemberId");
 				container.addChild(output_5, {
 					"colIndex": 7,
 					"rowIndex": 0
@@ -603,28 +604,28 @@
 			});
 			
 			var button_4 = new cpr.controls.Button("boardUpdateBtn");
+			button_4.visible = false;
 			button_4.value = "수정";
-			button_4.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 			if(typeof onBoardUpdateBtnClick == "function") {
 				button_4.addEventListener("click", onBoardUpdateBtnClick);
 			}
 			container.addChild(button_4, {
 				"top": "0px",
-				"left": "1370px",
+				"right": "110px",
 				"width": "100px",
 				"height": "30px"
 			});
 			
 			var button_5 = new cpr.controls.Button("boardDeleteBtn");
+			button_5.visible = false;
 			button_5.value = "삭제";
-			button_5.bind("visible").toExpression("CMemberId == #memberDTO.memberId ? true:false");
 			if(typeof onBoardDeleteBtnClick == "function") {
 				button_5.addEventListener("click", onBoardDeleteBtnClick);
 			}
 			container.addChild(button_5, {
 				"top": "0px",
+				"right": "10px",
 				"left": "1470px",
-				"width": "100px",
 				"height": "30px"
 			});
 			
@@ -632,7 +633,7 @@
 			var dataMapContext_8 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
 			inputBox_7.setBindContext(dataMapContext_8);
 			inputBox_7.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardContent");
-			inputBox_7.bind("readOnly").toExpression("CMemberId == #memberDTO.memberId ? false:true");
+			inputBox_7.bind("readOnly").toExpression("FMemberId == #memberDTO.memberId ? false:true");
 			container.addChild(inputBox_7, {
 				"top": "80px",
 				"right": "10px",

@@ -26,7 +26,7 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:group std:sid="group-e64225dc" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-8ac623fc" top="240px" right="949px" bottom="360px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:xylayoutdata std:sid="xyl-data-8ac623fc" top="0px" right="297px" bottom="600px" left="652px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:htmlsnippet std:sid="htmlsnippet-bb036ad5" value="&lt;hr>&#xD;&#xA;">
               <cl:xylayoutdata std:sid="xyl-data-3520cc93" top="30px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             </cl:htmlsnippet>
@@ -34,16 +34,6 @@
               <cl:xylayoutdata std:sid="xyl-data-b239d4e9" top="5px" left="2px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             </cl:textarea>
             <cl:xylayout std:sid="xylayout-af4a6260"/>
-          </cl:group>
-          <cl:group std:sid="group-5e9b3509" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-71cddf7b" right="949px" bottom="1px" left="0px" height="328px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-            <cl:htmlsnippet std:sid="htmlsnippet-f5d16585" value="&lt;hr>&#xD;&#xA;">
-              <cl:xylayoutdata std:sid="xyl-data-db67df7f" top="30px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-            </cl:htmlsnippet>
-            <cl:textarea std:sid="t-area-08dbf59d" id="txa2" style="border-right-style:none; border-left-style:none; font-weight:900; font-size:16px; border-bottom-style:none; border-top-style:none;" value="FAQ">
-              <cl:xylayoutdata std:sid="xyl-data-c9da4428" top="5px" left="5px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            </cl:textarea>
-            <cl:xylayout std:sid="xylayout-ba74593f"/>
           </cl:group>
           <cl:group std:sid="group-2fa3c013" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
             <cl:xylayoutdata std:sid="xyl-data-f9503975" top="0px" left="0px" width="629px" height="210px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -55,28 +45,11 @@
             </cl:htmlsnippet>
             <cl:xylayout std:sid="xylayout-17b8941c"/>
           </cl:group>
-          <cl:group std:sid="group-fa9a77ed" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-f731e696" top="0px" right="293px" left="652px" height="210px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-            <cl:htmlsnippet std:sid="htmlsnippet-c492d4c5" value="&lt;hr>&#xD;&#xA;">
-              <cl:xylayoutdata std:sid="xyl-data-2d89da2e" top="20px" right="0px" left="0px" height="20px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-            </cl:htmlsnippet>
-            <cl:xylayout std:sid="xylayout-2b59b64b"/>
-          </cl:group>
-          <cl:group std:sid="group-537f61d7" style="border-radius:5px;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-238308f9" top="0px" right="0px" width="270px" height="210px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-            <cl:calendar std:sid="calendar-a92867b7" class="admain_cld">
-              <cl:xylayoutdata std:sid="xyl-data-e18dba5b" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            </cl:calendar>
-            <cl:xylayout std:sid="xylayout-d84017d1"/>
-          </cl:group>
           <cl:group std:sid="group-5da95e01" style="border-radius:5px;" class="main_layout1">
             <cl:xylayoutdata std:sid="xyl-data-0490bf70" top="240px" right="1px" bottom="0px" width="925px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
             <cl:tabfolder std:sid="t-folder-de732905">
-              <cl:xylayoutdata std:sid="xyl-data-43b9cb9e" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:xylayoutdata std:sid="xyl-data-43b9cb9e" top="82px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:tabitem std:sid="t-item-5a8dcdcb" selected="true" text="공지사항">
-                <std:metadata>
-                  <std:property key="is-active-item" value="true"/>
-                </std:metadata>
                 <cl:group std:sid="group-de31adaf">
                   <std:metadata>
                     <std:property key="locked" value="true"/>
@@ -85,6 +58,9 @@
                 </cl:group>
               </cl:tabitem>
               <cl:tabitem std:sid="t-item-8da62c23" text="게시판">
+                <std:metadata>
+                  <std:property key="is-active-item" value="true"/>
+                </std:metadata>
                 <cl:group std:sid="group-ac11f539">
                   <std:metadata>
                     <std:property key="locked" value="true"/>
@@ -95,6 +71,9 @@
             </cl:tabfolder>
             <cl:xylayout std:sid="xylayout-72bb7aad"/>
           </cl:group>
+          <cl:calendar std:sid="calendar-a92867b7" class="admain_cld">
+            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" top="307px" right="936px" bottom="99px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+          </cl:calendar>
           <cl:xylayout std:sid="xylayout-fbd15bd0"/>
         </cl:group>
       </cl:tabitem>

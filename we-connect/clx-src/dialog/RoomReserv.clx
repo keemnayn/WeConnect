@@ -70,6 +70,7 @@
       </cl:submission>
       <cl:submission std:sid="submission-7ad4e82b" id="roomReservSub" action="member/room-reserv">
         <cl:listener std:sid="listener-9196cd08" name="submit-success" handler="onRoomReservSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-19af51ef" name="submit-done" handler="onRoomReservSubSubmitDone"/>
         <cl:requestdata dataid="roomReservParam"/>
       </cl:submission>
     </cl:model>

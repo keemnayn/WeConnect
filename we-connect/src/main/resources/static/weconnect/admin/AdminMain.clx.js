@@ -98,10 +98,10 @@
 						});
 					})(group_2);
 					container.addChild(group_2, {
-						"top": "240px",
-						"right": "949px",
-						"bottom": "360px",
-						"left": "0px"
+						"top": "0px",
+						"right": "297px",
+						"bottom": "600px",
+						"left": "652px"
 					});
 					var group_3 = new cpr.controls.Container();
 					group_3.style.setClasses(["main_layout1"]);
@@ -122,148 +122,47 @@
 						var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
 						hTMLSnippet_2.value = "<hr>\r\n";
 						container.addChild(hTMLSnippet_2, {
-							"top": "30px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-						var textArea_2 = new cpr.controls.TextArea("txa2");
-						textArea_2.value = "FAQ";
-						textArea_2.style.css({
-							"border-right-style" : "none",
-							"border-left-style" : "none",
-							"font-weight" : "900",
-							"font-size" : "16px",
-							"border-bottom-style" : "none",
-							"border-top-style" : "none"
-						});
-						container.addChild(textArea_2, {
-							"top": "5px",
-							"left": "5px",
-							"width": "100px",
-							"height": "30px"
-						});
-					})(group_3);
-					container.addChild(group_3, {
-						"right": "949px",
-						"bottom": "1px",
-						"left": "0px",
-						"height": "328px"
-					});
-					var group_4 = new cpr.controls.Container();
-					group_4.style.setClasses(["main_layout1"]);
-					group_4.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
-					group_4.setLayout(xYLayout_5);
-					(function(container){
-						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_3.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_3, {
 							"top": "20px",
 							"right": "0px",
 							"left": "0px",
 							"height": "20px"
 						});
-						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_4.value = "<p>관리자프로필<\/p>";
-						hTMLSnippet_4.style.css({
+						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
+						hTMLSnippet_3.value = "<p>관리자프로필<\/p>";
+						hTMLSnippet_3.style.css({
 							"font-weight" : "900",
 							"font-size" : "10px"
 						});
-						container.addChild(hTMLSnippet_4, {
+						container.addChild(hTMLSnippet_3, {
 							"top": "0px",
 							"left": "0px",
 							"width": "100px",
 							"height": "95px"
 						});
-					})(group_4);
-					container.addChild(group_4, {
+					})(group_3);
+					container.addChild(group_3, {
 						"top": "0px",
 						"left": "0px",
 						"width": "629px",
 						"height": "210px"
 					});
-					var group_5 = new cpr.controls.Container();
-					group_5.style.setClasses(["main_layout1"]);
-					group_5.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
-					group_5.setLayout(xYLayout_6);
-					(function(container){
-						var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_5.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_5, {
-							"top": "20px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-					})(group_5);
-					container.addChild(group_5, {
-						"top": "0px",
-						"right": "293px",
-						"left": "652px",
-						"height": "210px"
-					});
-					var group_6 = new cpr.controls.Container();
-					group_6.style.setClasses(["main_layout1"]);
-					group_6.style.css({
+					var group_4 = new cpr.controls.Container();
+					group_4.style.setClasses(["main_layout1"]);
+					group_4.style.css({
 						"border-radius" : "5px"
 					});
-					var xYLayout_7 = new cpr.controls.layouts.XYLayout();
-					group_6.setLayout(xYLayout_7);
-					(function(container){
-						var calendar_1 = new cpr.controls.Calendar();
-						calendar_1.style.setClasses(["admain_cld"]);
-						container.addChild(calendar_1, {
-							"top": "0px",
-							"right": "0px",
-							"bottom": "0px",
-							"left": "0px"
-						});
-					})(group_6);
-					container.addChild(group_6, {
-						"top": "0px",
-						"right": "0px",
-						"width": "270px",
-						"height": "210px"
-					});
-					var group_7 = new cpr.controls.Container();
-					group_7.style.setClasses(["main_layout1"]);
-					group_7.style.css({
-						"border-radius" : "5px"
-					});
-					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
-					group_7.setLayout(xYLayout_8);
+					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
+					group_4.setLayout(xYLayout_5);
 					(function(container){
 						var tabFolder_2 = new cpr.controls.TabFolder();
 						
 						var tabItem_2 = (function(tabFolder){
 							var tabItem_2 = new cpr.controls.TabItem();
 							tabItem_2.text = "공지사항";
-							var group_8 = new cpr.controls.Container();
-							var xYLayout_9 = new cpr.controls.layouts.XYLayout();
-							group_8.setLayout(xYLayout_9);
-							tabItem_2.content = group_8;
+							var group_5 = new cpr.controls.Container();
+							var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+							group_5.setLayout(xYLayout_6);
+							tabItem_2.content = group_5;
 							return tabItem_2;
 						})(tabFolder_2);
 						tabFolder_2.addTabItem(tabItem_2);
@@ -271,26 +170,34 @@
 						var tabItem_3 = (function(tabFolder){
 							var tabItem_3 = new cpr.controls.TabItem();
 							tabItem_3.text = "게시판";
-							var group_9 = new cpr.controls.Container();
-							var xYLayout_10 = new cpr.controls.layouts.XYLayout();
-							group_9.setLayout(xYLayout_10);
-							tabItem_3.content = group_9;
+							var group_6 = new cpr.controls.Container();
+							var xYLayout_7 = new cpr.controls.layouts.XYLayout();
+							group_6.setLayout(xYLayout_7);
+							tabItem_3.content = group_6;
 							return tabItem_3;
 						})(tabFolder_2);
 						tabFolder_2.addTabItem(tabItem_3);
 						tabFolder_2.setSelectedTabItem(tabItem_2);
 						container.addChild(tabFolder_2, {
-							"top": "0px",
+							"top": "82px",
 							"right": "0px",
 							"bottom": "0px",
 							"left": "0px"
 						});
-					})(group_7);
-					container.addChild(group_7, {
+					})(group_4);
+					container.addChild(group_4, {
 						"top": "240px",
 						"right": "1px",
 						"bottom": "0px",
 						"width": "925px"
+					});
+					var calendar_1 = new cpr.controls.Calendar();
+					calendar_1.style.setClasses(["admain_cld"]);
+					container.addChild(calendar_1, {
+						"top": "307px",
+						"right": "936px",
+						"bottom": "99px",
+						"left": "0px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;
