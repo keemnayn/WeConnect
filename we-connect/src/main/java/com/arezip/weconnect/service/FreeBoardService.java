@@ -11,6 +11,8 @@ public interface FreeBoardService {
 	List<FreeBoardDTO> getFreeBoardList();
 	//자유 게시판 검색
 	List<FreeBoardDTO> searchFreeBoardList(Map<String, String> searchParams);
+	//자유 게시판 조회수
+	int updateFreeBoardViews(long freeBoardId); 
 	
 	//자유 게시판 글 등록
 	int insertFreeBoard(FreeBoardDTO freeBoardDTO);

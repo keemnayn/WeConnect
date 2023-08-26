@@ -41,16 +41,19 @@
 		to_char(f.free_board_create,'YYYY-MM-DD') as freeBoardCreate,
 		f.free_board_views,
 		f.free_board_file_name,
-		m.member_id as CMemberId,
+		f.member_id as fMemberId,
 		m.member_name
 		FROM free_board f JOIN member m ON f.member_id = m.member_id
 		WHERE f.free_board_id = #{freeBoardId}
 	</select>
+	<update id="updateFreeBoardViews" parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
+		update free_board set free_board_views = free_board_views+1 where free_board_id = #{freeBoardId}
+	</update>
 	<!-- 자유게시판 댓글 조회 -->
 	<select id="getFreeBoardComment" resultType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
 		SELECT
 		    fbc.FREE_BOARD_COMMENT_ID,
-		    fbc.MEMBER_ID as CMemberId,
+		    fbc.MEMBER_ID as fbcMemberId,
 		    m.MEMBER_NAME,
 		    fbc.FREE_BOARD_COMMENT_CONTENT,
 		    to_char( fbc.FREE_BOARD_COMMENT_DATE,'YYYY-MM-DD HH24:MI') as freeBoardCommentDate

@@ -45,23 +45,27 @@
 			}
 
 			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
-			 */
-			function onRoomReservSubSubmitSuccess(e) {
-				var roomReservSub = e.control;
-				alert("회의실 예약 완료");
-				app.close();
-			}
-
-			/*
 			 * 콤보 박스에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onStartCmdClick(e){
+			function onStartCmdClick(e) {
 				var startCmd = e.control;
-			//	app.lookup("startCmd").getin
-			};
+				//	app.lookup("startCmd").getin
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onRoomReservSubSubmitDone(e) {
+				var roomReservSub = e.control;
+				var success = roomReservSub.getMetadata("success");
+				var message = roomReservSub.getMetadata("message");
+				if (success) {
+					app.close();
+				}
+				alert(message);
+			}
 			// End - User Script
 			
 			// Header
@@ -133,6 +137,9 @@
 			submission_2.addRequestData(dataMap_1);
 			if(typeof onRoomReservSubSubmitSuccess == "function") {
 				submission_2.addEventListener("submit-success", onRoomReservSubSubmitSuccess);
+			}
+			if(typeof onRoomReservSubSubmitDone == "function") {
+				submission_2.addEventListener("submit-done", onRoomReservSubSubmitDone);
 			}
 			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
