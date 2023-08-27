@@ -46,7 +46,7 @@
 			 */
 			function onInsertIpbMousedown(e) {
 				var insertIpb = e.control;
-				app.openDialog("dialog/TeamPostCreate", {
+				app.openDialog("dialog/11TeamPostCreate", {
 					width: 1580,
 					height: 780
 				}, function(dialog) {

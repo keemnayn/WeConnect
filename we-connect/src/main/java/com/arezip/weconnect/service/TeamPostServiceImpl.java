@@ -21,7 +21,8 @@ public class TeamPostServiceImpl implements TeamPostService {
 	public List<TeamPostDTO> getTeamPostList() {
 		return teamPostMapper.selectTeamPostList();
 	}
-
+	
+// 팀포스트 추가
 	@Override
 	public int addTeamPost(TeamPostDTO teamPostDTO) {
 		return teamPostMapper.insertTeamPost(teamPostDTO);
