@@ -50,6 +50,15 @@
       </cl:group>
       <cl:group std:sid="group-ccc9925a">
         <cl:xylayoutdata std:sid="xyl-data-a4b5a61f" top="70px" right="5px" left="5px" height="60px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:output std:sid="output-1d111ff7" value="프로젝트명">
+          <cl:formdata std:sid="f-data-a7360166" row="0" col="0"/>
+        </cl:output>
+        <cl:combobox std:sid="c-box-fcdb3985" id="projectNameCmb">
+          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="teamPostCreateParam" columnname="projectId"/>
+          <cl:datamapcontext datacontrolid="teamPostCreateParam"/>
+          <cl:formdata std:sid="f-data-cfaf9723" row="0" col="1"/>
+          <cl:itemset datasetid="projectInfo" label="projectName" value="projectId"/>
+        </cl:combobox>
         <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
           <cl:rows length="50" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="transparent"/>
           <cl:columns length="100" unit="PIXEL"/>

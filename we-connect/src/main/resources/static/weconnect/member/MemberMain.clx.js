@@ -104,7 +104,7 @@
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit2(e){
+			function onBodyInit2(e) {
 				var submission = app.lookup("Img");
 				submission.send();
 			}
@@ -113,9 +113,49 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onImgSubmitSuccess(e){
+			function onImgSubmitSuccess(e) {
 				var img = e.control;
 				app.lookup("profile").redraw();
+			}
+
+			/*
+			 * 파일 인풋에서 value-change 이벤트 발생 시 호출.
+			 * FileInput의 value를 변경하여 변경된 값이 저장된 후에 발생하는 이벤트.
+			 */
+			function onFi1ValueChange(e) {
+				var fi1 = e.control;
+				var image = app.lookup("profile");
+				var fileInput = app.lookup("fi1");
+				let fi2 =fileInput.file
+				let submission = app.lookup("imgSend");
+				console.log(fi1.file);
+				console.log(fi2);
+				if (fileInput.files && fileInput.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						image.src = e.target.result;
+					};
+					reader.readAsDataURL(fileInput.files[0]);
+				}
+				submission.addFileParameter("profileImagePath",fi2);
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onImgSendSubmitSuccess(e){
+				var imgSend = e.control;
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onImgSendSubmitSuccess2(e){
+				var imgSend = e.control;
+				alert("프로필 변경 선공");
 			};
 			// End - User Script
 			
@@ -128,6 +168,25 @@
 				}]
 			});
 			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("profileImage");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "profileImageId",
+						"dataType": "string"
+					},
+					{"name": "profileImagesName"},
+					{
+						"name": "profileImagePath",
+						"dataType": "string"
+					},
+					{
+						"name": "memberId",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("Attendance1");
 			submission_1.action = "member/attendance";
 			if(typeof onAttendance1SubmitSuccess2 == "function") {
@@ -151,6 +210,16 @@
 				submission_3.addEventListener("submit-success", onImgSubmitSuccess);
 			}
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("imgSend");
+			submission_4.method = "put";
+			submission_4.action = "member/profile";
+			submission_4.mediaType = "multipart/form-data";
+			submission_4.addRequestData(dataMap_1);
+			if(typeof onImgSendSubmitSuccess2 == "function") {
+				submission_4.addEventListener("submit-success", onImgSendSubmitSuccess2);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -245,6 +314,10 @@
 				});
 				var fileInput_1 = new cpr.controls.FileInput("fi1");
 				fileInput_1.placeholder = "프로필 수정";
+				fileInput_1.bind("value").toDataMap(app.lookup("profileImage"), "profileImagePath");
+				if(typeof onFi1ValueChange == "function") {
+					fileInput_1.addEventListener("value-change", onFi1ValueChange);
+				}
 				container.addChild(fileInput_1, {
 					"top": "183px",
 					"left": "12px",

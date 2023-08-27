@@ -19,7 +19,7 @@ function onBodyInit(e) {
 /*
  * "처리" 버튼(updateStatusBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
- */
+
 function onUpdateStatusBtnClick(e) {
 	var updateStatusBtn = e.control;
 	var grid = app.lookup("proposalGrd");
@@ -35,6 +35,23 @@ function onUpdateStatusBtnClick(e) {
 		alert("처리는 하나씩만 가능합니다.");
 	}
 }
+ */
+
+function onUpdateStatusBtnClick(e) {
+	var updateStatusBtn = e.control;
+	var grid = app.lookup("proposalGrd");
+	var checkRowIndices = grid.getCheckRowIndices();
+	if (checkRowIndices.length === 1) {
+		if (confirm("처리완료 하시겠습니까?")) {
+			grid.updateRow(checkRowIndices);
+			app.lookup("updateStatusSub").send();
+		}
+	} else if (checkRowIndices.length === 0) {
+		alert("하나 이상 선택하셔야 합니다.");
+	} else {
+		alert("처리는 하나씩만 가능합니다.");
+	}
+}
 
 /*
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
@@ -42,6 +59,7 @@ function onUpdateStatusBtnClick(e) {
  */
 function onUpdateStatusSubSubmitSuccess(e) {
 	var updateStatusSub = e.control;
+	alert("정상 처리되었습니다");
 	app.lookup("updateStatusSub").send();
 	app.lookup("proposalListSub").send();
 	app.lookup("proposalGrd").redraw();

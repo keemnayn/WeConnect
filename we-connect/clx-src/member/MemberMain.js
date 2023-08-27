@@ -91,7 +91,7 @@ function onAttendance1SubmitError(e) {
  * 루트 컨테이너에서 init 이벤트 발생 시 호출.
  * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
  */
-function onBodyInit2(e){
+function onBodyInit2(e) {
 	var submission = app.lookup("Img");
 	submission.send();
 }
@@ -100,7 +100,47 @@ function onBodyInit2(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onImgSubmitSuccess(e){
+function onImgSubmitSuccess(e) {
 	var img = e.control;
 	app.lookup("profile").redraw();
+}
+
+/*
+ * 파일 인풋에서 value-change 이벤트 발생 시 호출.
+ * FileInput의 value를 변경하여 변경된 값이 저장된 후에 발생하는 이벤트.
+ */
+function onFi1ValueChange(e) {
+	var fi1 = e.control;
+	var image = app.lookup("profile");
+	var fileInput = app.lookup("fi1");
+	let fi2 =fileInput.file
+	let submission = app.lookup("imgSend");
+	console.log(fi1.file);
+	console.log(fi2);
+	if (fileInput.files && fileInput.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			image.src = e.target.result;
+		};
+		reader.readAsDataURL(fileInput.files[0]);
+	}
+	submission.addFileParameter("profileImagePath",fi2);
+	submission.send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onImgSendSubmitSuccess(e){
+	var imgSend = e.control;
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onImgSendSubmitSuccess2(e){
+	var imgSend = e.control;
+	alert("프로필 변경 선공");
 }

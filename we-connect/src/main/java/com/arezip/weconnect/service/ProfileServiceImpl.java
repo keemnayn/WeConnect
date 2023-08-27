@@ -23,4 +23,9 @@ public class ProfileServiceImpl implements ProfileService {
 	public List<ProfileImageDTO>  findImgPath(long memberId) {
 		return profileMapper.findImgPath(memberId);
 	}
+	@Override
+	public void updateProfileImagePath(long memberId, String profileImagePath) {
+		// TODO Auto-generated method stub
+		profileMapper.updateProfileImagePath(memberId,profileImagePath);
+	}
 }

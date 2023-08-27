@@ -43,10 +43,11 @@ public class AdminProposalRestController {
 	@PutMapping
 	public View updateProposalStatus(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("proposalList");
+		log.info("parameterGroup {}",parameterGroup);
 		if (parameterGroup != null) {
-			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
+			Iterator<ParameterRow> iter = parameterGroup.getUpdatedRows();
 			while (iter.hasNext()) {
-				Map<String, String> rowMap = iter.next().toMap();
+				Map<String, String> rowMap = iter.next().toMap(); 
 				ProposalDTO proposalDTO = mapToProposalDTO(rowMap);
 				adminProposalService.updateProposalStatus(proposalDTO);
 			}

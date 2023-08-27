@@ -90,7 +90,6 @@ public class FreeBoardCommentRestController {
 	@PutMapping
 	public View updateFreeBoardComment(HttpServletResponse response, HttpServletRequest request, DataRequest dataRequest) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("freeBoardComment");
-		log.info("parameterGroup {}",parameterGroup);
 		if(parameterGroup != null) {
 			HttpSession session = request.getSession();
 			Long memberId = (Long) session.getAttribute("memberId");
