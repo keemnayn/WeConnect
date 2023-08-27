@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("admin/AdminProjectManagement", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/grid.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -172,6 +173,7 @@
 											output_1.bind("value").toDataColumn("projectId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -189,6 +191,7 @@
 											output_2.bind("value").toDataColumn("projectName");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -206,6 +209,7 @@
 											output_3.bind("value").toDataColumn("projectStart");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -223,6 +227,7 @@
 											output_4.bind("value").toDataColumn("projectEnd");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -240,6 +245,7 @@
 											output_5.bind("value").toDataColumn("projectMemberCount");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]

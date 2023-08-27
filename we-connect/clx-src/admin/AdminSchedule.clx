@@ -5,6 +5,7 @@
     <screen std:sid="screen-5a7a96c5" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
     <screen std:sid="screen-290caa67" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-03963afd" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-bc149299" href="../theme/controls/calendar.part.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-09d0fd0a">
       <cl:dataset std:sid="d-set-e94c7f67" id="room">
         <cl:datacolumnlist>
