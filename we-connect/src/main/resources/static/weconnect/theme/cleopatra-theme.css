@@ -1031,6 +1031,8 @@ body.cl-has-modal {
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: solid 1px #bbb;
+  border-left: 0 none;
+  border-right: 0 none;
   min-height: 100px;
   /* 그리드 헤더 */
   /* 그리드 디테일 */
@@ -1044,16 +1046,17 @@ body.cl-has-modal {
 .cl-grid .cl-grid-header {
   /* 그리드 헤더 셀 */
   /* @deprecated (header의 sortColumnName속성)
-		그리드 헤더 셀 정렬 인디케이터 */
+		 그리드 헤더 셀 정렬 인디케이터 */
   /* en: @deprecated (sortColumnName attribute in header)
-		Grid header cell sort indicator */
+		 Grid header cell sort indicator */
   /* ja: @deprecated (ヘッダーの sortColumnName 属性)
-		グリッド ヘッダー セルの並べ替えインジケーター */
+		 グリッド ヘッダー セルの並べ替えインジケーター */
   /* 그리드 헤더 셀 필터 인디케이터 */
   /* 그리드 헤더 셀에 정렬 가능한 셀 스타일 */
   /* 디테일에 스크롤이 생길시 우측에 생기는 빈 영역 */
 }
 .cl-grid .cl-grid-header .cl-grid-cell {
+  border: none;
   /* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 }
 .cl-grid .cl-grid-header .cl-sort {

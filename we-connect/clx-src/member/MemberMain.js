@@ -17,10 +17,14 @@ function clock() {
 	const minutes = date.getMinutes();
 	const seconds = date.getSeconds();
 	const week = ['일', '월', '화', '수', '목', '금', '토'];
-	clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`
-	user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`
-	
+
+	const amPm = hours < 12 ? '오전' : '오후';
+	const adjustedHours = hours > 12 ? hours - 12 : hours;  // 24시간 형식을 12시간 형식으로 변경
+
+	clockTarget.value = `${amPm} ${adjustedHours}시 ${minutes}분 ${seconds}초`;
+	user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`;
 }
+
 
 /*
  * "출근" 버튼에서 click 이벤트 발생 시 호출.
@@ -96,6 +100,14 @@ function onBodyInit2(e) {
 	submission.send();
 	app.lookup("noticeListSub").send();
 	app.lookup("boardListSub").send();
+	app.lookup("leaveRequestListSub").send();
+	app.lookup("proposalListSub").send();
+	let dataSet = app.lookup("leaveRequestList");
+	let position = dataSet.getValue(0, "position");
+	let department = dataSet.getValue(0, "departmentName");
+	let Name = dataSet.getValue(0, "memberName");
+	let memberName = app.lookup("name");
+	memberName.value = `${Name} ${position}<br>${department}팀`;
 }
 
 /*
@@ -151,7 +163,7 @@ function onImgSendSubmitSuccess2(e) {
  * 그리드에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onGrd3Click(e){
+function onGrd3Click(e) {
 	var grd3 = e.control;
 	window.location = "member/FreeBoard.clx";
 }

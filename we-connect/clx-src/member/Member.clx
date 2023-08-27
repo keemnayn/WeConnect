@@ -17,109 +17,109 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[홈]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[홈]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/home.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/MemberMain]]></cl:datavalue>
+            <cl:datavalue columnname="label">홈</cl:datavalue>
+            <cl:datavalue columnname="value">홈</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/home.png</cl:datavalue>
+            <cl:datavalue columnname="parent"/>
+            <cl:datavalue columnname="appId">member/MemberMain</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/attendance.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="label">근태</cl:datavalue>
+            <cl:datavalue columnname="value">근태</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/attendance.png</cl:datavalue>
+            <cl:datavalue columnname="parent"/>
+            <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[프로젝트]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[프로젝트]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/project.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="label">프로젝트</cl:datavalue>
+            <cl:datavalue columnname="value">프로젝트</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/project.png</cl:datavalue>
+            <cl:datavalue columnname="parent"/>
+            <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/reservation.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="label">예약</cl:datavalue>
+            <cl:datavalue columnname="value">예약</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/reservation.png</cl:datavalue>
+            <cl:datavalue columnname="parent"/>
+            <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/board.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="label">게시판</cl:datavalue>
+            <cl:datavalue columnname="value">게시판</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/board.png</cl:datavalue>
+            <cl:datavalue columnname="parent"/>
+            <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[출/퇴근 기록]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[출/퇴근 기록]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/commute.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/AttendForm]]></cl:datavalue>
+            <cl:datavalue columnname="label">출/퇴근 기록</cl:datavalue>
+            <cl:datavalue columnname="value">출/퇴근 기록</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/commute.png</cl:datavalue>
+            <cl:datavalue columnname="parent">근태</cl:datavalue>
+            <cl:datavalue columnname="appId">member/AttendForm</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[연차신청]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[연차신청]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/holiday.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[근태]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/LeaveRequestForm]]></cl:datavalue>
+            <cl:datavalue columnname="label">연차신청</cl:datavalue>
+            <cl:datavalue columnname="value">연차신청</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/holiday.png</cl:datavalue>
+            <cl:datavalue columnname="parent">근태</cl:datavalue>
+            <cl:datavalue columnname="appId">member/LeaveRequestForm</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[일정]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[일정]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/calender.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[프로젝트]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/project/Calendar1]]></cl:datavalue>
+            <cl:datavalue columnname="label">일정</cl:datavalue>
+            <cl:datavalue columnname="value">일정</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/calender.png</cl:datavalue>
+            <cl:datavalue columnname="parent">프로젝트</cl:datavalue>
+            <cl:datavalue columnname="appId">member/project/Calendar1</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[워크보드]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[워크보드]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/work_board.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[프로젝트]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="label">워크보드</cl:datavalue>
+            <cl:datavalue columnname="value">워크보드</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/work_board.png</cl:datavalue>
+            <cl:datavalue columnname="parent">프로젝트</cl:datavalue>
+            <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회의실예약]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회의실예약]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/meeting_room.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[예약]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/RoomReservList]]></cl:datavalue>
+            <cl:datavalue columnname="label">회의실예약</cl:datavalue>
+            <cl:datavalue columnname="value">회의실예약</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/meeting_room.png</cl:datavalue>
+            <cl:datavalue columnname="parent">예약</cl:datavalue>
+            <cl:datavalue columnname="appId">member/RoomReservList</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[자유게시판]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[자유게시판]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/post.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/FreeBoard]]></cl:datavalue>
+            <cl:datavalue columnname="label">자유게시판</cl:datavalue>
+            <cl:datavalue columnname="value">자유게시판</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/post.png</cl:datavalue>
+            <cl:datavalue columnname="parent">게시판</cl:datavalue>
+            <cl:datavalue columnname="appId">member/FreeBoard</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/post.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/Notice]]></cl:datavalue>
+            <cl:datavalue columnname="label">공지사항</cl:datavalue>
+            <cl:datavalue columnname="value">공지사항</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/post.png</cl:datavalue>
+            <cl:datavalue columnname="parent">게시판</cl:datavalue>
+            <cl:datavalue columnname="appId">member/Notice</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[건의사항]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[건의사항]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/suggestions.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/Proposal]]></cl:datavalue>
+            <cl:datavalue columnname="label">건의사항</cl:datavalue>
+            <cl:datavalue columnname="value">건의사항</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/suggestions.png</cl:datavalue>
+            <cl:datavalue columnname="parent">게시판</cl:datavalue>
+            <cl:datavalue columnname="appId">member/Proposal</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[공통]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[공통]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/team.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[워크보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/project/TeamPost]]></cl:datavalue>
+            <cl:datavalue columnname="label">공통</cl:datavalue>
+            <cl:datavalue columnname="value">공통</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/team.png</cl:datavalue>
+            <cl:datavalue columnname="parent">워크보드</cl:datavalue>
+            <cl:datavalue columnname="appId">member/project/TeamPost</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[나의 보드]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[나의 보드]]></cl:datavalue>
-            <cl:datavalue columnname="icon"><![CDATA[img/member/solo.png]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[워크보드]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[member/project/MyPost]]></cl:datavalue>
+            <cl:datavalue columnname="label">나의 보드</cl:datavalue>
+            <cl:datavalue columnname="value">나의 보드</cl:datavalue>
+            <cl:datavalue columnname="icon">img/member/solo.png</cl:datavalue>
+            <cl:datavalue columnname="parent">워크보드</cl:datavalue>
+            <cl:datavalue columnname="appId">member/project/MyPost</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -136,7 +136,7 @@
   <body std:sid="body-8a3a7e16" style="background-color:#F8F8F8; left:0px; width:1920px; height:1080px;">
     <cl:listener std:sid="listener-2a1a7589" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-0c603087" name="load" handler="onBodyLoad"/>
-    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#ffffff\; border-bottom-color:#f1efff; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff;" class="admin_tree">
+    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#ffffff; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff;" class="admin_tree">
       <cl:listener std:sid="listener-11dd4ffb" name="item-click" handler="onTre1ItemClick"/>
       <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="memberMenu" label="label" value="value" icon="icon" parent="parent"/>

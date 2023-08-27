@@ -25,7 +25,8 @@
   height: 120px;
   font-weight: 500;
   padding: 0px;
-  border-radius: 8px;
+  border-radius: 2px;
+  text-align: left;
   /* 트리 아이템 체크박스 아이콘 */
   /* 트리 셀렉션 체크박스 아이콘 */
   /* 트리 아이템 아이콘 영역 */
@@ -36,11 +37,14 @@
   /* 트리 아이템 - 비활성화 */
   /* 트리 아이템 - 선택됨 */
 }
+.cl-tree.admin_tree .cl-tree-item .cl-tree-itemicon {
+  background-size: 20px;
+}
 .cl-tree.admin_tree .cl-tree-item .cl-text {
   background-repeat: no-repeat;
   background-position: right center;
   padding: 0px;
-  line-height: 38px;
+  font-size: 13px;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-checked {
   /* 트리 아이템 체크박스 아이콘 - 선택됨 */

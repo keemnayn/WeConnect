@@ -260,7 +260,7 @@
 			var tree_1 = new cpr.controls.Tree("tre1");
 			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
-				"background-color" : "#ffffff\\; border-bottom-color:#f1efff",
+				"background-color" : "#ffffff",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
 				"border-right-color" : "#f1efff"

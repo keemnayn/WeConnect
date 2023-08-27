@@ -30,7 +30,6 @@
 				let position = dataSet.getValue(0, "position");
 				let department = dataSet.getValue(0, "departmentName");
 				let Name = dataSet.getValue(0, "memberName");
-				let pos1 = app.lookup("pos");
 				let dpm = app.lookup("dpm");
 				let memberName = app.lookup("name");
 				memberName.value = `${Name}${position}`;
