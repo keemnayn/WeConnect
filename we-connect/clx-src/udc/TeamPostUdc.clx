@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-aa86f136" version="1.0.4584">
   <head std:sid="head-ff94ae46">
-    <screen std:sid="screen-69ec8559" id="default" name="default" width="1024px" height="768px"/>
-    <screen std:sid="screen-5a1982b7" id="tablet" name="tablet" width="500px" height="667px"/>
-    <screen std:sid="screen-c1918758" id="mobile" name="mobile" width="350px" height="525px"/>
+    <screen std:sid="screen-c9a0be47" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="true"/>
+    <screen std:sid="screen-88ba371f" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-453c958e" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-d48a5d9a"/>
     <cl:appspec>
       <cl:property name="name" type="string" bindable="false"/>
       <cl:property name="date" type="string"/>
       <cl:property name="title" type="string"/>
       <cl:property name="content" type="string"/>
+      <cl:property name="project" type="string"/>
       <cl:property name="department" type="string"/>
     </cl:appspec>
   </head>
-  <body std:sid="body-ccc40e1f" style="top:0px; left:0px; width:300px; height:300px;">
+  <body std:sid="body-ccc40e1f" style="top:0px; left:0px; width:1580px; height:940px;">
     <cl:listener std:sid="listener-3d920573" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-6c29afe4">
-      <cl:xylayoutdata std:sid="xyl-data-3e05b97b" top="10px" left="10px" width="1540px" height="260px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-3e05b97b" top="20px" right="40px" left="20px" height="279px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       <cl:output std:sid="output-55e5d7c2" id="name" value="memberName">
-        <cl:xylayoutdata std:sid="xyl-data-499d9791" top="19px" left="19px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-499d9791" top="20px" left="22px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:output std:sid="output-5c2a8f66" id="date" value="teamPostCreateDate">
-        <cl:xylayoutdata std:sid="xyl-data-1c7d64d9" top="19px" left="128px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-1c7d64d9" top="20px" left="131px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:textarea std:sid="t-area-0669a374" id="content" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;" value="teamPostContent">
-        <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="100px" left="19px" width="1520px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="97px" left="21px" width="1480px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:textarea>
       <cl:output std:sid="output-495bdf11" id="title" value="teamPostTitle">
-        <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="57px" left="18px" width="1520px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="58px" left="21px" width="1480px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:output std:sid="output-d62b1cf1" id="department" value="department">
-        <cl:xylayoutdata std:sid="xyl-data-1916dcc6" top="19px" left="1368px" width="150px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-1916dcc6" top="20px" left="1304px" width="150px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-a6f071e3" id="project" value="project">
+        <cl:xylayoutdata std:sid="xyl-data-3266ec47" top="20px" left="1114px" width="150px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-01e9cfde"/>
     </cl:group>

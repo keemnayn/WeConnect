@@ -44,16 +44,43 @@ function onTeamPostSubReceive(e) {
 	for (var i = 0; i < teamPostList.length; i++) {
 		//udc 동적 생성
 		var teamPostUdc = new udc.TeamPostUdc();
-		teamPostUdc.name = teamPostList[i].MemberName;
+		teamPostUdc.name = teamPostList[i].memberName;
 		teamPostUdc.date = teamPostList[i].teamPostCreateDate;
 		teamPostUdc.title = teamPostList[i].teamPostTitle;
 		teamPostUdc.content = teamPostList[i].teamPostContent;
-		teamPostUdc.department = teamPostList[i].DepartmentName;
+		teamPostUdc.project = teamPostList[i].projectName;
+		teamPostUdc.department = teamPostList[i].departmentName;
 		container.addChild(teamPostUdc, {
-			height: "800px",
 			width: "800px",
+			height: "400px",
 			autoSize: "both"
 		});
-		
 	}
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onTeamPostSubSubmitSuccess(e) {
+	var teamPostSub = e.control;
+	app.lookup("projectName").redraw();
+}
+
+/*
+ * 그룹에서 dblclick 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+ */
+function onGrpDblclick(e) {
+	var grp = e.control;
+	//팝업 열기
+	app.openDialog("dialog/TeamPostUpdateDelete", {
+		width: 1580,
+		height: 780
+	}, function(dialog) {
+		// 닫기 하면 send 후 reload
+		dialog.addEventListener("close", function(e) {
+			app.lookup("teamPostSub").send();
+		});
+	});
 }

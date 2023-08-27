@@ -5,41 +5,62 @@
 	<select id="selectTeamPostList"
 		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		SELECT t.team_post_id AS teamPostId,
-		t.team_post_title AS teamPostTitle,
+		t.team_post_title AS
+		teamPostTitle,
 		t.team_post_content AS teamPostContent,
 		TO_CHAR(t.team_post_create_date, 'YYYY-MM-DD') AS teamPostCreateDate,
 		m.member_name AS memberName,
-		p.project_name AS projectName,
+		p.project_id AS projectId,
+		p.project_name
+		AS projectName,
 		d.department_name AS departmentName
 		FROM team_post t
-		JOIN member m ON t.member_id = m.member_id
-		LEFT JOIN project p ON t.project_id = p.project_id
-		LEFT JOIN department d ON m.department_id = d.department_id
+		JOIN member m ON
+		t.member_id = m.member_id
+		LEFT JOIN project p ON
+		t.project_id =
+		p.project_id
+		LEFT JOIN department d ON m.department_id =
+		d.department_id
 		ORDER BY t.team_post_id DESC
 	</select>
 	<!-- select t.team_post_id AS teamPostId, t.team_post_title AS teamPostTitle, 
-			t.team_post_content AS teamPostContent, to_char(t.team_post_create_date,'YYYY-MM-DD') 
-			AS teamPostCreateDate, m.member_name AS memberName, p.project_name AS projectName 
-			from member m join team_post t on m.member_id=t.member_id join project p 
-			on t.project_id=p.project_id ORDER BY team_post_id DESC -->
+		t.team_post_content AS teamPostContent, to_char(t.team_post_create_date,'YYYY-MM-DD') 
+		AS teamPostCreateDate, m.member_name AS memberName, p.project_name AS projectName 
+		from member m join team_post t on m.member_id=t.member_id join project p 
+		on t.project_id=p.project_id ORDER BY team_post_id DESC -->
 	<!-- <select id="getTeamPostList" resultType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		select t.team_post as teamPostId, t.team_post_title as teamPostTitle, m.member_name 
 		as memberName, to_char(t.team_post_create,'YYYY-MM-DD') as teamPostCreate 
 		from team_post t join member m on t.member_id=m.member_id </select> -->
-	<!-- 팀포스트 추가 -->		
-<!-- 	<insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
+	<!-- 팀포스트 추가 -->
+	<!-- <insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		insert into team_post(team_post_id, team_post_title, team_post_content, member_id) 
-		values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, 
-		#{memberId})
-	</insert> -->
-	<insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
+		values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, #{memberId}) 
+		</insert> -->
+	<!-- <insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		insert into team_post(team_post_id, team_post_title, team_post_content, member_id, 
 		project_id) values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, 
-		#{memberId}, #{projectId})
+		#{memberId}, #{projectId}) </insert> -->
+	<insert id="insertTeamPost"
+		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		insert into team_post(team_post_id, team_post_title,
+		team_post_content,
+		member_id)
+		values(team_post_seq.nextval,
+		#{teamPostTitle}, #{teamPostContent},
+		#{memberId})
 	</insert>
 	<!-- <select id="getTeamPostDetail" resultType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		select t.team_post_id, t.team_post_title, t.team_post_content, t.team_post_create, 
 		m.member_id, tc.team_post_comment_id, tc.team_post_comment_content, tc.team_post_comment_date 
 		from member m join team_post t on m.member_id=t.member_id join team_post_comment 
 		tc on t.team_post_id=tc.team_post_id </select> -->
+	<!-- 팀포스트 수정 -->
+	<update id="updateTeamPost"
+		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		UPDATE team_post
+		SET team_post_title = '글제목', team_post_content = '글내용'
+		WHERE team_post_id = 101 and member_id = 141
+	</update>
 </mapper>

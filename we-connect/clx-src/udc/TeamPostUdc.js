@@ -22,5 +22,6 @@ function onBodyLoad(e) {
 	app.lookup("date").text = app.getAppProperty("date");
 	app.lookup("title").text = app.getAppProperty("title");
 	app.lookup("content").text = app.getAppProperty("content");
+	app.lookup("project").text = app.getAppProperty("project");
 	app.lookup("department").text = app.getAppProperty("department");
 }

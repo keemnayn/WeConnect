@@ -27,12 +27,12 @@ public class TeamPostServiceTest {
 
 // 팀포스트 추가 service
 	@Test
-	@Transactional // 테스트 이후 롤백을 위해
 	void addTeamPostTest() {
 		TeamPostDTO teamPostDTO = new TeamPostDTO();
 		teamPostDTO.setTeamPostTitle("서비스 테스트 제목");
 		teamPostDTO.setTeamPostContent("서비스 테스트 내용");
 		teamPostDTO.setMemberId(141);
+		teamPostDTO.setProjectId(24);
 		int result = teamPostService.addTeamPost(teamPostDTO);
 		log.info("result {}", result);
 	}

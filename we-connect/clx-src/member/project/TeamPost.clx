@@ -27,9 +27,9 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
-      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams">
-        <cl:listener std:sid="listener-5c19a34c" name="submit-success" handler="onTeamPostSubSubmitSuccess"/>
+      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams/list">
         <cl:listener std:sid="listener-17b90875" name="receive" handler="onTeamPostSubReceive"/>
+        <cl:listener std:sid="listener-58e52716" name="submit-success" handler="onTeamPostSubSubmitSuccess"/>
         <cl:responsedata dataid="teamPostList"/>
       </cl:submission>
       <cl:submission std:sid="submission-9b5357ef" id="commentSub" method="get" action="member/comments">
@@ -41,18 +41,17 @@
   <body std:sid="body-5f8ffe8c" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
     <cl:listener std:sid="listener-7533b0aa" name="init" handler="onBodyInit"/>
     <cl:output std:sid="output-1fa5fb0a" id="projectName" style="font-weight:bold; font-size:30px;" readonly="true">
+      <cl:relativebind property="value" columnname="projectName"/>
       <cl:datarowcontext datacontrolid="teamPostList"/>
-      <cl:verticaldata std:sid="v-data-429c82c6" width="1519px" height="80px"/>
+      <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
     <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
       <cl:listener std:sid="listener-44971034" name="mousedown" handler="onInsertIpbMousedown"/>
-      <cl:verticaldata std:sid="v-data-d7745164" width="1520px" height="131px"/>
+      <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>
     </cl:inputbox>
-    <cl:button std:sid="button-556a8793" style="font-family:IBM Plex Sans KR;" value="작성">
-      <cl:verticaldata std:sid="v-data-b1a0a734" width="45px" height="40px"/>
-    </cl:button>
     <cl:group std:sid="group-1ee9ec57" id="grp" class="cl-form-group">
-      <cl:verticaldata std:sid="v-data-b59d3b08" width="1580px" height="260px" autosize="height"/>
+      <cl:listener std:sid="listener-f450582d" name="dblclick" handler="onGrpDblclick"/>
+      <cl:verticaldata std:sid="v-data-b59d3b08" width="1540px" height="300px" autosize="height"/>
       <cl:verticallayout std:sid="v-layout-e07151db"/>
     </cl:group>
     <cl:verticallayout std:sid="v-layout-86d41dff" distribution="center"/>
