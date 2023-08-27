@@ -26,11 +26,12 @@
 				app.lookup("roomListSub").send();
 			}
 
+
 			/*
-			 * "회의실 등록" 버튼(addRoomBtn)에서 click 이벤트 발생 시 호출.
+			 * "등록" 버튼(addRoomBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onAddRoomBtnClick(e){
+			function onAddRoomBtnClick2(e){
 				var addRoomBtn = e.control;
 				var button = e.control;
 				app.openDialog("dialog/RoomCreate", {width : 600, height : 400}, function(dialog){
@@ -38,6 +39,58 @@
 						app.lookup("roomListSub").send();
 					});
 				});
+			}
+
+			///*
+			// * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
+			// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			// */
+			//function onUpdateBtnClick(e){
+			//	var updateBtn = e.control;
+			//	var grid = app.lookup("roomGrd");
+			//	var checkRowIndices = grid.getCheckRowIndices();
+			//	if(checkRowIndices.length == 1) {
+			//		var roomId = grid.dataSet.getValue(checkRowIndices[0], "roomId");
+			//		var roomName = grid.dataSet.getValue(checkRowIndices[0], "roomName");
+			//		var value = {
+			//			"roomId":roomId,
+			//			"roomName":roomName
+			//		}
+			//		app.openDialog("appURI", {width : 400, height : 300}, function(dialog){
+			//			dialog.ready(function(dialogApp){
+			//				// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
+			//			});
+			//		}).then(function(returnValue){
+			//			;
+			//		});
+			//	}
+			//}
+
+			/*
+			 * "삭제" 버튼(deleteBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onDeleteBtnClick(e){
+				var deleteBtn = e.control;
+				var grid = app.lookup("roomGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if(checkRowIndices.length>0){
+					if (confirm("선택한 회의실을 삭제 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("deleteRoomSub").send();
+					}
+				} else {
+					alert("회의실을 선택해주세요");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onDeleteRoomSubSubmitDone(e){
+				var deleteRoomSub = e.control;
+				app.lookup("roomListSub").send();
 			};
 			// End - User Script
 			
@@ -93,6 +146,15 @@
 			submission_2.action = "admin/room-reserv/room";
 			submission_2.addResponseData(dataSet_2, false);
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("deleteRoomSub");
+			submission_3.method = "delete";
+			submission_3.action = "admin/room-reserv";
+			submission_3.addRequestData(dataSet_2);
+			if(typeof onDeleteRoomSubSubmitDone == "function") {
+				submission_3.addEventListener("submit-done", onDeleteRoomSubSubmitDone);
+			}
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -119,21 +181,11 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var button_1 = new cpr.controls.Button("addRoomBtn");
-					button_1.value = "회의실 등록";
-					if(typeof onAddRoomBtnClick == "function") {
-						button_1.addEventListener("click", onAddRoomBtnClick);
-					}
-					container.addChild(button_1, {
-						"top": "5px",
-						"right": "5px",
-						"width": "100px",
-						"height": "45px"
-					});
-					var grid_1 = new cpr.controls.Grid("grd2");
+					var grid_1 = new cpr.controls.Grid("roomGrd");
 					grid_1.init({
 						"dataSet": app.lookup("roomList"),
 						"columns": [
+							{"width": "25px"},
 							{"width": "20px"},
 							{"width": "80px"}
 						],
@@ -143,6 +195,12 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
+										cell.columnType = "checkbox";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "roomId";
@@ -150,7 +208,7 @@
 									}
 								},
 								{
-									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
@@ -166,11 +224,17 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
-										cell.columnName = "roomId";
+										cell.columnType = "checkbox";
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
+									"configurator": function(cell){
+										cell.columnName = "roomId";
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
 										cell.columnName = "roomName";
 									}
@@ -184,6 +248,44 @@
 						"bottom": "0px",
 						"left": "0px"
 					});
+					var group_2 = new cpr.controls.Container();
+					var formLayout_1 = new cpr.controls.layouts.FormLayout();
+					formLayout_1.scrollable = false;
+					formLayout_1.topMargin = "5px";
+					formLayout_1.rightMargin = "5px";
+					formLayout_1.bottomMargin = "5px";
+					formLayout_1.leftMargin = "5px";
+					formLayout_1.horizontalSpacing = "10px";
+					formLayout_1.verticalSpacing = "10px";
+					formLayout_1.setColumns(["1fr", "1fr"]);
+					formLayout_1.setRows(["1fr"]);
+					group_2.setLayout(formLayout_1);
+					(function(container){
+						var button_1 = new cpr.controls.Button("deleteBtn");
+						button_1.value = "삭제";
+						if(typeof onDeleteBtnClick == "function") {
+							button_1.addEventListener("click", onDeleteBtnClick);
+						}
+						container.addChild(button_1, {
+							"colIndex": 1,
+							"rowIndex": 0
+						});
+						var button_2 = new cpr.controls.Button("addRoomBtn");
+						button_2.value = "등록";
+						if(typeof onAddRoomBtnClick2 == "function") {
+							button_2.addEventListener("click", onAddRoomBtnClick2);
+						}
+						container.addChild(button_2, {
+							"colIndex": 0,
+							"rowIndex": 0
+						});
+					})(group_2);
+					container.addChild(group_2, {
+						"top": "5px",
+						"right": "0px",
+						"width": "225px",
+						"height": "40px"
+					});
 				})(group_1);
 				tabItem_1.content = group_1;
 				return tabItem_1;
@@ -193,9 +295,9 @@
 			var tabItem_2 = (function(tabFolder){
 				var tabItem_2 = new cpr.controls.TabItem();
 				tabItem_2.text = "예약 현황";
-				var group_2 = new cpr.controls.Container();
+				var group_3 = new cpr.controls.Container();
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-				group_2.setLayout(xYLayout_3);
+				group_3.setLayout(xYLayout_3);
 				(function(container){
 					var grid_2 = new cpr.controls.Grid("grd1");
 					grid_2.init({
@@ -334,8 +436,8 @@
 						"bottom": "0px",
 						"left": "0px"
 					});
-				})(group_2);
-				tabItem_2.content = group_2;
+				})(group_3);
+				tabItem_2.content = group_3;
 				return tabItem_2;
 			})(tabFolder_1);
 			tabFolder_1.addTabItem(tabItem_2);

@@ -10,6 +10,10 @@ public interface AdminRoomService {
 	int insertRoomInfo(RoomDTO roomDTO);
 	//회의실 리스트
 	List<RoomDTO> getRoomList();
+	//회의실 수정
+	int updateRoom(RoomDTO roomDTO);
+	//회의실 삭제
+	int deleteRoom(RoomDTO roomDTO);
 	
 	//회의실 예약 리스트
 	List<RoomReservDTO> getRoomReservList();

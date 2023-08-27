@@ -37,6 +37,10 @@
       <cl:submission std:sid="submission-a99686ef" id="roomListSub" method="get" action="admin/room-reserv/room">
         <cl:responsedata dataid="roomList"/>
       </cl:submission>
+      <cl:submission std:sid="submission-61853424" id="deleteRoomSub" method="delete" action="admin/room-reserv">
+        <cl:listener std:sid="listener-09adb4b6" name="submit-done" handler="onDeleteRoomSubSubmitDone"/>
+        <cl:requestdata dataid="roomList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -52,25 +56,40 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:button std:sid="button-60ab83b7" id="addRoomBtn" value="회의실 등록">
-            <cl:listener std:sid="listener-ee5e14e4" name="click" handler="onAddRoomBtnClick"/>
-            <cl:xylayoutdata std:sid="xyl-data-f2a1535f" top="5px" right="5px" width="100px" height="45px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-          </cl:button>
-          <cl:grid std:sid="grid-9e0879ac" id="grd2" datasetid="roomList">
+          <cl:grid std:sid="grid-9e0879ac" id="roomGrd" datasetid="roomList">
             <cl:xylayoutdata std:sid="xyl-data-267881a5" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:gridcolumn std:sid="g-column-b715447c" width="25px"/>
             <cl:gridcolumn std:sid="g-column-e4bf2538" width="20px"/>
             <cl:gridcolumn std:sid="g-column-6b6e73ca" width="80px"/>
             <cl:gridheader std:sid="gh-band-9611f243">
               <cl:gridrow std:sid="g-row-fdc95e20" height="50px"/>
-              <cl:gridcell std:sid="gh-cell-9f285c0d" rowindex="0" colindex="0" targetcolumnname="roomId" sortable="false" filterable="false" text="번호"/>
-              <cl:gridcell std:sid="gh-cell-1e465424" rowindex="0" colindex="1" targetcolumnname="roomName" sortable="false" filterable="false" text="회의실명"/>
+              <cl:gridcell std:sid="gh-cell-b031fb7f" rowindex="0" colindex="0" columntype="checkbox"/>
+              <cl:gridcell std:sid="gh-cell-9f285c0d" rowindex="0" colindex="1" targetcolumnname="roomId" sortable="false" filterable="false" text="번호"/>
+              <cl:gridcell std:sid="gh-cell-1e465424" rowindex="0" colindex="2" targetcolumnname="roomName" sortable="false" filterable="false" text="회의실명"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-9a5aaa16">
               <cl:gridrow std:sid="g-row-5ec3789f" height="50px"/>
-              <cl:gridcell std:sid="gd-cell-12efed63" rowindex="0" colindex="0" columnname="roomId"/>
-              <cl:gridcell std:sid="gd-cell-22f1d58e" rowindex="0" colindex="1" columnname="roomName"/>
+              <cl:gridcell std:sid="gd-cell-6335d03e" rowindex="0" colindex="0" columntype="checkbox"/>
+              <cl:gridcell std:sid="gd-cell-12efed63" rowindex="0" colindex="1" columnname="roomId"/>
+              <cl:gridcell std:sid="gd-cell-22f1d58e" rowindex="0" colindex="2" columnname="roomName"/>
             </cl:griddetail>
           </cl:grid>
+          <cl:group std:sid="group-2815f0b4">
+            <cl:xylayoutdata std:sid="xyl-data-178447d2" top="5px" right="0px" width="225px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:button std:sid="button-213da8ec" id="deleteBtn" value="삭제">
+              <cl:listener std:sid="listener-a702adfe" name="click" handler="onDeleteBtnClick"/>
+              <cl:formdata std:sid="f-data-40507e93" row="0" col="1"/>
+            </cl:button>
+            <cl:button std:sid="button-60ab83b7" id="addRoomBtn" value="등록">
+              <cl:listener std:sid="listener-a3f61588" name="click" handler="onAddRoomBtnClick2"/>
+              <cl:formdata std:sid="f-data-a0a1d2ee" row="0" col="0"/>
+            </cl:button>
+            <cl:formlayout std:sid="f-layout-0233582e" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
+              <cl:rows length="1" unit="FRACTION"/>
+              <cl:columns length="1" unit="FRACTION"/>
+              <cl:columns length="1" unit="FRACTION"/>
+            </cl:formlayout>
+          </cl:group>
           <cl:xylayout std:sid="xylayout-3f743967"/>
         </cl:group>
       </cl:tabitem>

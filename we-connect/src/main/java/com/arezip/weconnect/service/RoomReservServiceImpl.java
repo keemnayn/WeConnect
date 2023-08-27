@@ -27,11 +27,13 @@ public class RoomReservServiceImpl implements RoomReservService {
 	}
 
 	@Override
-	public List<RoomReservDTO> findBookedRoom() {
-		//예약 불가
-		
-		//예약 가능
-		return roomReservMapper.findBookedRoom();
+	public int updateRoomReserv(RoomReservDTO roomReservDTO) {
+		return roomReservMapper.updateRoomReserv(roomReservDTO);
+	}
+
+	@Override
+	public int deleteRoomReserv(RoomReservDTO roomReservDTO) {
+		return roomReservMapper.deleteRoomReserv(roomReservDTO);
 	}
 
 }

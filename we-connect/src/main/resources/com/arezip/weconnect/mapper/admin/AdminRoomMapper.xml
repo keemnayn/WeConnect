@@ -7,8 +7,18 @@
 	</insert>
 	<!-- 회의실 리스트 -->
 	<select id="getRoomList" resultType="com.arezip.weconnect.model.dto.RoomDTO">
+		<!-- select ROW_NUMBER() OVER (ORDER BY room_id) AS room_id, room_name from room -->
 		select room_id, room_name from room
 	</select>
+	<!-- 회의실 수정 -->
+		<update id="updateRoom" parameterType="com.arezip.weconnect.model.dto.RoomDTO">
+			update room set room_name = #{roomName} where room_id = #{roomId}
+		</update>
+	<!-- 회의실 삭제 -->
+	<delete id="deleteRoom" parameterType="com.arezip.weconnect.model.dto.RoomDTO">
+		delete from room where room_id = #{roomId}
+	</delete>
+	
 	<!-- 회의실 예약 리스트 -->
 	<select id="getRoomReservList" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
 		SELECT
@@ -23,4 +33,6 @@
 			room r JOIN room_reserv rr ON r.room_id = rr.room_id
 			JOIN member m ON m.member_id = rr.member_id
 	</select>
+	<!-- 회의실 예약 수정 -->
+	<!-- 회의실 예약 삭제 -->
 </mapper>
