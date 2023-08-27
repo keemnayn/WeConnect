@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("member/project/Calendar1", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/calendar.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -37,6 +38,7 @@
 			
 			// UI Configuration
 			var calendar_1 = new cpr.controls.Calendar();
+			calendar_1.style.setClasses(["main-calendar"]);
 			container.addChild(calendar_1, {
 				"top": "5px",
 				"left": "10px",

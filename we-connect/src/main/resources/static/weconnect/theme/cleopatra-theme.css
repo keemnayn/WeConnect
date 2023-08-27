@@ -473,10 +473,6 @@ body.cl-has-modal {
 .cl-button:not(.cl-disabled):active {
   background-image: linear-gradient(#ddd, #eee 5px, #ddd);
 }
-/* Disable 상태의 버튼 */
-.cl-button.cl-disabled {
-  color: #666;
-}
 /* 아코디언 */
 .cl-accordion {
   border: 1px solid #bbb;
@@ -1610,4 +1606,7 @@ body.cl-has-modal {
 .cl-linkedcombobox-combo:focus,
 .cl-grid-cell:focus {
   /* 웹 접근성 개선 목적으로 포커스 링을 표시하려면 아래 주석을 해제 하십시오. */
+}
+.Background {
+  background-image: url("controls/icons/login-background.png");
 }

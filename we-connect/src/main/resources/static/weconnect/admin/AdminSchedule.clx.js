@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("admin/AdminSchedule", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/calendar.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
