@@ -4,7 +4,9 @@
     "html-lang" : "ko",
     "runtime-lib": [
         "/resource/cleopatra.js",
-        "/resource/conf/defaults.js"
+        "/resource/conf/defaults.js",
+        "/weconnect/cpr-lib/udc.js"
+        
     ],
     "runtime-css": ["/resource/css/cleopatra.css"],
     "page-loading-image": {

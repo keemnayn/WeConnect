@@ -61,14 +61,23 @@ public class FreeBoardTest {
 	//게시물 상세 조회
 	@Test
 	void getBoardDetail() {
-		long freeBoardId = 5;
-		FreeBoardDTO boardDetail = freeBoardMapper.getFreeBoardDetail(freeBoardId);
+		long freeBoardId = 97;
+		FreeBoardDTO boardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
 		log.info(boardDetail.toString());
 		assertNotNull(boardDetail);
 	}
-	//게시물 상세 페이지 댓글 조회
+	//게시물 상세 조회
 	@Test
 	void getBoardDetailComment() {
+		long freeBoardId = 97;
+		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardComment(freeBoardId);
+		log.info(boardDetail.toString());
+		assertNotNull(boardDetail);
+	}
+	
+	//게시물 상세 페이지 댓글 조회
+	@Test
+	void getBoardDetailComment1() {
 		long freeBoardId = 5;
 		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardComment(freeBoardId);
 		boardDetail.forEach(comment -> log.info(comment.toString()));
