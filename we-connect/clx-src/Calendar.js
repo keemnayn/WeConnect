@@ -155,8 +155,7 @@ function onCalendarItemClick( /* cpr.events.CItemEvent */ e) {
 			
 		});
 		
-	} 
-	else if (e.relativeTargetName == "more") {
+	} else if (e.relativeTargetName == "more") {
 		
 		var date = e.targetObject.date;
 		var voCalendarItems = calendar.getItemsByDate(date); //1.0.2210(2020.07.10릴리즈) 부터 사용가능

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-3e59f6f8" version="1.0.4431">
+  <head std:sid="head-9cb08f92">
+    <screen std:sid="screen-653b6a99" id="edufis[default]" name="edufis[default]" minwidth="1320px" width="1320px" height="720px" active="false"/>
+    <screen std:sid="screen-270f15fc" id="edufis[detail]" name="edufis[detail]" minwidth="985px" maxwidth="1319px" width="985px" height="768px"/>
+    <screen std:sid="screen-130f7be0" id="edufis-popup[960]" name="edufis-popup[960]" minwidth="960px" maxwidth="984px" width="960px" height="760px"/>
+    <screen std:sid="screen-105371ff" id="tablet" name="tablet" minwidth="850px" maxwidth="959px" width="850px" height="768px"/>
+    <screen std:sid="screen-92cd77d7" id="edufis-popup[750]" name="edufis-popup[750]" minwidth="750px" maxwidth="849px" width="750px" height="600px"/>
+    <screen std:sid="screen-86673359" id="mobile" name="mobile" minwidth="550px" maxwidth="749px" width="550px" height="768px"/>
+    <screen std:sid="screen-b4ade7a4" id="edufis-popup[480]" name="edufis-popup[480]" minwidth="480px" maxwidth="549px" width="480px" height="540px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-a8aaece9" id="work-alarm" name="work-alarm" maxwidth="479px" width="370px" height="540px" customHeight="600" customWidth="800" active="true"/>
+    <cl:model std:sid="model-ed284fd5"/>
+    <cl:appspec title="나의 업무 알림 설정"/>
+  </head>
+  <body std:sid="body-55102b75">
+    <cl:listener std:sid="listener-ae69860c" name="load" handler="onBodyLoad"/>
+    <cl:udc std:sid="ud-control-d8ab676c" id="appHeader1" visible="false" type="udc.com.udcComAppHeader">
+      <std:metadata>
+        <std:property key="hidden" value="true"/>
+      </std:metadata>
+      <cl:verticaldata std:sid="v-data-faef2c79" width="440px" height="30px" autosize="none"/>
+    </cl:udc>
+    <cl:group std:sid="group-aa0714f1" id="grp2" class="card-dim">
+      <cl:verticaldata std:sid="v-data-26f98281" width="342px" height="91px" autosize="height"/>
+      <cl:output std:sid="output-5ec10ff4" id="opt1" class="dot-txt" value="알림 설정을 하시면 설정하신 날짜에 문자와 이메일을 통해&#xD;&#xA;업무 알림을 전송해 드립니다.&#xD;&#xA;">
+        <cl:verticaldata std:sid="v-data-588f5ac8" width="100px" height="37px" autosize="height"/>
+      </cl:output>
+      <cl:output std:sid="output-1cb7914d" id="opt3" class="dot-txt" value="업무기간 중 날짜 선택만 가능합니다.">
+        <cl:verticaldata std:sid="v-data-04374c7e" width="322px" height="37px" autosize="height"/>
+      </cl:output>
+      <cl:verticallayout std:sid="v-layout-23923979"/>
+    </cl:group>
+    <cl:group std:sid="group-745aba76" id="grp4">
+      <cl:verticaldata std:sid="v-data-d5d63d0b" width="440px" height="344px" autosize="height"/>
+      <cl:udc std:sid="ud-control-1f967a07" id="udcComFormTitle1" type="udc.com.udcComFormTitle">
+        <cl:verticaldata std:sid="v-data-484286af" width="500px" height="24px" autosize="height"/>
+        <cl:property name="title" value="40년 경과시설 신고하기" type="string"/>
+      </cl:udc>
+      <cl:calendar std:sid="calendar-d8d1509f" id="cal1" class="calender-range" footervisible="false" selectiontype="range" headerbuttons="title prev next">
+        <cl:listener std:sid="listener-2dd26b2b" name="date-click" handler="onCal1DateClick"/>
+        <cl:listener std:sid="listener-ba05e4e1" name="item-click" handler="onCal1ItemClick"/>
+        <cl:verticaldata std:sid="v-data-5357fe2b" width="342px" height="315px" autosize="none"/>
+        <cl:calendaritem std:sid="c-item-f9a1e82a" label="" value="" start="2023-06-05" end="2023-06-09"/>
+        <cl:calendaritem std:sid="c-item-fdcdea24" label="" value="" start="2023-06-13" end="2023-06-15"/>
+      </cl:calendar>
+      <cl:verticallayout std:sid="v-layout-0926fbc2" scrollable="false" spacing="5"/>
+    </cl:group>
+    <cl:group std:sid="group-378a4c36" id="grpFltBtns" class="pop-floating-box">
+      <cl:verticaldata std:sid="v-data-582d9433" width="440px" height="56px" autosize="height"/>
+      <cl:group std:sid="group-69438e5b" id="grpRightBtns">
+        <cl:verticaldata std:sid="v-data-783ac73b" width="1120px" height="28px" autosize="none"/>
+        <cl:button std:sid="button-537146d1" id="btn1" value="취소">
+          <cl:flowlayoutdata std:sid="f-data-04c389cd" width="70px" height="28px" autosize="width"/>
+        </cl:button>
+        <cl:button std:sid="button-380c4638" id="btnSelect" class="btn-pop-flt-confirm" value="저장">
+          <cl:flowlayoutdata std:sid="f-data-bdc1049a" width="70px" height="28px" autosize="width"/>
+        </cl:button>
+        <cl:flowlayout std:sid="f-layout-294af12a" scrollable="false" vspacing="0" halign="right" valign="middle"/>
+      </cl:group>
+      <cl:verticallayout std:sid="v-layout-a3c1a75d" scrollable="false" leftmargin="20" rightmargin="20" topmargin="14" bottommargin="14"/>
+    </cl:group>
+    <cl:verticallayout std:sid="v-layout-f599e4d1" spacing="16" leftmargin="14" rightmargin="14" topmargin="14" bottommargin="14"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

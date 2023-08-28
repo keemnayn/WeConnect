@@ -14,18 +14,20 @@
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
+        <cl:listener std:sid="listener-087a6bf7" name="submit-success" handler="onProjectListSubSubmitSuccess"/>
         <cl:responsedata dataid="projectList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-4cfee988">
-    <cl:listener std:sid="listener-36dc629b" name="load" handler="onBodyLoad"/>
+    <cl:listener std:sid="listener-caf2ada5" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-d0abd75d" name="load" handler="onBodyLoad2"/>
     <cl:calendar std:sid="calendar-fe9c627a" id="calendar">
       <cl:listener std:sid="listener-398e3552" name="item-click" handler="onCalendarItemClick"/>
       <cl:listener std:sid="listener-ce012cfc" name="date-click" handler="onCalendarDateClick"/>
       <cl:xylayoutdata std:sid="xyl-data-dfcbb162" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:calendaritemset datasetid="projectList" label="projectName" value="projectName" start="projectStart" end="projectEnd"/>
+      <cl:calendaritemset datasetid="projectList" label="projectName" value="projectName" tooltip="projectName" start="projectStart" end="projectEnd"/>
     </cl:calendar>
     <cl:xylayout std:sid="xylayout-6fbf1cc2"/>
   </body>
