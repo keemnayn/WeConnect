@@ -74,7 +74,7 @@
         <cl:requestdata dataid="roomReservParam"/>
       </cl:submission>
     </cl:model>
-    <cl:appspec title="회의실 예약"/>
+    <cl:appspec title="회의실 예약 팝업"/>
   </head>
   <body std:sid="body-82ce9a78">
     <cl:listener std:sid="listener-31182db2" name="init" handler="onBodyInit"/>

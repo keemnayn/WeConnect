@@ -13,7 +13,7 @@
 			// Start - User Script
 			/************************************************
 			 * TeamPostCreate.js
-			 * Created at 2023. 8. 21. 오후 5:15:52.
+			 * Created at 2023. 8. 25. 오후 5:15:52.
 			 *
 			 * @author keemn
 			 ************************************************/
@@ -25,10 +25,11 @@
 			function onInsertBtnClick(e) {
 				var insertBtn = e.control;
 				var submission = app.lookup("teamPostCreateSub");
-				var proposalTitle = app.lookup("teamPostTitleIpb").value;
-				var proposalContent = app.lookup("teamPostContentIpb").value;
+				//var projectId = app.lookup("projectNameCmb").value;
+				var teamPostTitle = app.lookup("teamPostTitleIpb").value;
+				var teamPostContent = app.lookup("teamPostContentIpb").value;
 				if (!teamPostTitle || !teamPostContent) {
-					alert("팀게시판의 제목과 내용을 모두 입력해주세요.");
+					alert("참여하는 프로젝트 팀 게시판의 제목과 내용을 모두 입력해주세요.");
 				} else {
 					submission.send();
 				}
@@ -38,38 +39,64 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onProposalCreateSubSubmitSuccess(e) {
-				var proposalCreateSub = e.control;
-				alert("건의사항 게시물 등록 완료");
+			function onTeamPostCreateSubSubmitSuccess(e) {
+				var teamPostCreateSub = e.control;
+				alert("팀게시판 게시물 등록 완료");
 				app.close();
 			}
 
 			/*
-			 * "취소" 버튼(btnRevert)에서 click 이벤트 발생 시 호출.
+			 * "취소" 버튼(revertBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onBtnRevertClick(e){
-				var btnRevert = e.control;
+			function onRevertBtnClick(e) {
+				var revertBtn = e.control;
 				app.close();
+			}
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e){
+				app.lookup("projectInfoSub").send();
 			};
 			// End - User Script
 			
 			// Header
+			var dataSet_1 = new cpr.data.DataSet("projectInfo");
+			dataSet_1.parseData({
+				"columns" : [
+					{
+						"name": "projectId",
+						"dataType": "number"
+					},
+					{"name": "projectName"}
+				]
+			});
+			app.register(dataSet_1);
 			var dataMap_1 = new cpr.data.DataMap("teamPostCreateParam");
 			dataMap_1.parseData({
 				"columns" : [
 					{"name": "teamPostTitle"},
-					{"name": "teamPostContent"}
+					{"name": "teamPostContent"},
+					{"name": "projectId"}
 				]
 			});
 			app.register(dataMap_1);
-			var submission_1 = new cpr.protocols.Submission("teamPostCreateSub");
+			var submission_1 = new cpr.protocols.Submission("projectInfoSub");
+			submission_1.method = "get";
 			submission_1.action = "member/teams";
-			submission_1.addRequestData(dataMap_1);
-			if(typeof onProposalCreateSubSubmitSuccess == "function") {
-				submission_1.addEventListener("submit-success", onProposalCreateSubSubmitSuccess);
-			}
+			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("teamPostCreateSub");
+			submission_2.action = "member/teams";
+			submission_2.addRequestData(dataMap_1);
+			if(typeof onTeamPostCreateSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onTeamPostCreateSubSubmitSuccess);
+			}
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1024px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
@@ -121,9 +148,9 @@
 					});
 				})(group_2);
 				container.addChild(group_2, {
-					"top": "135px",
+					"top": "209px",
 					"right": "5px",
-					"bottom": "60px",
+					"bottom": "62px",
 					"left": "5px"
 				});
 				var group_3 = new cpr.controls.Container();
@@ -136,42 +163,26 @@
 				formLayout_2.horizontalSpacing = "10px";
 				formLayout_2.verticalSpacing = "10px";
 				formLayout_2.setColumns(["100px", "1fr"]);
-				formLayout_2.setRows(["1fr"]);
+				formLayout_2.setRows(["50px"]);
 				group_3.setLayout(formLayout_2);
-				(function(container){
-					var output_2 = new cpr.controls.Output();
-					output_2.value = "제목";
-					container.addChild(output_2, {
-						"colIndex": 0,
-						"rowIndex": 0
-					});
-					var inputBox_2 = new cpr.controls.InputBox("teamPostTitleIpb");
-					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
-					inputBox_2.setBindContext(dataMapContext_2);
-					inputBox_2.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostTitle");
-					container.addChild(inputBox_2, {
-						"colIndex": 1,
-						"rowIndex": 0
-					});
-				})(group_3);
 				container.addChild(group_3, {
 					"top": "70px",
 					"right": "5px",
 					"left": "5px",
 					"height": "60px"
 				});
-				var output_3 = new cpr.controls.Output();
-				output_3.value = "게시글 작성";
-				container.addChild(output_3, {
+				var output_2 = new cpr.controls.Output();
+				output_2.value = "프로젝트 팀원들에게 전달할 내용을 자유롭게 작성해주세요.";
+				container.addChild(output_2, {
 					"top": "10px",
 					"right": "5px",
 					"left": "5px",
 					"height": "50px"
 				});
-				var button_1 = new cpr.controls.Button("btnRevert");
+				var button_1 = new cpr.controls.Button("revertBtn");
 				button_1.value = "취소";
-				if(typeof onBtnRevertClick == "function") {
-					button_1.addEventListener("click", onBtnRevertClick);
+				if(typeof onRevertBtnClick == "function") {
+					button_1.addEventListener("click", onRevertBtnClick);
 				}
 				container.addChild(button_1, {
 					"right": "506px",
@@ -190,6 +201,42 @@
 					"width": "200px",
 					"height": "50px"
 				});
+				var group_4 = new cpr.controls.Container();
+				var formLayout_3 = new cpr.controls.layouts.FormLayout();
+				formLayout_3.scrollable = false;
+				formLayout_3.topMargin = "5px";
+				formLayout_3.rightMargin = "5px";
+				formLayout_3.bottomMargin = "5px";
+				formLayout_3.leftMargin = "5px";
+				formLayout_3.horizontalSpacing = "10px";
+				formLayout_3.verticalSpacing = "10px";
+				formLayout_3.setColumns(["100px", "1fr"]);
+				formLayout_3.setRows(["50px"]);
+				group_4.setLayout(formLayout_3);
+				(function(container){
+					var output_3 = new cpr.controls.Output();
+					output_3.value = "제목";
+					container.addChild(output_3, {
+						"colIndex": 0,
+						"rowIndex": 0
+					});
+					var inputBox_2 = new cpr.controls.InputBox("teamPostTitleIpb");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
+					inputBox_2.setBindContext(dataMapContext_2);
+					inputBox_2.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostTitle");
+					container.addChild(inputBox_2, {
+						"colIndex": 1,
+						"rowIndex": 0,
+						"colSpan": 1,
+						"rowSpan": 1
+					});
+				})(group_4);
+				container.addChild(group_4, {
+					"top": "139px",
+					"right": "6px",
+					"left": "4px",
+					"height": "60px"
+				});
 			})(group_1);
 			container.addChild(group_1, {
 				"top": "0px",
@@ -197,6 +244,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "팀포스트 등록 팝업";

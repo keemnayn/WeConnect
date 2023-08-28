@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-c8426e59" version="1.0.4584">
+  <head std:sid="head-882d416f">
+    <screen std:sid="screen-e88abb4d" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="480" customWidth="640" active="true"/>
+    <screen std:sid="screen-59ce11c6" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-171403d6" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-c98bf8d7" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-ad5ad338">
+      <cl:dataset std:sid="d-set-064ba764" id="roomInfo">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-6344291a" name="roomId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-4e39fc2f" name="roomName"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-58e225db" id="time">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-37325ea6" name="time" datatype="number"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[9]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[10]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[11]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[12]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[13]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[14]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[15]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[16]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[17]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[18]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[19]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="time"><![CDATA[20]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:datamap std:sid="d-map-4b5118e4" id="roomReservUpdateParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fa63dea6" name="roomReservDate"/>
+          <cl:datacolumn std:sid="d-column-bef54db2" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-f96d0284" name="roomReservEndTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-62e93a75" name="proposal"/>
+          <cl:datacolumn std:sid="d-column-39ea36e0" name="roomId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-7907e264" name="roomReservId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-3351c80e" id="roomInfoSub" method="get" action="member/room-reserv">
+        <cl:listener std:sid="listener-840548b3" name="submit-success" handler="onRoomInfoSubSubmitSuccess"/>
+        <cl:responsedata dataid="roomInfo"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-7ad4e82b" id="roomReservSub" action="member/room-reserv">
+        <cl:listener std:sid="listener-9196cd08" name="submit-success" handler="onRoomReservSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-19af51ef" name="submit-done" handler="onRoomReservSubSubmitDone"/>
+        <cl:requestdata dataid="roomReservUpdateParam"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec title="회의실 예약 수정 팝업"/>
+  </head>
+  <body std:sid="body-82ce9a78">
+    <cl:listener std:sid="listener-31182db2" name="init" handler="onBodyInit"/>
+    <cl:button std:sid="button-204368de" id="updateBtn" value="수정">
+      <cl:listener std:sid="listener-71d43588" name="click" handler="onReservBtnClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-b23d0cea" right="340px" bottom="30px" left="100px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-16f503a5" id="cancelBtn" value="취소">
+      <cl:listener std:sid="listener-04da6413" name="click" handler="onCancelBtnClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-bbecaf02" right="100px" bottom="30px" left="340px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:group std:sid="group-00e92533">
+      <cl:xylayoutdata std:sid="xyl-data-0d65a5e8" top="100px" right="20px" left="20px" height="130px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:dateinput std:sid="d-input-332ca669" id="dateDti">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="roomReservDate"/>
+        <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+        <cl:formdata std:sid="f-data-eed071f4" row="0" col="3"/>
+      </cl:dateinput>
+      <cl:output std:sid="output-d38329b6" style="text-align:center;" value="종료 시간">
+        <cl:formdata std:sid="f-data-ff657763" row="2" col="2"/>
+      </cl:output>
+      <cl:combobox std:sid="c-box-736a7682" id="startCmd">
+        <cl:listener std:sid="listener-4e39d411" name="click" handler="onStartCmdClick"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="roomReservStartTime"/>
+        <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+        <cl:formdata std:sid="f-data-102d606c" row="2" col="1"/>
+        <cl:itemset datasetid="time" label="time" value="time"/>
+      </cl:combobox>
+      <cl:combobox std:sid="c-box-713d86eb" id="endCmd">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="roomReservEndTime"/>
+        <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+        <cl:formdata std:sid="f-data-6380e2c9" row="2" col="3"/>
+        <cl:itemset datasetid="time" label="time" value="time"/>
+      </cl:combobox>
+      <cl:output std:sid="output-0ff31677" style="text-align:center;" value="시작 시간">
+        <cl:formdata std:sid="f-data-770113ec" row="2" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-cbe31f9c" style="text-align:center;" value="회의실">
+        <cl:formdata std:sid="f-data-a035976b" row="0" col="0"/>
+      </cl:output>
+      <cl:combobox std:sid="c-box-ef789ab2" id="roomNameCmb">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="roomId"/>
+        <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+        <cl:formdata std:sid="f-data-fb64329b" row="0" col="1"/>
+        <cl:itemset datasetid="roomInfo" label="roomName" value="roomId"/>
+      </cl:combobox>
+      <cl:output std:sid="output-4cc97a92" style="text-align:center;" value="예약 날짜">
+        <cl:formdata std:sid="f-data-155f9550" row="0" col="2"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-ea583314" scrollable="false" hspace="0px" vspace="0px">
+        <cl:rows length="50" unit="PIXEL"/>
+        <cl:rows length="30" unit="PIXEL"/>
+        <cl:rows length="50" unit="PIXEL"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:group std:sid="group-6a6f5fce">
+      <cl:xylayoutdata std:sid="xyl-data-ae96f577" right="20px" bottom="130px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+      <cl:inputbox std:sid="i-box-2e5bfeee" id="ipb1">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="proposal"/>
+        <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+        <cl:formdata std:sid="f-data-430b5778" row="0" col="1"/>
+      </cl:inputbox>
+      <cl:output std:sid="output-6605a91d" style="text-align:center;" value="목적">
+        <cl:formdata std:sid="f-data-a6032d6b" row="0" col="0" rowspan="1" colspan="1"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-e9e62890" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="50" unit="PIXEL"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:output std:sid="output-f62a86ba" value="회의실 예약">
+      <cl:xylayoutdata std:sid="xyl-data-99c93954" top="20px" right="420px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:output std:sid="output-66b9fadc" id="roomReservIdOutput">
+      <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomReservUpdateParam" columnname="roomReservId"/>
+      <cl:datamapcontext datacontrolid="roomReservUpdateParam"/>
+      <cl:xylayoutdata std:sid="xyl-data-6c164ba9" top="10px" right="30px" width="50px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+    </cl:output>
+    <cl:xylayout std:sid="xylayout-aa2d9559"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

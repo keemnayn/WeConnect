@@ -16,68 +16,115 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-2f6c6ce4" id="leaveRequestList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-93b43ba3" name="leaveRequestId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-060e761c" name="memberId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-3acf7591" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-de05da16" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-cdede43c" name="departmentName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-12a510dd" name="leaveRequestReason" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-30824483" name="leaveRequestStart" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-e7803bb8" name="leaveRequestEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-895b717d" name="formattedLeaveCount"/>
+          <cl:datacolumn std:sid="d-column-99d13469" name="leaveRequestType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a16b30a7" name="leaveRequestStatus" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:submission std:sid="submission-459a1b9c" id="attend1" method="get" action="member/attendance">
         <cl:listener std:sid="listener-59b3582e" name="submit-success" handler="onAttend1SubmitSuccess"/>
         <cl:responsedata dataid="attend"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-0abaafad" id="leaveRequestListSub" async="false" method="get" action="admin/leave-request">
+        <cl:responsedata dataid="leaveRequestList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-497bf1f2">
     <cl:listener std:sid="listener-bd0e60d9" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-43b7f3ca" name="load" handler="onBodyLoad"/>
+    <cl:listener std:sid="listener-c9bebdf0" name="before-unload" handler="onBodyBeforeUnload"/>
     <cl:grid std:sid="grid-ebf80db0" id="grd1" datasetid="attend">
-      <cl:xylayoutdata std:sid="xyl-data-e2657142" top="230px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-037d7e5c" top="167px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:headerstyle style="background-color:#E0E1E2; font-weight:800; background-image:none;"/>
       <cl:gridcolumn std:sid="g-column-b9503507"/>
-      <cl:gridcolumn std:sid="g-column-cccf9c68"/>
       <cl:gridcolumn std:sid="g-column-559da3e8"/>
       <cl:gridcolumn std:sid="g-column-d333111e"/>
+      <cl:gridcolumn std:sid="g-column-cccf9c68"/>
       <cl:gridcolumn std:sid="g-column-cf9fa6bb"/>
       <cl:gridheader std:sid="gh-band-3d2d7e41">
         <cl:gridrow std:sid="g-row-912b89d8" height="50px"/>
         <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" text="날짜"/>
-        <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="1" text="이름"/>
-        <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="2" text="출근"/>
-        <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="3" text="퇴근"/>
+        <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="1" text="출근"/>
+        <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="2" text="퇴근"/>
+        <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="3" text="이름"/>
         <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" text="정상"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-1616b1d5">
         <cl:gridrow std:sid="g-row-48a04b08" height="50px"/>
         <cl:gridcell std:sid="gd-cell-b15d20d3" rowindex="0" colindex="0" columnname="workDay"/>
-        <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="1" columnname="memberName"/>
-        <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="2" columnname="workInTime"/>
-        <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="3" columnname="workOutTime"/>
-        <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" columnname="attendanceStatus"/>
+        <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="1" columnname="workInTime"/>
+        <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="2" columnname="workOutTime"/>
+        <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="3" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" style="border-radius:50px; color:#333333;" columnname="attendanceStatus"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:group std:sid="group-b1ca9fca" style="border-right-style:solid; border-bottom-color:black; border-top-width:1px; border-left-style:solid; border-right-width:1px; border-left-color:black; border-bottom-width:1px; border-top-color:black; border-bottom-style:solid; border-right-color:black; border-left-width:1px; border-top-style:solid;">
-      <cl:xylayoutdata std:sid="xyl-data-f179938f" top="10px" right="440px" left="440px" height="200px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-      <cl:button std:sid="button-48359ca5" value="출근">
-        <cl:xylayoutdata std:sid="xyl-data-a8f52d66" right="140px" bottom="20px" width="100px" height="100px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
-      </cl:button>
-      <cl:button std:sid="button-b5579d86" value="퇴근">
-        <cl:xylayoutdata std:sid="xyl-data-e37bd5f6" right="20px" bottom="20px" width="100px" height="100px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
-      </cl:button>
-      <cl:output std:sid="output-4c3ddb84">
-        <cl:datarowcontext datacontrolid="attend"/>
-        <cl:xylayoutdata std:sid="xyl-data-016f7d85" bottom="158px" left="10px" width="300px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-      </cl:output>
-      <cl:output std:sid="output-dd92b046" value="Output">
-        <cl:xylayoutdata std:sid="xyl-data-0c1fb098" right="388px" bottom="118px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-      </cl:output>
-      <cl:output std:sid="output-60378a4c">
-        <cl:datarowcontext datacontrolid="attend"/>
-        <cl:xylayoutdata std:sid="xyl-data-2438bdc2" right="388px" bottom="68px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-      </cl:output>
-      <cl:output std:sid="output-11397607">
-        <cl:datarowcontext datacontrolid="attend"/>
-        <cl:xylayoutdata std:sid="xyl-data-21448e62" right="388px" bottom="18px" left="10px" height="40px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-      </cl:output>
-      <cl:xylayout std:sid="xylayout-6821b2a6"/>
+    <cl:group std:sid="group-bacbdbd1" style="background-color:8px; border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-c195b54e" top="0px" right="0px" left="0px" height="168px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:group std:sid="group-eaa20a3b" style="background-color:#E5E5E5;">
+        <cl:xylayoutdata std:sid="xyl-data-c454b999" top="0px" bottom="0px" left="0px" width="316px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+        <cl:img std:sid="image-030e8d1b" style="border-radius:50px;" src="../theme/controls/icons/prifile_none.png" fallbacksrc="../theme/controls/icons/prifile_none.png">
+          <cl:xylayoutdata std:sid="xyl-data-3f55feb8" top="10px" left="10px" width="130px" height="130px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:img>
+        <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="font-weight:700; font-size:25px; text-align:center;" value="&lt;div>&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-4a446177" top="33px" left="159px" width="127px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:htmlsnippet std:sid="htmlsnippet-96136ec8" id="dpm" style="font-weight:700; font-size:25px; text-align:center;" value="&lt;div>&lt;/div>">
+          <cl:xylayoutdata std:sid="xyl-data-2366bf7f" top="90px" left="159px" width="129px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        </cl:htmlsnippet>
+        <cl:xylayout std:sid="xylayout-9c87bf64"/>
+      </cl:group>
+      <cl:group std:sid="group-9d8172bc">
+        <cl:xylayoutdata std:sid="xyl-data-8acdca0b" top="0px" right="0px" bottom="0px" width="1259px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:output std:sid="output-aaa3fb8b" id="leaveCount" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; font-weight:700; border-right-width:1px; border-left-color:#bfbfbf; font-size:25px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;">
+          <cl:listener std:sid="listener-2925707e" name="value-change" handler="onOutputValueChange"/>
+          <cl:datasetbind property="value" datacontrolid="leaveRequestList" columnname="formattedLeaveCount" rowindex="0"/>
+          <cl:formdata std:sid="f-data-ff61d2cb" row="0" col="1" rowspan="1" colspan="1"/>
+        </cl:output>
+        <cl:output std:sid="output-f0d6dfa8" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="Output">
+          <cl:formdata std:sid="f-data-3eb3db5d" row="0" col="2"/>
+        </cl:output>
+        <cl:output std:sid="output-1c52a9af" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="Output">
+          <cl:formdata std:sid="f-data-eb0af113" row="0" col="3"/>
+        </cl:output>
+        <cl:button std:sid="button-0580c02b" style="border-radius:8px; background-color:#F7EEEB; background-image:none;" value="퇴근">
+          <cl:formdata std:sid="f-data-42193da9" row="0" col="5"/>
+        </cl:button>
+        <cl:button std:sid="button-8b0c68da" style="border-radius:8px; background-color:#E0E1E2; color:#ffffff; background-image:none;" value="출근">
+          <cl:formdata std:sid="f-data-a98f97de" row="0" col="4"/>
+        </cl:button>
+        <cl:output std:sid="output-99fafa5a" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-top-width:1px; font-weight:700; border-right-width:1px; border-left-color:#bfbfbf; font-size:25px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="총연차">
+          <cl:formdata std:sid="f-data-af4d86ca" row="0" col="0"/>
+        </cl:output>
+        <cl:formlayout std:sid="f-layout-fb25187f" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+          <cl:rows length="1" unit="FRACTION"/>
+          <cl:columns length="150" unit="PIXEL"/>
+          <cl:columns length="324" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
+          <cl:columns length="150" unit="PIXEL"/>
+          <cl:columns length="325" unit="PIXEL"/>
+          <cl:columns length="155" unit="PIXEL"/>
+          <cl:columns length="155" unit="PIXEL"/>
+        </cl:formlayout>
+      </cl:group>
+      <cl:xylayout std:sid="xylayout-058c5599"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-8748a493"/>
   </body>
   <std:studiosetting>
-    <std:hruler/>
+    <std:hruler>
+      <std:guide position="241"/>
+    </std:hruler>
     <std:vruler/>
   </std:studiosetting>
 </html>

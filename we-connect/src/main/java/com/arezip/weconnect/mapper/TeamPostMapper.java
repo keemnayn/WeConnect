@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
 
 @Mapper
@@ -12,10 +13,11 @@ public interface TeamPostMapper {
 	List<TeamPostDTO> selectTeamPostList();
 
 // 팀포스트 추가
-	TeamPostDTO insertTeamPost(long teamPostId);
+	int insertTeamPost(TeamPostDTO teamPostDTO);
 
 // 팀포스트 수정
-	// int insertTeamPost(TeamPostDTO teamPostDTO);
+	int updateTeamPost(TeamPostDTO teamPostDTO);
+
 
 // 팀포스트 삭제
 }

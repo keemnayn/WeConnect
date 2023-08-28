@@ -1,17 +1,13 @@
 package com.arezip.weconnect.test.teampost;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
-import com.arezip.weconnect.service.ProposalService;
 import com.arezip.weconnect.service.TeamPostService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,16 +25,16 @@ public class TeamPostServiceTest {
 		list.forEach(teampost -> log.info(teampost.toString()));
 	}
 
-// 건의사항 추가 service
+// 팀포스트 추가 service
 	@Test
-	@Transactional // 테스트 이후 롤백을 위해
-	void addProposalTest() {
-		ProposalDTO proposalDTO = new ProposalDTO();
-		proposalDTO.setProposalContent("서비스 테스트 제목");
-		proposalDTO.setProposalContent("서비스 테스트 내용");
-		proposalDTO.setProposalStatus("처리중");
-		// int result = proposalService.addProposal(proposalDTO);
-		// assertNotEquals(0, result);
+	void addTeamPostTest() {
+		TeamPostDTO teamPostDTO = new TeamPostDTO();
+		teamPostDTO.setTeamPostTitle("서비스 테스트 제목");
+		teamPostDTO.setTeamPostContent("서비스 테스트 내용");
+		teamPostDTO.setMemberId(141);
+		teamPostDTO.setProjectId(24);
+		int result = teamPostService.addTeamPost(teamPostDTO);
+		log.info("result {}", result);
 	}
 	/*
 	 * // 건의사항 수정 service

@@ -342,6 +342,6 @@
 			}
 		}
 	});
-	app.title = "회의실 예약";
+	app.title = "회의실 예약 팝업";
 	cpr.core.Platform.INSTANCE.register(app);
 })();

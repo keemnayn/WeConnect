@@ -89,13 +89,4 @@ public class RoomReservRestController {
 		log.info("회의실 리스트{}:", roomService.findRoomNo());
 		return new JSONDataView();
 	}
-
-	// 이미 예약되어 있는 회의실 정보
-	@GetMapping("/bookedRoomList")
-	public View BookedRoom(DataRequest dataRequest) {
-		List<RoomReservDTO> bookedList = roomReservService.findBookedRoom();
-		dataRequest.setResponse("bookedList", bookedList);
-		log.info("예약된 리스트{}", roomReservService.findBookedRoom());
-		return new JSONDataView();
-	}
 }
