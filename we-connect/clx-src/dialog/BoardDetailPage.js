@@ -41,25 +41,25 @@ function onBoardDetailSubSubmitSuccess(e) {
 	}
 }
 
-/*
- * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
- * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
- */
-function onCommentBtnClick(e) {
-	var commentBtn = e.control;
-	app.lookup("commentParamSub").send();
-	app.lookup("commentIpb").value = "";
-}
+///*
+// * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
+// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+// */
+//function onCommentBtnClick(e) {
+//	var commentBtn = e.control;
+//	app.lookup("commentParamSub").send();
+//	app.lookup("commentIpb").value = "";
+//}
 
-/*
- * 서브미션에서 submit-success 이벤트 발생 시 호출.
- * 통신이 성공하면 발생합니다.
- */
-function onCommentParamSubSubmitSuccess(e) {
-	var commentParamSub = e.control;
-	app.lookup("commentListSub").send();
-	//	return;
-}
+///*
+// * 서브미션에서 submit-success 이벤트 발생 시 호출.
+// * 통신이 성공하면 발생합니다.
+// */
+//function onCommentParamSubSubmitSuccess(e) {
+//	var commentParamSub = e.control;
+//	app.lookup("commentListSub").send();
+//	//	return;
+//}
 
 /*
  * "수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
@@ -77,32 +77,6 @@ function onBoardDeleteBtnClick(e) {
 	var boardDeleteBtn = e.control;
 	app.lookup("deleteBoardSub").send();
 }
-
-///*
-// * "댓글 수정" 버튼(commentUpdateBtn)에서 click 이벤트 발생 시 호출.
-// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-// */
-//function onCommentUpdateBtnClick(e) {
-//	var commentUpdateBtn = e.control;
-//	var grid = app.lookup("commentGrd");
-//	var selectedRowIndices = grid.getSelectedRowIndex();
-//	confirm("댓글을 수정하시겠습니까?");
-//	grid.updateRow(selectedRowIndices);
-//	app.lookup("updateCommentSub").send();
-//}
-//
-///*
-// * "댓글 삭제" 버튼(commentDeleteBtn)에서 click 이벤트 발생 시 호출.
-// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-// */
-//function onCommentDeleteBtnClick(e) {
-//	var commentDeleteBtn = e.control;
-//	var grid = app.lookup("commentGrd");
-//	var selectedRowIndices = grid.getSelectedRowIndex();
-//	confirm("댓글을 삭제하시겠습니까?");
-//	grid.deleteRow(selectedRowIndices);
-//	app.lookup("deleteCommentSub").send();
-//}
 
 /*
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
@@ -163,20 +137,56 @@ function onCommentListSubReceive(e) {
 				autoSize: "both"
 			});
 			comment.addEventListener("deleteClick", function(e){
-				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
+				app.lookup("dmFreeBoardCommentId").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
 				console.log(comment.freeBoardCommentId);
 				if(confirm("댓글을 삭제하시겠습니까?")) {
 					app.lookup("deleteCommentSub").send();
 				}
 			});
-			comment.addEventListener("updateClick", function(e){
-				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
-				if(confirm("댓글을 수정하시겠습니까?")) {
-					app.lookup("updateCommentSub").send();
-				}
-			});
+//			comment.addEventListener("updateClick", function(e){
+//				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
+//				if(confirm("댓글을 수정하시겠습니까?")) {
+//					app.lookup("updateCommentSub").send();
+//				}
+//			});
 		})(i);
 	}
 }
+//댓글 등록
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onInsertCommentSubSubmitSuccess(e){
+	var insertCommentSub = e.control;
+	app.lookup("commentListSub").send();
+	app.lookup("commentIpb").text = "";
+}
 
+/*
+ * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onCommentBtnClick2(e){
+	var commentBtn = e.control;
+	var hostProperty = app.getHostProperty("initValue");
+	var freeBoardId = hostProperty["freeBoardId"];
+	app.lookup("freeBoardId").value = freeBoardId;
+	app.lookup("commentInsertParam").setValue("freeBoardId", freeBoardId);
+	var contentValue = app.lookup("commentInsertParam").getValue("freeBoardCommentContent");
+	if(contentValue == null || contentValue=="" ){
+			alert("내용을 입력하세요");
+			app.lookup("commentIpb").focus();
+			return;
+		}
+	app.lookup("insertCommentSub").send();
+}
 
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onDeleteCommentSubSubmitSuccess2(e){
+	var deleteCommentSub = e.control;
+	app.lookup("commentListSub").send();
+}

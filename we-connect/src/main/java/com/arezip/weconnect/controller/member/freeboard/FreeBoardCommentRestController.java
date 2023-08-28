@@ -43,40 +43,30 @@ public class FreeBoardCommentRestController {
 		return new JSONDataView();
 	}
 	
-	//댓글 등록
+	//댓글 등록---------->clx바꾸고 controller 작성하면 됨
 	@PostMapping
 	public View addFreeBoardComment(HttpServletRequest request, DataRequest dataRequest) {
-		ParameterGroup commentInsertParam = dataRequest.getParameterGroup("commentInsertParam");
-		ParameterGroup detailBoardParam = dataRequest.getParameterGroup("detailBoardParam");
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
 		log.info("memberId {}", memberId);
+		ParameterGroup commentInsertParam = dataRequest.getParameterGroup("commentInsertParam");
 		String freeBoardCommentContent = commentInsertParam.getValue("freeBoardCommentContent");
 		log.info("freeBoardCommentContent {}", freeBoardCommentContent);
-		long freeBoardId = Long.parseLong(detailBoardParam.getValue("freeBoardId"));
+		long freeBoardId = Long.parseLong(commentInsertParam.getValue("freeBoardId"));
 		log.info("freeBoardId {}", freeBoardId);
-		 
-		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-		freeBoardCommentDTO.setMemberId(memberId);  
-		freeBoardCommentDTO.setFreeBoardId(freeBoardId);
-		freeBoardCommentDTO.setFreeBoardCommentContent(freeBoardCommentContent);
-		freeBoardService.insertFreeBoardComment(freeBoardCommentDTO);
+		freeBoardService.insertFreeBoardComment(freeBoardCommentContent,memberId,freeBoardId);
 		return new JSONDataView();
 	}
 	//댓글 삭제 
 	@DeleteMapping
 	public View deleteFreeBoardComment(HttpServletResponse response, HttpServletRequest request, DataRequest dataRequest) {
-		ParameterGroup parameterGroup = dataRequest.getParameterGroup("freeBoardComment");
+//		HttpSession session = request.getSession();
+//		Long memberId = (Long) session.getAttribute("memberId");
+		ParameterGroup parameterGroup = dataRequest.getParameterGroup("dmFreeBoardCommentId");
 		System.out.println("parameterGroup"+parameterGroup);
-			HttpSession session = request.getSession();
-			Long memberId = (Long) session.getAttribute("memberId");
-			Long freeBoardCommentId = Long.parseLong(parameterGroup.getValue("freeBoardCommentId"));
-			log.info("freeBoardCommentId"+freeBoardCommentId);
-			FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-			freeBoardCommentDTO.setMemberId(memberId);
-			freeBoardCommentDTO.setFreeBoardCommentId(freeBoardCommentId);
-			freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
-//			dataRequest.setResponse(name, data);
+		long freeBoardCommentId = Long.parseLong(parameterGroup.getValue("freeBoardCommentId"));
+		log.info("freeBoardCommentId"+freeBoardCommentId);
+		freeBoardService.deleteFreeBoardComment(freeBoardCommentId);
 		return new JSONDataView();
 	}
 	//댓글 수정 

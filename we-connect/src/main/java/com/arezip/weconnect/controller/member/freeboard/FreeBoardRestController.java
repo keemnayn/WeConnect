@@ -93,16 +93,12 @@ public class FreeBoardRestController {
 	@GetMapping("detail")
 	public View freeBoardDetail(DataRequest dataRequest, HttpServletResponse response, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-//		//로그인한 회원 정보 담음 
+		//로그인한 회원 정보 담음 
 		MemberDTO memberDTO = new MemberDTO();
 		long memberId = (long) session.getAttribute("memberId");
 		memberDTO.setMemberId(memberId);
-		log.info("memberId {}", memberId);
-		System.out.println("dataRequest" + dataRequest);
 		ParameterGroup param = dataRequest.getParameterGroup("detailBoardParam");
-		System.out.println("param" + param);
 		long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
-		log.info("freeBoardId {}", freeBoardId);
 		freeBoardService.updateFreeBoardViews(freeBoardId);
 		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
 		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);

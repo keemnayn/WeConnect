@@ -49,6 +49,11 @@
           <cl:datacolumn std:sid="d-column-287a706a" name="memberId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-03362515" id="dmFreeBoardCommentId">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-5479cd61" name="freeBoardCommentId"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-c6451574" id="boardDetailSub" method="get" action="member/boards/detail">
         <cl:listener std:sid="listener-a026cb56" name="submit-success" handler="onBoardDetailSubSubmitSuccess"/>
         <cl:listener std:sid="listener-e3e5463f" name="submit-done" handler="onBoardDetailSubSubmitDone"/>
@@ -65,8 +70,8 @@
         <cl:requestdata dataid="detailBoardParam"/>
       </cl:submission>
       <cl:submission std:sid="submission-11f57d56" id="deleteCommentSub" method="delete" action="member/boards/detail/comments">
-        <cl:listener std:sid="listener-598a2160" name="submit-success" handler="onDeleteCommentSubSubmitSuccess"/>
-        <cl:requestdata dataid="freeBoardComment"/>
+        <cl:listener std:sid="listener-d55fd41e" name="submit-success" handler="onDeleteCommentSubSubmitSuccess2"/>
+        <cl:requestdata dataid="dmFreeBoardCommentId"/>
       </cl:submission>
       <cl:submission std:sid="submission-f4c118fa" id="deleteBoardSub" method="delete" action="member/boards">
         <cl:listener std:sid="listener-8e5a431d" name="submit-success" handler="onDeleteBoardSubSubmitSuccess"/>
@@ -83,6 +88,10 @@
         <cl:listener std:sid="listener-7f4735a8" name="submit-success" handler="onCommentListSubSubmitSuccess"/>
         <cl:listener std:sid="listener-34ca688d" name="receive" handler="onCommentListSubReceive"/>
         <cl:requestdata dataid="detailBoardParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-f0ea78a0" id="insertCommentSub" action="member/boards/detail/comments">
+        <cl:listener std:sid="listener-812943ac" name="submit-success" handler="onInsertCommentSubSubmitSuccess"/>
+        <cl:requestdata dataid="commentInsertParam"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="상세 페이지 팝업"/>
@@ -171,7 +180,7 @@
         <cl:xylayoutdata std:sid="xyl-data-55b3702b" top="0px" left="0px" width="1460px" height="70px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
       <cl:button std:sid="button-885eafae" id="commentBtn" value="등록">
-        <cl:listener std:sid="listener-f2441ed2" name="click" handler="onCommentBtnClick"/>
+        <cl:listener std:sid="listener-474e61f6" name="click" handler="onCommentBtnClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-b6a129f2" top="0px" right="0px" width="100px" height="70px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-2dde6a87"/>

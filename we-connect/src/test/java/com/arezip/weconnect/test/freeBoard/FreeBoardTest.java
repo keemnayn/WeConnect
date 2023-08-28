@@ -86,19 +86,17 @@ public class FreeBoardTest {
 	//댓글 등록
 	@Test
 	void insertComment() {
-		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-		freeBoardCommentDTO.setFreeBoardCommentContent("ServiceTest");
-		freeBoardCommentDTO.setMemberId(24);
-		freeBoardCommentDTO.setFreeBoardId(61);
-		int result = freeBoardService.insertFreeBoardComment(freeBoardCommentDTO);
+		long memberId = 142;
+		long freeBoardId = 101;
+		String freeBoardCommentContent = "unitTest";
+		int result = freeBoardService.insertFreeBoardComment(freeBoardCommentContent,memberId,freeBoardId);
 		assertNotEquals(0, result);
 	}
 	//댓글 삭제 
 	@Test
 	void deleteComment() {
-		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-		freeBoardCommentDTO.setFreeBoardCommentId(42);
-		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
+		long freeBoardCommentId = 455;
+		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentId);
 		assertNotEquals(0, result);
 	}
 	//댓글 수정
