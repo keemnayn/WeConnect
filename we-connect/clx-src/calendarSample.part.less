@@ -1,0 +1,27 @@
+/* 캘린더 */
+.cl-calendar {
+	.cl-calendar-content {
+		/* 캘린더 월간 날짜 스타일 */
+		.cl-calendar-content-day,
+		.cl-calendar-content-month,
+		.cl-calendar-content-year {
+			color: black;
+			text-align: center;
+			
+			/* 캘린더 오늘 날짜 스타일 */
+			&.cl-calendar-defaultdate {
+				background-color: #d4ebff;
+				color: #4f63c9;
+				font-weight: bold;
+			}
+		}
+	}
+	
+	/*기념일 설정(class name 이 calHoliday)*/
+	.cl-anniversary {
+		&.calHoliday {
+			background-color: green;
+			color: white;
+		}
+	}
+}

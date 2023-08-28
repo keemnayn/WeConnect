@@ -17,9 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 public class CalendarProjectServiceImpl implements CalendarProjectService {
 	private final CarlendarProjectMapper carlendarProjectMapper;
 	@Override
-	public List<ProjectDTO> findProjectStartEnd(long memberId) {
-		// TODO 캘린더에 뿌려줄 프로젝트 시작일, 마감일  
-		return carlendarProjectMapper.findProjectStartEnd(memberId);
+	public List<ProjectDTO> findProjectByMemberId(long memberId) {
+		return carlendarProjectMapper.findProjectByMemberId(memberId);
+	}
+	@Override
+	public int insertProject(ProjectDTO projectDTO) {
+		return carlendarProjectMapper.insertProject(projectDTO);
 	}
 
 }
