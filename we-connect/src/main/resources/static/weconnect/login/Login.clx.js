@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("login/Login", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/login.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -126,6 +127,7 @@
 			
 			// Configure root container
 			var container = app.getContainer();
+			container.style.setClasses(["Background"]);
 			container.style.css({
 				"background-color" : "#F8F8F8",
 				"width" : "100%",
@@ -142,7 +144,7 @@
 			group_1.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "9px",
-				"background-color" : "#FEFEFF",
+				"background-color" : "#F7F7F7",
 				"border-left-style" : "solid",
 				"vertical-align" : "middle",
 				"border-bottom-style" : "solid",
@@ -223,7 +225,7 @@
 					"background-color" : "#4D5B67",
 					"border-radius" : "8px",
 					"color" : "#FFFFFF",
-					"font-weight" : "600",
+					"font-weight" : "900",
 					"font-size" : "16px",
 					"text-align" : "center"
 				});
@@ -260,8 +262,8 @@
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "170px",
-				"left": "652px",
+				"top": "206px",
+				"left": "662px",
 				"width": "600px",
 				"height": "500px"
 			});

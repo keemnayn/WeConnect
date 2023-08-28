@@ -5,10 +5,96 @@
     <screen std:sid="screen-9121d77a" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-152b1774" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-f3fe1cf3" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-59978d40" href="../theme/controls/calendar.part.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-9f47174e">
       <cl:dataset std:sid="d-set-fba731c1" id="img">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-08c4235a" name="profileImagePath" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-36618cd8" id="noticeList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-8446addf" name="noticeId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-d23efa88" name="noticeCategory"/>
+          <cl:datacolumn std:sid="d-column-06dfa77c" name="noticeTitle"/>
+          <cl:datacolumn std:sid="d-column-5c4ff0b1" name="noticeContent"/>
+          <cl:datacolumn std:sid="d-column-0ce9e008" name="noticeCreate"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="noticeContent">공지할게요</cl:datavalue>
+            <cl:datavalue columnname="noticeCategory">점검</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="noticeContent">공지할게요</cl:datavalue>
+            <cl:datavalue columnname="noticeCategory">공지</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="noticeContent">공지할게요</cl:datavalue>
+            <cl:datavalue columnname="noticeCategory">점검</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="noticeContent">공지할게요</cl:datavalue>
+            <cl:datavalue columnname="noticeCategory">점검</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="noticeContent">공지할게요</cl:datavalue>
+            <cl:datavalue columnname="noticeCategory">공지</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-3a6ded94" id="boardList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-2ef43dd2" name="freeBoardId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-a89c5d7c" name="freeBoardTitle" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-27f6f332" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-935d25c4" name="freeBoardCreate" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-78f298d9" name="CMemberId" datatype="number"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-2f6c6ce4" id="leaveRequestList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-93b43ba3" name="leaveRequestId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-060e761c" name="memberId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-3acf7591" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-de05da16" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-cdede43c" name="departmentName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-12a510dd" name="leaveRequestReason" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-30824483" name="leaveRequestStart" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-e7803bb8" name="leaveRequestEnd" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-895b717d" name="formattedLeaveCount"/>
+          <cl:datacolumn std:sid="d-column-99d13469" name="leaveRequestType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a16b30a7" name="leaveRequestStatus" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-768a4900" id="proposalList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
+          <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
+          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus" displayonly="true"/>
+          <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
+          <cl:datacolumn std:sid="d-column-5d935672" name="memberId"/>
+          <cl:datacolumn std:sid="d-column-ac96c3d8" name="proposalContent"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-b6241745" id="memberList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-d3d4b132" name="memberId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-6fd6e040" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-72fe19b0" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a6334926" name="departmentName" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-d918fbf9" id="reservList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fb1c563d" name="roomReservId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-a8294cfe" name="roomName"/>
+          <cl:datacolumn std:sid="d-column-06dfc851" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-deddbc0e" name="roomReservDate"/>
+          <cl:datacolumn std:sid="d-column-2749fbf6" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-ac3b02f9" id="profileImage">
@@ -32,10 +118,26 @@
         <cl:listener std:sid="listener-faa62406" name="submit-success" handler="onImgSendSubmitSuccess2"/>
         <cl:requestdata dataid="profileImage"/>
       </cl:submission>
+      <cl:submission std:sid="submission-5289912b" id="noticeListSub" method="get" action="member/notice">
+        <cl:responsedata dataid="noticeList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
+        <cl:responsedata dataid="boardList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="admin/proposals">
+        <cl:responsedata dataid="proposalList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-0d02a62a" id="memberName" method="get" action="member/Name">
+        <cl:listener std:sid="listener-12b3cb1d" name="submit-success" handler="onMemberNameSubmitSuccess"/>
+        <cl:responsedata dataid="memberList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv/list">
+        <cl:responsedata dataid="reservList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
-  <body std:sid="body-03e545be" style="font-weight:400;">
+  <body std:sid="body-03e545be" style="background-color:#F8F8F8; font-weight:400;">
     <cl:listener std:sid="listener-22c66bce" name="property-change" handler="onBodyPropertyChange"/>
     <cl:listener std:sid="listener-d0d1952a" name="host-change" handler="onBodyHostChange2"/>
     <cl:listener std:sid="listener-a63fce4f" name="load" handler="onBodyLoad2"/>
@@ -43,107 +145,222 @@
     <cl:listener std:sid="listener-b930c8e3" name="click" handler="onBodyClick"/>
     <cl:listener std:sid="listener-6b1cbd05" name="before-unload" handler="onBodyBeforeUnload"/>
     <cl:listener std:sid="listener-d1f72acd" name="init" handler="onBodyInit2"/>
-    <cl:group std:sid="group-b4f5da64" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="4px" width="470px" height="230px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:htmlsnippet std:sid="htmlsnippet-50aa948b" value="&lt;h3>사용자 프로필&lt;/h3>">
-        <cl:xylayoutdata std:sid="xyl-data-f1efe090" top="-16px" left="12px" width="150px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    <cl:group std:sid="group-b4f5da64" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="0px" width="470px" height="321px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-200f1678" style="border-top-width:1px; color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; font-size:18px; border-left-width:1px;" class="line" value="&lt;p>&lt;/p>">
+        <cl:xylayoutdata std:sid="xyl-data-a690711c" top="0px" bottom="0px" left="204px" width="13px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-1e2b0abe" value="&lt;h3>사원: 김정현&lt;/h3>">
-        <cl:xylayoutdata std:sid="xyl-data-76baebf8" top="8px" left="150px" width="100px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-c26b235a" value="&lt;span>부서:&lt;/span>">
-        <cl:xylayoutdata std:sid="xyl-data-b36dd1f7" top="64px" left="150px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-4d4c0782" value="&lt;span>계정:&lt;/span>">
-        <cl:xylayoutdata std:sid="xyl-data-d881bfbd" top="93px" left="150px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-200f1678" style="border-top-width:1px; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-width:1px;" class="line" value="&lt;p>&lt;/p>">
-        <cl:xylayoutdata std:sid="xyl-data-a690711c" top="0px" bottom="0px" left="134px" width="13px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      </cl:htmlsnippet>
-      <cl:img std:sid="image-2e6efa1d" id="profile">
+      <cl:img std:sid="image-2e6efa1d" id="profile" style="border-radius:8px;" src="../theme/controls/icons/prifile_none.png" fallbacksrc="../theme/controls/icons/prifile_none.png">
         <cl:listener std:sid="listener-3b6d99c7" name="value-change" handler="onProfileValueChange2"/>
-        <cl:datasetbind property="src" datacontrolid="img" columnname="profileImagePath" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="44px" left="12px" width="111px" height="115px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="24px" left="32px" width="150px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
-      <cl:fileinput std:sid="f-input-908aa111" id="fi1" placeholder="프로필 수정">
+      <cl:fileinput std:sid="f-input-908aa111" id="fi1" style="border-radius:8px;" placeholder="프로필 수정">
         <cl:listener std:sid="listener-d98a66fc" name="value-change" handler="onFi1ValueChange"/>
         <cl:datamapbind property="value" datacontrolid="profileImage" columnname="profileImagePath"/>
-        <cl:xylayoutdata std:sid="xyl-data-301afad9" top="183px" left="12px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-301afad9" top="270px" bottom="0px" left="27px" width="160px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:fileinput>
-      <cl:xylayout std:sid="xylayout-0003050b"/>
-    </cl:group>
-    <cl:group std:sid="group-e1bd1b76" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-6f74e9b8" top="4px" left="494px" width="610px" height="230px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:htmlsnippet std:sid="htmlsnippet-ce90cf54" value="&lt;h3>근태정보&lt;/h3>">
-        <cl:xylayoutdata std:sid="xyl-data-f92d6bdc" top="-5px" left="17px" width="150px" height="80px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="color:#8A8989; font-weight:700; font-size:20px; text-align:center;">
+        <cl:xylayoutdata std:sid="xyl-data-0a4bd2fd" top="192px" left="42px" width="127px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="color:#8A8989; font-weight:900; font-size:22px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
+        <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
+        <cl:xylayoutdata std:sid="xyl-data-f53d5b86" top="62px" left="237px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:20px; text-align:center;">
+        <cl:listener std:sid="listener-1566cbe3" name="value-change" handler="onDayValueChange"/>
+        <cl:xylayoutdata std:sid="xyl-data-33a2f7d0" top="24px" left="247px" width="184px" height="31px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-da0914cb" style="font-size:18px;" value="&lt;div>출근:&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-4efc05c0" top="133px" left="226px" width="48px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go" style="font-size:18px;">
+        <cl:xylayoutdata std:sid="xyl-data-e81004ca" top="133px" left="273px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-2187928c" style="font-size:18px;" value="&lt;div>퇴근:&lt;/div>">
+        <cl:xylayoutdata std:sid="xyl-data-b2fb41e4" top="195px" left="226px" width="48px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:htmlsnippet>
+      <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" style="font-size:18px;" value="&lt;span>&lt;/span>">
+        <cl:xylayoutdata std:sid="xyl-data-bc4ccd26" top="195px" left="269px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:button std:sid="button-385dbe2f" id="Btn_workIn" style="border-radius:10px; background-color:#E0E1E2; background-image:none; text-align:center;" class="btn_go" value="출근">
         <cl:listener std:sid="listener-f04ac77a" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-c2a18410" right="80px" bottom="10px" width="59px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+        <cl:xylayoutdata std:sid="xyl-data-620da7ac" right="149px" bottom="0px" width="100px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-fcf6c989" id="btn1" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none; text-align:center;" value="퇴근">
+      <cl:button std:sid="button-fcf6c989" id="btn_out" style="border-radius:10px; background-color:#F7EEEB; font-weight:500; background-image:none; text-align:center;" value="퇴근">
         <cl:listener std:sid="listener-c1551a94" name="click" handler="onButtonClick2"/>
-        <cl:xylayoutdata std:sid="xyl-data-b71d16d3" bottom="10px" left="538px" width="60px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+        <cl:xylayoutdata std:sid="xyl-data-b3927506" bottom="0px" left="363px" width="100px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="font-weight:900; font-size:30px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
-        <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
-        <cl:xylayoutdata std:sid="xyl-data-cc86a7b1" top="122px" left="17px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:16px;">
-        <cl:listener std:sid="listener-1566cbe3" name="value-change" handler="onDayValueChange"/>
-        <cl:xylayoutdata std:sid="xyl-data-dd388c1c" top="85px" left="17px" width="228px" height="31px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-da0914cb" value="&lt;div>출근:&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-2287017a" top="194px" left="17px" width="48px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-2187928c" value="&lt;div>퇴근:&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-25ab1cde" top="194px" left="177px" width="48px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" value="&lt;span>기록없음&lt;/span>">
-        <cl:xylayoutdata std:sid="xyl-data-91fc5872" top="194px" left="220px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go">
-        <cl:xylayoutdata std:sid="xyl-data-843d47e7" top="194px" left="54px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:xylayout std:sid="xylayout-215244ed"/>
+      <cl:xylayout std:sid="xylayout-0003050b"/>
     </cl:group>
-    <cl:group std:sid="group-e64225dc" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-c815333c" top="4px" right="0px" width="458px" height="230px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-      <cl:htmlsnippet std:sid="htmlsnippet-b92b84b7" value="&lt;h3>게시판&lt;/h3>">
-        <cl:xylayoutdata std:sid="xyl-data-b5bd362d" top="-4px" left="17px" width="150px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:xylayout std:sid="xylayout-af4a6260"/>
-    </cl:group>
-    <cl:group std:sid="group-4d35f4d4" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-35f19c22" top="334px" right="0px" bottom="0px" width="461px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
-      <cl:htmlsnippet std:sid="htmlsnippet-af7014eb" value="&lt;h3>일정&lt;/h3>">
-        <cl:xylayoutdata std:sid="xyl-data-9c07e893" top="-3px" left="17px" width="150px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:xylayout std:sid="xylayout-39a69a1c"/>
-    </cl:group>
-    <cl:group std:sid="group-4545a34e" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-2aac84a7" top="334px" bottom="0px" left="3px" width="470px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:tabfolder std:sid="t-folder-4ce86530">
-        <cl:xylayoutdata std:sid="xyl-data-23999845" top="5px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-        <cl:tabitem std:sid="t-item-cb287e57" selected="true" text="tab1">
+    <cl:group std:sid="group-e1bd1b76" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-6f74e9b8" top="4px" left="494px" width="610px" height="320px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:tabfolder std:sid="t-folder-fc8cda1d">
+        <cl:xylayoutdata std:sid="xyl-data-57eeecf3" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-cc468e09" selected="true" text="건의사항">
           <std:metadata>
             <std:property key="is-active-item" value="true"/>
           </std:metadata>
-          <cl:group std:sid="group-ef323611">
+          <cl:group std:sid="group-0713e5dd">
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
-            <cl:xylayout std:sid="xylayout-ec4577f9"/>
+            <cl:grid std:sid="grid-e5bd3579" id="grd2" style="font-weight:300;" datasetid="proposalList">
+              <cl:listener std:sid="listener-f4b00546" name="selection-change" handler="onGrd2SelectionChange"/>
+              <cl:xylayoutdata std:sid="xyl-data-41145107" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
+              <cl:gridcolumn std:sid="g-column-6acbc825"/>
+              <cl:gridcolumn std:sid="g-column-183ca615"/>
+              <cl:gridcolumn std:sid="g-column-9182f4a5"/>
+              <cl:gridcolumn std:sid="g-column-0fe5208a"/>
+              <cl:gridheader std:sid="gh-band-9b3e574e">
+                <cl:gridrow std:sid="g-row-0167c506" height="35px"/>
+                <cl:gridcell std:sid="gh-cell-e61c1a1b" rowindex="0" colindex="0" text="No"/>
+                <cl:gridcell std:sid="gh-cell-260e7a88" rowindex="0" colindex="1" text="등록일"/>
+                <cl:gridcell std:sid="gh-cell-5f21cf6e" rowindex="0" colindex="2" text="제목"/>
+                <cl:gridcell std:sid="gh-cell-330b8d4d" rowindex="0" colindex="3" text="처리상태"/>
+              </cl:gridheader>
+              <cl:griddetail std:sid="gd-band-f214a2ce">
+                <cl:gridrow std:sid="g-row-ddb06cf1" height="28px"/>
+                <cl:gridcell std:sid="gd-cell-9a443e52" rowindex="0" colindex="0" columnname="proposalId"/>
+                <cl:gridcell std:sid="gd-cell-3dc3ef60" rowindex="0" colindex="1" columnname="proposalCreate"/>
+                <cl:gridcell std:sid="gd-cell-e0189852" rowindex="0" colindex="2" columnname="proposalTitle"/>
+                <cl:gridcell std:sid="gd-cell-be801412" rowindex="0" colindex="3" columnname="proposalStatus"/>
+              </cl:griddetail>
+            </cl:grid>
+            <cl:xylayout std:sid="xylayout-bef55a5f"/>
+          </cl:group>
+        </cl:tabitem>
+      </cl:tabfolder>
+      <cl:xylayout std:sid="xylayout-215244ed"/>
+    </cl:group>
+    <cl:group std:sid="group-e64225dc" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-c815333c" top="4px" right="0px" width="458px" height="320px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:tabfolder std:sid="t-folder-34110927">
+        <cl:xylayoutdata std:sid="xyl-data-d5db1524" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-b7982fd3" selected="true" text="회의실예약 ">
+          <std:metadata>
+            <std:property key="is-active-item" value="true"/>
+          </std:metadata>
+          <cl:group std:sid="group-292e54c5">
+            <std:metadata>
+              <std:property key="locked" value="true"/>
+            </std:metadata>
+            <cl:grid std:sid="grid-b9f71e9a" id="grd4" datasetid="reservList">
+              <cl:xylayoutdata std:sid="xyl-data-df2764f6" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
+              <cl:gridcolumn std:sid="g-column-3bf5b666"/>
+              <cl:gridcolumn std:sid="g-column-68c78f0e"/>
+              <cl:gridcolumn std:sid="g-column-f83b969a"/>
+              <cl:gridheader std:sid="gh-band-4d28f6f7">
+                <cl:gridrow std:sid="g-row-6be12eec" height="35px"/>
+                <cl:gridcell std:sid="gh-cell-d09ebbe4" rowindex="0" colindex="0" text="예약일자"/>
+                <cl:gridcell std:sid="gh-cell-1f588fca" rowindex="0" colindex="1" text="회의실"/>
+                <cl:gridcell std:sid="gh-cell-eb67dcbf" rowindex="0" colindex="2" text="예약자"/>
+              </cl:gridheader>
+              <cl:griddetail std:sid="gd-band-09b84f38">
+                <cl:gridrow std:sid="g-row-c0363372" height="28px"/>
+                <cl:gridcell std:sid="gd-cell-9fd30d02" rowindex="0" colindex="0" columnname="roomReservDate"/>
+                <cl:gridcell std:sid="gd-cell-6b89dbac" rowindex="0" colindex="1" columnname="roomName"/>
+                <cl:gridcell std:sid="gd-cell-1b383642" rowindex="0" colindex="2" columnname="memberName"/>
+              </cl:griddetail>
+            </cl:grid>
+            <cl:xylayout std:sid="xylayout-b6da4fdd"/>
+          </cl:group>
+        </cl:tabitem>
+      </cl:tabfolder>
+      <cl:xylayout std:sid="xylayout-af4a6260"/>
+    </cl:group>
+    <cl:group std:sid="group-4d35f4d4" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-35f19c22" top="334px" right="0px" bottom="0px" width="461px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+      <cl:calendar std:sid="calendar-fbe4e136" class="main-calendar">
+        <cl:xylayoutdata std:sid="xyl-data-c208e43d" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      </cl:calendar>
+      <cl:xylayout std:sid="xylayout-39a69a1c"/>
+    </cl:group>
+    <cl:group std:sid="group-4545a34e" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-2aac84a7" top="334px" bottom="0px" left="3px" width="470px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:tabfolder std:sid="t-folder-22855306">
+        <cl:listener std:sid="listener-b8bf295c" name="dblclick" handler="onTabFolderDblclick"/>
+        <cl:xylayoutdata std:sid="xyl-data-d1e477cd" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-caca1c57" selected="true" text="자유게시판">
+          <std:metadata>
+            <std:property key="is-active-item" value="true"/>
+          </std:metadata>
+          <cl:group std:sid="group-c2398ead">
+            <std:metadata>
+              <std:property key="locked" value="true"/>
+            </std:metadata>
+            <cl:grid std:sid="grid-c87ea130" id="grd3" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" datasetid="boardList">
+              <cl:listener std:sid="listener-caef1b7f" name="click" handler="onGrd3Click"/>
+              <cl:listener std:sid="listener-243ad36c" name="dblclick" handler="onGrd3Dblclick"/>
+              <cl:xylayoutdata std:sid="xyl-data-0199d1fc" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
+              <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
+              <cl:gridcolumn std:sid="g-column-1e411169" visible="true"/>
+              <cl:gridcolumn std:sid="g-column-2b7dab53"/>
+              <cl:gridcolumn std:sid="g-column-16c611c9"/>
+              <cl:gridcolumn std:sid="g-column-e49fcb00"/>
+              <cl:gridheader std:sid="gh-band-fb1f9736">
+                <cl:gridrow std:sid="g-row-5a3140fc" height="35px"/>
+                <cl:gridcell std:sid="gh-cell-353a8a20" rowindex="0" colindex="0" text="No"/>
+                <cl:gridcell std:sid="gh-cell-248656eb" rowindex="0" colindex="1" text="작성일"/>
+                <cl:gridcell std:sid="gh-cell-b12a4b1e" rowindex="0" colindex="2" text="제목"/>
+                <cl:gridcell std:sid="gh-cell-902411b2" rowindex="0" colindex="3" text="작성자"/>
+              </cl:gridheader>
+              <cl:griddetail std:sid="gd-band-f3e5d441">
+                <cl:gridrow std:sid="g-row-472f6c62" height="28px"/>
+                <cl:gridcell std:sid="gd-cell-2f63bb09" rowindex="0" colindex="0" columnname="freeBoardId"/>
+                <cl:gridcell std:sid="gd-cell-14e1018b" rowindex="0" colindex="1" columnname="freeBoardCreate"/>
+                <cl:gridcell std:sid="gd-cell-27857d85" rowindex="0" colindex="2" columnname="freeBoardTitle"/>
+                <cl:gridcell std:sid="gd-cell-9f49b9b3" rowindex="0" colindex="3" columnname="memberName"/>
+              </cl:griddetail>
+            </cl:grid>
+            <cl:xylayout std:sid="xylayout-ad5ce9d2"/>
           </cl:group>
         </cl:tabitem>
       </cl:tabfolder>
       <cl:xylayout std:sid="xylayout-26b74033"/>
     </cl:group>
-    <cl:group std:sid="group-552c99b1" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+    <cl:group std:sid="group-552c99b1" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-65c7913b" top="334px" bottom="0px" left="494px" width="610px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:calendar std:sid="calendar-5c8821bb" style="background-image:none;" class="main-calendar">
-        <cl:xylayoutdata std:sid="xyl-data-c752826a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      </cl:calendar>
+      <cl:tabfolder std:sid="t-folder-8a4c56fa">
+        <cl:xylayoutdata std:sid="xyl-data-d5abcbd9" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-10a1621f" selected="true" text="공지사항">
+          <std:metadata>
+            <std:property key="is-active-item" value="true"/>
+          </std:metadata>
+          <cl:group std:sid="group-5b7a6032">
+            <std:metadata>
+              <std:property key="locked" value="true"/>
+            </std:metadata>
+            <cl:grid std:sid="grid-bf7d1a6c" id="grd1" style="border-right-style:none; border-top-width:1px; border-left-style:none; border-right-width:1px; border-bottom-width:1px; border-bottom-style:none; border-left-width:1px; border-top-style:none;" class="main" datasetid="noticeList">
+              <cl:xylayoutdata std:sid="xyl-data-b2130ad6" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
+              <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
+              <cl:gridcolumn std:sid="g-column-8ccec711" visible="false"/>
+              <cl:gridcolumn std:sid="g-column-bede2bc6"/>
+              <cl:gridcolumn std:sid="g-column-9c0661a7"/>
+              <cl:gridcolumn std:sid="g-column-e4279a5d"/>
+              <cl:gridheader std:sid="gh-band-139a406d">
+                <cl:gridrow std:sid="g-row-195248d7" height="35px"/>
+                <cl:gridcell std:sid="gh-cell-f1659a0c" rowindex="0" colindex="0" text="No"/>
+                <cl:gridcell std:sid="gh-cell-42984485" rowindex="0" colindex="1" text="분류"/>
+                <cl:gridcell std:sid="gh-cell-0457f525" rowindex="0" colindex="2" text="등록일"/>
+                <cl:gridcell std:sid="gh-cell-849b782c" rowindex="0" colindex="3" text="제목"/>
+              </cl:gridheader>
+              <cl:griddetail std:sid="gd-band-6c802f5d">
+                <cl:gridrow std:sid="g-row-d556849c" height="28px"/>
+                <cl:gridcell std:sid="gd-cell-c987f4f8" rowindex="0" colindex="0" columnname="noticeId"/>
+                <cl:gridcell std:sid="gd-cell-0a66b71b" rowindex="0" colindex="1" columnname="noticeCategory"/>
+                <cl:gridcell std:sid="gd-cell-6e4198bd" rowindex="0" colindex="2" columnname="noticeCreate"/>
+                <cl:gridcell std:sid="gd-cell-4ba3cc08" rowindex="0" colindex="3" columnname="noticeTitle"/>
+              </cl:griddetail>
+            </cl:grid>
+            <cl:xylayout std:sid="xylayout-bb7f5003"/>
+          </cl:group>
+        </cl:tabitem>
+        <cl:header-style style="border-top-width:1px; border-right-width:1px; border-bottom-width:1px; border-left-width:1px;"/>
+      </cl:tabfolder>
       <cl:xylayout std:sid="xylayout-40d1f6ce"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-37092647"/>

@@ -650,7 +650,7 @@
 				});
 				container.addChild(output_1, {
 					"top": "20px",
-					"left": "50px",
+					"left": "315px",
 					"width": "120px",
 					"height": "40px"
 				});

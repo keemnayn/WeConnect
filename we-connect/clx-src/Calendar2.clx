@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-8e3b2975" version="1.0.0.0">
+  <head std:sid="head-3048524f">
+    <title>Calendar</title>
+    <screen std:sid="screen-3677d41a" id="default" name="default" minwidth="1024px" width="1024px" height="768px"/>
+    <screen std:sid="screen-2d17f5bf" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-bbbc0a1a" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-18c13bee">
+      <cl:dataset std:sid="d-set-f270c977" id="ds_calendar">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-8fc1c3b4" name="date"/>
+          <cl:datacolumn std:sid="d-column-bca30326" name="name"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-1cd6f848" style="top:0px; left:0px; width:800px; height:600px;">
+    <cl:calendar std:sid="calendar-9608b165" id="calendar">
+      <cl:xylayoutdata std:sid="xyl-data-15c8fd43" top="20px" left="20px" width="681px" height="506px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:calendar>
+    <cl:group std:sid="group-ded86eb4">
+      <cl:xylayoutdata std:sid="xyl-data-95829a2e" top="20px" left="711px" width="293px" height="506px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-98dc5530" value="날짜">
+        <cl:formdata std:sid="f-data-26cf91ed" row="0" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-136293ee" value="일정이름">
+        <cl:formdata std:sid="f-data-1919042e" row="1" col="0"/>
+      </cl:output>
+      <cl:inputbox std:sid="i-box-e3de33c3" id="name">
+        <cl:formdata std:sid="f-data-2c57958f" row="1" col="1"/>
+      </cl:inputbox>
+      <cl:dateinput std:sid="d-input-92118b5f" id="dti">
+        <cl:formdata std:sid="f-data-53e756af" row="0" col="1"/>
+      </cl:dateinput>
+      <cl:button std:sid="button-d1b380ea" value="일정 추가">
+        <cl:listener std:sid="listener-e9fd8ce3" name="click" handler="onButtonClick"/>
+        <cl:formdata std:sid="f-data-e98c14b6" row="2" col="1"/>
+      </cl:button>
+      <cl:output std:sid="output-83453f51" value="일정리스트">
+        <cl:formdata std:sid="f-data-9da7f0c1" row="4" col="0" rowspan="1" colspan="2"/>
+      </cl:output>
+      <cl:grid std:sid="grid-49258d40" id="grd1" readonly="false" datasetid="ds_calendar" showdeletedrow="false" resizablecolumns="none" columnMovable="false">
+        <cl:formdata std:sid="f-data-df8e918f" row="5" col="0" rowspan="1" colspan="2"/>
+        <cl:gridcolumn std:sid="g-column-9fcf5167" width="20px"/>
+        <cl:gridcolumn std:sid="g-column-c4d5f562" width="70px"/>
+        <cl:gridcolumn std:sid="g-column-1451d1eb" width="150px"/>
+        <cl:gridheader std:sid="gh-band-41d620c8">
+          <cl:gridrow std:sid="g-row-bf23f58b"/>
+          <cl:gridcell std:sid="gh-cell-b88919ac" rowindex="0" colindex="0" sortable="false" filterable="false"/>
+          <cl:gridcell std:sid="gh-cell-3588739e" rowindex="0" colindex="1" targetcolumnname="date" sortable="false" filterable="false" text="날짜"/>
+          <cl:gridcell std:sid="gh-cell-85494aad" rowindex="0" colindex="2" targetcolumnname="name" sortable="false" filterable="false" text="일정명"/>
+        </cl:gridheader>
+        <cl:griddetail std:sid="gd-band-501f2e52">
+          <cl:gridrow std:sid="g-row-9342d38e"/>
+          <cl:gridcell std:sid="gd-cell-362b70ad" rowindex="0" colindex="0" columntype="rowindex"/>
+          <cl:gridcell std:sid="gd-cell-f65acd1b" rowindex="0" colindex="1" columnname="date">
+            <cl:dateinput std:sid="d-input-cb3beb9b" id="dti2" style="text-align:center;" readonly="true" hidebutton="true">
+              <cl:celldata std:sid="c-data-10a3424f"/>
+            </cl:dateinput>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-0b3f38dc" rowindex="0" colindex="2" columnname="name">
+            <cl:output std:sid="output-96388d44" value="Output">
+              <cl:celldata std:sid="c-data-ecb59dc8"/>
+            </cl:output>
+          </cl:gridcell>
+        </cl:griddetail>
+      </cl:grid>
+      <cl:button std:sid="button-9bbf3ef3" value="일정 삭제">
+        <cl:listener std:sid="listener-46553fde" name="click" handler="onButtonClick2"/>
+        <cl:formdata std:sid="f-data-5fc20f5c" row="6" col="1"/>
+      </cl:button>
+      <cl:formlayout std:sid="f-layout-35da2941">
+        <cl:rows length="25" unit="PIXEL"/>
+        <cl:rows length="25" unit="PIXEL"/>
+        <cl:rows length="25" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="25" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="25" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="1" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="25" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="120"/>
+      </cl:formlayout>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-20393bbf"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>
