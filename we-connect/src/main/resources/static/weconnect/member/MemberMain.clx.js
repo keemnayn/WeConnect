@@ -590,7 +590,7 @@
 			})(group_1);
 			container.addChild(group_1, {
 				"top": "3px",
-				"left": "-3px",
+				"left": "0px",
 				"width": "470px",
 				"height": "321px"
 			});
@@ -1021,6 +1021,7 @@
 								]
 							}
 						});
+						grid_3.style.setClasses(["main"]);
 						grid_3.style.css({
 							"border-right-style" : "none",
 							"border-top-width" : "1px",

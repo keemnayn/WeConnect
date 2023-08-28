@@ -495,7 +495,6 @@ body {
 }
 /* 모든 셀 스타일 */
 .cl-grid-cell {
-  border-right: solid 1px #bbb;
   border-bottom: solid 1px #bbb;
   border-left: none 0px #bbb;
   border-top: none 0px #bbb;

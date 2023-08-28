@@ -1,7 +1,7 @@
 @import "../settings.part.less";
 
 /* 그리드 */
-.cl-grid {
+.cl-grid.main {
 	font: @default-font;
 	color: @default-text-color;
 	border-left: 0 none;
@@ -13,6 +13,7 @@
 		/* 그리드 헤더 셀 */
 		.cl-grid-cell {
 			border: none;
+			
 			/* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 			.cl-control {
 			}
@@ -384,8 +385,10 @@
 }
 
 /* 모든 셀 스타일 */
-.cl-grid-cell {
-	border-right: none;
+.cl-grid-cell.main {
+	border-right: solid 1px #bbb;
+	border-bottom: solid 1px #bbb;
+	
 	/* columnType=checkbox, columnType=rowindex와 같이 그리드에서 기본 제공하는 컬럼 */
 	.cl-builtin {
 		/* columnType=checkbox */

@@ -124,7 +124,7 @@
     <cl:listener std:sid="listener-6b1cbd05" name="before-unload" handler="onBodyBeforeUnload"/>
     <cl:listener std:sid="listener-d1f72acd" name="init" handler="onBodyInit2"/>
     <cl:group std:sid="group-b4f5da64" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="-3px" width="470px" height="321px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-942219cc" top="3px" left="0px" width="470px" height="321px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:htmlsnippet std:sid="htmlsnippet-200f1678" style="border-top-width:1px; color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; font-size:18px; border-left-width:1px;" class="line" value="&lt;p>&lt;/p>">
         <cl:xylayoutdata std:sid="xyl-data-a690711c" top="0px" bottom="0px" left="204px" width="13px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:htmlsnippet>
@@ -276,7 +276,7 @@
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
-            <cl:grid std:sid="grid-bf7d1a6c" id="grd1" style="border-right-style:none; border-top-width:1px; border-left-style:none; border-right-width:1px; border-bottom-width:1px; border-bottom-style:none; border-left-width:1px; border-top-style:none;" datasetid="noticeList">
+            <cl:grid std:sid="grid-bf7d1a6c" id="grd1" style="border-right-style:none; border-top-width:1px; border-left-style:none; border-right-width:1px; border-bottom-width:1px; border-bottom-style:none; border-left-width:1px; border-top-style:none;" class="main" datasetid="noticeList">
               <cl:xylayoutdata std:sid="xyl-data-b2130ad6" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
               <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
