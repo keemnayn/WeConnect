@@ -35,8 +35,7 @@ public class FreeBoardCommentRestController {
 	//댓글 조회
 	@GetMapping
 	public View getFreeBoardCommentList(HttpServletRequest request, DataRequest dataRequest) {
-		ParameterGroup param = dataRequest.getParameterGroup("detailBoardParam");
-//		HttpSession session = request.getSession();
+		ParameterGroup param = dataRequest.getParameterGroup("detailBoardParam");//freeBoardId들어있는 dm
 		long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
 		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
 		log.info("freeBoardCommentDTO {}",freeBoardCommentDTO);
@@ -68,22 +67,16 @@ public class FreeBoardCommentRestController {
 	@DeleteMapping
 	public View deleteFreeBoardComment(HttpServletResponse response, HttpServletRequest request, DataRequest dataRequest) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("freeBoardComment");
+		System.out.println("parameterGroup"+parameterGroup);
 			HttpSession session = request.getSession();
 			Long memberId = (Long) session.getAttribute("memberId");
 			Long freeBoardCommentId = Long.parseLong(parameterGroup.getValue("freeBoardCommentId"));
+			log.info("freeBoardCommentId"+freeBoardCommentId);
 			FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
 			freeBoardCommentDTO.setMemberId(memberId);
 			freeBoardCommentDTO.setFreeBoardCommentId(freeBoardCommentId);
 			freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
-//		if(parameterGroup != null) {
-//			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
-//			while (iter.hasNext()) {
-//				Map<String, String> rowMap = iter.next().toMap();
-//				FreeBoardCommentDTO freeBoardCommentDTO = mapToFreeBoardCommentDTO(rowMap);
-//				freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
-//			}
-//		}
-			
+//			dataRequest.setResponse(name, data);
 		return new JSONDataView();
 	}
 	//댓글 수정 
@@ -104,10 +97,5 @@ public class FreeBoardCommentRestController {
 		}
 		return new JSONDataView();
 	}
-//	//	Map을 DTO 타입으로 변경하는 메서드
-//	private FreeBoardCommentDTO mapToFreeBoardCommentDTO(Map<String, String> rowMap) {
-//		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-//		freeBoardCommentDTO.setFreeBoardCommentId(Long.parseLong(rowMap.get("freeBoardCommentId"))); // map에서의 키
-//		return freeBoardCommentDTO;
-//	}
+
 }

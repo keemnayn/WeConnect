@@ -149,31 +149,33 @@ function onCommentListSubReceive(e) {
 	//댓글 등록, 삭제 시 재조회 할 수 있게 기존 목록 삭제
 	container.removeAllChildren();
 	for (var i = 0; i < boardComment.length; i++) {
-//		(function(index){
+		(function(index){
 			//udc 동적 생성
 			var comment = new udc.FreeBoardCommentUdc();
 			//udc에서 출판한 이미지 경로 앱 속성 지정
 			comment.memberName = boardComment[i].memberName;
 			comment.freeBoardCommentDate = boardComment[i].freeBoardCommentDate;
 			comment.freeBoardCommentContent = boardComment[i].freeBoardCommentContent;
+			comment.freeBoardCommentId = boardComment[i].freeBoardCommentId;
 			container.addChild(comment, {
 				height: "100px",
 				width: "1550px",
 				autoSize: "both"
 			});
-//			comment.addEventListener("deleteClick", function(e){
-//				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
-//				if(confirm("댓글을 삭제하시겠습니까?")) {
-//					app.lookup("deleteCommentSub").send();
-//				}
-//			});
-//			comment.addEventListener("updateClick", function(e){
-//				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
-//				if(confirm("댓글을 수정하시겠습니까?")) {
-//					app.lookup("updateCommentSub").send();
-//				}
-//			});
-//		})(i);
+			comment.addEventListener("deleteClick", function(e){
+				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
+				console.log(comment.freeBoardCommentId);
+				if(confirm("댓글을 삭제하시겠습니까?")) {
+					app.lookup("deleteCommentSub").send();
+				}
+			});
+			comment.addEventListener("updateClick", function(e){
+				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
+				if(confirm("댓글을 수정하시겠습니까?")) {
+					app.lookup("updateCommentSub").send();
+				}
+			});
+		})(i);
 	}
 }
 

@@ -41,7 +41,7 @@
       </cl:datamap>
       <cl:datamap std:sid="d-map-c0698e00" id="commentIdParam">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-b74b4395" name="freeBoardCommentId"/>
+          <cl:datacolumn std:sid="d-column-b74b4395" name="freeBoardCommentId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:datamap std:sid="d-map-b12cce5f" id="memberDTO">

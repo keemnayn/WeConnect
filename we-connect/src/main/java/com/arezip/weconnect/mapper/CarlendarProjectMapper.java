@@ -8,5 +8,6 @@ import com.arezip.weconnect.model.dto.ProjectDTO;
 
 @Mapper
 public interface CarlendarProjectMapper {
-	List<ProjectDTO> findProjectStartEnd(long memberId);
+	List<ProjectDTO> findProjectByMemberId(long memberId);
+	int insertProject(ProjectDTO projectDTO);
 }

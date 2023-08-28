@@ -16,11 +16,79 @@
 			 * Created at 2023. 8. 5. 오후 7:12:25.
 			 *
 			 * @author chwec
-			 ************************************************/;
+			 ************************************************/
+			/*
+			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+			 */
+			function onBodyLoad(e){
+				app.lookup("projectListSub").send();
+			}
+
+			/*
+			 * 캘린더에서 date-click 이벤트 발생 시 호출.
+			 * Calendar의 날짜를 클릭 했을때 발생하는 이벤트.
+			 */
+			function onCalendarDateClick(e){
+				/** 
+				 * @type cpr.controls.Calendar
+				 */
+				var calendar = e.control;
+				
+				var initValue = {
+					start: e.date,
+					end: e.date
+				};
+				
+				// 신규 아이템 등록 팝업
+				app.openDialog("CalendarSample/popup/CalendarItemDetail", {
+					width: 500,
+					height: 300
+				}, function(dialog) {
+					
+					dialog.initValue = initValue;
+					
+					dialog.addEventListener("close", function(e) {
+						var returnValue = dialog.returnValue;
+						
+						if (returnValue) {
+							var start = returnValue["start"];
+							var end = returnValue["end"];
+							var event = returnValue["event"];
+							var description = returnValue["description"];
+							
+			//				var vnRowCnt = app.lookup("dsAnni").getRowCount();
+			//				app.lookup("dsAnni").insertRowData(vnRowCnt, true, {
+			//					label: event,
+			//					value: "newValue_" + event + "_" + vnRowCnt,
+			//					start: start,
+			//					end: end,
+			//					description: description
+			//				});
+							calendar.redraw();
+						}
+					});
+				});
+			};
 			// End - User Script
 			
 			// Header
-			app.supportMedia("all and (min-width: 1024px)", "default");
+			var dataSet_1 = new cpr.data.DataSet("projectList");
+			dataSet_1.parseData({
+				"columns" : [
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
+				]
+			});
+			app.register(dataSet_1);
+			var submission_1 = new cpr.protocols.Submission("projectListSub");
+			submission_1.method = "get";
+			submission_1.action = "member/project";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
+			app.supportMedia("all and (min-width: 1920px)", "Project");
+			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
 			
@@ -36,22 +104,30 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var calendar_1 = new cpr.controls.Calendar();
+			var calendar_1 = new cpr.controls.Calendar("calendar");
+			(function(calendar_1){
+				calendar_1.setItemSet(app.lookup("projectList"), {
+					"label": "projectName",
+					"value": "projectName",
+					"start": "projectStart",
+					"end": "projectEnd"
+				});
+			})(calendar_1);
+			if(typeof onCalendarItemClick == "function") {
+				calendar_1.addEventListener("item-click", onCalendarItemClick);
+			}
+			if(typeof onCalendarDateClick == "function") {
+				calendar_1.addEventListener("date-click", onCalendarDateClick);
+			}
 			container.addChild(calendar_1, {
-				"top": "5px",
-				"left": "10px",
-				"width": "1540px",
-				"height": "800px"
+				"top": "0px",
+				"right": "0px",
+				"bottom": "0px",
+				"left": "0px"
 			});
-			
-			var textArea_1 = new cpr.controls.TextArea("txa3");
-			textArea_1.value = "프로젝트 생성시 날짜 데이터 입력 받는대로 캘린더에 나타남";
-			container.addChild(textArea_1, {
-				"top": "485px",
-				"left": "78px",
-				"width": "395px",
-				"height": "22px"
-			});
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
+			}
 		}
 	});
 	app.title = "Calendar1";

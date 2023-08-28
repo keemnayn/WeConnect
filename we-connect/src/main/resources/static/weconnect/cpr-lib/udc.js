@@ -37,14 +37,21 @@
 					var memberName = app.getAppProperty("memberName");
 					memberNameOutput.text = memberName;
 					memberNameOutput.redraw();
+					
+					var freeBoardCommentIdOutput = app.lookup("freeBoardCommentId");
+					var freeBoardCommentId = app.getAppProperty("freeBoardCommentId");
+					freeBoardCommentIdOutput.text = freeBoardCommentId;
+					freeBoardCommentIdOutput.redraw();
+					
 					var freeBoardCommentDateOutput = app.lookup("freeBoardCommentDate");
 					var freeBoardCommentDate = app.getAppProperty("freeBoardCommentDate");
 					freeBoardCommentDateOutput.text = freeBoardCommentDate;
 					freeBoardCommentDateOutput.redraw();
-					var freeBoardCommentContentOutput = app.lookup("freeBoardCommentContent");
+					
+					var freeBoardCommentContentIpb = app.lookup("freeBoardCommentContent");
 					var freeBoardCommentContent = app.getAppProperty("freeBoardCommentContent");
-					freeBoardCommentContentOutput.text = freeBoardCommentContent;
-					freeBoardCommentContentOutput.redraw();
+					freeBoardCommentContentIpb.text = freeBoardCommentContent;
+					
 					app.lookup("deleteBtn").visible = app.getAppProperty("deleteBtn");
 					app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
 					
@@ -78,6 +85,7 @@
 				app.declareAppProperty("freeBoardCommentContent", null);
 				app.declareAppProperty("deleteBtn", null);
 				app.declareAppProperty("updateBtn", null);
+				app.declareAppProperty("freeBoardCommentId", null);
 				app.supportMedia("all and (min-width: 1920px)", "Project");
 				app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 				app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -97,30 +105,21 @@
 				container.setLayout(xYLayout_1);
 				
 				// UI Configuration
-				var output_1 = new cpr.controls.Output("freeBoardCommentContent");
+				var output_1 = new cpr.controls.Output("memberName");
 				output_1.value = "Output";
 				container.addChild(output_1, {
-					"top": "40px",
-					"left": "0px",
-					"width": "1550px",
-					"height": "60px"
-				});
-				
-				var output_2 = new cpr.controls.Output("memberName");
-				output_2.value = "Output";
-				container.addChild(output_2, {
 					"top": "10px",
 					"left": "0px",
-					"width": "100px",
+					"width": "50px",
 					"height": "30px"
 				});
 				
-				var output_3 = new cpr.controls.Output("freeBoardCommentDate");
-				output_3.value = "Output";
-				container.addChild(output_3, {
+				var output_2 = new cpr.controls.Output("freeBoardCommentDate");
+				output_2.value = "Output";
+				container.addChild(output_2, {
 					"top": "20px",
-					"left": "100px",
-					"width": "150px",
+					"left": "50px",
+					"width": "130px",
 					"height": "20px"
 				});
 				
@@ -144,6 +143,24 @@
 				container.addChild(button_2, {
 					"top": "20px",
 					"right": "100px",
+					"width": "100px",
+					"height": "20px"
+				});
+				
+				var inputBox_1 = new cpr.controls.InputBox("freeBoardCommentContent");
+				inputBox_1.readOnly = true;
+				container.addChild(inputBox_1, {
+					"top": "40px",
+					"right": "0px",
+					"left": "0px",
+					"height": "50px"
+				});
+				
+				var output_3 = new cpr.controls.Output("freeBoardCommentId");
+				output_3.value = "Output";
+				container.addChild(output_3, {
+					"top": "20px",
+					"left": "180px",
 					"width": "100px",
 					"height": "20px"
 				});
@@ -207,6 +224,14 @@
 		},
 		set: function(newValue){
 			return this.getEmbeddedAppInstance().setAppProperty("updateBtn", newValue, true);
+		}
+	});
+	Object.defineProperty(udc.FreeBoardCommentUdc.prototype, "freeBoardCommentId", {
+		get: function(){
+			return this.getEmbeddedAppInstance().getAppProperty("freeBoardCommentId");
+		},
+		set: function(newValue){
+			return this.getEmbeddedAppInstance().setAppProperty("freeBoardCommentId", newValue, true);
 		}
 	});
 	

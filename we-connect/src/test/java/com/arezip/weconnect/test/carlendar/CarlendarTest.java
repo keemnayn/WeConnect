@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.arezip.weconnect.model.dto.ProjectDTO;
 import com.arezip.weconnect.service.CalendarProjectService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,11 +16,20 @@ public class CarlendarTest {
 	@Autowired
 	CalendarProjectService calendarProjectService;
 	
-	
 	@Test
 	void test() {
-		long memberId = 131;
-		calendarProjectService.findProjectStartEnd(memberId);
-		log.info("테스트: {}", calendarProjectService.findProjectStartEnd(memberId));
+		long memberId = 126;
+		calendarProjectService.findProjectByMemberId(memberId);
+		log.info("테스트: {}", calendarProjectService.findProjectByMemberId(memberId));
+	}
+	
+	@Test
+	void insertTest() {
+		ProjectDTO projectDTO = new ProjectDTO();
+		projectDTO.setMemberId(24);
+		projectDTO.setProjectId(2);
+		projectDTO.setProjectStart("20230825");
+		projectDTO.setProjectEnd("20230828");
+		projectDTO.setProjectName("팀회의");
 	}
 }

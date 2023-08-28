@@ -21,14 +21,21 @@ function onBodyLoad(e) {
 	var memberName = app.getAppProperty("memberName");
 	memberNameOutput.text = memberName;
 	memberNameOutput.redraw();
+	
+	var freeBoardCommentIdOutput = app.lookup("freeBoardCommentId");
+	var freeBoardCommentId = app.getAppProperty("freeBoardCommentId");
+	freeBoardCommentIdOutput.text = freeBoardCommentId;
+	freeBoardCommentIdOutput.redraw();
+	
 	var freeBoardCommentDateOutput = app.lookup("freeBoardCommentDate");
 	var freeBoardCommentDate = app.getAppProperty("freeBoardCommentDate");
 	freeBoardCommentDateOutput.text = freeBoardCommentDate;
 	freeBoardCommentDateOutput.redraw();
-	var freeBoardCommentContentOutput = app.lookup("freeBoardCommentContent");
+	
+	var freeBoardCommentContentIpb = app.lookup("freeBoardCommentContent");
 	var freeBoardCommentContent = app.getAppProperty("freeBoardCommentContent");
-	freeBoardCommentContentOutput.text = freeBoardCommentContent;
-	freeBoardCommentContentOutput.redraw();
+	freeBoardCommentContentIpb.text = freeBoardCommentContent;
+	
 	app.lookup("deleteBtn").visible = app.getAppProperty("deleteBtn");
 	app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
 	

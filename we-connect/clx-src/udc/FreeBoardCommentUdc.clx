@@ -12,20 +12,18 @@
       <cl:property name="freeBoardCommentContent" type="string"/>
       <cl:property name="deleteBtn" type="control"/>
       <cl:property name="updateBtn" type="control"/>
+      <cl:property name="freeBoardCommentId" type="number"/>
       <cl:event name="deleteClick" type="cpr.events.CAppEvent"/>
       <cl:event name="updateClick" type="cpr.events.CAppEvent"/>
     </cl:appspec>
   </head>
   <body std:sid="body-0dc8c2f3" style="top:0px; left:0px; width:1550px; height:100px;">
     <cl:listener std:sid="listener-b2b46de9" name="load" handler="onBodyLoad"/>
-    <cl:output std:sid="output-837452e0" id="freeBoardCommentContent" value="Output">
-      <cl:xylayoutdata std:sid="xyl-data-9b00fb94" top="40px" left="0px" width="1550px" height="60px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:output>
     <cl:output std:sid="output-9c8e519d" id="memberName" value="Output">
-      <cl:xylayoutdata std:sid="xyl-data-be9884d2" top="10px" left="0px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-be9884d2" top="10px" left="0px" width="50px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:output std:sid="output-f77d4f6e" id="freeBoardCommentDate" value="Output">
-      <cl:xylayoutdata std:sid="xyl-data-1ce731b9" top="20px" left="100px" width="150px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-1ce731b9" top="20px" left="50px" width="130px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:button std:sid="button-fba2fa26" id="deleteBtn" value="삭제">
       <cl:listener std:sid="listener-54769717" name="click" handler="onButtonClick2"/>
@@ -35,6 +33,12 @@
       <cl:listener std:sid="listener-e691874a" name="click" handler="onButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-480b23bc" top="20px" right="100px" width="100px" height="20px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>
+    <cl:inputbox std:sid="i-box-a9366ce0" id="freeBoardCommentContent" readonly="true">
+      <cl:xylayoutdata std:sid="xyl-data-3c58ee89" top="40px" right="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+    </cl:inputbox>
+    <cl:output std:sid="output-5166df4a" id="freeBoardCommentId" value="Output">
+      <cl:xylayoutdata std:sid="xyl-data-29e34107" top="20px" left="180px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:output>
     <cl:xylayout std:sid="xylayout-2d6277a9"/>
   </body>
   <std:studiosetting>
