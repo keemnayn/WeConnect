@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,27 +52,14 @@ public class ProfileController {
 	@PutMapping()
 	public View updateImgPath(HttpServletRequest request, DataRequest dataRequest) throws IOException {
 		HttpSession session = request.getSession();
-
-		// 파일 정보 처리
-		Map<String, UploadFile[]> uploadFiles = dataRequest.getUploadFiles();
-		List<File> extractedFiles = new ArrayList<>();
-
-		if (uploadFiles != null && !uploadFiles.isEmpty()) {
-			for (UploadFile[] uFiles : uploadFiles.values()) {
-				for (UploadFile uFile : uFiles) {
-					File file = uFile.getFile();
-					extractedFiles.add(file);
-
-					// 파일 카피 로직
-					Path copyLocation = Paths
-							.get(uploadPath + File.separator + System.currentTimeMillis() + "-" + file.getName());
-					Files.copy(file.toPath(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-				}
-			}
-		}
-
-		// 그 외 정보 처리
+		Map<String,UploadFile[]>uploadFiles = dataRequest.getUploadFiles();
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("profileImage");
+		UploadFile[] uploadFile = uploadFiles.get("profileImagePath");
+		File orgName = uploadFile[0].getFile();
+		log.info("파일:{}", orgName);
+		String saveName = uploadFile[0].getFileName();
+		log.info("파일 이름:{}", saveName);
+		String uuid  = UUID.randomUUID().toString();
 		String profileImagePath = uploadPath + parameterGroup.getValue("profileImagePath");
 		Long memberId = (Long) session.getAttribute("memberId");
 		log.info("멤버 아이디:{}", memberId);
