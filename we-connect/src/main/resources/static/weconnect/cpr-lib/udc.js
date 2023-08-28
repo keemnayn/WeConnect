@@ -1971,7 +1971,6 @@
 })();
 /// end - udc.teamPost
 /// start - udc.TeamPostUdc
-<<<<<<< HEAD
 /*
  * UDC Qualified Name: udc.TeamPostUdc
  * App URI: udc/TeamPostUdc
@@ -2255,7 +2254,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.TeamPostUdc
  * App URI: udc/TeamPostUdc
@@ -2539,7 +2537,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
->>>>>>> refs/heads/develop-branch
 /// end - udc.TeamPostUdc
 /// start - udc.Untitled
 /*
