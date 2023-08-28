@@ -41,36 +41,8 @@ function onBoardDetailSubSubmitSuccess(e) {
 	}
 }
 
-///*
-// * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
-// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-// */
-//function onCommentBtnClick(e) {
-//	var commentBtn = e.control;
-//	app.lookup("commentParamSub").send();
-//	app.lookup("commentIpb").value = "";
-//}
-
-///*
-// * 서브미션에서 submit-success 이벤트 발생 시 호출.
-// * 통신이 성공하면 발생합니다.
-// */
-//function onCommentParamSubSubmitSuccess(e) {
-//	var commentParamSub = e.control;
-//	app.lookup("commentListSub").send();
-//	//	return;
-//}
-
 /*
- * "수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
- * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
- */
-function onBoardUpdateBtnClick2(e){
-	var boardUpdateBtn = e.control;
-	app.lookup("updateBoardSub").send();
-}
-/*
- * "삭제" 버튼(boardDeleteBtn)에서 click 이벤트 발생 시 호출.
+ * "글 삭제" 버튼(boardDeleteBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
 function onBoardDeleteBtnClick(e) {
@@ -91,6 +63,15 @@ function onDeleteBoardSubSubmitSuccess(e) {
 		alert("게시글 삭제 완료");
 		app.close();
 	}
+}
+
+/*
+ * "글 수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onBoardUpdateBtnClick2(e){
+	var boardUpdateBtn = e.control;
+	app.lookup("updateBoardSub").send();
 }
 
 /*
