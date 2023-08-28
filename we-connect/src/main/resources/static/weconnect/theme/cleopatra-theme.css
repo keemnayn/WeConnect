@@ -1358,6 +1358,10 @@ body.cl-has-modal {
   /* 탭폴더 바디 */
 }
 .cl-tabfolder .cl-tabfolder-header {
+  background-image: linear-gradient(#babfc7, #babfc7);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  height: 35px;
   /* 좌측 스크롤 버튼 */
   /* 우측 스크롤 버튼 */
   /* 탭 아이템 */
@@ -1371,8 +1375,10 @@ body.cl-has-modal {
   /* 비활성 상태 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item {
-  background-color: white;
-  border: solid 1px #bbb;
+  box-shadow: inset 0px -1px 0px 0px #babfc7;
+  border-left: none;
+  background-color: #ffffff;
+  color: #666666;
   /* 탭 아이템 체크 박스 */
   /* 탭 아이템 닫기 버튼 */
   /* 탭 아이템 - 선택됨 */
@@ -1380,9 +1386,11 @@ body.cl-has-modal {
   /* 비활성 탭 아이템 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
-  border-color: #1369C5;
+  background-color: #ffffff;
+  border-color: #babfc7;
+  box-shadow: none;
+  color: #3f87fd;
+  text-decoration: none;
   /* 선택된 탭 아이템 닫기 버튼 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
@@ -1392,6 +1400,15 @@ body.cl-has-modal {
   background-color: white;
   color: #333;
   border: solid 1px #bbb;
+}
+.cl-tabfolder .cl-tabfolder-body.cl-top {
+  border-bottom: none;
+}
+.cl-tabfolder .cl-text:focus {
+  text-decoration: none;
+}
+.cl-tabfolder.cl-bottom {
+  border-top: none;
 }
 /* 페이지 인덱서 */
 .cl-pageindexer {

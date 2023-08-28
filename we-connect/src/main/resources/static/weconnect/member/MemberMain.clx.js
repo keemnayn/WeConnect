@@ -7,7 +7,7 @@
 (function() {
 	var app = new cpr.core.App("member/MemberMain", { 
 		onPrepare: function(loader) {
-			loader.addCSS("theme/controls/grid.part.css");
+			loader.addCSS("theme/controls/calendar.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -31,14 +31,13 @@
 				const minutes = date.getMinutes();
 				const seconds = date.getSeconds();
 				const week = ['일', '월', '화', '수', '목', '금', '토'];
-
+				
 				const amPm = hours < 12 ? '오전' : '오후';
-				const adjustedHours = hours > 12 ? hours - 12 : hours;  // 24시간 형식을 12시간 형식으로 변경
-
+				const adjustedHours = hours > 12 ? hours - 12 : hours; // 24시간 형식을 12시간 형식으로 변경
+				
 				clockTarget.value = `${amPm} ${adjustedHours}시 ${minutes}분 ${seconds}초`;
 				user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`;
 			}
-
 
 			/*
 			 * "출근" 버튼에서 click 이벤트 발생 시 호출.
@@ -114,14 +113,10 @@
 				submission.send();
 				app.lookup("noticeListSub").send();
 				app.lookup("boardListSub").send();
-				app.lookup("leaveRequestListSub").send();
+				app.lookup("memberName").send()
+				
 				app.lookup("proposalListSub").send();
-				let dataSet = app.lookup("leaveRequestList");
-				let position = dataSet.getValue(0, "position");
-				let department = dataSet.getValue(0, "departmentName");
-				let Name = dataSet.getValue(0, "memberName");
-				let memberName = app.lookup("name");
-				memberName.value = `${Name} ${position}<br>${department}팀`;
+				app.lookup("reservListSub").send();
 			}
 
 			/*
@@ -174,10 +169,28 @@
 			}
 
 			/*
-			 * 그리드에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
 			 */
-			function onGrd3Click(e) {
+			function onMemberNameSubmitSuccess(e) {
+				var memberName = e.control;
+				//서브미션
+				let submission = app.lookup("memberName");
+				var xhr = submission.xhr.responseText;
+				var data = JSON.parse(xhr);
+				var member1 = app.lookup("name");
+				let memberInfo = data.memberList[0];
+				let memberNameValue = memberInfo.memberName; // 변수명 변경
+				let position = memberInfo.position;
+				let departmentName = memberInfo.departmentName + "팀";
+				member1.value = memberNameValue +" "+position + "<br>" + departmentName;
+			}
+
+			/*
+			 * 그리드에서 dblclick 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+			 */
+			function onGrd3Dblclick(e) {
 				var grd3 = e.control;
 				window.location = "member/FreeBoard.clx";
 			}
@@ -296,7 +309,10 @@
 				"columns": [
 					{"name": "proposalId"},
 					{"name": "proposalTitle"},
-					{"name": "proposalStatus"},
+					{
+						"name": "proposalStatus",
+						"displayOnly": true
+					},
 					{"name": "proposalCreate"},
 					{"name": "memberId"},
 					{"name": "proposalContent"}
@@ -304,6 +320,51 @@
 				"rows": []
 			});
 			app.register(dataSet_5);
+			
+			var dataSet_6 = new cpr.data.DataSet("memberList");
+			dataSet_6.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataSet_6);
+			
+			var dataSet_7 = new cpr.data.DataSet("reservList");
+			dataSet_7.parseData({
+				"columns" : [
+					{
+						"name": "roomReservId",
+						"dataType": "number"
+					},
+					{"name": "roomName"},
+					{"name": "memberName"},
+					{"name": "roomReservDate"},
+					{
+						"name": "roomReservStartTime",
+						"dataType": "number"
+					},
+					{
+						"name": "roomReservEndTime",
+						"dataType": "number"
+					}
+				]
+			});
+			app.register(dataSet_7);
 			var dataMap_1 = new cpr.data.DataMap("profileImage");
 			dataMap_1.parseData({
 				"columns" : [
@@ -369,18 +430,26 @@
 			submission_6.addResponseData(dataSet_3, false);
 			app.register(submission_6);
 			
-			var submission_7 = new cpr.protocols.Submission("leaveRequestListSub");
-			submission_7.async = false;
+			var submission_7 = new cpr.protocols.Submission("proposalListSub");
 			submission_7.method = "get";
-			submission_7.action = "admin/leave-request";
-			submission_7.addResponseData(dataSet_4, false);
+			submission_7.action = "admin/proposals";
+			submission_7.addResponseData(dataSet_5, false);
 			app.register(submission_7);
 			
-			var submission_8 = new cpr.protocols.Submission("proposalListSub");
+			var submission_8 = new cpr.protocols.Submission("memberName");
 			submission_8.method = "get";
-			submission_8.action = "admin/proposals";
-			submission_8.addResponseData(dataSet_5, false);
+			submission_8.action = "member/Name";
+			submission_8.addResponseData(dataSet_6, false);
+			if(typeof onMemberNameSubmitSuccess == "function") {
+				submission_8.addEventListener("submit-success", onMemberNameSubmitSuccess);
+			}
 			app.register(submission_8);
+			
+			var submission_9 = new cpr.protocols.Submission("reservListSub");
+			submission_9.method = "get";
+			submission_9.action = "/weconnect/member/room-reserv/list";
+			submission_9.addResponseData(dataSet_7, false);
+			app.register(submission_9);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -435,16 +504,16 @@
 					"width": "13px"
 				});
 				var image_1 = new cpr.controls.Image("profile");
+				image_1.src = "theme/controls/icons/prifile_none.png";
 				image_1.fallbackSrc = "theme/controls/icons/prifile_none.png";
 				image_1.style.css({
 					"border-radius" : "8px"
 				});
-				image_1.bind("src").toDataSet(app.lookup("img"), "profileImagePath", 0);
 				if(typeof onProfileValueChange2 == "function") {
 					image_1.addEventListener("value-change", onProfileValueChange2);
 				}
 				container.addChild(image_1, {
-					"top": "14px",
+					"top": "24px",
 					"left": "32px",
 					"width": "150px",
 					"height": "150px"
@@ -465,14 +534,14 @@
 					"width": "160px"
 				});
 				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet("name");
-				hTMLSnippet_2.value = "<div><\/div>";
 				hTMLSnippet_2.style.css({
-					"font-weight" : "normal",
-					"font-size" : "18px",
+					"color" : "#8A8989",
+					"font-weight" : "700",
+					"font-size" : "20px",
 					"text-align" : "center"
 				});
 				container.addChild(hTMLSnippet_2, {
-					"top": "182px",
+					"top": "192px",
 					"left": "42px",
 					"width": "127px",
 					"height": "50px"
@@ -482,14 +551,14 @@
 				hTMLSnippet_3.style.css({
 					"color" : "#8A8989",
 					"font-weight" : "900",
-					"font-size" : "25px"
+					"font-size" : "22px"
 				});
 				if(typeof onUser_clockValueChange == "function") {
 					hTMLSnippet_3.addEventListener("value-change", onUser_clockValueChange);
 				}
 				container.addChild(hTMLSnippet_3, {
 					"top": "62px",
-					"left": "227px",
+					"left": "237px",
 					"width": "224px",
 					"height": "47px"
 				});
@@ -635,7 +704,7 @@
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
 										"configurator": function(cell){
-											cell.text = "번호";
+											cell.text = "No";
 										}
 									},
 									{
@@ -659,7 +728,7 @@
 								]
 							},
 							"detail": {
-								"rows": [{"height": "24px"}],
+								"rows": [{"height": "28px"}],
 								"cells": [
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -688,11 +757,17 @@
 								]
 							}
 						});
+						grid_1.style.css({
+							"font-weight" : "300"
+						});
 						grid_1.style.header.css({
 							"background-color" : "#E0E1E2",
 							"font-weight" : "700",
 							"background-image" : "none"
 						});
+						if(typeof onGrd2SelectionChange == "function") {
+							grid_1.addEventListener("selection-change", onGrd2SelectionChange);
+						}
 						container.addChild(grid_1, {
 							"top": "0px",
 							"right": "0px",
@@ -734,43 +809,100 @@
 			});
 			var xYLayout_5 = new cpr.controls.layouts.XYLayout();
 			group_4.setLayout(xYLayout_5);
-			container.addChild(group_4, {
-				"top": "4px",
-				"right": "0px",
-				"width": "458px",
-				"height": "320px"
-			});
-			
-			var group_5 = new cpr.controls.Container();
-			group_5.style.setClasses(["main_layout1"]);
-			group_5.style.css({
-				"border-right-style" : "solid",
-				"border-radius" : "8px",
-				"border-bottom-color" : "#bfbfbf",
-				"border-left-style" : "solid",
-				"border-left-color" : "#bfbfbf",
-				"border-top-color" : "#bfbfbf",
-				"border-bottom-style" : "solid",
-				"border-right-color" : "#bfbfbf",
-				"border-top-style" : "solid"
-			});
-			var xYLayout_6 = new cpr.controls.layouts.XYLayout();
-			group_5.setLayout(xYLayout_6);
 			(function(container){
-				var calendar_1 = new cpr.controls.Calendar();
-				calendar_1.style.setClasses(["main-calendar"]);
-				container.addChild(calendar_1, {
+				var tabFolder_2 = new cpr.controls.TabFolder();
+				
+				var tabItem_2 = (function(tabFolder){
+					var tabItem_2 = new cpr.controls.TabItem();
+					tabItem_2.text = "회의실예약 ";
+					var group_5 = new cpr.controls.Container();
+					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+					group_5.setLayout(xYLayout_6);
+					(function(container){
+						var grid_2 = new cpr.controls.Grid("grd4");
+						grid_2.init({
+							"dataSet": app.lookup("reservList"),
+							"columns": [
+								{"width": "100px"},
+								{"width": "100px"},
+								{"width": "100px"}
+							],
+							"header": {
+								"rows": [{"height": "35px"}],
+								"cells": [
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 0},
+										"configurator": function(cell){
+											cell.text = "예약일자";
+										}
+									},
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 1},
+										"configurator": function(cell){
+											cell.text = "회의실";
+										}
+									},
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 2},
+										"configurator": function(cell){
+											cell.text = "예약자";
+										}
+									}
+								]
+							},
+							"detail": {
+								"rows": [{"height": "28px"}],
+								"cells": [
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 0},
+										"configurator": function(cell){
+											cell.columnName = "roomReservDate";
+										}
+									},
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 1},
+										"configurator": function(cell){
+											cell.columnName = "roomName";
+										}
+									},
+									{
+										"constraint": {"rowIndex": 0, "colIndex": 2},
+										"configurator": function(cell){
+											cell.columnName = "memberName";
+										}
+									}
+								]
+							}
+						});
+						grid_2.style.header.css({
+							"background-color" : "#E0E1E2",
+							"font-weight" : "700",
+							"background-image" : "none"
+						});
+						container.addChild(grid_2, {
+							"top": "0px",
+							"right": "0px",
+							"bottom": "0px",
+							"left": "0px"
+						});
+					})(group_5);
+					tabItem_2.content = group_5;
+					return tabItem_2;
+				})(tabFolder_2);
+				tabFolder_2.addTabItem(tabItem_2);
+				tabFolder_2.setSelectedTabItem(tabItem_2);
+				container.addChild(tabFolder_2, {
 					"top": "0px",
 					"right": "0px",
 					"bottom": "0px",
 					"left": "0px"
 				});
-			})(group_5);
-			container.addChild(group_5, {
-				"top": "334px",
+			})(group_4);
+			container.addChild(group_4, {
+				"top": "4px",
 				"right": "0px",
-				"bottom": "0px",
-				"width": "461px"
+				"width": "458px",
+				"height": "320px"
 			});
 			
 			var group_6 = new cpr.controls.Container();
@@ -789,22 +921,54 @@
 			var xYLayout_7 = new cpr.controls.layouts.XYLayout();
 			group_6.setLayout(xYLayout_7);
 			(function(container){
-				var tabFolder_2 = new cpr.controls.TabFolder();
+				var calendar_1 = new cpr.controls.Calendar();
+				calendar_1.style.setClasses(["main-calendar"]);
+				container.addChild(calendar_1, {
+					"top": "0px",
+					"right": "0px",
+					"bottom": "0px",
+					"left": "0px"
+				});
+			})(group_6);
+			container.addChild(group_6, {
+				"top": "334px",
+				"right": "0px",
+				"bottom": "0px",
+				"width": "461px"
+			});
+			
+			var group_7 = new cpr.controls.Container();
+			group_7.style.setClasses(["main_layout1"]);
+			group_7.style.css({
+				"border-right-style" : "solid",
+				"border-radius" : "8px",
+				"border-bottom-color" : "#bfbfbf",
+				"border-left-style" : "solid",
+				"border-left-color" : "#bfbfbf",
+				"border-top-color" : "#bfbfbf",
+				"border-bottom-style" : "solid",
+				"border-right-color" : "#bfbfbf",
+				"border-top-style" : "solid"
+			});
+			var xYLayout_8 = new cpr.controls.layouts.XYLayout();
+			group_7.setLayout(xYLayout_8);
+			(function(container){
+				var tabFolder_3 = new cpr.controls.TabFolder();
 				
-				var tabItem_2 = (function(tabFolder){
-					var tabItem_2 = new cpr.controls.TabItem();
-					tabItem_2.text = "자유게시판";
-					var group_7 = new cpr.controls.Container();
-					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
-					group_7.setLayout(xYLayout_8);
+				var tabItem_3 = (function(tabFolder){
+					var tabItem_3 = new cpr.controls.TabItem();
+					tabItem_3.text = "자유게시판";
+					var group_8 = new cpr.controls.Container();
+					var xYLayout_9 = new cpr.controls.layouts.XYLayout();
+					group_8.setLayout(xYLayout_9);
 					(function(container){
-						var grid_2 = new cpr.controls.Grid("grd3");
-						grid_2.init({
+						var grid_3 = new cpr.controls.Grid("grd3");
+						grid_3.init({
 							"dataSet": app.lookup("boardList"),
 							"columns": [
 								{
 									"width": "100px",
-									"visible": false
+									"visible": true
 								},
 								{"width": "100px"},
 								{"width": "100px"},
@@ -816,7 +980,7 @@
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
 										"configurator": function(cell){
-											cell.text = "freeBoardId";
+											cell.text = "No";
 										}
 									},
 									{
@@ -840,7 +1004,7 @@
 								]
 							},
 							"detail": {
-								"rows": [{"height": "24px"}],
+								"rows": [{"height": "28px"}],
 								"cells": [
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -869,13 +1033,13 @@
 								]
 							}
 						});
-						grid_2.style.css({
+						grid_3.style.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
-						grid_2.style.header.css({
+						grid_3.style.header.css({
 							"background-color" : "#E0E1E2",
 							"border-right-style" : "none",
 							"font-weight" : "700",
@@ -884,44 +1048,50 @@
 							"background-image" : "none",
 							"border-top-style" : "none"
 						});
-						grid_2.style.detail.css({
+						grid_3.style.detail.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
 						if(typeof onGrd3Click == "function") {
-							grid_2.addEventListener("click", onGrd3Click);
+							grid_3.addEventListener("click", onGrd3Click);
 						}
-						container.addChild(grid_2, {
+						if(typeof onGrd3Dblclick == "function") {
+							grid_3.addEventListener("dblclick", onGrd3Dblclick);
+						}
+						container.addChild(grid_3, {
 							"top": "0px",
 							"right": "0px",
 							"bottom": "0px",
 							"left": "0px"
 						});
-					})(group_7);
-					tabItem_2.content = group_7;
-					return tabItem_2;
-				})(tabFolder_2);
-				tabFolder_2.addTabItem(tabItem_2);
-				tabFolder_2.setSelectedTabItem(tabItem_2);
-				container.addChild(tabFolder_2, {
+					})(group_8);
+					tabItem_3.content = group_8;
+					return tabItem_3;
+				})(tabFolder_3);
+				tabFolder_3.addTabItem(tabItem_3);
+				tabFolder_3.setSelectedTabItem(tabItem_3);
+				if(typeof onTabFolderDblclick == "function") {
+					tabFolder_3.addEventListener("dblclick", onTabFolderDblclick);
+				}
+				container.addChild(tabFolder_3, {
 					"top": "0px",
 					"right": "0px",
 					"bottom": "0px",
 					"left": "0px"
 				});
-			})(group_6);
-			container.addChild(group_6, {
+			})(group_7);
+			container.addChild(group_7, {
 				"top": "334px",
 				"bottom": "0px",
 				"left": "3px",
 				"width": "470px"
 			});
 			
-			var group_8 = new cpr.controls.Container();
-			group_8.style.setClasses(["main_layout1"]);
-			group_8.style.css({
+			var group_9 = new cpr.controls.Container();
+			group_9.style.setClasses(["main_layout1"]);
+			group_9.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "8px",
 				"border-bottom-color" : "#bfbfbf",
@@ -932,26 +1102,26 @@
 				"border-right-color" : "#bfbfbf",
 				"border-top-style" : "solid"
 			});
-			var xYLayout_9 = new cpr.controls.layouts.XYLayout();
-			group_8.setLayout(xYLayout_9);
+			var xYLayout_10 = new cpr.controls.layouts.XYLayout();
+			group_9.setLayout(xYLayout_10);
 			(function(container){
-				var tabFolder_3 = new cpr.controls.TabFolder();
-				tabFolder_3.style.header.css({
+				var tabFolder_4 = new cpr.controls.TabFolder();
+				tabFolder_4.style.header.css({
 					"border-top-width" : "1px",
 					"border-right-width" : "1px",
 					"border-bottom-width" : "1px",
 					"border-left-width" : "1px"
 				});
 				
-				var tabItem_3 = (function(tabFolder){
-					var tabItem_3 = new cpr.controls.TabItem();
-					tabItem_3.text = "공지사항";
-					var group_9 = new cpr.controls.Container();
-					var xYLayout_10 = new cpr.controls.layouts.XYLayout();
-					group_9.setLayout(xYLayout_10);
+				var tabItem_4 = (function(tabFolder){
+					var tabItem_4 = new cpr.controls.TabItem();
+					tabItem_4.text = "공지사항";
+					var group_10 = new cpr.controls.Container();
+					var xYLayout_11 = new cpr.controls.layouts.XYLayout();
+					group_10.setLayout(xYLayout_11);
 					(function(container){
-						var grid_3 = new cpr.controls.Grid("grd1");
-						grid_3.init({
+						var grid_4 = new cpr.controls.Grid("grd1");
+						grid_4.init({
 							"dataSet": app.lookup("noticeList"),
 							"columns": [
 								{
@@ -968,7 +1138,7 @@
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
 										"configurator": function(cell){
-											cell.text = "noticeId";
+											cell.text = "No";
 										}
 									},
 									{
@@ -992,7 +1162,7 @@
 								]
 							},
 							"detail": {
-								"rows": [{"height": "24px"}],
+								"rows": [{"height": "28px"}],
 								"cells": [
 									{
 										"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -1021,8 +1191,8 @@
 								]
 							}
 						});
-						grid_3.style.setClasses(["main"]);
-						grid_3.style.css({
+						grid_4.style.setClasses(["main"]);
+						grid_4.style.css({
 							"border-right-style" : "none",
 							"border-top-width" : "1px",
 							"border-left-style" : "none",
@@ -1032,7 +1202,7 @@
 							"border-left-width" : "1px",
 							"border-top-style" : "none"
 						});
-						grid_3.style.header.css({
+						grid_4.style.header.css({
 							"background-color" : "#E0E1E2",
 							"border-right-style" : "none",
 							"font-weight" : "700",
@@ -1041,32 +1211,32 @@
 							"background-image" : "none",
 							"border-top-style" : "none"
 						});
-						grid_3.style.detail.css({
+						grid_4.style.detail.css({
 							"border-right-style" : "none",
 							"border-left-style" : "none",
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
-						container.addChild(grid_3, {
+						container.addChild(grid_4, {
 							"top": "0px",
 							"right": "0px",
 							"bottom": "0px",
 							"left": "0px"
 						});
-					})(group_9);
-					tabItem_3.content = group_9;
-					return tabItem_3;
-				})(tabFolder_3);
-				tabFolder_3.addTabItem(tabItem_3);
-				tabFolder_3.setSelectedTabItem(tabItem_3);
-				container.addChild(tabFolder_3, {
+					})(group_10);
+					tabItem_4.content = group_10;
+					return tabItem_4;
+				})(tabFolder_4);
+				tabFolder_4.addTabItem(tabItem_4);
+				tabFolder_4.setSelectedTabItem(tabItem_4);
+				container.addChild(tabFolder_4, {
 					"top": "0px",
 					"right": "0px",
 					"bottom": "0px",
 					"left": "0px"
 				});
-			})(group_8);
-			container.addChild(group_8, {
+			})(group_9);
+			container.addChild(group_9, {
 				"top": "334px",
 				"bottom": "0px",
 				"left": "494px",

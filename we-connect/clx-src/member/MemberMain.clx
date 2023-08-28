@@ -5,7 +5,7 @@
     <screen std:sid="screen-9121d77a" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-152b1774" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-f3fe1cf3" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
-    <link std:sid="link-64b23593" href="../theme/controls/grid.part.less" rel="stylesheet" type="text/css"/>
+    <link std:sid="link-59978d40" href="../theme/controls/calendar.part.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-9f47174e">
       <cl:dataset std:sid="d-set-fba731c1" id="img">
         <cl:datacolumnlist>
@@ -72,12 +72,30 @@
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
           <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
-          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
+          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus" displayonly="true"/>
           <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
           <cl:datacolumn std:sid="d-column-5d935672" name="memberId"/>
           <cl:datacolumn std:sid="d-column-ac96c3d8" name="proposalContent"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-b6241745" id="memberList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-d3d4b132" name="memberId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-6fd6e040" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-72fe19b0" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a6334926" name="departmentName" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-d918fbf9" id="reservList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fb1c563d" name="roomReservId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-a8294cfe" name="roomName"/>
+          <cl:datacolumn std:sid="d-column-06dfc851" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-deddbc0e" name="roomReservDate"/>
+          <cl:datacolumn std:sid="d-column-2749fbf6" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime" datatype="number"/>
+        </cl:datacolumnlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-ac3b02f9" id="profileImage">
         <cl:datacolumnlist>
@@ -106,11 +124,15 @@
       <cl:submission std:sid="submission-02daf766" id="boardListSub" method="get" action="/weconnect/member/boards">
         <cl:responsedata dataid="boardList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-0abaafad" id="leaveRequestListSub" async="false" method="get" action="admin/leave-request">
-        <cl:responsedata dataid="leaveRequestList"/>
-      </cl:submission>
       <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="admin/proposals">
         <cl:responsedata dataid="proposalList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-0d02a62a" id="memberName" method="get" action="member/Name">
+        <cl:listener std:sid="listener-12b3cb1d" name="submit-success" handler="onMemberNameSubmitSuccess"/>
+        <cl:responsedata dataid="memberList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv/list">
+        <cl:responsedata dataid="reservList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -128,22 +150,21 @@
       <cl:htmlsnippet std:sid="htmlsnippet-200f1678" style="border-top-width:1px; color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; font-size:18px; border-left-width:1px;" class="line" value="&lt;p>&lt;/p>">
         <cl:xylayoutdata std:sid="xyl-data-a690711c" top="0px" bottom="0px" left="204px" width="13px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:htmlsnippet>
-      <cl:img std:sid="image-2e6efa1d" id="profile" style="border-radius:8px;" fallbacksrc="../theme/controls/icons/prifile_none.png">
+      <cl:img std:sid="image-2e6efa1d" id="profile" style="border-radius:8px;" src="../theme/controls/icons/prifile_none.png" fallbacksrc="../theme/controls/icons/prifile_none.png">
         <cl:listener std:sid="listener-3b6d99c7" name="value-change" handler="onProfileValueChange2"/>
-        <cl:datasetbind property="src" datacontrolid="img" columnname="profileImagePath" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="14px" left="32px" width="150px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="24px" left="32px" width="150px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
       <cl:fileinput std:sid="f-input-908aa111" id="fi1" style="border-radius:8px;" placeholder="프로필 수정">
         <cl:listener std:sid="listener-d98a66fc" name="value-change" handler="onFi1ValueChange"/>
         <cl:datamapbind property="value" datacontrolid="profileImage" columnname="profileImagePath"/>
         <cl:xylayoutdata std:sid="xyl-data-301afad9" top="270px" bottom="0px" left="27px" width="160px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:fileinput>
-      <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="font-weight:normal; font-size:18px; text-align:center;" value="&lt;div>&lt;/div>">
-        <cl:xylayoutdata std:sid="xyl-data-0a4bd2fd" top="182px" left="42px" width="127px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="color:#8A8989; font-weight:700; font-size:20px; text-align:center;">
+        <cl:xylayoutdata std:sid="xyl-data-0a4bd2fd" top="192px" left="42px" width="127px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="color:#8A8989; font-weight:900; font-size:25px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
+      <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="color:#8A8989; font-weight:900; font-size:22px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
         <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
-        <cl:xylayoutdata std:sid="xyl-data-f53d5b86" top="62px" left="227px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-f53d5b86" top="62px" left="237px" width="224px" height="47px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#8A8989; font-size:20px; text-align:center;">
         <cl:listener std:sid="listener-1566cbe3" name="value-change" handler="onDayValueChange"/>
@@ -183,7 +204,8 @@
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
-            <cl:grid std:sid="grid-e5bd3579" id="grd2" datasetid="proposalList">
+            <cl:grid std:sid="grid-e5bd3579" id="grd2" style="font-weight:300;" datasetid="proposalList">
+              <cl:listener std:sid="listener-f4b00546" name="selection-change" handler="onGrd2SelectionChange"/>
               <cl:xylayoutdata std:sid="xyl-data-41145107" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
               <cl:gridcolumn std:sid="g-column-6acbc825"/>
@@ -192,13 +214,13 @@
               <cl:gridcolumn std:sid="g-column-0fe5208a"/>
               <cl:gridheader std:sid="gh-band-9b3e574e">
                 <cl:gridrow std:sid="g-row-0167c506" height="35px"/>
-                <cl:gridcell std:sid="gh-cell-e61c1a1b" rowindex="0" colindex="0" text="번호"/>
+                <cl:gridcell std:sid="gh-cell-e61c1a1b" rowindex="0" colindex="0" text="No"/>
                 <cl:gridcell std:sid="gh-cell-260e7a88" rowindex="0" colindex="1" text="등록일"/>
                 <cl:gridcell std:sid="gh-cell-5f21cf6e" rowindex="0" colindex="2" text="제목"/>
                 <cl:gridcell std:sid="gh-cell-330b8d4d" rowindex="0" colindex="3" text="처리상태"/>
               </cl:gridheader>
               <cl:griddetail std:sid="gd-band-f214a2ce">
-                <cl:gridrow std:sid="g-row-ddb06cf1"/>
+                <cl:gridrow std:sid="g-row-ddb06cf1" height="28px"/>
                 <cl:gridcell std:sid="gd-cell-9a443e52" rowindex="0" colindex="0" columnname="proposalId"/>
                 <cl:gridcell std:sid="gd-cell-3dc3ef60" rowindex="0" colindex="1" columnname="proposalCreate"/>
                 <cl:gridcell std:sid="gd-cell-e0189852" rowindex="0" colindex="2" columnname="proposalTitle"/>
@@ -213,6 +235,39 @@
     </cl:group>
     <cl:group std:sid="group-e64225dc" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-c815333c" top="4px" right="0px" width="458px" height="320px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+      <cl:tabfolder std:sid="t-folder-34110927">
+        <cl:xylayoutdata std:sid="xyl-data-d5db1524" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-b7982fd3" selected="true" text="회의실예약 ">
+          <std:metadata>
+            <std:property key="is-active-item" value="true"/>
+          </std:metadata>
+          <cl:group std:sid="group-292e54c5">
+            <std:metadata>
+              <std:property key="locked" value="true"/>
+            </std:metadata>
+            <cl:grid std:sid="grid-b9f71e9a" id="grd4" datasetid="reservList">
+              <cl:xylayoutdata std:sid="xyl-data-df2764f6" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
+              <cl:gridcolumn std:sid="g-column-3bf5b666"/>
+              <cl:gridcolumn std:sid="g-column-68c78f0e"/>
+              <cl:gridcolumn std:sid="g-column-f83b969a"/>
+              <cl:gridheader std:sid="gh-band-4d28f6f7">
+                <cl:gridrow std:sid="g-row-6be12eec" height="35px"/>
+                <cl:gridcell std:sid="gh-cell-d09ebbe4" rowindex="0" colindex="0" text="예약일자"/>
+                <cl:gridcell std:sid="gh-cell-1f588fca" rowindex="0" colindex="1" text="회의실"/>
+                <cl:gridcell std:sid="gh-cell-eb67dcbf" rowindex="0" colindex="2" text="예약자"/>
+              </cl:gridheader>
+              <cl:griddetail std:sid="gd-band-09b84f38">
+                <cl:gridrow std:sid="g-row-c0363372" height="28px"/>
+                <cl:gridcell std:sid="gd-cell-9fd30d02" rowindex="0" colindex="0" columnname="roomReservDate"/>
+                <cl:gridcell std:sid="gd-cell-6b89dbac" rowindex="0" colindex="1" columnname="roomName"/>
+                <cl:gridcell std:sid="gd-cell-1b383642" rowindex="0" colindex="2" columnname="memberName"/>
+              </cl:griddetail>
+            </cl:grid>
+            <cl:xylayout std:sid="xylayout-b6da4fdd"/>
+          </cl:group>
+        </cl:tabitem>
+      </cl:tabfolder>
       <cl:xylayout std:sid="xylayout-af4a6260"/>
     </cl:group>
     <cl:group std:sid="group-4d35f4d4" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
@@ -225,6 +280,7 @@
     <cl:group std:sid="group-4545a34e" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-2aac84a7" top="334px" bottom="0px" left="3px" width="470px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:tabfolder std:sid="t-folder-22855306">
+        <cl:listener std:sid="listener-b8bf295c" name="dblclick" handler="onTabFolderDblclick"/>
         <cl:xylayoutdata std:sid="xyl-data-d1e477cd" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
         <cl:tabitem std:sid="t-item-caca1c57" selected="true" text="자유게시판">
           <std:metadata>
@@ -236,22 +292,23 @@
             </std:metadata>
             <cl:grid std:sid="grid-c87ea130" id="grd3" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" datasetid="boardList">
               <cl:listener std:sid="listener-caef1b7f" name="click" handler="onGrd3Click"/>
+              <cl:listener std:sid="listener-243ad36c" name="dblclick" handler="onGrd3Dblclick"/>
               <cl:xylayoutdata std:sid="xyl-data-0199d1fc" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
               <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
-              <cl:gridcolumn std:sid="g-column-1e411169" visible="false"/>
+              <cl:gridcolumn std:sid="g-column-1e411169" visible="true"/>
               <cl:gridcolumn std:sid="g-column-2b7dab53"/>
               <cl:gridcolumn std:sid="g-column-16c611c9"/>
               <cl:gridcolumn std:sid="g-column-e49fcb00"/>
               <cl:gridheader std:sid="gh-band-fb1f9736">
                 <cl:gridrow std:sid="g-row-5a3140fc" height="35px"/>
-                <cl:gridcell std:sid="gh-cell-353a8a20" rowindex="0" colindex="0" text="freeBoardId"/>
+                <cl:gridcell std:sid="gh-cell-353a8a20" rowindex="0" colindex="0" text="No"/>
                 <cl:gridcell std:sid="gh-cell-248656eb" rowindex="0" colindex="1" text="작성일"/>
                 <cl:gridcell std:sid="gh-cell-b12a4b1e" rowindex="0" colindex="2" text="제목"/>
                 <cl:gridcell std:sid="gh-cell-902411b2" rowindex="0" colindex="3" text="작성자"/>
               </cl:gridheader>
               <cl:griddetail std:sid="gd-band-f3e5d441">
-                <cl:gridrow std:sid="g-row-472f6c62"/>
+                <cl:gridrow std:sid="g-row-472f6c62" height="28px"/>
                 <cl:gridcell std:sid="gd-cell-2f63bb09" rowindex="0" colindex="0" columnname="freeBoardId"/>
                 <cl:gridcell std:sid="gd-cell-14e1018b" rowindex="0" colindex="1" columnname="freeBoardCreate"/>
                 <cl:gridcell std:sid="gd-cell-27857d85" rowindex="0" colindex="2" columnname="freeBoardTitle"/>
@@ -286,13 +343,13 @@
               <cl:gridcolumn std:sid="g-column-e4279a5d"/>
               <cl:gridheader std:sid="gh-band-139a406d">
                 <cl:gridrow std:sid="g-row-195248d7" height="35px"/>
-                <cl:gridcell std:sid="gh-cell-f1659a0c" rowindex="0" colindex="0" text="noticeId"/>
+                <cl:gridcell std:sid="gh-cell-f1659a0c" rowindex="0" colindex="0" text="No"/>
                 <cl:gridcell std:sid="gh-cell-42984485" rowindex="0" colindex="1" text="분류"/>
                 <cl:gridcell std:sid="gh-cell-0457f525" rowindex="0" colindex="2" text="등록일"/>
                 <cl:gridcell std:sid="gh-cell-849b782c" rowindex="0" colindex="3" text="제목"/>
               </cl:gridheader>
               <cl:griddetail std:sid="gd-band-6c802f5d">
-                <cl:gridrow std:sid="g-row-d556849c"/>
+                <cl:gridrow std:sid="g-row-d556849c" height="28px"/>
                 <cl:gridcell std:sid="gd-cell-c987f4f8" rowindex="0" colindex="0" columnname="noticeId"/>
                 <cl:gridcell std:sid="gd-cell-0a66b71b" rowindex="0" colindex="1" columnname="noticeCategory"/>
                 <cl:gridcell std:sid="gd-cell-6e4198bd" rowindex="0" colindex="2" columnname="noticeCreate"/>
