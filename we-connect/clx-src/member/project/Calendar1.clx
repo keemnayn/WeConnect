@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-2b1dec4c" version="1.0.4584">
   <head std:sid="head-3702d063">
-    <screen std:sid="screen-d722eb83" id="default" name="default" minwidth="1024px" width="1024px" height="768px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
-    <screen std:sid="screen-fe37a297" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
-    <screen std:sid="screen-39c7fa6a" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
-    <link std:sid="link-2e2672b3" href="../../theme/controls/calendar.part.less" rel="stylesheet" type="text/css"/>
-    <cl:model std:sid="model-7bfb1f9b"/>
     <screen std:sid="screen-fe586b12" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580"/>
     <screen std:sid="screen-111d6771" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
     <screen std:sid="screen-b382ef18" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
@@ -26,8 +21,6 @@
     <cl:appspec/>
   </head>
   <body std:sid="body-4cfee988">
-    <cl:calendar std:sid="calendar-fe9c627a" class="main-calendar">
-      <cl:xylayoutdata std:sid="xyl-data-dfcbb162" top="5px" left="10px" width="1540px" height="800px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     <cl:listener std:sid="listener-caf2ada5" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-d0abd75d" name="load" handler="onBodyLoad2"/>
     <cl:calendar std:sid="calendar-fe9c627a" id="calendar">

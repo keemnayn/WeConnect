@@ -6,12 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
-
-<<<<<<< HEAD
 import com.arezip.weconnect.service.ProjectService;
 import com.arezip.weconnect.service.TeamPostService;
-
-=======
 import com.arezip.weconnect.model.dto.ProjectDTO;
 import com.arezip.weconnect.service.CalendarProjectService;
 import com.cleopatra.protocol.data.DataRequest;

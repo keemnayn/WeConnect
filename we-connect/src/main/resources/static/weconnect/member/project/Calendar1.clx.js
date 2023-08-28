@@ -121,7 +121,27 @@
 			// End - User Script
 			
 			// Header
-			app.supportMedia("all", "default");
+			var dataSet_1 = new cpr.data.DataSet("projectList");
+			dataSet_1.parseData({
+				"columns" : [
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
+				]
+			});
+			app.register(dataSet_1);
+			var submission_1 = new cpr.protocols.Submission("projectListSub");
+			submission_1.method = "get";
+			submission_1.action = "member/project";
+			submission_1.addResponseData(dataSet_1, false);
+			if(typeof onProjectListSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onProjectListSubSubmitSuccess);
+			}
+			app.register(submission_1);
+			app.supportMedia("all and (min-width: 1920px)", "Project");
+			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
+			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
+			app.supportMedia("all and (max-width: 499px)", "mobile");
 			
 			// Configure root container
 			var container = app.getContainer();
@@ -131,8 +151,38 @@
 			});
 			
 			// Layout
+			var xYLayout_1 = new cpr.controls.layouts.XYLayout();
+			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
+			var calendar_1 = new cpr.controls.Calendar("calendar");
+			(function(calendar_1){
+				calendar_1.setItemSet(app.lookup("projectList"), {
+					"label": "projectName",
+					"value": "projectName",
+					"tooltip": "projectName",
+					"start": "projectStart",
+					"end": "projectEnd"
+				});
+			})(calendar_1);
+			if(typeof onCalendarItemClick == "function") {
+				calendar_1.addEventListener("item-click", onCalendarItemClick);
+			}
+			if(typeof onCalendarDateClick == "function") {
+				calendar_1.addEventListener("date-click", onCalendarDateClick);
+			}
+			container.addChild(calendar_1, {
+				"top": "0px",
+				"right": "0px",
+				"bottom": "0px",
+				"left": "0px"
+			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
+			if(typeof onBodyLoad2 == "function"){
+				app.addEventListener("load", onBodyLoad2);
+			}
 		}
 	});
 	app.title = "Calendar1";
