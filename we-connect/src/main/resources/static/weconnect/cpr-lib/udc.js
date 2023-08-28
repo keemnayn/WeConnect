@@ -1,5 +1,4 @@
 /// start - udc.FreeBoardCommentUdc
-<<<<<<< HEAD
 /*
  * UDC Qualified Name: udc.FreeBoardCommentUdc
  * App URI: udc/FreeBoardCommentUdc
@@ -533,7 +532,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.myPostList
  * App URI: udc/myPostList
@@ -638,7 +636,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
->>>>>>> refs/heads/kjh
 /// end - udc.myPostList
 /// start - udc.search
 /*
@@ -740,8 +737,6 @@
 })();
 /// end - udc.search
 /// start - udc.search
-<<<<<<< HEAD
-=======
 /*
  * UDC Qualified Name: udc.search
  * App URI: udc/search
@@ -938,10 +933,8 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
->>>>>>> refs/heads/kny
 /// end - udc.search
 /// start - udc.teamPost
->>>>>>> branch 'develop-branch' of https://github.com/keemnayn/WeConnect.git
 /*
  * UDC Qualified Name: udc.search
  * App URI: udc/search
@@ -1039,7 +1032,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.header
  * App URI: udc/header
@@ -1481,8 +1473,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-<<<<<<< HEAD
-=======
 /// end - udc.teamPost
 /// start - udc.TeamPost
 /*
