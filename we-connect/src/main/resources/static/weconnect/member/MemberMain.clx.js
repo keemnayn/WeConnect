@@ -249,7 +249,7 @@
 			function onUpdateAttendanceSubmitSuccess(e) {
 				var updateAttendance = e.control;
 				app.lookup("attendanceSub").send();
-			}
+			};
 			// End - User Script
 			
 			// Header
