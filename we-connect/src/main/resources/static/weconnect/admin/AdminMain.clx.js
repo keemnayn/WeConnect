@@ -27,11 +27,45 @@
 				app.lookup("pendingListSub").send();
 				app.lookup("noticeListSub").send();
 				app.lookup("freeBoardListSub").send();
-				var noticeListGrd = app.lookup("noticeListGrd");
-				if (text.length > maxLength) {
-					output.innerText = text.substring(0, maxLength) + '...';
-				} else {
-					output.innerText = text;
+				app.lookup("scheduleListSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onScheduleListSubSubmitSuccess(e) {
+				var scheduleListSub = e.control;
+				var calendar = app.lookup("crd");
+				var dsAnnualLeavesList = app.lookup("annualLeavesList");
+				var dsProjectScheduleList = app.lookup("projectScheduleList");
+				var jsonData = JSON.parse(scheduleListSub.xhr.responseText);
+				var annualLeavesList = jsonData.annualLeavesList;
+				var projectScheduleList = jsonData.projectScheduleList;
+				
+				// annualLeavesList 순회
+				for (var i = 0; i < annualLeavesList.length; i++) {
+					var memberName = annualLeavesList[i].memberName;
+					var leaveRequestType = annualLeavesList[i].leaveRequestType;
+					var leaveRequestStart = annualLeavesList[i].leaveRequestStart;
+					var leaveRequestEnd = annualLeavesList[i].leaveRequestEnd;
+					console.log(memberName);
+					console.log(leaveRequestType);
+					console.log(leaveRequestStart);
+					console.log(leaveRequestEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(leaveRequestStart), new Date(leaveRequestEnd), leaveRequestType));
+				}
+				// projectScheduleList 순회
+				for (var i = 0; i < projectScheduleList.length; i++) {
+					var memberName = projectScheduleList[i].memberName;
+					var projectName = projectScheduleList[i].projectName;
+					var projectStart = projectScheduleList[i].projectStart;
+					var projectEnd = projectScheduleList[i].projectEnd;
+					console.log(memberName);
+					console.log(projectName);
+					console.log(projectStart);
+					console.log(projectEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(projectStart), new Date(projectEnd), projectName));
 				}
 			}
 			// End - User Script
@@ -108,6 +142,28 @@
 				"rows": []
 			});
 			app.register(dataSet_3);
+			
+			var dataSet_4 = new cpr.data.DataSet("annualLeavesList");
+			dataSet_4.parseData({
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "leaveRequestType"},
+					{"name": "leaveRequestStart"},
+					{"name": "leaveRequestEnd"}
+				]
+			});
+			app.register(dataSet_4);
+			
+			var dataSet_5 = new cpr.data.DataSet("projectScheduleList");
+			dataSet_5.parseData({
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
+				]
+			});
+			app.register(dataSet_5);
 			var submission_1 = new cpr.protocols.Submission("pendingListSub");
 			submission_1.method = "get";
 			submission_1.action = "admin/members/pending";
@@ -125,6 +181,16 @@
 			submission_3.action = "admin/free-boards";
 			submission_3.addResponseData(dataSet_3, false);
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("scheduleListSub");
+			submission_4.method = "get";
+			submission_4.action = "admin/schedules";
+			submission_4.addResponseData(dataSet_4, false);
+			submission_4.addResponseData(dataSet_5, false);
+			if(typeof onScheduleListSubSubmitSuccess == "function") {
+				submission_4.addEventListener("submit-success", onScheduleListSubSubmitSuccess);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -183,15 +249,19 @@
 					container.addChild(group_2, {
 						"top": "10px",
 						"left": "10px",
-						"width": "650px",
+						"width": "670px",
 						"height": "250px"
 					});
-					var calendar_1 = new cpr.controls.Calendar();
+					var calendar_1 = new cpr.controls.Calendar("crd");
 					calendar_1.style.setClasses(["admain_cld"]);
+					calendar_1.style.item.css({
+						"color" : "#663399"
+					});
+					calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
 					container.addChild(calendar_1, {
 						"bottom": "10px",
 						"left": "10px",
-						"width": "650px",
+						"width": "670px",
 						"height": "470px"
 					});
 					var tabFolder_2 = new cpr.controls.TabFolder();
@@ -330,6 +400,7 @@
 													output_1.bind("value").toDataColumn("memberId");
 													return output_1;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -347,6 +418,7 @@
 													output_2.bind("value").toDataColumn("memberEmail");
 													return output_2;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -364,6 +436,7 @@
 													output_3.bind("value").toDataColumn("memberName");
 													return output_3;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -381,6 +454,7 @@
 													output_4.bind("value").toDataColumn("position");
 													return output_4;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -398,6 +472,7 @@
 													output_5.bind("value").toDataColumn("memberJoinDate");
 													return output_5;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -415,6 +490,7 @@
 													output_6.bind("value").toDataColumn("departmentId");
 													return output_6;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -432,6 +508,7 @@
 													output_7.bind("value").toDataColumn("departmentName");
 													return output_7;
 												})();
+												cell.controlConstraint = {};
 											}
 										}
 									]
@@ -560,6 +637,7 @@
 													output_8.bind("value").toDataColumn("noticeId");
 													return output_8;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -577,6 +655,7 @@
 													output_9.bind("value").toDataColumn("noticeTitle");
 													return output_9;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -594,6 +673,7 @@
 													output_10.bind("value").toDataColumn("noticeContent");
 													return output_10;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -611,6 +691,7 @@
 													output_11.bind("value").toDataColumn("noticeCategory");
 													return output_11;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -628,6 +709,7 @@
 													output_12.bind("value").toDataColumn("noticeCreate");
 													return output_12;
 												})();
+												cell.controlConstraint = {};
 											}
 										}
 									]
@@ -749,6 +831,7 @@
 													output_13.bind("value").toDataColumn("freeBoardId");
 													return output_13;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -766,6 +849,7 @@
 													output_14.bind("value").toDataColumn("freeBoardTitle");
 													return output_14;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -783,6 +867,7 @@
 													output_15.bind("value").toDataColumn("freeBoardContent");
 													return output_15;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -800,6 +885,7 @@
 													output_16.bind("value").toDataColumn("memberName");
 													return output_16;
 												})();
+												cell.controlConstraint = {};
 											}
 										},
 										{
@@ -817,6 +903,7 @@
 													output_17.bind("value").toDataColumn("freeBoardCreate");
 													return output_17;
 												})();
+												cell.controlConstraint = {};
 											}
 										}
 									]

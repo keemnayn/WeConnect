@@ -39,6 +39,22 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-80a4af19" id="annualLeavesList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-debb434b" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-d86c87ab" name="leaveRequestType"/>
+          <cl:datacolumn std:sid="d-column-2e1e5321" name="leaveRequestStart"/>
+          <cl:datacolumn std:sid="d-column-97d35ac8" name="leaveRequestEnd"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-d7dfe4c9" id="projectScheduleList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-3d4afcca" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-9b246f3d" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-f19da9e1" name="projectStart"/>
+          <cl:datacolumn std:sid="d-column-bfd788df" name="projectEnd"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:submission std:sid="submission-f280e5c2" id="pendingListSub" method="get" action="admin/members/pending">
         <cl:responsedata dataid="pendingList"/>
       </cl:submission>
@@ -47,6 +63,11 @@
       </cl:submission>
       <cl:submission std:sid="submission-ecb228f7" id="freeBoardListSub" method="get" action="admin/free-boards">
         <cl:responsedata dataid="freeBoardList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-ffe745ba" id="scheduleListSub" method="get" action="admin/schedules">
+        <cl:listener std:sid="listener-5b7a37cb" name="submit-success" handler="onScheduleListSubSubmitSuccess"/>
+        <cl:responsedata dataid="annualLeavesList"/>
+        <cl:responsedata dataid="projectScheduleList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -64,14 +85,17 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:group std:sid="group-2fa3c013" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-f9503975" top="10px" left="10px" width="650px" height="250px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-f9503975" top="10px" left="10px" width="670px" height="250px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             <cl:htmlsnippet std:sid="htmlsnippet-039618ea" style="font-weight:900; font-size:10px;" value="&lt;p>관리자프로필&lt;/p>">
               <cl:xylayoutdata std:sid="xyl-data-a94585b8" top="0px" left="0px" width="100px" height="95px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
             </cl:htmlsnippet>
             <cl:xylayout std:sid="xylayout-17b8941c"/>
           </cl:group>
-          <cl:calendar std:sid="calendar-a92867b7" class="admain_cld">
-            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" bottom="10px" left="10px" width="650px" height="470px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+          <cl:calendar std:sid="calendar-a92867b7" id="crd" class="admain_cld">
+            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" bottom="10px" left="10px" width="670px" height="470px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+            <cl:itemstyle style="color:#663399;">
+              <cl:expbind property="background-color" category="STYLER" expression="value == &quot;연차&quot; ? &quot;rgb(248,204,215)&quot; : &quot;rgb(240,182,151)&quot;&#xD;&#xA;"/>
+            </cl:itemstyle>
           </cl:calendar>
           <cl:tabfolder std:sid="t-folder-d42d032f">
             <cl:xylayoutdata std:sid="xyl-data-43879342" top="0px" right="10px" width="800px" height="300px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
@@ -107,37 +131,37 @@
                     <cl:gridrow std:sid="g-row-7198a6e4" height="40px"/>
                     <cl:gridcell std:sid="gd-cell-f4d83309" rowindex="0" colindex="0" style="text-align:center;" columnname="memberId">
                       <cl:output std:sid="output-c9024ad4" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-00ebbab5"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-f7b5be46" rowindex="0" colindex="1" style="text-align:center;" columnname="memberEmail">
                       <cl:output std:sid="output-54c9b795" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-5209ff30"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-097f13f4" rowindex="0" colindex="2" style="text-align:center;" columnname="memberName">
                       <cl:output std:sid="output-0fdf5ebe" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-e8237ccb"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-bdde4c73" rowindex="0" colindex="3" style="text-align:center;" columnname="position">
                       <cl:output std:sid="output-f5e7bd4b" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-14905779"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-e2026ba8" rowindex="0" colindex="4" style="text-align:center;" columnname="memberJoinDate">
                       <cl:output std:sid="output-7d1b47c1" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-0127797f"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-3c1da14b" rowindex="0" colindex="5" style="text-align:center;" columnname="departmentId">
                       <cl:output std:sid="output-8f33fc5a" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-3d372b45"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-965cea44" rowindex="0" colindex="6" style="text-align:center;" columnname="departmentName">
                       <cl:output std:sid="output-78cfc243" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-90ffdb4c"/>
                       </cl:output>
                     </cl:gridcell>
                   </cl:griddetail>
@@ -175,27 +199,27 @@
                     <cl:gridrow std:sid="g-row-fec93dce" height="40px"/>
                     <cl:gridcell std:sid="gd-cell-6261411b" rowindex="0" colindex="0" style="text-align:center;" columnname="noticeId">
                       <cl:output std:sid="output-b76c2dd8" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-21ecc0d8"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-95e9b1ba" rowindex="0" colindex="1" style="text-align:center;" columnname="noticeTitle">
                       <cl:output std:sid="output-6a890093" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-a050ddff"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-dd07a813" rowindex="0" colindex="2" style="text-align:center;" columnname="noticeContent">
                       <cl:output std:sid="output-c2a74eb2" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-c0bdbddf"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-01be8c38" rowindex="0" colindex="3" style="text-align:center;" columnname="noticeCategory">
                       <cl:output std:sid="output-53b4ad96" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-90986523"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-ed030a4b" rowindex="0" colindex="4" style="text-align:center;" columnname="noticeCreate">
                       <cl:output std:sid="output-f5d39289" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-b7919870"/>
                       </cl:output>
                     </cl:gridcell>
                   </cl:griddetail>
@@ -227,27 +251,27 @@
                     <cl:gridrow std:sid="g-row-ed4f830e" height="40px"/>
                     <cl:gridcell std:sid="gd-cell-9a8c6833" rowindex="0" colindex="0" style="text-align:center;" columnname="freeBoardId">
                       <cl:output std:sid="output-0b3914e4" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-722d35b4"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-ad1b4e47" rowindex="0" colindex="1" style="text-align:center;" columnname="freeBoardTitle">
                       <cl:output std:sid="output-952659b2" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-2d8abd45"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-e39e5d34" rowindex="0" colindex="2" style="text-align:center;" columnname="freeBoardContent">
                       <cl:output std:sid="output-1b5c1cb1" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-436a5c2a"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-ecc8a8aa" rowindex="0" colindex="3" style="text-align:center;" columnname="memberName">
                       <cl:output std:sid="output-72441544" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-bb80c14d"/>
                       </cl:output>
                     </cl:gridcell>
                     <cl:gridcell std:sid="gd-cell-da209375" rowindex="0" colindex="4" style="text-align:center;" columnname="freeBoardCreate">
                       <cl:output std:sid="output-436a088d" style="text-align:center;">
-                        <cl:celldata/>
+                        <cl:celldata std:sid="c-data-6514904e"/>
                       </cl:output>
                     </cl:gridcell>
                   </cl:griddetail>

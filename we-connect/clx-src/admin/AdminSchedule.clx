@@ -7,92 +7,32 @@
     <screen std:sid="screen-03963afd" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <link std:sid="link-bc149299" href="../theme/controls/calendar.part.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-09d0fd0a">
-      <cl:dataset std:sid="d-set-e94c7f67" id="room">
+      <cl:dataset std:sid="d-set-80a4af19" id="annualLeavesList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-db4a1609" name="room"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[8층 대회의실]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[8층 소회의실]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[6층 소회의실]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[5층 대회의실]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[5층 소회의실]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="room"><![CDATA[접견실]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
-      </cl:dataset>
-      <cl:dataset std:sid="d-set-38c9d2e1" id="time">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-922dcd66" name="time" datatype="string"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[9:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[10:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[11:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[12:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[13:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[14:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[15:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[16:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[17:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[18:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[19:00]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="time"><![CDATA[20:00]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
-      </cl:dataset>
-      <cl:dataset std:sid="d-set-ccb8e458" id="project">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-5906a1b8" name="projectStart" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-bb16434f" name="projectEnd" datatype="string"/>
-          <cl:datacolumn std:sid="d-column-d58d18ec" name="label"/>
-          <cl:datacolumn std:sid="d-column-55f0c449" name="value"/>
+          <cl:datacolumn std:sid="d-column-debb434b" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-d86c87ab" name="leaveRequestType"/>
+          <cl:datacolumn std:sid="d-column-2e1e5321" name="leaveRequestStart"/>
+          <cl:datacolumn std:sid="d-column-97d35ac8" name="leaveRequestEnd"/>
         </cl:datacolumnlist>
       </cl:dataset>
-      <cl:submission std:sid="submission-59627984" id="calrendar" method="get" action="admin/carlendar">
-        <cl:listener std:sid="listener-7bf3f4a0" name="submit-progress" handler="onCalrendarSubmitProgress"/>
-        <cl:responsedata dataid="project"/>
+      <cl:dataset std:sid="d-set-d7dfe4c9" id="projectScheduleList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-3d4afcca" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-9b246f3d" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-f19da9e1" name="projectStart"/>
+          <cl:datacolumn std:sid="d-column-bfd788df" name="projectEnd"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-ffe745ba" id="scheduleListSub" method="get" action="admin/schedules">
+        <cl:listener std:sid="listener-fa204084" name="submit-success" handler="onScheduleListSubSubmitSuccess"/>
+        <cl:responsedata dataid="annualLeavesList"/>
+        <cl:responsedata dataid="projectScheduleList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-903b7a96">
-    <cl:listener std:sid="listener-4ad7518e" name="init" handler="onBodyInit"/>
-    <cl:listener std:sid="listener-ce05306a" name="load" handler="onBodyLoad"/>
+    <cl:listener std:sid="listener-d1d67124" name="load" handler="onBodyLoad"/>
     <cl:tabfolder std:sid="t-folder-b89edc7b">
       <cl:xylayoutdata std:sid="xyl-data-895989ca" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-b609801d" selected="true" text="일정관리">
@@ -103,12 +43,12 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:calendar std:sid="calendar-b74becfa" id="crd" class="admin_carlendar">
+          <cl:calendar std:sid="calendar-b74becfa" id="crd" class="admin_carlendar" enabled="false">
             <cl:listener std:sid="listener-eca4c7bb" name="date-click" handler="onCalendarDateClick"/>
             <cl:listener std:sid="listener-71b770c5" name="item-click" handler="onCrdItemClick"/>
             <cl:xylayoutdata std:sid="xyl-data-d7ce4b32" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:itemstyle>
-              <cl:expbind property="color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;주간보고&quot;: &quot;violet&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;: &quot;red&quot;&#xD;&#xA;&#x9;case &quot;연차&quot;: &quot;orange&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;: &quot;blue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;: &quot;green&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;: &quot;gray&quot;&#xD;&#xA;}"/>
+            <cl:itemstyle style="color:#663399; font-size:13px;">
+              <cl:expbind property="background-color" category="STYLER" expression="value == &quot;연차&quot; ? &quot;rgb(248,204,215)&quot; : &quot;rgb(240,182,151)&quot;&#xD;&#xA;"/>
             </cl:itemstyle>
           </cl:calendar>
           <cl:xylayout std:sid="xylayout-b4028147"/>
@@ -121,8 +61,6 @@
     <std:hruler>
       <std:guide position="1653"/>
     </std:hruler>
-    <std:vruler>
-      <std:guide position="215"/>
-    </std:vruler>
+    <std:vruler/>
   </std:studiosetting>
 </html>
