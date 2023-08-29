@@ -29,10 +29,6 @@
       <cl:listener std:sid="listener-54769717" name="click" handler="onButtonClick2"/>
       <cl:xylayoutdata std:sid="xyl-data-082d8e5c" top="20px" right="0px" width="100px" height="20px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>
-    <cl:button std:sid="button-4d97013f" id="updateBtn" value="수정">
-      <cl:listener std:sid="listener-e691874a" name="click" handler="onButtonClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-480b23bc" top="20px" right="100px" width="100px" height="20px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
-    </cl:button>
     <cl:inputbox std:sid="i-box-a9366ce0" id="freeBoardCommentContent" readonly="true">
       <cl:xylayoutdata std:sid="xyl-data-3c58ee89" top="40px" right="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:inputbox>
