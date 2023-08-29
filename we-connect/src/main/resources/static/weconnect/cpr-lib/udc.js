@@ -173,7 +173,6 @@
 })();
 /// end - udc.FreeBoardCommentUdc
 /// start - udc.myPostList
-<<<<<<< HEAD
 /*
  * UDC Qualified Name: udc.myPostList
  * App URI: udc/myPostList
