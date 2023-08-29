@@ -85,58 +85,70 @@
 				var message = checkEmailSub.getMetadata("message");
 				alert(message);
 				var memberEmailIpb = app.lookup("memberEmailIpb");
+				var emailValidationOpb = app.lookup("emailValidationOpb");
 				
 				if (!success) {
 					memberEmailIpb.clear();
 					memberEmailIpb.focus();
+					emailValidationOpb.value = "이메일을 다시 입력해 주세요";
+					emailValidationOpb.style.css("color", "red");
 				}
 			}
 
-			// blur 이벤트 리스너 함수는 필요하지 않으므로 삭제
+			function validateAllFields() {
+				var emailValidationOpb = app.lookup("emailValidationOpb").value;
+				var nameValidationOpb = app.lookup("nameValidationOpb").value;
+				var passwordValidationOpb = app.lookup("passwordValidationOpb").value;
+				var passwordCheckValidationOpb = app.lookup("passwordCheckValidationOpb").value;
+				var registerBtn = app.lookup('registerBtn');
+				
+				// 모든 유효성 검사가 통과되었는지 확인
+				if (
+					emailValidationOpb === "정상적인 이메일 형식입니다." &&
+					nameValidationOpb === "정상적인 이름 형식입니다." &&
+					passwordValidationOpb === "정상적인 비밀번호 형식입니다." &&
+					passwordCheckValidationOpb === "비밀번호가 일치합니다."
+				) {
+					registerBtn.enabled = true;
+				} else {
+					registerBtn.enabled = false;
+				}
+			}
 
 			function onMemberEmailIpbBlur(e) {
 				var memberEmailIpb = e.control;
 				var emailValue = memberEmailIpb.value;
 				var emailValidationOpb = app.lookup("emailValidationOpb");
 				
-				// 이메일 유효성 검사를 위한 정규 표현식
 				var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 				
 				if (!emailRegex.test(emailValue)) {
 					emailValidationOpb.value = "유효하지 않은 이메일 형식입니다.";
 					emailValidationOpb.style.css("color", "red");
-					// 이메일 입력 박스에 포커스
-					memberEmailIpb.focus();
 				} else {
-					// 정상 메시지를 표시
 					emailValidationOpb.value = "정상적인 이메일 형식입니다.";
 					emailValidationOpb.style.css("color", "blue");
 				}
+				validateAllFields();
 			}
-
-			// 나머지 함수들은 변경하지 않아도 됩니다.
 
 			function onMemberNameBlur(e) {
 				var memberName = e.control;
 				var nameValue = memberName.value;
-				var nameValidationOpb = app.lookup("nameValidationOpb"); // 이름 유효성 검사 결과를 표시하는 컨트롤
+				var nameValidationOpb = app.lookup("nameValidationOpb");
 				
-				var nameRegex = /^[가-힣]+$/; // 변경된 부분
+				var nameRegex = /^[가-힣]+$/;
 				
 				if (!nameRegex.test(nameValue)) {
 					nameValidationOpb.value = "한글 완성형 문자만 입력 가능합니다.";
 					nameValidationOpb.style.css("color", "red");
-					memberName.focus();
 				} else {
 					nameValidationOpb.value = "정상적인 이름 형식입니다.";
 					nameValidationOpb.style.css("color", "blue");
 				}
+				validateAllFields();
 			}
 
-			/*
-			 * 인풋 박스에서 blur 이벤트 발생 시 호출.
-			 * 컨트롤이 포커스를 잃은 후 발생하는 이벤트.
-			 */
 			function onPasswordIpbBlur(e) {
 				var passwordIpb = e.control;
 				var passwordValue = passwordIpb.value;
@@ -146,46 +158,36 @@
 				
 				if (!passwordRegex.test(passwordValue)) {
 					passwordValidationOpb.value = "비밀번호는 8자리 이상이며, 최소 1개의 특수문자를 포함해야 합니다.";
-					// 비밀번호 입력 박스에 포커스
 					passwordValidationOpb.style.css("color", "red");
-					passwordIpb.focus();
 				} else {
-					// 정상 메시지를 표시
 					passwordValidationOpb.value = "정상적인 비밀번호 형식입니다.";
 					passwordValidationOpb.style.css("color", "blue");
 				}
+				validateAllFields();
 			}
 
-			/*
-			 * 인풋 박스에서 blur 이벤트 발생 시 호출.
-			 * 컨트롤이 포커스를 잃은 후 발생하는 이벤트.
-			 */
 			function onCheckPasswordIpbBlur(e) {
 				var checkPasswordIpb = e.control;
 				var passwordCheckValidationOpb = app.lookup("passwordCheckValidationOpb");
 				
-				// 처음 입력한 비밀번호 필드 값을 가져옵니다.
 				var passwordIpb = app.lookup("passwordIpb");
 				var originalPassword = passwordIpb.value;
 				
 				var passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
 				
-				if (!passwordRegex.test(checkPasswordIpb.value)) {
-					passwordCheckValidationOpb.value = "비밀번호는 8자리 이상이며, 최소 1개의 특수문자를 포함해야 합니다.";
+				if (!passwordRegex.test(checkPasswordIpb.value) || originalPassword !== checkPasswordIpb.value) {
+					if (!passwordRegex.test(checkPasswordIpb.value)) {
+						passwordCheckValidationOpb.value = "비밀번호는 8자리 이상이며, 최소 1개의 특수문자를 포함해야 합니다.";
+					} else {
+						passwordCheckValidationOpb.value = "비밀번호가 일치하지 않습니다.";
+						checkPasswordIpb.clear();
+					}
 					passwordCheckValidationOpb.style.css("color", "red");
-					checkPasswordIpb.focus();
-					return;
-				}
-				
-				if (originalPassword !== checkPasswordIpb.value) {
-					passwordCheckValidationOpb.value = "비밀번호가 일치하지 않습니다.";
-					passwordCheckValidationOpb.style.css("color", "red");
-					checkPasswordIpb.clear();
-					checkPasswordIpb.focus();
 				} else {
 					passwordCheckValidationOpb.value = "비밀번호가 일치합니다.";
 					passwordCheckValidationOpb.style.css("color", "blue");
 				}
+				validateAllFields();
 			}
 			// End - User Script
 			
@@ -355,11 +357,11 @@
 				if(typeof onMemberIdValueChange == "function") {
 					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
 				}
-				if(typeof onMemberEmailIpbInput == "function") {
-					inputBox_1.addEventListener("input", onMemberEmailIpbInput);
-				}
 				if(typeof onMemberEmailIpbBlur == "function") {
 					inputBox_1.addEventListener("blur", onMemberEmailIpbBlur);
+				}
+				if(typeof onMemberEmailIpbInput == "function") {
+					inputBox_1.addEventListener("input", onMemberEmailIpbInput);
 				}
 				container.addChild(inputBox_1, {
 					"top": "120px",
@@ -587,7 +589,7 @@
 					"width": "350px",
 					"height": "50px"
 				});
-				var button_2 = new cpr.controls.Button();
+				var button_2 = new cpr.controls.Button("registerBtn");
 				button_2.value = "확인";
 				button_2.style.setClasses(["btn-success"]);
 				button_2.style.css({
