@@ -95,7 +95,8 @@
         <cl:button std:sid="button-daaf79eb" style="border-radius:8px; font-size:15px; background-image:none;" value="취소">
           <cl:xylayoutdata std:sid="xyl-data-a0a0eb8d" right="524px" bottom="0px" left="904px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
         </cl:button>
-        <cl:button std:sid="button-6dcdf7fe" style="border-radius:8px; background-color:#4680ee; color:#ffffff; font-size:15px; background-image:none;" value="신청">
+        <cl:button std:sid="button-6dcdf7fe" id="request" style="border-radius:8px; background-color:#4680ee; color:#ffffff; font-size:15px; background-image:none;" value="신청">
+          <cl:listener std:sid="listener-a12ebdf3" name="click" handler="onRequestClick"/>
           <cl:xylayoutdata std:sid="xyl-data-a69bba29" right="844px" bottom="0px" left="584px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
         </cl:button>
         <cl:xylayout std:sid="xylayout-364261c8"/>

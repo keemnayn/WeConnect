@@ -19,22 +19,22 @@
 			 ************************************************/
 
 			/*
-			 * "신청" 버튼에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
-			function onButtonClick(e) {
-				var button = e.control;
-				let submission = app.lookup("Leave");
-				submission.send();
-			}
-
-			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
 			function onLeaveSubmitSuccess(e) {
 				var leave = e.control;
 				alert("작성완료");
+			}
+
+			/*
+			 * "신청" 버튼(request)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onRequestClick(e) {
+				var request = e.control;
+				let submission = app.lookup("Leave");
+				submission.send();
 			}
 			// End - User Script
 			
@@ -266,7 +266,7 @@
 						"left": "904px",
 						"height": "50px"
 					});
-					var button_2 = new cpr.controls.Button();
+					var button_2 = new cpr.controls.Button("request");
 					button_2.value = "신청";
 					button_2.style.css({
 						"border-radius" : "8px",
@@ -275,6 +275,9 @@
 						"font-size" : "15px",
 						"background-image" : "none"
 					});
+					if(typeof onRequestClick == "function") {
+						button_2.addEventListener("click", onRequestClick);
+					}
 					container.addChild(button_2, {
 						"right": "844px",
 						"bottom": "0px",
