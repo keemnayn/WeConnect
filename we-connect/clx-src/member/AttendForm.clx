@@ -37,6 +37,7 @@
           <cl:datacolumn std:sid="d-column-6fd6e040" name="memberName" datatype="string"/>
           <cl:datacolumn std:sid="d-column-72fe19b0" name="position" datatype="string"/>
           <cl:datacolumn std:sid="d-column-a6334926" name="departmentName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-142fbb98" name="leaveCount" datatype="string"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:submission std:sid="submission-459a1b9c" id="attend1" method="get" action="member/attendance">

@@ -103,6 +103,7 @@ function onBodyInit2(e) {
 	
 	app.lookup("proposalListSub").send();
 	app.lookup("reservListSub").send();
+	app.lookup("projectListSub").send();
 }
 
 /*
@@ -122,7 +123,7 @@ function onFi1ValueChange(e) {
 	var fi1 = e.control;
 	var image = app.lookup("profile");
 	var fileInput = app.lookup("fi1");
-	let fi2 = fileInput.file
+	let fi2 = fileInput.files;
 	let submission = app.lookup("imgSend");
 	console.log(fi1.file);
 	console.log(fi2);
@@ -134,6 +135,7 @@ function onFi1ValueChange(e) {
 		reader.readAsDataURL(fileInput.files[0]);
 	}
 	submission.addFileParameter("profileImagePath", fi2);
+	console.log("전송객체:" + submission.addFileParameter("profileImagePath", fi2));
 	submission.send();
 }
 
@@ -169,7 +171,7 @@ function onMemberNameSubmitSuccess(e) {
 	let memberNameValue = memberInfo.memberName; // 변수명 변경
 	let position = memberInfo.position;
 	let departmentName = memberInfo.departmentName + "팀";
-	member1.value = memberNameValue +" "+position + "<br>" + departmentName;
+	member1.value = memberNameValue + " " + position + "<br>" + departmentName;
 }
 
 /*
@@ -179,4 +181,27 @@ function onMemberNameSubmitSuccess(e) {
 function onGrd3Dblclick(e) {
 	var grd3 = e.control;
 	window.location = "member/FreeBoard.clx";
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onProjectListSubSubmitSuccess(e) {
+	var projectListSub = e.control;
+	var submission = app.lookup("projectListSub");
+	var calendar = app.lookup("main_crd");
+	var dataSet = app.lookup("projectList");
+	var jsonData = JSON.parse(submission.xhr.responseText);
+	var projectList = jsonData.projectList;
+	for (var i = 0; i < projectList.length; i++) {
+		var projectName = jsonData.projectList[i].projectName;
+		var projectStart = jsonData.projectList[i].projectStart;
+		var projectEnd = jsonData.projectList[i].projectEnd;
+		console.log(projectName);
+		console.log(projectStart);
+		console.log(projectEnd);
+		//	calendar.addItem(new cpr.controls.CalendarItem("label", new Date(dataSet.getColumn("projectStart")), new Date(dataSet.getColumn("projectEnd"))));
+		calendar.addItem(new cpr.controls.CalendarItem(projectName, new Date(projectStart), new Date(projectEnd)));
+	}
 }

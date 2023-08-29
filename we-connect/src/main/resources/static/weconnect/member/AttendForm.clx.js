@@ -112,26 +112,16 @@
 				let xhr = submission.xhr.responseText;
 				let data = JSON.parse(xhr);
 				let member1 = app.lookup("name");
+				let leaveCount =  app.lookup("leave");
 				let memberInfo = data.memberList[0];
 				let memberNameValue = memberInfo.memberName;
 				let position = memberInfo.position;
 				let formattedMemberName = memberNameValue + position + "님";
+				let memberLeaveCount = memberInfo.leaveCount;
+				console.log(memberLeaveCount);
+				leaveCount.value = "연차 갯수\n"  + memberLeaveCount;
 				member1.value = formattedMemberName;
-			}
-
-			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
-			 */
-			function onLeaveRequestListSubSubmitSuccess2(e){
-				var leaveRequestListSub = e.control;
-				let submission = app.lookup("leaveRequestListSub");
-				var leave = app.lookup("leave");
-				let xhr = submission.xhr.responseText;
-				let data = JSON.parse(xhr);
-				let leaveInfo = data.leaveRequestList[0];
-				let leaveCount = leaveInfo.leaveCount;
-				leave.value = "연차 갯수\n" + leaveCount;
+				
 			};
 			// End - User Script
 			
@@ -229,6 +219,10 @@
 					},
 					{
 						"name": "departmentName",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveCount",
 						"dataType": "string"
 					}
 				]

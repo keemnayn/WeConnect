@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +52,10 @@ public class ProfileController {
 
 	@PutMapping()
 	public View updateImgPath(HttpServletRequest request, DataRequest dataRequest) throws IOException {
+		//세션 아이디 값 가져오기 
 		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		//업로드 된 파일 가져오기 
 		Map<String,UploadFile[]>uploadFiles = dataRequest.getUploadFiles();
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("profileImage");
 		UploadFile[] uploadFile = uploadFiles.get("profileImagePath");
@@ -61,7 +65,6 @@ public class ProfileController {
 		log.info("파일 이름:{}", saveName);
 		String uuid  = UUID.randomUUID().toString();
 		String profileImagePath = uploadPath + parameterGroup.getValue("profileImagePath");
-		Long memberId = (Long) session.getAttribute("memberId");
 		log.info("멤버 아이디:{}", memberId);
 		profileService.updateProfileImagePath(memberId, profileImagePath);
 

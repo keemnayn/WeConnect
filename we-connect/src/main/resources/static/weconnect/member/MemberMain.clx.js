@@ -117,6 +117,7 @@
 				
 				app.lookup("proposalListSub").send();
 				app.lookup("reservListSub").send();
+				app.lookup("projectListSub").send();
 			}
 
 			/*
@@ -136,7 +137,7 @@
 				var fi1 = e.control;
 				var image = app.lookup("profile");
 				var fileInput = app.lookup("fi1");
-				let fi2 = fileInput.file
+				let fi2 = fileInput.files;
 				let submission = app.lookup("imgSend");
 				console.log(fi1.file);
 				console.log(fi2);
@@ -148,6 +149,7 @@
 					reader.readAsDataURL(fileInput.files[0]);
 				}
 				submission.addFileParameter("profileImagePath", fi2);
+				console.log("전송객체:" + submission.addFileParameter("profileImagePath", fi2));
 				submission.send();
 			}
 
@@ -183,7 +185,7 @@
 				let memberNameValue = memberInfo.memberName; // 변수명 변경
 				let position = memberInfo.position;
 				let departmentName = memberInfo.departmentName + "팀";
-				member1.value = memberNameValue +" "+position + "<br>" + departmentName;
+				member1.value = memberNameValue + " " + position + "<br>" + departmentName;
 			}
 
 			/*
@@ -193,6 +195,29 @@
 			function onGrd3Dblclick(e) {
 				var grd3 = e.control;
 				window.location = "member/FreeBoard.clx";
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onProjectListSubSubmitSuccess(e) {
+				var projectListSub = e.control;
+				var submission = app.lookup("projectListSub");
+				var calendar = app.lookup("main_crd");
+				var dataSet = app.lookup("projectList");
+				var jsonData = JSON.parse(submission.xhr.responseText);
+				var projectList = jsonData.projectList;
+				for (var i = 0; i < projectList.length; i++) {
+					var projectName = jsonData.projectList[i].projectName;
+					var projectStart = jsonData.projectList[i].projectStart;
+					var projectEnd = jsonData.projectList[i].projectEnd;
+					console.log(projectName);
+					console.log(projectStart);
+					console.log(projectEnd);
+					//	calendar.addItem(new cpr.controls.CalendarItem("label", new Date(dataSet.getColumn("projectStart")), new Date(dataSet.getColumn("projectEnd"))));
+					calendar.addItem(new cpr.controls.CalendarItem(projectName, new Date(projectStart), new Date(projectEnd)));
+				}
 			}
 			// End - User Script
 			
@@ -365,6 +390,16 @@
 				]
 			});
 			app.register(dataSet_7);
+			
+			var dataSet_8 = new cpr.data.DataSet("projectList");
+			dataSet_8.parseData({
+				"columns" : [
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
+				]
+			});
+			app.register(dataSet_8);
 			var dataMap_1 = new cpr.data.DataMap("profileImage");
 			dataMap_1.parseData({
 				"columns" : [
@@ -450,6 +485,15 @@
 			submission_9.action = "/weconnect/member/room-reserv/list";
 			submission_9.addResponseData(dataSet_7, false);
 			app.register(submission_9);
+			
+			var submission_10 = new cpr.protocols.Submission("projectListSub");
+			submission_10.method = "get";
+			submission_10.action = "member/project";
+			submission_10.addResponseData(dataSet_8, false);
+			if(typeof onProjectListSubSubmitSuccess == "function") {
+				submission_10.addEventListener("submit-success", onProjectListSubSubmitSuccess);
+			}
+			app.register(submission_10);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -1073,7 +1117,8 @@
 					var xYLayout_10 = new cpr.controls.layouts.XYLayout();
 					group_9.setLayout(xYLayout_10);
 					(function(container){
-						var calendar_1 = new cpr.controls.Calendar();
+						var calendar_1 = new cpr.controls.Calendar("main_crd");
+						calendar_1.style.setClasses(["main-calendar"]);
 						container.addChild(calendar_1, {
 							"top": "0px",
 							"right": "0px",
