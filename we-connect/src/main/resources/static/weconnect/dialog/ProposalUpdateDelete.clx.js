@@ -23,14 +23,21 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(e) {
+				app.lookup("proposalDetailSub").send();
 				var hostProperty = app.getHostProperty("initValue");
 				var proposalId = hostProperty["proposalId"];
 				var proposalTitle = hostProperty["proposalTitle"];
 				var proposalContent = hostProperty["proposalContent"];
 				var proposalStatus = hostProperty["proposalStatus"];
+				var PMemberId = hostProperty["PMemberId"];
+				console.log(PMemberId);
+				var memberId = app.lookup("memberDTO").getValue("memberId");
+				console.log(memberId);
 				app.lookup("proposalIdOpb").value = proposalId;
 				app.lookup("proposalTitleIpb").value = proposalTitle;
 				app.lookup("proposalContentIpb").value = proposalContent;
+				app.lookup("PMemberIdOpb").value = PMemberId;
+				console.log(memberId == PMemberId);
 			}
 
 			/*
@@ -60,11 +67,11 @@
 			}
 
 			/*
-			 * "삭제" 버튼(btnRevert)에서 click 이벤트 발생 시 호출.
+			 * "삭제" 버튼(btnDelete)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onBtnRevertClick(e) {
-				var btnRevert = e.control;
+			function onBtnDeleteClick(e) {
+				var btnDelete = e.control;
 				app.lookup("proposalDeleteSub").send();
 			}
 
@@ -74,7 +81,7 @@
 			 */
 			function onProposalDeleteSubSubmitSuccess(e) {
 				var proposalDeleteSub = e.control;
-				if (!confirm("해당 글을 삭제하시겠습니까?")) {
+				if (!confirm("해당 글을 삭제하시겠습니까? 한 번 삭제된 글은 되돌릴 수 없습니다.")) {
 					// 취소(아니오) 버튼 클릭 시 이벤트
 					alert("취소를 누르셨습니다");
 				} else {
@@ -82,6 +89,24 @@
 					app.close();
 				}
 			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onProposalDetailSubSubmitSuccess(e){
+				var proposalDetailSub= e.control;
+				var memberId = app.lookup("memberDTO").getValue("memberId");
+				var hostProperty = app.getHostProperty("initValue");
+				var PMemberId = hostProperty["PMemberId"];
+				var btnUpdate = app.lookup("btnUpdate");
+				var btnDelete = app.lookup("btnDelete");
+				console.log(memberId);
+					if (memberId == PMemberId) {
+					btnUpdate.visible = true;
+					btnDelete.visible = true;
+				}
+			};
 			// End - User Script
 			
 			// Header
@@ -95,28 +120,25 @@
 				]
 			});
 			app.register(dataSet_1);
-			
-			var dataSet_2 = new cpr.data.DataSet("proposalReadList");
-			dataSet_2.parseData({
-				"columns": [
-					{"name": "proposalId"},
-					{"name": "proposalTitle"},
-					{"name": "proposalStatus"},
-					{"name": "proposalCreate"},
-					{"name": "memberId"}
-				],
-				"rows": []
-			});
-			app.register(dataSet_2);
 			var dataMap_1 = new cpr.data.DataMap("proposalUpdateDeleteParam");
 			dataMap_1.parseData({
 				"columns" : [
 					{"name": "proposalTitle"},
 					{"name": "proposalContent"},
-					{"name": "proposalId"}
+					{"name": "proposalId"},
+					{"name": "PMemberId"}
 				]
 			});
 			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("memberDTO");
+			dataMap_2.parseData({
+				"columns" : [{
+					"name": "memberId",
+					"dataType": "string"
+				}]
+			});
+			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("proposalUpdateSub");
 			submission_1.method = "put";
 			submission_1.action = "member/proposals";
@@ -126,10 +148,13 @@
 			}
 			app.register(submission_1);
 			
-			var submission_2 = new cpr.protocols.Submission("proposalReadSub");
+			var submission_2 = new cpr.protocols.Submission("proposalDetailSub");
 			submission_2.method = "get";
-			submission_2.action = "member/proposals";
-			submission_2.addResponseData(dataSet_2, false);
+			submission_2.action = "member/proposals/detail";
+			submission_2.addResponseData(dataMap_2, false);
+			if(typeof onProposalDetailSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onProposalDetailSubSubmitSuccess);
+			}
 			app.register(submission_2);
 			
 			var submission_3 = new cpr.protocols.Submission("proposalDeleteSub");
@@ -240,10 +265,11 @@
 					"left": "5px",
 					"height": "50px"
 				});
-				var button_1 = new cpr.controls.Button("btnRevert");
+				var button_1 = new cpr.controls.Button("btnDelete");
+				button_1.visible = false;
 				button_1.value = "삭제";
-				if(typeof onBtnRevertClick == "function") {
-					button_1.addEventListener("click", onBtnRevertClick);
+				if(typeof onBtnDeleteClick == "function") {
+					button_1.addEventListener("click", onBtnDeleteClick);
 				}
 				container.addChild(button_1, {
 					"right": "506px",
@@ -252,6 +278,7 @@
 					"height": "50px"
 				});
 				var button_2 = new cpr.controls.Button("btnUpdate");
+				button_2.visible = false;
 				button_2.value = "수정";
 				if(typeof onBtnUpdateClick == "function") {
 					button_2.addEventListener("click", onBtnUpdateClick);
@@ -263,6 +290,7 @@
 					"height": "50px"
 				});
 				var output_4 = new cpr.controls.Output("proposalIdOpb");
+				output_4.visible = false;
 				output_4.style.css({
 					"text-align" : "right"
 				});
@@ -274,6 +302,15 @@
 					"left": "1375px",
 					"width": "200px",
 					"height": "50px"
+				});
+				var output_5 = new cpr.controls.Output("PMemberIdOpb");
+				output_5.visible = false;
+				output_5.bind("value").toDataMap(app.lookup("proposalUpdateDeleteParam"), "PMemberId");
+				container.addChild(output_5, {
+					"top": "20px",
+					"left": "1182px",
+					"width": "135px",
+					"height": "48px"
 				});
 			})(group_1);
 			container.addChild(group_1, {

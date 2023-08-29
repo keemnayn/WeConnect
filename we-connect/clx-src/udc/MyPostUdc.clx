@@ -5,16 +5,24 @@
     <screen std:sid="screen-fa0fa45e" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-a2534be6" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-fe52c449"/>
-    <cl:appspec/>
+    <cl:appspec>
+      <cl:property name="title" type="string"/>
+      <cl:property name="content" type="string"/>
+      <cl:property name="date" type="string"/>
+    </cl:appspec>
   </head>
   <body std:sid="body-c5beea73" style="top:0px; left:0px; width:1580px; height:940px;">
+    <cl:listener std:sid="listener-0c5c4248" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-94a62649" style="background-color:#D7E4F2; border-radius:20px;">
-      <cl:xylayoutdata std:sid="xyl-data-1b1e0626" top="20px" left="20px" width="260px" height="324px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-e73ac94a" value="myPostTitle">
-        <cl:xylayoutdata std:sid="xyl-data-ba6445aa" top="20px" left="20px" width="220px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-1b1e0626" top="20px" left="20px" width="260px" height="340px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-e73ac94a" id="date" value="myPostDate">
+        <cl:xylayoutdata std:sid="xyl-data-ba6445aa" top="10px" left="20px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:output std:sid="output-df371ed0" value="myPostContent">
-        <cl:xylayoutdata std:sid="xyl-data-1d07f180" top="50px" left="20px" width="220px" height="254px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-df371ed0" id="content" value="myPostContent">
+        <cl:xylayoutdata std:sid="xyl-data-1d07f180" top="90px" left="20px" width="220px" height="230px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-3355279b" id="title" value="myPostTitle">
+        <cl:xylayoutdata std:sid="xyl-data-ec0c6d0d" top="50px" left="20px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-0e00b95e"/>
     </cl:group>

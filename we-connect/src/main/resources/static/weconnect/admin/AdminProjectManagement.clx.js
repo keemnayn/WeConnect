@@ -26,6 +26,15 @@
 			function onBodyInit(e) {
 				app.lookup("projectListSub").send();
 			}
+
+			/*
+			 * 그리드에서 selection-change 이벤트 발생 시 호출.
+			 * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
+			 */
+			function onProjectListGrdSelectionChange(e){
+				var projectListGrd = e.control;
+				
+			};
 			// End - User Script
 			
 			// Header
@@ -251,6 +260,9 @@
 							]
 						}
 					});
+					if(typeof onProjectListGrdSelectionChange == "function") {
+						grid_1.addEventListener("selection-change", onProjectListGrdSelectionChange);
+					}
 					container.addChild(grid_1, {
 						"top": "0px",
 						"right": "0px",

@@ -133,12 +133,12 @@
     </cl:model>
     <cl:appspec/>
   </head>
-  <body std:sid="body-8a3a7e16" style="background-color:#F8F8F8; left:0px; width:1920px; height:1080px;">
+  <body std:sid="body-8a3a7e16" style="background-color:#F8F8F8; left:0px; width:1920px; border-left-color:#070048; height:1080px;">
     <cl:listener std:sid="listener-2a1a7589" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-0c603087" name="load" handler="onBodyLoad"/>
-    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#ffffff; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff;" class="admin_tree">
+    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#070048; color:#6B6A6A; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff; font-family:'맑은 고딕' , 'Malgun Gothic' , sans-serif;" class="admin_tree">
       <cl:listener std:sid="listener-11dd4ffb" name="item-click" handler="onTre1ItemClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="memberMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
     <cl:group std:sid="group-43e402e0" style="background-color:#ffffff;">
@@ -165,7 +165,7 @@
       <cl:xylayout std:sid="xylayout-67b54889"/>
     </cl:group>
     <cl:group std:sid="group-cedfdf19" style="background-color:#ffffff;">
-      <cl:xylayoutdata std:sid="xyl-data-9e03cccf" right="0px" bottom="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+      <cl:xylayoutdata std:sid="xyl-data-9e03cccf" right="0px" bottom="0px" left="310px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
       <cl:xylayout std:sid="xylayout-e88e4b19"/>
     </cl:group>
     <cl:embeddedapp std:sid="e-app-72a2cc14" id="ea1" style="background-color:#F8F8F8;">

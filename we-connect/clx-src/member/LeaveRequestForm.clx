@@ -39,62 +39,76 @@
     <cl:appspec/>
   </head>
   <body std:sid="body-b6366cad">
-    <cl:group std:sid="group-1ea4ba1b">
-      <cl:xylayoutdata std:sid="xyl-data-c50892bf" top="0px" left="0px" width="1580px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-c57df6a1" style="text-align:center;" value="구분">
-        <cl:formdata std:sid="f-data-ee8be003" row="0" col="0"/>
-      </cl:output>
-      <cl:output std:sid="output-0c39ec7e" style="text-align:center;" value="기간">
-        <cl:formdata std:sid="f-data-09fc5d97" row="0" col="2"/>
-      </cl:output>
-      <cl:dateinput std:sid="d-input-332ca669" id="dti1">
-        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestStart"/>
-        <cl:formdata std:sid="f-data-a4ef86c0" row="0" col="3"/>
-      </cl:dateinput>
-      <cl:dateinput std:sid="d-input-6c273717" id="dti2">
-        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestEnd"/>
-        <cl:formdata std:sid="f-data-7c984f7c" row="0" col="5"/>
-      </cl:dateinput>
-      <cl:combobox std:sid="c-box-e348d553" id="cmb1">
-        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestType"/>
-        <cl:formdata std:sid="f-data-9fac92e0" row="0" col="1"/>
-        <cl:itemset datasetid="type" label="type" value="type"/>
-      </cl:combobox>
-      <cl:output std:sid="output-7f1c49b6" style="text-align:center;" value="~">
-        <cl:formdata std:sid="f-data-4ac9008f" row="0" col="4"/>
-      </cl:output>
-      <cl:formlayout std:sid="f-layout-6baa735e" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
-        <cl:rows length="1" unit="FRACTION"/>
-        <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
-        <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
-        <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
-      </cl:formlayout>
+    <cl:group std:sid="group-f648dcde" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-top-width:1px; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;">
+      <cl:xylayoutdata std:sid="xyl-data-ad425d4c" top="189px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:group std:sid="group-1ea4ba1b">
+        <cl:xylayoutdata std:sid="xyl-data-06d234fb" top="0px" right="0px" bottom="401px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:output std:sid="output-c57df6a1" style="text-align:center;" value="구분">
+          <cl:formdata std:sid="f-data-ee8be003" row="0" col="0"/>
+        </cl:output>
+        <cl:output std:sid="output-0c39ec7e" style="text-align:center;" value="기간">
+          <cl:formdata std:sid="f-data-09fc5d97" row="0" col="2"/>
+        </cl:output>
+        <cl:dateinput std:sid="d-input-332ca669" id="dti1" style="text-align:center;">
+          <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestStart"/>
+          <cl:formdata std:sid="f-data-a4ef86c0" row="0" col="3"/>
+        </cl:dateinput>
+        <cl:dateinput std:sid="d-input-6c273717" id="dti2" style="text-align:center;">
+          <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestEnd"/>
+          <cl:formdata std:sid="f-data-7c984f7c" row="0" col="5"/>
+        </cl:dateinput>
+        <cl:combobox std:sid="c-box-e348d553" id="cmb1" style="text-align:center;">
+          <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestType"/>
+          <cl:formdata std:sid="f-data-5bc4ca1a" row="0" col="1"/>
+          <cl:itemset datasetid="type" label="type" value="type"/>
+        </cl:combobox>
+        <cl:output std:sid="output-7f1c49b6" style="text-align:center;" value="~">
+          <cl:formdata std:sid="f-data-4ac9008f" row="0" col="4"/>
+        </cl:output>
+        <cl:formlayout std:sid="f-layout-6baa735e" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+          <cl:rows length="230" unit="PIXEL"/>
+          <cl:columns length="100" unit="PIXEL"/>
+          <cl:columns length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+          <cl:columns length="100" unit="PIXEL"/>
+          <cl:columns length="1" unit="FRACTION"/>
+          <cl:columns length="100" unit="PIXEL"/>
+          <cl:columns length="1" unit="FRACTION"/>
+        </cl:formlayout>
+      </cl:group>
+      <cl:group std:sid="group-4e5b55ef" style="border-radius:8px;">
+        <cl:xylayoutdata std:sid="xyl-data-a3ce7c03" top="254px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:group std:sid="group-494bec52">
+          <cl:xylayoutdata std:sid="xyl-data-889b0137" top="0px" right="0px" bottom="140px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+          <cl:output std:sid="output-4c902b40" style="text-align:center;" value="목적">
+            <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
+          </cl:output>
+          <cl:textarea std:sid="t-area-d560cf87" id="txa1">
+            <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestReason"/>
+            <cl:formdata std:sid="f-data-bb9f619f" row="0" col="1" rowspan="1" colspan="1"/>
+          </cl:textarea>
+          <cl:formlayout std:sid="f-layout-675b5c21" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+            <cl:rows length="1" unit="FRACTION"/>
+            <cl:columns length="100" unit="PIXEL"/>
+            <cl:columns length="1" unit="FRACTION"/>
+          </cl:formlayout>
+        </cl:group>
+        <cl:button std:sid="button-daaf79eb" style="border-radius:8px; font-size:15px; background-image:none;" value="취소">
+          <cl:xylayoutdata std:sid="xyl-data-a0a0eb8d" right="524px" bottom="0px" left="904px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+        </cl:button>
+        <cl:button std:sid="button-6dcdf7fe" style="border-radius:8px; background-color:#4680ee; color:#ffffff; font-size:15px; background-image:none;" value="신청">
+          <cl:xylayoutdata std:sid="xyl-data-a69bba29" right="844px" bottom="0px" left="584px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+        </cl:button>
+        <cl:xylayout std:sid="xylayout-364261c8"/>
+      </cl:group>
+      <cl:xylayout std:sid="xylayout-51de659e"/>
     </cl:group>
-    <cl:group std:sid="group-494bec52">
-      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" bottom="110px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:output std:sid="output-4c902b40" value="목적">
-        <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
-      </cl:output>
-      <cl:textarea std:sid="t-area-d560cf87" id="txa1">
-        <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestReason"/>
-        <cl:formdata std:sid="f-data-9453e121" row="0" col="1" rowspan="1" colspan="1"/>
-      </cl:textarea>
-      <cl:formlayout std:sid="f-layout-675b5c21" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
-        <cl:rows length="1" unit="FRACTION"/>
-        <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
-      </cl:formlayout>
+    <cl:group std:sid="group-8449ad0f" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#ffe6e1; border-right-width:1px; border-left-color:#ffe6e1; border-right-color:#ffe6e1; border-left-width:1px; border-top-style:solid; background-color:#FFE6E1; border-radius:8px; border-left-style:solid; border-bottom-width:1px; border-top-color:#ffe6e1; border-bottom-style:solid;">
+      <cl:xylayoutdata std:sid="xyl-data-144e2698" top="20px" right="355px" left="425px" height="42px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#6B6A6A; font-weight:600; font-size:20px; text-align:center;" value="연차신청">
+        <cl:xylayoutdata std:sid="xyl-data-49a0f1f3" top="3px" bottom="0px" width="400px" horizontalAnchor="CENTER" verticalAnchor="BOTH"/>
+      </cl:htmlsnippet>
+      <cl:xylayout std:sid="xylayout-cb0e5abf"/>
     </cl:group>
-    <cl:button std:sid="button-6dcdf7fe" value="신청">
-      <cl:listener std:sid="listener-7c203474" name="click" handler="onButtonClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-19cd02a5" bottom="0px" left="648px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:button>
-    <cl:button std:sid="button-daaf79eb" value="취소">
-      <cl:xylayoutdata std:sid="xyl-data-ef3ebd11" bottom="0px" left="782px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:button>
     <cl:xylayout std:sid="xylayout-4e35d00a"/>
   </body>
   <std:studiosetting>

@@ -35,6 +35,7 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:grid std:sid="grid-c2ab4022" id="projectListGrd" datasetid="projectList">
+            <cl:listener std:sid="listener-61d71bbd" name="selection-change" handler="onProjectListGrdSelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-f6d22039" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:gridcolumn std:sid="g-column-102da647" visible="false"/>
             <cl:gridcolumn std:sid="g-column-543e4ee7" width="200px"/>

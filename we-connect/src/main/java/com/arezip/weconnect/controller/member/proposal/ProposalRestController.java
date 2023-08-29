@@ -1,6 +1,6 @@
 package com.arezip.weconnect.controller.member.proposal;
 
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
+import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.service.ProposalService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
-import com.cleopatra.protocol.data.ParameterRow;
 import com.cleopatra.spring.JSONDataView;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,9 +33,20 @@ public class ProposalRestController {
 
 // 건의사항 목록
 	@GetMapping
-	public View getAllProposals(DataRequest dataRequest) {
+	public View getAllProposals(DataRequest dataRequest, HttpServletRequest request) {
 		List<ProposalDTO> proposalList = proposalService.findAllProposals();
 		dataRequest.setResponse("proposalList", proposalList);
+		return new JSONDataView();
+	}
+
+// 건의사항 상세
+	@GetMapping("detail")
+	public View getMemberId(DataRequest dataRequest, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberDTO memberDTO = new MemberDTO();
+		Long memberId = (Long) session.getAttribute("memberId");
+		memberDTO.setMemberId(memberId);
+		dataRequest.setResponse("memberDTO", memberDTO);
 		return new JSONDataView();
 	}
 
@@ -45,7 +56,7 @@ public class ProposalRestController {
 		ParameterGroup param = dataRequest.getParameterGroup("proposalCreateParam");
 		if (param != null) {
 			HttpSession session = request.getSession();
-			Long memberId=(Long) session.getAttribute("memberId");
+			Long memberId = (Long) session.getAttribute("memberId");
 			String proposalTitle = param.getValue("proposalTitle");
 			String proposalContent = param.getValue("proposalContent");
 			log.info("proposalTitle {}", proposalTitle);
@@ -55,18 +66,20 @@ public class ProposalRestController {
 			proposalDTO.setProposalTitle(proposalTitle);
 			proposalDTO.setProposalContent(proposalContent);
 			proposalService.addProposal(proposalDTO);
-		}  
-		return new JSONDataView(); 
+		}
+		return new JSONDataView();
 	}
-	
+
 // 건의사항 수정
 	@PutMapping
 	public View updateProposal(DataRequest dataRequest, HttpServletRequest request) {
-		ParameterGroup param=dataRequest.getParameterGroup("proposalUpdateDeleteParam");
+		ParameterGroup param = dataRequest.getParameterGroup("proposalUpdateDeleteParam");
 		// "proposalUpdateParam" 파라미터 그룹에서 데이터를 추출하여 처리
 		if (param != null) {
-			HttpSession session=request.getSession();
+			HttpSession session = request.getSession();
+			MemberDTO memberDTO = new MemberDTO();
 			Long memberId = (Long) session.getAttribute("memberId");
+			memberDTO.setMemberId(memberId);
 			Long proposalId = Long.parseLong(param.getValue("proposalId"));
 			String proposalTitle = param.getValue("proposalTitle");
 			String proposalContent = param.getValue("proposalContent");
@@ -83,18 +96,19 @@ public class ProposalRestController {
 			proposalDTO.setProposalContent(proposalContent);
 			// Service 계층의 updateProposal 메서드를 호출하여 건의사항을 수정
 			proposalService.updateProposal(proposalDTO);
+			dataRequest.setResponse("memberDTO", memberDTO);
 		}
 		// JSON 형식의 응답을 반환
 		return new JSONDataView();
 	}
-	
+
 // 건의사항 삭제
 	@DeleteMapping
 	public View deleteProposal(DataRequest dataRequest, HttpServletRequest request) {
-		ParameterGroup param=dataRequest.getParameterGroup("proposalUpdateDeleteParam");
+		ParameterGroup param = dataRequest.getParameterGroup("proposalUpdateDeleteParam");
 		// "proposalUpdateParam" 파라미터 그룹에서 데이터를 추출하여 처리
 		if (param != null) {
-			HttpSession session=request.getSession();
+			HttpSession session = request.getSession();
 			Long memberId = (Long) session.getAttribute("memberId");
 			Long proposalId = Long.parseLong(param.getValue("proposalId"));
 			// 추출된 데이터를 로그로 출력
@@ -110,8 +124,7 @@ public class ProposalRestController {
 		// JSON 형식의 응답을 반환
 		return new JSONDataView();
 	}
-	
-	
+
 	/*
 	 * // 건의사항 상세 dialog 조회
 	 * 
@@ -121,17 +134,31 @@ public class ProposalRestController {
 	 * System.out.println(proposalList); dataRequest.setResponse("proposalReadList",
 	 * proposalReadList); return new JSONDataView(); }
 	 */
-	
-	/*
-	 * // 건의사항 검색
-	 * 
-	 * @GetMapping("search") public View searchProposal(DataRequest dataRequest) {
-	 * ParameterGroup param=dataRequest.getParameterGroup("searchParam");
-	 * Map(<String, String> searchParams=new HashMap(String, String>(); String
-	 * searchStatus=null; String searchTitle=null; String searchContent=null; if
-	 * (param != null) { searchTitle = param.getValue("searchTitle");
-	 * searchTitle=param.getValue()
-	 * 
-	 * }
-	 */
+
+	// 건의사항 검색
+	@GetMapping("search")
+	public View searchNotices(DataRequest dataRequest) {
+		ParameterGroup param = dataRequest.getParameterGroup("searchParam");
+		Map<String, String> searchParams = new HashMap<String, String>();
+		String searchType = null;
+		String searchText = null;
+		if (param != null) {
+			searchType = param.getValue("searchType");
+			searchText = param.getValue("searchText");
+		}
+		List<ProposalDTO> proposalList = null;
+		// searchText가 빈 문자열이거나 null이면 전체 리스트 반환
+		if (searchText == null || searchText.trim().isEmpty()) {
+			proposalList = proposalService.findAllProposals();
+		} else {
+			if (searchType != null && !"".equals(searchType.trim())) {
+				searchParams.put("searchType", searchType);
+			}
+			searchParams.put("searchText", searchText);
+			proposalList = proposalService.searchProposal(searchParams);
+		}
+		dataRequest.setResponse("proposalList", proposalList);
+		return new JSONDataView();
+	}
+
 }

@@ -21,29 +21,26 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:dataset std:sid="d-set-768a4900" id="proposalReadList">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
-          <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
-          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
-          <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
-          <cl:datacolumn std:sid="d-column-42552b48" name="memberId"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist/>
-      </cl:dataset>
       <cl:datamap std:sid="d-map-54218d79" id="proposalUpdateDeleteParam">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-26abd329" name="proposalTitle"/>
           <cl:datacolumn std:sid="d-column-91911d49" name="proposalContent"/>
           <cl:datacolumn std:sid="d-column-957fa7c7" name="proposalId"/>
+          <cl:datacolumn std:sid="d-column-eafadc71" name="PMemberId"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-b12cce5f" id="memberDTO">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-287a706a" name="memberId" datatype="string"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-c219b33d" id="proposalUpdateSub" method="put" action="member/proposals">
         <cl:listener std:sid="listener-9e2e3c10" name="submit-success" handler="onProposalUpdateSubSubmitSuccess"/>
         <cl:requestdata dataid="proposalUpdateDeleteParam"/>
       </cl:submission>
-      <cl:submission std:sid="submission-05f34d9c" id="proposalReadSub" method="get" action="member/proposals">
-        <cl:responsedata dataid="proposalReadList"/>
+      <cl:submission std:sid="submission-05f34d9c" id="proposalDetailSub" method="get" action="member/proposals/detail">
+        <cl:listener std:sid="listener-8b1911c2" name="submit-success" handler="onProposalDetailSubSubmitSuccess"/>
+        <cl:responsedata dataid="memberDTO"/>
       </cl:submission>
       <cl:submission std:sid="submission-eef45600" id="proposalDeleteSub" method="delete" action="member/proposals">
         <cl:listener std:sid="listener-dd399d15" name="submit-success" handler="onProposalDeleteSubSubmitSuccess"/>
@@ -91,18 +88,22 @@
       <cl:output std:sid="output-fceb3975" value="해당 게시판은 익명으로 운영됩니다. 자유롭게 남겨주세요.">
         <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="773px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:button std:sid="button-0446aba0" id="btnRevert" value="삭제">
-        <cl:listener std:sid="listener-5cfdf77a" name="click" handler="onBtnRevertClick"/>
+      <cl:button std:sid="button-0446aba0" id="btnDelete" visible="false" value="삭제">
+        <cl:listener std:sid="listener-5cfdf77a" name="click" handler="onBtnDeleteClick"/>
         <cl:xylayoutdata std:sid="xyl-data-e0193aaf" right="506px" bottom="10px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-39198b35" id="btnUpdate" value="수정">
+      <cl:button std:sid="button-39198b35" id="btnUpdate" visible="false" value="수정">
         <cl:listener std:sid="listener-4f84834c" name="click" handler="onBtnUpdateClick"/>
         <cl:xylayoutdata std:sid="xyl-data-1bf9ef05" bottom="10px" left="506px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:output std:sid="output-0296e3f6" id="proposalIdOpb" style="text-align:right;">
+      <cl:output std:sid="output-0296e3f6" id="proposalIdOpb" style="text-align:right;" visible="false">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalId"/>
         <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
         <cl:xylayoutdata std:sid="xyl-data-e5407eae" top="21px" left="1375px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-a918480c" id="PMemberIdOpb" visible="false">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="PMemberId"/>
+        <cl:xylayoutdata std:sid="xyl-data-78d776d4" top="20px" left="1182px" width="135px" height="48px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-fd4b5e98"/>
     </cl:group>

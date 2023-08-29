@@ -18,6 +18,7 @@ public interface TeamPostMapper {
 // 팀포스트 수정
 	int updateTeamPost(TeamPostDTO teamPostDTO);
 
-
 // 팀포스트 삭제
+	int deleteTeamPost(TeamPostDTO teamPostDTO);
+
 }

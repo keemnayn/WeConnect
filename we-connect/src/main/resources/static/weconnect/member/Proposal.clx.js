@@ -24,6 +24,9 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("proposalListSub").send();
+				var comboBox = app.lookup("searchTypeCmb");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
 			}
 
 			/*
@@ -56,11 +59,13 @@
 					var proposalTitle = grid.dataSet.getValue(selectedRowIndices[0], "proposalTitle");
 					var proposalContent = grid.dataSet.getValue(selectedRowIndices[0], "proposalContent");
 					var proposalStatus = grid.dataSet.getValue(selectedRowIndices[0], "proposalStatus");
+					var PMemberId = grid.dataSet.getValue(selectedRowIndices[0], "PMemberId");
 					var value = {
 						"proposalId": proposalId,
 						"proposalTitle": proposalTitle,
 						"proposalContent": proposalContent,
-						"proposalStatus": proposalStatus
+						"proposalStatus": proposalStatus, 
+						"PMemberId": PMemberId
 					}
 					app.openDialog("dialog/ProposalUpdateDelete", {
 						width: 1580,
@@ -98,34 +103,45 @@
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("proposalList");
+			var dataSet_1 = new cpr.data.DataSet("proposalSearch");
 			dataSet_1.parseData({
 				"columns": [
-					{"name": "proposalId"},
-					{"name": "proposalTitle"},
-					{"name": "proposalStatus"},
-					{"name": "proposalCreate"},
-					{"name": "memberId"},
-					{"name": "proposalContent"}
+					{"name": "type"},
+					{"name": "value"}
 				],
-				"rows": []
+				"rows": [
+					{"type": "전체", "value": "all"},
+					{"type": "제목", "value": "title"},
+					{"type": "내용", "value": "content"},
+					{"type": "상태", "value": "status"}
+				]
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("search");
+			var dataSet_2 = new cpr.data.DataSet("proposalList");
 			dataSet_2.parseData({
-				"columns": [{"name": "status"}],
-				"rows": [
-					{"status": "전체"},
-					{"status": "처리중"},
-					{"status": "완료"}
-				]
+				"columns": [
+					{
+						"name": "proposalId",
+						"dataType": "number"
+					},
+					{"name": "proposalTitle"},
+					{"name": "proposalContent"},
+					{"name": "memberName"},
+					{"name": "proposalCreate"},
+					{"name": "proposalStatus"},
+					{
+						"name": "PMemberId",
+						"dataType": "number"
+					}
+				],
+				"rows": []
 			});
 			app.register(dataSet_2);
 			var dataMap_1 = new cpr.data.DataMap("searchParam");
 			dataMap_1.parseData({
 				"columns" : [
-					{"name": "searchStatus"},
+					{"name": "searchType"},
 					{"name": "searchText"}
 				]
 			});
@@ -138,15 +154,15 @@
 			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("proposalListSub");
 			submission_1.method = "get";
-			submission_1.action = "admin/proposals";
-			submission_1.addResponseData(dataSet_1, false);
+			submission_1.action = "member/proposals";
+			submission_1.addResponseData(dataSet_2, false);
 			app.register(submission_1);
 			
 			var submission_2 = new cpr.protocols.Submission("searchProposalSub");
 			submission_2.method = "get";
 			submission_2.action = "member/proposals/search";
 			submission_2.addRequestData(dataMap_1);
-			submission_2.addResponseData(dataSet_1, false);
+			submission_2.addResponseData(dataSet_2, false);
 			if(typeof onSearchProposalSubSubmitSuccess == "function") {
 				submission_2.addEventListener("submit-success", onSearchProposalSubSubmitSuccess);
 			}
@@ -172,13 +188,18 @@
 			grid_1.init({
 				"dataSet": app.lookup("proposalList"),
 				"columns": [
-					{"width": "20px"},
-					{"width": "100px"},
-					{"width": "20px"},
-					{"width": "30px"}
+					{"width": "28px"},
+					{"width": "192px"},
+					{"width": "55px"},
+					{"width": "53px"},
+					{"width": "50px"},
+					{
+						"width": "36px",
+						"visible": false
+					}
 				],
 				"header": {
-					"rows": [{"height": "50px"}],
+					"rows": [{"height": "24px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -186,7 +207,7 @@
 								cell.filterable = false;
 								cell.sortable = false;
 								cell.targetColumnName = "proposalId";
-								cell.text = "번호";
+								cell.text = "글번호";
 							}
 						},
 						{
@@ -203,8 +224,8 @@
 							"configurator": function(cell){
 								cell.filterable = false;
 								cell.sortable = false;
-								cell.targetColumnName = "proposalStatus";
-								cell.text = "처리상태";
+								cell.targetColumnName = "memberName";
+								cell.text = "작성자";
 							}
 						},
 						{
@@ -215,11 +236,29 @@
 								cell.targetColumnName = "proposalCreate";
 								cell.text = "등록일";
 							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 4},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "proposalStatus";
+								cell.text = "처리상태";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 5},
+							"configurator": function(cell){
+								cell.filterable = false;
+								cell.sortable = false;
+								cell.targetColumnName = "PMemberId";
+								cell.text = "PMemberId";
+							}
 						}
 					]
 				},
 				"detail": {
-					"rows": [{"height": "50px"}],
+					"rows": [{"height": "24px"}],
 					"cells": [
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -236,13 +275,25 @@
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 2},
 							"configurator": function(cell){
-								cell.columnName = "proposalStatus";
+								cell.columnName = "memberName";
 							}
 						},
 						{
 							"constraint": {"rowIndex": 0, "colIndex": 3},
 							"configurator": function(cell){
 								cell.columnName = "proposalCreate";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 4},
+							"configurator": function(cell){
+								cell.columnName = "proposalStatus";
+							}
+						},
+						{
+							"constraint": {"rowIndex": 0, "colIndex": 5},
+							"configurator": function(cell){
+								cell.columnName = "PMemberId";
 							}
 						}
 					]
@@ -282,12 +333,12 @@
 					"width": "560px",
 					"height": "30px"
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("searchStatusCmb");
-				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchStatus");
+				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("search"), {
-						"label": "status",
-						"value": "status"
+					comboBox_1.setItemSet(app.lookup("proposalSearch"), {
+						"label": "type",
+						"value": "value"
 					});
 				})(comboBox_1);
 				container.addChild(comboBox_1, {
