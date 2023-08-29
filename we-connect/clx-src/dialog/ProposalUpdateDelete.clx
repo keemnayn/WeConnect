@@ -60,6 +60,7 @@
         </cl:output>
         <cl:inputbox std:sid="i-box-cbe7f8f3" id="proposalContentIpb">
           <cl:datamapbind property="value" category="PROPERTY" datacontrolid="proposalUpdateDeleteParam" columnname="proposalContent"/>
+          <cl:expbind property="readOnly" category="PROPERTY" expression="PMemberId == #memberDTO.memberId ? false:true"/>
           <cl:datamapcontext datacontrolid="proposalUpdateDeleteParam"/>
           <cl:formdata std:sid="f-data-f7e9c85b" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:inputbox>

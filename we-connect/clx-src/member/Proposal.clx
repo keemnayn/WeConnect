@@ -94,9 +94,6 @@
         <cl:gridcell std:sid="gd-cell-5950078f" rowindex="0" colindex="5" columnname="PMemberId"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:pageindexer std:sid="p-indexer-6fa8328f">
-      <cl:xylayoutdata std:sid="xyl-data-04dea963" bottom="50px" left="290px" width="1000px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:pageindexer>
     <cl:group std:sid="group-e89323ed">
       <cl:xylayoutdata std:sid="xyl-data-5f7b7b49" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
       <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">

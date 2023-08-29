@@ -309,15 +309,6 @@
 				"left": "0px"
 			});
 			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				"bottom": "50px",
-				"left": "290px",
-				"width": "1000px",
-				"height": "50px"
-			});
-			
 			var group_1 = new cpr.controls.Container();
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
