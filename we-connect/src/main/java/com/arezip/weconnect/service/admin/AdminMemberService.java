@@ -31,4 +31,7 @@ public interface AdminMemberService {
 	int rejectMember(MemberDTO memberDTO);
 
 	int getLeaveCountByMemberId(long memberId);
+
+//	회원명
+	String getMemberNameById(long memberId);
 }

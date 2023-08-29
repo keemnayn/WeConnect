@@ -35,4 +35,7 @@ public interface AdminMemberMapper {
 
 //	연차개수
 	int getLeaveCountByMemberId(long memberId);
+
+//	회원명
+	String findMemberNameById(long memberId);
 }
