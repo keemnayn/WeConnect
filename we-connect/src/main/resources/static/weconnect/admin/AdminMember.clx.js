@@ -273,13 +273,7 @@
 					},
 					{"name": "departmentName"}
 				],
-				"rows": [
-					{"memberEmail": "1", "memberName": "a@gmail.com", "position": "박해준", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "2", "memberName": "b@gmail.com", "position": "김정현", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "3", "memberName": "c@gmail.com", "position": "김나연", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "4", "memberName": "d@gmail.com", "position": "최수연", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "5", "memberName": "e@gmail.com", "position": "서정우", "memberJoinDate": "2023-03-27"}
-				]
+				"rows": []
 			});
 			app.register(dataSet_3);
 			

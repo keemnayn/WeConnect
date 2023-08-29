@@ -83,38 +83,7 @@
           <cl:datacolumn std:sid="d-column-4e14f6e7" name="departmentId" datatype="number"/>
           <cl:datacolumn std:sid="d-column-d62904ab" name="departmentName"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[a@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[2]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[b@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[김정현]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[3]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[c@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[김나연]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[4]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[d@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[최수연]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[5]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[e@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[서정우]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:dataset std:sid="d-set-db620e4e" id="pendingSearch">
         <cl:datacolumnlist>

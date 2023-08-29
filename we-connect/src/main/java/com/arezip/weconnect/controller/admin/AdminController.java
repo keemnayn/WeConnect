@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/weconnect")
+@RequestMapping("/weconnect/admin")
 public class AdminController {
 
-}  
+}
