@@ -450,31 +450,19 @@
 				]
 			});
 			app.register(dataMap_1);
-			
-			var dataMap_2 = new cpr.data.DataMap("attendanceDTO");
-			dataMap_2.parseData({
-				"columns" : [
-					{"name": "workInTime"},
-					{"name": "workOutTime"}
-				]
-			});
-			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("Attendance1");
 			submission_1.action = "member/attendance";
+			if(typeof onAttendance1SubmitSuccess2 == "function") {
+				submission_1.addEventListener("submit-success", onAttendance1SubmitSuccess2);
+			}
 			if(typeof onAttendance1SubmitError == "function") {
 				submission_1.addEventListener("submit-error", onAttendance1SubmitError);
-			}
-			if(typeof onAttendance1SubmitSuccess == "function") {
-				submission_1.addEventListener("submit-success", onAttendance1SubmitSuccess);
 			}
 			app.register(submission_1);
 			
 			var submission_2 = new cpr.protocols.Submission("UpdateAttendance");
 			submission_2.method = "put";
 			submission_2.action = "member/attendance";
-			if(typeof onUpdateAttendanceSubmitSuccess == "function") {
-				submission_2.addEventListener("submit-success", onUpdateAttendanceSubmitSuccess);
-			}
 			app.register(submission_2);
 			
 			var submission_3 = new cpr.protocols.Submission("Img");
@@ -533,19 +521,7 @@
 			submission_10.method = "get";
 			submission_10.action = "member/project";
 			submission_10.addResponseData(dataSet_8, false);
-			if(typeof onProjectListSubSubmitSuccess == "function") {
-				submission_10.addEventListener("submit-success", onProjectListSubSubmitSuccess);
-			}
 			app.register(submission_10);
-			
-			var submission_11 = new cpr.protocols.Submission("attendanceSub");
-			submission_11.method = "get";
-			submission_11.action = "member/attendance/time";
-			submission_11.addResponseData(dataMap_2, false);
-			if(typeof onAttendanceSubSubmitDone == "function") {
-				submission_11.addEventListener("submit-done", onAttendanceSubSubmitDone);
-			}
-			app.register(submission_11);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -688,9 +664,6 @@
 				hTMLSnippet_6.style.css({
 					"font-size" : "18px"
 				});
-				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("attendanceDTO"));
-				hTMLSnippet_6.setBindContext(dataMapContext_1);
-				hTMLSnippet_6.bind("value").toDataMap(app.lookup("attendanceDTO"), "workInTime");
 				container.addChild(hTMLSnippet_6, {
 					"top": "133px",
 					"left": "273px",
@@ -709,12 +682,10 @@
 					"height": "40px"
 				});
 				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("back");
+				hTMLSnippet_8.value = "<span><\/span>";
 				hTMLSnippet_8.style.css({
 					"font-size" : "18px"
 				});
-				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("attendanceDTO"));
-				hTMLSnippet_8.setBindContext(dataMapContext_2);
-				hTMLSnippet_8.bind("value").toDataMap(app.lookup("attendanceDTO"), "workOutTime");
 				container.addChild(hTMLSnippet_8, {
 					"top": "195px",
 					"left": "269px",
@@ -1174,8 +1145,7 @@
 					var xYLayout_10 = new cpr.controls.layouts.XYLayout();
 					group_9.setLayout(xYLayout_10);
 					(function(container){
-						var calendar_1 = new cpr.controls.Calendar("main_crd");
-						calendar_1.style.setClasses(["main-calendar"]);
+						var calendar_1 = new cpr.controls.Calendar();
 						container.addChild(calendar_1, {
 							"top": "0px",
 							"right": "0px",
