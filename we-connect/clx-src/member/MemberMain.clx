@@ -272,28 +272,18 @@
     </cl:group>
     <cl:group std:sid="group-4d35f4d4" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
       <cl:xylayoutdata std:sid="xyl-data-35f19c22" top="334px" right="0px" bottom="0px" width="461px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
-      <cl:calendar std:sid="calendar-fbe4e136" class="main-calendar">
-        <cl:xylayoutdata std:sid="xyl-data-c208e43d" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      </cl:calendar>
-      <cl:xylayout std:sid="xylayout-39a69a1c"/>
-    </cl:group>
-    <cl:group std:sid="group-4545a34e" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-2aac84a7" top="334px" bottom="0px" left="3px" width="470px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:tabfolder std:sid="t-folder-22855306">
-        <cl:listener std:sid="listener-b8bf295c" name="dblclick" handler="onTabFolderDblclick"/>
-        <cl:xylayoutdata std:sid="xyl-data-d1e477cd" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-        <cl:tabitem std:sid="t-item-caca1c57" selected="true" text="자유게시판">
+      <cl:tabfolder std:sid="t-folder-9674e368">
+        <cl:xylayoutdata std:sid="xyl-data-dd28219f" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-30058287" selected="true" text="자유게시판">
           <std:metadata>
             <std:property key="is-active-item" value="true"/>
           </std:metadata>
-          <cl:group std:sid="group-c2398ead">
+          <cl:group std:sid="group-0378c9c8">
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
             <cl:grid std:sid="grid-c87ea130" id="grd3" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" datasetid="boardList">
-              <cl:listener std:sid="listener-caef1b7f" name="click" handler="onGrd3Click"/>
-              <cl:listener std:sid="listener-243ad36c" name="dblclick" handler="onGrd3Dblclick"/>
-              <cl:xylayoutdata std:sid="xyl-data-0199d1fc" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:xylayoutdata std:sid="xyl-data-078adbe4" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
               <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
               <cl:gridcolumn std:sid="g-column-1e411169" visible="true"/>
@@ -315,6 +305,28 @@
                 <cl:gridcell std:sid="gd-cell-9f49b9b3" rowindex="0" colindex="3" columnname="memberName"/>
               </cl:griddetail>
             </cl:grid>
+            <cl:xylayout std:sid="xylayout-f9480d86"/>
+          </cl:group>
+        </cl:tabitem>
+      </cl:tabfolder>
+      <cl:xylayout std:sid="xylayout-39a69a1c"/>
+    </cl:group>
+    <cl:group std:sid="group-4545a34e" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
+      <cl:xylayoutdata std:sid="xyl-data-2aac84a7" top="334px" bottom="0px" left="3px" width="470px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:tabfolder std:sid="t-folder-22855306">
+        <cl:listener std:sid="listener-b8bf295c" name="dblclick" handler="onTabFolderDblclick"/>
+        <cl:xylayoutdata std:sid="xyl-data-d1e477cd" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:tabitem std:sid="t-item-caca1c57" selected="true" text="일정">
+          <std:metadata>
+            <std:property key="is-active-item" value="true"/>
+          </std:metadata>
+          <cl:group std:sid="group-c2398ead">
+            <std:metadata>
+              <std:property key="locked" value="true"/>
+            </std:metadata>
+            <cl:calendar std:sid="calendar-7bdba216">
+              <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>
           </cl:group>
         </cl:tabitem>

@@ -5,6 +5,19 @@
  * @author chwec
  ************************************************/
 let intervalID;
+
+function clock() {
+	const user_day = app.lookup("day");
+	const date = new Date();
+	const year = date.getFullYear(); // 년도 추가
+	const hours = date.getHours();
+	const month = date.getMonth();
+	const clockDate = date.getDate();
+	const day = date.getDay();
+	const week = ['일', '월', '화', '수', '목', '금', '토'];
+	user_day.value = `${year}년 ${month+1}월 ${clockDate}일 (${week[day]})`;
+}
+
 /*
  * 루트 컨테이너에서 init 이벤트 발생 시 호출.
  * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
@@ -13,15 +26,8 @@ function onBodyInit(e) {
 	let submission = app.lookup("attend1");
 	submission.send();
 	app.lookup("leaveRequestListSub").send();
-	let dataSet = app.lookup("leaveRequestList");
-	let position = dataSet.getValue(0, "position");
-	let department = dataSet.getValue(0, "departmentName");
-	let Name = dataSet.getValue(0, "memberName");
-	let dpm = app.lookup("dpm");
-	let memberName = app.lookup("name");
-	memberName.value = `${Name}${position}`;
-	dpm.value = `${department}팀`;
-	app.lookup("leaveCount").redraw();
+	clock();
+	app.lookup("memberName").send();
 }
 
 /*
@@ -32,6 +38,47 @@ function onAttend1SubmitSuccess(e) {
 	var attend1 = e.control;
 	let grid = app.lookup("grd1");
 	grid.redraw();
+	let submission = app.lookup("attend1");
+	let xhr = submission.xhr.responseText;
+	let data = JSON.parse(xhr);
+	let tardiness = app.lookup("tardiness");
+	let work = app.lookup("workInTime");
+	let noShow = app.lookup("noShow");
+	let attendInfo = data.attend;
+	// 지각 카운트 초기화
+	let tardinessCount = 0;
+	
+	// attendInfo 배열 순회
+	for (let i = 0; i < attendInfo.length; i++) {
+		// attendanceStatus가 '지각'인 경우 카운트 증가
+		if (attendInfo[i].attendanceStatus === "지각") {
+			tardinessCount++;
+		}
+	}
+	
+	// 결과를 표시하거나 사용하는 코드 (예: tardiness 객체에 값을 설정)
+	tardiness.value = "지각\n" + tardinessCount;
+	
+	let workInCount = 0;
+	
+	for (let i = 0; i < attendInfo.length; i++) {
+		if (attendInfo[i].workInTime && attendInfo[i].workInTime !== "00:00") {
+			workInCount++;
+		}
+	}
+	work.value = "출근\n" + workInCount;
+	
+	//결근카운트 
+	let absenceCount = 0;
+	
+	for (let i = 0; i < attendInfo.length; i++) {
+		// attendanceStatus가 '지각'인 경우 카운트 증가
+		if (attendInfo[i].attendanceStatus === "결근") {
+			absenceCount++;
+		}
+	}
+	noShow.value = "결근\n" + absenceCount;
+	
 }
 
 /*
@@ -40,4 +87,36 @@ function onAttend1SubmitSuccess(e) {
  */
 function onOutputValueChange(e) {
 	var output = e.control;
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onMemberNameSubmitSuccess(e) {
+	var memberName = e.control;
+	let submission = app.lookup("memberName");
+	let xhr = submission.xhr.responseText;
+	let data = JSON.parse(xhr);
+	let member1 = app.lookup("name");
+	let memberInfo = data.memberList[0];
+	let memberNameValue = memberInfo.memberName;
+	let position = memberInfo.position;
+	let formattedMemberName = memberNameValue + position + "님";
+	member1.value = formattedMemberName;
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onLeaveRequestListSubSubmitSuccess2(e){
+	var leaveRequestListSub = e.control;
+	let submission = app.lookup("leaveRequestListSub");
+	var leave = app.lookup("leave");
+	let xhr = submission.xhr.responseText;
+	let data = JSON.parse(xhr);
+	let leaveInfo = data.leaveRequestList[0];
+	let leaveCount = leaveInfo.leaveCount;
+	leave.value = "연차 갯수\n" + leaveCount;
 }

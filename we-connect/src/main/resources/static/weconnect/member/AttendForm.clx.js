@@ -18,6 +18,19 @@
 			 * @author chwec
 			 ************************************************/
 			let intervalID;
+
+			function clock() {
+				const user_day = app.lookup("day");
+				const date = new Date();
+				const year = date.getFullYear(); // 년도 추가
+				const hours = date.getHours();
+				const month = date.getMonth();
+				const clockDate = date.getDate();
+				const day = date.getDay();
+				const week = ['일', '월', '화', '수', '목', '금', '토'];
+				user_day.value = `${year}년 ${month+1}월 ${clockDate}일 (${week[day]})`;
+			}
+
 			/*
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
@@ -26,15 +39,8 @@
 				let submission = app.lookup("attend1");
 				submission.send();
 				app.lookup("leaveRequestListSub").send();
-				let dataSet = app.lookup("leaveRequestList");
-				let position = dataSet.getValue(0, "position");
-				let department = dataSet.getValue(0, "departmentName");
-				let Name = dataSet.getValue(0, "memberName");
-				let dpm = app.lookup("dpm");
-				let memberName = app.lookup("name");
-				memberName.value = `${Name}${position}`;
-				dpm.value = `${department}팀`;
-				app.lookup("leaveCount").redraw();
+				clock();
+				app.lookup("memberName").send();
 			}
 
 			/*
@@ -45,6 +51,47 @@
 				var attend1 = e.control;
 				let grid = app.lookup("grd1");
 				grid.redraw();
+				let submission = app.lookup("attend1");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let tardiness = app.lookup("tardiness");
+				let work = app.lookup("workInTime");
+				let noShow = app.lookup("noShow");
+				let attendInfo = data.attend;
+				// 지각 카운트 초기화
+				let tardinessCount = 0;
+				
+				// attendInfo 배열 순회
+				for (let i = 0; i < attendInfo.length; i++) {
+					// attendanceStatus가 '지각'인 경우 카운트 증가
+					if (attendInfo[i].attendanceStatus === "지각") {
+						tardinessCount++;
+					}
+				}
+				
+				// 결과를 표시하거나 사용하는 코드 (예: tardiness 객체에 값을 설정)
+				tardiness.value = "지각\n" + tardinessCount;
+				
+				let workInCount = 0;
+				
+				for (let i = 0; i < attendInfo.length; i++) {
+					if (attendInfo[i].workInTime && attendInfo[i].workInTime !== "00:00") {
+						workInCount++;
+					}
+				}
+				work.value = "출근\n" + workInCount;
+				
+				//결근카운트 
+				let absenceCount = 0;
+				
+				for (let i = 0; i < attendInfo.length; i++) {
+					// attendanceStatus가 '지각'인 경우 카운트 증가
+					if (attendInfo[i].attendanceStatus === "결근") {
+						absenceCount++;
+					}
+				}
+				noShow.value = "결근\n" + absenceCount;
+				
 			}
 
 			/*
@@ -54,6 +101,38 @@
 			function onOutputValueChange(e) {
 				var output = e.control;
 			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onMemberNameSubmitSuccess(e) {
+				var memberName = e.control;
+				let submission = app.lookup("memberName");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let member1 = app.lookup("name");
+				let memberInfo = data.memberList[0];
+				let memberNameValue = memberInfo.memberName;
+				let position = memberInfo.position;
+				let formattedMemberName = memberNameValue + position + "님";
+				member1.value = formattedMemberName;
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLeaveRequestListSubSubmitSuccess2(e){
+				var leaveRequestListSub = e.control;
+				let submission = app.lookup("leaveRequestListSub");
+				var leave = app.lookup("leave");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let leaveInfo = data.leaveRequestList[0];
+				let leaveCount = leaveInfo.leaveCount;
+				leave.value = "연차 갯수\n" + leaveCount;
+			};
 			// End - User Script
 			
 			// Header
@@ -132,6 +211,29 @@
 				]
 			});
 			app.register(dataSet_2);
+			
+			var dataSet_3 = new cpr.data.DataSet("memberList");
+			dataSet_3.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataSet_3);
 			var submission_1 = new cpr.protocols.Submission("attend1");
 			submission_1.method = "get";
 			submission_1.action = "member/attendance";
@@ -146,7 +248,19 @@
 			submission_2.method = "get";
 			submission_2.action = "admin/leave-request";
 			submission_2.addResponseData(dataSet_2, false);
+			if(typeof onLeaveRequestListSubSubmitSuccess2 == "function") {
+				submission_2.addEventListener("submit-success", onLeaveRequestListSubSubmitSuccess2);
+			}
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("memberName");
+			submission_3.method = "get";
+			submission_3.action = "member/Name";
+			submission_3.addResponseData(dataSet_3, false);
+			if(typeof onMemberNameSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onMemberNameSubmitSuccess);
+			}
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -164,216 +278,154 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var grid_1 = new cpr.controls.Grid("grd1");
-			grid_1.init({
-				"dataSet": app.lookup("attend"),
-				"columns": [
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"},
-					{"width": "100px"}
-				],
-				"header": {
-					"rows": [{"height": "50px"}],
-					"cells": [
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 0},
-							"configurator": function(cell){
-								cell.text = "날짜";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 1},
-							"configurator": function(cell){
-								cell.text = "출근";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 2},
-							"configurator": function(cell){
-								cell.text = "퇴근";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 3},
-							"configurator": function(cell){
-								cell.text = "이름";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 4},
-							"configurator": function(cell){
-								cell.text = "정상";
-							}
-						}
-					]
-				},
-				"detail": {
-					"rows": [{"height": "50px"}],
-					"cells": [
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 0},
-							"configurator": function(cell){
-								cell.columnName = "workDay";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 1},
-							"configurator": function(cell){
-								cell.columnName = "workInTime";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 2},
-							"configurator": function(cell){
-								cell.columnName = "workOutTime";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 3},
-							"configurator": function(cell){
-								cell.columnName = "memberName";
-							}
-						},
-						{
-							"constraint": {"rowIndex": 0, "colIndex": 4},
-							"configurator": function(cell){
-								cell.columnName = "attendanceStatus";
-								cell.style.css({
-									"border-radius" : "50px",
-									"color" : "#333333"
-								});
-							}
-						}
-					]
-				}
-			});
-			grid_1.style.header.css({
-				"background-color" : "#E0E1E2",
-				"font-weight" : "800",
-				"background-image" : "none"
-			});
-			container.addChild(grid_1, {
-				"top": "167px",
-				"right": "0px",
-				"bottom": "0px",
-				"left": "0px"
-			});
-			
 			var group_1 = new cpr.controls.Container();
-			group_1.style.setClasses(["main_layout1"]);
 			group_1.style.css({
-				"background-color" : "8px",
-				"border-right-style" : "solid",
-				"border-radius" : "8px",
-				"border-bottom-color" : "#bfbfbf",
-				"border-left-style" : "solid",
-				"border-left-color" : "#bfbfbf",
-				"border-top-color" : "#bfbfbf",
-				"border-bottom-style" : "solid",
-				"border-right-color" : "#bfbfbf",
-				"border-top-style" : "solid"
+				"border-radius" : "8px"
 			});
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
+				var grid_1 = new cpr.controls.Grid("grd1");
+				grid_1.init({
+					"dataSet": app.lookup("attend"),
+					"columns": [
+						{"width": "100px"},
+						{"width": "100px"},
+						{"width": "100px"},
+						{"width": "100px"},
+						{"width": "100px"}
+					],
+					"header": {
+						"rows": [{"height": "50px"}],
+						"cells": [
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 0},
+								"configurator": function(cell){
+									cell.text = "날짜";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 1},
+								"configurator": function(cell){
+									cell.text = "출근";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 2},
+								"configurator": function(cell){
+									cell.text = "퇴근";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 3},
+								"configurator": function(cell){
+									cell.text = "이름";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 4},
+								"configurator": function(cell){
+									cell.text = "정상";
+								}
+							}
+						]
+					},
+					"detail": {
+						"rows": [{"height": "35px"}],
+						"cells": [
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 0},
+								"configurator": function(cell){
+									cell.columnName = "workDay";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 1},
+								"configurator": function(cell){
+									cell.columnName = "workInTime";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 2},
+								"configurator": function(cell){
+									cell.columnName = "workOutTime";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 3},
+								"configurator": function(cell){
+									cell.columnName = "memberName";
+								}
+							},
+							{
+								"constraint": {"rowIndex": 0, "colIndex": 4},
+								"configurator": function(cell){
+									cell.columnName = "attendanceStatus";
+									cell.style.css({
+										"border-radius" : "0px",
+										"color" : "#333333"
+									});
+								}
+							}
+						]
+					}
+				});
+				grid_1.style.header.css({
+					"font-weight" : "800",
+					"background-image" : "none"
+				});
+				container.addChild(grid_1, {
+					"top": "177px",
+					"right": "0px",
+					"bottom": "3px",
+					"left": "0px"
+				});
 				var group_2 = new cpr.controls.Container();
 				group_2.style.css({
-					"background-color" : "#E5E5E5"
+					"border-right-style" : "solid",
+					"border-top-width" : "1px",
+					"border-bottom-color" : "#ffe6e1",
+					"border-right-width" : "1px",
+					"border-left-color" : "#ffe6e1",
+					"border-right-color" : "#ffe6e1",
+					"border-left-width" : "1px",
+					"border-top-style" : "solid",
+					"background-color" : "#FFE6E1",
+					"border-radius" : "8px",
+					"border-left-style" : "solid",
+					"border-bottom-width" : "1px",
+					"border-top-color" : "#ffe6e1",
+					"border-bottom-style" : "solid"
 				});
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
 				group_2.setLayout(xYLayout_3);
 				(function(container){
-					var image_1 = new cpr.controls.Image();
-					image_1.src = "theme/controls/icons/prifile_none.png";
-					image_1.fallbackSrc = "theme/controls/icons/prifile_none.png";
-					image_1.style.css({
-						"border-radius" : "50px"
-					});
-					container.addChild(image_1, {
-						"top": "10px",
-						"left": "10px",
-						"width": "130px",
-						"height": "130px"
-					});
-					var hTMLSnippet_1 = new cpr.controls.HTMLSnippet("name");
-					hTMLSnippet_1.value = "<div><\/div>";
+					var hTMLSnippet_1 = new cpr.controls.HTMLSnippet("day");
 					hTMLSnippet_1.style.css({
-						"font-weight" : "700",
-						"font-size" : "25px",
+						"color" : "#6B6A6A",
+						"font-weight" : "600",
+						"font-size" : "20px",
 						"text-align" : "center"
 					});
 					container.addChild(hTMLSnippet_1, {
-						"top": "33px",
-						"left": "159px",
-						"width": "127px",
-						"height": "40px"
-					});
-					var hTMLSnippet_2 = new cpr.controls.HTMLSnippet("dpm");
-					hTMLSnippet_2.value = "<div><\/div>";
-					hTMLSnippet_2.style.css({
-						"font-weight" : "700",
-						"font-size" : "25px",
-						"text-align" : "center"
-					});
-					container.addChild(hTMLSnippet_2, {
-						"top": "90px",
-						"left": "159px",
-						"width": "129px",
-						"height": "30px"
+						"top": "3px",
+						"bottom": "0px",
+						"width": "400px",
+						"left": "calc(50% - 200px)"
 					});
 				})(group_2);
 				container.addChild(group_2, {
 					"top": "0px",
-					"bottom": "0px",
-					"left": "0px",
-					"width": "316px"
+					"right": "385px",
+					"left": "395px",
+					"height": "42px"
 				});
 				var group_3 = new cpr.controls.Container();
-				var formLayout_1 = new cpr.controls.layouts.FormLayout();
-				formLayout_1.scrollable = false;
-				formLayout_1.topMargin = "0px";
-				formLayout_1.rightMargin = "0px";
-				formLayout_1.bottomMargin = "0px";
-				formLayout_1.leftMargin = "0px";
-				formLayout_1.horizontalSpacing = "0px";
-				formLayout_1.verticalSpacing = "0px";
-				formLayout_1.setColumns(["150px", "324px", "150px", "325px", "155px", "155px"]);
-				formLayout_1.setRows(["1fr"]);
-				group_3.setLayout(formLayout_1);
+				var xYLayout_4 = new cpr.controls.layouts.XYLayout();
+				group_3.setLayout(xYLayout_4);
 				(function(container){
-					var output_1 = new cpr.controls.Output("leaveCount");
-					output_1.style.css({
-						"border-right-style" : "solid",
-						"border-top-width" : "1px",
-						"border-bottom-color" : "#bfbfbf",
-						"font-weight" : "700",
-						"border-right-width" : "1px",
-						"border-left-color" : "#bfbfbf",
-						"font-size" : "25px",
-						"border-right-color" : "#bfbfbf",
-						"border-left-width" : "1px",
-						"border-top-style" : "solid",
-						"border-left-style" : "solid",
-						"border-bottom-width" : "1px",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"text-align" : "center"
-					});
-					output_1.bind("value").toDataSet(app.lookup("leaveRequestList"), "formattedLeaveCount", 0);
-					if(typeof onOutputValueChange == "function") {
-						output_1.addEventListener("value-change", onOutputValueChange);
-					}
-					container.addChild(output_1, {
-						"colIndex": 1,
-						"rowIndex": 0,
-						"colSpan": 1,
-						"rowSpan": 1
-					});
-					var output_2 = new cpr.controls.Output();
-					output_2.value = "Output";
-					output_2.style.css({
+					var group_4 = new cpr.controls.Container();
+					group_4.style.css({
 						"border-right-style" : "solid",
 						"border-top-width" : "1px",
 						"border-bottom-color" : "#bfbfbf",
@@ -382,96 +434,159 @@
 						"border-right-color" : "#bfbfbf",
 						"border-left-width" : "1px",
 						"border-top-style" : "solid",
+						"border-radius" : "10px",
 						"border-left-style" : "solid",
 						"border-bottom-width" : "1px",
 						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"text-align" : "center"
+						"border-bottom-style" : "solid"
 					});
-					container.addChild(output_2, {
-						"colIndex": 2,
-						"rowIndex": 0
-					});
-					var output_3 = new cpr.controls.Output();
-					output_3.value = "Output";
-					output_3.style.css({
-						"border-right-style" : "solid",
-						"border-top-width" : "1px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-right-width" : "1px",
-						"border-left-color" : "#bfbfbf",
-						"border-right-color" : "#bfbfbf",
-						"border-left-width" : "1px",
-						"border-top-style" : "solid",
-						"border-left-style" : "solid",
-						"border-bottom-width" : "1px",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"text-align" : "center"
-					});
-					container.addChild(output_3, {
-						"colIndex": 3,
-						"rowIndex": 0
-					});
-					var button_1 = new cpr.controls.Button();
-					button_1.value = "퇴근";
-					button_1.style.css({
-						"border-radius" : "8px",
-						"background-color" : "#F7EEEB",
-						"background-image" : "none"
-					});
-					container.addChild(button_1, {
-						"colIndex": 5,
-						"rowIndex": 0
-					});
-					var button_2 = new cpr.controls.Button();
-					button_2.value = "출근";
-					button_2.style.css({
-						"border-radius" : "8px",
-						"background-color" : "#E0E1E2",
-						"color" : "#ffffff",
-						"background-image" : "none"
-					});
-					container.addChild(button_2, {
-						"colIndex": 4,
-						"rowIndex": 0
-					});
-					var output_4 = new cpr.controls.Output();
-					output_4.value = "총연차";
-					output_4.style.css({
-						"border-right-style" : "solid",
-						"border-bottom-color" : "#bfbfbf",
-						"border-top-width" : "1px",
-						"font-weight" : "700",
-						"border-right-width" : "1px",
-						"border-left-color" : "#bfbfbf",
-						"font-size" : "25px",
-						"border-right-color" : "#bfbfbf",
-						"border-left-width" : "1px",
-						"border-top-style" : "solid",
-						"border-left-style" : "solid",
-						"border-bottom-width" : "1px",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"text-align" : "center"
-					});
-					container.addChild(output_4, {
-						"colIndex": 0,
-						"rowIndex": 0
+					var formLayout_1 = new cpr.controls.layouts.FormLayout();
+					formLayout_1.scrollable = false;
+					formLayout_1.topMargin = "0px";
+					formLayout_1.rightMargin = "0px";
+					formLayout_1.bottomMargin = "0px";
+					formLayout_1.leftMargin = "0px";
+					formLayout_1.horizontalSpacing = "0px";
+					formLayout_1.verticalSpacing = "0px";
+					formLayout_1.setColumns(["250px", "1fr", "1fr", "1fr", "1fr", "100px", "100px"]);
+					formLayout_1.setRows(["100px", "1fr"]);
+					group_4.setLayout(formLayout_1);
+					(function(container){
+						var button_1 = new cpr.controls.Button("퇴근");
+						button_1.value = "퇴근";
+						button_1.style.css({
+							"background-image" : "none"
+						});
+						container.addChild(button_1, {
+							"colIndex": 6,
+							"rowIndex": 0
+						});
+						var button_2 = new cpr.controls.Button("출근");
+						button_2.value = "출근";
+						button_2.style.css({
+							"background-image" : "none"
+						});
+						container.addChild(button_2, {
+							"colIndex": 5,
+							"rowIndex": 0
+						});
+						var output_1 = new cpr.controls.Output("tardiness");
+						output_1.value = "지각";
+						output_1.style.css({
+							"border-radius" : "8px",
+							"border-right-style" : "solid",
+							"color" : "#FF8E8E",
+							"border-right-width" : "1px",
+							"font-size" : "25px",
+							"border-right-color" : "#bfbfbf",
+							"text-align" : "center"
+						});
+						container.addChild(output_1, {
+							"colIndex": 3,
+							"rowIndex": 0
+						});
+						var output_2 = new cpr.controls.Output();
+						output_2.value = "Output";
+						output_2.style.css({
+							"border-right-style" : "solid",
+							"border-top-width" : "1px",
+							"border-bottom-color" : "#bfbfbf",
+							"border-right-width" : "1px",
+							"border-left-color" : "#bfbfbf",
+							"font-size" : "25px",
+							"border-right-color" : "#bfbfbf",
+							"border-left-width" : "1px",
+							"border-top-style" : "solid",
+							"border-radius" : "8px",
+							"border-left-style" : "solid",
+							"border-bottom-width" : "1px",
+							"border-top-color" : "#bfbfbf",
+							"border-bottom-style" : "solid",
+							"text-align" : "center"
+						});
+						container.addChild(output_2, {
+							"colIndex": 0,
+							"rowIndex": 1
+						});
+						var output_3 = new cpr.controls.Output("workInTime");
+						output_3.value = "출근";
+						output_3.style.css({
+							"border-radius" : "8px",
+							"border-right-style" : "solid",
+							"border-right-width" : "1px",
+							"font-size" : "25px",
+							"border-right-color" : "#bfbfbf",
+							"text-align" : "center"
+						});
+						container.addChild(output_3, {
+							"colIndex": 2,
+							"rowIndex": 0
+						});
+						var output_4 = new cpr.controls.Output("noShow");
+						output_4.value = "결근";
+						output_4.style.css({
+							"border-radius" : "8px",
+							"color" : "#FF8E8E",
+							"font-size" : "25px",
+							"text-align" : "center"
+						});
+						container.addChild(output_4, {
+							"colIndex": 4,
+							"rowIndex": 0
+						});
+						var output_5 = new cpr.controls.Output("leave");
+						output_5.value = "휴가";
+						output_5.style.css({
+							"border-radius" : "8px",
+							"border-right-style" : "solid",
+							"color" : "#49A9FF",
+							"border-right-width" : "1px",
+							"font-size" : "25px",
+							"border-right-color" : "#bfbfbf",
+							"text-align" : "center"
+						});
+						container.addChild(output_5, {
+							"colIndex": 1,
+							"rowIndex": 0,
+							"colSpan": 1,
+							"rowSpan": 1
+						});
+						var output_6 = new cpr.controls.Output("name");
+						output_6.value = "이름";
+						output_6.style.css({
+							"border-radius" : "8px",
+							"border-right-style" : "solid",
+							"border-right-width" : "1px",
+							"font-size" : "25px",
+							"border-right-color" : "#bfbfbf",
+							"text-align" : "center"
+						});
+						container.addChild(output_6, {
+							"colIndex": 0,
+							"rowIndex": 0,
+							"colSpan": 1,
+							"rowSpan": 1
+						});
+					})(group_4);
+					container.addChild(group_4, {
+						"top": "0px",
+						"right": "0px",
+						"bottom": "0px",
+						"left": "0px"
 					});
 				})(group_3);
 				container.addChild(group_3, {
-					"top": "0px",
+					"top": "61px",
 					"right": "0px",
-					"bottom": "0px",
-					"width": "1259px"
+					"left": "0px",
+					"height": "106px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
 				"top": "0px",
 				"right": "0px",
-				"left": "0px",
-				"height": "168px"
+				"bottom": "0px",
+				"left": "0px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
