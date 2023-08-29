@@ -87,25 +87,13 @@
 				var memberEmailIpb = app.lookup("memberEmailIpb");
 				
 				if (!success) {
+					memberEmailIpb.clear();
 					memberEmailIpb.focus();
-					memberEmailIpb.addEventListener("blur", forceFocus);
-				} else {
-					memberEmailIpb.removeEventListener("blur", forceFocus);
 				}
 			}
 
-			// blur 이벤트 리스너 함수
-			function forceFocus() {
-				var memberEmailIpb = app.lookup("memberEmailIpb");
-				setTimeout(() => {
-					memberEmailIpb.focus();
-				}, 1);
-			}
+			// blur 이벤트 리스너 함수는 필요하지 않으므로 삭제
 
-			/*
-			 * 인풋 박스에서 blur 이벤트 발생 시 호출.
-			 * 컨트롤이 포커스를 잃은 후 발생하는 이벤트.
-			 */
 			function onMemberEmailIpbBlur(e) {
 				var memberEmailIpb = e.control;
 				var emailValue = memberEmailIpb.value;
@@ -126,24 +114,20 @@
 				}
 			}
 
-			/*
-			 * 인풋 박스에서 blur 이벤트 발생 시 호출.
-			 * 컨트롤이 포커스를 잃은 후 발생하는 이벤트.
-			 */
+			// 나머지 함수들은 변경하지 않아도 됩니다.
+
 			function onMemberNameBlur(e) {
 				var memberName = e.control;
 				var nameValue = memberName.value;
 				var nameValidationOpb = app.lookup("nameValidationOpb"); // 이름 유효성 검사 결과를 표시하는 컨트롤
 				
-				var nameRegex = /^[가-힣ㄱ-ㅎㅏ-ㅣ]+$/;
+				var nameRegex = /^[가-힣]+$/; // 변경된 부분
 				
 				if (!nameRegex.test(nameValue)) {
-					nameValidationOpb.value = "한글만 입력 가능합니다.";
+					nameValidationOpb.value = "한글 완성형 문자만 입력 가능합니다.";
 					nameValidationOpb.style.css("color", "red");
-					// 이름 입력 박스에 포커스
 					memberName.focus();
 				} else {
-					// 정상 메시지를 표시
 					nameValidationOpb.value = "정상적인 이름 형식입니다.";
 					nameValidationOpb.style.css("color", "blue");
 				}
