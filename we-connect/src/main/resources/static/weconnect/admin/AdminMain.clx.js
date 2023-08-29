@@ -28,6 +28,7 @@
 				app.lookup("noticeListSub").send();
 				app.lookup("freeBoardListSub").send();
 				app.lookup("scheduleListSub").send();
+				app.lookup("reservListSub").send();
 			}
 
 			/*
@@ -164,6 +165,35 @@
 				]
 			});
 			app.register(dataSet_5);
+			
+			var dataSet_6 = new cpr.data.DataSet("reservList");
+			dataSet_6.parseData({
+				"stateRestore": false,
+				"columns": [
+					{
+						"name": "roomReservId",
+						"dataType": "number",
+						"displayOnly": false
+					},
+					{"name": "roomName"},
+					{"name": "memberName"},
+					{"name": "proposal"},
+					{"name": "roomReservDate"},
+					{
+						"name": "roomReservStartTime",
+						"dataType": "number"
+					},
+					{
+						"name": "roomReservEndTime",
+						"dataType": "number"
+					}
+				],
+				"rows": [
+					{"roomReservId": "1"},
+					{"roomReservId": "2"}
+				]
+			});
+			app.register(dataSet_6);
 			var submission_1 = new cpr.protocols.Submission("pendingListSub");
 			submission_1.method = "get";
 			submission_1.action = "admin/members/pending";
@@ -217,41 +247,6 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var group_2 = new cpr.controls.Container();
-					group_2.style.setClasses(["main_layout1"]);
-					group_2.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-					group_2.setLayout(xYLayout_3);
-					(function(container){
-						var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_1.value = "<p>관리자프로필<\/p>";
-						hTMLSnippet_1.style.css({
-							"font-weight" : "900",
-							"font-size" : "10px"
-						});
-						container.addChild(hTMLSnippet_1, {
-							"top": "0px",
-							"left": "0px",
-							"width": "100px",
-							"height": "95px"
-						});
-					})(group_2);
-					container.addChild(group_2, {
-						"top": "10px",
-						"left": "10px",
-						"width": "670px",
-						"height": "250px"
-					});
 					var calendar_1 = new cpr.controls.Calendar("crd");
 					calendar_1.style.setClasses(["admain_cld"]);
 					calendar_1.style.item.css({
@@ -259,21 +254,21 @@
 					});
 					calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
 					container.addChild(calendar_1, {
-						"bottom": "10px",
-						"left": "10px",
-						"width": "670px",
-						"height": "470px"
+						"top": "473px",
+						"right": "778px",
+						"bottom": "0px",
+						"left": "0px"
 					});
 					var tabFolder_2 = new cpr.controls.TabFolder();
 					
 					var tabItem_2 = (function(tabFolder){
 						var tabItem_2 = new cpr.controls.TabItem();
 						tabItem_2.text = "승인 대기 회원";
-						var group_3 = new cpr.controls.Container();
+						var group_2 = new cpr.controls.Container();
 						var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("pendingList"), 0);
-						group_3.setBindContext(dataRowContext_1);
-						var xYLayout_4 = new cpr.controls.layouts.XYLayout();
-						group_3.setLayout(xYLayout_4);
+						group_2.setBindContext(dataRowContext_1);
+						var xYLayout_3 = new cpr.controls.layouts.XYLayout();
+						group_2.setLayout(xYLayout_3);
 						(function(container){
 							var grid_1 = new cpr.controls.Grid("pendingListGrd");
 							grid_1.init({
@@ -520,26 +515,26 @@
 								"bottom": "0px",
 								"left": "0px"
 							});
-						})(group_3);
-						tabItem_2.content = group_3;
+						})(group_2);
+						tabItem_2.content = group_2;
 						return tabItem_2;
 					})(tabFolder_2);
 					tabFolder_2.addTabItem(tabItem_2);
 					tabFolder_2.setSelectedTabItem(tabItem_2);
 					container.addChild(tabFolder_2, {
-						"top": "0px",
-						"right": "10px",
-						"width": "800px",
-						"height": "300px"
+						"top": "406px",
+						"right": "0px",
+						"bottom": "1px",
+						"left": "823px"
 					});
 					var tabFolder_3 = new cpr.controls.TabFolder();
 					
 					var tabItem_3 = (function(tabFolder){
 						var tabItem_3 = new cpr.controls.TabItem();
 						tabItem_3.text = "공지사항";
-						var group_4 = new cpr.controls.Container();
-						var xYLayout_5 = new cpr.controls.layouts.XYLayout();
-						group_4.setLayout(xYLayout_5);
+						var group_3 = new cpr.controls.Container();
+						var xYLayout_4 = new cpr.controls.layouts.XYLayout();
+						group_3.setLayout(xYLayout_4);
 						(function(container){
 							var grid_2 = new cpr.controls.Grid("noticeListGrd");
 							grid_2.init({
@@ -721,8 +716,8 @@
 								"bottom": "0px",
 								"left": "0px"
 							});
-						})(group_4);
-						tabItem_3.content = group_4;
+						})(group_3);
+						tabItem_3.content = group_3;
 						return tabItem_3;
 					})(tabFolder_3);
 					tabFolder_3.addTabItem(tabItem_3);
@@ -730,9 +725,9 @@
 					var tabItem_4 = (function(tabFolder){
 						var tabItem_4 = new cpr.controls.TabItem();
 						tabItem_4.text = "자유 게시판";
-						var group_5 = new cpr.controls.Container();
-						var xYLayout_6 = new cpr.controls.layouts.XYLayout();
-						group_5.setLayout(xYLayout_6);
+						var group_4 = new cpr.controls.Container();
+						var xYLayout_5 = new cpr.controls.layouts.XYLayout();
+						group_4.setLayout(xYLayout_5);
 						(function(container){
 							var grid_3 = new cpr.controls.Grid("freeBoardListGrd");
 							grid_3.init({
@@ -915,17 +910,112 @@
 								"bottom": "0px",
 								"left": "0px"
 							});
-						})(group_5);
-						tabItem_4.content = group_5;
+						})(group_4);
+						tabItem_4.content = group_4;
 						return tabItem_4;
 					})(tabFolder_3);
 					tabFolder_3.addTabItem(tabItem_4);
 					tabFolder_3.setSelectedTabItem(tabItem_3);
 					container.addChild(tabFolder_3, {
-						"right": "10px",
-						"bottom": "10px",
+						"top": "0px",
+						"right": "0px",
+						"width": "755px",
+						"height": "371px"
+					});
+					var tabFolder_4 = new cpr.controls.TabFolder();
+					
+					var tabItem_5 = (function(tabFolder){
+						var tabItem_5 = new cpr.controls.TabItem();
+						tabItem_5.text = "회의실관리";
+						var group_5 = new cpr.controls.Container();
+						var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+						group_5.setLayout(xYLayout_6);
+						(function(container){
+							var grid_4 = new cpr.controls.Grid("grd1");
+							grid_4.init({
+								"dataSet": app.lookup("reservList"),
+								"columns": [
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"}
+								],
+								"header": {
+									"rows": [{"height": "35px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.text = "예약일자";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.text = "회의실";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.text = "예약자";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.text = "목적 ";
+											}
+										}
+									]
+								},
+								"detail": {
+									"rows": [{"height": "28px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.columnName = "roomReservDate";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.columnName = "roomName";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.columnName = "memberName";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.columnName = "proposal";
+											}
+										}
+									]
+								}
+							});
+							container.addChild(grid_4, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_5);
+						tabItem_5.content = group_5;
+						return tabItem_5;
+					})(tabFolder_4);
+					tabFolder_4.addTabItem(tabItem_5);
+					tabFolder_4.setSelectedTabItem(tabItem_5);
+					container.addChild(tabFolder_4, {
+						"top": "0px",
+						"left": "0px",
 						"width": "800px",
-						"height": "450px"
+						"height": "370px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;

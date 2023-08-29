@@ -246,6 +246,7 @@
 			// Configure root container
 			var container = app.getContainer();
 			container.style.css({
+				"border-left-color" : "#070048",
 				"background-color" : "#F8F8F8",
 				"width" : "100%",
 				"height" : "100%",
@@ -260,10 +261,12 @@
 			var tree_1 = new cpr.controls.Tree("tre1");
 			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
-				"background-color" : "#ffffff",
+				"background-color" : "#070048",
+				"color" : "#6B6A6A",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
-				"border-right-color" : "#f1efff"
+				"border-right-color" : "#f1efff",
+				"font-family" : "'맑은 고딕' , 'Malgun Gothic' , sans-serif"
 			});
 			(function(tree_1){
 				tree_1.setItemSet(app.lookup("memberMenu"), {
@@ -278,7 +281,7 @@
 			}
 			container.addChild(tree_1, {
 				"top": "50px",
-				"bottom": "50px",
+				"bottom": "0px",
 				"left": "0px",
 				"width": "300px"
 			});
@@ -371,7 +374,7 @@
 			container.addChild(group_2, {
 				"right": "0px",
 				"bottom": "0px",
-				"left": "0px",
+				"left": "310px",
 				"height": "50px"
 			});
 			

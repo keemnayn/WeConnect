@@ -15,6 +15,7 @@ function onBodyInit(e) {
 	app.lookup("noticeListSub").send();
 	app.lookup("freeBoardListSub").send();
 	app.lookup("scheduleListSub").send();
+	app.lookup("reservListSub").send();
 }
 
 /*
