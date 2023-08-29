@@ -81,8 +81,8 @@
       </cl:htmlsnippet>
       <cl:inputbox std:sid="i-box-be86d18c" id="memberEmailIpb" style="border-radius:5px; background-color:#FFFFF; color:#000000; font-weight:500; font-style:normal; background-image:none; text-align:center;" placeholder="이메일 주소는 ID로 사용됩니다.">
         <cl:listener std:sid="listener-e479aeb4" name="value-change" handler="onMemberIdValueChange"/>
-        <cl:listener std:sid="listener-a988373d" name="input" handler="onMemberEmailIpbInput"/>
         <cl:listener std:sid="listener-cd856cf7" name="blur" handler="onMemberEmailIpbBlur"/>
+        <cl:listener std:sid="listener-a988373d" name="input" handler="onMemberEmailIpbInput"/>
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="registerMemberParam" columnname="memberEmail"/>
         <cl:datamapcontext datacontrolid="registerMemberParam"/>
         <cl:xylayoutdata std:sid="xyl-data-9b8f0dea" top="120px" left="195px" width="350px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -138,7 +138,7 @@
         <cl:itemset datasetid="positionList" label="position" value="position"/>
         <cl:buttonstyle style="width:30px;"/>
       </cl:combobox>
-      <cl:button std:sid="button-861d4f5e" style="background-color:#4680FF; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="btn-success" value="확인">
+      <cl:button std:sid="button-861d4f5e" id="registerBtn" style="background-color:#4680FF; color:#FFFFFF; font-size:16px; font-style:normal; background-image:none; text-align:center;" class="btn-success" value="확인">
         <cl:listener std:sid="listener-1594139f" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-6e3ee8c9" right="395px" bottom="20px" width="150px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
