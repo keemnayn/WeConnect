@@ -15,7 +15,5 @@ public class ProjectDTO {
 	private int projectMemberCount;           
 	private long memberId;           
 }           
-                                                                                                       
-                         
-                
-                                                                                                                                                                       
+                                                                                                           
+                                                                                                                                                                                                                        

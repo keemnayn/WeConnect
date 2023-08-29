@@ -637,7 +637,7 @@
 				container.addChild(output_1, {
 					"top": "20px",
 					"left": "315px",
-					"width": "120px",
+					"width": "176px",
 					"height": "40px"
 				});
 				var output_2 = new cpr.controls.Output("emailValidationOpb");
