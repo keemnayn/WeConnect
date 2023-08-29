@@ -249,7 +249,6 @@
 			function onUpdateAttendanceSubmitSuccess(e) {
 				var updateAttendance = e.control;
 				app.lookup("attendanceSub").send();
-				console.log("아이쿠");
 			};
 			// End - User Script
 			
@@ -451,6 +450,15 @@
 				]
 			});
 			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("attendanceDTO");
+			dataMap_2.parseData({
+				"columns" : [
+					{"name": "workInTime"},
+					{"name": "workOutTime"}
+				]
+			});
+			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("Attendance1");
 			submission_1.action = "member/attendance";
 			if(typeof onAttendance1SubmitSuccess2 == "function") {
@@ -523,6 +531,12 @@
 			submission_10.action = "member/project";
 			submission_10.addResponseData(dataSet_8, false);
 			app.register(submission_10);
+			
+			var submission_11 = new cpr.protocols.Submission("attendanceSub");
+			submission_11.method = "get";
+			submission_11.action = "member/attendance/time";
+			submission_11.addResponseData(dataMap_2, false);
+			app.register(submission_11);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");

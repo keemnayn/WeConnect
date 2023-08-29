@@ -235,5 +235,4 @@ function onAttendance1SubmitSuccess(e) {
 function onUpdateAttendanceSubmitSuccess(e) {
 	var updateAttendance = e.control;
 	app.lookup("attendanceSub").send();
-	console.log("아이쿠");
 } 

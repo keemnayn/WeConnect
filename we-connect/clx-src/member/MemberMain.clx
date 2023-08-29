@@ -112,6 +112,12 @@
           <cl:datacolumn std:sid="d-column-38c398ee" name="memberId" datatype="string"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-46c65e09" id="attendanceDTO">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-dc8a95a5" name="workInTime"/>
+          <cl:datacolumn std:sid="d-column-cd74557c" name="workOutTime"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-37639b91" id="Attendance1" action="member/attendance">
         <cl:listener std:sid="listener-4aeacf02" name="submit-success" handler="onAttendance1SubmitSuccess2"/>
         <cl:listener std:sid="listener-dcced485" name="submit-error" handler="onAttendance1SubmitError"/>
@@ -143,6 +149,9 @@
       </cl:submission>
       <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
         <cl:responsedata dataid="projectList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-5d191cf8" id="attendanceSub" method="get" action="member/attendance/time">
+        <cl:responsedata dataid="attendanceDTO"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
