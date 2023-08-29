@@ -113,7 +113,7 @@
 				submission.send();
 				app.lookup("noticeListSub").send();
 				app.lookup("boardListSub").send();
-				app.lookup("memberName").send()
+				app.lookup("memberName").send();
 				
 				app.lookup("proposalListSub").send();
 				app.lookup("reservListSub").send();
@@ -921,46 +921,14 @@
 			var xYLayout_7 = new cpr.controls.layouts.XYLayout();
 			group_6.setLayout(xYLayout_7);
 			(function(container){
-				var calendar_1 = new cpr.controls.Calendar();
-				calendar_1.style.setClasses(["main-calendar"]);
-				container.addChild(calendar_1, {
-					"top": "0px",
-					"right": "0px",
-					"bottom": "0px",
-					"left": "0px"
-				});
-			})(group_6);
-			container.addChild(group_6, {
-				"top": "334px",
-				"right": "0px",
-				"bottom": "0px",
-				"width": "461px"
-			});
-			
-			var group_7 = new cpr.controls.Container();
-			group_7.style.setClasses(["main_layout1"]);
-			group_7.style.css({
-				"border-right-style" : "solid",
-				"border-radius" : "8px",
-				"border-bottom-color" : "#bfbfbf",
-				"border-left-style" : "solid",
-				"border-left-color" : "#bfbfbf",
-				"border-top-color" : "#bfbfbf",
-				"border-bottom-style" : "solid",
-				"border-right-color" : "#bfbfbf",
-				"border-top-style" : "solid"
-			});
-			var xYLayout_8 = new cpr.controls.layouts.XYLayout();
-			group_7.setLayout(xYLayout_8);
-			(function(container){
 				var tabFolder_3 = new cpr.controls.TabFolder();
 				
 				var tabItem_3 = (function(tabFolder){
 					var tabItem_3 = new cpr.controls.TabItem();
 					tabItem_3.text = "자유게시판";
-					var group_8 = new cpr.controls.Container();
-					var xYLayout_9 = new cpr.controls.layouts.XYLayout();
-					group_8.setLayout(xYLayout_9);
+					var group_7 = new cpr.controls.Container();
+					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
+					group_7.setLayout(xYLayout_8);
 					(function(container){
 						var grid_3 = new cpr.controls.Grid("grd3");
 						grid_3.init({
@@ -1054,44 +1022,35 @@
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
-						if(typeof onGrd3Click == "function") {
-							grid_3.addEventListener("click", onGrd3Click);
-						}
-						if(typeof onGrd3Dblclick == "function") {
-							grid_3.addEventListener("dblclick", onGrd3Dblclick);
-						}
 						container.addChild(grid_3, {
 							"top": "0px",
 							"right": "0px",
 							"bottom": "0px",
 							"left": "0px"
 						});
-					})(group_8);
-					tabItem_3.content = group_8;
+					})(group_7);
+					tabItem_3.content = group_7;
 					return tabItem_3;
 				})(tabFolder_3);
 				tabFolder_3.addTabItem(tabItem_3);
 				tabFolder_3.setSelectedTabItem(tabItem_3);
-				if(typeof onTabFolderDblclick == "function") {
-					tabFolder_3.addEventListener("dblclick", onTabFolderDblclick);
-				}
 				container.addChild(tabFolder_3, {
 					"top": "0px",
 					"right": "0px",
 					"bottom": "0px",
 					"left": "0px"
 				});
-			})(group_7);
-			container.addChild(group_7, {
+			})(group_6);
+			container.addChild(group_6, {
 				"top": "334px",
+				"right": "0px",
 				"bottom": "0px",
-				"left": "3px",
-				"width": "470px"
+				"width": "461px"
 			});
 			
-			var group_9 = new cpr.controls.Container();
-			group_9.style.setClasses(["main_layout1"]);
-			group_9.style.css({
+			var group_8 = new cpr.controls.Container();
+			group_8.style.setClasses(["main_layout1"]);
+			group_8.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "8px",
 				"border-bottom-color" : "#bfbfbf",
@@ -1102,23 +1061,78 @@
 				"border-right-color" : "#bfbfbf",
 				"border-top-style" : "solid"
 			});
-			var xYLayout_10 = new cpr.controls.layouts.XYLayout();
-			group_9.setLayout(xYLayout_10);
+			var xYLayout_9 = new cpr.controls.layouts.XYLayout();
+			group_8.setLayout(xYLayout_9);
 			(function(container){
 				var tabFolder_4 = new cpr.controls.TabFolder();
-				tabFolder_4.style.header.css({
+				
+				var tabItem_4 = (function(tabFolder){
+					var tabItem_4 = new cpr.controls.TabItem();
+					tabItem_4.text = "일정";
+					var group_9 = new cpr.controls.Container();
+					var xYLayout_10 = new cpr.controls.layouts.XYLayout();
+					group_9.setLayout(xYLayout_10);
+					(function(container){
+						var calendar_1 = new cpr.controls.Calendar();
+						container.addChild(calendar_1, {
+							"top": "0px",
+							"right": "0px",
+							"bottom": "0px",
+							"left": "0px"
+						});
+					})(group_9);
+					tabItem_4.content = group_9;
+					return tabItem_4;
+				})(tabFolder_4);
+				tabFolder_4.addTabItem(tabItem_4);
+				tabFolder_4.setSelectedTabItem(tabItem_4);
+				if(typeof onTabFolderDblclick == "function") {
+					tabFolder_4.addEventListener("dblclick", onTabFolderDblclick);
+				}
+				container.addChild(tabFolder_4, {
+					"top": "0px",
+					"right": "0px",
+					"bottom": "0px",
+					"left": "0px"
+				});
+			})(group_8);
+			container.addChild(group_8, {
+				"top": "334px",
+				"bottom": "0px",
+				"left": "3px",
+				"width": "470px"
+			});
+			
+			var group_10 = new cpr.controls.Container();
+			group_10.style.setClasses(["main_layout1"]);
+			group_10.style.css({
+				"border-right-style" : "solid",
+				"border-radius" : "8px",
+				"border-bottom-color" : "#bfbfbf",
+				"border-left-style" : "solid",
+				"border-left-color" : "#bfbfbf",
+				"border-top-color" : "#bfbfbf",
+				"border-bottom-style" : "solid",
+				"border-right-color" : "#bfbfbf",
+				"border-top-style" : "solid"
+			});
+			var xYLayout_11 = new cpr.controls.layouts.XYLayout();
+			group_10.setLayout(xYLayout_11);
+			(function(container){
+				var tabFolder_5 = new cpr.controls.TabFolder();
+				tabFolder_5.style.header.css({
 					"border-top-width" : "1px",
 					"border-right-width" : "1px",
 					"border-bottom-width" : "1px",
 					"border-left-width" : "1px"
 				});
 				
-				var tabItem_4 = (function(tabFolder){
-					var tabItem_4 = new cpr.controls.TabItem();
-					tabItem_4.text = "공지사항";
-					var group_10 = new cpr.controls.Container();
-					var xYLayout_11 = new cpr.controls.layouts.XYLayout();
-					group_10.setLayout(xYLayout_11);
+				var tabItem_5 = (function(tabFolder){
+					var tabItem_5 = new cpr.controls.TabItem();
+					tabItem_5.text = "공지사항";
+					var group_11 = new cpr.controls.Container();
+					var xYLayout_12 = new cpr.controls.layouts.XYLayout();
+					group_11.setLayout(xYLayout_12);
 					(function(container){
 						var grid_4 = new cpr.controls.Grid("grd1");
 						grid_4.init({
@@ -1223,20 +1237,20 @@
 							"bottom": "0px",
 							"left": "0px"
 						});
-					})(group_10);
-					tabItem_4.content = group_10;
-					return tabItem_4;
-				})(tabFolder_4);
-				tabFolder_4.addTabItem(tabItem_4);
-				tabFolder_4.setSelectedTabItem(tabItem_4);
-				container.addChild(tabFolder_4, {
+					})(group_11);
+					tabItem_5.content = group_11;
+					return tabItem_5;
+				})(tabFolder_5);
+				tabFolder_5.addTabItem(tabItem_5);
+				tabFolder_5.setSelectedTabItem(tabItem_5);
+				container.addChild(tabFolder_5, {
 					"top": "0px",
 					"right": "0px",
 					"bottom": "0px",
 					"left": "0px"
 				});
-			})(group_9);
-			container.addChild(group_9, {
+			})(group_10);
+			container.addChild(group_10, {
 				"top": "334px",
 				"bottom": "0px",
 				"left": "494px",

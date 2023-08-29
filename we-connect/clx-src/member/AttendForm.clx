@@ -31,12 +31,25 @@
           <cl:datacolumn std:sid="d-column-a16b30a7" name="leaveRequestStatus" datatype="string"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-b6241745" id="memberList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-d3d4b132" name="memberId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-6fd6e040" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-72fe19b0" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a6334926" name="departmentName" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:submission std:sid="submission-459a1b9c" id="attend1" method="get" action="member/attendance">
         <cl:listener std:sid="listener-59b3582e" name="submit-success" handler="onAttend1SubmitSuccess"/>
         <cl:responsedata dataid="attend"/>
       </cl:submission>
       <cl:submission std:sid="submission-0abaafad" id="leaveRequestListSub" async="false" method="get" action="admin/leave-request">
+        <cl:listener std:sid="listener-a3be5c8e" name="submit-success" handler="onLeaveRequestListSubSubmitSuccess2"/>
         <cl:responsedata dataid="leaveRequestList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-0d02a62a" id="memberName" method="get" action="member/Name">
+        <cl:listener std:sid="listener-6e62ddef" name="submit-success" handler="onMemberNameSubmitSuccess"/>
+        <cl:responsedata dataid="memberList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -45,85 +58,90 @@
     <cl:listener std:sid="listener-bd0e60d9" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-43b7f3ca" name="load" handler="onBodyLoad"/>
     <cl:listener std:sid="listener-c9bebdf0" name="before-unload" handler="onBodyBeforeUnload"/>
-    <cl:grid std:sid="grid-ebf80db0" id="grd1" datasetid="attend">
-      <cl:xylayoutdata std:sid="xyl-data-037d7e5c" top="167px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:headerstyle style="background-color:#E0E1E2; font-weight:800; background-image:none;"/>
-      <cl:gridcolumn std:sid="g-column-b9503507"/>
-      <cl:gridcolumn std:sid="g-column-559da3e8"/>
-      <cl:gridcolumn std:sid="g-column-d333111e"/>
-      <cl:gridcolumn std:sid="g-column-cccf9c68"/>
-      <cl:gridcolumn std:sid="g-column-cf9fa6bb"/>
-      <cl:gridheader std:sid="gh-band-3d2d7e41">
-        <cl:gridrow std:sid="g-row-912b89d8" height="50px"/>
-        <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" text="날짜"/>
-        <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="1" text="출근"/>
-        <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="2" text="퇴근"/>
-        <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="3" text="이름"/>
-        <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" text="정상"/>
-      </cl:gridheader>
-      <cl:griddetail std:sid="gd-band-1616b1d5">
-        <cl:gridrow std:sid="g-row-48a04b08" height="50px"/>
-        <cl:gridcell std:sid="gd-cell-b15d20d3" rowindex="0" colindex="0" columnname="workDay"/>
-        <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="1" columnname="workInTime"/>
-        <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="2" columnname="workOutTime"/>
-        <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="3" columnname="memberName"/>
-        <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" style="border-radius:50px; color:#333333;" columnname="attendanceStatus"/>
-      </cl:griddetail>
-    </cl:grid>
-    <cl:group std:sid="group-bacbdbd1" style="background-color:8px; border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-c195b54e" top="0px" right="0px" left="0px" height="168px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-      <cl:group std:sid="group-eaa20a3b" style="background-color:#E5E5E5;">
-        <cl:xylayoutdata std:sid="xyl-data-c454b999" top="0px" bottom="0px" left="0px" width="316px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-        <cl:img std:sid="image-030e8d1b" style="border-radius:50px;" src="../theme/controls/icons/prifile_none.png" fallbacksrc="../theme/controls/icons/prifile_none.png">
-          <cl:xylayoutdata std:sid="xyl-data-3f55feb8" top="10px" left="10px" width="130px" height="130px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        </cl:img>
-        <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="font-weight:700; font-size:25px; text-align:center;" value="&lt;div>&lt;/div>">
-          <cl:xylayoutdata std:sid="xyl-data-4a446177" top="33px" left="159px" width="127px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    <cl:group std:sid="group-f6f53e5b" style="border-radius:8px;">
+      <cl:xylayoutdata std:sid="xyl-data-3e360f56" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:grid std:sid="grid-ebf80db0" id="grd1" datasetid="attend">
+        <cl:xylayoutdata std:sid="xyl-data-af362348" top="177px" right="0px" bottom="3px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+        <cl:headerstyle style="font-weight:800; background-image:none;"/>
+        <cl:gridcolumn std:sid="g-column-b9503507"/>
+        <cl:gridcolumn std:sid="g-column-559da3e8"/>
+        <cl:gridcolumn std:sid="g-column-d333111e"/>
+        <cl:gridcolumn std:sid="g-column-cccf9c68"/>
+        <cl:gridcolumn std:sid="g-column-cf9fa6bb"/>
+        <cl:gridheader std:sid="gh-band-3d2d7e41">
+          <cl:gridrow std:sid="g-row-912b89d8" height="50px"/>
+          <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" text="날짜"/>
+          <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="1" text="출근"/>
+          <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="2" text="퇴근"/>
+          <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="3" text="이름"/>
+          <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" text="정상"/>
+        </cl:gridheader>
+        <cl:griddetail std:sid="gd-band-1616b1d5">
+          <cl:gridrow std:sid="g-row-48a04b08" height="35px"/>
+          <cl:gridcell std:sid="gd-cell-b15d20d3" rowindex="0" colindex="0" columnname="workDay"/>
+          <cl:gridcell std:sid="gd-cell-c010854b" rowindex="0" colindex="1" columnname="workInTime"/>
+          <cl:gridcell std:sid="gd-cell-48a342c3" rowindex="0" colindex="2" columnname="workOutTime"/>
+          <cl:gridcell std:sid="gd-cell-b1e96f14" rowindex="0" colindex="3" columnname="memberName"/>
+          <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" style="border-radius:0px; color:#333333;" columnname="attendanceStatus"/>
+        </cl:griddetail>
+      </cl:grid>
+      <cl:group std:sid="group-8449ad0f" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#ffe6e1; border-right-width:1px; border-left-color:#ffe6e1; border-right-color:#ffe6e1; border-left-width:1px; border-top-style:solid; background-color:#FFE6E1; border-radius:8px; border-left-style:solid; border-bottom-width:1px; border-top-color:#ffe6e1; border-bottom-style:solid;">
+        <cl:xylayoutdata std:sid="xyl-data-ececad4f" top="0px" right="385px" left="395px" height="42px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#6B6A6A; font-weight:600; font-size:20px; text-align:center;">
+          <cl:xylayoutdata std:sid="xyl-data-49a0f1f3" top="3px" bottom="0px" width="400px" horizontalAnchor="CENTER" verticalAnchor="BOTH"/>
         </cl:htmlsnippet>
-        <cl:htmlsnippet std:sid="htmlsnippet-96136ec8" id="dpm" style="font-weight:700; font-size:25px; text-align:center;" value="&lt;div>&lt;/div>">
-          <cl:xylayoutdata std:sid="xyl-data-2366bf7f" top="90px" left="159px" width="129px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        </cl:htmlsnippet>
-        <cl:xylayout std:sid="xylayout-9c87bf64"/>
+        <cl:xylayout std:sid="xylayout-cb0e5abf"/>
       </cl:group>
-      <cl:group std:sid="group-9d8172bc">
-        <cl:xylayoutdata std:sid="xyl-data-8acdca0b" top="0px" right="0px" bottom="0px" width="1259px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
-        <cl:output std:sid="output-aaa3fb8b" id="leaveCount" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; font-weight:700; border-right-width:1px; border-left-color:#bfbfbf; font-size:25px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;">
-          <cl:listener std:sid="listener-2925707e" name="value-change" handler="onOutputValueChange"/>
-          <cl:datasetbind property="value" datacontrolid="leaveRequestList" columnname="formattedLeaveCount" rowindex="0"/>
-          <cl:formdata std:sid="f-data-ff61d2cb" row="0" col="1" rowspan="1" colspan="1"/>
-        </cl:output>
-        <cl:output std:sid="output-f0d6dfa8" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="Output">
-          <cl:formdata std:sid="f-data-3eb3db5d" row="0" col="2"/>
-        </cl:output>
-        <cl:output std:sid="output-1c52a9af" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="Output">
-          <cl:formdata std:sid="f-data-eb0af113" row="0" col="3"/>
-        </cl:output>
-        <cl:button std:sid="button-0580c02b" style="border-radius:8px; background-color:#F7EEEB; background-image:none;" value="퇴근">
-          <cl:formdata std:sid="f-data-42193da9" row="0" col="5"/>
-        </cl:button>
-        <cl:button std:sid="button-8b0c68da" style="border-radius:8px; background-color:#E0E1E2; color:#ffffff; background-image:none;" value="출근">
-          <cl:formdata std:sid="f-data-a98f97de" row="0" col="4"/>
-        </cl:button>
-        <cl:output std:sid="output-99fafa5a" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-top-width:1px; font-weight:700; border-right-width:1px; border-left-color:#bfbfbf; font-size:25px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="총연차">
-          <cl:formdata std:sid="f-data-af4d86ca" row="0" col="0"/>
-        </cl:output>
-        <cl:formlayout std:sid="f-layout-fb25187f" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
-          <cl:rows length="1" unit="FRACTION"/>
-          <cl:columns length="150" unit="PIXEL"/>
-          <cl:columns length="324" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
-          <cl:columns length="150" unit="PIXEL"/>
-          <cl:columns length="325" unit="PIXEL"/>
-          <cl:columns length="155" unit="PIXEL"/>
-          <cl:columns length="155" unit="PIXEL"/>
-        </cl:formlayout>
+      <cl:group std:sid="group-3d0d3efe">
+        <cl:xylayoutdata std:sid="xyl-data-f0ab8c10" top="61px" right="0px" left="0px" height="106px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:group std:sid="group-67f92ba8" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:10px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;">
+          <cl:xylayoutdata std:sid="xyl-data-f6ba1635" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+          <cl:button std:sid="button-f95edfad" id="퇴근" style="background-image:none;" value="퇴근">
+            <cl:formdata std:sid="f-data-5aa83c28" row="0" col="6"/>
+          </cl:button>
+          <cl:button std:sid="button-5e6ac2b2" id="출근" style="background-image:none;" value="출근">
+            <cl:formdata std:sid="f-data-98945a13" row="0" col="5"/>
+          </cl:button>
+          <cl:output std:sid="output-388e17d0" id="tardiness" style="border-radius:8px; border-right-style:solid; color:#FF8E8E; border-right-width:1px; font-size:25px; border-right-color:#bfbfbf; text-align:center;" value="지각">
+            <cl:formdata std:sid="f-data-86a520f3" row="0" col="3"/>
+          </cl:output>
+          <cl:output std:sid="output-42308e64" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; font-size:25px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:8px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="Output">
+            <cl:formdata std:sid="f-data-80c874e6" row="1" col="0"/>
+          </cl:output>
+          <cl:output std:sid="output-e2815d9f" id="workInTime" style="border-radius:8px; border-right-style:solid; border-right-width:1px; font-size:25px; border-right-color:#bfbfbf; text-align:center;" value="출근">
+            <cl:formdata std:sid="f-data-338d903c" row="0" col="2"/>
+          </cl:output>
+          <cl:output std:sid="output-4a415249" id="noShow" style="border-radius:8px; color:#FF8E8E; font-size:25px; text-align:center;" value="결근">
+            <cl:formdata std:sid="f-data-ff20b790" row="0" col="4"/>
+          </cl:output>
+          <cl:output std:sid="output-73848d6d" id="leave" style="border-radius:8px; border-right-style:solid; color:#49A9FF; border-right-width:1px; font-size:25px; border-right-color:#bfbfbf; text-align:center;" value="휴가">
+            <cl:formdata std:sid="f-data-282a96b2" row="0" col="1" rowspan="1" colspan="1"/>
+          </cl:output>
+          <cl:output std:sid="output-9c3af7a5" id="name" style="border-radius:8px; border-right-style:solid; border-right-width:1px; font-size:25px; border-right-color:#bfbfbf; text-align:center;" value="이름">
+            <cl:formdata std:sid="f-data-bbb0e054" row="0" col="0" rowspan="1" colspan="1"/>
+          </cl:output>
+          <cl:formlayout std:sid="f-layout-3fbcbded" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+            <cl:rows length="100" unit="PIXEL"/>
+            <cl:rows length="1" unit="FRACTION"/>
+            <cl:columns length="250" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
+            <cl:columns length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+            <cl:columns length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
+            <cl:columns length="1" unit="FRACTION"/>
+            <cl:columns length="1" unit="FRACTION"/>
+            <cl:columns length="100" unit="PIXEL"/>
+            <cl:columns length="100" unit="PIXEL"/>
+          </cl:formlayout>
+        </cl:group>
+        <cl:xylayout std:sid="xylayout-0ac5d77b"/>
       </cl:group>
-      <cl:xylayout std:sid="xylayout-058c5599"/>
+      <cl:xylayout std:sid="xylayout-3ec55fbf"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-8748a493"/>
   </body>
   <std:studiosetting>
     <std:hruler>
       <std:guide position="241"/>
+      <std:guide position="791"/>
     </std:hruler>
     <std:vruler/>
   </std:studiosetting>

@@ -99,7 +99,7 @@ function onBodyInit2(e) {
 	submission.send();
 	app.lookup("noticeListSub").send();
 	app.lookup("boardListSub").send();
-	app.lookup("memberName").send()
+	app.lookup("memberName").send();
 	
 	app.lookup("proposalListSub").send();
 	app.lookup("reservListSub").send();
