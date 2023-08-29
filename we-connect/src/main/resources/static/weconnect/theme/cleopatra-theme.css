@@ -13,7 +13,7 @@
 /* 내부에 아이템을 갖는 컨트롤의 Disabled된 경우, 각 아이템이 선택된 경우 배경 색상 */
 /* 모든 UIControl 공통 스타일 */
 .cl-control {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
 }
 /* 오류 발생시 표시되는 메시지 스타일 */
@@ -44,7 +44,7 @@ body.cl-has-modal {
 }
 /* 넘버 에디터  */
 .cl-numbereditor {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   border: 1px solid #bbb;
   color: #333;
   /* 넘버 에디터 텍스트 */
@@ -77,7 +77,7 @@ body.cl-has-modal {
 }
 /* 데이트 인풋 */
 .cl-dateinput {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #bbb;
   text-align: left;
@@ -132,9 +132,6 @@ body.cl-has-modal {
   /* 다음 달 버튼 */
   /* 헤더 텍스트 */
 }
-.cl-calendar .cl-calendar-header .cl-calendar-header-prev {
-  background-image: url(https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg);
-}
 .cl-calendar .cl-calendar-header .cl-calendar-header-text:hover,
 .cl-calendar .cl-calendar-header .cl-calendar-header-text.cl-hover {
   color: #208AED;
@@ -173,14 +170,6 @@ body.cl-has-modal {
   /* 기본 날짜 - 오늘 날짜 셀 */
   /* range 선택에서 선택된 날짜 스타일 */
   /* 기념일 전역 스타일 */
-}
-.cl-calendar .cl-calendar-footer {
-  background-color: #f2f4f6;
-  border-radius: 5px;
-  font-size: 13px;
-  padding: 0px;
-  text-align: center;
-  vertical-align: middle;
 }
 .cl-calendar .cl-calendar-item,
 .cl-calendar .cl-anniversary,
@@ -226,7 +215,7 @@ body.cl-has-modal {
 /* 캘린더 disabled 상태 */
 /* 리스트 박스 */
 .cl-listbox {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   background-color: #fff;
   border: 1px solid #bbb;
   color: #333;
@@ -275,7 +264,7 @@ body.cl-has-modal {
 }
 /* 링크드 리스트 박스 루트 */
 .cl-linkedlistbox {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   /* 리스트 박스 */
   /* 링크드리스트박스 disabled 상태 */
@@ -342,7 +331,7 @@ body.cl-has-modal {
 }
 /* 메뉴 루트 */
 .cl-menu {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   /* 메뉴 리스트 */
 }
 .cl-menu .cl-menu-list {
@@ -407,7 +396,7 @@ body.cl-has-modal {
 }
 /* 파일 업로드 루트 */
 .cl-fileupload {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #bbb;
   background-color: #fff;
@@ -461,7 +450,7 @@ body.cl-has-modal {
 }
 /* 버튼 */
 .cl-button {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   background-image: linear-gradient(#FCFEFF, #E0E1E2);
   border-radius: 4px;
@@ -484,11 +473,15 @@ body.cl-has-modal {
 .cl-button:not(.cl-disabled):active {
   background-image: linear-gradient(#ddd, #eee 5px, #ddd);
 }
+/* Disable 상태의 버튼 */
+.cl-button.cl-disabled {
+  color: #666;
+}
 /* 아코디언 */
 .cl-accordion {
   border: 1px solid #bbb;
   color: #333;
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   /* 아코디언의 각 헤더 */
   /* 아코디언 컨텐츠를 감싸는 영역 */
   /* 아코디언 섹션 */
@@ -542,7 +535,7 @@ body.cl-has-modal {
 }
 /* 인풋 박스 루트 */
 .cl-inputbox {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #bbb;
   background-color: #fff;
@@ -560,7 +553,7 @@ body.cl-has-modal {
 }
 /* 서치 인풋 */
 .cl-searchinput {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #bbb;
   text-align: left;
@@ -625,7 +618,7 @@ body.cl-has-modal {
 }
 /* 아웃풋 */
 .cl-output {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
 }
 .cl-output.cl-disabled {
@@ -633,7 +626,7 @@ body.cl-has-modal {
 }
 /* 텍스트 에리어 */
 .cl-textarea {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   border: 1px solid #bbb;
   color: #333;
   /* 텍스트 에리어 텍스트 */
@@ -762,7 +755,7 @@ body.cl-has-modal {
 }
 /* 마스크 에디터 루트 */
 .cl-maskeditor {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   border: 1px solid #bbb;
   background-color: #fff;
   color: #333;
@@ -781,7 +774,7 @@ body.cl-has-modal {
 }
 /* 콤보 박스 스타일 */
 .cl-combobox {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #bbb;
   background-color: #fff;
@@ -804,7 +797,7 @@ body.cl-has-modal {
 }
 /* 콤보 박스의 리스트 스타일 */
 .cl-combobox-list {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   border: 1px solid #1369C5;
   color: #333;
   /* 리스트의 쉐도우 */
@@ -869,7 +862,7 @@ body.cl-has-modal {
 }
 /* 링크드 콤보 박스 루트 */
 .cl-linkedcombobox {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   /* 콤보 박스 */
   /* 콤보 박스 - 포커스 상태 */
@@ -898,7 +891,7 @@ body.cl-has-modal {
 }
 /* 콤보 박스 리스트 박스 */
 .cl-linkedcombobox-list {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: 1px solid #1369C5;
   background-color: white;
@@ -964,7 +957,7 @@ body.cl-has-modal {
 /* 트리 */
 .cl-tree {
   border: 1px solid #bbb;
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   background-color: #fff;
   /* 트리 아이템 */
@@ -1039,10 +1032,9 @@ body.cl-has-modal {
 }
 /* 그리드 */
 .cl-grid {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
-  border-left: 0 none;
-  border-right: 0 none;
+  border: solid 1px #bbb;
   min-height: 100px;
   /* 그리드 헤더 */
   /* 그리드 디테일 */
@@ -1056,17 +1048,16 @@ body.cl-has-modal {
 .cl-grid .cl-grid-header {
   /* 그리드 헤더 셀 */
   /* @deprecated (header의 sortColumnName속성)
-		 그리드 헤더 셀 정렬 인디케이터 */
+		그리드 헤더 셀 정렬 인디케이터 */
   /* en: @deprecated (sortColumnName attribute in header)
-		 Grid header cell sort indicator */
+		Grid header cell sort indicator */
   /* ja: @deprecated (ヘッダーの sortColumnName 属性)
-		 グリッド ヘッダー セルの並べ替えインジケーター */
+		グリッド ヘッダー セルの並べ替えインジケーター */
   /* 그리드 헤더 셀 필터 인디케이터 */
   /* 그리드 헤더 셀에 정렬 가능한 셀 스타일 */
   /* 디테일에 스크롤이 생길시 우측에 생기는 빈 영역 */
 }
 .cl-grid .cl-grid-header .cl-grid-cell {
-  border: none;
   /* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 }
 .cl-grid .cl-grid-header .cl-sort {
@@ -1173,7 +1164,8 @@ body.cl-has-modal {
 }
 /* 모든 셀 스타일 */
 .cl-grid-cell {
-  border-right: none;
+  border-right: solid 1px #bbb;
+  border-bottom: solid 1px #bbb;
   /* columnType=checkbox, columnType=rowindex와 같이 그리드에서 기본 제공하는 컬럼 */
   /* 셀에 포함된 컨트롤 */
   /* 그룹 펼침/접힘 버튼 */
@@ -1234,7 +1226,7 @@ body.cl-has-modal {
 /* 트리 셀 - disabled */
 /* 내비게이션 바 */
 .cl-navigationbar {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   border: solid 1px #bbb;
   color: #333;
   /* 스크롤 왼쪽 버튼 */
@@ -1301,7 +1293,7 @@ body.cl-has-modal {
 /* 내비게이션 바 드랍다운 메뉴 */
 .cl-navigationbar-list {
   border: solid 1px #bbb;
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   /* megamenu 타입의 카테고리 */
   /* submenu의 up스크롤 버튼*/
   /* submenu의 down스크롤 버튼*/
@@ -1364,15 +1356,11 @@ body.cl-has-modal {
 /* 탭 폴더 */
 .cl-tabfolder {
   color: #333;
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   /* 헤더 */
   /* 탭폴더 바디 */
 }
 .cl-tabfolder .cl-tabfolder-header {
-  background-image: linear-gradient(#babfc7, #babfc7);
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  height: 35px;
   /* 좌측 스크롤 버튼 */
   /* 우측 스크롤 버튼 */
   /* 탭 아이템 */
@@ -1386,10 +1374,8 @@ body.cl-has-modal {
   /* 비활성 상태 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item {
-  box-shadow: inset 0px -1px 0px 0px #babfc7;
-  border-left: none;
-  background-color: #ffffff;
-  color: #666666;
+  background-color: white;
+  border: solid 1px #bbb;
   /* 탭 아이템 체크 박스 */
   /* 탭 아이템 닫기 버튼 */
   /* 탭 아이템 - 선택됨 */
@@ -1397,11 +1383,9 @@ body.cl-has-modal {
   /* 비활성 탭 아이템 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #ffffff;
-  border-color: #babfc7;
-  box-shadow: none;
-  color: #3f87fd;
-  text-decoration: none;
+  background-color: #208AED;
+  color: #FFFFFF;
+  border-color: #1369C5;
   /* 선택된 탭 아이템 닫기 버튼 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
@@ -1412,18 +1396,9 @@ body.cl-has-modal {
   color: #333;
   border: solid 1px #bbb;
 }
-.cl-tabfolder .cl-tabfolder-body.cl-top {
-  border-bottom: none;
-}
-.cl-tabfolder .cl-text:focus {
-  text-decoration: none;
-}
-.cl-tabfolder.cl-bottom {
-  border-top: none;
-}
 /* 페이지 인덱서 */
 .cl-pageindexer {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   /* 페이지 인덱서 버튼 공통 */
   /* navigationType="text"으로 표현되는 페이지 정보 텍스트 */
@@ -1504,7 +1479,7 @@ body.cl-has-modal {
 }
 /* 알림 아이템 */
 .cl-notifier-item {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   /* 알림 아이템 텍스트 */
   /* 알림 아이템 아이콘 */
   /* 알림 아이템 닫기 버튼 */
@@ -1541,7 +1516,7 @@ body.cl-has-modal {
 }
 /* 파일 인풋 루트 */
 .cl-fileinput {
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   border: solid 1px #bbb;
   /* autoSize 설정시 표시되는 기본크기 */
@@ -1635,7 +1610,4 @@ body.cl-has-modal {
 .cl-linkedcombobox-combo:focus,
 .cl-grid-cell:focus {
   /* 웹 접근성 개선 목적으로 포커스 링을 표시하려면 아래 주석을 해제 하십시오. */
-}
-.Background {
-  background-image: url("controls/icons/login-background.png");
 }

@@ -12,7 +12,7 @@
 /* 내부에 아이템을 갖는 컨트롤의 Disabled된 경우, 각 아이템이 선택된 경우 배경 색상 */
 .cl-tree.admin_tree {
   border: 1px solid #ffffff;
-  font: 14px "IBM Plex Sans KR";
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
   background-color: #fff;
   /* 트리 아이템 */

@@ -1,101 +1,78 @@
 @import "../settings.part.less";
 
+
 /* 탭 폴더 - disabled */
-.cl-tabfolder.cl-disabled {
-}
+.cl-tabfolder.cl-disabled {}
 
 /* 탭 폴더 */
 .cl-tabfolder {
 	color: @default-text-color;
 	font: @default-font;
-	
+
 	/* 헤더 */
 	.cl-tabfolder-header {
-		background-image: linear-gradient(#babfc7, #babfc7);
-		background-size: 100% 1px;
-		background-repeat: no-repeat;
-		height: 35px;
-		
-		// 탭 폴더 아이템의 높이
+
 		/* 좌측 스크롤 버튼 */
 		.cl-tabfolder-prev {
 			border: solid 1px @default-border-color;
-			
 			// background-image: url("icons/prev.png");
+
 			/* 비활성 상태 */
 			&.cl-disabled {
 				// background-image: url("icons/prev-selected.png");
 			}
 		}
-		
+
 		/* 우측 스크롤 버튼 */
 		.cl-tabfolder-next {
 			border: solid 1px @default-border-color;
-			
 			// background-image: url("icons/next.png");
+
 			/* 비활성 상태 */
 			&.cl-disabled {
 				// background-image: url("icons/next-selected.png");
 			}
 		}
-		
+
 		/* 탭 아이템 */
 		.cl-tabfolder-item {
-			box-shadow: inset 0px -1px 0px 0px rgb(186, 191, 199, 1);
-			border-left: none;
-			background-color: #ffffff;
-			color: #666666;
-			
-			// 탭 아이템 아래 선
+			background-color: white;
+			border: solid 1px @default-border-color;
+
 			/* 탭 아이템 체크 박스 */
-			.cl-checkbox {
-			}
-			
+			.cl-checkbox {}
+
 			/* 탭 아이템 닫기 버튼 */
 			.cl-tabfolder-button {
 				// background-image: url(icons/close.png);
 			}
-			
+
 			/* 탭 아이템 - 선택됨 */
 			&.cl-selected {
-				background-color: #ffffff;
-				border-color: #babfc7;
-				box-shadow: none;
-				color: #3f87fd;
-				text-decoration: none;
+				background-color: @selection-background;
+				color: @selection-foreground;
+				border-color: @focus-border-color;
+
 				/* 선택된 탭 아이템 닫기 버튼 */
 				.cl-tabfolder-button {
 					// background-image: url(icons/close-selected.png);
 				}
 			}
-			
+
 			/* 탭 아이템 - 호버 */
 			&:not(.cl-selected):hover {
 				background-color: @hover-background;
 			}
-			
+
 			/* 비활성 탭 아이템 */
-			&.cl-disabled {
-			}
+			&.cl-disabled {}
 		}
 	}
-	
+
 	/* 탭폴더 바디 */
 	.cl-tabfolder-body {
 		background-color: white;
 		color: @default-text-color;
 		border: solid 1px @default-border-color;
-		
-		&.cl-top {
-			border-bottom: none;
-		}
-	}
-	
-	.cl-text:focus {
-		text-decoration: none;
-	}
-	
-	&.cl-bottom {
-		border-top: none;
 	}
 }
