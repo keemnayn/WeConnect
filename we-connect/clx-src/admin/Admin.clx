@@ -71,12 +71,6 @@
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminVacation]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[조직도]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[조직도]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>

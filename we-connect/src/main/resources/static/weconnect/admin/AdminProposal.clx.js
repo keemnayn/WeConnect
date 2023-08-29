@@ -226,18 +226,21 @@
 						"dataSet": app.lookup("proposalList"),
 						"columns": [
 							{"width": "25px"},
-							{"width": "39px"},
-							{"width": "308px"},
-							{"width": "356px"},
+							{
+								"width": "39px",
+								"visible": false
+							},
+							{"width": "150px"},
+							{"width": "300px"},
 							{
 								"width": "98px",
 								"visible": false
 							},
-							{"width": "68px"},
-							{"width": "77px"}
+							{"width": "100px"},
+							{"width": "75px"}
 						],
 						"header": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -304,7 +307,7 @@
 							]
 						},
 						"detail": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -394,10 +397,13 @@
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "200px",
+						"width": "133px",
 						"height": "40px"
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+					comboBox_1.style.css({
+						"text-align" : "center"
+					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 					comboBox_1.setBindContext(dataMapContext_1);
 					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
@@ -409,7 +415,7 @@
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "520px",
+						"right": "453px",
 						"width": "100px",
 						"height": "30px"
 					});
@@ -425,7 +431,7 @@
 					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "220px",
+						"right": "153px",
 						"width": "280px",
 						"height": "30px"
 					});

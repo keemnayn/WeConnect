@@ -228,10 +228,13 @@
 					var grid_1 = new cpr.controls.Grid("noticeGrd");
 					grid_1.init({
 						"dataSet": app.lookup("noticeList"),
-						"autoFit": "2, 3, 5",
+						"autoFit": "1, 2, 3, 5",
 						"columns": [
 							{"width": "50px"},
-							{"width": "75px"},
+							{
+								"width": "75px",
+								"visible": false
+							},
 							{"width": "100px"},
 							{"width": "200px"},
 							{"width": "75px"},

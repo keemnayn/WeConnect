@@ -151,7 +151,6 @@
 					{"label": "회원관리", "value": "회원관리", "parent": "회원", "appId": "admin/AdminMember"},
 					{"label": "근태관리", "value": "근태관리", "parent": "회원", "appId": "admin/AdminAttendance"},
 					{"label": "연차관리", "value": "연차관리", "parent": "회원", "appId": "admin/AdminVacation"},
-					{"label": "조직도", "value": "조직도", "parent": "회원", "appId": ""},
 					{"label": "공지사항", "value": "공지사항", "parent": "게시판", "appId": "admin/AdminNotice"},
 					{"label": "자유게시판", "value": "자유게시판", "parent": "게시판", "appId": "admin/AdminBoard"},
 					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminProposal"},

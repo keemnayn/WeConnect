@@ -174,7 +174,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "memberName";
-										cell.text = "memberName";
+										cell.text = "이름";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -186,7 +186,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "position";
-										cell.text = "position";
+										cell.text = "직급";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -198,7 +198,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "departmentName";
-										cell.text = "departmentName";
+										cell.text = "부서";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -210,7 +210,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "workDay";
-										cell.text = "workDay";
+										cell.text = "날짜";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -222,7 +222,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "workInTime";
-										cell.text = "workInTime";
+										cell.text = "출근 시간";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -234,7 +234,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "workOutTime";
-										cell.text = "workOutTime";
+										cell.text = "퇴근 시간";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -246,7 +246,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "attendanceStatus";
-										cell.text = "attendanceStatus";
+										cell.text = "근태";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -414,6 +414,9 @@
 						"left": "0px"
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+					comboBox_1.style.css({
+						"text-align" : "center"
+					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 					comboBox_1.setBindContext(dataMapContext_1);
 					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");

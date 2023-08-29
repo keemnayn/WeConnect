@@ -49,6 +49,9 @@
     <cl:tabfolder std:sid="t-folder-a10d1ba7">
       <cl:xylayoutdata std:sid="xyl-data-289fbfc8" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-3e4f6c0a" text="회의실 목록">
+        <std:metadata>
+          <std:property key="is-active-item" value="true"/>
+        </std:metadata>
         <cl:group std:sid="group-c0075964">
           <std:metadata>
             <std:property key="locked" value="true"/>
@@ -56,8 +59,8 @@
           <cl:grid std:sid="grid-9e0879ac" id="roomGrd" datasetid="roomList">
             <cl:xylayoutdata std:sid="xyl-data-267881a5" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:gridcolumn std:sid="g-column-b715447c" width="25px"/>
-            <cl:gridcolumn std:sid="g-column-e4bf2538" width="20px"/>
-            <cl:gridcolumn std:sid="g-column-6b6e73ca" width="80px"/>
+            <cl:gridcolumn std:sid="g-column-e4bf2538" width="20px" visible="false"/>
+            <cl:gridcolumn std:sid="g-column-6b6e73ca" width="500px"/>
             <cl:gridheader std:sid="gh-band-9611f243">
               <cl:gridrow std:sid="g-row-fdc95e20" height="50px"/>
               <cl:gridcell std:sid="gh-cell-b031fb7f" rowindex="0" colindex="0" columntype="checkbox"/>
@@ -72,7 +75,7 @@
             </cl:griddetail>
           </cl:grid>
           <cl:group std:sid="group-2815f0b4">
-            <cl:xylayoutdata std:sid="xyl-data-178447d2" top="5px" right="0px" width="225px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-178447d2" top="5px" right="0px" width="133px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:button std:sid="button-213da8ec" id="deleteBtn" value="삭제">
               <cl:listener std:sid="listener-a702adfe" name="click" handler="onDeleteBtnClick"/>
               <cl:formdata std:sid="f-data-40507e93" row="0" col="1"/>
@@ -91,9 +94,6 @@
         </cl:group>
       </cl:tabitem>
       <cl:tabitem std:sid="t-item-a6d1f92f" selected="true" text="예약 현황">
-        <std:metadata>
-          <std:property key="is-active-item" value="true"/>
-        </std:metadata>
         <cl:group std:sid="group-84722dfd">
           <std:metadata>
             <std:property key="locked" value="true"/>
@@ -101,13 +101,13 @@
           <cl:grid std:sid="grid-2b48ad68" id="grd1" datasetid="reservList">
             <cl:listener std:sid="listener-cf0c8c0f" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-254f34d9" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:gridcolumn std:sid="g-column-23a372af"/>
-            <cl:gridcolumn std:sid="g-column-7a018089"/>
-            <cl:gridcolumn std:sid="g-column-f3fbfdfa"/>
-            <cl:gridcolumn std:sid="g-column-8ec673f9"/>
+            <cl:gridcolumn std:sid="g-column-23a372af" visible="false"/>
+            <cl:gridcolumn std:sid="g-column-7a018089" width="125px"/>
+            <cl:gridcolumn std:sid="g-column-f3fbfdfa" width="75px"/>
+            <cl:gridcolumn std:sid="g-column-8ec673f9" width="150px"/>
             <cl:gridcolumn std:sid="g-column-21c4c85f"/>
-            <cl:gridcolumn std:sid="g-column-5d9d164a"/>
-            <cl:gridcolumn std:sid="g-column-532040df"/>
+            <cl:gridcolumn std:sid="g-column-5d9d164a" width="50px"/>
+            <cl:gridcolumn std:sid="g-column-532040df" width="50px"/>
             <cl:gridheader std:sid="gh-band-ebfe94c4">
               <cl:gridrow std:sid="g-row-ad786928" height="50px"/>
               <cl:gridcell std:sid="gh-cell-0116f51a" rowindex="0" colindex="0" targetcolumnname="roomReservId" sortable="false" filterable="false" text="번호"/>
