@@ -210,6 +210,7 @@
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("proposalUpdateDeleteParam"));
 					inputBox_1.setBindContext(dataMapContext_1);
 					inputBox_1.bind("value").toDataMap(app.lookup("proposalUpdateDeleteParam"), "proposalContent");
+					inputBox_1.bind("readOnly").toExpression("PMemberId == #memberDTO.memberId ? false:true");
 					container.addChild(inputBox_1, {
 						"colIndex": 1,
 						"rowIndex": 0,
