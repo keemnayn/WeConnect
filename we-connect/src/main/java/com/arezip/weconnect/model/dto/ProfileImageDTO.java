@@ -12,4 +12,4 @@ public class ProfileImageDTO {
 	private String profileImagePath;  
 	private long memberId;         
 }        	                                                      
-                                                                                                                              
+                                                                                                                                                           

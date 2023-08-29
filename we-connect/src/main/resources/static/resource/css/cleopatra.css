@@ -156,24 +156,48 @@ body {
 
 .cl-grid
 
+
+
  
+
+
 
 .cl-grid-ctrl-inherit
 
 
+
+
+
+
 .cl-border-none
+
+
 
  
   
 
+
+
 border
+
+
+
+
 
 
 :
 
+
+
  
 
+
+
 none
+
+
+
+
 
 
 ;
@@ -1103,7 +1127,7 @@ none
 	{
 	border-radius: 5px;
 	/* 셀 호버 스타일 */ &:
-	not (.cl-disabled): hover{  
+	not (.cl-disabled): hover{    
 			//cursor: pointer; //
 	background-color: #656565; //
 	color: white;
@@ -1228,15 +1252,14 @@ none
 }
 
 /* 캘린더 푸터 */
-.cl-calendar-footer {
+.cl-calendar-footer.main-calendar {
+	padding: 5px;
 	background-color: #f2f4f6;
 	border-radius: 5px;
 	font-size: 13px;
 	padding: 0px;
 	text-align: center;
-	vertical-align: middle; . cl-calendar-footer-text { // display :
-	inline-block;
-	color: #333333;
+	vertical-align: middle;
 }
 
 &
@@ -2075,25 +2098,51 @@ keyframes slide-r { 0% {
 100
 
 
+
+
+
+
 %
 {
 transform
 
 
+
+
+
+
 :
 
 
+
+
+
+
 translateX
+
+
+
+
 (
+
+
+
+
 
 
 0
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 }
 }
 @
@@ -2104,25 +2153,51 @@ keyframes slide-l { 0% {
 100
 
 
+
+
+
+
 %
 {
 transform
 
 
+
+
+
+
 :
 
 
+
+
+
+
 translateX
+
+
+
+
 (
+
+
+
+
 
 
 0
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 }
 }
 /**
@@ -5109,7 +5184,7 @@ translateX
 	border-top: none;
 }
 
-.cl-tabfolder .cl-tabfolder-body  {
+.cl-tabfolder .cl-tabfolder-body {
 	background-color: white;
 	color: #333;
 	border: solid 1px #bbb;
@@ -6268,9 +6343,17 @@ keyframes bounce {from , 20%, 53%, 80%, to { animation-timing-function:cubic-bez
 40
 
 
+
+
+
+
 %
 ,
 43
+
+
+
+
 
 
 %
@@ -6278,38 +6361,92 @@ keyframes bounce {from , 20%, 53%, 80%, to { animation-timing-function:cubic-bez
 animation-timing-function
 
 
+
+
+
+
 :
+
+
+
+
 
 
 cubic-bezier
+
+
+
+
 (
 
 
+
+
+
+
 0
+
+
+
+
 .755
 ,
 0
+
+
+
+
 .05
 ,
 0
+
+
+
+
 .855
 ,
 0
+
+
+
+
 .06
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 transform
+
+
+
+
 
 
 :
 
 
+
+
+
+
 translate3d
+
+
+
+
 (
+
+
+
+
 
 
 0
@@ -6319,12 +6456,22 @@ translate3d
 0
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 }
 70
+
+
+
+
 
 
 %
@@ -6332,38 +6479,92 @@ translate3d
 animation-timing-function
 
 
+
+
+
+
 :
+
+
+
+
 
 
 cubic-bezier
+
+
+
+
 (
 
 
+
+
+
+
 0
+
+
+
+
 .755
 ,
 0
+
+
+
+
 .05
 ,
 0
+
+
+
+
 .855
 ,
 0
+
+
+
+
 .06
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 transform
+
+
+
+
 
 
 :
 
 
+
+
+
+
 translate3d
+
+
+
+
 (
+
+
+
+
 
 
 0
@@ -6373,12 +6574,22 @@ translate3d
 0
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 }
 90
+
+
+
+
 
 
 %
@@ -6386,11 +6597,27 @@ translate3d
 transform
 
 
+
+
+
+
 :
 
 
+
+
+
+
 translate3d
+
+
+
+
 (
+
+
+
+
 
 
 0
@@ -6400,10 +6627,16 @@ translate3d
 0
 
 
+
+
+
+
 )
+
+
+
+
 ;
-
-
 }
 }
 @
@@ -6670,7 +6903,11 @@ to {
 .cl-tree-item
 
 
+
+
 	
+
+
 
 }
 //&
@@ -6679,11 +6916,15 @@ to {
 
 
 
+
+
+
+
 }
 .cl-tree:not(.cl-disabled) { .
 	cl-tree-item: not(.cl-disabled){ 
-		 /* 트리 아이템 - hover */  
-		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{  
+		 /* 트리 아이템 - hover */    
+		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{    
 			background-color: @hover-background;
 	color: @hover-foreground;
 }

@@ -132,6 +132,9 @@ body.cl-has-modal {
   /* 다음 달 버튼 */
   /* 헤더 텍스트 */
 }
+.cl-calendar .cl-calendar-header .cl-calendar-header-prev {
+  background-image: url(https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg);
+}
 .cl-calendar .cl-calendar-header .cl-calendar-header-text:hover,
 .cl-calendar .cl-calendar-header .cl-calendar-header-text.cl-hover {
   color: #208AED;
@@ -170,6 +173,14 @@ body.cl-has-modal {
   /* 기본 날짜 - 오늘 날짜 셀 */
   /* range 선택에서 선택된 날짜 스타일 */
   /* 기념일 전역 스타일 */
+}
+.cl-calendar .cl-calendar-footer {
+  background-color: #f2f4f6;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
 }
 .cl-calendar .cl-calendar-item,
 .cl-calendar .cl-anniversary,

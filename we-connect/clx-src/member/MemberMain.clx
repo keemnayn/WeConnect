@@ -97,6 +97,13 @@
           <cl:datacolumn std:sid="d-column-266d2bee" name="roomReservEndTime" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-8b011e73" id="projectList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-4e1911e7" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-bdd99c54" name="projectStart"/>
+          <cl:datacolumn std:sid="d-column-5397c0c4" name="projectEnd"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-ac3b02f9" id="profileImage">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-a1e70239" name="profileImageId" datatype="string"/>
@@ -133,6 +140,10 @@
       </cl:submission>
       <cl:submission std:sid="submission-73fc1f02" id="reservListSub" method="get" action="/weconnect/member/room-reserv/list">
         <cl:responsedata dataid="reservList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
+        <cl:listener std:sid="listener-eed24bf1" name="submit-success" handler="onProjectListSubSubmitSuccess"/>
+        <cl:responsedata dataid="projectList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -324,7 +335,7 @@
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
-            <cl:calendar std:sid="calendar-7bdba216">
+            <cl:calendar std:sid="calendar-7bdba216" id="main_crd" class="main-calendar">
               <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>
