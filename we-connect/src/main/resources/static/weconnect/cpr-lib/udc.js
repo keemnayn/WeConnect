@@ -135,18 +135,6 @@
 					"height": "20px"
 				});
 				
-				var button_2 = new cpr.controls.Button("updateBtn");
-				button_2.value = "수정";
-				if(typeof onButtonClick == "function") {
-					button_2.addEventListener("click", onButtonClick);
-				}
-				container.addChild(button_2, {
-					"top": "20px",
-					"right": "100px",
-					"width": "100px",
-					"height": "20px"
-				});
-				
 				var inputBox_1 = new cpr.controls.InputBox("freeBoardCommentContent");
 				inputBox_1.readOnly = true;
 				container.addChild(inputBox_1, {
