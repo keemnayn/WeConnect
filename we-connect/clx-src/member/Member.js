@@ -82,6 +82,7 @@ function onBodyInit(e) {
 			vcEmb.app = loadedApp;
 		}
 	});
+	app.lookup("memberIdSub").send();
 }
 
 /*

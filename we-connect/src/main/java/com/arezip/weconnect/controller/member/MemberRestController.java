@@ -72,14 +72,25 @@ public class MemberRestController {
 		dataRequest.setMetadata(isNotDuplicated, message);
 		return new JSONDataView();
 	}
+
 	@GetMapping("Name")
 	public View memberName(DataRequest dataRequest, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
-		System.out.println("세션아이디:" +memberId);
-	    List<MemberDTO> memberList = memberService.findMemberName(memberId);
-	    dataRequest.setResponse("memberList", memberList);
-	    log.info("멤버: {}", memberList);
-	    return new JSONDataView();
+		System.out.println("세션아이디:" + memberId);
+		List<MemberDTO> memberList = memberService.findMemberName(memberId);
+		dataRequest.setResponse("memberList", memberList);
+		log.info("멤버: {}", memberList);
+		return new JSONDataView();
+	}
+
+	@GetMapping("id")
+	public View memberId(DataRequest dataRequest, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		Map<String, Object> memberMap = new HashMap<>();
+		memberMap.put("memberId", memberId);
+		dataRequest.setResponse("memberId", memberMap);
+		return new JSONDataView();
 	}
 }

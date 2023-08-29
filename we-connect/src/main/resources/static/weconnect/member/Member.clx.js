@@ -96,6 +96,7 @@
 						vcEmb.app = loadedApp;
 					}
 				});
+				app.lookup("memberIdSub").send();
 			}
 
 			/*
@@ -221,6 +222,14 @@
 				]
 			});
 			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("memberId");
+			dataMap_1.parseData({
+				"columns" : [{
+					"name": "memberId",
+					"dataType": "number"
+				}]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("logoutSub");
 			submission_1.action = "logout";
 			if(typeof onLogoutSubSubmitSuccess == "function") {
@@ -238,6 +247,12 @@
 				submission_2.addEventListener("submit-error", onAdminSubSubmitError);
 			}
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("memberIdSub");
+			submission_3.method = "get";
+			submission_3.action = "member/id";
+			submission_3.addResponseData(dataMap_1, false);
+			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -302,60 +317,64 @@
 					"height": "40px"
 				});
 				var button_1 = new cpr.controls.Button();
-				button_1.value = "관리자페이지";
+				button_1.value = "로그인";
 				button_1.style.css({
 					"background-image" : "none"
 				});
-				if(typeof onButtonClick == "function") {
-					button_1.addEventListener("click", onButtonClick);
+				button_1.bind("visible").toExpression("memberId.memberId != null ? true : false");
+				if(typeof onButtonClick3 == "function") {
+					button_1.addEventListener("click", onButtonClick3);
 				}
 				container.addChild(button_1, {
-					"bottom": "0px",
-					"left": "1414px",
-					"width": "126px",
-					"height": "26px"
+					"top": "5px",
+					"bottom": "5px",
+					"left": "1683px",
+					"width": "100px"
 				});
 				var button_2 = new cpr.controls.Button();
-				button_2.value = "회원가입";
+				button_2.value = "관리자페이지";
 				button_2.style.css({
 					"background-image" : "none"
 				});
-				if(typeof onButtonClick2 == "function") {
-					button_2.addEventListener("click", onButtonClick2);
+				button_2.bind("visible").toExpression("memberId.memberId != null ? false : true");
+				if(typeof onButtonClick == "function") {
+					button_2.addEventListener("click", onButtonClick);
 				}
 				container.addChild(button_2, {
-					"bottom": "1px",
-					"left": "1539px",
-					"width": "126px",
-					"height": "26px"
+					"bottom": "5px",
+					"left": "1683px",
+					"width": "100px",
+					"height": "40px"
 				});
-				var button_3 = new cpr.controls.Button();
-				button_3.value = "로그인";
+				var button_3 = new cpr.controls.Button("logoutBtn");
+				button_3.value = "로그아웃";
 				button_3.style.css({
 					"background-image" : "none"
 				});
-				if(typeof onButtonClick3 == "function") {
-					button_3.addEventListener("click", onButtonClick3);
+				button_3.bind("visible").toExpression("memberId.memberId != null ? false : true");
+				if(typeof onLogoutBtnClick == "function") {
+					button_3.addEventListener("click", onLogoutBtnClick);
 				}
 				container.addChild(button_3, {
-					"bottom": "0px",
-					"left": "1664px",
-					"width": "127px",
-					"height": "26px"
+					"bottom": "5px",
+					"left": "1793px",
+					"width": "100px",
+					"height": "40px"
 				});
-				var button_4 = new cpr.controls.Button("logoutBtn");
-				button_4.value = "로그아웃";
+				var button_4 = new cpr.controls.Button();
+				button_4.value = "회원가입";
 				button_4.style.css({
 					"background-image" : "none"
 				});
-				if(typeof onLogoutBtnClick == "function") {
-					button_4.addEventListener("click", onLogoutBtnClick);
+				button_4.bind("visible").toExpression("memberId.memberId != null ? true : false");
+				if(typeof onButtonClick2 == "function") {
+					button_4.addEventListener("click", onButtonClick2);
 				}
 				container.addChild(button_4, {
-					"bottom": "0px",
+					"bottom": "5px",
 					"left": "1793px",
-					"width": "127px",
-					"height": "26px"
+					"width": "100px",
+					"height": "40px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
