@@ -27,4 +27,18 @@ public class TeamPostServiceImpl implements TeamPostService {
 	public int addTeamPost(TeamPostDTO teamPostDTO) {
 		return teamPostMapper.insertTeamPost(teamPostDTO);
 	}
+
+// 팀포스트 수정
+	@Override
+	public int updateTeamPost(TeamPostDTO teamPostDTO) {
+		return teamPostMapper.updateTeamPost(teamPostDTO);
+	}
+
+// 팀포스트 삭제
+	@Override
+	public int deleteTeamPost(TeamPostDTO teamPostDTO) {
+		return teamPostMapper.deleteTeamPost(teamPostDTO);
+	}
+	
+
 }

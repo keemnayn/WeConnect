@@ -13,7 +13,7 @@
           <cl:datacolumn std:sid="d-column-f0b228ab" name="teamPostContent"/>
           <cl:datacolumn std:sid="d-column-049b3f03" name="teamPostCreateDate"/>
           <cl:datacolumn std:sid="d-column-b819f8fe" name="memberName"/>
-          <cl:datacolumn std:sid="d-column-941c0a8b" name="projectName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-5671cae3" name="projectName"/>
           <cl:datacolumn std:sid="d-column-f1818e09" name="departmentName"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
@@ -27,21 +27,44 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
-      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams/list">
-        <cl:listener std:sid="listener-17b90875" name="receive" handler="onTeamPostSubReceive"/>
-        <cl:listener std:sid="listener-58e52716" name="submit-success" handler="onTeamPostSubSubmitSuccess"/>
+      <cl:datamap std:sid="d-map-9e58b469" id="teamPostIdParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a2893fbb" name="teamPostId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-3e1e0332" id="teamPostUpdateParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-53a8106e" name="teamPostId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-d8744ec1" name="teamPostTitle"/>
+          <cl:datacolumn std:sid="d-column-2d4188ac" name="teamPostContent" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-b12cce5f" id="memberDTO">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-287a706a" name="memberId" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-e8e797e0" id="teamPostListSub" method="get" action="member/teams/list">
+        <cl:listener std:sid="listener-a1f19330" name="submit-success" handler="onTeamPostListSubSubmitSuccess"/>
         <cl:responsedata dataid="teamPostList"/>
       </cl:submission>
       <cl:submission std:sid="submission-9b5357ef" id="commentSub" method="get" action="member/comments">
         <cl:responsedata dataid="comment"/>
       </cl:submission>
+      <cl:submission std:sid="submission-1dfeecf2" id="teamPostUpdateSub" method="put" action="member/teams">
+        <cl:listener std:sid="listener-da8ee147" name="submit-success" handler="onTeamPostUpdateSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostUpdateParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-70f8fa38" id="teamPostDeleteSub" method="delete" action="member/teams">
+        <cl:listener std:sid="listener-f129b096" name="submit-success" handler="onTeamPostDeleteSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostIdParam"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-5f8ffe8c" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
-    <cl:listener std:sid="listener-7533b0aa" name="init" handler="onBodyInit"/>
-    <cl:output std:sid="output-1fa5fb0a" id="projectName" style="font-weight:bold; font-size:30px;" readonly="true">
-      <cl:relativebind property="value" columnname="projectName"/>
+    <cl:listener std:sid="listener-bb7a49b0" name="load" handler="onBodyLoad"/>
+    <cl:output std:sid="output-1fa5fb0a" id="projectName" style="font-weight:bold; font-size:30px; font-family:IBM Plex Sans KR SemiBold;" readonly="true" value="새소식">
       <cl:datarowcontext datacontrolid="teamPostList"/>
       <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
@@ -50,7 +73,6 @@
       <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>
     </cl:inputbox>
     <cl:group std:sid="group-1ee9ec57" id="grp" class="cl-form-group">
-      <cl:listener std:sid="listener-f450582d" name="dblclick" handler="onGrpDblclick"/>
       <cl:verticaldata std:sid="v-data-b59d3b08" width="1540px" height="300px" autosize="height"/>
       <cl:verticallayout std:sid="v-layout-e07151db"/>
     </cl:group>

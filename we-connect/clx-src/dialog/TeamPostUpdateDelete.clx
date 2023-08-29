@@ -11,25 +11,30 @@
           <cl:datacolumn std:sid="d-column-74021fd7" name="projectName"/>
         </cl:datacolumnlist>
       </cl:dataset>
-      <cl:datamap std:sid="d-map-54218d79" id="teamPostCreateParam">
+      <cl:datamap std:sid="d-map-54218d79" id="teamPostUpdateDeleteParam">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-26abd329" name="teamPostTitle"/>
           <cl:datacolumn std:sid="d-column-91911d49" name="teamPostContent"/>
-          <cl:datacolumn std:sid="d-column-0cacbebe" name="projectId"/>
+          <cl:datacolumn std:sid="d-column-238495ae" name="teamPostId"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-ac0b2429" id="projectInfoSub" method="get" action="member/teams">
         <cl:responsedata dataid="projectInfo"/>
       </cl:submission>
-      <cl:submission std:sid="submission-c219b33d" id="teamPostCreateSub" action="member/teams">
-        <cl:listener std:sid="listener-4848d369" name="submit-success" handler="onTeamPostCreateSubSubmitSuccess"/>
-        <cl:requestdata dataid="teamPostCreateParam"/>
+      <cl:submission std:sid="submission-c219b33d" id="teamPostUpdateSub" method="put" action="member/teams">
+        <cl:listener std:sid="listener-60dcccff" name="submit-success" handler="onTeamPostUpdateSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostUpdateDeleteParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-d640039e" id="teamPostDeleteSub" method="delete" action="member/teams">
+        <cl:listener std:sid="listener-3588487c" name="submit-success" handler="onTeamPostDeleteSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostUpdateDeleteParam"/>
       </cl:submission>
     </cl:model>
     <cl:appspec title="팀포스트 수정삭제 팝업"/>
   </head>
   <body std:sid="body-62d740d2">
     <cl:listener std:sid="listener-ae37cf87" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-20872aaf" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-fd904a1a">
       <cl:xylayoutdata std:sid="xyl-data-cf50002f" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:group std:sid="group-018838cb">
@@ -38,8 +43,8 @@
           <cl:formdata std:sid="f-data-6e415ad2" row="0" col="0"/>
         </cl:output>
         <cl:inputbox std:sid="i-box-cbe7f8f3" id="teamPostContentIpb">
-          <cl:datamapbind property="value" datacontrolid="teamPostCreateParam" columnname="teamPostContent"/>
-          <cl:datamapcontext datacontrolid="teamPostCreateParam"/>
+          <cl:datamapbind property="value" datacontrolid="teamPostUpdateDeleteParam" columnname="teamPostContent"/>
+          <cl:datamapcontext datacontrolid="teamPostUpdateDeleteParam"/>
           <cl:formdata std:sid="f-data-b71b198a" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:inputbox>
         <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -57,7 +62,7 @@
         </cl:formlayout>
       </cl:group>
       <cl:output std:sid="output-fceb3975" value="프로젝트 팀원들에게 전달할 내용을 자유롭게 작성해주세요.">
-        <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="5px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="425px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       </cl:output>
       <cl:group std:sid="group-8b75ae6e">
         <cl:xylayoutdata std:sid="xyl-data-e3af4306" top="139px" right="6px" left="4px" height="60px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
@@ -65,8 +70,8 @@
           <cl:formdata std:sid="f-data-446227dd" row="0" col="0"/>
         </cl:output>
         <cl:inputbox std:sid="i-box-25512e6e" id="teamPostTitleIpb">
-          <cl:datamapbind property="value" datacontrolid="teamPostCreateParam" columnname="teamPostTitle"/>
-          <cl:datamapcontext datacontrolid="teamPostCreateParam"/>
+          <cl:datamapbind property="value" datacontrolid="teamPostUpdateDeleteParam" columnname="teamPostTitle"/>
+          <cl:datamapcontext datacontrolid="teamPostUpdateDeleteParam"/>
           <cl:formdata std:sid="f-data-ecf8b842" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:inputbox>
         <cl:formlayout std:sid="f-layout-ffb70f2d" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -75,10 +80,12 @@
           <cl:columns length="1" unit="FRACTION"/>
         </cl:formlayout>
       </cl:group>
-      <cl:button std:sid="button-0446aba0" id="btnRevert" value="삭제">
+      <cl:button std:sid="button-0446aba0" id="deleteBtn" value="삭제">
+        <cl:listener std:sid="listener-809c1b39" name="click" handler="onDeleteBtnClick"/>
         <cl:xylayoutdata std:sid="xyl-data-c23f7b93" right="507px" bottom="5px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-39198b35" id="btnUpdate" value="수정">
+      <cl:button std:sid="button-39198b35" id="updateBtn" value="수정">
+        <cl:listener std:sid="listener-a0f2054e" name="click" handler="onUpdateBtnClick"/>
         <cl:xylayoutdata std:sid="xyl-data-2d6da9c9" bottom="5px" left="505px" width="200px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-fd4b5e98"/>

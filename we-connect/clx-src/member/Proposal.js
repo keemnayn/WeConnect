@@ -11,6 +11,9 @@
  */
 function onBodyInit(e) {
 	app.lookup("proposalListSub").send();
+	var comboBox = app.lookup("searchTypeCmb");
+	comboBox.fieldLabel = "전체";
+	comboBox.value = "all";
 }
 
 /*
@@ -43,11 +46,13 @@ function onProposalGrdRowDblclick(e) {
 		var proposalTitle = grid.dataSet.getValue(selectedRowIndices[0], "proposalTitle");
 		var proposalContent = grid.dataSet.getValue(selectedRowIndices[0], "proposalContent");
 		var proposalStatus = grid.dataSet.getValue(selectedRowIndices[0], "proposalStatus");
+		var PMemberId = grid.dataSet.getValue(selectedRowIndices[0], "PMemberId");
 		var value = {
 			"proposalId": proposalId,
 			"proposalTitle": proposalTitle,
 			"proposalContent": proposalContent,
-			"proposalStatus": proposalStatus
+			"proposalStatus": proposalStatus, 
+			"PMemberId": PMemberId
 		}
 		app.openDialog("dialog/ProposalUpdateDelete", {
 			width: 1580,

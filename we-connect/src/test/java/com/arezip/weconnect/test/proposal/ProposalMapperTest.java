@@ -63,12 +63,11 @@ public class ProposalMapperTest {
 
 // 	건의사항 검색 mapper
 	@Test
-	void selectProposalBySearchCriteriaTest() {
+	void searchProposalTest() {
 		Map<String, String> searchParams = new HashMap<>();
 		searchParams.put("searchType", "all");
 		searchParams.put("searchText", "입니다");
-
-		List<ProposalDTO> list = proposalMapper.selectProposalBySearchCriteria(searchParams);
+		List<ProposalDTO> list = proposalMapper.searchProposal(searchParams);
 		/*
 		 * // null 여부 확인 assertNotNull(list);
 		 * 

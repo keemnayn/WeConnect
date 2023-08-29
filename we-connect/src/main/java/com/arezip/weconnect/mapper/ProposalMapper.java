@@ -22,5 +22,5 @@ public interface ProposalMapper {
 	int deleteProposal(ProposalDTO proposalDTO);
 
 // 건의사항 검색
-	List<ProposalDTO> selectProposalBySearchCriteria(Map<String, String> searchParams);
+	List<ProposalDTO> searchProposal(Map<String, String> searchParams);
 }
