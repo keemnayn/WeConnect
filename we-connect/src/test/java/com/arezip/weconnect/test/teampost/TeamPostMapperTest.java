@@ -31,13 +31,34 @@ public class TeamPostMapperTest {
 	@Test
 	void insertTeamPostTest() {
 		TeamPostDTO teamPostDTO = new TeamPostDTO();
-		teamPostDTO.setTeamPostTitle("매퍼 테스트d");
-		teamPostDTO.setTeamPostContent("매퍼 테스트dd");
+		teamPostDTO.setTeamPostTitle("제발");
+		teamPostDTO.setTeamPostContent("요");
 		teamPostDTO.setMemberId(141);
-		teamPostDTO.setProjectId(44);
+		//teamPostDTO.setProjectId(44);
 		int result = teamPostMapper.insertTeamPost(teamPostDTO);
 		log.info("result {}", result);
-
 	}
 
+// 팀포스트 수정 mapper
+	@Test
+	void updateTeamPostTest() {
+		TeamPostDTO teamPostDTO = new TeamPostDTO();
+		teamPostDTO.setTeamPostTitle("매퍼 테스트ㅇ여요....");
+		teamPostDTO.setTeamPostContent("매퍼 테스트라구요...");
+		teamPostDTO.setMemberId(141);
+		teamPostDTO.setTeamPostId(143);
+		int result = teamPostMapper.updateTeamPost(teamPostDTO);
+		log.info("result {}", result);
+	}
+	
+// 팀포스트 삭제 mapper	
+	@Test
+	void deleteTeamPostTest() {
+		TeamPostDTO teamPostDTO = new TeamPostDTO();
+		teamPostDTO.setMemberId(141);
+		teamPostDTO.setTeamPostId(142);
+		int result = teamPostMapper.deleteTeamPost(teamPostDTO);
+		log.info("result {}", result);
+		
+	}
 }

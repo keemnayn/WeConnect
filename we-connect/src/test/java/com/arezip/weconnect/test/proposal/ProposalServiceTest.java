@@ -66,13 +66,12 @@ public class ProposalServiceTest {
 		Map<String, String> searchParams = new HashMap<>();
 		searchParams.put("searchType", "all");
 		searchParams.put("searchText", "언제");
-		List<ProposalDTO> list = proposalService.selectProposal(searchParams);
+		List<ProposalDTO> list = proposalService.searchProposal(searchParams);
+		
 		/*
-		 * // null 여부 확인 assertNotNull(list);
-		 * 
-		 * // 리스트가 비어있지 않은지 검증 assertFalse(list.isEmpty());
-		 * 
-		 * // 결과 출력 list.forEach(proposal -> log.info(proposal.toString()));
+		 * null 여부 확인 assertNotNull(list); 리스트가 비어있지 않은지 검증 assertFalse(list.isEmpty());
+		 * 결과 출력 list.forEach(proposal -> log.info(proposal.toString()));
 		 */
+		 
 	}
 }

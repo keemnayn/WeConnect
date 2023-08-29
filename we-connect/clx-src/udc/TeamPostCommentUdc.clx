@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-0dc23c71" version="1.0.4584">
+  <head std:sid="head-ce4bc125">
+    <screen std:sid="screen-ea3ab328" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="true"/>
+    <screen std:sid="screen-2195aa25" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-42743273" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-e38d5183"/>
+    <cl:appspec>
+      <cl:property name="name" type="string"/>
+      <cl:property name="date" type="string"/>
+      <cl:property name="content" type="string"/>
+      <cl:property name="deleteBtn" type="control"/>
+      <cl:event name="deleteClick" type="cpr.events.CAppEvent"/>
+    </cl:appspec>
+  </head>
+  <body std:sid="body-9b5920b0" style="top:0px; left:0px; width:1540px; height:940px;">
+    <cl:listener std:sid="listener-4c780be0" name="load" handler="onBodyLoad"/>
+    <cl:group std:sid="group-125ca7f3" style="background-color:#D7E4F2; border-radius:20px;">
+      <cl:xylayoutdata std:sid="xyl-data-82843a9d" top="10px" left="10px" width="1480px" height="130px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-bcddb739" id="name" value="memberName">
+        <cl:xylayoutdata std:sid="xyl-data-48eaa5fe" top="20px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-f4837898" id="content" style="border-radius:20px;" value="teamPostCommentContent">
+        <cl:xylayoutdata std:sid="xyl-data-a64acfd9" top="49px" left="20px" width="1440px" height="70px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-a3aa5deb" id="date" value="teamPostCommentDate">
+        <cl:xylayoutdata std:sid="xyl-data-a5a1362b" top="20px" left="119px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:button std:sid="button-939a7505" id="deleteBtn" value="삭제">
+        <cl:listener std:sid="listener-32b7710b" name="click" handler="onDeleteBtnClick"/>
+        <cl:xylayoutdata std:sid="xyl-data-f4eaf502" top="20px" left="1388px" width="50px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
+      <cl:xylayout std:sid="xylayout-8f6039ef"/>
+    </cl:group>
+    <cl:xylayout std:sid="xylayout-f8a9108c"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

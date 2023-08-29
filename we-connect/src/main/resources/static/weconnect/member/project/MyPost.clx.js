@@ -16,45 +16,122 @@
 			 * Created at 2023. 8. 16. 오후 7:51:29.
 			 *
 			 * @author keemn
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+			 */
+			function onBodyLoad(e) {
+				app.lookup("myPostSub").send();
+				var memberId = app.lookup("memberDTO").getValue("memberId");
+				console.log(memberId);
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onMyPostSubSubmitSuccess(e) {
+				var myPostSub = e.control;
+				var xhr = myPostSub.xhr;
+				var jsonData = JSON.parse(xhr.responseText);
+				var myPostList = jsonData.myPostList;
+				var container = app.lookup("grp");
+				container.removeAllChildren();
+				// var pageIndexer = app.lookup("page");
+				// pageIndexer.totalRowCount = totalCommentCount;
+				console.log(myPostList.length);
+				
+				for (var i = 0; i < myPostList.length; i++) {
+					(function(index) {
+						//udc 동적 생성
+						var myPostUdc = new udc.MyPostUdc();
+						//myPostUdc.name = myPostList[i].memberName;
+						myPostUdc.date = myPostList[i].myPostDate;
+						myPostUdc.title = myPostList[i].myPostTitle;
+						myPostUdc.content = myPostList[i].myPostContent;
+						
+						container.addChild(myPostUdc, {
+							width: "1400px",
+							height: "400px",
+							autoSize: "both"
+						});
+						myPostUdc.addEventListener("deleteClick", function(e) {
+							app.lookup("myPostIdParam").setValue("myPostId", myPostList[index].myPostId);
+							if (confirm("삭제하시겠습니까?")) {
+								var myPostDeleteSub = app.lookup("myPostDeleteSub");
+								myPostDeleteSub.send();
+							}
+						});
+					})(i);
+				}
+			}
+
+			/*
+			 * "+" 아웃풋(insertBtn)에서 value-change 이벤트 발생 시 호출.
+			 * Output의 value를 변경하여 변경된 값이 저장된 후에 발생하는 이벤트.
+
+			function onInsertBtnValueChange(e){
+				var insertBtn = e.control;
+				app.openDialog("dialog/MyPostDetail", {
+					width: 1580,
+					height: 780
+				}, function(dialog) {
+					dialog.addEventListener("close", function(e) {
+						app.lookup("teamPostListSub").send();
+					});
+				});
+				* 	 */
+			}
+			};
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("myPost");
+			var dataSet_1 = new cpr.data.DataSet("myPostList");
 			dataSet_1.parseData({
 				"columns": [
 					{"name": "myPostId"},
-					{"name": "myPostName"},
-					{"name": "memberName"},
+					{"name": "myPostTitle"},
+					{"name": "myPostContent"},
 					{
 						"name": "date",
 						"dataType": "string"
-					},
-					{"name": "myPostTitle"},
-					{"name": "myPostContent"}
+					}
 				],
-				"rows": [{"myPostId": "1", "myPostName": "개발팀", "myPostTitle": "안내사항", "myPostContent": "오늘 회의실은 3층입니다.", "memberName": "김미소", "date": "2023-08-16"}]
+				"rows": [{"myPostId": "1", "myPostTitle": "안내사항", "myPostContent": "오늘 회의실은 3층입니다.", "date": "2023-08-16"}]
 			});
 			app.register(dataSet_1);
-			
-			var dataSet_2 = new cpr.data.DataSet("comment");
-			dataSet_2.parseData({
-				"columns": [
-					{"name": "memberId"},
-					{"name": "memberName"},
-					{"name": "myPostComment"},
-					{"name": "date"}
-				],
-				"rows": [{"memberId": "1", "memberName": "이수지", "myPostComment": "넵 체크했습니다~", "date": "2023-08-17"}]
+			var dataMap_1 = new cpr.data.DataMap("myPostIdParam");
+			dataMap_1.parseData({
+				"columns" : [{
+					"name": "myPostId",
+					"dataType": "number"
+				}]
 			});
-			app.register(dataSet_2);
-			var submission_1 = new cpr.protocols.Submission("subInit");
+			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("memberDTO");
+			dataMap_2.parseData({
+				"columns" : [{
+					"name": "memberId",
+					"dataType": "string"
+				}]
+			});
+			app.register(dataMap_2);
+			var submission_1 = new cpr.protocols.Submission("myPostListSub");
+			submission_1.method = "get";
+			submission_1.action = "member/myposts/list";
+			submission_1.addRequestData(dataSet_1);
 			app.register(submission_1);
 			
-			var submission_2 = new cpr.protocols.Submission("subList");
+			var submission_2 = new cpr.protocols.Submission("myPostDeleteSub");
+			submission_2.method = "delete";
+			submission_2.action = "member/myposts";
+			submission_2.addRequestData(dataMap_1);
 			app.register(submission_2);
 			
-			var submission_3 = new cpr.protocols.Submission("subSave");
+			var submission_3 = new cpr.protocols.Submission("myPostCreateSub");
 			app.register(submission_3);
 			app.supportMedia("all and (min-width: 1580px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1579px)", "default");
@@ -69,13 +146,13 @@
 			});
 			
 			// Layout
-			var xYLayout_1 = new cpr.controls.layouts.XYLayout();
-			container.setLayout(xYLayout_1);
+			var flowLayout_1 = new cpr.controls.layouts.FlowLayout();
+			container.setLayout(flowLayout_1);
 			
 			// UI Configuration
-			var group_1 = new cpr.controls.Container();
-			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
-			group_1.setLayout(xYLayout_2);
+			var group_1 = new cpr.controls.Container("grp1");
+			var xYLayout_1 = new cpr.controls.layouts.XYLayout();
+			group_1.setLayout(xYLayout_1);
 			(function(container){
 				var output_1 = new cpr.controls.Output();
 				output_1.value = "Output";
@@ -85,7 +162,7 @@
 					"width": "260px",
 					"height": "324px"
 				});
-				var output_2 = new cpr.controls.Output();
+				var output_2 = new cpr.controls.Output("insertBtn");
 				output_2.value = "+";
 				output_2.style.css({
 					"border-radius" : "20px",
@@ -97,123 +174,24 @@
 					"top": "20px",
 					"left": "20px",
 					"width": "260px",
-					"height": "324px"
-				});
-				var output_3 = new cpr.controls.Output();
-				output_3.value = "Output";
-				output_3.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_3, {
-					"top": "20px",
-					"left": "323px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_4 = new cpr.controls.Output();
-				output_4.value = "Output";
-				output_4.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_4, {
-					"top": "20px",
-					"left": "635px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_5 = new cpr.controls.Output();
-				output_5.value = "Output";
-				output_5.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_5, {
-					"top": "20px",
-					"left": "947px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_6 = new cpr.controls.Output();
-				output_6.value = "Output";
-				output_6.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_6, {
-					"top": "20px",
-					"left": "1259px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_7 = new cpr.controls.Output();
-				output_7.value = "Output";
-				output_7.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_7, {
-					"top": "382px",
-					"left": "20px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_8 = new cpr.controls.Output();
-				output_8.value = "Output";
-				output_8.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_8, {
-					"top": "382px",
-					"left": "322px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_9 = new cpr.controls.Output();
-				output_9.value = "Output";
-				output_9.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_9, {
-					"top": "382px",
-					"left": "634px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_10 = new cpr.controls.Output();
-				output_10.value = "Output";
-				output_10.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_10, {
-					"top": "382px",
-					"left": "945px",
-					"width": "260px",
-					"height": "324px"
-				});
-				var output_11 = new cpr.controls.Output();
-				output_11.value = "Output";
-				output_11.style.css({
-					"border-radius" : "20px",
-					"background-color" : "#D7E4F2"
-				});
-				container.addChild(output_11, {
-					"top": "382px",
-					"left": "1258px",
-					"width": "260px",
-					"height": "324px"
+					"height": "340px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "20px",
-				"left": "20px",
 				"width": "1540px",
-				"height": "801px"
+				"height": "375px"
 			});
+			
+			var group_2 = new cpr.controls.Container("grp");
+			var verticalLayout_1 = new cpr.controls.layouts.VerticalLayout();
+			group_2.setLayout(verticalLayout_1);
+			container.addChild(group_2, {
+				"width": "1514px",
+				"height": "482px"
+			});
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
+			}
 		}
 	});
 	app.title = "MyPost";

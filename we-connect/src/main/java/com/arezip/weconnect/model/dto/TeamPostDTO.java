@@ -17,4 +17,5 @@ public class TeamPostDTO {
 	private String departmentName;
 	private long memberId;
 	private long projectId;
+	private long TMemberId;
 }
