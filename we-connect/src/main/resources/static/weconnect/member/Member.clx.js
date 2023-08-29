@@ -97,6 +97,8 @@
 					}
 				});
 				app.lookup("memberIdSub").send();
+				app.lookup("memberName").send();
+				
 			}
 
 			/*
@@ -185,6 +187,23 @@
 					window.location = url;
 				}
 			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onMemberNameSubmitSuccess2(e) {
+				var memberName = e.control;
+				let admin = app.lookup("adminBtn");
+				let submission = app.lookup("memberName");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let memberInfo = data.memberList[0];
+				let managerYn = memberInfo.managerYn;
+				if (managerYn != "Y") {
+					admin.visible = false;
+				}
+			}
 			// End - User Script
 			
 			// Header
@@ -222,6 +241,29 @@
 				]
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("memberList");
+			dataSet_2.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataSet_2);
 			var dataMap_1 = new cpr.data.DataMap("memberId");
 			dataMap_1.parseData({
 				"columns" : [{
@@ -253,6 +295,15 @@
 			submission_3.action = "member/id";
 			submission_3.addResponseData(dataMap_1, false);
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("memberName");
+			submission_4.method = "get";
+			submission_4.action = "member/Name";
+			submission_4.addResponseData(dataSet_2, false);
+			if(typeof onMemberNameSubmitSuccess2 == "function") {
+				submission_4.addEventListener("submit-success", onMemberNameSubmitSuccess2);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -276,7 +327,7 @@
 			var tree_1 = new cpr.controls.Tree("tre1");
 			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
-				"background-color" : "#070048",
+				"background-color" : "#1d2c48",
 				"color" : "#FFFFFF",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
@@ -331,12 +382,11 @@
 					"left": "1683px",
 					"width": "100px"
 				});
-				var button_2 = new cpr.controls.Button();
+				var button_2 = new cpr.controls.Button("adminBtn");
 				button_2.value = "관리자페이지";
 				button_2.style.css({
 					"background-image" : "none"
 				});
-				button_2.bind("visible").toExpression("memberId.memberId != null ? false : true");
 				if(typeof onButtonClick == "function") {
 					button_2.addEventListener("click", onButtonClick);
 				}
@@ -413,8 +463,8 @@
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
 			}
-			if(typeof onBodyLoad == "function"){
-				app.addEventListener("load", onBodyLoad);
+			if(typeof onBodyLoad2 == "function"){
+				app.addEventListener("load", onBodyLoad2);
 			}
 		}
 	});

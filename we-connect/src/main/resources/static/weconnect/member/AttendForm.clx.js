@@ -112,16 +112,49 @@
 				let xhr = submission.xhr.responseText;
 				let data = JSON.parse(xhr);
 				let member1 = app.lookup("name");
-				let leaveCount =  app.lookup("leave");
+				let leaveCount = app.lookup("leave");
 				let memberInfo = data.memberList[0];
 				let memberNameValue = memberInfo.memberName;
 				let position = memberInfo.position;
 				let formattedMemberName = memberNameValue + position + "님";
 				let memberLeaveCount = memberInfo.leaveCount;
 				console.log(memberLeaveCount);
-				leaveCount.value = "연차 갯수\n"  + memberLeaveCount;
+				leaveCount.value = "연차 갯수\n" + memberLeaveCount;
 				member1.value = formattedMemberName;
 				
+			}
+
+			/*
+			 * "출근" 버튼(work)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onWorkClick(e) {
+				var work = e.control;
+				if (confirm("출근처리하시겠습니까")) {
+					let submission = app.lookup("Attendance1");
+					submission.send();
+				}
+			}
+
+			/*
+			 * "퇴근" 버튼(workOut)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onWorkOutClick(e) {
+				var workOut = e.control;
+				if (confirm("퇴근하시겠습니까?")) {
+					let UpdateAttendance = app.lookup("UpdateAttendance");
+					UpdateAttendance.send();
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onAttendance1SubmitSuccess2(e){
+				var attendance1 = e.control;
+				app.lookup("grd1").redraw();
 			};
 			// End - User Script
 			
@@ -255,6 +288,18 @@
 				submission_3.addEventListener("submit-success", onMemberNameSubmitSuccess);
 			}
 			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("Attendance1");
+			submission_4.action = "member/attendance";
+			if(typeof onAttendance1SubmitSuccess2 == "function") {
+				submission_4.addEventListener("submit-success", onAttendance1SubmitSuccess2);
+			}
+			app.register(submission_4);
+			
+			var submission_5 = new cpr.protocols.Submission("UpdateAttendance");
+			submission_5.method = "put";
+			submission_5.action = "member/attendance";
+			app.register(submission_5);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -446,20 +491,28 @@
 					formLayout_1.setRows(["100px", "1fr"]);
 					group_4.setLayout(formLayout_1);
 					(function(container){
-						var button_1 = new cpr.controls.Button("퇴근");
+						var button_1 = new cpr.controls.Button("workOut");
 						button_1.value = "퇴근";
 						button_1.style.css({
+							"background-color" : "#FFE6E1",
 							"background-image" : "none"
 						});
+						if(typeof onWorkOutClick == "function") {
+							button_1.addEventListener("click", onWorkOutClick);
+						}
 						container.addChild(button_1, {
 							"colIndex": 6,
 							"rowIndex": 0
 						});
-						var button_2 = new cpr.controls.Button("출근");
+						var button_2 = new cpr.controls.Button("work");
 						button_2.value = "출근";
 						button_2.style.css({
+							"background-color" : "#E0E1E2",
 							"background-image" : "none"
 						});
+						if(typeof onWorkClick == "function") {
+							button_2.addEventListener("click", onWorkClick);
+						}
 						container.addChild(button_2, {
 							"colIndex": 5,
 							"rowIndex": 0

@@ -10,7 +10,6 @@
 	.cl-tree-item {
 		border: none;
 		height: 120px;
-		font-weight: 500;
 		padding: 0px;
 		border-radius: 2px;
 		text-align: left;
@@ -47,9 +46,9 @@
 			background-repeat: no-repeat;
 			background-position: right center;
 			padding: 0px;
-			font-size: 18px;
-			font-weight: lighter;
-			color: #F8F8F8;
+			font-size: 20px;
+			font-weight: bold;
+			color: #ffffff;
 		}
 		/* 텍스트 편집 상자 */
 		.cl-texteditor {
@@ -96,15 +95,14 @@
 			/* 트리 아이템 - 비활성화, 선택됨 */
 			&.cl-selected {
 				color: @disabled-selection-foreground;
-				background-color:
-				background-color: #F5F5F5;
+				background-color: #74788d;
 			}
 		}
 		
 		/* 트리 아이템 - 선택됨 */
 		&.cl-selected {
-			background-color: @selection-foreground;
-			color: @default-text-color;
+			background-color: #212529;
+			color: #212529;
 			
 			&.cl-folder {
 				/* 트리 아이템 폴더 펼쳐짐 아이콘 - 선택됨 */
@@ -122,7 +120,7 @@
 	
 	/* 트리 - 포커스 */
 	&.cl-focus {
-		border-color: @focus-border-color;
+		border-color: #3855b3;
 	}
 	
 	/* 트리 다중 선택 */
@@ -130,8 +128,8 @@
 		.cl-tree-item {
 			&.cl-checked {
 				&.cl-selected.cl-hover {
-					background-color: @selection-background;
-					color: @selection-foreground;
+					background-color: #212529;
+					color: #212529;
 				}
 			}
 		}
@@ -141,6 +139,7 @@
 	&.cl-tree-lines {
 		.cl-tree-item {
 			// padding: 0px 10px 0px 0px;
+			padding: 0px 10px 0px 0px;
 			&.cl-expanded > .cl-tree-treeicon {
 				// background-image: url('icons/node-expanded-black.png');
 			}
@@ -202,7 +201,7 @@
 		/* 트리 아이템 - hover */
 		&:not(.cl-selected).cl-hover,
 		&:not(.cl-selected):hover {
-			background-color: @hover-background;
+			background-color: 
 			//color: @hover-foreground;
 		}
 		

@@ -99,14 +99,47 @@ function onMemberNameSubmitSuccess(e) {
 	let xhr = submission.xhr.responseText;
 	let data = JSON.parse(xhr);
 	let member1 = app.lookup("name");
-	let leaveCount =  app.lookup("leave");
+	let leaveCount = app.lookup("leave");
 	let memberInfo = data.memberList[0];
 	let memberNameValue = memberInfo.memberName;
 	let position = memberInfo.position;
 	let formattedMemberName = memberNameValue + position + "님";
 	let memberLeaveCount = memberInfo.leaveCount;
 	console.log(memberLeaveCount);
-	leaveCount.value = "연차 갯수\n"  + memberLeaveCount;
+	leaveCount.value = "연차 갯수\n" + memberLeaveCount;
 	member1.value = formattedMemberName;
 	
+}
+
+/*
+ * "출근" 버튼(work)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onWorkClick(e) {
+	var work = e.control;
+	if (confirm("출근처리하시겠습니까")) {
+		let submission = app.lookup("Attendance1");
+		submission.send();
+	}
+}
+
+/*
+ * "퇴근" 버튼(workOut)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onWorkOutClick(e) {
+	var workOut = e.control;
+	if (confirm("퇴근하시겠습니까?")) {
+		let UpdateAttendance = app.lookup("UpdateAttendance");
+		UpdateAttendance.send();
+	}
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onAttendance1SubmitSuccess2(e){
+	var attendance1 = e.control;
+	app.lookup("grd1").redraw();
 }

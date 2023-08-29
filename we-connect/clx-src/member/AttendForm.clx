@@ -52,6 +52,10 @@
         <cl:listener std:sid="listener-6e62ddef" name="submit-success" handler="onMemberNameSubmitSuccess"/>
         <cl:responsedata dataid="memberList"/>
       </cl:submission>
+      <cl:submission std:sid="submission-37639b91" id="Attendance1" action="member/attendance">
+        <cl:listener std:sid="listener-687e9e10" name="submit-success" handler="onAttendance1SubmitSuccess2"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-3be3c330" id="UpdateAttendance" method="put" action="member/attendance"/>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -97,10 +101,12 @@
         <cl:xylayoutdata std:sid="xyl-data-f0ab8c10" top="61px" right="0px" left="0px" height="106px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
         <cl:group std:sid="group-67f92ba8" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:10px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;">
           <cl:xylayoutdata std:sid="xyl-data-f6ba1635" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-          <cl:button std:sid="button-f95edfad" id="퇴근" style="background-image:none;" value="퇴근">
+          <cl:button std:sid="button-f95edfad" id="workOut" style="background-color:#FFE6E1; background-image:none;" value="퇴근">
+            <cl:listener std:sid="listener-531f9ec5" name="click" handler="onWorkOutClick"/>
             <cl:formdata std:sid="f-data-5aa83c28" row="0" col="6"/>
           </cl:button>
-          <cl:button std:sid="button-5e6ac2b2" id="출근" style="background-image:none;" value="출근">
+          <cl:button std:sid="button-5e6ac2b2" id="work" style="background-color:#E0E1E2; background-image:none;" value="출근">
+            <cl:listener std:sid="listener-0ae5d9fe" name="click" handler="onWorkClick"/>
             <cl:formdata std:sid="f-data-98945a13" row="0" col="5"/>
           </cl:button>
           <cl:output std:sid="output-388e17d0" id="tardiness" style="border-radius:8px; border-right-style:solid; color:#FF8E8E; border-right-width:1px; font-size:25px; border-right-color:#bfbfbf; text-align:center;" value="지각">

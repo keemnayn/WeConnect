@@ -1018,7 +1018,7 @@ body.cl-has-modal {
 }
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected).cl-hover,
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected):hover {
-  background-color: #DAEFFC;
+  background-color: #3855b3;
   color: #333435;
 }
 /* 트리 - 비활성화 */

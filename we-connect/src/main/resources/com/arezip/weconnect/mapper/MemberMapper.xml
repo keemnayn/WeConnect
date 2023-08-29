@@ -70,7 +70,7 @@
 	</select>
 	<select id="findMemberName"
 		resultType="com.arezip.weconnect.model.dto.MemberDTO" parameterType="long">
-		SELECT m.member_name, m.position, d.department_name, m.LEAVE_COUNT
+		SELECT m.member_name, m.position, d.department_name, m.LEAVE_COUNT,m.MANAGER_YN
 		FROM member m
 		INNER JOIN department d ON m.department_ID = d.department_id
 		WHERE m.member_Id = #{memberId}

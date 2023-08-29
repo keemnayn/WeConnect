@@ -83,6 +83,8 @@ function onBodyInit(e) {
 		}
 	});
 	app.lookup("memberIdSub").send();
+	app.lookup("memberName").send();
+	
 }
 
 /*
@@ -169,5 +171,22 @@ function onAdminSubSubmitError(e) {
 	alert(error);
 	if (url != null) {
 		window.location = url;
+	}
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onMemberNameSubmitSuccess2(e) {
+	var memberName = e.control;
+	let admin = app.lookup("adminBtn");
+	let submission = app.lookup("memberName");
+	let xhr = submission.xhr.responseText;
+	let data = JSON.parse(xhr);
+	let memberInfo = data.memberList[0];
+	let managerYn = memberInfo.managerYn;
+	if (managerYn != "Y") {
+		admin.visible = false;
 	}
 }

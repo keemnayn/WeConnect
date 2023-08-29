@@ -159,7 +159,9 @@ body {
 
 
 
+
  
+
 
 
 
@@ -173,13 +175,17 @@ body {
 
 
 
+
+
 .cl-border-none
+
 
 
 
 
  
   
+
 
 
 
@@ -193,7 +199,10 @@ border
 
 
 
+
+
 :
+
 
 
 
@@ -203,7 +212,10 @@ border
 
 
 
+
 none
+
+
 
 
 
@@ -1139,7 +1151,7 @@ none
 	{
 	border-radius: 5px;
 	/* 셀 호버 스타일 */ &:
-	not (.cl-disabled): hover{     
+	not (.cl-disabled): hover{      
 			//cursor: pointer; //
 	background-color: #656565; //
 	color: white;
@@ -1405,7 +1417,8 @@ none
 }
 }
 
-/* 캘린더 disabled 상태 */
+/* 
+ disabled 상태 */
 .cl-calendar.cl-disabled { .cl-calendar-header {
 	.cl-calendar-header-text { &:hover, &.cl-hover {
 	
@@ -1416,7 +1429,7 @@ none
 }
 
 /**/
-.cl-calendar {
+.cl-calendar .main_crd {
 	padding: 2px;
 	border: 1px solid #bbb;
 	border-radius: 0px;
@@ -1488,7 +1501,7 @@ none
 	min-width: 20px;
 	min-height: 20px;
 	text-align: center;
-	background-image: url(icons/fast-rewind.png);
+	/*  background-image: url(icons/fast-rewind.png);*/
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 16px auto;
@@ -1504,12 +1517,11 @@ none
 	min-width: 20px;
 	min-height: 20px;
 	text-align: center;
-	background-image: url(icons/fast-foward.png);
+	/* background-image: url(icons/fast-foward.png); */
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 16px auto;
 	width: 30px;
-	
 }
 
 .cl-calendar .cl-calendar-header .cl-calendar-header-after.cl-disabled {
@@ -1520,7 +1532,8 @@ none
 	min-width: 20px;
 	min-height: 20px;
 	text-align: center;
-	background-image: url(icons/rewind.png);
+	background-image:
+		url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 16px auto;
@@ -1535,7 +1548,8 @@ none
 	min-width: 20px;
 	min-height: 20px;
 	text-align: center;
-	background-image: url(icons/foward.png);
+	background-image:
+		url("https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-right.svg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 16px auto;
@@ -1577,6 +1591,7 @@ none
 .cl-calendar .cl-calendar-content {
 	height: 100%;
 	text-align: center;
+	
 }
 
 .cl-calendar .cl-calendar-content .cl-calendar-content-week {
@@ -1594,6 +1609,12 @@ none
 	text-align: center;
 	background-color: #f5f5f5;
 	cursor: default;
+	&.cl-calendar-content-sun {
+	color: #ff2a2a;
+	}
+	&.cl-calendar-content-sat {
+	color: #3387ff;
+	}
 }
 
 .cl-calendar .cl-calendar-content .cl-other-month {
@@ -1635,6 +1656,12 @@ none
 	border-color: #fff;
 	vertical-align: inherit;
 	text-align: inherit;
+	&.cl-calendar-content-sun {
+	color: #ff2a2a;
+	}
+	&.cl-calendar-content-sat {
+	color: #3387ff;
+	}
 }
 
 .cl-calendar .cl-calendar-content .cl-calendar-content-day.cl-calendar-anniversary,
@@ -1683,11 +1710,12 @@ none
 }
 
 .cl-calendar .cl-calendar-footer {
-	text-align: right;
-	vertical-align: bottom;
-	font-size: 0.7em;
-	height: 26px;
-	padding: 0 3px 3px 3px;
+	background-color: #f2f4f6;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .cl-calendar .cl-calendar-footer .cl-calendar-footer-text {
@@ -2117,9 +2145,13 @@ keyframes slide-r { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -2137,6 +2169,8 @@ transform
 
 
 
+
+
 translateX
 
 
@@ -2144,7 +2178,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -2162,7 +2200,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -2186,9 +2228,13 @@ keyframes slide-l { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -2206,6 +2252,8 @@ transform
 
 
 
+
+
 translateX
 
 
@@ -2213,7 +2261,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -2231,7 +2283,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -6390,9 +6446,13 @@ keyframes bounce {from , 20%, 53%, 80%, to { animation-timing-function:cubic-bez
 
 
 
+
+
 %
 ,
 43
+
+
 
 
 
@@ -6412,7 +6472,11 @@ animation-timing-function
 
 
 
+
+
 :
+
+
 
 
 
@@ -6428,6 +6492,8 @@ cubic-bezier
 
 
 
+
+
 (
 
 
@@ -6437,7 +6503,11 @@ cubic-bezier
 
 
 
+
+
 0
+
+
 
 
 
@@ -6453,9 +6523,13 @@ cubic-bezier
 
 
 
+
+
 .05
 ,
 0
+
+
 
 
 
@@ -6471,6 +6545,8 @@ cubic-bezier
 
 
 
+
+
 .06
 
 
@@ -6480,7 +6556,11 @@ cubic-bezier
 
 
 
+
+
 )
+
+
 
 
 
@@ -6497,7 +6577,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6513,7 +6597,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6535,7 +6623,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -6545,6 +6637,8 @@ translate3d
 ;
 }
 70
+
+
 
 
 
@@ -6564,7 +6658,11 @@ animation-timing-function
 
 
 
+
+
 :
+
+
 
 
 
@@ -6580,6 +6678,8 @@ cubic-bezier
 
 
 
+
+
 (
 
 
@@ -6589,7 +6689,11 @@ cubic-bezier
 
 
 
+
+
 0
+
+
 
 
 
@@ -6605,9 +6709,13 @@ cubic-bezier
 
 
 
+
+
 .05
 ,
 0
+
+
 
 
 
@@ -6623,6 +6731,8 @@ cubic-bezier
 
 
 
+
+
 .06
 
 
@@ -6632,7 +6742,11 @@ cubic-bezier
 
 
 
+
+
 )
+
+
 
 
 
@@ -6649,7 +6763,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6665,7 +6783,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6687,7 +6809,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -6697,6 +6823,8 @@ translate3d
 ;
 }
 90
+
+
 
 
 
@@ -6716,7 +6844,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6732,7 +6864,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6754,7 +6890,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -7031,7 +7171,9 @@ to {
 
 
 
+
 	
+
 
 
 
@@ -7049,11 +7191,13 @@ to {
 
 
 
+
+
 }
 .cl-tree:not(.cl-disabled) { .
 	cl-tree-item: not(.cl-disabled){ 
-		 /* 트리 아이템 - hover */     
-		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{     
+		 /* 트리 아이템 - hover */      
+		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{      
 			background-color: @hover-background;
 	color: @hover-foreground;
 }

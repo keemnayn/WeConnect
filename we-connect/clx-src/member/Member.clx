@@ -123,6 +123,14 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-b6241745" id="memberList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-d3d4b132" name="memberId" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-6fd6e040" name="memberName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-72fe19b0" name="position" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-a6334926" name="departmentName" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-d98c501d" id="memberId">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-b331693c" name="memberId" datatype="number"/>
@@ -138,13 +146,17 @@
       <cl:submission std:sid="submission-dee97e2d" id="memberIdSub" method="get" action="member/id">
         <cl:responsedata dataid="memberId"/>
       </cl:submission>
+      <cl:submission std:sid="submission-0d02a62a" id="memberName" method="get" action="member/Name">
+        <cl:listener std:sid="listener-bfa8c8b6" name="submit-success" handler="onMemberNameSubmitSuccess2"/>
+        <cl:responsedata dataid="memberList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-8a3a7e16" style="background-color:#F8F8F8; left:0px; width:1920px; border-left-color:#070048; height:1080px;">
     <cl:listener std:sid="listener-2a1a7589" name="init" handler="onBodyInit"/>
-    <cl:listener std:sid="listener-0c603087" name="load" handler="onBodyLoad"/>
-    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#070048; color:#FFFFFF; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff; font-family:'맑은 고딕' , 'Malgun Gothic' , sans-serif;" class="admin_tree">
+    <cl:listener std:sid="listener-ad402a1c" name="load" handler="onBodyLoad2"/>
+    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#1d2c48; color:#FFFFFF; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff; font-family:'맑은 고딕' , 'Malgun Gothic' , sans-serif;" class="admin_tree">
       <cl:listener std:sid="listener-11dd4ffb" name="item-click" handler="onTre1ItemClick"/>
       <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="memberMenu" label="label" value="value" icon="icon" parent="parent"/>
@@ -159,9 +171,8 @@
         <cl:expbind property="visible" category="PROPERTY" expression="memberId.memberId != null ? true : false"/>
         <cl:xylayoutdata std:sid="xyl-data-f8a5513e" top="5px" bottom="5px" left="1683px" width="100px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:button>
-      <cl:button std:sid="button-612c1b42" style="background-image:none;" value="관리자페이지">
+      <cl:button std:sid="button-612c1b42" id="adminBtn" style="background-image:none;" value="관리자페이지">
         <cl:listener std:sid="listener-4f66f697" name="click" handler="onButtonClick"/>
-        <cl:expbind property="visible" category="PROPERTY" expression="memberId.memberId != null ? false : true"/>
         <cl:xylayoutdata std:sid="xyl-data-8157d5c7" bottom="5px" left="1683px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:button std:sid="button-9f145560" id="logoutBtn" style="background-image:none;" value="로그아웃">

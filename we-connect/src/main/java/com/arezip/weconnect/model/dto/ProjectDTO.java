@@ -14,6 +14,8 @@ public class ProjectDTO {
 	private String projectEnd;
 	private int projectMemberCount;           
 	private long memberId;           
-}           
-                                                                                                           
-                                                                                                                                                                                                                        
+}                  
+                                                                                                                     
+                                           
+                                    
+                                                                                                                                                                                                                          

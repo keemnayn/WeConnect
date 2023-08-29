@@ -7,7 +7,6 @@
 (function() {
 	var app = new cpr.core.App("member/MemberMain", { 
 		onPrepare: function(loader) {
-			loader.addCSS("theme/controls/calendar.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -51,7 +50,7 @@
 				//	const minutes = date.getMinutes();
 				//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 				//	go.value = `${hours}: ${formattedMinutes}`
-				if (confirm("입실처리하시겠습니까")) {
+				if (confirm("출근처리하시겠습니까")) {
 					let submission = app.lookup("Attendance1");
 					submission.send();
 				}
@@ -69,7 +68,7 @@
 				//	const minutes = date.getMinutes();
 				//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 				//	back.value = `${hours}: ${formattedMinutes}`
-				if (confirm("퇴실하시겠습니까?")) {
+				if (confirm("퇴근하시겠습니까?")) {
 					let UpdateAttendance = app.lookup("UpdateAttendance");
 					UpdateAttendance.send();
 				}
@@ -115,7 +114,6 @@
 				app.lookup("noticeListSub").send();
 				app.lookup("boardListSub").send();
 				app.lookup("memberName").send();
-				
 				app.lookup("proposalListSub").send();
 				app.lookup("reservListSub").send();
 				app.lookup("projectListSub").send();
@@ -179,9 +177,9 @@
 				var memberName = e.control;
 				//서브미션
 				let submission = app.lookup("memberName");
-				var xhr = submission.xhr.responseText;
-				var data = JSON.parse(xhr);
-				var member1 = app.lookup("name");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let member1 = app.lookup("name");
 				let memberInfo = data.memberList[0];
 				let memberNameValue = memberInfo.memberName; // 변수명 변경
 				let position = memberInfo.position;

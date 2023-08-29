@@ -23,7 +23,6 @@
 .cl-tree.admin_tree .cl-tree-item {
   border: none;
   height: 120px;
-  font-weight: 500;
   padding: 0px;
   border-radius: 2px;
   text-align: left;
@@ -44,9 +43,9 @@
   background-repeat: no-repeat;
   background-position: right center;
   padding: 0px;
-  font-size: 18px;
-  font-weight: lighter;
-  color: #F8F8F8;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-checked {
   /* 트리 아이템 체크박스 아이콘 - 선택됨 */
@@ -65,22 +64,25 @@
 }
 .cl-tree.admin_tree .cl-tree-item.cl-disabled.cl-selected {
   color: #777;
-  background-color: background-color: #F5F5F5;
+  background-color: #74788d;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-selected {
-  background-color: #FFFFFF;
-  color: #333;
+  background-color: #212529;
+  color: #212529;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-selected.cl-folder {
   /* 트리 아이템 폴더 펼쳐짐 아이콘 - 선택됨 */
   /* 트리 아이템 폴더 점힘 아이콘 - 선택됨 */
 }
 .cl-tree.admin_tree.cl-focus {
-  border-color: #1369C5;
+  border-color: #3855b3;
 }
 .cl-tree.admin_tree.cl-multi-select .cl-tree-item.cl-checked.cl-selected.cl-hover {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #212529;
+  color: #212529;
+}
+.cl-tree.admin_tree.cl-tree-lines .cl-tree-item {
+  padding: 0px 10px 0px 0px;
 }
 .cl-tree.admin_tree.cl-tree-lines .cl-tree-item .cl-tree-iconline {
   margin-left: 5px;
@@ -93,7 +95,7 @@
 }
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected).cl-hover,
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected):hover {
-  background-color: #DAEFFC;
+  background-color: ;
 }
 /* 트리 - 비활성화 */
 .cl-tree.cl-disabled {
