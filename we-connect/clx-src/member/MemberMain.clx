@@ -207,7 +207,7 @@
       <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" style="font-size:18px;">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="attendanceDTO" columnname="workOutTime"/>
         <cl:datamapcontext datacontrolid="attendanceDTO"/>
-        <cl:xylayoutdata std:sid="xyl-data-bc4ccd26" top="195px" left="269px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-bc4ccd26" top="195px" left="273px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:button std:sid="button-385dbe2f" id="Btn_workIn" style="border-radius:10px; background-color:#E0E1E2; background-image:none; text-align:center;" class="btn_go" value="출근">
         <cl:listener std:sid="listener-f04ac77a" name="click" handler="onButtonClick"/>

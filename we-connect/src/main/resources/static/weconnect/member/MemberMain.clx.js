@@ -717,7 +717,7 @@
 				hTMLSnippet_8.bind("value").toDataMap(app.lookup("attendanceDTO"), "workOutTime");
 				container.addChild(hTMLSnippet_8, {
 					"top": "195px",
-					"left": "269px",
+					"left": "273px",
 					"width": "100px",
 					"height": "40px"
 				});

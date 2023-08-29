@@ -48,7 +48,7 @@
               <cl:gridcell std:sid="gh-cell-f3916d2e" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="projectName" sortable="false" filterable="false" text="프로젝트명"/>
               <cl:gridcell std:sid="gh-cell-5adb43b4" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="projectStart" sortable="false" filterable="false" text="프로젝트 시작일"/>
               <cl:gridcell std:sid="gh-cell-8703c816" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="projectEnd" sortable="false" filterable="false" text="프로젝트 종료일"/>
-              <cl:gridcell std:sid="gh-cell-367b6a61" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="projectMemberCount" sortable="false" filterable="false" text="프로젝트 회원수"/>
+              <cl:gridcell std:sid="gh-cell-367b6a61" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="projectMemberCount" sortable="false" filterable="false" text="참여 사원수"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-a96e3f83">
               <cl:gridrow std:sid="g-row-eb803649" height="50px"/>

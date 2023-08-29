@@ -156,7 +156,7 @@
     <cl:listener std:sid="listener-f91c8105" name="init" handler="onBodyInit"/>
     <cl:tabfolder std:sid="t-folder-30fb2ba2">
       <cl:xylayoutdata std:sid="xyl-data-2a17394c" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:tabitem std:sid="t-item-7e250f44" selected="true" text="회원명단">
+      <cl:tabitem std:sid="t-item-7e250f44" selected="true" text="사원명단">
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-dafc8668" id="memberListGrd1" datasetid="memberList" autofit="0, 2, 3, 5, 6">
             <cl:xylayoutdata std:sid="xyl-data-613ff43d" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
@@ -250,7 +250,7 @@
           <cl:xylayout std:sid="xylayout-2dbc9a91"/>
         </cl:group>
       </cl:tabitem>
-      <cl:tabitem std:sid="t-item-34f385bf" text="회원승인">
+      <cl:tabitem std:sid="t-item-34f385bf" text="사원승인">
         <std:metadata>
           <std:property key="is-active-item" value="true"/>
         </std:metadata>

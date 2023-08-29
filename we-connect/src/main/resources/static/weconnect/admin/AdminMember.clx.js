@@ -387,7 +387,7 @@
 			
 			var tabItem_1 = (function(tabFolder){
 				var tabItem_1 = new cpr.controls.TabItem();
-				tabItem_1.text = "회원명단";
+				tabItem_1.text = "사원명단";
 				var group_1 = new cpr.controls.Container();
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
@@ -737,7 +737,7 @@
 			
 			var tabItem_2 = (function(tabFolder){
 				var tabItem_2 = new cpr.controls.TabItem();
-				tabItem_2.text = "회원승인";
+				tabItem_2.text = "사원승인";
 				var group_3 = new cpr.controls.Container();
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
 				group_3.setLayout(xYLayout_3);

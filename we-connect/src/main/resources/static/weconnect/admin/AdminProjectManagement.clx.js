@@ -156,7 +156,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "projectMemberCount";
-										cell.text = "프로젝트 회원수";
+										cell.text = "참여 사원수";
 										cell.style.css({
 											"text-align" : "center"
 										});

@@ -76,7 +76,7 @@
       <cl:gridcolumn std:sid="g-column-714ff053" width="50px"/>
       <cl:gridcolumn std:sid="g-column-1967dc9a" width="36px" visible="false"/>
       <cl:gridheader std:sid="gh-band-be6599df">
-        <cl:gridrow std:sid="g-row-62f2d353"/>
+        <cl:gridrow std:sid="g-row-62f2d353" height="50px"/>
         <cl:gridcell std:sid="gh-cell-407dda57" rowindex="0" colindex="0" targetcolumnname="proposalId" sortable="false" filterable="false" text="글번호"/>
         <cl:gridcell std:sid="gh-cell-783b2624" rowindex="0" colindex="1" targetcolumnname="proposalTitle" sortable="false" filterable="false" text="제목"/>
         <cl:gridcell std:sid="gh-cell-95e9035a" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
@@ -85,7 +85,7 @@
         <cl:gridcell std:sid="gh-cell-164a7b28" rowindex="0" colindex="5" targetcolumnname="PMemberId" sortable="false" filterable="false" text="PMemberId"/>
       </cl:gridheader>
       <cl:griddetail std:sid="gd-band-cde7ff1c">
-        <cl:gridrow std:sid="g-row-aac53a16"/>
+        <cl:gridrow std:sid="g-row-aac53a16" height="50px"/>
         <cl:gridcell std:sid="gd-cell-061c5335" rowindex="0" colindex="0" columnname="proposalId"/>
         <cl:gridcell std:sid="gd-cell-ab3e2290" rowindex="0" colindex="1" columnname="proposalTitle"/>
         <cl:gridcell std:sid="gd-cell-1226432c" rowindex="0" colindex="2" columnname="memberName"/>

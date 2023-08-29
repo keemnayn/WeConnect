@@ -23,8 +23,8 @@
             <cl:datavalue columnname="icon"><![CDATA[img/user/home.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회원]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[사원]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/icon/team.png]]></cl:datavalue>
           </cl:datarow>
@@ -53,21 +53,21 @@
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회원관리]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회원관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[사원관리]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[사원관리]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminMember]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[근태관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[근태관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminAttendance]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[연차관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[연차관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminVacation]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
