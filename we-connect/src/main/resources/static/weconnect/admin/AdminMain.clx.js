@@ -221,6 +221,12 @@
 				submission_4.addEventListener("submit-success", onScheduleListSubSubmitSuccess);
 			}
 			app.register(submission_4);
+			
+			var submission_5 = new cpr.protocols.Submission("reservListSub");
+			submission_5.method = "get";
+			submission_5.action = "admin/room-reserv";
+			submission_5.addResponseData(dataSet_6, false);
+			app.register(submission_5);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -250,14 +256,16 @@
 					var calendar_1 = new cpr.controls.Calendar("crd");
 					calendar_1.style.setClasses(["admain_cld"]);
 					calendar_1.style.item.css({
-						"color" : "#663399"
+						"background-size" : "auto",
+						"color" : "#663399",
+						"font-size" : "14px"
 					});
 					calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
 					container.addChild(calendar_1, {
-						"top": "473px",
-						"right": "778px",
+						"top": "406px",
 						"bottom": "0px",
-						"left": "0px"
+						"left": "0px",
+						"width": "800px"
 					});
 					var tabFolder_2 = new cpr.controls.TabFolder();
 					
@@ -522,10 +530,10 @@
 					tabFolder_2.addTabItem(tabItem_2);
 					tabFolder_2.setSelectedTabItem(tabItem_2);
 					container.addChild(tabFolder_2, {
-						"top": "406px",
+						"top": "407px",
 						"right": "0px",
-						"bottom": "1px",
-						"left": "823px"
+						"bottom": "0px",
+						"width": "755px"
 					});
 					var tabFolder_3 = new cpr.controls.TabFolder();
 					

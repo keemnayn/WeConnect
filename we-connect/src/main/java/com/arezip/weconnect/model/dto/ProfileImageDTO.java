@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProfileImageDTO {    
 	private long profileImageId; 
-	private String profileImagePath;  
+	private String profileImagePath;   
 	private long memberId;         
-}        	                                                            
-  
-         
-                                         
+}        	                                                                   
+       
+                      
+                                                                         

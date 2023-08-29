@@ -158,7 +158,9 @@ body {
 
 
 
+
  
+
 
 
 
@@ -169,12 +171,16 @@ body {
 
 
 
+
+
 .cl-border-none
+
 
 
 
  
   
+
 
 
 
@@ -185,7 +191,10 @@ border
 
 
 
+
+
 :
+
 
 
 
@@ -193,7 +202,10 @@ border
 
 
 
+
 none
+
+
 
 
 
@@ -1127,7 +1139,7 @@ none
 	{
 	border-radius: 5px;
 	/* 셀 호버 스타일 */ &:
-	not (.cl-disabled): hover{    
+	not (.cl-disabled): hover{     
 			//cursor: pointer; //
 	background-color: #656565; //
 	color: white;
@@ -1272,7 +1284,7 @@ none
 
 /* font-size로 디테일과 날짜와의 간격을 설정합니다. */
 .cl-calendar-detail {
-	
+	font-size: 14px;
 }
 
 /* font-size로 이벤트 막대와의 간격을 설정합니다. 막대의 height보다 커야 합니다. */
@@ -1497,6 +1509,7 @@ none
 	background-position: center center;
 	background-size: 16px auto;
 	width: 30px;
+	
 }
 
 .cl-calendar .cl-calendar-header .cl-calendar-header-after.cl-disabled {
@@ -2102,9 +2115,13 @@ keyframes slide-r { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -2118,12 +2135,18 @@ transform
 
 
 
+
+
 translateX
 
 
 
 
+
+
 (
+
+
 
 
 
@@ -2137,7 +2160,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -2157,9 +2184,13 @@ keyframes slide-l { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -2173,12 +2204,18 @@ transform
 
 
 
+
+
 translateX
 
 
 
 
+
+
 (
+
+
 
 
 
@@ -2192,7 +2229,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -6347,9 +6388,13 @@ keyframes bounce {from , 20%, 53%, 80%, to { animation-timing-function:cubic-bez
 
 
 
+
+
 %
 ,
 43
+
+
 
 
 
@@ -6365,7 +6410,11 @@ animation-timing-function
 
 
 
+
+
 :
+
+
 
 
 
@@ -6377,6 +6426,8 @@ cubic-bezier
 
 
 
+
+
 (
 
 
@@ -6384,7 +6435,11 @@ cubic-bezier
 
 
 
+
+
 0
+
+
 
 
 
@@ -6396,9 +6451,13 @@ cubic-bezier
 
 
 
+
+
 .05
 ,
 0
+
+
 
 
 
@@ -6410,6 +6469,8 @@ cubic-bezier
 
 
 
+
+
 .06
 
 
@@ -6417,7 +6478,11 @@ cubic-bezier
 
 
 
+
+
 )
+
+
 
 
 
@@ -6430,7 +6495,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6442,7 +6511,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6460,7 +6533,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -6468,6 +6545,8 @@ translate3d
 ;
 }
 70
+
+
 
 
 
@@ -6483,7 +6562,11 @@ animation-timing-function
 
 
 
+
+
 :
+
+
 
 
 
@@ -6495,6 +6578,8 @@ cubic-bezier
 
 
 
+
+
 (
 
 
@@ -6502,7 +6587,11 @@ cubic-bezier
 
 
 
+
+
 0
+
+
 
 
 
@@ -6514,9 +6603,13 @@ cubic-bezier
 
 
 
+
+
 .05
 ,
 0
+
+
 
 
 
@@ -6528,6 +6621,8 @@ cubic-bezier
 
 
 
+
+
 .06
 
 
@@ -6535,7 +6630,11 @@ cubic-bezier
 
 
 
+
+
 )
+
+
 
 
 
@@ -6548,7 +6647,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6560,7 +6663,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6578,7 +6685,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -6586,6 +6697,8 @@ translate3d
 ;
 }
 90
+
+
 
 
 
@@ -6601,7 +6714,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -6613,7 +6730,11 @@ translate3d
 
 
 
+
+
 (
+
+
 
 
 
@@ -6631,7 +6752,11 @@ translate3d
 
 
 
+
+
 )
+
+
 
 
 
@@ -6905,7 +7030,9 @@ to {
 
 
 
+
 	
+
 
 
 
@@ -6920,11 +7047,13 @@ to {
 
 
 
+
+
 }
 .cl-tree:not(.cl-disabled) { .
 	cl-tree-item: not(.cl-disabled){ 
-		 /* 트리 아이템 - hover */    
-		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{    
+		 /* 트리 아이템 - hover */     
+		&:not(.cl-selected) .cl-hover,&:not(.cl-selected):hover{     
 			background-color: @hover-background;
 	color: @hover-foreground;
 }
