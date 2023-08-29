@@ -277,7 +277,7 @@
 			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
 				"background-color" : "#070048",
-				"color" : "#6B6A6A",
+				"color" : "#FFFFFF",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
 				"border-right-color" : "#f1efff",

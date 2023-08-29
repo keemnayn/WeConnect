@@ -19,8 +19,8 @@ function onRegisterBtnClick(e) {
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
 function onLoginBtnClick(e) {
-	var memberEmail = app.lookup("memberEmailIpb").value;
-	var memberPassword = app.lookup("memberPasswordIpb").value;
+	let memberEmail = app.lookup("memberEmailIpb").value;
+	let memberPassword = app.lookup("memberPasswordIpb").value;
 	// Check if email and password are either null or empty
 	if (isEmptyOrNull(memberEmail) || isEmptyOrNull(memberPassword)) {
 		alert("이메일과 비밀번호를 입력해주세요");
