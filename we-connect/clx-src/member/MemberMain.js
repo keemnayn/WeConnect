@@ -31,12 +31,12 @@ function clock() {
  */
 function onButtonClick(e) {
 	var button = e.control;
-	const go = app.lookup("go");
-	const date = new Date();
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	go.value = `${hours}: ${formattedMinutes}`
+	//	const go = app.lookup("go");
+	//	const date = new Date();
+	//	const hours = date.getHours();
+	//	const minutes = date.getMinutes();
+	//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+	//	go.value = `${hours}: ${formattedMinutes}`
 	if (confirm("입실처리하시겠습니까")) {
 		let submission = app.lookup("Attendance1");
 		submission.send();
@@ -49,12 +49,12 @@ function onButtonClick(e) {
  */
 function onButtonClick2(e) {
 	var button = e.control;
-	const back = app.lookup("back");
-	const date = new Date();
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	back.value = `${hours}: ${formattedMinutes}`
+	//	const back = app.lookup("back");
+	//	const date = new Date();
+	//	const hours = date.getHours();
+	//	const minutes = date.getMinutes();
+	//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+	//	back.value = `${hours}: ${formattedMinutes}`
 	if (confirm("퇴실하시겠습니까?")) {
 		let UpdateAttendance = app.lookup("UpdateAttendance");
 		UpdateAttendance.send();
@@ -68,6 +68,7 @@ function onButtonClick2(e) {
 function onBodyLoad2(e) {
 	clock();
 	intervalID = setInterval(clock, 1000);
+	app.lookup("attendanceSub").send();
 }
 
 /*
@@ -204,4 +205,34 @@ function onProjectListSubSubmitSuccess(e) {
 		//	calendar.addItem(new cpr.controls.CalendarItem("label", new Date(dataSet.getColumn("projectStart")), new Date(dataSet.getColumn("projectEnd"))));
 		calendar.addItem(new cpr.controls.CalendarItem(projectName, new Date(projectStart), new Date(projectEnd)));
 	}
+}
+
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onAttendanceSubSubmitDone(e) {
+	var attendanceSub = e.control;
+	var go = app.lookup("go");
+	var back = app.lookup("back");
+	go.redraw();
+	back.redraw();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onAttendance1SubmitSuccess(e) {
+	var attendance1 = e.control;
+	app.lookup("attendanceSub").send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onUpdateAttendanceSubmitSuccess(e) {
+	var updateAttendance = e.control;
+	app.lookup("attendanceSub").send();
 }

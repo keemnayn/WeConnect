@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@RestController 
+@RestController
 @Slf4j
 @RequestMapping("/weconnect/member/attendance")
 @RequiredArgsConstructor
@@ -36,13 +36,14 @@ public class AttendanceRestController {
 		if (check) {
 			attendanceService.insertAttendance(memberId);
 		} else {
-			Map<String, Object> message  = new HashMap<>();
+			Map<String, Object> message = new HashMap<>();
 			message.put("error", "x");
 			dataRequest.setMetadata(false, message);
 		}
 		// AttendanceService를 이용하여 데이터 삽입
 		return new JSONDataView();
 	}
+
 	@PutMapping
 	public View AttendanceUpdate(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -50,15 +51,25 @@ public class AttendanceRestController {
 		attendanceService.updateAttendance(memberId);
 		log.info("퇴근");
 		return new JSONDataView();
-	}  
-	//리스트 조회 
+	}
+
+	// 리스트 조회
 	@GetMapping
 	public View AttendanceList(HttpServletRequest request, DataRequest dataRequest) {
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
-		List<AttendanceDTO>attend =attendanceService.AttendanceList(memberId);
+		List<AttendanceDTO> attend = attendanceService.AttendanceList(memberId);
 		dataRequest.setResponse("attend", attend);
 		log.info("기록");
+		return new JSONDataView();
+	}
+
+	@GetMapping("time")
+	public View getTodayAttendance(DataRequest dataRequest, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		AttendanceDTO attendanceDTO = attendanceService.getTodayAttendanceByMemberId(memberId);
+		dataRequest.setResponse("attendanceDTO", attendanceDTO);
 		return new JSONDataView();
 	}
 }
