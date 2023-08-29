@@ -167,5 +167,10 @@
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
 	</select>
-
+	<select id="findMemberNameById" parameterType="long"
+		resultType="String">
+		SELECT MEMBER_NAME
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
 </mapper>

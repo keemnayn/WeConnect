@@ -68,4 +68,8 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return adminMemberMapper.getLeaveCountByMemberId(memberId);
 	}
 
+	@Override
+	public String getMemberNameById(long memberId) {
+		return adminMemberMapper.findMemberNameById(memberId);
+	}
 }

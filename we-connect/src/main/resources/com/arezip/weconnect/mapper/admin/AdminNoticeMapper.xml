@@ -8,13 +8,16 @@
 		select
 		notice_id AS noticeId,
 		notice_title AS noticeTitle,
-		notice_content AS
-		noticeContent,
+		CASE
+		WHEN LENGTH(notice_content) > 13 THEN
+		SUBSTR(notice_content, 1, 13) || '...'
+		ELSE
+		notice_content
+		END AS noticeContent,
 		notice_category AS noticeCategory,
 		TO_CHAR(notice_create, 'YYYY-MM-DD') AS noticeCreate
 		from notice
-		ORDER
-		BY notice_id DESC
+		ORDER BY notice_id DESC
 	</select>
 	<!-- 공지사항 추가 -->
 	<insert id="insertNotice"
