@@ -55,6 +55,25 @@
           <cl:datacolumn std:sid="d-column-bfd788df" name="projectEnd"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-1c8f6517" id="reservList" staterestore="false">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-67eb9d53" name="roomReservId" datatype="number" displayonly="false"/>
+          <cl:datacolumn std:sid="d-column-f6068415" name="roomName"/>
+          <cl:datacolumn std:sid="d-column-51b84e97" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-c294ad25" name="proposal"/>
+          <cl:datacolumn std:sid="d-column-afbfa4cc" name="roomReservDate"/>
+          <cl:datacolumn std:sid="d-column-bda731af" name="roomReservStartTime" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-725bb599" name="roomReservEndTime" datatype="number"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="roomReservId"><![CDATA[1]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="roomReservId"><![CDATA[2]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
       <cl:submission std:sid="submission-f280e5c2" id="pendingListSub" method="get" action="admin/members/pending">
         <cl:responsedata dataid="pendingList"/>
       </cl:submission>
@@ -84,21 +103,14 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:group std:sid="group-2fa3c013" style="border-right-style:solid; border-radius:5px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-            <cl:xylayoutdata std:sid="xyl-data-f9503975" top="10px" left="10px" width="670px" height="250px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            <cl:htmlsnippet std:sid="htmlsnippet-039618ea" style="font-weight:900; font-size:10px;" value="&lt;p>관리자프로필&lt;/p>">
-              <cl:xylayoutdata std:sid="xyl-data-a94585b8" top="0px" left="0px" width="100px" height="95px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-            </cl:htmlsnippet>
-            <cl:xylayout std:sid="xylayout-17b8941c"/>
-          </cl:group>
           <cl:calendar std:sid="calendar-a92867b7" id="crd" class="admain_cld">
-            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" bottom="10px" left="10px" width="670px" height="470px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" top="473px" right="778px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:itemstyle style="color:#663399;">
               <cl:expbind property="background-color" category="STYLER" expression="value == &quot;연차&quot; ? &quot;rgb(248,204,215)&quot; : &quot;rgb(240,182,151)&quot;&#xD;&#xA;"/>
             </cl:itemstyle>
           </cl:calendar>
           <cl:tabfolder std:sid="t-folder-d42d032f">
-            <cl:xylayoutdata std:sid="xyl-data-43879342" top="0px" right="10px" width="800px" height="300px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-43879342" top="406px" right="0px" bottom="1px" left="823px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:tabitem std:sid="t-item-3cba63db" selected="true" text="승인 대기 회원">
               <std:metadata>
                 <std:property key="is-active-item" value="true"/>
@@ -171,11 +183,8 @@
             </cl:tabitem>
           </cl:tabfolder>
           <cl:tabfolder std:sid="t-folder-de732905">
-            <cl:xylayoutdata std:sid="xyl-data-4d326dac" right="10px" bottom="10px" width="800px" height="450px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
+            <cl:xylayoutdata std:sid="xyl-data-869cab18" top="0px" right="0px" width="755px" height="371px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:tabitem std:sid="t-item-5a8dcdcb" selected="true" text="공지사항">
-              <std:metadata>
-                <std:property key="is-active-item" value="true"/>
-              </std:metadata>
               <cl:group std:sid="group-de31adaf">
                 <std:metadata>
                   <std:property key="locked" value="true"/>
@@ -228,6 +237,9 @@
               </cl:group>
             </cl:tabitem>
             <cl:tabitem std:sid="t-item-8da62c23" text="자유 게시판">
+              <std:metadata>
+                <std:property key="is-active-item" value="true"/>
+              </std:metadata>
               <cl:group std:sid="group-ac11f539">
                 <std:metadata>
                   <std:property key="locked" value="true"/>
@@ -277,6 +289,41 @@
                   </cl:griddetail>
                 </cl:grid>
                 <cl:xylayout std:sid="xylayout-7bfff91a"/>
+              </cl:group>
+            </cl:tabitem>
+          </cl:tabfolder>
+          <cl:tabfolder std:sid="t-folder-a445efa2">
+            <cl:xylayoutdata std:sid="xyl-data-e0a4830b" top="0px" left="0px" width="800px" height="370px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+            <cl:tabitem std:sid="t-item-ef5999b1" selected="true" text="회의실관리">
+              <std:metadata>
+                <std:property key="is-active-item" value="true"/>
+              </std:metadata>
+              <cl:group std:sid="group-5f8c091b">
+                <std:metadata>
+                  <std:property key="locked" value="true"/>
+                </std:metadata>
+                <cl:grid std:sid="grid-d9e7aef4" id="grd1" datasetid="reservList">
+                  <cl:xylayoutdata std:sid="xyl-data-bf0c181a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+                  <cl:gridcolumn std:sid="g-column-03107140"/>
+                  <cl:gridcolumn std:sid="g-column-7f867ef6"/>
+                  <cl:gridcolumn std:sid="g-column-a399d317"/>
+                  <cl:gridcolumn std:sid="g-column-b02956e8"/>
+                  <cl:gridheader std:sid="gh-band-683ec01e">
+                    <cl:gridrow std:sid="g-row-9f0c089a" height="35px"/>
+                    <cl:gridcell std:sid="gh-cell-faef9ca7" rowindex="0" colindex="0" text="예약일자"/>
+                    <cl:gridcell std:sid="gh-cell-e3717649" rowindex="0" colindex="1" text="회의실"/>
+                    <cl:gridcell std:sid="gh-cell-7aef1f5f" rowindex="0" colindex="2" text="예약자"/>
+                    <cl:gridcell std:sid="gh-cell-80aa8f2a" rowindex="0" colindex="3" text="목적 "/>
+                  </cl:gridheader>
+                  <cl:griddetail std:sid="gd-band-835eb6ee">
+                    <cl:gridrow std:sid="g-row-8c6e5a39" height="28px"/>
+                    <cl:gridcell std:sid="gd-cell-f648e9e7" rowindex="0" colindex="0" columnname="roomReservDate"/>
+                    <cl:gridcell std:sid="gd-cell-2c3f507a" rowindex="0" colindex="1" columnname="roomName"/>
+                    <cl:gridcell std:sid="gd-cell-3ec78023" rowindex="0" colindex="2" columnname="memberName"/>
+                    <cl:gridcell std:sid="gd-cell-8425ae7d" rowindex="0" colindex="3" columnname="proposal"/>
+                  </cl:griddetail>
+                </cl:grid>
+                <cl:xylayout std:sid="xylayout-defed631"/>
               </cl:group>
             </cl:tabitem>
           </cl:tabfolder>
