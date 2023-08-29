@@ -176,19 +176,40 @@ function onMemberNameSubmitSuccess(e) {
 }
 
 /*
- * 그리드에서 dblclick 이벤트 발생 시 호출.
- * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
  */
-function onGrd3Dblclick(e) {
-	var grd3 = e.control;
-	window.location = "member/FreeBoard.clx";
+function onUpdateAttendanceSubmitSuccess2(e) {
+	var updateAttendance = e.control;
+	app.lookup("attendanceSub").send();
 }
 
 /*
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onProjectListSubSubmitSuccess(e) {
+function onAttendance1SubmitSuccess3(e) {
+	var attendance1 = e.control;
+	app.lookup("attendanceSub").send();
+}
+
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onAttendanceSubSubmitDone2(e) {
+	var attendanceSub = e.control;
+	var go = app.lookup("go");
+	var back = app.lookup("back");
+	go.redraw();
+	back.redraw();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onProjectListSubSubmitSuccess2(e) {
 	var projectListSub = e.control;
 	var submission = app.lookup("projectListSub");
 	var calendar = app.lookup("main_crd");
@@ -208,31 +229,10 @@ function onProjectListSubSubmitSuccess(e) {
 }
 
 /*
- * 서브미션에서 submit-done 이벤트 발생 시 호출.
- * 응답처리가 모두 종료되면 발생합니다.
+ * 그리드에서 dblclick 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
  */
-function onAttendanceSubSubmitDone(e) {
-	var attendanceSub = e.control;
-	var go = app.lookup("go");
-	var back = app.lookup("back");
-	go.redraw();
-	back.redraw();
+function onGrd3Dblclick2(e) {
+	var grd3 = e.control;
+	window.location = "member/FreeBoard.clx";
 }
-
-/*
- * 서브미션에서 submit-success 이벤트 발생 시 호출.
- * 통신이 성공하면 발생합니다.
- */
-function onAttendance1SubmitSuccess(e) {
-	var attendance1 = e.control;
-	app.lookup("attendanceSub").send();
-}
-
-/*
- * 서브미션에서 submit-success 이벤트 발생 시 호출.
- * 통신이 성공하면 발생합니다.
- */
-function onUpdateAttendanceSubmitSuccess(e) {
-	var updateAttendance = e.control;
-	app.lookup("attendanceSub").send();
-} 

@@ -119,10 +119,12 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-37639b91" id="Attendance1" action="member/attendance">
-        <cl:listener std:sid="listener-4aeacf02" name="submit-success" handler="onAttendance1SubmitSuccess2"/>
         <cl:listener std:sid="listener-dcced485" name="submit-error" handler="onAttendance1SubmitError"/>
+        <cl:listener std:sid="listener-1dd25458" name="submit-success" handler="onAttendance1SubmitSuccess3"/>
       </cl:submission>
-      <cl:submission std:sid="submission-3be3c330" id="UpdateAttendance" method="put" action="member/attendance"/>
+      <cl:submission std:sid="submission-3be3c330" id="UpdateAttendance" method="put" action="member/attendance">
+        <cl:listener std:sid="listener-9b6dfb10" name="submit-success" handler="onUpdateAttendanceSubmitSuccess2"/>
+      </cl:submission>
       <cl:submission std:sid="submission-13215d8f" id="Img" method="get" action="member/profile">
         <cl:listener std:sid="listener-661ce042" name="submit-success" handler="onImgSubmitSuccess"/>
         <cl:responsedata dataid="img"/>
@@ -148,9 +150,11 @@
         <cl:responsedata dataid="reservList"/>
       </cl:submission>
       <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
+        <cl:listener std:sid="listener-fea28bb1" name="submit-success" handler="onProjectListSubSubmitSuccess2"/>
         <cl:responsedata dataid="projectList"/>
       </cl:submission>
       <cl:submission std:sid="submission-5d191cf8" id="attendanceSub" method="get" action="member/attendance/time">
+        <cl:listener std:sid="listener-76795e08" name="submit-done" handler="onAttendanceSubSubmitDone2"/>
         <cl:responsedata dataid="attendanceDTO"/>
       </cl:submission>
     </cl:model>
@@ -193,12 +197,16 @@
         <cl:xylayoutdata std:sid="xyl-data-4efc05c0" top="133px" left="226px" width="48px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-b1666d6c" id="go" style="font-size:18px;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="attendanceDTO" columnname="workInTime"/>
+        <cl:datamapcontext datacontrolid="attendanceDTO"/>
         <cl:xylayoutdata std:sid="xyl-data-e81004ca" top="133px" left="273px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-2187928c" style="font-size:18px;" value="&lt;div>퇴근:&lt;/div>">
         <cl:xylayoutdata std:sid="xyl-data-b2fb41e4" top="195px" left="226px" width="48px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
-      <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" style="font-size:18px;" value="&lt;span>&lt;/span>">
+      <cl:htmlsnippet std:sid="htmlsnippet-12aa3228" id="back" style="font-size:18px;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="attendanceDTO" columnname="workOutTime"/>
+        <cl:datamapcontext datacontrolid="attendanceDTO"/>
         <cl:xylayoutdata std:sid="xyl-data-bc4ccd26" top="195px" left="269px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:button std:sid="button-385dbe2f" id="Btn_workIn" style="border-radius:10px; background-color:#E0E1E2; background-image:none; text-align:center;" class="btn_go" value="출근">
@@ -302,6 +310,7 @@
               <std:property key="locked" value="true"/>
             </std:metadata>
             <cl:grid std:sid="grid-c87ea130" id="grd3" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" datasetid="boardList">
+              <cl:listener std:sid="listener-c9ef5c8e" name="dblclick" handler="onGrd3Dblclick2"/>
               <cl:xylayoutdata std:sid="xyl-data-078adbe4" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
               <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
@@ -343,7 +352,7 @@
             <std:metadata>
               <std:property key="locked" value="true"/>
             </std:metadata>
-            <cl:calendar std:sid="calendar-7bdba216">
+            <cl:calendar std:sid="calendar-7bdba216" id="main_crd">
               <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>

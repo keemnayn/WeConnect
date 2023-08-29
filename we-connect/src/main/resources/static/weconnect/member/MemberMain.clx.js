@@ -190,19 +190,40 @@
 			}
 
 			/*
-			 * 그리드에서 dblclick 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
 			 */
-			function onGrd3Dblclick(e) {
-				var grd3 = e.control;
-				window.location = "member/FreeBoard.clx";
+			function onUpdateAttendanceSubmitSuccess2(e) {
+				var updateAttendance = e.control;
+				app.lookup("attendanceSub").send();
 			}
 
 			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onProjectListSubSubmitSuccess(e) {
+			function onAttendance1SubmitSuccess3(e) {
+				var attendance1 = e.control;
+				app.lookup("attendanceSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onAttendanceSubSubmitDone2(e) {
+				var attendanceSub = e.control;
+				var go = app.lookup("go");
+				var back = app.lookup("back");
+				go.redraw();
+				back.redraw();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onProjectListSubSubmitSuccess2(e) {
 				var projectListSub = e.control;
 				var submission = app.lookup("projectListSub");
 				var calendar = app.lookup("main_crd");
@@ -222,34 +243,13 @@
 			}
 
 			/*
-			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
-			 * 응답처리가 모두 종료되면 발생합니다.
+			 * 그리드에서 dblclick 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
 			 */
-			function onAttendanceSubSubmitDone(e) {
-				var attendanceSub = e.control;
-				var go = app.lookup("go");
-				var back = app.lookup("back");
-				go.redraw();
-				back.redraw();
+			function onGrd3Dblclick2(e) {
+				var grd3 = e.control;
+				window.location = "member/FreeBoard.clx";
 			}
-
-			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
-			 */
-			function onAttendance1SubmitSuccess(e) {
-				var attendance1 = e.control;
-				app.lookup("attendanceSub").send();
-			}
-
-			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
-			 */
-			function onUpdateAttendanceSubmitSuccess(e) {
-				var updateAttendance = e.control;
-				app.lookup("attendanceSub").send();
-			};
 			// End - User Script
 			
 			// Header
@@ -461,17 +461,20 @@
 			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("Attendance1");
 			submission_1.action = "member/attendance";
-			if(typeof onAttendance1SubmitSuccess2 == "function") {
-				submission_1.addEventListener("submit-success", onAttendance1SubmitSuccess2);
-			}
 			if(typeof onAttendance1SubmitError == "function") {
 				submission_1.addEventListener("submit-error", onAttendance1SubmitError);
+			}
+			if(typeof onAttendance1SubmitSuccess3 == "function") {
+				submission_1.addEventListener("submit-success", onAttendance1SubmitSuccess3);
 			}
 			app.register(submission_1);
 			
 			var submission_2 = new cpr.protocols.Submission("UpdateAttendance");
 			submission_2.method = "put";
 			submission_2.action = "member/attendance";
+			if(typeof onUpdateAttendanceSubmitSuccess2 == "function") {
+				submission_2.addEventListener("submit-success", onUpdateAttendanceSubmitSuccess2);
+			}
 			app.register(submission_2);
 			
 			var submission_3 = new cpr.protocols.Submission("Img");
@@ -530,12 +533,18 @@
 			submission_10.method = "get";
 			submission_10.action = "member/project";
 			submission_10.addResponseData(dataSet_8, false);
+			if(typeof onProjectListSubSubmitSuccess2 == "function") {
+				submission_10.addEventListener("submit-success", onProjectListSubSubmitSuccess2);
+			}
 			app.register(submission_10);
 			
 			var submission_11 = new cpr.protocols.Submission("attendanceSub");
 			submission_11.method = "get";
 			submission_11.action = "member/attendance/time";
 			submission_11.addResponseData(dataMap_2, false);
+			if(typeof onAttendanceSubSubmitDone2 == "function") {
+				submission_11.addEventListener("submit-done", onAttendanceSubSubmitDone2);
+			}
 			app.register(submission_11);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
@@ -679,6 +688,9 @@
 				hTMLSnippet_6.style.css({
 					"font-size" : "18px"
 				});
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("attendanceDTO"));
+				hTMLSnippet_6.setBindContext(dataMapContext_1);
+				hTMLSnippet_6.bind("value").toDataMap(app.lookup("attendanceDTO"), "workInTime");
 				container.addChild(hTMLSnippet_6, {
 					"top": "133px",
 					"left": "273px",
@@ -697,10 +709,12 @@
 					"height": "40px"
 				});
 				var hTMLSnippet_8 = new cpr.controls.HTMLSnippet("back");
-				hTMLSnippet_8.value = "<span><\/span>";
 				hTMLSnippet_8.style.css({
 					"font-size" : "18px"
 				});
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("attendanceDTO"));
+				hTMLSnippet_8.setBindContext(dataMapContext_2);
+				hTMLSnippet_8.bind("value").toDataMap(app.lookup("attendanceDTO"), "workOutTime");
 				container.addChild(hTMLSnippet_8, {
 					"top": "195px",
 					"left": "269px",
@@ -1109,6 +1123,9 @@
 							"border-bottom-style" : "none",
 							"border-top-style" : "none"
 						});
+						if(typeof onGrd3Dblclick2 == "function") {
+							grid_3.addEventListener("dblclick", onGrd3Dblclick2);
+						}
 						container.addChild(grid_3, {
 							"top": "0px",
 							"right": "0px",
@@ -1160,7 +1177,7 @@
 					var xYLayout_10 = new cpr.controls.layouts.XYLayout();
 					group_9.setLayout(xYLayout_10);
 					(function(container){
-						var calendar_1 = new cpr.controls.Calendar();
+						var calendar_1 = new cpr.controls.Calendar("main_crd");
 						container.addChild(calendar_1, {
 							"top": "0px",
 							"right": "0px",
