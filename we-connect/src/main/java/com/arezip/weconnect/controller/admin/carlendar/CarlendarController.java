@@ -30,7 +30,7 @@ public class CarlendarController {
 	public View findProjectStartEnd(HttpServletRequest request, DataRequest dataRequest) {
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
-		List<ProjectDTO> list = calendarProjectService.findProjectStartEnd(memberId);
+		List<ProjectDTO> list = calendarProjectService.findProjectByMemberId(memberId);
 		dataRequest.setResponse("project", list);
 		log.info("프로젝트:{}", list);
 		return new JSONDataView();

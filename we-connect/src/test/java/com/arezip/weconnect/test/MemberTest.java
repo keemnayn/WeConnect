@@ -2,7 +2,9 @@ package com.arezip.weconnect.test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.arezip.weconnect.model.dto.DepartmentDTO;
+import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.service.MemberService;
 import com.arezip.weconnect.service.ProfileService;
 
@@ -56,4 +59,11 @@ public class MemberTest {
 //		memberService.login(memberEmail, memberPassword);
 //		log.info("로그인 성공 {}", memberService.login(memberEmail, memberPassword));
 //	}
+	
+	@Test 
+	public void test() {
+		Long memberId = (long) 131;
+		Map<String,Object> memberList = new HashMap<>();
+		log.info("리스트{}",memberList);
+	}
 }

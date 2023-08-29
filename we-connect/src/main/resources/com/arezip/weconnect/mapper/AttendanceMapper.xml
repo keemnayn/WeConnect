@@ -25,14 +25,44 @@
 		= #{memberId} AND WORK_DAY = TRUNC(SYSDATE)
 	</select>
 
-<select id="AttendanceList" resultType="com.arezip.weconnect.model.dto.AttendanceDTO">
-    SELECT TO_CHAR(A.work_Day, 'YYYY-MM-DD') AS work_Day,
-           M.member_name,
-           TO_CHAR(A.work_in_time, 'HH24:MI') AS work_in_time,
-           TO_CHAR(A.work_out_time, 'HH24:MI') AS work_out_time,
-           A.Attendance_STATUS
-    FROM Attendance A
-    INNER JOIN member M ON A.member_id = M.member_id
-    WHERE A.member_id = #{memberId}
-</select>
+	<select id="AttendanceList"
+		resultType="com.arezip.weconnect.model.dto.AttendanceDTO">
+		SELECT TO_CHAR(A.work_Day, 'YYYY-MM-DD') AS work_Day,
+		M.member_name,
+		TO_CHAR(A.work_in_time, 'HH24:MI') AS work_in_time,
+		TO_CHAR(A.work_out_time, 'HH24:MI') AS work_out_time,
+		A.Attendance_STATUS
+		FROM Attendance A
+		INNER JOIN member M ON A.member_id
+		= M.member_id
+		WHERE A.member_id = #{memberId}
+		order by attendance_id
+		desc
+	</select>
+	<select id="selectTodayAttendanceByMemberId"
+		resultType="com.arezip.weconnect.model.dto.AttendanceDTO"
+		parameterType="long">
+		WITH DefaultData AS (
+		SELECT
+		#{memberId} AS member_id,
+		TRUNC(SYSDATE) AS work_day,
+		TO_DATE('00:00', 'HH24:MI') AS
+		work_in_time,
+		TO_DATE('00:00', 'HH24:MI') AS work_out_time
+		FROM DUAL
+		)
+		SELECT
+		TO_CHAR(NVL(a.work_in_time, d.work_in_time), 'HH24:MI') AS
+		workInTime,
+		TO_CHAR(NVL(a.work_out_time, d.work_out_time), 'HH24:MI')
+		AS
+		workOutTime
+		FROM DefaultData d
+		LEFT JOIN attendance a
+		ON d.member_id =
+		a.member_id AND d.work_day = a.work_day
+		WHERE a.member_id = #{memberId}
+		OR a.member_id IS NULL
+	</select>
+
 </mapper> 

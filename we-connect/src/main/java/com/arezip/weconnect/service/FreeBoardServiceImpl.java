@@ -49,20 +49,27 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
-		return freeBoardMapper.insertFreeBoardComment(freeBoardCommentDTO);
+	public int insertFreeBoardComment(String freeBoardCommentContent, long memberId, long freeBoardId) {
+		return freeBoardMapper.insertFreeBoardComment(freeBoardCommentContent,memberId,freeBoardId);
 	}
+//	@Override
+//	public int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
+//		return freeBoardMapper.insertFreeBoardComment(freeBoardCommentDTO);
+//	}
 
 	@Override
 	public int updateFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
 		return freeBoardMapper.updateFreeBoardComment(freeBoardCommentDTO);
 	}
 
+//	@Override
+//	public int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
+//		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentDTO);
+//	}
 	@Override
-	public int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO) {
-		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentDTO);
+	public int deleteFreeBoardComment(long freeBoardCommentId) {
+		return freeBoardMapper.deleteFreeBoardComment(freeBoardCommentId);
 	}
-
 	@Override
 	public List<FreeBoardDTO> searchFreeBoardList(Map<String, String> searchParams) {
 		return freeBoardMapper.searchFreeBoardList(searchParams);
@@ -72,6 +79,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public int updateFreeBoardViews(long freeBoardId) {
 		return freeBoardMapper.updateFreeBoardViews(freeBoardId);
 	}
+
+	
 
 
 }

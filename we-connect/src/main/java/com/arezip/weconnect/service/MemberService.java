@@ -18,4 +18,7 @@ public interface MemberService {
 
 //	관리자 여부
 	boolean isAdmin(long memberId);
+
+//  메인 화면 세션
+	List<MemberDTO> findMemberName(long memberId);
 }

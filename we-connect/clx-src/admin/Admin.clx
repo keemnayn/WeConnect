@@ -115,6 +115,16 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-d1e60d69" id="memberName">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-79d1eaa1" name="memberName"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-19417f7e" id="memberNameSub" method="get" action="admin/name">
+        <cl:listener std:sid="listener-7446f096" name="submit-success" handler="onMemberNameSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-cc70c5ea" name="submit-done" handler="onMemberNameSubSubmitDone2"/>
+        <cl:responsedata dataid="memberName"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -134,10 +144,15 @@
         <cl:xylayoutdata std:sid="xyl-data-41517700" top="5px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:img>
       <cl:output std:sid="output-ffa6c7b0" style="font-size:15px; text-align:center;" value=" 관리자님">
-        <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="10px" right="0px" bottom="0px" width="90px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="5px" right="10px" bottom="5px" width="75px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:output std:sid="output-738cf04b" id="clock1" style="font-size:15px; text-align:center;" value="현재시간">
-        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="10px" right="75px" bottom="0px" width="186px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="5px" right="165px" bottom="5px" width="200px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+      </cl:output>
+      <cl:output std:sid="output-232d4831" id="memberNameOpb" style="font-size:15px; text-align:center;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="memberName" columnname="memberName"/>
+        <cl:datamapcontext datacontrolid="memberName"/>
+        <cl:xylayoutdata std:sid="xyl-data-ac13e8c9" top="5px" right="90px" bottom="5px" width="75px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-fee4904d"/>
     </cl:group>

@@ -77,4 +77,10 @@ public class MemberServiceImpl implements MemberService {
 		char role = memberMapper.findRoleByMemberId(memberId);
 		return 'Y' == role;
 	}
+
+	@Override
+	public List<MemberDTO> findMemberName(long memberId) {
+		// TODO Auto-generated method stub
+		return memberMapper.findMemberName(memberId);
+	}
 }

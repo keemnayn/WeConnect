@@ -9,11 +9,14 @@ import com.arezip.weconnect.model.dto.RoomReservDTO;
 
 @Mapper
 public interface AdminRoomMapper {
-	//회의실 등록
-	int insertRoomInfo(RoomDTO roomDTO);
 	//회의실 리스트
 	List<RoomDTO> getRoomList();
-	
+	//회의실 등록
+	int insertRoomInfo(RoomDTO roomDTO);
+	//회의실 삭제
+	int deleteRoom(RoomDTO roomDTO);
+	//회의실 수정
+	int updateRoom(RoomDTO roomDTO);
 	//회의실 예약 리스트
 	List<RoomReservDTO> getRoomReservList();
 }

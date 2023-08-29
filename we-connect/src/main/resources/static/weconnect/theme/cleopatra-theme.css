@@ -132,6 +132,9 @@ body.cl-has-modal {
   /* 다음 달 버튼 */
   /* 헤더 텍스트 */
 }
+.cl-calendar .cl-calendar-header .cl-calendar-header-prev {
+  background-image: url(https://edu.tomatosystem.co.kr/sample/theme/asset/images/ctl/calendar/icon-chevron-left.svg);
+}
 .cl-calendar .cl-calendar-header .cl-calendar-header-text:hover,
 .cl-calendar .cl-calendar-header .cl-calendar-header-text.cl-hover {
   color: #208AED;
@@ -170,6 +173,14 @@ body.cl-has-modal {
   /* 기본 날짜 - 오늘 날짜 셀 */
   /* range 선택에서 선택된 날짜 스타일 */
   /* 기념일 전역 스타일 */
+}
+.cl-calendar .cl-calendar-footer {
+  background-color: #f2f4f6;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
 }
 .cl-calendar .cl-calendar-item,
 .cl-calendar .cl-anniversary,
@@ -472,10 +483,6 @@ body.cl-has-modal {
 .cl-button:not(.cl-disabled).cl-activated,
 .cl-button:not(.cl-disabled):active {
   background-image: linear-gradient(#ddd, #eee 5px, #ddd);
-}
-/* Disable 상태의 버튼 */
-.cl-button.cl-disabled {
-  color: #666;
 }
 /* 아코디언 */
 .cl-accordion {
@@ -1034,7 +1041,8 @@ body.cl-has-modal {
 .cl-grid {
   font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
   color: #333;
-  border: solid 1px #bbb;
+  border-left: 0 none;
+  border-right: 0 none;
   min-height: 100px;
   /* 그리드 헤더 */
   /* 그리드 디테일 */
@@ -1048,16 +1056,17 @@ body.cl-has-modal {
 .cl-grid .cl-grid-header {
   /* 그리드 헤더 셀 */
   /* @deprecated (header의 sortColumnName속성)
-		그리드 헤더 셀 정렬 인디케이터 */
+		 그리드 헤더 셀 정렬 인디케이터 */
   /* en: @deprecated (sortColumnName attribute in header)
-		Grid header cell sort indicator */
+		 Grid header cell sort indicator */
   /* ja: @deprecated (ヘッダーの sortColumnName 属性)
-		グリッド ヘッダー セルの並べ替えインジケーター */
+		 グリッド ヘッダー セルの並べ替えインジケーター */
   /* 그리드 헤더 셀 필터 인디케이터 */
   /* 그리드 헤더 셀에 정렬 가능한 셀 스타일 */
   /* 디테일에 스크롤이 생길시 우측에 생기는 빈 영역 */
 }
 .cl-grid .cl-grid-header .cl-grid-cell {
+  border: none;
   /* 그리드 헤더 셀에 임베딩 된 컨트롤 */
 }
 .cl-grid .cl-grid-header .cl-sort {
@@ -1164,8 +1173,7 @@ body.cl-has-modal {
 }
 /* 모든 셀 스타일 */
 .cl-grid-cell {
-  border-right: solid 1px #bbb;
-  border-bottom: solid 1px #bbb;
+  border-right: none;
   /* columnType=checkbox, columnType=rowindex와 같이 그리드에서 기본 제공하는 컬럼 */
   /* 셀에 포함된 컨트롤 */
   /* 그룹 펼침/접힘 버튼 */
@@ -1361,6 +1369,10 @@ body.cl-has-modal {
   /* 탭폴더 바디 */
 }
 .cl-tabfolder .cl-tabfolder-header {
+  background-image: linear-gradient(#babfc7, #babfc7);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  height: 35px;
   /* 좌측 스크롤 버튼 */
   /* 우측 스크롤 버튼 */
   /* 탭 아이템 */
@@ -1374,8 +1386,10 @@ body.cl-has-modal {
   /* 비활성 상태 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item {
-  background-color: white;
-  border: solid 1px #bbb;
+  box-shadow: inset 0px -1px 0px 0px #babfc7;
+  border-left: none;
+  background-color: #ffffff;
+  color: #666666;
   /* 탭 아이템 체크 박스 */
   /* 탭 아이템 닫기 버튼 */
   /* 탭 아이템 - 선택됨 */
@@ -1383,9 +1397,11 @@ body.cl-has-modal {
   /* 비활성 탭 아이템 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
-  border-color: #1369C5;
+  background-color: #ffffff;
+  border-color: #babfc7;
+  box-shadow: none;
+  color: #3f87fd;
+  text-decoration: none;
   /* 선택된 탭 아이템 닫기 버튼 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item:not(.cl-selected):hover {
@@ -1395,6 +1411,15 @@ body.cl-has-modal {
   background-color: white;
   color: #333;
   border: solid 1px #bbb;
+}
+.cl-tabfolder .cl-tabfolder-body.cl-top {
+  border-bottom: none;
+}
+.cl-tabfolder .cl-text:focus {
+  text-decoration: none;
+}
+.cl-tabfolder.cl-bottom {
+  border-top: none;
 }
 /* 페이지 인덱서 */
 .cl-pageindexer {
@@ -1610,4 +1635,7 @@ body.cl-has-modal {
 .cl-linkedcombobox-combo:focus,
 .cl-grid-cell:focus {
   /* 웹 접근성 개선 목적으로 포커스 링을 표시하려면 아래 주석을 해제 하십시오. */
+}
+.Background {
+  background-image: url("controls/icons/login-background.png");
 }

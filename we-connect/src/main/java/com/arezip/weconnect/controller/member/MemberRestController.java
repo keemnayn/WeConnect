@@ -17,6 +17,8 @@ import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,5 +71,15 @@ public class MemberRestController {
 		}
 		dataRequest.setMetadata(isNotDuplicated, message);
 		return new JSONDataView();
+	}
+	@GetMapping("Name")
+	public View memberName(DataRequest dataRequest, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		System.out.println("세션아이디:" +memberId);
+	    List<MemberDTO> memberList = memberService.findMemberName(memberId);
+	    dataRequest.setResponse("memberList", memberList);
+	    log.info("멤버: {}", memberList);
+	    return new JSONDataView();
 	}
 }

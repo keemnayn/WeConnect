@@ -1,6 +1,7 @@
 package com.arezip.weconnect.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -23,4 +24,5 @@ public interface MemberMapper {
 
 //	관리자 여부
 	char findRoleByMemberId(long memberId);
+	List<MemberDTO> findMemberName(long memberId);
 }

@@ -41,10 +41,10 @@
   <body std:sid="body-b6366cad">
     <cl:group std:sid="group-1ea4ba1b">
       <cl:xylayoutdata std:sid="xyl-data-c50892bf" top="0px" left="0px" width="1580px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:output std:sid="output-c57df6a1" value="구분">
+      <cl:output std:sid="output-c57df6a1" style="text-align:center;" value="구분">
         <cl:formdata std:sid="f-data-ee8be003" row="0" col="0"/>
       </cl:output>
-      <cl:output std:sid="output-0c39ec7e" value="기간">
+      <cl:output std:sid="output-0c39ec7e" style="text-align:center;" value="기간">
         <cl:formdata std:sid="f-data-09fc5d97" row="0" col="2"/>
       </cl:output>
       <cl:dateinput std:sid="d-input-332ca669" id="dti1">
@@ -74,13 +74,13 @@
       </cl:formlayout>
     </cl:group>
     <cl:group std:sid="group-494bec52">
-      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" left="0px" width="1580px" height="580px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-bfc58325" top="200px" bottom="110px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:output std:sid="output-4c902b40" value="목적">
         <cl:formdata std:sid="f-data-bd2ef3bb" row="0" col="0"/>
       </cl:output>
       <cl:textarea std:sid="t-area-d560cf87" id="txa1">
         <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestReason"/>
-        <cl:formdata std:sid="f-data-56e2b625" row="0" col="1"/>
+        <cl:formdata std:sid="f-data-9453e121" row="0" col="1" rowspan="1" colspan="1"/>
       </cl:textarea>
       <cl:formlayout std:sid="f-layout-675b5c21" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
         <cl:rows length="1" unit="FRACTION"/>
@@ -88,17 +88,13 @@
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
-    <cl:group std:sid="group-9921eabb">
-      <cl:xylayoutdata std:sid="xyl-data-8db6732b" top="800px" left="0px" width="1580px" height="60px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:button std:sid="button-6dcdf7fe" value="신청">
-        <cl:listener std:sid="listener-7c203474" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-90c496c9" top="10px" left="656px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:button>
-      <cl:button std:sid="button-daaf79eb" value="취소">
-        <cl:xylayoutdata std:sid="xyl-data-55a3b7ca" top="10px" left="790px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:button>
-      <cl:xylayout std:sid="xylayout-3030722b"/>
-    </cl:group>
+    <cl:button std:sid="button-6dcdf7fe" value="신청">
+      <cl:listener std:sid="listener-7c203474" name="click" handler="onButtonClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-19cd02a5" bottom="0px" left="648px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+    </cl:button>
+    <cl:button std:sid="button-daaf79eb" value="취소">
+      <cl:xylayoutdata std:sid="xyl-data-ef3ebd11" bottom="0px" left="782px" width="100px" height="100px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
+    </cl:button>
     <cl:xylayout std:sid="xylayout-4e35d00a"/>
   </body>
   <std:studiosetting>

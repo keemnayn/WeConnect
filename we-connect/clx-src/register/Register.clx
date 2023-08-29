@@ -147,7 +147,7 @@
         <cl:xylayoutdata std:sid="xyl-data-34901148" bottom="20px" left="395px" width="150px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:output std:sid="output-f12de4f4" style="font-size:30px;" value="회원가입">
-        <cl:xylayoutdata std:sid="xyl-data-3e8289ad" top="20px" left="50px" width="120px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-3e8289ad" top="20px" left="315px" width="120px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:output std:sid="output-91566deb" id="emailValidationOpb" value="">
         <cl:xylayoutdata std:sid="xyl-data-bfa30a39" top="185px" left="195px" width="350px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>

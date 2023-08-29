@@ -17,9 +17,12 @@ function clock() {
 	const minutes = date.getMinutes();
 	const seconds = date.getSeconds();
 	const week = ['일', '월', '화', '수', '목', '금', '토'];
-	clockTarget.value = `${hours}시 ${minutes}분 ${seconds}초`
-	user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`
 	
+	const amPm = hours < 12 ? '오전' : '오후';
+	const adjustedHours = hours > 12 ? hours - 12 : hours; // 24시간 형식을 12시간 형식으로 변경
+	
+	clockTarget.value = `${amPm} ${adjustedHours}시 ${minutes}분 ${seconds}초`;
+	user_day.value = `${month+1}월 ${clockDate}일 ${week[day]}요일`;
 }
 
 /*
@@ -28,12 +31,12 @@ function clock() {
  */
 function onButtonClick(e) {
 	var button = e.control;
-	const go = app.lookup("go");
-	const date = new Date();
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	go.value = `"${hours}: ${formattedMinutes}"`
+	//	const go = app.lookup("go");
+	//	const date = new Date();
+	//	const hours = date.getHours();
+	//	const minutes = date.getMinutes();
+	//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+	//	go.value = `${hours}: ${formattedMinutes}`
 	if (confirm("입실처리하시겠습니까")) {
 		let submission = app.lookup("Attendance1");
 		submission.send();
@@ -46,12 +49,12 @@ function onButtonClick(e) {
  */
 function onButtonClick2(e) {
 	var button = e.control;
-	const back = app.lookup("back");
-	const date = new Date();
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-	back.value = `"${hours}: ${formattedMinutes}""`
+	//	const back = app.lookup("back");
+	//	const date = new Date();
+	//	const hours = date.getHours();
+	//	const minutes = date.getMinutes();
+	//	const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+	//	back.value = `${hours}: ${formattedMinutes}`
 	if (confirm("퇴실하시겠습니까?")) {
 		let UpdateAttendance = app.lookup("UpdateAttendance");
 		UpdateAttendance.send();
@@ -65,6 +68,7 @@ function onButtonClick2(e) {
 function onBodyLoad2(e) {
 	clock();
 	intervalID = setInterval(clock, 1000);
+	app.lookup("attendanceSub").send();
 }
 
 /*
@@ -94,6 +98,13 @@ function onAttendance1SubmitError(e) {
 function onBodyInit2(e) {
 	var submission = app.lookup("Img");
 	submission.send();
+	app.lookup("noticeListSub").send();
+	app.lookup("boardListSub").send();
+	app.lookup("memberName").send();
+	
+	app.lookup("proposalListSub").send();
+	app.lookup("reservListSub").send();
+	app.lookup("projectListSub").send();
 }
 
 /*
@@ -113,7 +124,7 @@ function onFi1ValueChange(e) {
 	var fi1 = e.control;
 	var image = app.lookup("profile");
 	var fileInput = app.lookup("fi1");
-	let fi2 =fileInput.file
+	let fi2 = fileInput.files;
 	let submission = app.lookup("imgSend");
 	console.log(fi1.file);
 	console.log(fi2);
@@ -124,7 +135,8 @@ function onFi1ValueChange(e) {
 		};
 		reader.readAsDataURL(fileInput.files[0]);
 	}
-	submission.addFileParameter("profileImagePath",fi2);
+	submission.addFileParameter("profileImagePath", fi2);
+	console.log("전송객체:" + submission.addFileParameter("profileImagePath", fi2));
 	submission.send();
 }
 
@@ -132,7 +144,7 @@ function onFi1ValueChange(e) {
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onImgSendSubmitSuccess(e){
+function onImgSendSubmitSuccess(e) {
 	var imgSend = e.control;
 }
 
@@ -140,7 +152,87 @@ function onImgSendSubmitSuccess(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onImgSendSubmitSuccess2(e){
+function onImgSendSubmitSuccess2(e) {
 	var imgSend = e.control;
 	alert("프로필 변경 선공");
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onMemberNameSubmitSuccess(e) {
+	var memberName = e.control;
+	//서브미션
+	let submission = app.lookup("memberName");
+	var xhr = submission.xhr.responseText;
+	var data = JSON.parse(xhr);
+	var member1 = app.lookup("name");
+	let memberInfo = data.memberList[0];
+	let memberNameValue = memberInfo.memberName; // 변수명 변경
+	let position = memberInfo.position;
+	let departmentName = memberInfo.departmentName + "팀";
+	member1.value = memberNameValue + " " + position + "<br>" + departmentName;
+}
+
+/*
+ * 그리드에서 dblclick 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
+ */
+function onGrd3Dblclick(e) {
+	var grd3 = e.control;
+	window.location = "member/FreeBoard.clx";
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onProjectListSubSubmitSuccess(e) {
+	var projectListSub = e.control;
+	var submission = app.lookup("projectListSub");
+	var calendar = app.lookup("main_crd");
+	var dataSet = app.lookup("projectList");
+	var jsonData = JSON.parse(submission.xhr.responseText);
+	var projectList = jsonData.projectList;
+	for (var i = 0; i < projectList.length; i++) {
+		var projectName = jsonData.projectList[i].projectName;
+		var projectStart = jsonData.projectList[i].projectStart;
+		var projectEnd = jsonData.projectList[i].projectEnd;
+		console.log(projectName);
+		console.log(projectStart);
+		console.log(projectEnd);
+		//	calendar.addItem(new cpr.controls.CalendarItem("label", new Date(dataSet.getColumn("projectStart")), new Date(dataSet.getColumn("projectEnd"))));
+		calendar.addItem(new cpr.controls.CalendarItem(projectName, new Date(projectStart), new Date(projectEnd)));
+	}
+}
+
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onAttendanceSubSubmitDone(e) {
+	var attendanceSub = e.control;
+	var go = app.lookup("go");
+	var back = app.lookup("back");
+	go.redraw();
+	back.redraw();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onAttendance1SubmitSuccess(e) {
+	var attendance1 = e.control;
+	app.lookup("attendanceSub").send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onUpdateAttendanceSubmitSuccess(e) {
+	var updateAttendance = e.control;
+	app.lookup("attendanceSub").send();
 }

@@ -55,10 +55,4 @@ public class RoomReservTest {
 		list.forEach(reserv -> log.info(reserv.toString()));
 	}
 	
-	//예약 날짜 조회
-	@Test
-	void findBookedDate() {
-		List<RoomReservDTO> list = roomReservService.findBookedRoom();
-		list.forEach(booked -> log.info(booked.toString()));
-	}
 }

@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
    
-@Data 
-@NoArgsConstructor   
+@Data   
+@NoArgsConstructor     
 @AllArgsConstructor
-public class ProfileImageDTO {
+public class ProfileImageDTO {    
 	private long profileImageId; 
-	private String profileImagePath;
-	private long memberId; 
-}                   
-                                                                                                                   
+	private String profileImagePath;  
+	private long memberId;         
+}        	                                                      
+                                                                                                                                                           

@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("admin/AdminSchedule", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/calendar.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -16,95 +17,78 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(e) {
-				/** 
-				 * @type cpr.controls.Calendar
-				 */
-				let calendar = app.lookup("crd");
-				let dataSet = app.lookup("project");
-				var submission = app.lookup("calrendar");
-				submission.send();
-				var date = e.targetObject.date;
-				var voCalendarItems = calendar.getItemsByDate(dataSet); //1.0.2210(2020.07.10릴리즈) 부터 사용가능
-				var voAnniversaries = calendar.getAnniversariesByDate(date);
+				app.lookup("scheduleListSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onScheduleListSubSubmitSuccess(e) {
+				var scheduleListSub = e.control;
+				var calendar = app.lookup("crd");
+				var dsAnnualLeavesList = app.lookup("annualLeavesList");
+				var dsProjectScheduleList = app.lookup("projectScheduleList");
+				var jsonData = JSON.parse(scheduleListSub.xhr.responseText);
+				var annualLeavesList = jsonData.annualLeavesList;
+				var projectScheduleList = jsonData.projectScheduleList;
 				
-				var voInitValue = {
-					date: moment(date).format("YYYY-MM-DD"),
-					item: voCalendarItems,
-					anniversary: voAnniversaries
-				};
-				/*
-				 * 서브미션에서 submit-progress 이벤트 발생 시 호출.
-				 * 서버로 부터 일정 크기의 데이터를 전송받았을 때 발생합니다. 하나의 응답에 대해 여러 번 발생할 수 있습니다.
-				 */
-				function onCalrendarSubmitProgress(e) {
-					var calrendar = e.control;
-					alert("성공");
-					app.lookup("crd").redraw();
-					
+				// annualLeavesList 순회
+				for (var i = 0; i < annualLeavesList.length; i++) {
+					var memberName = annualLeavesList[i].memberName;
+					var leaveRequestType = annualLeavesList[i].leaveRequestType;
+					var leaveRequestStart = annualLeavesList[i].leaveRequestStart;
+					var leaveRequestEnd = annualLeavesList[i].leaveRequestEnd;
+					console.log(memberName);
+					console.log(leaveRequestType);
+					console.log(leaveRequestStart);
+					console.log(leaveRequestEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(leaveRequestStart), new Date(leaveRequestEnd), leaveRequestType));
+				}
+				// projectScheduleList 순회
+				for (var i = 0; i < projectScheduleList.length; i++) {
+					var memberName = projectScheduleList[i].memberName;
+					var projectName = projectScheduleList[i].projectName;
+					var projectStart = projectScheduleList[i].projectStart;
+					var projectEnd = projectScheduleList[i].projectEnd;
+					console.log(memberName);
+					console.log(projectName);
+					console.log(projectStart);
+					console.log(projectEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(projectStart), new Date(projectEnd), projectName));
 				}
 			}
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("room");
+			var dataSet_1 = new cpr.data.DataSet("annualLeavesList");
 			dataSet_1.parseData({
-				"columns": [{"name": "room"}],
-				"rows": [
-					{"room": "8층 대회의실"},
-					{"room": "8층 소회의실"},
-					{"room": "6층 소회의실"},
-					{"room": "5층 대회의실"},
-					{"room": "5층 소회의실"},
-					{"room": "접견실"}
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "leaveRequestType"},
+					{"name": "leaveRequestStart"},
+					{"name": "leaveRequestEnd"}
 				]
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("time");
+			var dataSet_2 = new cpr.data.DataSet("projectScheduleList");
 			dataSet_2.parseData({
-				"columns": [{
-					"name": "time",
-					"dataType": "string"
-				}],
-				"rows": [
-					{"time": "9:00"},
-					{"time": "10:00"},
-					{"time": "11:00"},
-					{"time": "12:00"},
-					{"time": "13:00"},
-					{"time": "14:00"},
-					{"time": "15:00"},
-					{"time": "16:00"},
-					{"time": "17:00"},
-					{"time": "18:00"},
-					{"time": "19:00"},
-					{"time": "20:00"}
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
 				]
 			});
 			app.register(dataSet_2);
-			
-			var dataSet_3 = new cpr.data.DataSet("project");
-			dataSet_3.parseData({
-				"columns" : [
-					{
-						"name": "projectStart",
-						"dataType": "string"
-					},
-					{
-						"name": "projectEnd",
-						"dataType": "string"
-					},
-					{"name": "label"},
-					{"name": "value"}
-				]
-			});
-			app.register(dataSet_3);
-			var submission_1 = new cpr.protocols.Submission("calrendar");
+			var submission_1 = new cpr.protocols.Submission("scheduleListSub");
 			submission_1.method = "get";
-			submission_1.action = "admin/carlendar";
-			submission_1.addResponseData(dataSet_3, false);
-			if(typeof onCalrendarSubmitProgress == "function") {
-				submission_1.addEventListener("submit-progress", onCalrendarSubmitProgress);
+			submission_1.action = "admin/schedules";
+			submission_1.addResponseData(dataSet_1, false);
+			submission_1.addResponseData(dataSet_2, false);
+			if(typeof onScheduleListSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onScheduleListSubSubmitSuccess);
 			}
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
@@ -134,17 +118,13 @@
 				group_1.setLayout(xYLayout_2);
 				(function(container){
 					var calendar_1 = new cpr.controls.Calendar("crd");
+					calendar_1.enabled = false;
 					calendar_1.style.setClasses(["admin_carlendar"]);
-					calendar_1.style.item.bind("color").toExpression([
-						"switch(label){",
-						"\tcase \"주간보고\": \"violet\"",
-						"\tcase \"외부\": \"red\"",
-						"\tcase \"연차\": \"orange\"",
-						"\tcase \"보고\": \"blue\"",
-						"\tcase \"교육\": \"green\"",
-						"\tcase \"기타\": \"gray\"",
-						"}"
-					].join("\n"));
+					calendar_1.style.item.css({
+						"color" : "#663399",
+						"font-size" : "13px"
+					});
+					calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
 					if(typeof onCalendarDateClick == "function") {
 						calendar_1.addEventListener("date-click", onCalendarDateClick);
 					}
@@ -169,9 +149,6 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
-			if(typeof onBodyInit == "function"){
-				app.addEventListener("init", onBodyInit);
-			}
 			if(typeof onBodyLoad == "function"){
 				app.addEventListener("load", onBodyLoad);
 			}

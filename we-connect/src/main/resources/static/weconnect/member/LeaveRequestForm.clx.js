@@ -125,12 +125,18 @@
 			(function(container){
 				var output_1 = new cpr.controls.Output();
 				output_1.value = "구분";
+				output_1.style.css({
+					"text-align" : "center"
+				});
 				container.addChild(output_1, {
 					"colIndex": 0,
 					"rowIndex": 0
 				});
 				var output_2 = new cpr.controls.Output();
 				output_2.value = "기간";
+				output_2.style.css({
+					"text-align" : "center"
+				});
 				container.addChild(output_2, {
 					"colIndex": 2,
 					"rowIndex": 0
@@ -199,45 +205,37 @@
 				textArea_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestReason");
 				container.addChild(textArea_1, {
 					"colIndex": 1,
-					"rowIndex": 0
+					"rowIndex": 0,
+					"colSpan": 1,
+					"rowSpan": 1
 				});
 			})(group_2);
 			container.addChild(group_2, {
 				"top": "200px",
+				"bottom": "110px",
 				"left": "0px",
-				"width": "1580px",
-				"height": "580px"
+				"width": "1580px"
 			});
 			
-			var group_3 = new cpr.controls.Container();
-			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
-			group_3.setLayout(xYLayout_2);
-			(function(container){
-				var button_1 = new cpr.controls.Button();
-				button_1.value = "신청";
-				if(typeof onButtonClick == "function") {
-					button_1.addEventListener("click", onButtonClick);
-				}
-				container.addChild(button_1, {
-					"top": "10px",
-					"left": "656px",
-					"width": "100px",
-					"height": "20px"
-				});
-				var button_2 = new cpr.controls.Button();
-				button_2.value = "취소";
-				container.addChild(button_2, {
-					"top": "10px",
-					"left": "790px",
-					"width": "100px",
-					"height": "20px"
-				});
-			})(group_3);
-			container.addChild(group_3, {
-				"top": "800px",
-				"left": "0px",
-				"width": "1580px",
-				"height": "60px"
+			var button_1 = new cpr.controls.Button();
+			button_1.value = "신청";
+			if(typeof onButtonClick == "function") {
+				button_1.addEventListener("click", onButtonClick);
+			}
+			container.addChild(button_1, {
+				"bottom": "0px",
+				"left": "648px",
+				"width": "100px",
+				"height": "100px"
+			});
+			
+			var button_2 = new cpr.controls.Button();
+			button_2.value = "취소";
+			container.addChild(button_2, {
+				"bottom": "0px",
+				"left": "782px",
+				"width": "100px",
+				"height": "100px"
 			});
 		}
 	});

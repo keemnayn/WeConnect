@@ -11,6 +11,8 @@ import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +24,7 @@ public class LeaveRequestRestController {
 	private final LeaveRequestService leaveRequestService;
 
 	@PostMapping
-	public View leaveRequest(DataRequest dataRequest) {
+	public View leaveRequest(DataRequest dataRequest, HttpServletRequest request) {
 		log.info("****연차 신청 컨트롤러***");
 
 		// 연차신청 데이터 맵
@@ -31,8 +33,8 @@ public class LeaveRequestRestController {
 		String leaveRequestStart = parameterGroup.getValue("leaveRequestStart");
 		String leaveRequestEnd = parameterGroup.getValue("leaveRequestEnd");
 		String leaveRequestReason = parameterGroup.getValue("leaveRequestReason");
-		long memberId = 131;
-
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
 		// 값 확인 로그 출력
 		log.info("구분: {}", leaveRequestType);
 		log.info("시작: {}", leaveRequestStart);
