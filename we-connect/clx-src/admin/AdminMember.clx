@@ -250,7 +250,7 @@
           <cl:xylayout std:sid="xylayout-2dbc9a91"/>
         </cl:group>
       </cl:tabitem>
-      <cl:tabitem std:sid="t-item-34f385bf" text="사원승인">
+      <cl:tabitem std:sid="t-item-34f385bf" text="가입승인">
         <std:metadata>
           <std:property key="is-active-item" value="true"/>
         </std:metadata>

@@ -9,8 +9,8 @@
 		notice_id AS noticeId,
 		notice_title AS noticeTitle,
 		CASE
-		WHEN LENGTH(notice_content) > 13 THEN
-		SUBSTR(notice_content, 1, 13) || '...'
+		WHEN LENGTH(notice_content) > 12 THEN
+		SUBSTR(notice_content, 1, 12) || '...'
 		ELSE
 		notice_content
 		END AS noticeContent,
