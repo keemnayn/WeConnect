@@ -737,7 +737,7 @@
 			
 			var tabItem_2 = (function(tabFolder){
 				var tabItem_2 = new cpr.controls.TabItem();
-				tabItem_2.text = "사원승인";
+				tabItem_2.text = "가입승인";
 				var group_3 = new cpr.controls.Container();
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
 				group_3.setLayout(xYLayout_3);
