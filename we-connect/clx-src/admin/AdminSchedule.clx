@@ -43,7 +43,7 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:calendar std:sid="calendar-b74becfa" id="crd" class="admin_carlendar" enabled="false">
+          <cl:calendar std:sid="calendar-b74becfa" id="crd" class="admin_carlendar">
             <cl:listener std:sid="listener-eca4c7bb" name="date-click" handler="onCalendarDateClick"/>
             <cl:listener std:sid="listener-71b770c5" name="item-click" handler="onCrdItemClick"/>
             <cl:xylayoutdata std:sid="xyl-data-d7ce4b32" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>

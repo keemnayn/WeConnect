@@ -118,7 +118,6 @@
 				group_1.setLayout(xYLayout_2);
 				(function(container){
 					var calendar_1 = new cpr.controls.Calendar("crd");
-					calendar_1.enabled = false;
 					calendar_1.style.setClasses(["admin_carlendar"]);
 					calendar_1.style.item.css({
 						"color" : "#663399",
