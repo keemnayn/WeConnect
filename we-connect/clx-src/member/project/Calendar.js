@@ -21,32 +21,14 @@ function onCalendarDateClick(e) {
 	};
 	
 	// 신규 아이템 등록 팝업
-	app.openDialog("CalendarSample/popup/CalendarItemDetail", {
-		width: 500,
-		height: 300
+	app.openDialog("dialog/CalendarItemDetail", {
+		width: 600,
+		height: 400
 	}, function(dialog) {
-		
-		dialog.initValue = initValue;
-		
 		dialog.addEventListener("close", function(e) {
 			var returnValue = dialog.returnValue;
-			
-			if (returnValue) {
-				var start = returnValue["start"];
-				var end = returnValue["end"];
-				var event = returnValue["event"];
-				var description = returnValue["description"];
-				
-				//				var vnRowCnt = app.lookup("dsAnni").getRowCount();
-				//				app.lookup("dsAnni").insertRowData(vnRowCnt, true, {
-				//					label: event,
-				//					value: "newValue_" + event + "_" + vnRowCnt,
-				//					start: start,
-				//					end: end,
-				//					description: description
-				//				});
-				calendar.redraw();
-			}
+			app.lookup("projectListSub").send();
+			calendar.redraw();
 		});
 	});
 }

@@ -353,6 +353,9 @@
             </std:metadata>
             <cl:calendar std:sid="calendar-7bdba216" id="main_crd">
               <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+              <cl:itemstyle>
+                <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;   case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;   case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;   case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;   case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;   case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;   case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
+              </cl:itemstyle>
             </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>
           </cl:group>

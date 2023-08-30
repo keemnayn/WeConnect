@@ -34,32 +34,14 @@
 				};
 				
 				// 신규 아이템 등록 팝업
-				app.openDialog("CalendarSample/popup/CalendarItemDetail", {
-					width: 500,
-					height: 300
+				app.openDialog("dialog/CalendarItemDetail", {
+					width: 600,
+					height: 400
 				}, function(dialog) {
-					
-					dialog.initValue = initValue;
-					
 					dialog.addEventListener("close", function(e) {
 						var returnValue = dialog.returnValue;
-						
-						if (returnValue) {
-							var start = returnValue["start"];
-							var end = returnValue["end"];
-							var event = returnValue["event"];
-							var description = returnValue["description"];
-							
-							//				var vnRowCnt = app.lookup("dsAnni").getRowCount();
-							//				app.lookup("dsAnni").insertRowData(vnRowCnt, true, {
-							//					label: event,
-							//					value: "newValue_" + event + "_" + vnRowCnt,
-							//					start: start,
-							//					end: end,
-							//					description: description
-							//				});
-							calendar.redraw();
-						}
+						app.lookup("projectListSub").send();
+						calendar.redraw();
 					});
 				});
 			}
@@ -156,6 +138,16 @@
 			
 			// UI Configuration
 			var calendar_1 = new cpr.controls.Calendar("calendar");
+			calendar_1.style.item.bind("background-color").toExpression([
+				"switch(label){",
+				"\tcase \"프로젝트\":\"LightGoldenRodYellow\"",
+				"\tcase \"회의\":\"pink\"",
+				"\tcase \"보고\":\"DarkSalmon\"",
+				"\tcase \"외부\":\"LightBlue\"",
+				"\tcase \"교육\":\"LightGreen\"",
+				"\tcase \"기타\":\"AliceBlue\"",
+				"}"
+			].join("\n"));
 			(function(calendar_1){
 				calendar_1.setItemSet(app.lookup("projectList"), {
 					"label": "projectName",

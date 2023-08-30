@@ -28,6 +28,9 @@
       <cl:listener std:sid="listener-ce012cfc" name="date-click" handler="onCalendarDateClick"/>
       <cl:xylayoutdata std:sid="xyl-data-dfcbb162" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:calendaritemset datasetid="projectList" label="projectName" value="projectName" tooltip="projectName" start="projectStart" end="projectEnd"/>
+	  <cl:itemstyle>
+        <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;&#x9;case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
+      </cl:itemstyle>
     </cl:calendar>
     <cl:xylayout std:sid="xylayout-6fbf1cc2"/>
   </body>
