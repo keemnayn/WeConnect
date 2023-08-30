@@ -49,9 +49,6 @@
     <cl:tabfolder std:sid="t-folder-a10d1ba7">
       <cl:xylayoutdata std:sid="xyl-data-289fbfc8" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-3e4f6c0a" text="회의실 목록">
-        <std:metadata>
-          <std:property key="is-active-item" value="true"/>
-        </std:metadata>
         <cl:group std:sid="group-c0075964">
           <std:metadata>
             <std:property key="locked" value="true"/>
@@ -94,6 +91,9 @@
         </cl:group>
       </cl:tabitem>
       <cl:tabitem std:sid="t-item-a6d1f92f" selected="true" text="예약 현황">
+        <std:metadata>
+          <std:property key="is-active-item" value="true"/>
+        </std:metadata>
         <cl:group std:sid="group-84722dfd">
           <std:metadata>
             <std:property key="locked" value="true"/>

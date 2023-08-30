@@ -41,7 +41,7 @@
 		INNER JOIN DEPARTMENT D ON M.department_id = D.department_id
 	</select>
 	<!-- 연차 관리 반차 만들어야 함 -->
-	<update id="updateLeaveCount">
+	<update id="updateLeaveCount" >
 		UPDATE member
 		SET leave_count = leave_count -
 		(SELECT

@@ -7,7 +7,7 @@
 (function() {
 	var app = new cpr.core.App("member/Member", { 
 		onPrepare: function(loader) {
-			loader.addCSS("theme/controls/adminTree.css");
+			loader.addCSS("theme/controls/MainTree.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};

@@ -69,7 +69,7 @@
         </std:metadata>
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList" autofit="1, 2, 3, 5">
-            <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="55px" right="0px" bottom="-5px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:headerstyle class="Notice_grd1"/>
             <cl:gridcolumn std:sid="g-column-a4697205" width="50px"/>
             <cl:gridcolumn std:sid="g-column-4284b01d" width="75px" visible="false"/>

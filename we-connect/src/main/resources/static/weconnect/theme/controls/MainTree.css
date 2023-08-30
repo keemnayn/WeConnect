@@ -1,0 +1,114 @@
+/* 모든 컨트롤에 적용될 기본 폰트 */
+/* 기본 텍스트 색상 */
+/* disable 상태를 나타내는 텍스트 색상 */
+/* 기본 보더 색상 */
+/* 포커스 보더 색상 */
+/* Disable 상태의 보더 색상. */
+/* 내부에 아이템을 갖는 컨트롤의 경우, 각 아이템에 마우스 호버시의 텍스트 색상 */
+/* 내부에 아이템을 갖는 컨트롤의 경우, 각 아이템에 마우스 호버시의 배경 색상 */
+/* 내부에 아이템을 갖는 컨트롤의 경우, 각 아이템에 선택된 경우 텍스트 색상 */
+/* 내부에 아이템을 갖는 컨트롤의 경우, 각 아이템이 선택된 경우 배경 색상 */
+/* 내부에 아이템을 갖는 컨트롤이 Disabled된 경우, 각 아이템에 선택된 경우 텍스트 색상 */
+/* 내부에 아이템을 갖는 컨트롤의 Disabled된 경우, 각 아이템이 선택된 경우 배경 색상 */
+.cl-tree.admin_tree {
+  border: 1px solid #ffffff;
+  font: 14px "맑은 고딕", "Malgun Gothic", sans-serif;
+  color: #333;
+  background-color: #fff;
+  /* 트리 아이템 */
+  /* 트리 - 포커스 */
+  /* 트리 다중 선택 */
+  /* 트리 아이템간 라인 */
+}
+.cl-tree.admin_tree .cl-tree-item {
+  border: none;
+  height: 120px;
+  padding: 0px;
+  border-radius: 2px;
+  text-align: left;
+  /* 트리 아이템 체크박스 아이콘 */
+  /* 트리 셀렉션 체크박스 아이콘 */
+  /* 트리 아이템 아이콘 영역 */
+  /* 트리 아이템의 펼치고 접혀지는 아이콘 영역 */
+  /* 트리 아이템 텍스트 */
+  /* 텍스트 편집 상자 */
+  /* 트리 아이템 뱃지 스타일 */
+  /* 트리 아이템 - 비활성화 */
+  /* 트리 아이템 - 선택됨 */
+}
+.cl-tree.admin_tree .cl-tree-item .cl-tree-itemicon {
+  background-size: 20px;
+}
+.cl-tree.admin_tree .cl-tree-item .cl-text {
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+.cl-tree.admin_tree .cl-tree-item.cl-checked {
+  /* 트리 아이템 체크박스 아이콘 - 선택됨 */
+}
+.cl-tree.admin_tree .cl-tree-item.cl-partialchecked {
+  /* 트리 아이템 체크박스 아이콘 - 부분 선택됨 */
+}
+.cl-tree.admin_tree .cl-tree-item.cl-folder {
+  /* 트리 아이템 폴더 아이콘 */
+  /* 트리 아이템 폴더 아이콘 - 펼쳐짐 */
+  /* 트리 아이템 폴더 아이콘 - 접힘 */
+}
+.cl-tree.admin_tree .cl-tree-item.cl-disabled {
+  color: #666;
+  /* 트리 아이템 - 비활성화, 선택됨 */
+}
+.cl-tree.admin_tree .cl-tree-item.cl-disabled.cl-selected {
+  color: #777;
+  background-color: #74788d;
+}
+.cl-tree.admin_tree .cl-tree-item.cl-selected {
+  background-color: #212529;
+  color: #212529;
+}
+.cl-tree.admin_tree .cl-tree-item.cl-selected.cl-folder {
+  /* 트리 아이템 폴더 펼쳐짐 아이콘 - 선택됨 */
+  /* 트리 아이템 폴더 점힘 아이콘 - 선택됨 */
+}
+.cl-tree.admin_tree.cl-focus {
+  border-color: #3855b3;
+}
+.cl-tree.admin_tree.cl-multi-select .cl-tree-item.cl-checked.cl-selected.cl-hover {
+  background-color: #212529;
+  color: #212529;
+}
+.cl-tree.admin_tree.cl-tree-lines .cl-tree-item {
+  padding: 0px 10px 0px 0px;
+}
+.cl-tree.admin_tree.cl-tree-lines .cl-tree-item .cl-tree-iconline {
+  margin-left: 5px;
+}
+.cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled) {
+  /* 트리 아이템 - hover */
+  /* 드래그 아이템 위치에 따른 표시 - 아래 */
+  /* 드래그 아이템 위치에 따른 표시 - 중간 */
+  /* 드래그 아이템 위치에 따른 표시 - 위 */
+}
+.cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected).cl-hover,
+.cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected):hover {
+  background-color: ;
+}
+/* 트리 - 비활성화 */
+.cl-tree.cl-disabled {
+  color: #666;
+  border-color: #ddd;
+}
+.cl-tree.cl-disabled .cl-tree-item.cl-selected {
+  background-color: #ccc;
+}
+/*login_layout*/
+.login_layout {
+  border: 1px solid #FFFFFF;
+}
+.btn12 {
+  background-color: #834342;
+}

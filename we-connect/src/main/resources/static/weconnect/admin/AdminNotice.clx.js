@@ -425,7 +425,7 @@
 					container.addChild(grid_1, {
 						"top": "55px",
 						"right": "0px",
-						"bottom": "-5px",
+						"bottom": "0px",
 						"left": "0px"
 					});
 					var group_2 = new cpr.controls.Container();

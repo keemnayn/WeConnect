@@ -45,7 +45,7 @@
   padding: 0px;
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  color: #333333;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-checked {
   /* 트리 아이템 체크박스 아이콘 - 선택됨 */
@@ -67,7 +67,7 @@
   background-color: #74788d;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-selected {
-  background-color: #212529;
+  background-color: #208AED;
   color: #212529;
 }
 .cl-tree.admin_tree .cl-tree-item.cl-selected.cl-folder {
