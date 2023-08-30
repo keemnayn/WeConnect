@@ -253,20 +253,6 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var calendar_1 = new cpr.controls.Calendar("crd");
-					calendar_1.style.setClasses(["admain_cld"]);
-					calendar_1.style.item.css({
-						"background-size" : "auto",
-						"color" : "#663399",
-						"font-size" : "14px"
-					});
-					calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
-					container.addChild(calendar_1, {
-						"top": "406px",
-						"bottom": "0px",
-						"left": "0px",
-						"width": "800px"
-					});
 					var tabFolder_2 = new cpr.controls.TabFolder();
 					
 					var tabItem_2 = (function(tabFolder){
@@ -530,10 +516,10 @@
 					tabFolder_2.addTabItem(tabItem_2);
 					tabFolder_2.setSelectedTabItem(tabItem_2);
 					container.addChild(tabFolder_2, {
-						"top": "407px",
+						"top": "381px",
 						"right": "0px",
 						"bottom": "0px",
-						"width": "755px"
+						"left": "823px"
 					});
 					var tabFolder_3 = new cpr.controls.TabFolder();
 					
@@ -1024,6 +1010,41 @@
 						"left": "0px",
 						"width": "800px",
 						"height": "370px"
+					});
+					var tabFolder_5 = new cpr.controls.TabFolder();
+					
+					var tabItem_6 = (function(tabFolder){
+						var tabItem_6 = new cpr.controls.TabItem();
+						tabItem_6.text = "일정";
+						var group_6 = new cpr.controls.Container();
+						var xYLayout_7 = new cpr.controls.layouts.XYLayout();
+						group_6.setLayout(xYLayout_7);
+						(function(container){
+							var calendar_1 = new cpr.controls.Calendar("crd");
+							calendar_1.style.setClasses(["admain_cld"]);
+							calendar_1.style.item.css({
+								"background-size" : "auto",
+								"color" : "#663399",
+								"font-size" : "14px"
+							});
+							calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
+							container.addChild(calendar_1, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_6);
+						tabItem_6.content = group_6;
+						return tabItem_6;
+					})(tabFolder_5);
+					tabFolder_5.addTabItem(tabItem_6);
+					tabFolder_5.setSelectedTabItem(tabItem_6);
+					container.addChild(tabFolder_5, {
+						"top": "370px",
+						"bottom": "0px",
+						"left": "0px",
+						"width": "805px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;

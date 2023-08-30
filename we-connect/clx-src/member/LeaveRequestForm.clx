@@ -33,6 +33,7 @@
       </cl:datamap>
       <cl:submission std:sid="submission-22cca2e3" id="Leave" action="member/leave-request">
         <cl:listener std:sid="listener-81d29135" name="submit-success" handler="onLeaveSubmitSuccess"/>
+        <cl:listener std:sid="listener-59954ecd" name="submit-error" handler="onLeaveSubmitError"/>
         <cl:requestdata dataid="leaveRequest"/>
       </cl:submission>
     </cl:model>
@@ -40,7 +41,7 @@
   </head>
   <body std:sid="body-b6366cad">
     <cl:group std:sid="group-f648dcde" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-top-width:1px; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;">
-      <cl:xylayoutdata std:sid="xyl-data-ad425d4c" top="189px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-ad425d4c" top="72px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:group std:sid="group-1ea4ba1b">
         <cl:xylayoutdata std:sid="xyl-data-06d234fb" top="0px" right="0px" bottom="401px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
         <cl:output std:sid="output-c57df6a1" style="text-align:center;" value="구분">

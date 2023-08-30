@@ -35,7 +35,7 @@
 				var request = e.control;
 				let submission = app.lookup("Leave");
 				submission.send();
-			}
+			};
 			// End - User Script
 			
 			// Header
@@ -91,6 +91,9 @@
 			submission_1.addRequestData(dataMap_1);
 			if(typeof onLeaveSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onLeaveSubmitSuccess);
+			}
+			if(typeof onLeaveSubmitError == "function") {
+				submission_1.addEventListener("submit-error", onLeaveSubmitError);
 			}
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
@@ -293,7 +296,7 @@
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "189px",
+				"top": "72px",
 				"right": "0px",
 				"bottom": "0px",
 				"left": "0px"

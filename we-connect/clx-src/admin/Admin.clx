@@ -5,6 +5,7 @@
     <screen std:sid="screen-9e8590a1" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
     <screen std:sid="screen-70bf01ad" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-7fc5c3ed" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-0e5f95f2" href="../theme/controls/adminTree2.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-c03507b1">
       <cl:dataset std:sid="d-set-cf5029dd" id="adminMenu" staterestore="true">
         <cl:datacolumnlist>

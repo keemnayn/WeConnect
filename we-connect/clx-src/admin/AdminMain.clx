@@ -106,14 +106,8 @@
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
-          <cl:calendar std:sid="calendar-a92867b7" id="crd" class="admain_cld">
-            <cl:xylayoutdata std:sid="xyl-data-bc3f2c15" top="406px" bottom="0px" left="0px" width="800px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-            <cl:itemstyle style="background-size:auto; color:#663399; font-size:14px;">
-              <cl:expbind property="background-color" category="STYLER" expression="value == &quot;연차&quot; ? &quot;rgb(248,204,215)&quot; : &quot;rgb(240,182,151)&quot;&#xD;&#xA;"/>
-            </cl:itemstyle>
-          </cl:calendar>
           <cl:tabfolder std:sid="t-folder-d42d032f">
-            <cl:xylayoutdata std:sid="xyl-data-43879342" top="407px" right="0px" bottom="0px" width="755px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+            <cl:xylayoutdata std:sid="xyl-data-43879342" top="381px" right="0px" bottom="0px" left="823px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
             <cl:tabitem std:sid="t-item-3cba63db" selected="true" text="승인 대기 회원">
               <std:metadata>
                 <std:property key="is-active-item" value="true"/>
@@ -327,6 +321,26 @@
                   </cl:griddetail>
                 </cl:grid>
                 <cl:xylayout std:sid="xylayout-defed631"/>
+              </cl:group>
+            </cl:tabitem>
+          </cl:tabfolder>
+          <cl:tabfolder std:sid="t-folder-edaa83c3">
+            <cl:xylayoutdata std:sid="xyl-data-b34e69de" top="370px" bottom="0px" left="0px" width="805px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+            <cl:tabitem std:sid="t-item-03dbc1d0" selected="true" text="일정">
+              <std:metadata>
+                <std:property key="is-active-item" value="true"/>
+              </std:metadata>
+              <cl:group std:sid="group-ca6bd91e">
+                <std:metadata>
+                  <std:property key="locked" value="true"/>
+                </std:metadata>
+                <cl:calendar std:sid="calendar-a92867b7" id="crd" class="admain_cld">
+                  <cl:xylayoutdata std:sid="xyl-data-cb49629a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+                  <cl:itemstyle style="background-size:auto; color:#663399; font-size:14px;">
+                    <cl:expbind property="background-color" category="STYLER" expression="value == &quot;연차&quot; ? &quot;rgb(248,204,215)&quot; : &quot;rgb(240,182,151)&quot;&#xD;&#xA;"/>
+                  </cl:itemstyle>
+                </cl:calendar>
+                <cl:xylayout std:sid="xylayout-3440fec3"/>
               </cl:group>
             </cl:tabitem>
           </cl:tabfolder>

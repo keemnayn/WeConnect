@@ -364,7 +364,7 @@
 							{
 								"constraint": {"rowIndex": 0, "colIndex": 4},
 								"configurator": function(cell){
-									cell.text = "정상";
+									cell.text = "출결상태";
 								}
 							}
 						]
