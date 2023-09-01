@@ -121,47 +121,47 @@
     <cl:group std:sid="group-fd4a399c">
       <cl:verticaldata std:sid="v-data-a6644184" width="1560px" height="30px"/>
       <cl:output std:sid="output-8a770495" value="작성자">
-        <cl:formdata std:sid="f-data-72f7003c" row="0" col="1"/>
+        <cl:formdata std:sid="f-data-72f7003c" row="0" col="0"/>
       </cl:output>
       <cl:output std:sid="output-befca506" value="작성일">
-        <cl:formdata std:sid="f-data-bbf1fc46" row="0" col="3"/>
+        <cl:formdata std:sid="f-data-bbf1fc46" row="0" col="2"/>
       </cl:output>
       <cl:output std:sid="output-e633b823" value="조회수">
-        <cl:formdata std:sid="f-data-43bb5378" row="0" col="5"/>
-      </cl:output>
-      <cl:output std:sid="output-7b69813d" id="freeBoardId">
-        <cl:relativebind property="value" columnname="freeBoardId"/>
-        <cl:datamapcontext datacontrolid="detailBoardParam"/>
-        <cl:formdata std:sid="f-data-e9b075b9" row="0" col="0"/>
+        <cl:formdata std:sid="f-data-43bb5378" row="0" col="4"/>
       </cl:output>
       <cl:inputbox std:sid="i-box-3395e0dd" id="memberNameIpb" readonly="true">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="memberName"/>
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
-        <cl:formdata std:sid="f-data-02afb543" row="0" col="2"/>
+        <cl:formdata std:sid="f-data-02afb543" row="0" col="1"/>
       </cl:inputbox>
       <cl:inputbox std:sid="i-box-6760834f" id="boardCreateIpb" readonly="true">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardCreate"/>
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
-        <cl:formdata std:sid="f-data-aef7d38d" row="0" col="4"/>
+        <cl:formdata std:sid="f-data-aef7d38d" row="0" col="3"/>
       </cl:inputbox>
       <cl:inputbox std:sid="i-box-7f37a769" id="boardViewsIpb" readonly="true">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="freeBoardDetail" columnname="freeBoardViews"/>
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
-        <cl:formdata std:sid="f-data-d6227963" row="0" col="6"/>
+        <cl:formdata std:sid="f-data-d6227963" row="0" col="5"/>
       </cl:inputbox>
-      <cl:output std:sid="output-d9b97878" id="fMemberId">
+      <cl:output std:sid="output-d9b97878" id="fMemberId" visible="false">
         <cl:relativebind property="value" columnname="FMemberId"/>
         <cl:datamapcontext datacontrolid="freeBoardDetail"/>
-        <cl:formdata std:sid="f-data-03203348" row="0" col="7"/>
+        <cl:formdata std:sid="f-data-03203348" row="0" col="6"/>
+      </cl:output>
+      <cl:output std:sid="output-7b69813d" id="freeBoardId" visible="false">
+        <cl:relativebind property="value" columnname="freeBoardId"/>
+        <cl:datamapcontext datacontrolid="detailBoardParam"/>
+        <cl:formdata std:sid="f-data-88753e5b" row="0" col="7"/>
       </cl:output>
       <cl:formlayout std:sid="f-layout-d0fac913" scrollable="false" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
         <cl:rows length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="100" unit="PIXEL"/>
         <cl:columns length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
         <cl:columns length="1" unit="FRACTION"/>
         <cl:columns length="100" unit="PIXEL"/>
+        <cl:columns length="1" unit="FRACTION"/>
         <cl:columns length="1" unit="FRACTION"/>
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
