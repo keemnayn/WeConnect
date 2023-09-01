@@ -26,7 +26,7 @@ public class CarlendarTest {
 	@Test
 	void insertTest() {
 		ProjectDTO projectDTO = new ProjectDTO();
-		projectDTO.setMemberId(126);
+		//projectDTO.setMemberId(126);
 		projectDTO.setProjectId(2);
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //		Date startdate = dateFormat.parse("2023-08-25");

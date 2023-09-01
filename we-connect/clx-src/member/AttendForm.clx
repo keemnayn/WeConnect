@@ -75,11 +75,11 @@
         <cl:gridcolumn std:sid="g-column-cf9fa6bb"/>
         <cl:gridheader std:sid="gh-band-3d2d7e41">
           <cl:gridrow std:sid="g-row-912b89d8" height="50px"/>
-          <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" text="날짜"/>
-          <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="1" text="출근"/>
-          <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="2" text="퇴근"/>
-          <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="3" text="이름"/>
-          <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" text="출결상태"/>
+          <cl:gridcell std:sid="gh-cell-735d5f90" rowindex="0" colindex="0" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid;" text="날짜"/>
+          <cl:gridcell std:sid="gh-cell-294c99f6" rowindex="0" colindex="1" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid;" text="출근"/>
+          <cl:gridcell std:sid="gh-cell-68775a91" rowindex="0" colindex="2" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid;" text="퇴근"/>
+          <cl:gridcell std:sid="gh-cell-e1ad8803" rowindex="0" colindex="3" style="border-right-style:solid; border-bottom-color:#bfbfbf; border-top-width:1px; border-left-style:solid; border-right-width:1px; border-left-color:#bfbfbf; border-bottom-width:1px; border-top-color:#bfbfbf; border-right-color:#bfbfbf; border-bottom-style:solid; border-left-width:1px; border-top-style:solid;" text="이름"/>
+          <cl:gridcell std:sid="gh-cell-750e760a" rowindex="0" colindex="4" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-left-style:solid; border-right-width:1px; border-bottom-width:1px; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid;" text="출결상태"/>
         </cl:gridheader>
         <cl:griddetail std:sid="gd-band-1616b1d5">
           <cl:gridrow std:sid="g-row-48a04b08" height="35px"/>
@@ -90,8 +90,8 @@
           <cl:gridcell std:sid="gd-cell-74f23d8e" rowindex="0" colindex="4" style="border-radius:0px; color:#333333;" columnname="attendanceStatus"/>
         </cl:griddetail>
       </cl:grid>
-      <cl:group std:sid="group-8449ad0f" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#ffe6e1; border-right-width:1px; border-left-color:#ffe6e1; border-right-color:#ffe6e1; border-left-width:1px; border-top-style:solid; background-color:#FFE6E1; border-radius:8px; border-left-style:solid; border-bottom-width:1px; border-top-color:#ffe6e1; border-bottom-style:solid;">
-        <cl:xylayoutdata std:sid="xyl-data-ececad4f" top="0px" right="385px" left="395px" height="42px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:group std:sid="group-8449ad0f" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#ffe6e1; border-right-width:1px; border-left-color:#ffe6e1; border-right-color:#ffe6e1; border-left-width:1px; border-top-style:solid; background-color:#E9E9E9; border-radius:8px; border-left-style:solid; border-bottom-width:1px; border-top-color:#ffe6e1; border-bottom-style:solid;">
+        <cl:xylayoutdata std:sid="xyl-data-ececad4f" top="0px" right="0px" left="0px" height="42px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
         <cl:htmlsnippet std:sid="htmlsnippet-dc625286" id="day" style="color:#6B6A6A; font-weight:600; font-size:20px; text-align:center;">
           <cl:xylayoutdata std:sid="xyl-data-49a0f1f3" top="3px" bottom="0px" width="400px" horizontalAnchor="CENTER" verticalAnchor="BOTH"/>
         </cl:htmlsnippet>
