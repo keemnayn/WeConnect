@@ -5,17 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
   
 @Data         
-@NoArgsConstructor           
+@NoArgsConstructor            
 @AllArgsConstructor    
 public class ProjectDTO {   
-	private long projectId;    
+	private long projectId;      
 	private String projectName;    
 	private String projectStart;    
-	private String projectEnd;  
-	private int projectMemberCount;           
-	private long memberId;             
-}                    
-                                                                                                                                    
-                                                          
-                                                
-                                                                                                                                                                                                                                                               
+	private String projectEnd;    
+	private int projectMemberCount;          
+}                                                                                                                 
+                                                                               
+                                                               
+      	                                                                

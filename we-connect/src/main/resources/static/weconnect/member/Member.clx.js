@@ -227,7 +227,7 @@
 					{"label": "근태", "value": "근태", "icon": "img/member/attendance.png", "parent": "", "appId": ""},
 					{"label": "프로젝트", "value": "프로젝트", "icon": "img/member/project.png", "parent": "", "appId": ""},
 					{"label": "예약", "value": "예약", "icon": "img/member/reservation.png", "parent": "", "appId": ""},
-					{"label": "게시판", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
+					{"label": "커뮤니티", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
 					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/member/commute.png", "parent": "근태", "appId": "member/AttendForm"},
 					{"label": "연차신청", "value": "연차신청", "icon": "img/member/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
 					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "member/project/Calendar"},
@@ -312,7 +312,7 @@
 			var container = app.getContainer();
 			container.style.css({
 				"border-left-color" : "#070048",
-				"background-color" : "#F8F8F8",
+				"background-color" : "#EDF2FF",
 				"width" : "100%",
 				"height" : "100%",
 				"left" : "0px"
@@ -326,7 +326,7 @@
 			var tree_1 = new cpr.controls.Tree("tre1");
 			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
-				"background-color" : "#1d2c48",
+				"background-color" : "#566B90",
 				"color" : "#FFFFFF",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
@@ -345,7 +345,7 @@
 				tree_1.addEventListener("item-click", onTre1ItemClick);
 			}
 			container.addChild(tree_1, {
-				"top": "50px",
+				"top": "70px",
 				"bottom": "0px",
 				"left": "0px",
 				"width": "300px"
@@ -353,18 +353,18 @@
 			
 			var group_1 = new cpr.controls.Container();
 			group_1.style.css({
-				"background-color" : "#ffffff"
+				"background-color" : "#EDF2FF"
 			});
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var image_1 = new cpr.controls.Image();
-				image_1.src = "img/enjoy.png";
+				image_1.src = "img/header/WE connnect (300 × 50px) (3).png";
 				container.addChild(image_1, {
-					"top": "5px",
-					"left": "0px",
+					"top": "15px",
+					"left": "10px",
 					"width": "300px",
-					"height": "40px"
+					"height": "35px"
 				});
 				var button_1 = new cpr.controls.Button();
 				button_1.value = "로그인";
@@ -384,7 +384,11 @@
 				var button_2 = new cpr.controls.Button("adminBtn");
 				button_2.value = "관리자페이지";
 				button_2.style.css({
-					"background-image" : "none"
+					"border-right-style" : "none",
+					"border-left-style" : "none",
+					"border-bottom-style" : "none",
+					"background-image" : "none",
+					"border-top-style" : "none"
 				});
 				if(typeof onButtonClick == "function") {
 					button_2.addEventListener("click", onButtonClick);
@@ -413,7 +417,11 @@
 				var button_4 = new cpr.controls.Button();
 				button_4.value = "회원가입";
 				button_4.style.css({
-					"background-image" : "none"
+					"border-right-style" : "none",
+					"border-left-style" : "none",
+					"border-bottom-style" : "none",
+					"background-image" : "none",
+					"border-top-style" : "none"
 				});
 				button_4.bind("visible").toExpression("memberId.memberId != null ? true : false");
 				if(typeof onButtonClick2 == "function") {
@@ -433,19 +441,6 @@
 				"height": "50px"
 			});
 			
-			var group_2 = new cpr.controls.Container();
-			group_2.style.css({
-				"background-color" : "#ffffff"
-			});
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			container.addChild(group_2, {
-				"right": "0px",
-				"bottom": "0px",
-				"left": "310px",
-				"height": "50px"
-			});
-			
 			var embeddedApp_1 = new cpr.controls.EmbeddedApp("ea1");
 			embeddedApp_1.style.css({
 				"background-color" : "#F8F8F8"
@@ -456,7 +451,7 @@
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
-				"bottom": "70px",
+				"bottom": "35px",
 				"left": "320px"
 			});
 			if(typeof onBodyInit == "function"){

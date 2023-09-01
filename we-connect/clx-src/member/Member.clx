@@ -45,7 +45,7 @@
             <cl:datavalue columnname="appId"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label">게시판</cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="value">게시판</cl:datavalue>
             <cl:datavalue columnname="icon">img/member/board.png</cl:datavalue>
             <cl:datavalue columnname="parent"/>
@@ -146,25 +146,25 @@
     </cl:model>
     <cl:appspec/>
   </head>
-  <body std:sid="body-8a3a7e16" style="background-color:#F8F8F8; left:0px; width:1920px; border-left-color:#070048; height:1080px;">
+  <body std:sid="body-8a3a7e16" style="background-color:#EDF2FF; left:0px; width:1920px; border-left-color:#070048; height:1080px;">
     <cl:listener std:sid="listener-2a1a7589" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-ad402a1c" name="load" handler="onBodyLoad2"/>
-    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#1d2c48; color:#FFFFFF; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff; font-family:'맑은 고딕' , 'Malgun Gothic' , sans-serif;" class="admin_tree">
+    <cl:tree std:sid="tree-30352a2e" id="tre1" style="background-color:#566B90; color:#FFFFFF; border-left-color:#f1efff; border-top-color:#f1efff; border-right-color:#f1efff; font-family:'맑은 고딕' , 'Malgun Gothic' , sans-serif;" class="admin_tree">
       <cl:listener std:sid="listener-11dd4ffb" name="item-click" handler="onTre1ItemClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="50px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-4f6b4da8" top="70px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="memberMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
-    <cl:group std:sid="group-43e402e0" style="background-color:#ffffff;">
+    <cl:group std:sid="group-43e402e0" style="background-color:#EDF2FF;">
       <cl:xylayoutdata std:sid="xyl-data-786e5156" top="0px" right="0px" left="0px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-      <cl:img std:sid="image-584cd967" src="../img/enjoy.png">
-        <cl:xylayoutdata std:sid="xyl-data-63225cd3" top="5px" left="0px" width="300px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:img std:sid="image-584cd967" src="../img/header/WE connnect (300 × 50px) (3).png">
+        <cl:xylayoutdata std:sid="xyl-data-63225cd3" top="15px" left="10px" width="300px" height="35px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
       <cl:button std:sid="button-c3ad3db8" style="background-image:none;" value="로그인">
         <cl:listener std:sid="listener-b01e441f" name="click" handler="onButtonClick3"/>
         <cl:expbind property="visible" category="PROPERTY" expression="memberId.memberId != null ? true : false"/>
         <cl:xylayoutdata std:sid="xyl-data-f8a5513e" top="5px" bottom="5px" left="1683px" width="100px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:button>
-      <cl:button std:sid="button-612c1b42" id="adminBtn" style="background-image:none;" value="관리자페이지">
+      <cl:button std:sid="button-612c1b42" id="adminBtn" style="border-right-style:none; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="관리자페이지">
         <cl:listener std:sid="listener-4f66f697" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-8157d5c7" bottom="5px" left="1683px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
@@ -173,20 +173,16 @@
         <cl:expbind property="visible" category="PROPERTY" expression="memberId.memberId != null ? false : true"/>
         <cl:xylayoutdata std:sid="xyl-data-ca8c44f2" bottom="5px" left="1793px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
-      <cl:button std:sid="button-2521907e" style="background-image:none;" value="회원가입">
+      <cl:button std:sid="button-2521907e" style="border-right-style:none; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="회원가입">
         <cl:listener std:sid="listener-24b9dfe3" name="click" handler="onButtonClick2"/>
         <cl:expbind property="visible" category="PROPERTY" expression="memberId.memberId != null ? true : false"/>
         <cl:xylayoutdata std:sid="xyl-data-03af8ec7" bottom="5px" left="1793px" width="100px" height="40px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-67b54889"/>
     </cl:group>
-    <cl:group std:sid="group-cedfdf19" style="background-color:#ffffff;">
-      <cl:xylayoutdata std:sid="xyl-data-9e03cccf" right="0px" bottom="0px" left="310px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-      <cl:xylayout std:sid="xylayout-e88e4b19"/>
-    </cl:group>
     <cl:embeddedapp std:sid="e-app-72a2cc14" id="ea1" style="background-color:#F8F8F8;">
       <cl:listener std:sid="listener-60bc421a" name="init" handler="onEa1Init2"/>
-      <cl:xylayoutdata std:sid="xyl-data-db786247" top="70px" right="20px" bottom="70px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-db786247" top="70px" right="20px" bottom="35px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:embeddedapp>
     <cl:xylayout std:sid="xylayout-920748d4"/>
   </body>
