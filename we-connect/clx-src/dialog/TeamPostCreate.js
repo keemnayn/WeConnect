@@ -12,10 +12,10 @@
 function onInsertBtnClick(e) {
 	var insertBtn = e.control;
 	var submission = app.lookup("teamPostCreateSub");
-	//var projectId = app.lookup("projectNameCmb").value;
+	var projectId = app.lookup("projectNameCmb").value;
 	var teamPostTitle = app.lookup("teamPostTitleIpb").value;
 	var teamPostContent = app.lookup("teamPostContentIpb").value;
-	if (!teamPostTitle || !teamPostContent) {
+	if (!projectId || !teamPostTitle || !teamPostContent) {
 		alert("참여하는 프로젝트 팀 게시판의 제목과 내용을 모두 입력해주세요.");
 	} else {
 		submission.send();
@@ -32,14 +32,6 @@ function onTeamPostCreateSubSubmitSuccess(e) {
 	app.close();
 }
 
-/*
- * "취소" 버튼(revertBtn)에서 click 이벤트 발생 시 호출.
- * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
- */
-function onRevertBtnClick(e) {
-	var revertBtn = e.control;
-	app.close();
-}
 
 /*
  * 루트 컨테이너에서 init 이벤트 발생 시 호출.
@@ -47,4 +39,13 @@ function onRevertBtnClick(e) {
  */
 function onBodyInit(e){
 	app.lookup("projectInfoSub").send();
+}
+
+/*
+ * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onCancelBtnClick(e){
+	var cancelBtn = e.control;
+		app.close();
 }

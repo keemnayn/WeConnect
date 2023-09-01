@@ -14,10 +14,10 @@ function onBodyLoad(e) {
 	var teamPostId = hostProperty["teamPostId"];
 	var teamPostTitle = hostProperty["teamPostTitle"];
 	var teamPostContent = hostProperty["teamPostContent"];
-//	var projectId = hostProperty["projectId"];
+	var projectId = hostProperty["projectId"];
 	app.lookup("teamPostTitleIpb").value = teamPostTitle;
 	app.lookup("teamPostContentIpb").value = teamPostContent;
-//	app.lookup("teamPostIdOpb").value = teamPostId;
+	app.lookup("teamPostIdOpb").value = teamPostId;
 }
 
 /*
@@ -27,26 +27,30 @@ function onBodyLoad(e) {
 function onUpdateBtnClick(e) {
 	var updateBtn = e.control;
 	var submission = app.lookup("teamPostUpdateSub");
+	var projectId = app.lookup("projectNameCmb").value;
 	var teamPostTitle = app.lookup("teamPostTitleIpb").value;
 	var teamPostContent = app.lookup("teamPostContentIpb").value;
-	if (!teamPostTitle || !teamPostContent) {
-		alert("팀게시글의 제목과 내용을 모두 입력해주세요.");
+	if (!projectId || !teamPostTitle || !teamPostContent) {
+		alert("참여하는 프로젝트 팀 게시판의 제목과 내용을 모두 입력해주세요.");
 	} else {
 		submission.send();
 	}
 }
 
-
 /*
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onTeamPostUpdateSubSubmitSuccess(e){
+function onTeamPostUpdateSubSubmitSuccess(e) {
 	var teamPostUpdateSub = e.control;
-	alert("팀 포스트 수정 완료");
-	app.close();
+	if (!confirm("해당 글을 수정하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+		alert("취소를 누르셨습니다");
+	} else {
+		alert("팀 포스트 수정 완료");
+		app.close();
+	}	
 }
-
 
 /*
  * "삭제" 버튼(deleteBtn)에서 click 이벤트 발생 시 호출.
@@ -61,9 +65,9 @@ function onDeleteBtnClick(e) {
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onTeamPostDeleteSubSubmitSuccess(e){
+function onTeamPostDeleteSubSubmitSuccess(e) {
 	var teamPostDeleteSub = e.control;
-		if (!confirm("해당 글을 삭제하시겠습니까? 한 번 삭제된 글은 복구할 수 없습니다.")) {
+	if (!confirm("해당 글을 삭제하시겠습니까? 한 번 삭제된 글은 복구할 수 없습니다.")) {
 		// 취소(아니오) 버튼 클릭 시 이벤트
 		alert("취소를 누르셨습니다");
 	} else {

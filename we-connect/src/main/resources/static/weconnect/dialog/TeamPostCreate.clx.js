@@ -25,10 +25,10 @@
 			function onInsertBtnClick(e) {
 				var insertBtn = e.control;
 				var submission = app.lookup("teamPostCreateSub");
-				//var projectId = app.lookup("projectNameCmb").value;
+				var projectId = app.lookup("projectNameCmb").value;
 				var teamPostTitle = app.lookup("teamPostTitleIpb").value;
 				var teamPostContent = app.lookup("teamPostContentIpb").value;
-				if (!teamPostTitle || !teamPostContent) {
+				if (!projectId || !teamPostTitle || !teamPostContent) {
 					alert("참여하는 프로젝트 팀 게시판의 제목과 내용을 모두 입력해주세요.");
 				} else {
 					submission.send();
@@ -45,14 +45,6 @@
 				app.close();
 			}
 
-			/*
-			 * "취소" 버튼(revertBtn)에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
-			function onRevertBtnClick(e) {
-				var revertBtn = e.control;
-				app.close();
-			}
 
 			/*
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
@@ -60,6 +52,15 @@
 			 */
 			function onBodyInit(e){
 				app.lookup("projectInfoSub").send();
+			}
+
+			/*
+			 * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onCancelBtnClick(e){
+				var cancelBtn = e.control;
+					app.close();
 			};
 			// End - User Script
 			
@@ -165,24 +166,46 @@
 				formLayout_2.setColumns(["100px", "1fr"]);
 				formLayout_2.setRows(["50px"]);
 				group_3.setLayout(formLayout_2);
+				(function(container){
+					var output_2 = new cpr.controls.Output();
+					output_2.value = "프로젝트명";
+					container.addChild(output_2, {
+						"colIndex": 0,
+						"rowIndex": 0
+					});
+					var comboBox_1 = new cpr.controls.ComboBox("projectNameCmb");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
+					comboBox_1.setBindContext(dataMapContext_2);
+					comboBox_1.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "projectId");
+					(function(comboBox_1){
+						comboBox_1.setItemSet(app.lookup("projectInfo"), {
+							"label": "projectName",
+							"value": "projectId"
+						});
+					})(comboBox_1);
+					container.addChild(comboBox_1, {
+						"colIndex": 1,
+						"rowIndex": 0
+					});
+				})(group_3);
 				container.addChild(group_3, {
 					"top": "70px",
 					"right": "5px",
 					"left": "5px",
 					"height": "60px"
 				});
-				var output_2 = new cpr.controls.Output();
-				output_2.value = "프로젝트 팀원들에게 전달할 내용을 자유롭게 작성해주세요.";
-				container.addChild(output_2, {
+				var output_3 = new cpr.controls.Output();
+				output_3.value = "프로젝트 팀원들에게 전달할 내용을 자유롭게 작성해주세요.";
+				container.addChild(output_3, {
 					"top": "10px",
 					"right": "5px",
 					"left": "5px",
 					"height": "50px"
 				});
-				var button_1 = new cpr.controls.Button("revertBtn");
+				var button_1 = new cpr.controls.Button("cancelBtn");
 				button_1.value = "취소";
-				if(typeof onRevertBtnClick == "function") {
-					button_1.addEventListener("click", onRevertBtnClick);
+				if(typeof onCancelBtnClick == "function") {
+					button_1.addEventListener("click", onCancelBtnClick);
 				}
 				container.addChild(button_1, {
 					"right": "506px",
@@ -214,15 +237,15 @@
 				formLayout_3.setRows(["50px"]);
 				group_4.setLayout(formLayout_3);
 				(function(container){
-					var output_3 = new cpr.controls.Output();
-					output_3.value = "제목";
-					container.addChild(output_3, {
+					var output_4 = new cpr.controls.Output();
+					output_4.value = "제목";
+					container.addChild(output_4, {
 						"colIndex": 0,
 						"rowIndex": 0
 					});
 					var inputBox_2 = new cpr.controls.InputBox("teamPostTitleIpb");
-					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
-					inputBox_2.setBindContext(dataMapContext_2);
+					var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
+					inputBox_2.setBindContext(dataMapContext_3);
 					inputBox_2.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostTitle");
 					container.addChild(inputBox_2, {
 						"colIndex": 1,
