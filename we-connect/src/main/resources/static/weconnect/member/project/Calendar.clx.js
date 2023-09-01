@@ -51,29 +51,6 @@
 			 * 통신이 성공하면 발생합니다.
 			 */
 			function onProjectListSubSubmitSuccess(e) {
-				//	var projectListSub = e.control;
-				//	var calendar = app.lookup("calendar");
-				//	var dataSet = app.lookup("projectList");
-				//	var jsonData = JSON.parse(projectListSub.xhr.responseText);
-				//	var projectList = jsonData.projectList[0];
-				//	var projectName = jsonData.projectList[0].projectName;
-				//	var projectStart = jsonData.projectList[0].projectStart;
-				//	var projectEnd = jsonData.projectList[0].projectEnd;
-				//	console.log(projectName);
-				//	console.log(projectStart);
-				//	console.log(projectEnd);
-				//	
-				//	for (var i = 0; i < projectList.length; i++) {
-				//		let projectName = projectList[i].projectName;
-				//		let projectStart = projectList[i].projectStart;
-				//		let projectEnd = projectList[i].projectEnd;
-				//		const dateRange = [projectStart, projectEnd];
-				//		
-				//		calendar.addAnniversary({
-				//			date: dateRange,
-				//			label: projectName
-				//		});
-				//	}
 				var submission = app.lookup("projectListSub");
 				var calendar = app.lookup("calendar");
 				var dataSet = app.lookup("projectList");
@@ -83,10 +60,6 @@
 					var projectName = jsonData.projectList[i].projectName;
 					var projectStart = jsonData.projectList[i].projectStart;
 					var projectEnd = jsonData.projectList[i].projectEnd;
-					console.log(projectName);
-					console.log(projectStart);
-					console.log(projectEnd);
-					//	calendar.addItem(new cpr.controls.CalendarItem("label", new Date(dataSet.getColumn("projectStart")), new Date(dataSet.getColumn("projectEnd"))));
 					calendar.addItem(new cpr.controls.CalendarItem(projectName, new Date(projectStart), new Date(projectEnd)));
 				}
 			}
