@@ -51,12 +51,12 @@
       <cl:group std:sid="group-ccc9925a">
         <cl:xylayoutdata std:sid="xyl-data-a4b5a61f" top="70px" right="5px" left="5px" height="60px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
         <cl:output std:sid="output-1d111ff7" value="프로젝트명">
-          <cl:formdata std:sid="f-data-493c2c0a" row="0" col="0"/>
+          <cl:formdata std:sid="f-data-94821149" row="0" col="0"/>
         </cl:output>
         <cl:combobox std:sid="c-box-fcdb3985" id="projectNameCmb">
           <cl:datamapbind property="value" category="PROPERTY" datacontrolid="teamPostCreateParam" columnname="projectId"/>
           <cl:datamapcontext datacontrolid="teamPostCreateParam"/>
-          <cl:formdata std:sid="f-data-a0239de9" row="0" col="1"/>
+          <cl:formdata std:sid="f-data-c4531075" row="0" col="1"/>
           <cl:itemset datasetid="projectInfo" label="projectName" value="projectId"/>
         </cl:combobox>
         <cl:formlayout std:sid="f-layout-1a177532" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
@@ -68,8 +68,8 @@
       <cl:output std:sid="output-fceb3975" value="프로젝트 팀원들에게 전달할 내용을 자유롭게 작성해주세요.">
         <cl:xylayoutdata std:sid="xyl-data-8e07eb08" top="10px" right="5px" left="5px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       </cl:output>
-      <cl:button std:sid="button-0446aba0" id="cancelBtn" value="취소">
-        <cl:listener std:sid="listener-a1933a40" name="click" handler="onCancelBtnClick"/>
+      <cl:button std:sid="button-0446aba0" id="cancleBtn" value="취소">
+        <cl:listener std:sid="listener-4c549b2b" name="click" handler="onCancleBtnClick"/>
         <cl:xylayoutdata std:sid="xyl-data-e0193aaf" right="506px" bottom="5px" width="200px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
       </cl:button>
       <cl:button std:sid="button-39198b35" id="insertBtn" value="등록">

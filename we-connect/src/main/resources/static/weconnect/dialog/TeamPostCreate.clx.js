@@ -45,23 +45,22 @@
 				app.close();
 			}
 
-
 			/*
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
+			function onBodyInit(e) {
 				app.lookup("projectInfoSub").send();
 			}
 
 			/*
-			 * "취소" 버튼(cancelBtn)에서 click 이벤트 발생 시 호출.
+			 * "취소" 버튼(cancleBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onCancelBtnClick(e){
-				var cancelBtn = e.control;
-					app.close();
-			};
+			function onCancleBtnClick(e){
+				var cancleBtn = e.control;
+				app.close();
+			}
 			// End - User Script
 			
 			// Header
@@ -202,10 +201,10 @@
 					"left": "5px",
 					"height": "50px"
 				});
-				var button_1 = new cpr.controls.Button("cancelBtn");
+				var button_1 = new cpr.controls.Button("cancleBtn");
 				button_1.value = "취소";
-				if(typeof onCancelBtnClick == "function") {
-					button_1.addEventListener("click", onCancelBtnClick);
+				if(typeof onCancleBtnClick == "function") {
+					button_1.addEventListener("click", onCancleBtnClick);
 				}
 				container.addChild(button_1, {
 					"right": "506px",
