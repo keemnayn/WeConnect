@@ -118,10 +118,10 @@ public class TeamPostRestController {
 		return new JSONDataView();
 	}
 
-// 팀 워크보드 삭제
+	// 팀 워크보드 삭제
 	@DeleteMapping
 	public View deleteTeamPost(DataRequest dataRequest, HttpServletRequest request) {
-		ParameterGroup param = dataRequest.getParameterGroup("teamPostDeleteSub");
+		ParameterGroup param = dataRequest.getParameterGroup("teamPostIdParam");
 		// "proposalUpdateParam" 파라미터 그룹에서 데이터를 추출하여 처리
 		if (param != null) {
 			HttpSession session = request.getSession();
@@ -140,4 +140,5 @@ public class TeamPostRestController {
 		// JSON 형식의 응답을 반환
 		return new JSONDataView();
 	}
+
 }

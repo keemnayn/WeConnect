@@ -33,8 +33,6 @@ function onTeamPostListSubSubmitSuccess(e) {
 	var teamPostList = jsonData.teamPostList;
 	var container = app.lookup("grp");
 	container.removeAllChildren();
-	// var pageIndexer = app.lookup("page");
-	// pageIndexer.totalRowCount = totalCommentCount;
 	console.log(teamPostList.length);
 	
 	for (var i = 0; i < teamPostList.length; i++) {
@@ -45,7 +43,7 @@ function onTeamPostListSubSubmitSuccess(e) {
 			teamPostUdc.date = teamPostList[i].teamPostCreateDate;
 			teamPostUdc.title = teamPostList[i].teamPostTitle;
 			teamPostUdc.content = teamPostList[i].teamPostContent;
-			//teamPostUdc.project = teamPostList[i].projectName;
+			teamPostUdc.project = teamPostList[i].projectName;
 			teamPostUdc.department = teamPostList[i].departmentName;
 			
 			container.addChild(teamPostUdc, {
