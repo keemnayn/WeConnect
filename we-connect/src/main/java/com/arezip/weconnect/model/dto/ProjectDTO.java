@@ -12,7 +12,8 @@ public class ProjectDTO {
 	private String projectName;    
 	private String projectStart;    
 	private String projectEnd;    
-	private int projectMemberCount;          
+	private int projectMemberCount;
+	private long memberId;  
 }                                                                                                                 
                                                                                
                                                                
