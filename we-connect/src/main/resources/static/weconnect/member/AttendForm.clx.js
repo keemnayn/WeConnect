@@ -341,30 +341,100 @@
 								"constraint": {"rowIndex": 0, "colIndex": 0},
 								"configurator": function(cell){
 									cell.text = "날짜";
+									cell.style.css({
+										"border-right-style" : "solid",
+										"border-top-width" : "1px",
+										"border-bottom-color" : "#bfbfbf",
+										"border-left-style" : "solid",
+										"border-right-width" : "1px",
+										"border-bottom-width" : "1px",
+										"border-left-color" : "#bfbfbf",
+										"border-top-color" : "#bfbfbf",
+										"border-bottom-style" : "solid",
+										"border-right-color" : "#bfbfbf",
+										"border-left-width" : "1px",
+										"border-top-style" : "solid"
+									});
 								}
 							},
 							{
 								"constraint": {"rowIndex": 0, "colIndex": 1},
 								"configurator": function(cell){
 									cell.text = "출근";
+									cell.style.css({
+										"border-right-style" : "solid",
+										"border-top-width" : "1px",
+										"border-bottom-color" : "#bfbfbf",
+										"border-left-style" : "solid",
+										"border-right-width" : "1px",
+										"border-bottom-width" : "1px",
+										"border-left-color" : "#bfbfbf",
+										"border-top-color" : "#bfbfbf",
+										"border-bottom-style" : "solid",
+										"border-right-color" : "#bfbfbf",
+										"border-left-width" : "1px",
+										"border-top-style" : "solid"
+									});
 								}
 							},
 							{
 								"constraint": {"rowIndex": 0, "colIndex": 2},
 								"configurator": function(cell){
 									cell.text = "퇴근";
+									cell.style.css({
+										"border-right-style" : "solid",
+										"border-top-width" : "1px",
+										"border-bottom-color" : "#bfbfbf",
+										"border-left-style" : "solid",
+										"border-right-width" : "1px",
+										"border-bottom-width" : "1px",
+										"border-left-color" : "#bfbfbf",
+										"border-top-color" : "#bfbfbf",
+										"border-bottom-style" : "solid",
+										"border-right-color" : "#bfbfbf",
+										"border-left-width" : "1px",
+										"border-top-style" : "solid"
+									});
 								}
 							},
 							{
 								"constraint": {"rowIndex": 0, "colIndex": 3},
 								"configurator": function(cell){
 									cell.text = "이름";
+									cell.style.css({
+										"border-right-style" : "solid",
+										"border-bottom-color" : "#bfbfbf",
+										"border-top-width" : "1px",
+										"border-left-style" : "solid",
+										"border-right-width" : "1px",
+										"border-left-color" : "#bfbfbf",
+										"border-bottom-width" : "1px",
+										"border-top-color" : "#bfbfbf",
+										"border-right-color" : "#bfbfbf",
+										"border-bottom-style" : "solid",
+										"border-left-width" : "1px",
+										"border-top-style" : "solid"
+									});
 								}
 							},
 							{
 								"constraint": {"rowIndex": 0, "colIndex": 4},
 								"configurator": function(cell){
 									cell.text = "출결상태";
+									cell.style.css({
+										"border-right-style" : "solid",
+										"border-top-width" : "1px",
+										"border-bottom-color" : "#bfbfbf",
+										"border-left-style" : "solid",
+										"border-right-width" : "1px",
+										"border-bottom-width" : "1px",
+										"border-left-color" : "#bfbfbf",
+										"border-top-color" : "#bfbfbf",
+										"border-bottom-style" : "solid",
+										"border-right-color" : "#bfbfbf",
+										"border-left-width" : "1px",
+										"border-top-style" : "solid"
+									});
 								}
 							}
 						]
@@ -429,7 +499,7 @@
 					"border-right-color" : "#ffe6e1",
 					"border-left-width" : "1px",
 					"border-top-style" : "solid",
-					"background-color" : "#FFE6E1",
+					"background-color" : "#E9E9E9",
 					"border-radius" : "8px",
 					"border-left-style" : "solid",
 					"border-bottom-width" : "1px",
@@ -455,8 +525,8 @@
 				})(group_2);
 				container.addChild(group_2, {
 					"top": "0px",
-					"right": "385px",
-					"left": "395px",
+					"right": "0px",
+					"left": "0px",
 					"height": "42px"
 				});
 				var group_3 = new cpr.controls.Container();
