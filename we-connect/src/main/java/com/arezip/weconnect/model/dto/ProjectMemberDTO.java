@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectMemberDTO {
-	private MemberDTO memberVO;
-	private ProjectDTO projectVO;
+	private long memberId;
+	private long projectId;
 }
