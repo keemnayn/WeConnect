@@ -429,67 +429,69 @@
 			formLayout_1.leftMargin = "0px";
 			formLayout_1.horizontalSpacing = "0px";
 			formLayout_1.verticalSpacing = "0px";
-			formLayout_1.setColumns(["100px", "100px", "1fr", "100px", "1fr", "100px", "1fr", "1fr"]);
+			formLayout_1.setColumns(["100px", "1fr", "100px", "1fr", "100px", "1fr", "1fr", "1fr"]);
 			formLayout_1.setRows(["1fr"]);
 			group_2.setLayout(formLayout_1);
 			(function(container){
 				var output_1 = new cpr.controls.Output();
 				output_1.value = "작성자";
 				container.addChild(output_1, {
-					"colIndex": 1,
+					"colIndex": 0,
 					"rowIndex": 0
 				});
 				var output_2 = new cpr.controls.Output();
 				output_2.value = "작성일";
 				container.addChild(output_2, {
-					"colIndex": 3,
+					"colIndex": 2,
 					"rowIndex": 0
 				});
 				var output_3 = new cpr.controls.Output();
 				output_3.value = "조회수";
 				container.addChild(output_3, {
-					"colIndex": 5,
-					"rowIndex": 0
-				});
-				var output_4 = new cpr.controls.Output("freeBoardId");
-				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("detailBoardParam"));
-				output_4.setBindContext(dataMapContext_2);
-				output_4.bind("value").toDataColumn("freeBoardId");
-				container.addChild(output_4, {
-					"colIndex": 0,
+					"colIndex": 4,
 					"rowIndex": 0
 				});
 				var inputBox_2 = new cpr.controls.InputBox("memberNameIpb");
 				inputBox_2.readOnly = true;
-				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_2.setBindContext(dataMapContext_3);
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				inputBox_2.setBindContext(dataMapContext_2);
 				inputBox_2.bind("value").toDataMap(app.lookup("freeBoardDetail"), "memberName");
 				container.addChild(inputBox_2, {
-					"colIndex": 2,
+					"colIndex": 1,
 					"rowIndex": 0
 				});
 				var inputBox_3 = new cpr.controls.InputBox("boardCreateIpb");
 				inputBox_3.readOnly = true;
-				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_3.setBindContext(dataMapContext_4);
+				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				inputBox_3.setBindContext(dataMapContext_3);
 				inputBox_3.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardCreate");
 				container.addChild(inputBox_3, {
-					"colIndex": 4,
+					"colIndex": 3,
 					"rowIndex": 0
 				});
 				var inputBox_4 = new cpr.controls.InputBox("boardViewsIpb");
 				inputBox_4.readOnly = true;
-				var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
-				inputBox_4.setBindContext(dataMapContext_5);
+				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				inputBox_4.setBindContext(dataMapContext_4);
 				inputBox_4.bind("value").toDataMap(app.lookup("freeBoardDetail"), "freeBoardViews");
 				container.addChild(inputBox_4, {
+					"colIndex": 5,
+					"rowIndex": 0
+				});
+				var output_4 = new cpr.controls.Output("fMemberId");
+				output_4.visible = false;
+				var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				output_4.setBindContext(dataMapContext_5);
+				output_4.bind("value").toDataColumn("FMemberId");
+				container.addChild(output_4, {
 					"colIndex": 6,
 					"rowIndex": 0
 				});
-				var output_5 = new cpr.controls.Output("fMemberId");
-				var dataMapContext_6 = new cpr.bind.DataMapContext(app.lookup("freeBoardDetail"));
+				var output_5 = new cpr.controls.Output("freeBoardId");
+				output_5.visible = false;
+				var dataMapContext_6 = new cpr.bind.DataMapContext(app.lookup("detailBoardParam"));
 				output_5.setBindContext(dataMapContext_6);
-				output_5.bind("value").toDataColumn("FMemberId");
+				output_5.bind("value").toDataColumn("freeBoardId");
 				container.addChild(output_5, {
 					"colIndex": 7,
 					"rowIndex": 0

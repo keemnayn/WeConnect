@@ -4,13 +4,46 @@
 	namespace="com.arezip.weconnect.mapper.CarlendarProjectMapper">
 	<select id="findProjectByMemberId"
 		resultType="com.arezip.weconnect.model.dto.ProjectDTO">
-		SELECT project_name, to_char(project_start, 'YYYY-MM-DD') as projectStart, to_char(project_end, 'YYYY-MM-DD') as projectEnd
-		FROM project
+		 SELECT
+		 P.PROJECT_NAME, to_char(P.PROJECT_START, 'YYYY-MM-DD')
+				as projectStart, to_char(P.PROJECT_END, 'YYYY-MM-DD') as projectEnd
+		FROM
+		    WECONNECT.MEMBER M
+		LEFT JOIN
+		    WECONNECT.PROJECT_MEMBER PM ON M.MEMBER_ID = PM.MEMBER_ID
+		LEFT JOIN
+		    WECONNECT.PROJECT P ON PM.PROJECT_ID = P.PROJECT_ID
 		WHERE
-		member_id = #{memberId}
+		m.member_id = #{memberId}
 	</select>
-	<insert id="insertProject" parameterType="com.arezip.weconnect.model.dto.ProjectDTO">
-		insert into project(project_id,project_name,project_start,project_end,member_id) 
-		values(project_seq.nextval,#{projectName},#{projectStart},#{projectEnd},#{memberId})
+	<insert id="insertProject"
+		parameterType="com.arezip.weconnect.model.dto.ProjectDTO">
+		<selectKey keyProperty="projectId"
+			resultType="java.lang.Long" order="BEFORE">
+			SELECT project_seq.nextval FROM
+			dual
+		</selectKey>
+		insert into project(project_id, project_name, project_start,
+		project_end,
+		member_id)
+		values(#{projectId}, #{projectName},
+		#{projectStart}, #{projectEnd}, #{memberId})
+	</insert>
+
+	<select id="selectMemberDepartment"
+		resultType="com.arezip.weconnect.model.dto.MemberDTO"
+		parameterType="long">
+		select member_id from member where department_id =
+		#{departmentId}
+	</select>
+	<select id="selectDepartmentId" resultType="long"
+		parameterType="long">
+		select department_id from member where member_id =
+		#{memberId}
+	</select>
+	<insert id="insertProjectMember"
+		parameterType="com.arezip.weconnect.model.dto.ProjectMemberDTO">
+		insert into project_member values (#{memberId},
+		#{projectId})
 	</insert>
 </mapper>
