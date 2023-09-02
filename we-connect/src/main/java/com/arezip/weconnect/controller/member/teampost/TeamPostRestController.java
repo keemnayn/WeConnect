@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
+import com.arezip.weconnect.model.dto.MemberDTO;
+import com.arezip.weconnect.model.dto.ProjectDTO;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
 import com.arezip.weconnect.service.ProjectService;
 import com.arezip.weconnect.service.TeamPostService;
@@ -39,6 +41,17 @@ public class TeamPostRestController {
 		return new JSONDataView();
 	}
 
+// 팀 워크보드 상세
+	@GetMapping("detail")
+	public View getMemberId(DataRequest dataRequest, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberDTO memberDTO = new MemberDTO();
+		Long memberId = (Long) session.getAttribute("memberId");
+		memberDTO.setMemberId(memberId);
+		dataRequest.setResponse("memberDTO", memberDTO);
+		return new JSONDataView();
+	}
+
 // 팀 워크보드 새 글 쓰기
 	@PostMapping
 	public View PostTeamPost(DataRequest dataRequest, HttpServletRequest request) {
@@ -49,29 +62,30 @@ public class TeamPostRestController {
 			String teamPostTitle = param.getValue("teamPostTitle");
 			String teamPostContent = param.getValue("teamPostContent");
 			// Long projectId=(Long) session.getAttribute("projectId");
-			// long projectId = Long.parseLong(param.getValue("projectId"));
+			long projectId = Long.parseLong(param.getValue("projectId"));
 			log.info("memberId {}", memberId);
 			log.info("teamPostTitle {}", teamPostTitle);
 			log.info("teamPostContent {}", teamPostContent);
-			// log.info("projectId {}", projectId);
+			log.info("projectId {}", projectId);
 			TeamPostDTO teamPostDTO = new TeamPostDTO();
 			teamPostDTO.setMemberId(memberId);
 			teamPostDTO.setTeamPostTitle(teamPostTitle);
 			teamPostDTO.setTeamPostContent(teamPostContent);
-			// teamPostDTO.setProjectId(projectId);
+			teamPostDTO.setProjectId(projectId);
 			teamPostService.addTeamPost(teamPostDTO);
 		}
 		return new JSONDataView();
 	}
 
-	/*
-	 * // 콤보박스에 프로젝트 정보 가져오기
-	 * 
-	 * @GetMapping public View ListProjectName(DataRequest dataRequest) {
-	 * List<ProjectDTO> projectList = projectService.getProjectList();
-	 * dataRequest.setResponse("projectInfo", projectList); log.info("프로젝트 리스트{}:",
-	 * projectService.getProjectList()); return new JSONDataView(); } }
-	 */
+	// 콤보박스에 프로젝트 정보 가져오기
+
+	@GetMapping
+	public View ListProjectName(DataRequest dataRequest) {
+		List<ProjectDTO> projectList = projectService.getProjectList();
+		dataRequest.setResponse("projectInfo", projectList);
+		log.info("프로젝트 리스트{}:", projectService.getProjectList());
+		return new JSONDataView();
+	}
 
 // 팀 워크보드 수정
 	@PutMapping
@@ -107,7 +121,7 @@ public class TeamPostRestController {
 // 팀 워크보드 삭제
 	@DeleteMapping
 	public View deleteTeamPost(DataRequest dataRequest, HttpServletRequest request) {
-		ParameterGroup param = dataRequest.getParameterGroup("teamPostIdParam");
+		ParameterGroup param = dataRequest.getParameterGroup("teamPostDeleteSub");
 		// "proposalUpdateParam" 파라미터 그룹에서 데이터를 추출하여 처리
 		if (param != null) {
 			HttpSession session = request.getSession();
@@ -122,7 +136,6 @@ public class TeamPostRestController {
 			teamPostDTO.setTeamPostId(teamPostId);
 			// Service 계층의 deleteProposal 메서드를 호출하여 건의사항을 수정
 			teamPostService.deleteTeamPost(teamPostDTO);
-			System.out.println("here" + teamPostDTO);
 		}
 		// JSON 형식의 응답을 반환
 		return new JSONDataView();

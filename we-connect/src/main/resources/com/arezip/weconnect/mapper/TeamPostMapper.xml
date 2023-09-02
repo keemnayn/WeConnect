@@ -45,9 +45,10 @@
 	<insert id="insertTeamPost"
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		insert into team_post(team_post_id, team_post_title,
-		team_post_content, member_id)
+		team_post_content, project_id, member_id)
 		values(team_post_seq.nextval,
 		#{teamPostTitle}, #{teamPostContent},
+		#{projectId},
 		#{memberId})
 	</insert>
 	<!-- <select id="getTeamPostDetail" resultType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
@@ -60,7 +61,8 @@
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		UPDATE team_post
 		SET team_post_title = #{teamPostTitle},
-		team_post_content = #{teamPostContent}
+		team_post_content = #{teamPostContent},
+		project_id = #{projectId}
 		WHERE team_post_id =
 		#{teamPostId} AND member_id = #{memberId}
 	</update>
