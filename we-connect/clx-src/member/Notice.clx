@@ -108,7 +108,7 @@
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-4ce1c669" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb">
+      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb" style="text-align:center;">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-74061233" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>

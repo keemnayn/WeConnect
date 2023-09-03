@@ -107,20 +107,6 @@
       <cl:datarowcontext datacontrolid="teamPostList"/>
       <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
-    <cl:group std:sid="group-e89323ed">
-      <cl:verticaldata std:sid="v-data-b8901bcf" width="845px" height="54px" autosize="none"/>
-      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
-        <cl:listener std:sid="listener-4b0eae30" name="search" handler="onSearchIpbSearch"/>
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
-        <cl:xylayoutdata std:sid="xyl-data-290bccd0" top="18px" right="84px" left="201px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-      </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb">
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
-        <cl:xylayoutdata std:sid="xyl-data-a59795a2" top="20px" right="654px" left="91px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-        <cl:itemset datasetid="teamPostSearch" label="type" value="value"/>
-      </cl:combobox>
-      <cl:xylayout std:sid="xylayout-79e361e1"/>
-    </cl:group>
     <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
       <cl:listener std:sid="listener-44971034" name="mousedown" handler="onInsertIpbMousedown"/>
       <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>

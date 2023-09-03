@@ -21,39 +21,14 @@ function onAddRoomBtnClick2(e) {
 	var addRoomBtn = e.control;
 	var button = e.control;
 	app.openDialog("dialog/RoomCreate", {
-		width: 600,
-		height: 400
+		width: 550,
+		height: 350
 	}, function(dialog) {
 		dialog.addEventListener("close", function(e) {
 			app.lookup("roomListSub").send();
 		});
 	});
 }
-
-///*
-// * "수정" 버튼(updateBtn)에서 click 이벤트 발생 시 호출.
-// * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-// */
-//function onUpdateBtnClick(e){
-//	var updateBtn = e.control;
-//	var grid = app.lookup("roomGrd");
-//	var checkRowIndices = grid.getCheckRowIndices();
-//	if(checkRowIndices.length == 1) {
-//		var roomId = grid.dataSet.getValue(checkRowIndices[0], "roomId");
-//		var roomName = grid.dataSet.getValue(checkRowIndices[0], "roomName");
-//		var value = {
-//			"roomId":roomId,
-//			"roomName":roomName
-//		}
-//		app.openDialog("appURI", {width : 400, height : 300}, function(dialog){
-//			dialog.ready(function(dialogApp){
-//				// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
-//			});
-//		}).then(function(returnValue){
-//			;
-//		});
-//	}
-//}
 
 /*
  * "삭제" 버튼(deleteBtn)에서 click 이벤트 발생 시 호출.
