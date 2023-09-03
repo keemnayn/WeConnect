@@ -36,8 +36,8 @@
             <cl:datavalue columnname="icon"><![CDATA[img/icon/project.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[커뮤니티]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/icon/board.png]]></cl:datavalue>
           </cl:datarow>
@@ -72,21 +72,21 @@
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminVacation]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[admin/AdminNotice]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[자유게시판]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[자유게시판]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminBoard]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminNotice]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[건의사항]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminProposal]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
