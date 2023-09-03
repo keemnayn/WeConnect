@@ -44,6 +44,7 @@
 				var xhr = teamPostListSub.xhr;
 				var jsonData = JSON.parse(xhr.responseText);
 				var teamPostList = jsonData.teamPostList;
+				var comment = jsonData.comment;
 				var container = app.lookup("grp");
 				container.removeAllChildren();
 				console.log(teamPostList.length);
@@ -58,7 +59,7 @@
 						teamPostUdc.content = teamPostList[i].teamPostContent;
 						teamPostUdc.project = teamPostList[i].projectName;
 						teamPostUdc.department = teamPostList[i].departmentName;
-						
+									
 						container.addChild(teamPostUdc, {
 							width: "800px",
 							height: "400px",
@@ -71,39 +72,10 @@
 								teamPostDeleteSub.send();
 							}
 						});
-					//teamPostUdc.addEventListener("updateClick", function(e) {
-					//	app.lookup("teamPostUpdateParam").setValue("teamPostId", teamPostList[index].teamPostId);
-					//	app.lookup("teamPostUpdateParam").setValue("teamPostTitle", teamPostList[index].teamPostTitle);
-					//	app.lookup("teamPostUpdateParam").setValue("teamPostContent", teamPostList[index].teamPostContent);
-					//	if (confirm("수정하시겠습니까?")) {
-					//		var teamPostUpdateSub = app.lookup("teamPostUpdateSub");
-					//		teamPostUpdateSub.send();
-					//	}
-					//});
 					})(i);
 				}
 			}
 
-			//app.lookup("projectName").redraw();
-
-			/*
-			 * 그룹에서 dblclick 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
-			* 	
-			function onGrpDblclick(e) {
-				var grp = e.control;
-				//팝업 열기
-				app.openDialog("dialog/TeamPostUpdateDelete", {
-					width: 1580,
-					height: 780
-				}, function(dialog) {
-					// 닫기 하면 send 후 reload
-					dialog.addEventListener("close", function(e) {
-						app.lookup("teamPostListSub").send();
-					});
-				});
-				}
-			 */
 
 			/*
 			 * 인풋 박스에서 mousedown 이벤트 발생 시 호출.
@@ -139,11 +111,46 @@
 				var teamPostDeleteSub = e.control;
 				app.lookup("teamPostListSub").send();
 			}
+
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchIpbSearch(e) {
+				var searchIpb = e.control;
+				var submission = app.lookup("searchTeamPostSub");
+				submission.send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchTeamPostSubSubmitSuccess(e) {
+				var searchTeamPostSub = e.control;
+				app.lookup("grp").redraw();
+			}
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("teamPostList");
+			var dataSet_1 = new cpr.data.DataSet("teamPostSearch");
 			dataSet_1.parseData({
+				"columns": [
+					{"name": "type"},
+					{"name": "value"}
+				],
+				"rows": [
+					{"type": "전체", "value": "all"},
+					{"type": "제목", "value": "title"},
+					{"type": "내용", "value": "content"},
+					{"type": "프로젝트명", "value": "project"},
+					{"type": "작성자", "value": "name"}
+				]
+			});
+			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("teamPostList");
+			dataSet_2.parseData({
 				"columns": [
 					{"name": "teamPostId"},
 					{
@@ -158,10 +165,10 @@
 				],
 				"rows": []
 			});
-			app.register(dataSet_1);
+			app.register(dataSet_2);
 			
-			var dataSet_2 = new cpr.data.DataSet("comment");
-			dataSet_2.parseData({
+			var dataSet_3 = new cpr.data.DataSet("comment");
+			dataSet_3.parseData({
 				"columns": [
 					{"name": "memberId"},
 					{"name": "memberName"},
@@ -170,18 +177,27 @@
 				],
 				"rows": []
 			});
-			app.register(dataSet_2);
-			var dataMap_1 = new cpr.data.DataMap("teamPostIdParam");
+			app.register(dataSet_3);
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
 			dataMap_1.parseData({
+				"columns" : [
+					{"name": "searchType"},
+					{"name": "searchText"}
+				]
+			});
+			app.register(dataMap_1);
+			
+			var dataMap_2 = new cpr.data.DataMap("teamPostIdParam");
+			dataMap_2.parseData({
 				"columns" : [{
 					"name": "teamPostId",
 					"dataType": "number"
 				}]
 			});
-			app.register(dataMap_1);
+			app.register(dataMap_2);
 			
-			var dataMap_2 = new cpr.data.DataMap("teamPostUpdateParam");
-			dataMap_2.parseData({
+			var dataMap_3 = new cpr.data.DataMap("teamPostUpdateParam");
+			dataMap_3.parseData({
 				"columns" : [
 					{
 						"name": "teamPostId",
@@ -194,20 +210,20 @@
 					}
 				]
 			});
-			app.register(dataMap_2);
+			app.register(dataMap_3);
 			
-			var dataMap_3 = new cpr.data.DataMap("memberDTO");
-			dataMap_3.parseData({
+			var dataMap_4 = new cpr.data.DataMap("memberDTO");
+			dataMap_4.parseData({
 				"columns" : [{
 					"name": "memberId",
 					"dataType": "string"
 				}]
 			});
-			app.register(dataMap_3);
+			app.register(dataMap_4);
 			var submission_1 = new cpr.protocols.Submission("teamPostListSub");
 			submission_1.method = "get";
 			submission_1.action = "member/teams/list";
-			submission_1.addResponseData(dataSet_1, false);
+			submission_1.addResponseData(dataSet_2, false);
 			if(typeof onTeamPostListSubSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onTeamPostListSubSubmitSuccess);
 			}
@@ -215,14 +231,14 @@
 			
 			var submission_2 = new cpr.protocols.Submission("commentSub");
 			submission_2.method = "get";
-			submission_2.action = "member/comments";
-			submission_2.addResponseData(dataSet_2, false);
+			submission_2.action = "member/teams/comments";
+			submission_2.addResponseData(dataSet_3, false);
 			app.register(submission_2);
 			
 			var submission_3 = new cpr.protocols.Submission("teamPostUpdateSub");
 			submission_3.method = "put";
 			submission_3.action = "member/teams";
-			submission_3.addRequestData(dataMap_2);
+			submission_3.addRequestData(dataMap_3);
 			if(typeof onTeamPostUpdateSubSubmitSuccess == "function") {
 				submission_3.addEventListener("submit-success", onTeamPostUpdateSubSubmitSuccess);
 			}
@@ -231,11 +247,21 @@
 			var submission_4 = new cpr.protocols.Submission("teamPostDeleteSub");
 			submission_4.method = "delete";
 			submission_4.action = "member/teams";
-			submission_4.addRequestData(dataMap_1);
+			submission_4.addRequestData(dataMap_2);
 			if(typeof onTeamPostDeleteSubSubmitSuccess == "function") {
 				submission_4.addEventListener("submit-success", onTeamPostDeleteSubSubmitSuccess);
 			}
 			app.register(submission_4);
+			
+			var submission_5 = new cpr.protocols.Submission("searchTeamPostSub");
+			submission_5.method = "get";
+			submission_5.action = "member/teams/search";
+			submission_5.addRequestData(dataMap_1);
+			submission_5.addResponseData(dataSet_2, false);
+			if(typeof onSearchTeamPostSubSubmitSuccess == "function") {
+				submission_5.addEventListener("submit-success", onSearchTeamPostSubSubmitSuccess);
+			}
+			app.register(submission_5);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -273,6 +299,42 @@
 				"height": "80px"
 			});
 			
+			var group_1 = new cpr.controls.Container();
+			var xYLayout_1 = new cpr.controls.layouts.XYLayout();
+			group_1.setLayout(xYLayout_1);
+			(function(container){
+				var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
+				searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+				if(typeof onSearchIpbSearch == "function") {
+					searchInput_1.addEventListener("search", onSearchIpbSearch);
+				}
+				container.addChild(searchInput_1, {
+					"top": "18px",
+					"right": "84px",
+					"left": "201px",
+					"height": "30px"
+				});
+				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
+				(function(comboBox_1){
+					comboBox_1.setItemSet(app.lookup("teamPostSearch"), {
+						"label": "type",
+						"value": "value"
+					});
+				})(comboBox_1);
+				container.addChild(comboBox_1, {
+					"top": "20px",
+					"right": "654px",
+					"left": "91px",
+					"height": "30px"
+				});
+			})(group_1);
+			container.addChild(group_1, {
+				"autoSize": "none",
+				"width": "845px",
+				"height": "54px"
+			});
+			
 			var inputBox_1 = new cpr.controls.InputBox("insertIpb");
 			inputBox_1.placeholder = "보드 멤버들과 공유할 내용을 입력해보세요.";
 			inputBox_1.style.css({
@@ -286,11 +348,11 @@
 				"height": "131px"
 			});
 			
-			var group_1 = new cpr.controls.Container("grp");
-			group_1.style.setClasses(["cl-form-group"]);
+			var group_2 = new cpr.controls.Container("grp");
+			group_2.style.setClasses(["cl-form-group"]);
 			var verticalLayout_2 = new cpr.controls.layouts.VerticalLayout();
-			group_1.setLayout(verticalLayout_2);
-			container.addChild(group_1, {
+			group_2.setLayout(verticalLayout_2);
+			container.addChild(group_2, {
 				"autoSize": "height",
 				"width": "1540px",
 				"height": "300px"

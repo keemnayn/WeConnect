@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,12 @@ public class TeamPostServiceImpl implements TeamPostService {
 	@Override
 	public int deleteTeamPost(TeamPostDTO teamPostDTO) {
 		return teamPostMapper.deleteTeamPost(teamPostDTO);
+	}
+
+// 팀포스트 검색
+	@Override
+	public List<TeamPostDTO> searchProposal(Map<String, String> searchParams) {
+		return teamPostMapper.searchTeamPost(searchParams);
 	}
 	
 

@@ -61,11 +61,12 @@
 					var proposalStatus = grid.dataSet.getValue(selectedRowIndices[0], "proposalStatus");
 					var PMemberId = grid.dataSet.getValue(selectedRowIndices[0], "PMemberId");
 					var value = {
-						"proposalId": proposalId,
-						"proposalTitle": proposalTitle,
-						"proposalContent": proposalContent,
-						"proposalStatus": proposalStatus, 
-						"PMemberId": PMemberId
+						"memberName": memberName,
+						"teamPostTitle": teamPostTitle,
+						"teamPostContent": teamPostContent,
+						"teamPostCreateDate": teamPostCreateDate, 
+						"projectName": projectName
+						"departmentName": projectName
 					}
 					app.openDialog("dialog/ProposalUpdateDelete", {
 						width: 1580,

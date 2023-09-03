@@ -2,13 +2,16 @@ package com.arezip.weconnect.test.teampost;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.arezip.weconnect.mapper.TeamPostMapper;
+import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +37,7 @@ public class TeamPostMapperTest {
 		teamPostDTO.setTeamPostTitle("제발");
 		teamPostDTO.setTeamPostContent("요");
 		teamPostDTO.setMemberId(141);
-		//teamPostDTO.setProjectId(44);
+		// teamPostDTO.setProjectId(44);
 		int result = teamPostMapper.insertTeamPost(teamPostDTO);
 		log.info("result {}", result);
 	}
@@ -50,7 +53,7 @@ public class TeamPostMapperTest {
 		int result = teamPostMapper.updateTeamPost(teamPostDTO);
 		log.info("result {}", result);
 	}
-	
+
 // 팀포스트 삭제 mapper	
 	@Test
 	void deleteTeamPostTest() {
@@ -59,6 +62,14 @@ public class TeamPostMapperTest {
 		teamPostDTO.setTeamPostId(142);
 		int result = teamPostMapper.deleteTeamPost(teamPostDTO);
 		log.info("result {}", result);
-		
+	}
+
+// 	팀포스트 검색 mapper
+	@Test
+	void searchTeamPostTest() {
+		Map<String, String> searchParams = new HashMap<>();
+		searchParams.put("searchType", "all");
+		searchParams.put("searchText", "입니다");
+		List<TeamPostDTO> list = teamPostMapper.searchTeamPost(searchParams);
 	}
 }

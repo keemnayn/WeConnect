@@ -1,6 +1,8 @@
 package com.arezip.weconnect.controller.member.teampost;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.View;
 
 import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.model.dto.ProjectDTO;
+import com.arezip.weconnect.model.dto.ProposalDTO;
 import com.arezip.weconnect.model.dto.TeamPostDTO;
 import com.arezip.weconnect.service.ProjectService;
 import com.arezip.weconnect.service.TeamPostService;
@@ -42,7 +45,7 @@ public class TeamPostRestController {
 	}
 
 // 팀 워크보드 상세
-	@GetMapping("detail")
+	@GetMapping("/detail")
 	public View getMemberId(DataRequest dataRequest, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = new MemberDTO();
@@ -78,7 +81,6 @@ public class TeamPostRestController {
 	}
 
 	// 콤보박스에 프로젝트 정보 가져오기
-
 	@GetMapping
 	public View ListProjectName(DataRequest dataRequest) {
 		List<ProjectDTO> projectList = projectService.getProjectList();
@@ -138,6 +140,32 @@ public class TeamPostRestController {
 			teamPostService.deleteTeamPost(teamPostDTO);
 		}
 		// JSON 형식의 응답을 반환
+		return new JSONDataView();
+	}
+
+	// 팀 워크보드 검색
+	@GetMapping("search")
+	public View searchNotices(DataRequest dataRequest) {
+		ParameterGroup param = dataRequest.getParameterGroup("searchParam");
+		Map<String, String> searchParams = new HashMap<String, String>();
+		String searchType = null;
+		String searchText = null;
+		if (param != null) {
+			searchType = param.getValue("searchType");
+			searchText = param.getValue("searchText");
+		}
+		List<TeamPostDTO> teamPostList = null;
+		// searchText가 빈 문자열이거나 null이면 전체 리스트 반환
+		if (searchText == null || searchText.trim().isEmpty()) {
+			teamPostList = teamPostService.getTeamPostList();
+		} else {
+			if (searchType != null && !"".equals(searchType.trim())) {
+				searchParams.put("searchType", searchType);
+			}
+			searchParams.put("searchText", searchText);
+			teamPostList = teamPostService.searchProposal(searchParams);
+		}
+		dataRequest.setResponse("teamPostList", teamPostList);
 		return new JSONDataView();
 	}
 
