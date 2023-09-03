@@ -47,7 +47,6 @@
 				var memberId = app.lookup("memberDTO").getValue("memberId");
 				var boardUpdateBtn = app.lookup("boardUpdateBtn");
 				var boardDeleteBtn = app.lookup("boardDeleteBtn");
-				console.log(memberId == FMemberId);
 				if (memberId == FMemberId) {
 					boardUpdateBtn.visible = true;
 					boardDeleteBtn.visible = true;
@@ -125,6 +124,7 @@
 						comment.freeBoardCommentDate = boardComment[i].freeBoardCommentDate;
 						comment.freeBoardCommentContent = boardComment[i].freeBoardCommentContent;
 						comment.freeBoardCommentId = boardComment[i].freeBoardCommentId;
+						comment.fbcMemberId = boardComment[i].fbcMemberId;
 						container.addChild(comment, {
 							height: "100px",
 							width: "1550px",

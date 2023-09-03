@@ -175,44 +175,9 @@
 				"height": "50px"
 			});
 			
-			var group_3 = new cpr.controls.Container();
-			var formLayout_3 = new cpr.controls.layouts.FormLayout();
-			formLayout_3.scrollable = false;
-			formLayout_3.topMargin = "5px";
-			formLayout_3.rightMargin = "5px";
-			formLayout_3.bottomMargin = "5px";
-			formLayout_3.leftMargin = "5px";
-			formLayout_3.horizontalSpacing = "10px";
-			formLayout_3.verticalSpacing = "10px";
-			formLayout_3.setColumns(["100px", "1fr"]);
-			formLayout_3.setRows(["1fr"]);
-			group_3.setLayout(formLayout_3);
-			(function(container){
-				var output_3 = new cpr.controls.Output();
-				output_3.value = "파일첨부";
-				container.addChild(output_3, {
-					"colIndex": 0,
-					"rowIndex": 0
-				});
-				var fileInput_1 = new cpr.controls.FileInput("fi1");
-				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("boardInsertParam"));
-				fileInput_1.setBindContext(dataMapContext_3);
-				fileInput_1.bind("value").toDataMap(app.lookup("boardInsertParam"), "freeBoardFileName");
-				container.addChild(fileInput_1, {
-					"colIndex": 1,
-					"rowIndex": 0
-				});
-			})(group_3);
-			container.addChild(group_3, {
-				"right": "20px",
-				"bottom": "120px",
-				"left": "20px",
-				"height": "50px"
-			});
-			
-			var output_4 = new cpr.controls.Output();
-			output_4.value = "게시글 작성";
-			container.addChild(output_4, {
+			var output_3 = new cpr.controls.Output();
+			output_3.value = "게시글 작성";
+			container.addChild(output_3, {
 				"top": "20px",
 				"right": "1060px",
 				"left": "20px",

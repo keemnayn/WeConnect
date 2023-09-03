@@ -37,23 +37,38 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
-      <cl:dataset std:sid="d-set-241bf5f8" id="search">
+      <cl:dataset std:sid="d-set-241bf5f8" id="noticeSearch">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-a1332b89" name="type"/>
+          <cl:datacolumn std:sid="d-column-c79a0da5" name="type"/>
+          <cl:datacolumn std:sid="d-column-97050de0" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
             <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[공지]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[제목]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[점검]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[분류]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[category]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-e98066ea" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-3107ed83" name="searchType" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-0432713d" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-5289912b" id="noticeListSub" method="get" action="member/notice">
+        <cl:responsedata dataid="noticeList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-6fffa478" id="searchNoticeSub" method="get" action="member/notice/search">
+        <cl:listener std:sid="listener-8323bdbb" name="submit-success" handler="onSearchNoticeSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="noticeList"/>
       </cl:submission>
     </cl:model>
@@ -61,7 +76,7 @@
   </head>
   <body std:sid="body-2190162b">
     <cl:listener std:sid="listener-5b4a68e4" name="init" handler="onBodyInit"/>
-    <cl:grid std:sid="grid-2fb52cbb" id="grd1" datasetid="noticeList">
+    <cl:grid std:sid="grid-2fb52cbb" id="noticeGrd" datasetid="noticeList">
       <cl:xylayoutdata std:sid="xyl-data-50e259b1" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:gridcolumn std:sid="g-column-70bf2a34" visible="false"/>
       <cl:gridcolumn std:sid="g-column-c95d7c02" width="20px"/>
@@ -87,12 +102,17 @@
     </cl:grid>
     <cl:group std:sid="group-2e1d1886">
       <cl:xylayoutdata std:sid="xyl-data-e2689e96" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
+        <cl:listener std:sid="listener-4ec409a7" name="search" handler="onSearchIpbSearch"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-4ce1c669" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
+      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+        <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-74061233" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="type" value="type"/>
+        <cl:itemset datasetid="noticeSearch" label="type" value="value"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-1984a9b7"/>
     </cl:group>

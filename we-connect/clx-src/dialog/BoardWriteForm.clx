@@ -62,22 +62,6 @@
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
-    <cl:group std:sid="group-9e1c2e00">
-      <cl:xylayoutdata std:sid="xyl-data-7df1db1a" right="20px" bottom="120px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
-      <cl:output std:sid="output-941cfd39" value="파일첨부">
-        <cl:formdata std:sid="f-data-d1c79a8a" row="0" col="0"/>
-      </cl:output>
-      <cl:fileinput std:sid="f-input-44bca784" id="fi1">
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="boardInsertParam" columnname="freeBoardFileName"/>
-        <cl:datamapcontext datacontrolid="boardInsertParam"/>
-        <cl:formdata std:sid="f-data-6e490431" row="0" col="1"/>
-      </cl:fileinput>
-      <cl:formlayout std:sid="f-layout-e88d976d" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
-        <cl:rows length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
-        <cl:columns length="100" unit="PIXEL"/>
-        <cl:columns length="1" unit="FRACTION"/>
-      </cl:formlayout>
-    </cl:group>
     <cl:output std:sid="output-fceb3975" value="게시글 작성">
       <cl:xylayoutdata std:sid="xyl-data-83a8ace1" top="20px" right="1060px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:output>

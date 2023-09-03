@@ -1,8 +1,6 @@
 package com.arezip.weconnect.controller.member.freeboard;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +14,6 @@ import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
-import com.cleopatra.protocol.data.ParameterRow;
 import com.cleopatra.spring.JSONDataView;
 
 import jakarta.servlet.http.HttpServletRequest;
