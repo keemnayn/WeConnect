@@ -1164,7 +1164,16 @@
 					group_9.setLayout(xYLayout_10);
 					(function(container){
 						var calendar_1 = new cpr.controls.Calendar("main_crd");
-						calendar_1.style.item.bind("background-color").toExpression("value == \"projectName\" ? \"rgb(247, 238, 235)\" : \"rgb(240,182,151)\"");
+						calendar_1.style.item.bind("background-color").toExpression([
+							"switch(label){",
+							"\tcase \"프로젝트\":\"LightGoldenRodYellow\"",
+							"\tcase \"회의\":\"pink\"",
+							"\tcase \"보고\":\"DarkSalmon\"",
+							"\tcase \"외부\":\"LightBlue\"",
+							"\tcase \"교육\":\"LightGreen\"",
+							"\tcase \"기타\":\"AliceBlue\"",
+							"}"
+						].join("\n"));
 						container.addChild(calendar_1, {
 							"top": "0px",
 							"right": "0px",
