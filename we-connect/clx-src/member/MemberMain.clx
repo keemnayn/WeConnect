@@ -176,13 +176,8 @@
         <cl:listener std:sid="listener-3b6d99c7" name="value-change" handler="onProfileValueChange2"/>
         <cl:xylayoutdata std:sid="xyl-data-491fb9a8" top="24px" left="32px" width="150px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:img>
-      <cl:fileinput std:sid="f-input-908aa111" id="fi1" style="border-radius:8px;" placeholder="프로필 수정">
-        <cl:listener std:sid="listener-d98a66fc" name="value-change" handler="onFi1ValueChange"/>
-        <cl:datamapbind property="value" datacontrolid="profileImage" columnname="profileImagePath"/>
-        <cl:xylayoutdata std:sid="xyl-data-301afad9" top="270px" bottom="0px" left="27px" width="160px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      </cl:fileinput>
       <cl:htmlsnippet std:sid="htmlsnippet-cfcf2c82" id="name" style="color:#8A8989; font-weight:700; font-size:20px; text-align:center;">
-        <cl:xylayoutdata std:sid="xyl-data-0a4bd2fd" top="192px" left="42px" width="127px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-0a4bd2fd" top="232px" left="42px" width="127px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:htmlsnippet>
       <cl:htmlsnippet std:sid="htmlsnippet-10812b4b" id="user_clock" style="color:#8A8989; font-weight:900; font-size:22px;" value=" &lt;div id=&quot;clock&quot;>00:00&lt;/div>">
         <cl:listener std:sid="listener-e72a7503" name="value-change" handler="onUser_clockValueChange"/>
@@ -354,7 +349,7 @@
             <cl:calendar std:sid="calendar-7bdba216" id="main_crd">
               <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:itemstyle>
-                <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;   case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;   case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;   case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;   case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;   case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;   case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
+                <cl:expbind property="background-color" category="STYLER" expression="value == &quot;projectName&quot; ? &quot;rgb(247, 238, 235)&quot; : &quot;rgb(240,182,151)&quot;"/>
               </cl:itemstyle>
             </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>

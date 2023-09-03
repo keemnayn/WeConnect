@@ -489,7 +489,7 @@
 					container.addChild(output_3, {
 						"top": "20px",
 						"left": "119px",
-						"width": "100px",
+						"width": "216px",
 						"height": "30px"
 					});
 					var button_1 = new cpr.controls.Button("deleteBtn");
@@ -645,6 +645,9 @@
 				app.declareAppProperty("department", null);
 				app.declareAppProperty("updateBtn", null);
 				app.declareAppProperty("deleteBtn", null);
+				var dataMap_1 = new cpr.data.DataMap("dm1");
+				dataMap_1.parseData({});
+				app.register(dataMap_1);
 				app.supportMedia("all and (min-width: 1024px)", "default");
 				app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
 				app.supportMedia("all and (max-width: 499px)", "mobile");
@@ -736,15 +739,9 @@
 						"width": "1430px",
 						"height": "30px"
 					});
-					var inputBox_2 = new cpr.controls.InputBox("content");
-					inputBox_2.value = "teamPostContent";
-					inputBox_2.style.css({
-						"border-right-style" : "none",
-						"border-left-style" : "none",
-						"border-bottom-style" : "none",
-						"border-top-style" : "none"
-					});
-					container.addChild(inputBox_2, {
+					var textArea_1 = new cpr.controls.TextArea("content");
+					textArea_1.value = "teamPostContent";
+					container.addChild(textArea_1, {
 						"top": "100px",
 						"left": "20px",
 						"width": "1430px",

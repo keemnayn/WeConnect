@@ -4,7 +4,9 @@
     <screen std:sid="screen-462d7799" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="true"/>
     <screen std:sid="screen-759c4af1" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-9a859cb5" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
-    <cl:model std:sid="model-d48a5d9a"/>
+    <cl:model std:sid="model-d48a5d9a">
+      <cl:datamap std:sid="d-map-3e0cb82d" id="dm1"/>
+    </cl:model>
     <cl:appspec>
       <cl:property name="name" type="string" bindable="false"/>
       <cl:property name="date" type="string"/>
@@ -46,9 +48,9 @@
       <cl:inputbox std:sid="i-box-369fdbe2" id="title" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" value="teamPostTitle">
         <cl:xylayoutdata std:sid="xyl-data-ee787c41" top="60px" left="20px" width="1430px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:inputbox>
-      <cl:inputbox std:sid="i-box-5bb2d4f8" id="content" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" value="teamPostContent">
-        <cl:xylayoutdata std:sid="xyl-data-08bbcf0e" top="100px" left="20px" width="1430px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:inputbox>
+      <cl:textarea std:sid="t-area-75973765" id="content" value="teamPostContent">
+        <cl:xylayoutdata std:sid="xyl-data-1952da49" top="100px" left="20px" width="1430px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:textarea>
       <cl:xylayout std:sid="xylayout-01e9cfde"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-310f733e"/>

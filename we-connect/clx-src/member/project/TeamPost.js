@@ -31,10 +31,9 @@ function onTeamPostListSubSubmitSuccess(e) {
 	var xhr = teamPostListSub.xhr;
 	var jsonData = JSON.parse(xhr.responseText);
 	var teamPostList = jsonData.teamPostList;
+	var comment = jsonData.comment;
 	var container = app.lookup("grp");
 	container.removeAllChildren();
-	// var pageIndexer = app.lookup("page");
-	// pageIndexer.totalRowCount = totalCommentCount;
 	console.log(teamPostList.length);
 	
 	for (var i = 0; i < teamPostList.length; i++) {
@@ -45,12 +44,12 @@ function onTeamPostListSubSubmitSuccess(e) {
 			teamPostUdc.date = teamPostList[i].teamPostCreateDate;
 			teamPostUdc.title = teamPostList[i].teamPostTitle;
 			teamPostUdc.content = teamPostList[i].teamPostContent;
-			//teamPostUdc.project = teamPostList[i].projectName;
+			teamPostUdc.project = teamPostList[i].projectName;
 			teamPostUdc.department = teamPostList[i].departmentName;
-			
+						
 			container.addChild(teamPostUdc, {
-				width: "800px",
-				height: "400px",
+				width: "1300px",
+				height: "300px",
 				autoSize: "both"
 			});
 			teamPostUdc.addEventListener("deleteClick", function(e) {
@@ -60,39 +59,10 @@ function onTeamPostListSubSubmitSuccess(e) {
 					teamPostDeleteSub.send();
 				}
 			});
-		//teamPostUdc.addEventListener("updateClick", function(e) {
-		//	app.lookup("teamPostUpdateParam").setValue("teamPostId", teamPostList[index].teamPostId);
-		//	app.lookup("teamPostUpdateParam").setValue("teamPostTitle", teamPostList[index].teamPostTitle);
-		//	app.lookup("teamPostUpdateParam").setValue("teamPostContent", teamPostList[index].teamPostContent);
-		//	if (confirm("수정하시겠습니까?")) {
-		//		var teamPostUpdateSub = app.lookup("teamPostUpdateSub");
-		//		teamPostUpdateSub.send();
-		//	}
-		//});
 		})(i);
 	}
 }
 
-//app.lookup("projectName").redraw();
-
-/*
- * 그룹에서 dblclick 이벤트 발생 시 호출.
- * 사용자가 컨트롤을 더블 클릭할 때 발생하는 이벤트.
-* 	
-function onGrpDblclick(e) {
-	var grp = e.control;
-	//팝업 열기
-	app.openDialog("dialog/TeamPostUpdateDelete", {
-		width: 1580,
-		height: 780
-	}, function(dialog) {
-		// 닫기 하면 send 후 reload
-		dialog.addEventListener("close", function(e) {
-			app.lookup("teamPostListSub").send();
-		});
-	});
-	}
- */
 
 /*
  * 인풋 박스에서 mousedown 이벤트 발생 시 호출.
@@ -127,4 +97,23 @@ function onTeamPostUpdateSubSubmitSuccess(e) {
 function onTeamPostDeleteSubSubmitSuccess(e) {
 	var teamPostDeleteSub = e.control;
 	app.lookup("teamPostListSub").send();
+}
+
+/*
+ * 서치 인풋에서 search 이벤트 발생 시 호출.
+ * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+ */
+function onSearchIpbSearch(e) {
+	var searchIpb = e.control;
+	var submission = app.lookup("searchTeamPostSub");
+	submission.send();
+}
+
+/*
+ * 서브미션에서 submit-success 이벤트 발생 시 호출.
+ * 통신이 성공하면 발생합니다.
+ */
+function onSearchTeamPostSubSubmitSuccess(e) {
+	var searchTeamPostSub = e.control;
+	app.lookup("grp").redraw();
 }

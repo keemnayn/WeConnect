@@ -24,7 +24,7 @@
         <cl:xylayoutdata std:sid="xyl-data-a64acfd9" top="49px" left="20px" width="1440px" height="70px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:output std:sid="output-a3aa5deb" id="date" value="teamPostCommentDate">
-        <cl:xylayoutdata std:sid="xyl-data-a5a1362b" top="20px" left="119px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-a5a1362b" top="20px" left="119px" width="216px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
       <cl:button std:sid="button-939a7505" id="deleteBtn" value="삭제">
         <cl:listener std:sid="listener-32b7710b" name="click" handler="onDeleteBtnClick"/>

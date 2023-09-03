@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.arezip.weconnect.mapper.TeamPostMapper">
-	<!-- 팀게시글 조회 -->
+	<!-- 팀포스트 조회 -->
 	<select id="selectTeamPostList"
 		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		SELECT t.team_post_id AS teamPostId,
@@ -33,7 +33,7 @@
 		select t.team_post as teamPostId, t.team_post_title as teamPostTitle, m.member_name 
 		as memberName, to_char(t.team_post_create,'YYYY-MM-DD') as teamPostCreate 
 		from team_post t join member m on t.member_id=m.member_id </select> -->
-	<!-- 팀게시글 추가 -->
+	<!-- 팀포스트 추가 -->
 	<!-- <insert id="insertTeamPost" parameterType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
 		insert into team_post(team_post_id, team_post_title, team_post_content, member_id) 
 		values(team_post_seq.nextval, #{teamPostTitle}, #{teamPostContent}, #{memberId}) 
@@ -45,9 +45,10 @@
 	<insert id="insertTeamPost"
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		insert into team_post(team_post_id, team_post_title,
-		team_post_content, member_id)
+		team_post_content, project_id, member_id)
 		values(team_post_seq.nextval,
 		#{teamPostTitle}, #{teamPostContent},
+		#{projectId},
 		#{memberId})
 	</insert>
 	<!-- <select id="getTeamPostDetail" resultType="com.arezip.weconnect.model.dto.TeamPostDTO"> 
@@ -55,20 +56,105 @@
 		m.member_id, tc.team_post_comment_id, tc.team_post_comment_content, tc.team_post_comment_date 
 		from member m join team_post t on m.member_id=t.member_id join team_post_comment 
 		tc on t.team_post_id=tc.team_post_id </select> -->
-	<!-- 팀게시글 수정 -->
+	<!-- 팀포스트 수정 -->
 	<update id="updateTeamPost"
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		UPDATE team_post
 		SET team_post_title = #{teamPostTitle},
-		team_post_content = #{teamPostContent}
-		WHERE team_post_id =
+		team_post_content = #{teamPostContent},
+		project_id = #{projectId}
+		WHERE
+		team_post_id =
 		#{teamPostId} AND member_id = #{memberId}
 	</update>
-	<!-- 팀게시글 삭제 -->
+	<!-- 팀포스트 삭제 -->
 	<delete id="deleteTeamPost"
 		parameterType="com.arezip.weconnect.model.dto.TeamPostDTO">
 		DELETE team_post
 		WHERE team_post_id = #{teamPostId} AND
 		member_id = #{memberId}
 	</delete>
+	<!-- 팀포스트 검색 -->
+	<select id="searchTeamPost"
+		resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		SELECT
+		t.team_post_id AS teamPostId,
+		t.team_post_title AS teamPostTitle,
+		t.team_post_content AS teamPostContent,
+		TO_CHAR(t.team_post_create_date, 'YYYY-MM-DD') AS teamPostCreateDate,
+		m.member_name AS memberName,
+		p.project_id AS projectId,
+		p.project_name
+		AS projectName
+		FROM
+		team_post t
+		JOIN
+		member m ON t.member_id = m.member_id
+		LEFT JOIN
+		project p ON t.project_id = p.project_id
+		WHERE 1=1
+		<choose>
+			<!-- 전체 검색일 경우 -->
+			<when test="searchType == 'all'">
+				AND (
+				team_post_title LIKE '%' || #{searchText} || '%'
+				OR team_post_content LIKE '%' || #{searchText} || '%'
+				OR
+				project_name
+				LIKE '%' || #{searchText} || '%'
+				OR
+				member_name LIKE '%' ||
+				#{searchText} || '%'
+				)
+			</when>
+			<!-- 제목으로만 검색할 경우 -->
+			<when test="searchType == 'title'">
+				AND team_post_title LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 내용으로만 검색할 경우 -->
+			<when test="searchType == 'content'">
+				AND team_post_content LIKE '%' || #{searchText} ||
+				'%'
+			</when>
+			<!-- 프로젝트명으로 검색할 경우 -->
+			<when test="searchType == 'project'">
+				AND project_name LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 작성자명으로 검색할 경우 -->
+			<when test="searchType == 'name'">
+				AND member_name LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+		ORDER BY team_post_id DESC
+	</select>
+	
+	
+		<!-- 팀포스트 댓글 조회 -->
+	<select id="getTeamPostComment" resultType="com.arezip.weconnect.model.dto.TeamPostDTO">
+		SELECT
+		    tc.team_post_comment_id,
+		    tc.MEMBER_ID as tcMemberId,
+		    m.MEMBER_NAME,
+		    tc.team_post_comment_content,
+		    to_char( tc.team_post_comment_date,'YYYY-MM-DD HH24:MI') as teamPostCommentDate
+		FROM
+		    team_post_comment tc
+		INNER JOIN MEMBER m ON tc.MEMBER_ID = m.MEMBER_ID
+		WHERE tc.FREE_BOARD_ID = #{freeBoardId}
+		ORDER BY 
+		    fbc.FREE_BOARD_COMMENT_ID DESC
+	</select>
+	<!-- 댓글 등록 -->
+	<insert id="insertFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		insert into free_board_comment(free_board_comment_id,free_board_comment_content,member_id,free_board_id)
+		values(free_board_comment_seq.nextval,#{freeBoardCommentContent},#{memberId},#{freeBoardId})
+	</insert>
+	<!-- 댓글 삭제 -->
+	<delete id="deleteFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		delete from free_board_comment where free_board_comment_id = #{freeBoardCommentId}
+	</delete>
+	<!-- 댓글 수정 -->
+	<update id="updateFreeBoardComment" parameterType="com.arezip.weconnect.model.dto.FreeBoardCommentDTO">
+		update free_board_comment set free_board_comment_content = #{freeBoardCommentContent} where free_board_comment_id = #{freeBoardCommentId}
+	</update>
 </mapper>
