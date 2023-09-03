@@ -68,6 +68,7 @@
     <cl:grid std:sid="grid-38750194" id="boardListGrd" datasetid="boardList">
       <cl:listener std:sid="listener-08c67cf7" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:headerstyle style="font-weight:800; background-image:none;"/>
       <cl:gridcolumn std:sid="g-column-61e98a7d" visible="false"/>
       <cl:gridcolumn std:sid="g-column-e9b2ce68" width="130px"/>
       <cl:gridcolumn std:sid="g-column-c6b83768" width="20px"/>

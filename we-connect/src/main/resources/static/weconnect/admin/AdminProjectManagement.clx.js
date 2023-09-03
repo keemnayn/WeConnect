@@ -260,6 +260,10 @@
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					if(typeof onProjectListGrdSelectionChange == "function") {
 						grid_1.addEventListener("selection-change", onProjectListGrdSelectionChange);
 					}

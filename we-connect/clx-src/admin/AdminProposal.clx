@@ -77,6 +77,7 @@
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-c21e7c3f" id="proposalGrd" datasetid="proposalList">
             <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-b0d174cf" width="25px"/>
             <cl:gridcolumn std:sid="g-column-7f08a6a9" width="39px" visible="false"/>
             <cl:gridcolumn std:sid="g-column-a3eaed30" width="150px"/>
@@ -121,7 +122,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" style="text-align:center;">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
