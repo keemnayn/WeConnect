@@ -612,21 +612,6 @@
 					"width": "150px",
 					"height": "150px"
 				});
-				var fileInput_1 = new cpr.controls.FileInput("fi1");
-				fileInput_1.placeholder = "프로필 수정";
-				fileInput_1.style.css({
-					"border-radius" : "8px"
-				});
-				fileInput_1.bind("value").toDataMap(app.lookup("profileImage"), "profileImagePath");
-				if(typeof onFi1ValueChange == "function") {
-					fileInput_1.addEventListener("value-change", onFi1ValueChange);
-				}
-				container.addChild(fileInput_1, {
-					"top": "270px",
-					"bottom": "0px",
-					"left": "27px",
-					"width": "160px"
-				});
 				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet("name");
 				hTMLSnippet_2.style.css({
 					"color" : "#8A8989",
@@ -635,7 +620,7 @@
 					"text-align" : "center"
 				});
 				container.addChild(hTMLSnippet_2, {
-					"top": "192px",
+					"top": "232px",
 					"left": "42px",
 					"width": "127px",
 					"height": "50px"
@@ -1176,16 +1161,7 @@
 					group_9.setLayout(xYLayout_10);
 					(function(container){
 						var calendar_1 = new cpr.controls.Calendar("main_crd");
-						calendar_1.style.item.bind("background-color").toExpression([
-							"switch(label){",
-							"   case \"프로젝트\":\"LightGoldenRodYellow\"",
-							"   case \"회의\":\"pink\"",
-							"   case \"보고\":\"DarkSalmon\"",
-							"   case \"외부\":\"LightBlue\"",
-							"   case \"교육\":\"LightGreen\"",
-							"   case \"기타\":\"AliceBlue\"",
-							"}"
-						].join("\n"));
+						calendar_1.style.item.bind("background-color").toExpression("value == \"projectName\" ? \"rgb(247, 238, 235)\" : \"rgb(240,182,151)\"");
 						container.addChild(calendar_1, {
 							"top": "0px",
 							"right": "0px",
