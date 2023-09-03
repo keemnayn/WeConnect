@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeDTO> getNoticeList() {
 		return noticeMapper.getNoticeList();
+	}
+
+	@Override
+	public List<NoticeDTO> searchNotice(Map<String, String> searchParams) {
+		return noticeMapper.selectNoticesBySearchCriteria(searchParams);
 	}
 
 }

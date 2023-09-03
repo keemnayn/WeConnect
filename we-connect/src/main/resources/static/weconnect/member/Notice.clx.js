@@ -24,6 +24,28 @@
 			 */
 			function onBodyInit(e){
 				app.lookup("noticeListSub").send();
+				var comboBox = app.lookup("searchTypeCmb");	
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
+				
+			}
+
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchIpbSearch(e){
+				var searchIpb = e.control;
+				app.lookup("searchNoticeSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onSearchNoticeSubSubmitSuccess(e){
+				var searchNoticeSub = e.control;
+				app.lookup("noticeGrd").redraw();
 			};
 			// End - User Script
 			
@@ -50,21 +72,45 @@
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("search");
+			var dataSet_2 = new cpr.data.DataSet("noticeSearch");
 			dataSet_2.parseData({
-				"columns": [{"name": "type"}],
+				"columns": [
+					{"name": "type"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"type": "전체"},
-					{"type": "공지"},
-					{"type": "점검"}
+					{"type": "전체", "value": "all"},
+					{"type": "제목", "value": "title"},
+					{"type": "분류", "value": "category"}
 				]
 			});
 			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{
+						"name": "searchType",
+						"dataType": "string"
+					},
+					{"name": "searchText"}
+				]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("noticeListSub");
 			submission_1.method = "get";
 			submission_1.action = "member/notice";
 			submission_1.addResponseData(dataSet_1, false);
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("searchNoticeSub");
+			submission_2.method = "get";
+			submission_2.action = "member/notice/search";
+			submission_2.addRequestData(dataMap_1);
+			submission_2.addResponseData(dataSet_1, false);
+			if(typeof onSearchNoticeSubSubmitSuccess == "function") {
+				submission_2.addEventListener("submit-success", onSearchNoticeSubSubmitSuccess);
+			}
+			app.register(submission_2);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -82,7 +128,7 @@
 			container.setLayout(xYLayout_1);
 			
 			// UI Configuration
-			var grid_1 = new cpr.controls.Grid("grd1");
+			var grid_1 = new cpr.controls.Grid("noticeGrd");
 			grid_1.init({
 				"dataSet": app.lookup("noticeList"),
 				"columns": [
@@ -192,19 +238,27 @@
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var searchInput_1 = new cpr.controls.SearchInput();
+				var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+				searchInput_1.setBindContext(dataMapContext_1);
+				searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+				if(typeof onSearchIpbSearch == "function") {
+					searchInput_1.addEventListener("search", onSearchIpbSearch);
+				}
 				container.addChild(searchInput_1, {
 					"top": "0px",
 					"right": "0px",
 					"width": "560px",
 					"height": "30px"
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-				comboBox_1.value = "전체";
+				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+				comboBox_1.setBindContext(dataMapContext_2);
+				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("search"), {
+					comboBox_1.setItemSet(app.lookup("noticeSearch"), {
 						"label": "type",
-						"value": "type"
+						"value": "value"
 					});
 				})(comboBox_1);
 				container.addChild(comboBox_1, {

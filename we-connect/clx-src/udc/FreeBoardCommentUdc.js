@@ -27,6 +27,11 @@ function onBodyLoad(e) {
 	freeBoardCommentIdOutput.text = freeBoardCommentId;
 	freeBoardCommentIdOutput.redraw();
 	
+	var fbcMemberIdOutput = app.lookup("fbcMemberId");
+	var fbcMemberId = app.getAppProperty("fbcMemberId");
+	fbcMemberIdOutput.text = fbcMemberId;
+	fbcMemberIdOutput.redraw();
+	
 	var freeBoardCommentDateOutput = app.lookup("freeBoardCommentDate");
 	var freeBoardCommentDate = app.getAppProperty("freeBoardCommentDate");
 	freeBoardCommentDateOutput.text = freeBoardCommentDate;
@@ -37,7 +42,7 @@ function onBodyLoad(e) {
 	freeBoardCommentContentIpb.text = freeBoardCommentContent;
 	
 	app.lookup("deleteBtn").visible = app.getAppProperty("deleteBtn");
-	app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
+//	app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
 	
 }
 
@@ -49,7 +54,6 @@ function onButtonClick(e) {
 	var button = e.control;
 	var event = new cpr.events.CAppEvent("updateClick");
 	app.dispatchEvent(event);
-	
 }
 
 /*

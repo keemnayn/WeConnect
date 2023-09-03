@@ -11,6 +11,7 @@
           <cl:datacolumn std:sid="d-column-4e1911e7" name="projectName"/>
           <cl:datacolumn std:sid="d-column-bdd99c54" name="projectStart"/>
           <cl:datacolumn std:sid="d-column-5397c0c4" name="projectEnd"/>
+          <cl:datacolumn std:sid="d-column-78dce0ba" name="projectId" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
@@ -28,7 +29,7 @@
       <cl:listener std:sid="listener-ce012cfc" name="date-click" handler="onCalendarDateClick"/>
       <cl:xylayoutdata std:sid="xyl-data-dfcbb162" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:calendaritemset datasetid="projectList" label="projectName" value="projectName" tooltip="projectName" start="projectStart" end="projectEnd"/>
-	  <cl:itemstyle>
+      <cl:itemstyle>
         <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;&#x9;case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
       </cl:itemstyle>
     </cl:calendar>
