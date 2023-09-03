@@ -299,42 +299,6 @@
 				"height": "80px"
 			});
 			
-			var group_1 = new cpr.controls.Container();
-			var xYLayout_1 = new cpr.controls.layouts.XYLayout();
-			group_1.setLayout(xYLayout_1);
-			(function(container){
-				var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
-				searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
-				if(typeof onSearchIpbSearch == "function") {
-					searchInput_1.addEventListener("search", onSearchIpbSearch);
-				}
-				container.addChild(searchInput_1, {
-					"top": "18px",
-					"right": "84px",
-					"left": "201px",
-					"height": "30px"
-				});
-				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
-				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
-				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("teamPostSearch"), {
-						"label": "type",
-						"value": "value"
-					});
-				})(comboBox_1);
-				container.addChild(comboBox_1, {
-					"top": "20px",
-					"right": "654px",
-					"left": "91px",
-					"height": "30px"
-				});
-			})(group_1);
-			container.addChild(group_1, {
-				"autoSize": "none",
-				"width": "845px",
-				"height": "54px"
-			});
-			
 			var inputBox_1 = new cpr.controls.InputBox("insertIpb");
 			inputBox_1.placeholder = "보드 멤버들과 공유할 내용을 입력해보세요.";
 			inputBox_1.style.css({
@@ -348,11 +312,11 @@
 				"height": "131px"
 			});
 			
-			var group_2 = new cpr.controls.Container("grp");
-			group_2.style.setClasses(["cl-form-group"]);
+			var group_1 = new cpr.controls.Container("grp");
+			group_1.style.setClasses(["cl-form-group"]);
 			var verticalLayout_2 = new cpr.controls.layouts.VerticalLayout();
-			group_2.setLayout(verticalLayout_2);
-			container.addChild(group_2, {
+			group_1.setLayout(verticalLayout_2);
+			container.addChild(group_1, {
 				"autoSize": "height",
 				"width": "1540px",
 				"height": "300px"

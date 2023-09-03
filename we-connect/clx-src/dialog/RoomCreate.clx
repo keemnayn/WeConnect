@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-76f256e9" version="1.0.4584">
   <head std:sid="head-2e5533d5">
-    <screen std:sid="screen-93a0abe8" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="400" customWidth="600" active="true"/>
-    <screen std:sid="screen-804efd5e" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
-    <screen std:sid="screen-a763b132" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
-    <screen std:sid="screen-479217de" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <screen std:sid="screen-2d8efad3" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="350" customWidth="550" active="true"/>
+    <screen std:sid="screen-db85d924" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
+    <screen std:sid="screen-a839602e" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-7a2f9464" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-e64e8c2e">
       <cl:datamap std:sid="d-map-f4de1bfb" id="roomInfoParam">
         <cl:datacolumnlist>
@@ -21,11 +21,11 @@
   <body std:sid="body-756006d4">
     <cl:button std:sid="button-204368de" id="reservBtn" value="등록">
       <cl:listener std:sid="listener-fbd30e50" name="click" handler="onReservBtnClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-3b4eb2d5" right="350px" bottom="40px" left="100px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+      <cl:xylayoutdata std:sid="xyl-data-3b4eb2d5" right="300px" bottom="50px" left="150px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
     </cl:button>
     <cl:button std:sid="button-16f503a5" id="cancelBtn" value="취소">
       <cl:listener std:sid="listener-5c1f7223" name="click" handler="onCancelBtnClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-56bb4628" right="100px" bottom="40px" left="350px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
+      <cl:xylayoutdata std:sid="xyl-data-56bb4628" right="150px" bottom="50px" left="300px" height="50px" horizontalAnchor="BOTH" verticalAnchor="BOTTOM"/>
     </cl:button>
     <cl:output std:sid="output-f62a86ba" value="회의실 등록">
       <cl:xylayoutdata std:sid="xyl-data-b20798b2" top="10px" right="430px" left="10px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
@@ -33,10 +33,10 @@
     <cl:inputbox std:sid="i-box-2e5bfeee" id="roomNameIpb">
       <cl:datamapbind property="value" category="PROPERTY" datacontrolid="roomInfoParam" columnname="roomName"/>
       <cl:datamapcontext datacontrolid="roomInfoParam"/>
-      <cl:xylayoutdata std:sid="xyl-data-230ec631" top="150px" right="10px" left="130px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-230ec631" top="100px" right="30px" left="130px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:output std:sid="output-6605a91d" style="text-align:center;" value="회의실">
-      <cl:xylayoutdata std:sid="xyl-data-b408c93e" top="150px" left="10px" width="120px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-b408c93e" top="100px" left="10px" width="120px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:xylayout std:sid="xylayout-3ebcd18d"/>
   </body>
