@@ -422,6 +422,10 @@
 						}
 					});
 					grid_1.style.header.setClasses(["Notice_grd1"]);
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					container.addChild(grid_1, {
 						"top": "55px",
 						"right": "0px",
@@ -477,6 +481,7 @@
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
 					comboBox_1.style.css({
+						"border-radius" : "8px",
 						"text-align" : "center"
 					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));

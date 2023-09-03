@@ -503,6 +503,10 @@
 									]
 								}
 							});
+							grid_1.style.header.css({
+								"background-color" : "#E0E1E2",
+								"background-image" : "none"
+							});
 							container.addChild(grid_1, {
 								"top": "0px",
 								"right": "0px",
@@ -704,6 +708,10 @@
 									]
 								}
 							});
+							grid_2.style.header.css({
+								"background-color" : "#E0E1E2",
+								"background-image" : "none"
+							});
 							container.addChild(grid_2, {
 								"top": "0px",
 								"right": "0px",
@@ -898,6 +906,10 @@
 									]
 								}
 							});
+							grid_3.style.header.css({
+								"background-color" : "#E0E1E2",
+								"background-image" : "none"
+							});
 							container.addChild(grid_3, {
 								"top": "0px",
 								"right": "0px",
@@ -992,6 +1004,10 @@
 										}
 									]
 								}
+							});
+							grid_4.style.header.css({
+								"background-color" : "#E0E1E2",
+								"background-image" : "none"
 							});
 							container.addChild(grid_4, {
 								"top": "0px",

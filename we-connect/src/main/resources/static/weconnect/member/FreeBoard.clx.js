@@ -291,6 +291,10 @@
 					]
 				}
 			});
+			grid_1.style.header.css({
+				"font-weight" : "800",
+				"background-image" : "none"
+			});
 			if(typeof onBoardListGrdRowDblclick == "function") {
 				grid_1.addEventListener("row-dblclick", onBoardListGrdRowDblclick);
 			}

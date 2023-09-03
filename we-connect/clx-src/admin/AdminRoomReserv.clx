@@ -49,12 +49,16 @@
     <cl:tabfolder std:sid="t-folder-a10d1ba7">
       <cl:xylayoutdata std:sid="xyl-data-289fbfc8" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabitem std:sid="t-item-3e4f6c0a" text="회의실 목록">
+        <std:metadata>
+          <std:property key="is-active-item" value="true"/>
+        </std:metadata>
         <cl:group std:sid="group-c0075964">
           <std:metadata>
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:grid std:sid="grid-9e0879ac" id="roomGrd" datasetid="roomList">
             <cl:xylayoutdata std:sid="xyl-data-267881a5" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-b715447c" width="25px"/>
             <cl:gridcolumn std:sid="g-column-e4bf2538" width="20px" visible="false"/>
             <cl:gridcolumn std:sid="g-column-6b6e73ca" width="500px"/>
@@ -91,9 +95,6 @@
         </cl:group>
       </cl:tabitem>
       <cl:tabitem std:sid="t-item-a6d1f92f" selected="true" text="예약 현황">
-        <std:metadata>
-          <std:property key="is-active-item" value="true"/>
-        </std:metadata>
         <cl:group std:sid="group-84722dfd">
           <std:metadata>
             <std:property key="locked" value="true"/>
@@ -101,6 +102,7 @@
           <cl:grid std:sid="grid-2b48ad68" id="grd1" datasetid="reservList">
             <cl:listener std:sid="listener-cf0c8c0f" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-254f34d9" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-23a372af" visible="false"/>
             <cl:gridcolumn std:sid="g-column-7a018089" width="125px"/>
             <cl:gridcolumn std:sid="g-column-f3fbfdfa" width="75px"/>

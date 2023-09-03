@@ -1383,7 +1383,7 @@ body.cl-has-modal {
   /* 비활성 탭 아이템 */
 }
 .cl-tabfolder .cl-tabfolder-header .cl-tabfolder-item.cl-selected {
-  background-color: #208AED;
+  background-color: #ffffff;
   color: #FFFFFF;
   border-color: #1369C5;
   /* 선택된 탭 아이템 닫기 버튼 */
