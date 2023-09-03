@@ -5,6 +5,7 @@
 	<select id="findProjectByMemberId"
 		resultType="com.arezip.weconnect.model.dto.ProjectDTO">
 		 SELECT
+		 P.PROJECT_ID,
 		 P.PROJECT_NAME, to_char(P.PROJECT_START, 'YYYY-MM-DD')
 				as projectStart, to_char(P.PROJECT_END, 'YYYY-MM-DD') as projectEnd
 		FROM

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 
 import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
+import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
@@ -32,15 +33,21 @@ public class FreeBoardCommentRestController {
 	//댓글 조회
 	@GetMapping
 	public View getFreeBoardCommentList(HttpServletRequest request, DataRequest dataRequest) {
+		HttpSession session = request.getSession();
+		//로그인한 회원 정보 담음 
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = (long) session.getAttribute("memberId");
+		memberDTO.setMemberId(memberId);
 		ParameterGroup param = dataRequest.getParameterGroup("detailBoardParam");//freeBoardId들어있는 dm
 		long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
 		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
 		log.info("freeBoardCommentDTO {}",freeBoardCommentDTO);
 		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
+		dataRequest.setResponse("memberDTO", memberDTO);
 		return new JSONDataView();
 	}
 	
-	//댓글 등록---------->clx바꾸고 controller 작성하면 됨
+	//댓글 등록
 	@PostMapping
 	public View addFreeBoardComment(HttpServletRequest request, DataRequest dataRequest) {
 		HttpSession session = request.getSession();

@@ -43,6 +43,11 @@
 					freeBoardCommentIdOutput.text = freeBoardCommentId;
 					freeBoardCommentIdOutput.redraw();
 					
+					var fbcMemberIdOutput = app.lookup("fbcMemberId");
+					var fbcMemberId = app.getAppProperty("fbcMemberId");
+					fbcMemberIdOutput.text = fbcMemberId;
+					fbcMemberIdOutput.redraw();
+					
 					var freeBoardCommentDateOutput = app.lookup("freeBoardCommentDate");
 					var freeBoardCommentDate = app.getAppProperty("freeBoardCommentDate");
 					freeBoardCommentDateOutput.text = freeBoardCommentDate;
@@ -53,7 +58,7 @@
 					freeBoardCommentContentIpb.text = freeBoardCommentContent;
 					
 					app.lookup("deleteBtn").visible = app.getAppProperty("deleteBtn");
-					app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
+				//	app.lookup("updateBtn").visible = app.getAppProperty("updateBtn");
 					
 				}
 	
@@ -65,7 +70,6 @@
 					var button = e.control;
 					var event = new cpr.events.CAppEvent("updateClick");
 					app.dispatchEvent(event);
-					
 				}
 	
 				/*
@@ -86,6 +90,7 @@
 				app.declareAppProperty("deleteBtn", null);
 				app.declareAppProperty("updateBtn", null);
 				app.declareAppProperty("freeBoardCommentId", null);
+				app.declareAppProperty("fbcMemberId", null);
 				app.supportMedia("all and (min-width: 1920px)", "Project");
 				app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 				app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -145,10 +150,21 @@
 				});
 				
 				var output_3 = new cpr.controls.Output("freeBoardCommentId");
+				output_3.visible = false;
 				output_3.value = "Output";
 				container.addChild(output_3, {
 					"top": "20px",
 					"left": "180px",
+					"width": "100px",
+					"height": "20px"
+				});
+				
+				var output_4 = new cpr.controls.Output("fbcMemberId");
+				output_4.visible = false;
+				output_4.value = "Output";
+				container.addChild(output_4, {
+					"top": "20px",
+					"left": "280px",
 					"width": "100px",
 					"height": "20px"
 				});
@@ -220,6 +236,14 @@
 		},
 		set: function(newValue){
 			return this.getEmbeddedAppInstance().setAppProperty("freeBoardCommentId", newValue, true);
+		}
+	});
+	Object.defineProperty(udc.FreeBoardCommentUdc.prototype, "fbcMemberId", {
+		get: function(){
+			return this.getEmbeddedAppInstance().getAppProperty("fbcMemberId");
+		},
+		set: function(newValue){
+			return this.getEmbeddedAppInstance().setAppProperty("fbcMemberId", newValue, true);
 		}
 	});
 	

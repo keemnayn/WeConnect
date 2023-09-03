@@ -36,7 +36,7 @@
     <cl:output std:sid="output-5166df4a" id="freeBoardCommentId" visible="false" value="Output">
       <cl:xylayoutdata std:sid="xyl-data-29e34107" top="20px" left="180px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
-    <cl:output std:sid="output-f46ee339" id="fbcMemberId" value="Output">
+    <cl:output std:sid="output-f46ee339" id="fbcMemberId" visible="false" value="Output">
       <cl:xylayoutdata std:sid="xyl-data-1f2a7d22" top="20px" left="280px" width="100px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:xylayout std:sid="xylayout-2d6277a9"/>

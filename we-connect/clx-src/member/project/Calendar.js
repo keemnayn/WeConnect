@@ -27,8 +27,10 @@ function onCalendarDateClick(e) {
 	}, function(dialog) {
 		dialog.addEventListener("close", function(e) {
 			var returnValue = dialog.returnValue;
-			app.lookup("projectListSub").send();
-			calendar.redraw();
+			if(returnValue) {
+				app.lookup("projectListSub").send();
+				calendar.redraw();
+			}
 		});
 	});
 }
@@ -38,7 +40,7 @@ function onCalendarDateClick(e) {
  * 통신이 성공하면 발생합니다.
  */
 function onProjectListSubSubmitSuccess(e) {
-	var submission = app.lookup("projectListSub");
+    var submission = app.lookup("projectListSub");
 	var calendar = app.lookup("calendar");
 	var dataSet = app.lookup("projectList");
 	var jsonData = JSON.parse(submission.xhr.responseText);
