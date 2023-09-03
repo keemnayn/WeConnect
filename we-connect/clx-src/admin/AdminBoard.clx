@@ -74,6 +74,7 @@
           <cl:grid std:sid="grid-c21e7c3f" id="freeBoardListGrd" datasetid="freeBoardList">
             <cl:listener std:sid="listener-1fd77039" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-76f73472" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-d8f5cc80" width="25px"/>
             <cl:gridcolumn std:sid="g-column-ca94dd74" visible="false"/>
             <cl:gridcolumn std:sid="g-column-8a3bf0cd" width="100px"/>
@@ -96,32 +97,32 @@
               <cl:gridcell std:sid="gd-cell-769481d5" rowindex="0" colindex="0" style="text-align:center;" columntype="checkbox"/>
               <cl:gridcell std:sid="gd-cell-2c9e96fa" rowindex="0" colindex="1" style="text-align:center;" columnname="freeBoardId">
                 <cl:output std:sid="output-1401f39d" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-68bcd552"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-56803342" rowindex="0" colindex="2" style="text-align:center;" columnname="freeBoardTitle">
                 <cl:output std:sid="output-bb31fd3d" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-0f5dc735"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-ef8cf6db" rowindex="0" colindex="3" style="text-align:center;" columnname="freeBoardContent">
                 <cl:output std:sid="output-b773d12f" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-e45d5a36"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-13fa63fe" rowindex="0" colindex="4" style="text-align:center;" columnname="memberName">
                 <cl:output std:sid="output-34d8e15b" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-08451575"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-5f434641" rowindex="0" colindex="5" style="text-align:center;" columnname="freeBoardCreate">
                 <cl:output std:sid="output-06ba55e7" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-c5c7c148"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-496eb951" rowindex="0" colindex="6" style="text-align:center;" columnname="freeBoardCommentCount">
                 <cl:output std:sid="output-0fb7231b" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-0a533942"/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>
@@ -137,7 +138,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="text-align:center;">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-efe62557" top="10px" right="380px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

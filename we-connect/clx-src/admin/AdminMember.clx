@@ -160,6 +160,7 @@
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-dafc8668" id="memberListGrd1" datasetid="memberList" autofit="0, 2, 3, 5, 6">
             <cl:xylayoutdata std:sid="xyl-data-613ff43d" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-7a07d62e" width="25px"/>
             <cl:gridcolumn std:sid="g-column-289fdfe6" width="50px" visible="false"/>
             <cl:gridcolumn std:sid="g-column-1c773fe1"/>
@@ -219,7 +220,7 @@
               </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
-          <cl:combobox std:sid="c-box-b8ad3665" id="searchTypeCmb1" style="text-align:center;">
+          <cl:combobox std:sid="c-box-b8ad3665" id="searchTypeCmb1" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-fd5acb44" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
@@ -260,6 +261,7 @@
           </std:metadata>
           <cl:grid std:sid="grid-cf176441" id="memberListGrd2" datasetid="pendingList">
             <cl:xylayoutdata std:sid="xyl-data-ceda1cfc" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-93da78a6" width="25px"/>
             <cl:gridcolumn std:sid="g-column-4fd3a7b7" visible="false"/>
             <cl:gridcolumn std:sid="g-column-9d9e3cb4"/>
@@ -335,7 +337,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-3ab63fb8" id="searchTypeCmb2" style="text-align:center;">
+          <cl:combobox std:sid="c-box-3ab63fb8" id="searchTypeCmb2" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="pendingSearchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="pendingSearchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-24a217c6" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

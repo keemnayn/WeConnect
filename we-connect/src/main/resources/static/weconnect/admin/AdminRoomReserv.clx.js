@@ -248,6 +248,10 @@
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					container.addChild(grid_1, {
 						"top": "55px",
 						"right": "0px",
@@ -435,6 +439,10 @@
 								}
 							]
 						}
+					});
+					grid_2.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
 					});
 					if(typeof onGrd1SelectionChange == "function") {
 						grid_2.addEventListener("selection-change", onGrd1SelectionChange);

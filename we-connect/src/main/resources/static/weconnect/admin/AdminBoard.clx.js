@@ -309,6 +309,7 @@
 											output_1.bind("value").toDataColumn("freeBoardId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -326,6 +327,7 @@
 											output_2.bind("value").toDataColumn("freeBoardTitle");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -343,6 +345,7 @@
 											output_3.bind("value").toDataColumn("freeBoardContent");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -360,6 +363,7 @@
 											output_4.bind("value").toDataColumn("memberName");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -377,6 +381,7 @@
 											output_5.bind("value").toDataColumn("freeBoardCreate");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -394,10 +399,15 @@
 											output_6.bind("value").toDataColumn("freeBoardCommentCount");
 											return output_6;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]
 						}
+					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
 					});
 					if(typeof onGrd1SelectionChange == "function") {
 						grid_1.addEventListener("selection-change", onGrd1SelectionChange);
@@ -439,6 +449,7 @@
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
 					comboBox_1.style.css({
+						"border-radius" : "8px",
 						"text-align" : "center"
 					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));

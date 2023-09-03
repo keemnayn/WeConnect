@@ -220,7 +220,7 @@
 			}
 			container.addChild(tree_1, {
 				"top": "50px",
-				"bottom": "50px",
+				"bottom": "3px",
 				"left": "0px",
 				"width": "300px"
 			});
@@ -298,21 +298,8 @@
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
-				"bottom": "70px",
-				"left": "320px"
-			});
-			
-			var group_2 = new cpr.controls.Container();
-			group_2.style.css({
-				"background-color" : "#F1EFFF"
-			});
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			container.addChild(group_2, {
-				"right": "0px",
 				"bottom": "0px",
-				"width": "1920px",
-				"height": "50px"
+				"left": "320px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);

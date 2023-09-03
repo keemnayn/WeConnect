@@ -94,6 +94,7 @@
           </std:metadata>
           <cl:grid std:sid="grid-be2e867b" id="leaveRequestListGrd" datasetid="leaveRequestList">
             <cl:xylayoutdata std:sid="xyl-data-2f4dfaa2" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-42239e6e" width="25px"/>
             <cl:gridcolumn std:sid="g-column-606e0982" visible="false"/>
             <cl:gridcolumn std:sid="g-column-afd42e56" visible="false"/>
@@ -197,7 +198,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="text-align:center;">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-3f6a6e67" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

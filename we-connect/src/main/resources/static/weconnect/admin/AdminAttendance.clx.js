@@ -404,6 +404,10 @@
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					if(typeof onGrd1SelectionChange == "function") {
 						grid_1.addEventListener("selection-change", onGrd1SelectionChange);
 					}
@@ -415,6 +419,7 @@
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
 					comboBox_1.style.css({
+						"border-radius" : "8px",
 						"text-align" : "center"
 					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));

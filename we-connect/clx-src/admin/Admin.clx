@@ -129,7 +129,7 @@
     <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none; text-align:left;" class="admin_tree">
       <cl:listener std:sid="listener-3e8bb458" name="item-click" handler="onTre1ItemClick"/>
       <cl:listener std:sid="listener-5364dcf8" name="selection-change" handler="onTre1SelectionChange"/>
-      <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="3px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="adminMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
     <cl:group std:sid="group-4144ff34" style="background-color:#F1EFFF;">
@@ -153,12 +153,8 @@
     </cl:group>
     <cl:embeddedapp std:sid="e-app-ab9fedd7" id="ea1">
       <cl:listener std:sid="listener-b4ef381c" name="init" handler="onEa1Init"/>
-      <cl:xylayoutdata std:sid="xyl-data-1f7cd493" top="70px" right="20px" bottom="70px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-1f7cd493" top="70px" right="20px" bottom="0px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:embeddedapp>
-    <cl:group std:sid="group-fa8979ad" style="background-color:#F1EFFF;">
-      <cl:xylayoutdata std:sid="xyl-data-d5716855" right="0px" bottom="0px" width="1920px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
-      <cl:xylayout std:sid="xylayout-5cdf7d4e"/>
-    </cl:group>
     <cl:xylayout std:sid="xylayout-9cd716cb"/>
   </body>
   <std:studiosetting>
