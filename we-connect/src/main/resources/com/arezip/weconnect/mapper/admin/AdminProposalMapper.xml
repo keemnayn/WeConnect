@@ -7,8 +7,12 @@
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
 		select p.proposal_id AS proposalId, p.proposal_title AS
 		proposalTitle,
-		p.proposal_content
-		AS proposalContent,
+		CASE
+	    WHEN LENGTH(proposal_content) > 12 THEN
+	    SUBSTR(proposal_content, 1, 12) || '...'
+	    ELSE
+	    proposal_content
+	    END AS proposalContent,
 		to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
 		p.proposal_status
 		AS proposalStatus, m.member_name AS
