@@ -61,8 +61,8 @@
 						teamPostUdc.department = teamPostList[i].departmentName;
 									
 						container.addChild(teamPostUdc, {
-							width: "800px",
-							height: "400px",
+							width: "1300px",
+							height: "300px",
 							autoSize: "both"
 						});
 						teamPostUdc.addEventListener("deleteClick", function(e) {
