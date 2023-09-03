@@ -238,22 +238,8 @@
 					"width": "420px",
 					"height": "40px"
 				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.value = "<a href=\"#\"  class=\"password-_reset\">비밀번호 찾기<\/a>";
-				hTMLSnippet_1.style.setClasses(["password_reset"]);
-				hTMLSnippet_1.style.css({
-					"color" : "#5B6B79",
-					"font-weight" : "400",
-					"font-size" : "15px"
-				});
-				container.addChild(hTMLSnippet_1, {
-					"top": "290px",
-					"right": "10px",
-					"left": "428px",
-					"height": "20px"
-				});
 				var image_1 = new cpr.controls.Image();
-				image_1.src = "img/enjoy.png";
+				image_1.src = "img/loginLogo.png";
 				container.addChild(image_1, {
 					"top": "49px",
 					"left": "93px",
