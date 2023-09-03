@@ -1057,7 +1057,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.TeamPostUdc
  * App URI: udc/TeamPostUdc
