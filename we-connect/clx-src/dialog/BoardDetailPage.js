@@ -46,7 +46,9 @@ function onBoardDetailSubSubmitSuccess(e) {
  */
 function onBoardDeleteBtnClick(e) {
 	var boardDeleteBtn = e.control;
-	app.lookup("deleteBoardSub").send();
+	if (confirm("해당 글을 삭제하시겠습니까?")) {
+		app.lookup("deleteBoardSub").send();
+	}
 }
 
 /*
@@ -55,22 +57,19 @@ function onBoardDeleteBtnClick(e) {
  */
 function onDeleteBoardSubSubmitSuccess(e) {
 	var deleteBoardSub = e.control;
-	if (!confirm("해당 글을 삭제하시겠습니까?")) {
-		// 취소(아니오) 버튼 클릭 시 이벤트
-		alert("취소를 누르셨습니다");
-	} else {
-		alert("게시글 삭제 완료");
-		app.close();
-	}
+	alert("게시글 삭제 완료");
+	app.close();
 }
 
 /*
  * "글 수정" 버튼(boardUpdateBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onBoardUpdateBtnClick2(e){
+function onBoardUpdateBtnClick2(e) {
 	var boardUpdateBtn = e.control;
-	app.lookup("updateBoardSub").send();
+	if (confirm("해당 글을 수정하시겠습니까?")) {
+		app.lookup("updateBoardSub").send();
+	}
 }
 
 /*
@@ -79,15 +78,8 @@ function onBoardUpdateBtnClick2(e){
  */
 function onUpdateBoardSubSubmitSuccess(e) {
 	var updateBoardSub = e.control;
-	if (!confirm("해당 글을 수정하시겠습니까?")) {
-		// 취소(아니오) 버튼 클릭 시 이벤트
-		alert("취소를 누르셨습니다");
-	} else {
-		alert("게시글 수정 완료");
-		//		app.close();
-	}
+	alert("게시글 수정 완료");
 }
-
 
 /*
  * 서브미션에서 receive 이벤트 발생 시 호출.
@@ -103,7 +95,7 @@ function onCommentListSubReceive(e) {
 	//댓글 등록, 삭제 시 재조회 할 수 있게 기존 목록 삭제
 	container.removeAllChildren();
 	for (var i = 0; i < boardComment.length; i++) {
-		(function(index){
+		(function(index) {
 			//udc 동적 생성
 			var comment = new udc.FreeBoardCommentUdc();
 			//udc에서 출판한 이미지 경로 앱 속성 지정
@@ -117,19 +109,13 @@ function onCommentListSubReceive(e) {
 				width: "1550px",
 				autoSize: "both"
 			});
-			comment.addEventListener("deleteClick", function(e){
+			comment.addEventListener("deleteClick", function(e) {
 				app.lookup("dmFreeBoardCommentId").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
 				console.log(comment.freeBoardCommentId);
-				if(confirm("댓글을 삭제하시겠습니까?")) {
+				if (confirm("댓글을 삭제하시겠습니까?")) {
 					app.lookup("deleteCommentSub").send();
 				}
 			});
-//			comment.addEventListener("updateClick", function(e){
-//				app.lookup("freeBoardComment").setValue("freeBoardCommentId", boardComment[index].freeBoardCommentId);
-//				if(confirm("댓글을 수정하시겠습니까?")) {
-//					app.lookup("updateCommentSub").send();
-//				}
-//			});
 		})(i);
 	}
 }
@@ -138,7 +124,7 @@ function onCommentListSubReceive(e) {
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onInsertCommentSubSubmitSuccess(e){
+function onInsertCommentSubSubmitSuccess(e) {
 	var insertCommentSub = e.control;
 	app.lookup("commentListSub").send();
 	app.lookup("commentIpb").text = "";
@@ -148,18 +134,18 @@ function onInsertCommentSubSubmitSuccess(e){
  * "등록" 버튼(commentBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onCommentBtnClick2(e){
+function onCommentBtnClick2(e) {
 	var commentBtn = e.control;
 	var hostProperty = app.getHostProperty("initValue");
 	var freeBoardId = hostProperty["freeBoardId"];
 	app.lookup("freeBoardId").value = freeBoardId;
 	app.lookup("commentInsertParam").setValue("freeBoardId", freeBoardId);
 	var contentValue = app.lookup("commentInsertParam").getValue("freeBoardCommentContent");
-	if(contentValue == null || contentValue=="" ){
-			alert("내용을 입력하세요");
-			app.lookup("commentIpb").focus();
-			return;
-		}
+	if (contentValue == null || contentValue == "") {
+		alert("내용을 입력하세요");
+		app.lookup("commentIpb").focus();
+		return;
+	}
 	app.lookup("insertCommentSub").send();
 }
 
@@ -167,7 +153,7 @@ function onCommentBtnClick2(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onDeleteCommentSubSubmitSuccess2(e){
+function onDeleteCommentSubSubmitSuccess2(e) {
 	var deleteCommentSub = e.control;
 	app.lookup("commentListSub").send();
 }

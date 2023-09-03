@@ -229,7 +229,7 @@
               <cl:listener std:sid="listener-f4b00546" name="selection-change" handler="onGrd2SelectionChange"/>
               <cl:xylayoutdata std:sid="xyl-data-41145107" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
-              <cl:gridcolumn std:sid="g-column-6acbc825"/>
+              <cl:gridcolumn std:sid="g-column-6acbc825" visible="false"/>
               <cl:gridcolumn std:sid="g-column-183ca615"/>
               <cl:gridcolumn std:sid="g-column-9182f4a5"/>
               <cl:gridcolumn std:sid="g-column-0fe5208a"/>
@@ -308,7 +308,7 @@
               <cl:xylayoutdata std:sid="xyl-data-078adbe4" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:headerstyle style="background-color:#E0E1E2; border-right-style:none; font-weight:700; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;"/>
               <cl:detailstyle style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;"/>
-              <cl:gridcolumn std:sid="g-column-1e411169" visible="true"/>
+              <cl:gridcolumn std:sid="g-column-1e411169" visible="false"/>
               <cl:gridcolumn std:sid="g-column-2b7dab53"/>
               <cl:gridcolumn std:sid="g-column-16c611c9"/>
               <cl:gridcolumn std:sid="g-column-e49fcb00"/>

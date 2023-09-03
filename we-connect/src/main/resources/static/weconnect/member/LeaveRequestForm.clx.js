@@ -24,9 +24,17 @@
 			 */
 			function onLeaveSubmitSuccess(e) {
 				var leave = e.control;
-				alert("작성완료");
+				var typeCmp = app.lookup("typeCmp");
+				var startDti = app.lookup("startDti");
+				var endDti = app.lookup("endDti");
+				var reasonTxa = app.lookup("reasonTxa");
+				typeCmp.fieldLabel = "";
+				typeCmp.value = "";
+				startDti.clear();
+				endDti.clear();
+				reasonTxa.value = "";
+				alert("신청 완료 되었습니다");
 			}
-
 
 			/*
 			 * "신청" 버튼에서 click 이벤트 발생 시 호출.
@@ -35,19 +43,29 @@
 			function onButtonClick(e) {
 				var button = e.control;
 				let submission = app.lookup("Leave");
-				submission.send();
+				if (confirm("신청 하시겠습니까?")) {
+					submission.send();
+				}
 			}
 
 			/*
 			 * "취소" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onButtonClick2(e){
+			function onButtonClick2(e) {
 				var button = e.control;
-					if (confirm("작성을 취소하시겠습니까?")) {
-					window.location.href = "/";
+				var typeCmp = app.lookup("typeCmp");
+				var startDti = app.lookup("startDti");
+				var endDti = app.lookup("endDti");
+				var reasonTxa = app.lookup("reasonTxa");
+				if (confirm("작성을 취소하시겠습니까?")) {
+					typeCmp.fieldLabel = "";
+					typeCmp.value = "";
+					startDti.clear();
+					endDti.clear();
+					reasonTxa.value = "";
 				}
-			};
+			}
 			// End - User Script
 			
 			// Header
@@ -201,7 +219,7 @@
 					"colIndex": 0,
 					"rowIndex": 1
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+				var comboBox_1 = new cpr.controls.ComboBox("typeCmp");
 				comboBox_1.style.css({
 					"text-align" : "center"
 				});
@@ -239,7 +257,7 @@
 					"colIndex": 0,
 					"rowIndex": 2
 				});
-				var dateInput_1 = new cpr.controls.DateInput("dti1");
+				var dateInput_1 = new cpr.controls.DateInput("startDti");
 				dateInput_1.style.css({
 					"text-align" : "center"
 				});
@@ -248,7 +266,7 @@
 					"colIndex": 1,
 					"rowIndex": 2
 				});
-				var dateInput_2 = new cpr.controls.DateInput("dti2");
+				var dateInput_2 = new cpr.controls.DateInput("endDti");
 				dateInput_2.style.css({
 					"text-align" : "center"
 				});
@@ -257,7 +275,7 @@
 					"colIndex": 2,
 					"rowIndex": 2
 				});
-				var textArea_1 = new cpr.controls.TextArea("txa2");
+				var textArea_1 = new cpr.controls.TextArea("reasonTxa");
 				textArea_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestReason");
 				container.addChild(textArea_1, {
 					"colIndex": 1,

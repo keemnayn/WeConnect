@@ -3,22 +3,23 @@
 <mapper
 	namespace="com.arezip.weconnect.mapper.admin.AdminNoticeMapper">
 	<!-- 공지사항 전체 목록 -->
+	<!-- <select id="selectAllNotices" resultType="com.arezip.weconnect.model.dto.NoticeDTO"> 
+		select notice_id AS noticeId, notice_title AS noticeTitle, CASE WHEN LENGTH(notice_content) 
+		> 12 THEN SUBSTR(notice_content, 1, 12) || '...' ELSE notice_content END 
+		AS noticeContent, notice_category AS noticeCategory, TO_CHAR(notice_create, 
+		'YYYY-MM-DD') AS noticeCreate from notice ORDER BY notice_id DESC </select> -->
 	<select id="selectAllNotices"
 		resultType="com.arezip.weconnect.model.dto.NoticeDTO">
 		select
 		notice_id AS noticeId,
 		notice_title AS noticeTitle,
-		CASE
-		WHEN LENGTH(notice_content) > 12 THEN
-		SUBSTR(notice_content, 1, 12) || '...'
-		ELSE
-		notice_content
-		END AS noticeContent,
+		notice_content AS noticeContent,  <!-- 수정된 부분: 원본 notice_content로 표시 -->
 		notice_category AS noticeCategory,
 		TO_CHAR(notice_create, 'YYYY-MM-DD') AS noticeCreate
 		from notice
 		ORDER BY notice_id DESC
 	</select>
+
 	<!-- 공지사항 추가 -->
 	<insert id="insertNotice"
 		parameterType="com.arezip.weconnect.model.dto.NoticeDTO">

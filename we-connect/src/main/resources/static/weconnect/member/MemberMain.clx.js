@@ -777,7 +777,10 @@
 						grid_1.init({
 							"dataSet": app.lookup("proposalList"),
 							"columns": [
-								{"width": "100px"},
+								{
+									"width": "100px",
+									"visible": false
+								},
 								{"width": "100px"},
 								{"width": "100px"},
 								{"width": "100px"}
@@ -1020,7 +1023,7 @@
 							"columns": [
 								{
 									"width": "100px",
-									"visible": true
+									"visible": false
 								},
 								{"width": "100px"},
 								{"width": "100px"},

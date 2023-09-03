@@ -29,7 +29,7 @@
 				var proposalContent = app.lookup("proposalContentIpb").value;
 				if (!proposalTitle || !proposalContent) {
 					alert("건의글의 제목과 내용을 모두 입력해주세요.");
-				} else {
+				} else if (confirm("건의사항 등록 하시겠습니까?")) {
 					submission.send();
 				}
 			}
@@ -48,10 +48,12 @@
 			 * "취소" 버튼(btnRevert)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onBtnRevertClick(e){
+			function onBtnRevertClick(e) {
 				var btnRevert = e.control;
-				app.close();
-			};
+				if (confirm("게시물 작성 취소 하시겠습니까?")) {
+					app.close();
+				}
+			}
 			// End - User Script
 			
 			// Header

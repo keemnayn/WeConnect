@@ -41,15 +41,13 @@ function onUpdateStatusBtnClick(e) {
 	var updateStatusBtn = e.control;
 	var grid = app.lookup("proposalGrd");
 	var checkRowIndices = grid.getCheckRowIndices();
-	if (checkRowIndices.length === 1) {
+	if (checkRowIndices.length > 0) {
 		if (confirm("처리완료 하시겠습니까?")) {
-			grid.updateRow(checkRowIndices);
+			grid.deleteRow(checkRowIndices);
 			app.lookup("updateStatusSub").send();
 		}
-	} else if (checkRowIndices.length === 0) {
-		alert("하나 이상 선택하셔야 합니다.");
 	} else {
-		alert("처리는 하나씩만 가능합니다.");
+		alert("하나 이상 선택하셔야 합니다.");
 	}
 }
 
@@ -60,7 +58,6 @@ function onUpdateStatusBtnClick(e) {
 function onUpdateStatusSubSubmitSuccess(e) {
 	var updateStatusSub = e.control;
 	alert("정상 처리되었습니다");
-	app.lookup("updateStatusSub").send();
 	app.lookup("proposalListSub").send();
 	app.lookup("proposalGrd").redraw();
 }
@@ -89,7 +86,7 @@ function onDeleteBtnClick(e) {
  */
 function onDeleteProposalSubSubmitDone(e) {
 	var deleteProposalSub = e.control;
-	app.lookup("deleteProposalSub").send();
+	app.lookup("proposalListSub").send();
 }
 
 /*
@@ -109,4 +106,15 @@ function onSearchInputSearch(e) {
 function onSearchProposalSubSubmitSuccess(e) {
 	var searchProposalSub = e.control;
 	app.lookup("proposalGrd").redraw();
+}
+
+/*
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
+ */
+function onUpdateStatusSubSubmitError(e) {
+	var updateStatusSub = e.control;
+	var error = updateStatusSub.getMetadata("error");
+	app.lookup("proposalListSub").send();
+	alert(error);
 }

@@ -66,6 +66,18 @@
 				window.location.href = "login";
 			}
 
+			function validateEmail() {
+				var emailValidationOpb = app.lookup("emailValidationOpb").value;
+				var duplicateBtn = app.lookup("duplicateBtn");
+				// 모든 유효성 검사가 통과되었는지 확인
+				if (
+					emailValidationOpb === "정상적인 이메일 형식입니다."
+				) {
+					duplicateBtn.enabled = true;
+				} else {
+					duplicateBtn.enabled = false;
+				}
+			}
 			/*
 			 * "중복확인" 버튼(duplicateBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
@@ -129,6 +141,7 @@
 					emailValidationOpb.value = "정상적인 이메일 형식입니다.";
 					emailValidationOpb.style.css("color", "blue");
 				}
+				validateEmail();
 				validateAllFields();
 			}
 
@@ -137,10 +150,10 @@
 				var nameValue = memberName.value;
 				var nameValidationOpb = app.lookup("nameValidationOpb");
 				
-				var nameRegex = /^[가-힣]+$/;
+				var nameRegex = /^[가-힣]{2,}$/; // 이름이 두 글자 이상인지 검사하는 정규식
 				
 				if (!nameRegex.test(nameValue)) {
-					nameValidationOpb.value = "한글 완성형 문자만 입력 가능합니다.";
+					nameValidationOpb.value = "두 글자 이상의 한글 완성형 문자만 입력 가능합니다.";
 					nameValidationOpb.style.css("color", "red");
 				} else {
 					nameValidationOpb.value = "정상적인 이름 형식입니다.";

@@ -57,6 +57,8 @@
       </cl:submission>
       <cl:submission std:sid="submission-e33473dd" id="updateStatusSub" method="put" action="admin/proposals">
         <cl:listener std:sid="listener-693ae8e1" name="submit-success" handler="onUpdateStatusSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-f7126f43" name="submit-done" handler="onUpdateStatusSubSubmitDone"/>
+        <cl:listener std:sid="listener-c7007265" name="submit-error" handler="onUpdateStatusSubSubmitError"/>
         <cl:requestdata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-00c8f439" id="deleteProposalSub" method="delete" action="admin/proposals">

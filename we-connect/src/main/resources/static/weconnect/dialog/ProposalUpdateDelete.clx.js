@@ -51,7 +51,7 @@
 				var proposalContent = app.lookup("proposalContentIpb").value;
 				if (!proposalTitle || !proposalContent) {
 					alert("건의글의 제목과 내용을 모두 입력해주세요.");
-				} else {
+				} else if (confirm("입력 내용으로 수정 하시겠습니까?")) {
 					submission.send();
 				}
 			}
@@ -72,7 +72,9 @@
 			 */
 			function onBtnDeleteClick(e) {
 				var btnDelete = e.control;
-				app.lookup("proposalDeleteSub").send();
+				if (confirm("게시글 삭제 하시겠습니까?")) {
+					app.lookup("proposalDeleteSub").send();
+				}
 			}
 
 			/*
@@ -81,32 +83,27 @@
 			 */
 			function onProposalDeleteSubSubmitSuccess(e) {
 				var proposalDeleteSub = e.control;
-				if (!confirm("해당 글을 삭제하시겠습니까? 한 번 삭제된 글은 되돌릴 수 없습니다.")) {
-					// 취소(아니오) 버튼 클릭 시 이벤트
-					alert("취소를 누르셨습니다");
-				} else {
-					alert("건의사항 삭제 완료");
-					app.close();
-				}
+				alert("건의사항 삭제 완료");
+				app.close();
 			}
 
 			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onProposalDetailSubSubmitSuccess(e){
-				var proposalDetailSub= e.control;
+			function onProposalDetailSubSubmitSuccess(e) {
+				var proposalDetailSub = e.control;
 				var memberId = app.lookup("memberDTO").getValue("memberId");
 				var hostProperty = app.getHostProperty("initValue");
 				var PMemberId = hostProperty["PMemberId"];
 				var btnUpdate = app.lookup("btnUpdate");
 				var btnDelete = app.lookup("btnDelete");
 				console.log(memberId);
-					if (memberId == PMemberId) {
+				if (memberId == PMemberId) {
 					btnUpdate.visible = true;
 					btnDelete.visible = true;
 				}
-			};
+			}
 			// End - User Script
 			
 			// Header

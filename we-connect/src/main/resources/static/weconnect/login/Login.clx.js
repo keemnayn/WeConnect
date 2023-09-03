@@ -71,7 +71,12 @@
 				var loginSub = e.control;
 				var submission = app.lookup("loginSub");
 				var error = submission.getMetadata("error");
+				var memberEmailIpb = app.lookup("memberEmailIpb");
+				var memberPasswordIpb = app.lookup("memberPasswordIpb");
 				alert(error);
+				memberEmailIpb.clear();
+				memberPasswordIpb.clear();
+				memberEmailIpb.focus();
 			}
 
 			/*
