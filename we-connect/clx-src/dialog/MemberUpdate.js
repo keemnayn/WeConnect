@@ -26,7 +26,7 @@ function onUpdateBtnClick(e) {
 	var departmentName = app.lookup("departmentNameCmb").value;
 	if (!memberName || !position || !departmentName) {
 		alert("회원의 이름, 직급, 부서를 모두 입력해주세요.");
-	} else {
+	} else if (confirm("회원 정보 수정 하시겠습니까?")) {
 		submission.send();
 	}
 }

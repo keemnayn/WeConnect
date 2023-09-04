@@ -37,7 +37,7 @@
   /* 트리 아이템 - 선택됨 */
 }
 .cl-tree.admin_tree .cl-tree-item .cl-tree-itemicon {
-  background-size: 20%;
+  background-size: 0%;
 }
 .cl-tree.admin_tree .cl-tree-item .cl-text {
   background-repeat: no-repeat;

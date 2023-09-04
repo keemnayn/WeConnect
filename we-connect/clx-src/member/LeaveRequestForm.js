@@ -11,9 +11,17 @@
  */
 function onLeaveSubmitSuccess(e) {
 	var leave = e.control;
-	alert("작성완료");
+	var typeCmp = app.lookup("typeCmp");
+	var startDti = app.lookup("startDti");
+	var endDti = app.lookup("endDti");
+	var reasonTxa = app.lookup("reasonTxa");
+	typeCmp.fieldLabel = "";
+	typeCmp.value = "";
+	startDti.clear();
+	endDti.clear();
+	reasonTxa.value = "";
+	alert("신청 완료 되었습니다");
 }
-
 
 /*
  * "신청" 버튼에서 click 이벤트 발생 시 호출.
@@ -22,16 +30,26 @@ function onLeaveSubmitSuccess(e) {
 function onButtonClick(e) {
 	var button = e.control;
 	let submission = app.lookup("Leave");
-	submission.send();
+	if (confirm("신청 하시겠습니까?")) {
+		submission.send();
+	}
 }
 
 /*
  * "취소" 버튼에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
-function onButtonClick2(e){
+function onButtonClick2(e) {
 	var button = e.control;
-		if (confirm("작성을 취소하시겠습니까?")) {
-		window.location.href = "/";
+	var typeCmp = app.lookup("typeCmp");
+	var startDti = app.lookup("startDti");
+	var endDti = app.lookup("endDti");
+	var reasonTxa = app.lookup("reasonTxa");
+	if (confirm("작성을 취소하시겠습니까?")) {
+		typeCmp.fieldLabel = "";
+		typeCmp.value = "";
+		startDti.clear();
+		endDti.clear();
+		reasonTxa.value = "";
 	}
 }

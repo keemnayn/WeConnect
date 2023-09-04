@@ -227,6 +227,10 @@
 					]
 				}
 			});
+			grid_1.style.header.css({
+				"font-weight" : "700",
+				"background-image" : "none"
+			});
 			container.addChild(grid_1, {
 				"top": "80px",
 				"right": "0px",
@@ -239,6 +243,9 @@
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
+				searchInput_1.style.css({
+					"border-radius" : "8px"
+				});
 				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 				searchInput_1.setBindContext(dataMapContext_1);
 				searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
@@ -252,6 +259,10 @@
 					"height": "30px"
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+				comboBox_1.style.css({
+					"border-radius" : "8px",
+					"text-align" : "center"
+				});
 				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 				comboBox_1.setBindContext(dataMapContext_2);
 				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");

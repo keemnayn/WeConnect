@@ -119,7 +119,7 @@
                 <cl:datarowcontext datacontrolid="pendingList" rowindex="0"/>
                 <cl:grid std:sid="grid-f9242ba7" id="pendingListGrd" datasetid="pendingList">
                   <cl:xylayoutdata std:sid="xyl-data-c61b1e4d" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-                  <cl:headerstyle style="background-color:#E0E1E2; background-image:none;"/>
+                  <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
                   <cl:gridcolumn std:sid="g-column-016b3ac9" visible="false"/>
                   <cl:gridcolumn std:sid="g-column-402b733c"/>
                   <cl:gridcolumn std:sid="g-column-6597e340"/>
@@ -181,7 +181,7 @@
             </cl:tabitem>
           </cl:tabfolder>
           <cl:tabfolder std:sid="t-folder-de732905">
-            <cl:xylayoutdata std:sid="xyl-data-869cab18" top="0px" right="0px" width="755px" height="371px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-869cab18" top="0px" right="0px" left="823px" height="371px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
             <cl:tabitem std:sid="t-item-5a8dcdcb" selected="true" text="공지사항">
               <cl:group std:sid="group-de31adaf">
                 <std:metadata>
@@ -189,7 +189,7 @@
                 </std:metadata>
                 <cl:grid std:sid="grid-6a4dae61" id="noticeListGrd" datasetid="noticeList">
                   <cl:xylayoutdata std:sid="xyl-data-14b53c66" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-                  <cl:headerstyle style="background-color:#E0E1E2; background-image:none;"/>
+                  <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
                   <cl:gridcolumn std:sid="g-column-7fa28962" visible="false"/>
                   <cl:gridcolumn std:sid="g-column-23463ed0"/>
                   <cl:gridcolumn std:sid="g-column-ded3d9cc"/>
@@ -245,7 +245,7 @@
                 </std:metadata>
                 <cl:grid std:sid="grid-a4b2ef46" id="freeBoardListGrd" datasetid="freeBoardList" resizablecolumns="none">
                   <cl:xylayoutdata std:sid="xyl-data-6e9765d5" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-                  <cl:headerstyle style="background-color:#E0E1E2; background-image:none;"/>
+                  <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
                   <cl:gridcolumn std:sid="g-column-e993a84d" visible="false"/>
                   <cl:gridcolumn std:sid="g-column-3d61c25e"/>
                   <cl:gridcolumn std:sid="g-column-e791dcf5" width="125px"/>
@@ -304,7 +304,7 @@
                 </std:metadata>
                 <cl:grid std:sid="grid-d9e7aef4" id="grd1" datasetid="reservList">
                   <cl:xylayoutdata std:sid="xyl-data-bf0c181a" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-                  <cl:headerstyle style="background-color:#E0E1E2; background-image:none;"/>
+                  <cl:headerstyle style="background-color:#E0E1E2; font-weight:700; background-image:none;"/>
                   <cl:gridcolumn std:sid="g-column-03107140"/>
                   <cl:gridcolumn std:sid="g-column-7f867ef6"/>
                   <cl:gridcolumn std:sid="g-column-a399d317"/>
@@ -329,7 +329,7 @@
             </cl:tabitem>
           </cl:tabfolder>
           <cl:tabfolder std:sid="t-folder-edaa83c3">
-            <cl:xylayoutdata std:sid="xyl-data-b34e69de" top="370px" bottom="0px" left="0px" width="805px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+            <cl:xylayoutdata std:sid="xyl-data-b34e69de" top="370px" bottom="0px" left="0px" width="800px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
             <cl:tabitem std:sid="t-item-03dbc1d0" selected="true" text="일정">
               <std:metadata>
                 <std:property key="is-active-item" value="true"/>

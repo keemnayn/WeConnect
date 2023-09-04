@@ -78,6 +78,7 @@
     <cl:listener std:sid="listener-5b4a68e4" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-2fb52cbb" id="noticeGrd" datasetid="noticeList">
       <cl:xylayoutdata std:sid="xyl-data-50e259b1" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:headerstyle style="font-weight:700; background-image:none;"/>
       <cl:gridcolumn std:sid="g-column-70bf2a34" visible="false"/>
       <cl:gridcolumn std:sid="g-column-c95d7c02" width="20px"/>
       <cl:gridcolumn std:sid="g-column-733b081c" width="30px"/>
@@ -102,13 +103,13 @@
     </cl:grid>
     <cl:group std:sid="group-2e1d1886">
       <cl:xylayoutdata std:sid="xyl-data-e2689e96" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb" style="border-radius:8px;">
         <cl:listener std:sid="listener-4ec409a7" name="search" handler="onSearchIpbSearch"/>
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-4ce1c669" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb">
+      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-74061233" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>

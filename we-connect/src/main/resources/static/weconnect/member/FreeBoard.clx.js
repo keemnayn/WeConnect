@@ -326,6 +326,9 @@
 					"height": "30px"
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("searchCmb");
+				comboBox_1.style.css({
+					"text-align" : "center"
+				});
 				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 				comboBox_1.setBindContext(dataMapContext_3);
 				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");

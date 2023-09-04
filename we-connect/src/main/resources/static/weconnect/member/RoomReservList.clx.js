@@ -101,7 +101,10 @@
 			grid_1.init({
 				"dataSet": app.lookup("reservList"),
 				"columns": [
-					{"width": "100px"},
+					{
+						"width": "100px",
+						"visible": false
+					},
 					{"width": "100px"},
 					{"width": "100px"},
 					{"width": "100px"},
@@ -208,6 +211,10 @@
 						}
 					]
 				}
+			});
+			grid_1.style.header.css({
+				"font-weight" : "700",
+				"background-image" : "none"
 			});
 			container.addChild(grid_1, {
 				"top": "50px",

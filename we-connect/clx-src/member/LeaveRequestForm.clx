@@ -48,7 +48,7 @@
       <cl:output std:sid="output-8ee4c576" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="구분">
         <cl:formdata std:sid="f-data-d2185aae" row="1" col="0"/>
       </cl:output>
-      <cl:combobox std:sid="c-box-b717da3e" id="cmb1" style="text-align:center;">
+      <cl:combobox std:sid="c-box-b717da3e" id="typeCmp" style="text-align:center;">
         <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestType"/>
         <cl:formdata std:sid="f-data-585eaa41" row="1" col="1" rowspan="1" colspan="2"/>
         <cl:itemset datasetid="type" label="type" value="type"/>
@@ -56,15 +56,15 @@
       <cl:output std:sid="output-aab3b154" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid; text-align:center;" value="기간">
         <cl:formdata std:sid="f-data-8ae16c91" row="2" col="0"/>
       </cl:output>
-      <cl:dateinput std:sid="d-input-50ee8a88" id="dti1" style="text-align:center;">
+      <cl:dateinput std:sid="d-input-50ee8a88" id="startDti" style="text-align:center;">
         <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestStart"/>
         <cl:formdata std:sid="f-data-0f4d53f4" row="2" col="1"/>
       </cl:dateinput>
-      <cl:dateinput std:sid="d-input-e6bf1b04" id="dti2" style="text-align:center;">
+      <cl:dateinput std:sid="d-input-e6bf1b04" id="endDti" style="text-align:center;">
         <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestEnd"/>
         <cl:formdata std:sid="f-data-bb4c9b37" row="2" col="2"/>
       </cl:dateinput>
-      <cl:textarea std:sid="t-area-4f070278" id="txa2">
+      <cl:textarea std:sid="t-area-4f070278" id="reasonTxa">
         <cl:datamapbind property="value" datacontrolid="leaveRequest" columnname="leaveRequestReason"/>
         <cl:formdata std:sid="f-data-d528f9e9" row="3" col="1" rowspan="1" colspan="2"/>
       </cl:textarea>

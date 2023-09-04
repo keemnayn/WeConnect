@@ -31,5 +31,5 @@ public class LogoutController {
 		message.put("url", "login");
 		dataRequest.setMetadata(true, message);
 		return new JSONDataView();
-	}
-}
+	}    
+}                    	    

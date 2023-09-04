@@ -53,8 +53,8 @@ public class LeaveRequestRestController {
 		// 연차 신청 서비스 호출 및 로그 출력
 		leaveRequestService.LeaveRequest(leaveRequestDTO);
 		log.info("연차 등록: {}", leaveRequestDTO);
-		leaveRequestService.updateLeaveCount(memberId);
-		log.info("연차 카운트성공:{}", leaveRequestService.updateLeaveCount(memberId));
+//		leaveRequestService.updateLeaveCount(memberId);
+//		log.info("연차 카운트성공:{}", leaveRequestService.updateLeaveCount(memberId));
 		return new JSONDataView();
 	}
 }

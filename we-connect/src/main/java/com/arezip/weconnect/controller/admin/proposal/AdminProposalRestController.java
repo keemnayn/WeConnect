@@ -43,12 +43,18 @@ public class AdminProposalRestController {
 	@PutMapping
 	public View updateProposalStatus(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup parameterGroup = dataRequest.getParameterGroup("proposalList");
-		log.info("parameterGroup {}",parameterGroup);
+		log.info("parameterGroup {}", parameterGroup);
 		if (parameterGroup != null) {
-			Iterator<ParameterRow> iter = parameterGroup.getUpdatedRows();
+			Iterator<ParameterRow> iter = parameterGroup.getDeletedRows();
 			while (iter.hasNext()) {
-				Map<String, String> rowMap = iter.next().toMap(); 
+				Map<String, String> rowMap = iter.next().toMap();
 				ProposalDTO proposalDTO = mapToProposalDTO(rowMap);
+				if (!"처리중".equals(proposalDTO.getProposalStatus())) {
+					Map<String, Object> message = new HashMap<>();
+					message.put("error", "처리중인 건의사항만 승인 할 수 있습니다");
+					dataRequest.setMetadata(false, message);
+					return new JSONDataView();
+				}
 				adminProposalService.updateProposalStatus(proposalDTO);
 			}
 		}
@@ -59,6 +65,7 @@ public class AdminProposalRestController {
 	private ProposalDTO mapToProposalDTO(Map<String, String> rowMap) {
 		ProposalDTO proposalDTO = new ProposalDTO();
 		proposalDTO.setProposalId(Long.parseLong(rowMap.get("proposalId"))); // map에서의 키
+		proposalDTO.setProposalStatus(rowMap.get("proposalStatus"));
 		return proposalDTO;
 	}
 

@@ -31,7 +31,6 @@
 	</insert>
 	<select id="findReservList" resultType="com.arezip.weconnect.model.dto.RoomReservDTO">
 		SELECT
-			<!-- ROW_NUMBER() OVER (ORDER BY rr.room_reserv_id) AS room_reserv_id, -->
 			rr.room_reserv_id AS room_reserv_id,
 		    r.room_name,
 		    m.member_name,
@@ -41,6 +40,7 @@
 		FROM
 		    room r JOIN room_reserv rr ON r.room_id = rr.room_id
 		    JOIN member m ON m.member_id = rr.member_id
+		order by room_reserv_date desc
 	</select>
 	<update id="updateRoomReserv" parameterType="com.arezip.weconnect.model.dto.RoomReservDTO">
 	</update>

@@ -7,8 +7,7 @@
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
 		select p.proposal_id AS proposalId, p.proposal_title AS
 		proposalTitle,
-		p.proposal_content
-		AS proposalContent,
+	    proposal_content AS proposalContent,
 		to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
 		p.proposal_status
 		AS proposalStatus, m.member_name AS

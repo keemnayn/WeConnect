@@ -71,7 +71,12 @@
 				var loginSub = e.control;
 				var submission = app.lookup("loginSub");
 				var error = submission.getMetadata("error");
+				var memberEmailIpb = app.lookup("memberEmailIpb");
+				var memberPasswordIpb = app.lookup("memberPasswordIpb");
 				alert(error);
+				memberEmailIpb.clear();
+				memberPasswordIpb.clear();
+				memberEmailIpb.focus();
 			}
 
 			/*
@@ -154,7 +159,7 @@
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var inputBox_1 = new cpr.controls.InputBox("memberEmailIpb");
-				inputBox_1.placeholder = "아이디";
+				inputBox_1.placeholder = "이메일";
 				inputBox_1.style.setClasses(["input_id"]);
 				inputBox_1.style.css({
 					"border-radius" : "8px",

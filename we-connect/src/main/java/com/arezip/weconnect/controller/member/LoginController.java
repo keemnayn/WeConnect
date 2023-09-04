@@ -56,7 +56,7 @@ public class LoginController {
 
 		if (memberId == INVALID_LOGIN) {
 			log.warn("로그인 시도 실패 - 아이디 또는 비밀번호 오류: memberEmail={}", memberEmail);
-			return createErrorResponse(dataRequest, "아이디 또는 비밀번호 오류입니다");
+			return createErrorResponse(dataRequest, "이메일 또는 비밀번호 오류입니다");
 		}
 
 		Map<String, Object> message = new HashMap<>();
