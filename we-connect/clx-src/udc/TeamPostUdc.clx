@@ -45,12 +45,12 @@
         <cl:listener std:sid="listener-b3f99e99" name="click" handler="onUpdateBtnClick"/>
         <cl:xylayoutdata std:sid="xyl-data-20b9afa9" top="256px" left="1351px" width="50px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
-      <cl:inputbox std:sid="i-box-369fdbe2" id="title" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;" value="teamPostTitle">
-        <cl:xylayoutdata std:sid="xyl-data-ee787c41" top="60px" left="20px" width="1430px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:inputbox>
-      <cl:textarea std:sid="t-area-75973765" id="content" value="teamPostContent">
-        <cl:xylayoutdata std:sid="xyl-data-1952da49" top="100px" left="20px" width="1430px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:textarea>
+      <cl:output std:sid="output-f7e795a9" id="content" value="teamPostContent">
+        <cl:xylayoutdata std:sid="xyl-data-6dffa085" top="96px" left="20px" width="1430px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
+      <cl:output std:sid="output-ae2caf1e" id="title" value="teamPostTitle">
+        <cl:xylayoutdata std:sid="xyl-data-bc9c9032" top="60px" left="20px" width="1430px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:output>
       <cl:xylayout std:sid="xylayout-01e9cfde"/>
     </cl:group>
     <cl:xylayout std:sid="xylayout-310f733e"/>

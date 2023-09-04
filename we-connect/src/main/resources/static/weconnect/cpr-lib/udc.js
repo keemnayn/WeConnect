@@ -1,5 +1,4 @@
 /// start - udc.FreeBoardCommentUdc
-<<<<<<< HEAD
 /*
  * UDC Qualified Name: udc.FreeBoardCommentUdc
  * App URI: udc/FreeBoardCommentUdc
@@ -251,7 +250,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.FreeBoardCommentUdc
  * App URI: udc/FreeBoardCommentUdc
@@ -503,7 +501,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
->>>>>>> branch 'develop-branch' of https://github.com/keemnayn/WeConnect.git
 /// end - udc.FreeBoardCommentUdc
 /// start - udc.MyPostUdc
 /*
@@ -660,7 +657,6 @@
 })();
 /// end - udc.MyPostUdc
 /// start - udc.TeamPostCommentUdc
-<<<<<<< HEAD
 /*
  * UDC Qualified Name: udc.TeamPostCommentUdc
  * App URI: udc/TeamPostCommentUdc
@@ -1033,7 +1029,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
-=======
 /*
  * UDC Qualified Name: udc.TeamPostCommentUdc
  * App URI: udc/TeamPostCommentUdc
@@ -1220,7 +1215,6 @@
 	// Register type into the Platform and package
 	cpr.core.Platform.INSTANCE.register(internalApp);
 })();
->>>>>>> branch 'develop-branch' of https://github.com/keemnayn/WeConnect.git
 /// end - udc.TeamPostCommentUdc
 /// start - udc.TeamPostUdc
 /*
@@ -1378,27 +1372,21 @@
 						"width": "50px",
 						"height": "20px"
 					});
-					var inputBox_1 = new cpr.controls.InputBox("title");
-					inputBox_1.value = "teamPostTitle";
-					inputBox_1.style.css({
-						"border-right-style" : "none",
-						"border-left-style" : "none",
-						"border-bottom-style" : "none",
-						"border-top-style" : "none"
+					var output_5 = new cpr.controls.Output("content");
+					output_5.value = "teamPostContent";
+					container.addChild(output_5, {
+						"top": "96px",
+						"left": "20px",
+						"width": "1430px",
+						"height": "150px"
 					});
-					container.addChild(inputBox_1, {
+					var output_6 = new cpr.controls.Output("title");
+					output_6.value = "teamPostTitle";
+					container.addChild(output_6, {
 						"top": "60px",
 						"left": "20px",
 						"width": "1430px",
 						"height": "30px"
-					});
-					var textArea_1 = new cpr.controls.TextArea("content");
-					textArea_1.value = "teamPostContent";
-					container.addChild(textArea_1, {
-						"top": "100px",
-						"left": "20px",
-						"width": "1430px",
-						"height": "150px"
 					});
 				})(group_1);
 				if(typeof onGroupClick == "function") {
