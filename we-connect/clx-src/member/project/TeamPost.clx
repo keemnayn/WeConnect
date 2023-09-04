@@ -13,24 +13,24 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
+            <cl:datavalue columnname="type">전체</cl:datavalue>
+            <cl:datavalue columnname="value">all</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[제목]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
+            <cl:datavalue columnname="type">제목</cl:datavalue>
+            <cl:datavalue columnname="value">title</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[내용]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[content]]></cl:datavalue>
+            <cl:datavalue columnname="type">내용</cl:datavalue>
+            <cl:datavalue columnname="value">content</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[프로젝트명]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[project]]></cl:datavalue>
+            <cl:datavalue columnname="type">프로젝트명</cl:datavalue>
+            <cl:datavalue columnname="value">project</cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="type"><![CDATA[작성자]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[name]]></cl:datavalue>
+            <cl:datavalue columnname="type">작성자</cl:datavalue>
+            <cl:datavalue columnname="value">name</cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -52,6 +52,18 @@
           <cl:datacolumn std:sid="d-column-3c8fd443" name="memberName"/>
           <cl:datacolumn std:sid="d-column-72d066a3" name="teamPostComment"/>
           <cl:datacolumn std:sid="d-column-73ef442c" name="date"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-6b99d0c9" id="searchPostList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fbfaa456" name="teamPostId"/>
+          <cl:datacolumn std:sid="d-column-641e204a" name="teamPostTitle" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-609463ef" name="teamPostContent"/>
+          <cl:datacolumn std:sid="d-column-d92f2325" name="teamPostCreateDate"/>
+          <cl:datacolumn std:sid="d-column-f6df5b37" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-38aed256" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-92f5da84" name="departmentName"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
@@ -96,7 +108,7 @@
       <cl:submission std:sid="submission-87647814" id="searchTeamPostSub" method="get" action="member/teams/search">
         <cl:listener std:sid="listener-a9d87d35" name="submit-success" handler="onSearchTeamPostSubSubmitSuccess"/>
         <cl:requestdata dataid="searchParam"/>
-        <cl:responsedata dataid="teamPostList"/>
+        <cl:responsedata dataid="searchPostList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -107,20 +119,6 @@
       <cl:datarowcontext datacontrolid="teamPostList"/>
       <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
-    <cl:group std:sid="group-e89323ed">
-      <cl:verticaldata std:sid="v-data-b8901bcf" width="845px" height="54px" autosize="none"/>
-      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
-        <cl:listener std:sid="listener-4b0eae30" name="search" handler="onSearchIpbSearch"/>
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
-        <cl:xylayoutdata std:sid="xyl-data-290bccd0" top="18px" right="84px" left="201px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-      </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb">
-        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
-        <cl:xylayoutdata std:sid="xyl-data-a59795a2" top="20px" right="654px" left="91px" height="30px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
-        <cl:itemset datasetid="teamPostSearch" label="type" value="value"/>
-      </cl:combobox>
-      <cl:xylayout std:sid="xylayout-79e361e1"/>
-    </cl:group>
     <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
       <cl:listener std:sid="listener-44971034" name="mousedown" handler="onInsertIpbMousedown"/>
       <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>
