@@ -41,7 +41,7 @@
 		INNER JOIN DEPARTMENT D ON M.department_id = D.department_id
 	</select>
 	<!-- 연차 관리 반차 만들어야 함 -->
-	<update id="updateLeaveCount">
+	<update id="updateLeaveCount" >
 		UPDATE member
 		SET leave_count = leave_count -
 		(SELECT
@@ -55,15 +55,5 @@
 		WHERE member_id =
 		#{memberId})
 		WHERE member_id = #{memberId}
-	</update>
-	<!-- manager_yn 값이 Y인 사람들만 승인으로 변경할 수 있게 한다. -->
-	<update id="">
-		UPDATE leave_request l
-		SET l.leave_request_status = '승인'
-		WHERE l.memberId IN (
-		SELECT m.memberId
-		FROM member m
-		WHERE m.MANAGER_YN = 'Y'
-		)
 	</update>
 </mapper>

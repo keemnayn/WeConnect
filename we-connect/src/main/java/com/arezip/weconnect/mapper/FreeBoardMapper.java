@@ -24,14 +24,18 @@ public interface FreeBoardMapper {
 	int updateFreeBoard(FreeBoardDTO freeBoardDTO);
 	//자유 게시판 글 삭제
 	int deleteFreeBoard(FreeBoardDTO freeBoardDTO);
+	//자유 게시판 조회수
+	int updateFreeBoardViews(long freeBoardId);
 	
 	//자유 게시판 댓글 등록
-	int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
+	int insertFreeBoardComment(String freeBoardCommentContent, long memberId, long freeBoardId);
+//	int insertFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
 	//자유 게시판 댓글 조회 
 	List<FreeBoardCommentDTO> getFreeBoardComment(long freeBoardId);
 	//자유 게시판 댓글 수정
 	int updateFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
 	//자유 게시판 댓글 삭제
-	int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
+	int deleteFreeBoardComment(long freeBoardCommentId);
+//	int deleteFreeBoardComment(FreeBoardCommentDTO freeBoardCommentDTO);
 }
   

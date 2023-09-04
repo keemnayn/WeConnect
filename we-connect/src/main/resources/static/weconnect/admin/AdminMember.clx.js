@@ -273,13 +273,7 @@
 					},
 					{"name": "departmentName"}
 				],
-				"rows": [
-					{"memberEmail": "1", "memberName": "a@gmail.com", "position": "박해준", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "2", "memberName": "b@gmail.com", "position": "김정현", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "3", "memberName": "c@gmail.com", "position": "김나연", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "4", "memberName": "d@gmail.com", "position": "최수연", "memberJoinDate": "2023-03-27"},
-					{"memberEmail": "5", "memberName": "e@gmail.com", "position": "서정우", "memberJoinDate": "2023-03-27"}
-				]
+				"rows": []
 			});
 			app.register(dataSet_3);
 			
@@ -393,7 +387,7 @@
 			
 			var tabItem_1 = (function(tabFolder){
 				var tabItem_1 = new cpr.controls.TabItem();
-				tabItem_1.text = "회원명단";
+				tabItem_1.text = "사원명단";
 				var group_1 = new cpr.controls.Container();
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
@@ -659,6 +653,10 @@
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					container.addChild(grid_1, {
 						"top": "50px",
 						"right": "0px",
@@ -667,6 +665,7 @@
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb1");
 					comboBox_1.style.css({
+						"border-radius" : "8px",
 						"text-align" : "center"
 					});
 					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
@@ -743,7 +742,7 @@
 			
 			var tabItem_2 = (function(tabFolder){
 				var tabItem_2 = new cpr.controls.TabItem();
-				tabItem_2.text = "회원승인";
+				tabItem_2.text = "가입승인";
 				var group_3 = new cpr.controls.Container();
 				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
 				group_3.setLayout(xYLayout_3);
@@ -1008,6 +1007,10 @@
 							]
 						}
 					});
+					grid_2.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					container.addChild(grid_2, {
 						"top": "50px",
 						"right": "0px",
@@ -1054,6 +1057,7 @@
 					});
 					var comboBox_2 = new cpr.controls.ComboBox("searchTypeCmb2");
 					comboBox_2.style.css({
+						"border-radius" : "8px",
 						"text-align" : "center"
 					});
 					var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("pendingSearchParam"));

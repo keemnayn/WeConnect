@@ -19,22 +19,52 @@
 			 ************************************************/
 
 			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLeaveSubmitSuccess(e) {
+				var leave = e.control;
+				var typeCmp = app.lookup("typeCmp");
+				var startDti = app.lookup("startDti");
+				var endDti = app.lookup("endDti");
+				var reasonTxa = app.lookup("reasonTxa");
+				typeCmp.fieldLabel = "";
+				typeCmp.value = "";
+				startDti.clear();
+				endDti.clear();
+				reasonTxa.value = "";
+				alert("신청 완료 되었습니다");
+			}
+
+			/*
 			 * "신청" 버튼에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
 			function onButtonClick(e) {
 				var button = e.control;
 				let submission = app.lookup("Leave");
-				submission.send();
+				if (confirm("신청 하시겠습니까?")) {
+					submission.send();
+				}
 			}
 
 			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
+			 * "취소" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
-			function onLeaveSubmitSuccess(e) {
-				var leave = e.control;
-				alert("작성완료");
+			function onButtonClick2(e) {
+				var button = e.control;
+				var typeCmp = app.lookup("typeCmp");
+				var startDti = app.lookup("startDti");
+				var endDti = app.lookup("endDti");
+				var reasonTxa = app.lookup("reasonTxa");
+				if (confirm("작성을 취소하시겠습니까?")) {
+					typeCmp.fieldLabel = "";
+					typeCmp.value = "";
+					startDti.clear();
+					endDti.clear();
+					reasonTxa.value = "";
+				}
 			}
 			// End - User Script
 			
@@ -92,6 +122,9 @@
 			if(typeof onLeaveSubmitSuccess == "function") {
 				submission_1.addEventListener("submit-success", onLeaveSubmitSuccess);
 			}
+			if(typeof onLeaveSubmitError == "function") {
+				submission_1.addEventListener("submit-error", onLeaveSubmitError);
+			}
 			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
@@ -111,6 +144,22 @@
 			
 			// UI Configuration
 			var group_1 = new cpr.controls.Container();
+			group_1.style.setClasses(["cl-form-group"]);
+			group_1.style.css({
+				"border-right-style" : "solid",
+				"border-bottom-color" : "#bfbfbf",
+				"border-top-width" : "1px",
+				"border-right-width" : "1px",
+				"border-left-color" : "#bfbfbf",
+				"border-right-color" : "#bfbfbf",
+				"border-left-width" : "1px",
+				"border-top-style" : "solid",
+				"border-radius" : "5px",
+				"border-left-style" : "solid",
+				"border-bottom-width" : "1px",
+				"border-top-color" : "#bfbfbf",
+				"border-bottom-style" : "solid"
+			});
 			var formLayout_1 = new cpr.controls.layouts.FormLayout();
 			formLayout_1.scrollable = false;
 			formLayout_1.topMargin = "0px";
@@ -119,35 +168,61 @@
 			formLayout_1.leftMargin = "0px";
 			formLayout_1.horizontalSpacing = "0px";
 			formLayout_1.verticalSpacing = "0px";
-			formLayout_1.setColumns(["100px", "1fr", "100px", "1fr", "100px", "1fr"]);
-			formLayout_1.setRows(["1fr"]);
+			formLayout_1.horizontalSeparatorWidth = 1;
+			formLayout_1.verticalSeparatorWidth = 1;
+			formLayout_1.setColumns(["100px", "1fr", "1fr"]);
+			formLayout_1.setUseColumnShade(0, true);
+			formLayout_1.setRows(["50px", "50px", "50px", "1fr", "50px"]);
 			group_1.setLayout(formLayout_1);
 			(function(container){
 				var output_1 = new cpr.controls.Output();
-				output_1.value = "구분";
+				output_1.value = "목적";
+				output_1.style.css({
+					"border-right-style" : "solid",
+					"border-top-width" : "1px",
+					"border-bottom-color" : "#bfbfbf",
+					"border-right-width" : "1px",
+					"border-left-color" : "#bfbfbf",
+					"border-right-color" : "#bfbfbf",
+					"border-left-width" : "1px",
+					"border-top-style" : "solid",
+					"border-left-style" : "solid",
+					"border-bottom-width" : "1px",
+					"border-top-color" : "#bfbfbf",
+					"border-bottom-style" : "solid",
+					"text-align" : "center"
+				});
 				container.addChild(output_1, {
 					"colIndex": 0,
-					"rowIndex": 0
+					"rowIndex": 3,
+					"colSpan": 1,
+					"rowSpan": 2
 				});
 				var output_2 = new cpr.controls.Output();
-				output_2.value = "기간";
+				output_2.value = "구분";
+				output_2.style.css({
+					"border-right-style" : "solid",
+					"border-top-width" : "1px",
+					"border-bottom-color" : "#bfbfbf",
+					"border-right-width" : "1px",
+					"border-left-color" : "#bfbfbf",
+					"border-right-color" : "#bfbfbf",
+					"border-left-width" : "1px",
+					"border-top-style" : "solid",
+					"border-left-style" : "solid",
+					"border-bottom-width" : "1px",
+					"border-top-color" : "#bfbfbf",
+					"border-bottom-style" : "solid",
+					"text-align" : "center"
+				});
 				container.addChild(output_2, {
-					"colIndex": 2,
-					"rowIndex": 0
+					"colIndex": 0,
+					"rowIndex": 1
 				});
-				var dateInput_1 = new cpr.controls.DateInput("dti1");
-				dateInput_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestStart");
-				container.addChild(dateInput_1, {
-					"colIndex": 3,
-					"rowIndex": 0
+				var comboBox_1 = new cpr.controls.ComboBox("typeCmp");
+				comboBox_1.style.css({
+					"text-align" : "center"
 				});
-				var dateInput_2 = new cpr.controls.DateInput("dti2");
-				dateInput_2.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestEnd");
-				container.addChild(dateInput_2, {
-					"colIndex": 5,
-					"rowIndex": 0
-				});
-				var comboBox_1 = new cpr.controls.ComboBox("cmb1");
 				comboBox_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestType");
 				(function(comboBox_1){
 					comboBox_1.setItemSet(app.lookup("type"), {
@@ -157,87 +232,133 @@
 				})(comboBox_1);
 				container.addChild(comboBox_1, {
 					"colIndex": 1,
-					"rowIndex": 0
+					"rowIndex": 1,
+					"colSpan": 2,
+					"rowSpan": 1
 				});
 				var output_3 = new cpr.controls.Output();
-				output_3.value = "~";
+				output_3.value = "기간";
 				output_3.style.css({
+					"border-right-style" : "solid",
+					"border-top-width" : "1px",
+					"border-bottom-color" : "#bfbfbf",
+					"border-right-width" : "1px",
+					"border-left-color" : "#bfbfbf",
+					"border-right-color" : "#bfbfbf",
+					"border-left-width" : "1px",
+					"border-top-style" : "solid",
+					"border-left-style" : "solid",
+					"border-bottom-width" : "1px",
+					"border-top-color" : "#bfbfbf",
+					"border-bottom-style" : "solid",
 					"text-align" : "center"
 				});
 				container.addChild(output_3, {
-					"colIndex": 4,
-					"rowIndex": 0
-				});
-			})(group_1);
-			container.addChild(group_1, {
-				"top": "0px",
-				"left": "0px",
-				"width": "1580px",
-				"height": "200px"
-			});
-			
-			var group_2 = new cpr.controls.Container();
-			var formLayout_2 = new cpr.controls.layouts.FormLayout();
-			formLayout_2.scrollable = false;
-			formLayout_2.topMargin = "0px";
-			formLayout_2.rightMargin = "0px";
-			formLayout_2.bottomMargin = "0px";
-			formLayout_2.leftMargin = "0px";
-			formLayout_2.horizontalSpacing = "0px";
-			formLayout_2.verticalSpacing = "0px";
-			formLayout_2.setColumns(["100px", "1fr"]);
-			formLayout_2.setRows(["1fr"]);
-			group_2.setLayout(formLayout_2);
-			(function(container){
-				var output_4 = new cpr.controls.Output();
-				output_4.value = "목적";
-				container.addChild(output_4, {
 					"colIndex": 0,
-					"rowIndex": 0
+					"rowIndex": 2
 				});
-				var textArea_1 = new cpr.controls.TextArea("txa1");
+				var dateInput_1 = new cpr.controls.DateInput("startDti");
+				dateInput_1.style.css({
+					"text-align" : "center"
+				});
+				dateInput_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestStart");
+				container.addChild(dateInput_1, {
+					"colIndex": 1,
+					"rowIndex": 2
+				});
+				var dateInput_2 = new cpr.controls.DateInput("endDti");
+				dateInput_2.style.css({
+					"text-align" : "center"
+				});
+				dateInput_2.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestEnd");
+				container.addChild(dateInput_2, {
+					"colIndex": 2,
+					"rowIndex": 2
+				});
+				var textArea_1 = new cpr.controls.TextArea("reasonTxa");
 				textArea_1.bind("value").toDataMap(app.lookup("leaveRequest"), "leaveRequestReason");
 				container.addChild(textArea_1, {
 					"colIndex": 1,
-					"rowIndex": 0
+					"rowIndex": 3,
+					"colSpan": 2,
+					"rowSpan": 1
 				});
-			})(group_2);
-			container.addChild(group_2, {
-				"top": "200px",
-				"left": "0px",
-				"width": "1580px",
-				"height": "580px"
-			});
-			
-			var group_3 = new cpr.controls.Container();
-			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
-			group_3.setLayout(xYLayout_2);
-			(function(container){
 				var button_1 = new cpr.controls.Button();
 				button_1.value = "신청";
+				button_1.style.css({
+					"background-color" : "#E9E9E9",
+					"font-weight" : "600",
+					"background-image" : "none"
+				});
 				if(typeof onButtonClick == "function") {
 					button_1.addEventListener("click", onButtonClick);
 				}
 				container.addChild(button_1, {
-					"top": "10px",
-					"left": "656px",
-					"width": "100px",
-					"height": "20px"
+					"colIndex": 1,
+					"rowIndex": 4
+				});
+				var group_2 = new cpr.controls.Container();
+				group_2.style.css({
+					"border-right-style" : "solid",
+					"border-top-width" : "1px",
+					"border-bottom-color" : "#e9e9e9",
+					"border-right-width" : "1px",
+					"border-left-color" : "#e9e9e9",
+					"border-right-color" : "#e9e9e9",
+					"border-left-width" : "1px",
+					"border-top-style" : "solid",
+					"background-color" : "#E9E9E9",
+					"border-radius" : "8px",
+					"border-left-style" : "solid",
+					"border-bottom-width" : "1px",
+					"border-top-color" : "#e9e9e9",
+					"border-bottom-style" : "solid"
+				});
+				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
+				group_2.setLayout(xYLayout_2);
+				(function(container){
+					var hTMLSnippet_1 = new cpr.controls.HTMLSnippet("day");
+					hTMLSnippet_1.value = "연차신청";
+					hTMLSnippet_1.style.css({
+						"color" : "#6B6A6A",
+						"font-weight" : "600",
+						"font-size" : "20px",
+						"text-align" : "center"
+					});
+					container.addChild(hTMLSnippet_1, {
+						"top": "3px",
+						"bottom": "0px",
+						"width": "400px",
+						"left": "calc(50% - 200px)"
+					});
+				})(group_2);
+				container.addChild(group_2, {
+					"colIndex": 0,
+					"rowIndex": 0,
+					"colSpan": 3,
+					"rowSpan": 1
 				});
 				var button_2 = new cpr.controls.Button();
 				button_2.value = "취소";
-				container.addChild(button_2, {
-					"top": "10px",
-					"left": "790px",
-					"width": "100px",
-					"height": "20px"
+				button_2.style.css({
+					"background-color" : "#E9E9E9",
+					"color" : "#FF8080",
+					"font-weight" : "600",
+					"background-image" : "none"
 				});
-			})(group_3);
-			container.addChild(group_3, {
-				"top": "800px",
-				"left": "0px",
-				"width": "1580px",
-				"height": "60px"
+				if(typeof onButtonClick2 == "function") {
+					button_2.addEventListener("click", onButtonClick2);
+				}
+				container.addChild(button_2, {
+					"colIndex": 2,
+					"rowIndex": 4
+				});
+			})(group_1);
+			container.addChild(group_1, {
+				"top": "20px",
+				"right": "20px",
+				"bottom": "19px",
+				"left": "50px"
 			});
 		}
 	});

@@ -42,7 +42,8 @@
     <cl:listener std:sid="listener-e3b3b88b" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-38750194" id="grd1" datasetid="reservList">
       <cl:xylayoutdata std:sid="xyl-data-97df155a" top="50px" bottom="130px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-9dca41c6"/>
+      <cl:headerstyle style="font-weight:700; background-image:none;"/>
+      <cl:gridcolumn std:sid="g-column-9dca41c6" visible="false"/>
       <cl:gridcolumn std:sid="g-column-99a3d07b"/>
       <cl:gridcolumn std:sid="g-column-08d99dda"/>
       <cl:gridcolumn std:sid="g-column-8269ac61"/>
@@ -67,20 +68,9 @@
         <cl:gridcell std:sid="gd-cell-699044f6" rowindex="0" colindex="5" columnname="roomReservEndTime"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:group std:sid="group-d208eff7">
-      <cl:xylayoutdata std:sid="xyl-data-489fe943" top="10px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b">
-        <cl:xylayoutdata std:sid="xyl-data-702602b6" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
-      </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="cmb1" value="전체">
-        <cl:xylayoutdata std:sid="xyl-data-ed4bdd06" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="type" value="value"/>
-      </cl:combobox>
-      <cl:xylayout std:sid="xylayout-57b89231"/>
-    </cl:group>
     <cl:button std:sid="button-ec30af08" id="newReserv" value="예약">
       <cl:listener std:sid="listener-10550e1a" name="click" handler="onNewReservClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-14c47545" top="10px" left="1140px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-14c47545" top="10px" right="1px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:xylayout std:sid="xylayout-3413265b"/>
   </body>

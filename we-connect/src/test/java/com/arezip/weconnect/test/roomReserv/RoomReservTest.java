@@ -32,11 +32,11 @@ public class RoomReservTest {
 	@Test
 	void insertRoomReserv() {
 		RoomReservDTO roomReservDTO = new RoomReservDTO();
-		roomReservDTO.setRoomReservDate("2023-08-09");
+		roomReservDTO.setRoomReservDate("20230811");
 		roomReservDTO.setRoomReservStartTime(9);
-		roomReservDTO.setRoomReservEndTime(11);
-//		roomReservDTO.setProposal("아이템 회의");
-//		roomReservDTO.setMemberId(24); 
+		roomReservDTO.setRoomReservEndTime(10);
+		roomReservDTO.setProposal("unit test");
+		roomReservDTO.setMemberId(24); 
 		roomReservDTO.setRoomId(1);
 		int result = roomReservService.insertRoomReserv(roomReservDTO);
 		assertNotEquals(0, result);
@@ -55,10 +55,4 @@ public class RoomReservTest {
 		list.forEach(reserv -> log.info(reserv.toString()));
 	}
 	
-	//예약 날짜 조회
-	@Test
-	void findBookedDate() {
-		List<RoomReservDTO> list = roomReservService.findBookedRoom();
-		list.forEach(booked -> log.info(booked.toString()));
-	}
 }

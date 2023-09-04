@@ -6,6 +6,34 @@
     <screen std:sid="screen-94c4e91b" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-0adf00f6" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-798afcd3">
+      <cl:dataset std:sid="d-set-d50e6862" id="teamPostSearch">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a19118fc" name="type"/>
+          <cl:datacolumn std:sid="d-column-12415f0a" name="value"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="type">전체</cl:datavalue>
+            <cl:datavalue columnname="value">all</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type">제목</cl:datavalue>
+            <cl:datavalue columnname="value">title</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type">내용</cl:datavalue>
+            <cl:datavalue columnname="value">content</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type">프로젝트명</cl:datavalue>
+            <cl:datavalue columnname="value">project</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type">작성자</cl:datavalue>
+            <cl:datavalue columnname="value">name</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
       <cl:dataset std:sid="d-set-3871c400" id="teamPostList">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-ecc6de36" name="teamPostId"/>
@@ -13,7 +41,8 @@
           <cl:datacolumn std:sid="d-column-f0b228ab" name="teamPostContent"/>
           <cl:datacolumn std:sid="d-column-049b3f03" name="teamPostCreateDate"/>
           <cl:datacolumn std:sid="d-column-b819f8fe" name="memberName"/>
-          <cl:datacolumn std:sid="d-column-941c0a8b" name="projectName" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-5671cae3" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-f1818e09" name="departmentName"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
@@ -24,110 +53,81 @@
           <cl:datacolumn std:sid="d-column-72d066a3" name="teamPostComment"/>
           <cl:datacolumn std:sid="d-column-73ef442c" name="date"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="memberId"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[최훈]]></cl:datavalue>
-            <cl:datavalue columnname="teamPostComment"><![CDATA[유익한 정보 감사합니다!]]></cl:datavalue>
-            <cl:datavalue columnname="date"><![CDATA[2023-08-18]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
-      <cl:submission std:sid="submission-e8e797e0" id="teamPostSub" method="get" action="member/teams">
-        <cl:listener std:sid="listener-5c19a34c" name="submit-success" handler="onTeamPostSubSubmitSuccess"/>
+      <cl:dataset std:sid="d-set-6b99d0c9" id="searchPostList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-fbfaa456" name="teamPostId"/>
+          <cl:datacolumn std:sid="d-column-641e204a" name="teamPostTitle" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-609463ef" name="teamPostContent"/>
+          <cl:datacolumn std:sid="d-column-d92f2325" name="teamPostCreateDate"/>
+          <cl:datacolumn std:sid="d-column-f6df5b37" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-38aed256" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-92f5da84" name="departmentName"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:datamap std:sid="d-map-eb1b40b2" id="searchParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-152fa33a" name="searchType"/>
+          <cl:datacolumn std:sid="d-column-afb5a89c" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-9e58b469" id="teamPostIdParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a2893fbb" name="teamPostId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-3e1e0332" id="teamPostUpdateParam">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-53a8106e" name="teamPostId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-d8744ec1" name="teamPostTitle"/>
+          <cl:datacolumn std:sid="d-column-2d4188ac" name="teamPostContent" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-b12cce5f" id="memberDTO">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-287a706a" name="memberId" datatype="string"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-e8e797e0" id="teamPostListSub" method="get" action="member/teams/list">
+        <cl:listener std:sid="listener-a1f19330" name="submit-success" handler="onTeamPostListSubSubmitSuccess"/>
         <cl:responsedata dataid="teamPostList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-9b5357ef" id="commentSub" method="get" action="member/teams/comments">
+        <cl:responsedata dataid="comment"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-1dfeecf2" id="teamPostUpdateSub" method="put" action="member/teams">
+        <cl:listener std:sid="listener-da8ee147" name="submit-success" handler="onTeamPostUpdateSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostUpdateParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-70f8fa38" id="teamPostDeleteSub" method="delete" action="member/teams">
+        <cl:listener std:sid="listener-f129b096" name="submit-success" handler="onTeamPostDeleteSubSubmitSuccess"/>
+        <cl:requestdata dataid="teamPostIdParam"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-87647814" id="searchTeamPostSub" method="get" action="member/teams/search">
+        <cl:listener std:sid="listener-a9d87d35" name="submit-success" handler="onSearchTeamPostSubSubmitSuccess"/>
+        <cl:requestdata dataid="searchParam"/>
+        <cl:responsedata dataid="searchPostList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
-  <body std:sid="body-5f8ffe8c" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
-    <cl:listener std:sid="listener-7533b0aa" name="init" handler="onBodyInit"/>
-    <cl:inputbox std:sid="i-box-45252f4b" id="ipb1" style="border-right-style:none; color:#7D7878; border-bottom-color:#ffffff; border-left-style:none; border-left-color:#ffffff; border-top-color:#ffffff; border-bottom-style:none; border-right-color:#ffffff; font-family:IBM Plex Sans KR; border-top-style:none;" placeholder="댓글 달기">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-bc79419e">
-        <cl:xylayoutdata std:sid="sxyl-data-328628e9" top="580px" left="20px" width="1450px" height="50px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:inputbox>
-    <cl:button std:sid="button-514dd614" style="font-family:IBM Plex Sans KR;" value="등록">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-6d9fc63c">
-        <cl:xylayoutdata std:sid="sxyl-data-adc42212" top="600px" left="1482px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:button>
-    <cl:img std:sid="image-a91a99be" style="font-family:IBM Plex Sans KR;" src="../../img/member/attach-file.png">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-1c3f3bb6">
-        <cl:xylayoutdata std:sid="sxyl-data-12d66adf" top="561px" left="1482px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:img>
-    <cl:img std:sid="image-ff317aa3" style="font-family:IBM Plex Sans KR;" src="../../img/member/bookmark-white.png">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-1ae193c0">
-        <cl:xylayoutdata std:sid="sxyl-data-54879e8b" top="561px" left="1507px" width="20px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:img>
-    <cl:output std:sid="output-1fa5fb0a" style="font-weight:bold; font-size:30px;">
+  <body std:sid="body-5f8ffe8c" style="border-right-style:none; background-color:#EDF2FF; border-left-style:none; border-bottom-style:none; border-top-style:none;">
+    <cl:listener std:sid="listener-bb7a49b0" name="load" handler="onBodyLoad"/>
+    <cl:output std:sid="output-1fa5fb0a" id="projectName" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; font-weight:bold; border-right-width:1px; border-left-color:#bfbfbf; font-size:30px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; background-color:#ffffff; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; font-family:IBM Plex Sans KR SemiBold; border-bottom-style:solid;" readonly="true" value="새소식">
       <cl:datarowcontext datacontrolid="teamPostList"/>
-      <cl:responsivexylayoutdata std:sid="rxyl-data-0f7513a7">
-        <cl:xylayoutdata std:sid="sxyl-data-3f443432" top="20px" right="40px" left="20px" height="50px" horizontalAnchor="BOTH" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
+      <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
-    <cl:group std:sid="group-125ca7f3" style="background-color:#D7E4F2; border-radius:20px;">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-03e7823c">
-        <cl:xylayoutdata std:sid="sxyl-data-82ba39f2" top="650px" left="17px" width="1545px" height="170px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-      <cl:output std:sid="output-bcddb739">
-        <cl:datasetbind property="value" datacontrolid="comment" columnname="memberName" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-48eaa5fe" top="20px" left="20px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:output std:sid="output-f4837898" style="border-radius:20px;">
-        <cl:datasetbind property="value" datacontrolid="comment" columnname="teamPostComment" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-a64acfd9" top="49px" left="20px" width="1500px" height="100px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:output std:sid="output-a3aa5deb">
-        <cl:datasetbind property="value" datacontrolid="comment" columnname="date" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-a5a1362b" top="20px" left="119px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:xylayout std:sid="xylayout-8f6039ef"/>
-    </cl:group>
-    <cl:group std:sid="group-6c29afe4">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-f1b98ddd">
-        <cl:xylayoutdata std:sid="sxyl-data-4bb70134" top="280px" left="20px" width="1540px" height="260px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-      <cl:output std:sid="output-55e5d7c2" id="memberName">
-        <cl:datasetbind property="value" category="PROPERTY" datacontrolid="teamPostList" columnname="memberName"/>
-        <cl:xylayoutdata std:sid="xyl-data-499d9791" top="19px" left="19px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:output std:sid="output-5c2a8f66" id="teamPostCreate">
-        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="teamPostCreateDate" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-1c7d64d9" top="19px" left="128px" width="220px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:textarea std:sid="t-area-0669a374" id="teamPostContent" style="border-right-style:none; border-left-style:none; border-bottom-style:none; font-family:IBM Plex Sans KR; border-top-style:none;">
-        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="teamPostContent" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-a517f2ea" top="100px" left="19px" width="1520px" height="150px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:textarea>
-      <cl:htmlsnippet std:sid="htmlsnippet-3caadb14" style="border-right-style:none; color:#010101; border-bottom-color:#686565; font-weight:normal; border-left-color:#686565; font-size:14px; border-right-color:#686565; font-style:normal; border-top-style:none; border-left-style:none; border-top-color:#686565; font-family:IBM Plex Sans KR; border-bottom-style:none; text-align:right;">
-        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="projectName" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-24ff88a7" top="19px" left="1419px" width="100px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:htmlsnippet>
-      <cl:output std:sid="output-495bdf11" id="teamPostTitle">
-        <cl:datasetbind property="value" datacontrolid="teamPostList" columnname="teamPostTitle" rowindex="0"/>
-        <cl:xylayoutdata std:sid="xyl-data-b05365eb" top="57px" left="18px" width="1520px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      </cl:output>
-      <cl:xylayout std:sid="xylayout-01e9cfde"/>
-    </cl:group>
-    <cl:pageindexer std:sid="p-indexer-c03ca084">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-84d517e1">
-        <cl:xylayoutdata std:sid="sxyl-data-761d86ea" top="90px" left="435px" width="200px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:pageindexer>
-    <cl:inputbox std:sid="i-box-0b27bbbf" id="ipb2" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-2902a6e0">
-        <cl:xylayoutdata std:sid="sxyl-data-a30279fa" top="140px" left="20px" width="1520px" height="131px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
+    <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; font-size:18px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; font-family:'IBM Plex Sans KR'; border-bottom-style:solid;" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
+      <cl:listener std:sid="listener-44971034" name="mousedown" handler="onInsertIpbMousedown"/>
+      <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>
     </cl:inputbox>
-    <cl:button std:sid="button-556a8793" style="font-family:IBM Plex Sans KR;" value="작성">
-      <cl:responsivexylayoutdata std:sid="rxyl-data-f4a2e9ab">
-        <cl:xylayoutdata std:sid="sxyl-data-b21efb7c" top="176px" left="1482px" width="45px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP" screenid="new-screen"/>
-      </cl:responsivexylayoutdata>
-    </cl:button>
-    <cl:responsivexylayout std:sid="r-xylayout-a158ec9b"/>
+    <cl:group std:sid="group-1ee9ec57" id="grp" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; background-color:#ffffff; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;" class="cl-form-group">
+      <cl:verticaldata std:sid="v-data-b59d3b08" width="1540px" height="300px" autosize="height"/>
+      <cl:verticallayout std:sid="v-layout-e07151db"/>
+    </cl:group>
+    <cl:verticallayout std:sid="v-layout-86d41dff" distribution="center"/>
   </body>
   <std:studiosetting>
     <std:hruler>

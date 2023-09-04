@@ -42,43 +42,8 @@
 			 */
 			function onButtonClick2(e) {
 				var button = e.control;
-				let result = confirm("작성을 취소하시겠습니까?");
-				if (result) {
+				if (confirm("작성을 취소하시겠습니까?")) {
 					window.location.href = "login";
-				}
-			}
-
-			/*
-			 * "중복 확인" 버튼에서 click 이벤트 발생 시 호출.
-			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
-			function onButtonClick3(e) {
-				var button = e.control;
-				let submission = app.lookup("check");
-				submission.send();
-			}
-
-			/*
-			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
-			 * 통신이 성공하면 발생합니다.
-			 */
-			function onCheckSubmitSuccess(e) {
-				var check = e.control;
-				let emailCheck = app.lookup("check");
-				let email = emailCheck.getMetadata("email");
-				let memberEmail = app.lookup("memberEmailIpb");
-				
-				// 입력값이 비어있는지 확인
-				if (memberEmail.value.trim() === "") {
-					alert("이메일을 입력하세요");
-					return; // 사용자가 이메일을 입력할 때까지 다음 코드를 실행하지 않음
-				}
-				
-				// 이메일 중복 확인
-				if (email !== null) {
-					alert("중복된 이메일입니다.");
-				} else {
-					alert("사용가능한 이메일입니다.");
 				}
 			}
 
@@ -88,7 +53,7 @@
 			 */
 			function onRegisterSubSubmitError(e) {
 				var registerSub = e.control;
-				alert("회원가입 실패");
+				alert("모든 정보를 입력해 주세요");
 			}
 
 			/*
@@ -99,6 +64,143 @@
 				var registerSub = e.control;
 				alert("회원가입 완료");
 				window.location.href = "login";
+			}
+
+			function validateEmail() {
+				var emailValidationOpb = app.lookup("emailValidationOpb").value;
+				var duplicateBtn = app.lookup("duplicateBtn");
+				// 모든 유효성 검사가 통과되었는지 확인
+				if (
+					emailValidationOpb === "정상적인 이메일 형식입니다."
+				) {
+					duplicateBtn.enabled = true;
+				} else {
+					duplicateBtn.enabled = false;
+				}
+			}
+			/*
+			 * "중복확인" 버튼(duplicateBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onDuplicateBtnClick(e) {
+				var duplicateBtn = e.control;
+				app.lookup("checkEmailSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onCheckEmailSubSubmitDone(e) {
+				var checkEmailSub = e.control;
+				var success = checkEmailSub.getMetadata("success");
+				var message = checkEmailSub.getMetadata("message");
+				alert(message);
+				var memberEmailIpb = app.lookup("memberEmailIpb");
+				var emailValidationOpb = app.lookup("emailValidationOpb");
+				
+				if (!success) {
+					memberEmailIpb.clear();
+					memberEmailIpb.focus();
+					emailValidationOpb.value = "이메일을 다시 입력해 주세요";
+					emailValidationOpb.style.css("color", "red");
+				}
+			}
+
+			function validateAllFields() {
+				var emailValidationOpb = app.lookup("emailValidationOpb").value;
+				var nameValidationOpb = app.lookup("nameValidationOpb").value;
+				var passwordValidationOpb = app.lookup("passwordValidationOpb").value;
+				var passwordCheckValidationOpb = app.lookup("passwordCheckValidationOpb").value;
+				var registerBtn = app.lookup('registerBtn');
+				
+				// 모든 유효성 검사가 통과되었는지 확인
+				if (
+					emailValidationOpb === "정상적인 이메일 형식입니다." &&
+					nameValidationOpb === "정상적인 이름 형식입니다." &&
+					passwordValidationOpb === "정상적인 비밀번호 형식입니다." &&
+					passwordCheckValidationOpb === "비밀번호가 일치합니다."
+				) {
+					registerBtn.enabled = true;
+				} else {
+					registerBtn.enabled = false;
+				}
+			}
+
+			function onMemberEmailIpbBlur(e) {
+				var memberEmailIpb = e.control;
+				var emailValue = memberEmailIpb.value;
+				var emailValidationOpb = app.lookup("emailValidationOpb");
+				
+				var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+				
+				if (!emailRegex.test(emailValue)) {
+					emailValidationOpb.value = "유효하지 않은 이메일 형식입니다.";
+					emailValidationOpb.style.css("color", "red");
+				} else {
+					emailValidationOpb.value = "정상적인 이메일 형식입니다.";
+					emailValidationOpb.style.css("color", "blue");
+				}
+				validateEmail();
+				validateAllFields();
+			}
+
+			function onMemberNameBlur(e) {
+				var memberName = e.control;
+				var nameValue = memberName.value;
+				var nameValidationOpb = app.lookup("nameValidationOpb");
+				
+				var nameRegex = /^[가-힣]{2,}$/; // 이름이 두 글자 이상인지 검사하는 정규식
+				
+				if (!nameRegex.test(nameValue)) {
+					nameValidationOpb.value = "두 글자 이상의 한글 완성형 문자만 입력 가능합니다.";
+					nameValidationOpb.style.css("color", "red");
+				} else {
+					nameValidationOpb.value = "정상적인 이름 형식입니다.";
+					nameValidationOpb.style.css("color", "blue");
+				}
+				validateAllFields();
+			}
+
+			function onPasswordIpbBlur(e) {
+				var passwordIpb = e.control;
+				var passwordValue = passwordIpb.value;
+				var passwordValidationOpb = app.lookup("passwordValidationOpb");
+				
+				var passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+				
+				if (!passwordRegex.test(passwordValue)) {
+					passwordValidationOpb.value = "비밀번호는 8자리 이상이며, 최소 1개의 특수문자를 포함해야 합니다.";
+					passwordValidationOpb.style.css("color", "red");
+				} else {
+					passwordValidationOpb.value = "정상적인 비밀번호 형식입니다.";
+					passwordValidationOpb.style.css("color", "blue");
+				}
+				validateAllFields();
+			}
+
+			function onCheckPasswordIpbBlur(e) {
+				var checkPasswordIpb = e.control;
+				var passwordCheckValidationOpb = app.lookup("passwordCheckValidationOpb");
+				
+				var passwordIpb = app.lookup("passwordIpb");
+				var originalPassword = passwordIpb.value;
+				
+				var passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+				
+				if (!passwordRegex.test(checkPasswordIpb.value) || originalPassword !== checkPasswordIpb.value) {
+					if (!passwordRegex.test(checkPasswordIpb.value)) {
+						passwordCheckValidationOpb.value = "비밀번호는 8자리 이상이며, 최소 1개의 특수문자를 포함해야 합니다.";
+					} else {
+						passwordCheckValidationOpb.value = "비밀번호가 일치하지 않습니다.";
+						checkPasswordIpb.clear();
+					}
+					passwordCheckValidationOpb.style.css("color", "red");
+				} else {
+					passwordCheckValidationOpb.value = "비밀번호가 일치합니다.";
+					passwordCheckValidationOpb.style.css("color", "blue");
+				}
+				validateAllFields();
 			}
 			// End - User Script
 			
@@ -138,51 +240,8 @@
 			var dataSet_3 = new cpr.data.DataSet("email");
 			dataSet_3.parseData({});
 			app.register(dataSet_3);
-			var dataMap_1 = new cpr.data.DataMap("member");
+			var dataMap_1 = new cpr.data.DataMap("department1");
 			dataMap_1.parseData({
-				"columns" : [
-					{
-						"name": "memberId",
-						"dataType": "string"
-					},
-					{
-						"name": "memberName",
-						"dataType": "string"
-					},
-					{
-						"name": "memberEmail",
-						"dataType": "string"
-					},
-					{
-						"name": "position",
-						"dataType": "string"
-					},
-					{
-						"name": "memberPassword",
-						"dataType": "string"
-					},
-					{
-						"name": "memberStatus",
-						"dataType": "string"
-					},
-					{
-						"name": "managerYn",
-						"dataType": "string"
-					},
-					{
-						"name": "departmentId",
-						"dataType": "string"
-					},
-					{
-						"name": "leaveCount",
-						"dataType": "string"
-					}
-				]
-			});
-			app.register(dataMap_1);
-			
-			var dataMap_2 = new cpr.data.DataMap("department1");
-			dataMap_2.parseData({
 				"columns" : [
 					{
 						"name": "departmentName",
@@ -191,10 +250,10 @@
 					{"name": "departmentId"}
 				]
 			});
-			app.register(dataMap_2);
+			app.register(dataMap_1);
 			
-			var dataMap_3 = new cpr.data.DataMap("registerMemberParam");
-			dataMap_3.parseData({
+			var dataMap_2 = new cpr.data.DataMap("registerMemberParam");
+			dataMap_2.parseData({
 				"columns" : [
 					{"name": "memberEmail"},
 					{"name": "memberName"},
@@ -206,13 +265,12 @@
 					{"name": "position"}
 				]
 			});
-			app.register(dataMap_3);
+			app.register(dataMap_2);
 			var submission_1 = new cpr.protocols.Submission("memberList");
 			submission_1.method = "post";
 			submission_1.action = "";
-			submission_1.addRequestData(dataMap_1);
 			submission_1.addRequestData(dataSet_1);
-			submission_1.addRequestData(dataMap_2);
+			submission_1.addRequestData(dataMap_1);
 			if(typeof onMemberListSubmitError == "function") {
 				submission_1.addEventListener("submit-error", onMemberListSubmitError);
 			}
@@ -224,30 +282,30 @@
 			var submission_2 = new cpr.protocols.Submission("deparment");
 			submission_2.method = "get";
 			submission_2.action = "member";
-			submission_2.addRequestData(dataMap_2);
+			submission_2.addRequestData(dataMap_1);
 			submission_2.addResponseData(dataSet_1, false);
 			app.register(submission_2);
 			
 			var submission_3 = new cpr.protocols.Submission("position");
 			app.register(submission_3);
 			
-			var submission_4 = new cpr.protocols.Submission("check");
-			submission_4.method = "get";
-			submission_4.action = "email";
-			submission_4.addRequestData(dataMap_1);
-			if(typeof onCheckSubmitSuccess == "function") {
-				submission_4.addEventListener("submit-success", onCheckSubmitSuccess);
+			var submission_4 = new cpr.protocols.Submission("registerSub");
+			submission_4.action = "member";
+			submission_4.addRequestData(dataMap_2);
+			if(typeof onRegisterSubSubmitError == "function") {
+				submission_4.addEventListener("submit-error", onRegisterSubSubmitError);
+			}
+			if(typeof onRegisterSubSubmitSuccess == "function") {
+				submission_4.addEventListener("submit-success", onRegisterSubSubmitSuccess);
 			}
 			app.register(submission_4);
 			
-			var submission_5 = new cpr.protocols.Submission("registerSub");
-			submission_5.action = "member";
-			submission_5.addRequestData(dataMap_3);
-			if(typeof onRegisterSubSubmitError == "function") {
-				submission_5.addEventListener("submit-error", onRegisterSubSubmitError);
-			}
-			if(typeof onRegisterSubSubmitSuccess == "function") {
-				submission_5.addEventListener("submit-success", onRegisterSubSubmitSuccess);
+			var submission_5 = new cpr.protocols.Submission("checkEmailSub");
+			submission_5.method = "get";
+			submission_5.action = "member/check";
+			submission_5.addRequestData(dataMap_2);
+			if(typeof onCheckEmailSubSubmitDone == "function") {
+				submission_5.addEventListener("submit-done", onCheckEmailSubSubmitDone);
 			}
 			app.register(submission_5);
 			app.supportMedia("all and (min-width: 1928px)", "new-screen");
@@ -280,7 +338,51 @@
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var button_1 = new cpr.controls.Button();
+				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_1.value = "<div>이메일<\/div>\r\n";
+				hTMLSnippet_1.style.css({
+					"color" : "#070000",
+					"font-weight" : "bold",
+					"font-size" : "16px",
+					"font-family" : "sans-serif",
+					"font-style" : "normal"
+				});
+				container.addChild(hTMLSnippet_1, {
+					"top": "90px",
+					"left": "195px",
+					"width": "100px",
+					"height": "30px"
+				});
+				var inputBox_1 = new cpr.controls.InputBox("memberEmailIpb");
+				inputBox_1.placeholder = "이메일 주소는 ID로 사용됩니다.";
+				inputBox_1.style.css({
+					"border-radius" : "5px",
+					"background-color" : "#FFFFF",
+					"color" : "#000000",
+					"font-weight" : "500",
+					"font-style" : "normal",
+					"background-image" : "none",
+					"text-align" : "center"
+				});
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
+				inputBox_1.setBindContext(dataMapContext_1);
+				inputBox_1.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberEmail");
+				if(typeof onMemberIdValueChange == "function") {
+					inputBox_1.addEventListener("value-change", onMemberIdValueChange);
+				}
+				if(typeof onMemberEmailIpbBlur == "function") {
+					inputBox_1.addEventListener("blur", onMemberEmailIpbBlur);
+				}
+				if(typeof onMemberEmailIpbInput == "function") {
+					inputBox_1.addEventListener("input", onMemberEmailIpbInput);
+				}
+				container.addChild(inputBox_1, {
+					"top": "120px",
+					"left": "195px",
+					"width": "350px",
+					"height": "50px"
+				});
+				var button_1 = new cpr.controls.Button("duplicateBtn");
 				button_1.value = "중복확인";
 				button_1.style.setClasses(["button1"]);
 				button_1.style.css({
@@ -292,38 +394,33 @@
 					"background-image" : "none",
 					"text-align" : "center"
 				});
-				if(typeof onButtonClick3 == "function") {
-					button_1.addEventListener("click", onButtonClick3);
+				if(typeof onDuplicateBtnClick == "function") {
+					button_1.addEventListener("click", onDuplicateBtnClick);
 				}
 				container.addChild(button_1, {
-					"top": "146px",
-					"left": "523px",
-					"width": "109px",
-					"height": "48px"
+					"top": "120px",
+					"left": "550px",
+					"width": "100px",
+					"height": "50px"
 				});
-				var inputBox_1 = new cpr.controls.InputBox("memberName");
-				inputBox_1.secret = false;
-				inputBox_1.placeholder = "성명";
-				inputBox_1.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
+				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
+				hTMLSnippet_2.value = "<div>성명 <\/div>";
+				hTMLSnippet_2.style.css({
 					"color" : "#070000",
-					"font-style" : "normal",
-					"background-image" : "none",
-					"text-align" : "center"
+					"font-weight" : "bold",
+					"font-size" : "16px",
+					"font-family" : "sans-serif",
+					"font-style" : "normal"
 				});
-				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
-				inputBox_1.setBindContext(dataMapContext_1);
-				inputBox_1.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberName");
-				container.addChild(inputBox_1, {
-					"top": "242px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
+				container.addChild(hTMLSnippet_2, {
+					"top": "220px",
+					"left": "195px",
+					"width": "100px",
+					"height": "30px"
 				});
-				var inputBox_2 = new cpr.controls.InputBox("passwordIpb");
-				inputBox_2.secret = true;
-				inputBox_2.placeholder = "비밀번호";
+				var inputBox_2 = new cpr.controls.InputBox("memberName");
+				inputBox_2.secret = false;
+				inputBox_2.placeholder = "성명";
 				inputBox_2.style.css({
 					"border-radius" : "5px",
 					"background-color" : "#FFFFFF",
@@ -334,62 +431,18 @@
 				});
 				var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
 				inputBox_2.setBindContext(dataMapContext_2);
-				inputBox_2.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberPassword");
+				inputBox_2.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberName");
+				if(typeof onMemberNameBlur == "function") {
+					inputBox_2.addEventListener("blur", onMemberNameBlur);
+				}
 				container.addChild(inputBox_2, {
-					"top": "357px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
-				});
-				var inputBox_3 = new cpr.controls.InputBox("checkPasswordIpb");
-				inputBox_3.secret = true;
-				inputBox_3.placeholder = "비밀번호 확인";
-				inputBox_3.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFFF",
-					"color" : "#070000",
-					"font-style" : "normal",
-					"background-image" : "none",
-					"text-align" : "center"
-				});
-				container.addChild(inputBox_3, {
-					"top": "466px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
-				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.value = "<div>비밀번호 <\/div>";
-				hTMLSnippet_1.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_1, {
-					"top": "328px",
-					"left": "160px",
-					"width": "100px",
-					"height": "30px"
-				});
-				var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_2.value = "<div>비밀번호 확인<\/div>";
-				hTMLSnippet_2.style.css({
-					"color" : "#070000",
-					"font-weight" : "bold",
-					"font-size" : "16px",
-					"font-family" : "sans-serif",
-					"font-style" : "normal"
-				});
-				container.addChild(hTMLSnippet_2, {
-					"top": "438px",
-					"left": "160px",
-					"width": "234px",
-					"height": "30px"
+					"top": "250px",
+					"left": "195px",
+					"width": "350px",
+					"height": "50px"
 				});
 				var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_3.value = "<div>성명 <\/div>";
+				hTMLSnippet_3.value = "<div>비밀번호 <\/div>";
 				hTMLSnippet_3.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -398,13 +451,36 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_3, {
-					"top": "215px",
-					"left": "160px",
+					"top": "350px",
+					"left": "195px",
 					"width": "100px",
 					"height": "30px"
 				});
+				var inputBox_3 = new cpr.controls.InputBox("passwordIpb");
+				inputBox_3.secret = true;
+				inputBox_3.placeholder = "비밀번호";
+				inputBox_3.style.css({
+					"border-radius" : "5px",
+					"background-color" : "#FFFFFF",
+					"color" : "#070000",
+					"font-style" : "normal",
+					"background-image" : "none",
+					"text-align" : "center"
+				});
+				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
+				inputBox_3.setBindContext(dataMapContext_3);
+				inputBox_3.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberPassword");
+				if(typeof onPasswordIpbBlur == "function") {
+					inputBox_3.addEventListener("blur", onPasswordIpbBlur);
+				}
+				container.addChild(inputBox_3, {
+					"top": "380px",
+					"left": "195px",
+					"width": "350px",
+					"height": "50px"
+				});
 				var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_4.value = "<div>이메일<\/div>\r\n";
+				hTMLSnippet_4.value = "<div>비밀번호 확인<\/div>";
 				hTMLSnippet_4.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -413,38 +489,33 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_4, {
-					"top": "116px",
-					"left": "160px",
-					"width": "100px",
+					"top": "480px",
+					"left": "195px",
+					"width": "110px",
 					"height": "30px"
 				});
-				var comboBox_1 = new cpr.controls.ComboBox("positionCmb");
-				comboBox_1.placeholder = "(선택)";
-				comboBox_1.style.css({
+				var inputBox_4 = new cpr.controls.InputBox("checkPasswordIpb");
+				inputBox_4.secret = true;
+				inputBox_4.placeholder = "비밀번호 확인";
+				inputBox_4.style.css({
 					"border-radius" : "5px",
-					"color" : "#A0A0A0",
-					"font-weight" : "500"
+					"background-color" : "#FFFFFF",
+					"color" : "#070000",
+					"font-style" : "normal",
+					"background-image" : "none",
+					"text-align" : "center"
 				});
-				comboBox_1.style.button.css({
-					"width" : "30px"
-				});
-				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
-				comboBox_1.setBindContext(dataMapContext_3);
-				comboBox_1.bind("value").toDataMap(app.lookup("registerMemberParam"), "position");
-				(function(comboBox_1){
-					comboBox_1.setItemSet(app.lookup("positionList"), {
-						"label": "position",
-						"value": "position"
-					});
-				})(comboBox_1);
-				container.addChild(comboBox_1, {
-					"top": "689px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
+				if(typeof onCheckPasswordIpbBlur == "function") {
+					inputBox_4.addEventListener("blur", onCheckPasswordIpbBlur);
+				}
+				container.addChild(inputBox_4, {
+					"top": "510px",
+					"left": "195px",
+					"width": "350px",
+					"height": "50px"
 				});
 				var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_5.value = "<div>직급<\/div>";
+				hTMLSnippet_5.value = "<div>부서<\/div>";
 				hTMLSnippet_5.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -453,13 +524,46 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_5, {
-					"top": "659px",
-					"left": "160px",
+					"top": "610px",
+					"left": "195px",
 					"width": "100px",
 					"height": "30px"
 				});
+				var comboBox_1 = new cpr.controls.ComboBox("departmentCmb");
+				comboBox_1.placeholder = "(선택)";
+				comboBox_1.style.css({
+					"background-color" : "#FFFFFF",
+					"border-radius" : "5px",
+					"color" : "#A0A0A0",
+					"font-weight" : "500",
+					"line-height" : "none",
+					"text-align" : "left"
+				});
+				comboBox_1.style.button.css({
+					"background-size" : "contain",
+					"width" : "30px"
+				});
+				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
+				comboBox_1.setBindContext(dataMapContext_4);
+				comboBox_1.bind("value").toDataMap(app.lookup("registerMemberParam"), "departmentId");
+				(function(comboBox_1){
+					comboBox_1.addItem(new cpr.controls.Item("", "value3"));
+					comboBox_1.setItemSet(app.lookup("departmentList"), {
+						"label": "departmentName",
+						"value": "departmentId"
+					});
+				})(comboBox_1);
+				if(typeof onCmb2SelectionChange == "function") {
+					comboBox_1.addEventListener("selection-change", onCmb2SelectionChange);
+				}
+				container.addChild(comboBox_1, {
+					"top": "640px",
+					"left": "194px",
+					"width": "350px",
+					"height": "50px"
+				});
 				var hTMLSnippet_6 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_6.value = "<div>부서<\/div>";
+				hTMLSnippet_6.value = "<div>직급<\/div>";
 				hTMLSnippet_6.style.css({
 					"color" : "#070000",
 					"font-weight" : "bold",
@@ -468,12 +572,37 @@
 					"font-style" : "normal"
 				});
 				container.addChild(hTMLSnippet_6, {
-					"top": "556px",
-					"left": "160px",
+					"top": "740px",
+					"left": "195px",
 					"width": "100px",
 					"height": "30px"
 				});
-				var button_2 = new cpr.controls.Button();
+				var comboBox_2 = new cpr.controls.ComboBox("positionCmb");
+				comboBox_2.placeholder = "(선택)";
+				comboBox_2.style.css({
+					"border-radius" : "5px",
+					"color" : "#A0A0A0",
+					"font-weight" : "500"
+				});
+				comboBox_2.style.button.css({
+					"width" : "30px"
+				});
+				var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
+				comboBox_2.setBindContext(dataMapContext_5);
+				comboBox_2.bind("value").toDataMap(app.lookup("registerMemberParam"), "position");
+				(function(comboBox_2){
+					comboBox_2.setItemSet(app.lookup("positionList"), {
+						"label": "position",
+						"value": "position"
+					});
+				})(comboBox_2);
+				container.addChild(comboBox_2, {
+					"top": "770px",
+					"left": "195px",
+					"width": "350px",
+					"height": "50px"
+				});
+				var button_2 = new cpr.controls.Button("registerBtn");
 				button_2.value = "확인";
 				button_2.style.setClasses(["btn-success"]);
 				button_2.style.css({
@@ -488,10 +617,10 @@
 					button_2.addEventListener("click", onButtonClick);
 				}
 				container.addChild(button_2, {
-					"top": "828px",
-					"left": "135px",
+					"right": "395px",
+					"bottom": "20px",
 					"width": "150px",
-					"height": "44px"
+					"height": "50px"
 				});
 				var button_3 = new cpr.controls.Button();
 				button_3.value = "취소";
@@ -508,89 +637,60 @@
 					button_3.addEventListener("click", onButtonClick2);
 				}
 				container.addChild(button_3, {
-					"top": "828px",
-					"left": "402px",
+					"bottom": "20px",
+					"left": "395px",
 					"width": "150px",
-					"height": "44px"
+					"height": "50px"
 				});
-				var comboBox_2 = new cpr.controls.ComboBox("departmentCmb");
-				comboBox_2.placeholder = "(선택)";
-				comboBox_2.style.css({
-					"background-color" : "#FFFFFF",
-					"border-radius" : "5px",
-					"color" : "#A0A0A0",
-					"font-weight" : "500",
-					"line-height" : "none",
-					"text-align" : "left"
+				var output_1 = new cpr.controls.Output();
+				output_1.value = "회원가입";
+				output_1.style.css({
+					"font-size" : "30px"
 				});
-				comboBox_2.style.button.css({
-					"background-size" : "contain",
-					"width" : "30px"
+				container.addChild(output_1, {
+					"top": "20px",
+					"left": "315px",
+					"width": "176px",
+					"height": "40px"
 				});
-				var dataMapContext_4 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
-				comboBox_2.setBindContext(dataMapContext_4);
-				comboBox_2.bind("value").toDataMap(app.lookup("registerMemberParam"), "departmentId");
-				(function(comboBox_2){
-					comboBox_2.addItem(new cpr.controls.Item("", "value3"));
-					comboBox_2.setItemSet(app.lookup("departmentList"), {
-						"label": "departmentName",
-						"value": "departmentId"
-					});
-				})(comboBox_2);
-				if(typeof onCmb2SelectionChange == "function") {
-					comboBox_2.addEventListener("selection-change", onCmb2SelectionChange);
-				}
-				container.addChild(comboBox_2, {
-					"top": "585px",
-					"left": "160px",
-					"width": "352px",
-					"height": "48px"
+				var output_2 = new cpr.controls.Output("emailValidationOpb");
+				output_2.value = "";
+				container.addChild(output_2, {
+					"top": "185px",
+					"left": "195px",
+					"width": "350px",
+					"height": "20px"
 				});
-				var inputBox_4 = new cpr.controls.InputBox("memberEmailIpb");
-				inputBox_4.placeholder = "이메일 주소는 ID로 사용됩니다.";
-				inputBox_4.style.css({
-					"border-radius" : "5px",
-					"background-color" : "#FFFFF",
-					"color" : "#000000",
-					"font-weight" : "500",
-					"font-style" : "normal",
-					"background-image" : "none",
-					"text-align" : "center"
+				var output_3 = new cpr.controls.Output("nameValidationOpb");
+				container.addChild(output_3, {
+					"top": "315px",
+					"left": "195px",
+					"width": "350px",
+					"height": "20px"
 				});
-				var dataMapContext_5 = new cpr.bind.DataMapContext(app.lookup("registerMemberParam"));
-				inputBox_4.setBindContext(dataMapContext_5);
-				inputBox_4.bind("value").toDataMap(app.lookup("registerMemberParam"), "memberEmail");
-				if(typeof onMemberIdValueChange == "function") {
-					inputBox_4.addEventListener("value-change", onMemberIdValueChange);
-				}
-				container.addChild(inputBox_4, {
-					"top": "146px",
-					"left": "158px",
-					"width": "355px",
-					"height": "48px"
+				var output_4 = new cpr.controls.Output("passwordValidationOpb");
+				container.addChild(output_4, {
+					"top": "445px",
+					"left": "195px",
+					"width": "350px",
+					"height": "20px"
 				});
-				var hTMLSnippet_7 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_7.value = "<h3>회원가입<\/h3>";
-				hTMLSnippet_7.style.css({
-					"color" : "#DEDEDE",
-					"font-weight" : "700",
-					"font-size" : "35px"
-				});
-				container.addChild(hTMLSnippet_7, {
-					"top": "-15px",
-					"left": "20px",
-					"width": "180px",
-					"height": "113px"
+				var output_5 = new cpr.controls.Output("passwordCheckValidationOpb");
+				container.addChild(output_5, {
+					"top": "575px",
+					"left": "195px",
+					"width": "350px",
+					"height": "20px"
 				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {
 				group_1.addEventListener("click", onGroupClick);
 			}
 			container.addChild(group_1, {
-				"top": "30px",
-				"left": "605px",
-				"width": "737px",
-				"height": "874px"
+				"top": "0px",
+				"bottom": "0px",
+				"left": "594px",
+				"width": "740px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);

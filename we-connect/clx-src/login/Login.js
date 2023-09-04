@@ -19,8 +19,8 @@ function onRegisterBtnClick(e) {
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
 function onLoginBtnClick(e) {
-	var memberEmail = app.lookup("memberEmailIpb").value;
-	var memberPassword = app.lookup("memberPasswordIpb").value;
+	let memberEmail = app.lookup("memberEmailIpb").value;
+	let memberPassword = app.lookup("memberPasswordIpb").value;
 	// Check if email and password are either null or empty
 	if (isEmptyOrNull(memberEmail) || isEmptyOrNull(memberPassword)) {
 		alert("이메일과 비밀번호를 입력해주세요");
@@ -57,7 +57,12 @@ function onLoginSubSubmitError(e) {
 	var loginSub = e.control;
 	var submission = app.lookup("loginSub");
 	var error = submission.getMetadata("error");
+	var memberEmailIpb = app.lookup("memberEmailIpb");
+	var memberPasswordIpb = app.lookup("memberPasswordIpb");
 	alert(error);
+	memberEmailIpb.clear();
+	memberPasswordIpb.clear();
+	memberEmailIpb.focus();
 }
 
 /*
@@ -69,4 +74,13 @@ function onMemberPasswordIpbKeydown(e) {
 	if (e.keyCode == cpr.events.KeyCode.ENTER) {
 		app.lookup("loginBtn").click();
 	}
+}
+
+/*
+ * 인풋 박스에서 focus 이벤트 발생 시 호출.
+ * 컨트롤이 포커스를 획득한 후 발생하는 이벤트.
+ */
+function onMemberPasswordIpbFocus(e) {
+	var memberPasswordIpb = e.control;
+	memberPasswordIpb.autoSelect = true;
 }

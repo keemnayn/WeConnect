@@ -16,19 +16,217 @@
 			 * Created at 2023. 8. 9. 오후 2:08:23.
 			 *
 			 * @author Axl Rose
-			 ************************************************/;
+			 ************************************************/
+
+			/*
+			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
+			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
+			 */
+			function onBodyInit(e) {
+				const maxLength = 13;
+				app.lookup("pendingListSub").send();
+				app.lookup("noticeListSub").send();
+				app.lookup("freeBoardListSub").send();
+				app.lookup("scheduleListSub").send();
+				app.lookup("reservListSub").send();
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onScheduleListSubSubmitSuccess(e) {
+				var scheduleListSub = e.control;
+				var calendar = app.lookup("crd");
+				var dsAnnualLeavesList = app.lookup("annualLeavesList");
+				var dsProjectScheduleList = app.lookup("projectScheduleList");
+				var jsonData = JSON.parse(scheduleListSub.xhr.responseText);
+				var annualLeavesList = jsonData.annualLeavesList;
+				var projectScheduleList = jsonData.projectScheduleList;
+				
+				// annualLeavesList 순회
+				for (var i = 0; i < annualLeavesList.length; i++) {
+					var memberName = annualLeavesList[i].memberName;
+					var leaveRequestType = annualLeavesList[i].leaveRequestType;
+					var leaveRequestStart = annualLeavesList[i].leaveRequestStart;
+					var leaveRequestEnd = annualLeavesList[i].leaveRequestEnd;
+					console.log(memberName);
+					console.log(leaveRequestType);
+					console.log(leaveRequestStart);
+					console.log(leaveRequestEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(leaveRequestStart), new Date(leaveRequestEnd), leaveRequestType));
+				}
+				// projectScheduleList 순회
+				for (var i = 0; i < projectScheduleList.length; i++) {
+					var memberName = projectScheduleList[i].memberName;
+					var projectName = projectScheduleList[i].projectName;
+					var projectStart = projectScheduleList[i].projectStart;
+					var projectEnd = projectScheduleList[i].projectEnd;
+					console.log(memberName);
+					console.log(projectName);
+					console.log(projectStart);
+					console.log(projectEnd);
+					calendar.addItem(new cpr.controls.CalendarItem(memberName, new Date(projectStart), new Date(projectEnd), projectName));
+				}
+			}
 			// End - User Script
 			
 			// Header
-			var dataSet_1 = new cpr.data.DataSet("ds1");
+			var dataSet_1 = new cpr.data.DataSet("pendingList");
 			dataSet_1.parseData({
-				"columns" : [{
-					"name": "label",
-					"dataType": "string",
-					"info": "img/header/profile.png"
-				}]
+				"columns": [
+					{
+						"name": "memberId",
+						"dataType": "number"
+					},
+					{"name": "memberEmail"},
+					{"name": "memberName"},
+					{"name": "position"},
+					{
+						"name": "memberJoinDate",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentId",
+						"dataType": "number"
+					},
+					{"name": "departmentName"}
+				],
+				"rows": []
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("noticeList");
+			dataSet_2.parseData({
+				"columns": [
+					{
+						"name": "noticeId",
+						"dataType": "string"
+					},
+					{"name": "noticeTitle"},
+					{"name": "noticeContent"},
+					{"name": "noticeCategory"},
+					{"name": "noticeCreate"}
+				],
+				"rows": []
+			});
+			app.register(dataSet_2);
+			
+			var dataSet_3 = new cpr.data.DataSet("freeBoardList");
+			dataSet_3.parseData({
+				"columns": [
+					{
+						"name": "freeBoardId",
+						"dataType": "number"
+					},
+					{
+						"name": "freeBoardTitle",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardContent",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardCreate",
+						"dataType": "string"
+					},
+					{
+						"name": "freeBoardCommentCount",
+						"dataType": "number"
+					}
+				],
+				"rows": []
+			});
+			app.register(dataSet_3);
+			
+			var dataSet_4 = new cpr.data.DataSet("annualLeavesList");
+			dataSet_4.parseData({
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "leaveRequestType"},
+					{"name": "leaveRequestStart"},
+					{"name": "leaveRequestEnd"}
+				]
+			});
+			app.register(dataSet_4);
+			
+			var dataSet_5 = new cpr.data.DataSet("projectScheduleList");
+			dataSet_5.parseData({
+				"columns" : [
+					{"name": "memberName"},
+					{"name": "projectName"},
+					{"name": "projectStart"},
+					{"name": "projectEnd"}
+				]
+			});
+			app.register(dataSet_5);
+			
+			var dataSet_6 = new cpr.data.DataSet("reservList");
+			dataSet_6.parseData({
+				"stateRestore": false,
+				"columns": [
+					{
+						"name": "roomReservId",
+						"dataType": "number",
+						"displayOnly": false
+					},
+					{"name": "roomName"},
+					{"name": "memberName"},
+					{"name": "proposal"},
+					{"name": "roomReservDate"},
+					{
+						"name": "roomReservStartTime",
+						"dataType": "number"
+					},
+					{
+						"name": "roomReservEndTime",
+						"dataType": "number"
+					}
+				],
+				"rows": [
+					{"roomReservId": "1"},
+					{"roomReservId": "2"}
+				]
+			});
+			app.register(dataSet_6);
+			var submission_1 = new cpr.protocols.Submission("pendingListSub");
+			submission_1.method = "get";
+			submission_1.action = "admin/members/pending";
+			submission_1.addResponseData(dataSet_1, false);
+			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("noticeListSub");
+			submission_2.method = "get";
+			submission_2.action = "admin/notices";
+			submission_2.addResponseData(dataSet_2, false);
+			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("freeBoardListSub");
+			submission_3.method = "get";
+			submission_3.action = "admin/free-boards";
+			submission_3.addResponseData(dataSet_3, false);
+			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("scheduleListSub");
+			submission_4.method = "get";
+			submission_4.action = "admin/schedules";
+			submission_4.addResponseData(dataSet_4, false);
+			submission_4.addResponseData(dataSet_5, false);
+			if(typeof onScheduleListSubSubmitSuccess == "function") {
+				submission_4.addEventListener("submit-success", onScheduleListSubSubmitSuccess);
+			}
+			app.register(submission_4);
+			
+			var submission_5 = new cpr.protocols.Submission("reservListSub");
+			submission_5.method = "get";
+			submission_5.action = "admin/room-reserv";
+			submission_5.addResponseData(dataSet_6, false);
+			app.register(submission_5);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -55,242 +253,818 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var group_2 = new cpr.controls.Container();
-					group_2.style.setClasses(["main_layout1"]);
-					group_2.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
+					var tabFolder_2 = new cpr.controls.TabFolder();
+					
+					var tabItem_2 = (function(tabFolder){
+						var tabItem_2 = new cpr.controls.TabItem();
+						tabItem_2.text = "승인 대기 회원";
+						var group_2 = new cpr.controls.Container();
+						var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("pendingList"), 0);
+						group_2.setBindContext(dataRowContext_1);
+						var xYLayout_3 = new cpr.controls.layouts.XYLayout();
+						group_2.setLayout(xYLayout_3);
+						(function(container){
+							var grid_1 = new cpr.controls.Grid("pendingListGrd");
+							grid_1.init({
+								"dataSet": app.lookup("pendingList"),
+								"columns": [
+									{
+										"width": "100px",
+										"visible": false
+									},
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "75px"},
+									{"width": "100px"},
+									{
+										"width": "100px",
+										"visible": false
+									},
+									{"width": "75px"}
+								],
+								"header": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "memberId";
+												cell.text = "memberId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "memberEmail";
+												cell.text = "이메일";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "memberName";
+												cell.text = "이름";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "position";
+												cell.text = "직급";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "memberJoinDate";
+												cell.text = "신청일";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 5},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "departmentId";
+												cell.text = "departmentId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 6},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "departmentName";
+												cell.text = "부서";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										}
+									]
+								},
+								"detail": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.columnName = "memberId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_1 = new cpr.controls.Output();
+													output_1.style.css({
+														"text-align" : "center"
+													});
+													output_1.bind("value").toDataColumn("memberId");
+													return output_1;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.columnName = "memberEmail";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_2 = new cpr.controls.Output();
+													output_2.style.css({
+														"text-align" : "center"
+													});
+													output_2.bind("value").toDataColumn("memberEmail");
+													return output_2;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.columnName = "memberName";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_3 = new cpr.controls.Output();
+													output_3.style.css({
+														"text-align" : "center"
+													});
+													output_3.bind("value").toDataColumn("memberName");
+													return output_3;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.columnName = "position";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_4 = new cpr.controls.Output();
+													output_4.style.css({
+														"text-align" : "center"
+													});
+													output_4.bind("value").toDataColumn("position");
+													return output_4;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.columnName = "memberJoinDate";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_5 = new cpr.controls.Output();
+													output_5.style.css({
+														"text-align" : "center"
+													});
+													output_5.bind("value").toDataColumn("memberJoinDate");
+													return output_5;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 5},
+											"configurator": function(cell){
+												cell.columnName = "departmentId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_6 = new cpr.controls.Output();
+													output_6.style.css({
+														"text-align" : "center"
+													});
+													output_6.bind("value").toDataColumn("departmentId");
+													return output_6;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 6},
+											"configurator": function(cell){
+												cell.columnName = "departmentName";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_7 = new cpr.controls.Output();
+													output_7.style.css({
+														"text-align" : "center"
+													});
+													output_7.bind("value").toDataColumn("departmentName");
+													return output_7;
+												})();
+												cell.controlConstraint = {};
+											}
+										}
+									]
+								}
+							});
+							grid_1.style.header.css({
+								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
+								"background-image" : "none"
+							});
+							container.addChild(grid_1, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_2);
+						tabItem_2.content = group_2;
+						return tabItem_2;
+					})(tabFolder_2);
+					tabFolder_2.addTabItem(tabItem_2);
+					tabFolder_2.setSelectedTabItem(tabItem_2);
+					container.addChild(tabFolder_2, {
+						"top": "381px",
+						"right": "0px",
+						"bottom": "0px",
+						"left": "823px"
 					});
-					var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-					group_2.setLayout(xYLayout_3);
-					(function(container){
-						var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_1.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_1, {
-							"top": "30px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-						var textArea_1 = new cpr.controls.TextArea("txa1");
-						textArea_1.value = "회원승인";
-						textArea_1.style.css({
-							"border-right-style" : "none",
-							"border-left-style" : "none",
-							"font-weight" : "900",
-							"font-size" : "16px",
-							"border-bottom-style" : "none",
-							"background-image" : "none",
-							"border-top-style" : "none"
-						});
-						container.addChild(textArea_1, {
-							"top": "5px",
-							"left": "2px",
-							"width": "100px",
-							"height": "30px"
-						});
-					})(group_2);
-					container.addChild(group_2, {
-						"top": "240px",
-						"right": "949px",
-						"bottom": "360px",
-						"left": "0px"
-					});
-					var group_3 = new cpr.controls.Container();
-					group_3.style.setClasses(["main_layout1"]);
-					group_3.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_4 = new cpr.controls.layouts.XYLayout();
-					group_3.setLayout(xYLayout_4);
-					(function(container){
-						var hTMLSnippet_2 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_2.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_2, {
-							"top": "30px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-						var textArea_2 = new cpr.controls.TextArea("txa2");
-						textArea_2.value = "FAQ";
-						textArea_2.style.css({
-							"border-right-style" : "none",
-							"border-left-style" : "none",
-							"font-weight" : "900",
-							"font-size" : "16px",
-							"border-bottom-style" : "none",
-							"border-top-style" : "none"
-						});
-						container.addChild(textArea_2, {
-							"top": "5px",
-							"left": "5px",
-							"width": "100px",
-							"height": "30px"
-						});
-					})(group_3);
-					container.addChild(group_3, {
-						"right": "949px",
-						"bottom": "1px",
-						"left": "0px",
-						"height": "328px"
-					});
-					var group_4 = new cpr.controls.Container();
-					group_4.style.setClasses(["main_layout1"]);
-					group_4.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
-					group_4.setLayout(xYLayout_5);
-					(function(container){
-						var hTMLSnippet_3 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_3.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_3, {
-							"top": "20px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-						var hTMLSnippet_4 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_4.value = "<p>관리자프로필<\/p>";
-						hTMLSnippet_4.style.css({
-							"font-weight" : "900",
-							"font-size" : "10px"
-						});
-						container.addChild(hTMLSnippet_4, {
-							"top": "0px",
-							"left": "0px",
-							"width": "100px",
-							"height": "95px"
-						});
-					})(group_4);
-					container.addChild(group_4, {
-						"top": "0px",
-						"left": "0px",
-						"width": "629px",
-						"height": "210px"
-					});
-					var group_5 = new cpr.controls.Container();
-					group_5.style.setClasses(["main_layout1"]);
-					group_5.style.css({
-						"border-right-style" : "solid",
-						"border-radius" : "5px",
-						"border-bottom-color" : "#bfbfbf",
-						"border-left-style" : "solid",
-						"border-left-color" : "#bfbfbf",
-						"border-top-color" : "#bfbfbf",
-						"border-bottom-style" : "solid",
-						"border-right-color" : "#bfbfbf",
-						"border-top-style" : "solid"
-					});
-					var xYLayout_6 = new cpr.controls.layouts.XYLayout();
-					group_5.setLayout(xYLayout_6);
-					(function(container){
-						var hTMLSnippet_5 = new cpr.controls.HTMLSnippet();
-						hTMLSnippet_5.value = "<hr>\r\n";
-						container.addChild(hTMLSnippet_5, {
-							"top": "20px",
-							"right": "0px",
-							"left": "0px",
-							"height": "20px"
-						});
-					})(group_5);
-					container.addChild(group_5, {
-						"top": "0px",
-						"right": "293px",
-						"left": "652px",
-						"height": "210px"
-					});
-					var group_6 = new cpr.controls.Container();
-					group_6.style.setClasses(["main_layout1"]);
-					group_6.style.css({
-						"border-radius" : "5px"
-					});
-					var xYLayout_7 = new cpr.controls.layouts.XYLayout();
-					group_6.setLayout(xYLayout_7);
-					(function(container){
-						var calendar_1 = new cpr.controls.Calendar();
-						calendar_1.style.setClasses(["admain_cld"]);
-						container.addChild(calendar_1, {
-							"top": "0px",
-							"right": "0px",
-							"bottom": "0px",
-							"left": "0px"
-						});
-					})(group_6);
-					container.addChild(group_6, {
+					var tabFolder_3 = new cpr.controls.TabFolder();
+					
+					var tabItem_3 = (function(tabFolder){
+						var tabItem_3 = new cpr.controls.TabItem();
+						tabItem_3.text = "공지사항";
+						var group_3 = new cpr.controls.Container();
+						var xYLayout_4 = new cpr.controls.layouts.XYLayout();
+						group_3.setLayout(xYLayout_4);
+						(function(container){
+							var grid_2 = new cpr.controls.Grid("noticeListGrd");
+							grid_2.init({
+								"dataSet": app.lookup("noticeList"),
+								"columns": [
+									{
+										"width": "100px",
+										"visible": false
+									},
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"}
+								],
+								"header": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "noticeId";
+												cell.text = "noticeId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "noticeTitle";
+												cell.text = "제목";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "noticeContent";
+												cell.text = "내용";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "noticeCategory";
+												cell.text = "분류";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "noticeCreate";
+												cell.text = "등록일";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										}
+									]
+								},
+								"detail": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.columnName = "noticeId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_8 = new cpr.controls.Output();
+													output_8.style.css({
+														"text-align" : "center"
+													});
+													output_8.bind("value").toDataColumn("noticeId");
+													return output_8;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.columnName = "noticeTitle";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_9 = new cpr.controls.Output();
+													output_9.style.css({
+														"text-align" : "center"
+													});
+													output_9.bind("value").toDataColumn("noticeTitle");
+													return output_9;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.columnName = "noticeContent";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_10 = new cpr.controls.Output();
+													output_10.style.css({
+														"text-align" : "center"
+													});
+													output_10.bind("value").toDataColumn("noticeContent");
+													return output_10;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.columnName = "noticeCategory";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_11 = new cpr.controls.Output();
+													output_11.style.css({
+														"text-align" : "center"
+													});
+													output_11.bind("value").toDataColumn("noticeCategory");
+													return output_11;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.columnName = "noticeCreate";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_12 = new cpr.controls.Output();
+													output_12.style.css({
+														"text-align" : "center"
+													});
+													output_12.bind("value").toDataColumn("noticeCreate");
+													return output_12;
+												})();
+												cell.controlConstraint = {};
+											}
+										}
+									]
+								}
+							});
+							grid_2.style.header.css({
+								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
+								"background-image" : "none"
+							});
+							container.addChild(grid_2, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_3);
+						tabItem_3.content = group_3;
+						return tabItem_3;
+					})(tabFolder_3);
+					tabFolder_3.addTabItem(tabItem_3);
+					
+					var tabItem_4 = (function(tabFolder){
+						var tabItem_4 = new cpr.controls.TabItem();
+						tabItem_4.text = "자유 게시판";
+						var group_4 = new cpr.controls.Container();
+						var xYLayout_5 = new cpr.controls.layouts.XYLayout();
+						group_4.setLayout(xYLayout_5);
+						(function(container){
+							var grid_3 = new cpr.controls.Grid("freeBoardListGrd");
+							grid_3.init({
+								"dataSet": app.lookup("freeBoardList"),
+								"resizableColumns": "none",
+								"columns": [
+									{
+										"width": "100px",
+										"visible": false
+									},
+									{"width": "100px"},
+									{"width": "125px"},
+									{"width": "75px"},
+									{"width": "100px"}
+								],
+								"header": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "freeBoardId";
+												cell.text = "freeBoardId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "freeBoardTitle";
+												cell.text = "제목";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "freeBoardContent";
+												cell.text = "내용";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "memberName";
+												cell.text = "작성자";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.filterable = false;
+												cell.sortable = false;
+												cell.targetColumnName = "freeBoardCreate";
+												cell.text = "등록일";
+												cell.style.css({
+													"text-align" : "center"
+												});
+											}
+										}
+									]
+								},
+								"detail": {
+									"rows": [{"height": "40px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.columnName = "freeBoardId";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_13 = new cpr.controls.Output();
+													output_13.style.css({
+														"text-align" : "center"
+													});
+													output_13.bind("value").toDataColumn("freeBoardId");
+													return output_13;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.columnName = "freeBoardTitle";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_14 = new cpr.controls.Output();
+													output_14.style.css({
+														"text-align" : "center"
+													});
+													output_14.bind("value").toDataColumn("freeBoardTitle");
+													return output_14;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.columnName = "freeBoardContent";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_15 = new cpr.controls.Output();
+													output_15.style.css({
+														"text-align" : "center"
+													});
+													output_15.bind("value").toDataColumn("freeBoardContent");
+													return output_15;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.columnName = "memberName";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_16 = new cpr.controls.Output();
+													output_16.style.css({
+														"text-align" : "center"
+													});
+													output_16.bind("value").toDataColumn("memberName");
+													return output_16;
+												})();
+												cell.controlConstraint = {};
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 4},
+											"configurator": function(cell){
+												cell.columnName = "freeBoardCreate";
+												cell.style.css({
+													"text-align" : "center"
+												});
+												cell.control = (function(){
+													var output_17 = new cpr.controls.Output();
+													output_17.style.css({
+														"text-align" : "center"
+													});
+													output_17.bind("value").toDataColumn("freeBoardCreate");
+													return output_17;
+												})();
+												cell.controlConstraint = {};
+											}
+										}
+									]
+								}
+							});
+							grid_3.style.header.css({
+								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
+								"background-image" : "none"
+							});
+							container.addChild(grid_3, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_4);
+						tabItem_4.content = group_4;
+						return tabItem_4;
+					})(tabFolder_3);
+					tabFolder_3.addTabItem(tabItem_4);
+					tabFolder_3.setSelectedTabItem(tabItem_3);
+					container.addChild(tabFolder_3, {
 						"top": "0px",
 						"right": "0px",
-						"width": "270px",
-						"height": "210px"
+						"left": "823px",
+						"height": "371px"
 					});
-					var group_7 = new cpr.controls.Container();
-					group_7.style.setClasses(["main_layout1"]);
-					group_7.style.css({
-						"border-radius" : "5px"
+					var tabFolder_4 = new cpr.controls.TabFolder();
+					
+					var tabItem_5 = (function(tabFolder){
+						var tabItem_5 = new cpr.controls.TabItem();
+						tabItem_5.text = "회의실관리";
+						var group_5 = new cpr.controls.Container();
+						var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+						group_5.setLayout(xYLayout_6);
+						(function(container){
+							var grid_4 = new cpr.controls.Grid("grd1");
+							grid_4.init({
+								"dataSet": app.lookup("reservList"),
+								"columns": [
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"},
+									{"width": "100px"}
+								],
+								"header": {
+									"rows": [{"height": "35px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.text = "예약일자";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.text = "회의실";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.text = "예약자";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.text = "목적 ";
+											}
+										}
+									]
+								},
+								"detail": {
+									"rows": [{"height": "28px"}],
+									"cells": [
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 0},
+											"configurator": function(cell){
+												cell.columnName = "roomReservDate";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 1},
+											"configurator": function(cell){
+												cell.columnName = "roomName";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 2},
+											"configurator": function(cell){
+												cell.columnName = "memberName";
+											}
+										},
+										{
+											"constraint": {"rowIndex": 0, "colIndex": 3},
+											"configurator": function(cell){
+												cell.columnName = "proposal";
+											}
+										}
+									]
+								}
+							});
+							grid_4.style.header.css({
+								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
+								"background-image" : "none"
+							});
+							container.addChild(grid_4, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_5);
+						tabItem_5.content = group_5;
+						return tabItem_5;
+					})(tabFolder_4);
+					tabFolder_4.addTabItem(tabItem_5);
+					tabFolder_4.setSelectedTabItem(tabItem_5);
+					container.addChild(tabFolder_4, {
+						"top": "0px",
+						"left": "0px",
+						"width": "800px",
+						"height": "370px"
 					});
-					var xYLayout_8 = new cpr.controls.layouts.XYLayout();
-					group_7.setLayout(xYLayout_8);
-					(function(container){
-						var tabFolder_2 = new cpr.controls.TabFolder();
-						
-						var tabItem_2 = (function(tabFolder){
-							var tabItem_2 = new cpr.controls.TabItem();
-							tabItem_2.text = "공지사항";
-							var group_8 = new cpr.controls.Container();
-							var xYLayout_9 = new cpr.controls.layouts.XYLayout();
-							group_8.setLayout(xYLayout_9);
-							tabItem_2.content = group_8;
-							return tabItem_2;
-						})(tabFolder_2);
-						tabFolder_2.addTabItem(tabItem_2);
-						
-						var tabItem_3 = (function(tabFolder){
-							var tabItem_3 = new cpr.controls.TabItem();
-							tabItem_3.text = "게시판";
-							var group_9 = new cpr.controls.Container();
-							var xYLayout_10 = new cpr.controls.layouts.XYLayout();
-							group_9.setLayout(xYLayout_10);
-							tabItem_3.content = group_9;
-							return tabItem_3;
-						})(tabFolder_2);
-						tabFolder_2.addTabItem(tabItem_3);
-						tabFolder_2.setSelectedTabItem(tabItem_2);
-						container.addChild(tabFolder_2, {
-							"top": "0px",
-							"right": "0px",
-							"bottom": "0px",
-							"left": "0px"
-						});
-					})(group_7);
-					container.addChild(group_7, {
-						"top": "240px",
-						"right": "1px",
+					var tabFolder_5 = new cpr.controls.TabFolder();
+					
+					var tabItem_6 = (function(tabFolder){
+						var tabItem_6 = new cpr.controls.TabItem();
+						tabItem_6.text = "일정";
+						var group_6 = new cpr.controls.Container();
+						var xYLayout_7 = new cpr.controls.layouts.XYLayout();
+						group_6.setLayout(xYLayout_7);
+						(function(container){
+							var calendar_1 = new cpr.controls.Calendar("crd");
+							calendar_1.style.setClasses(["admain_cld"]);
+							calendar_1.style.item.css({
+								"background-size" : "auto",
+								"color" : "#663399",
+								"font-size" : "14px"
+							});
+							calendar_1.style.item.bind("background-color").toExpression("value == \"연차\" ? \"rgb(248,204,215)\" : \"rgb(240,182,151)\"");
+							container.addChild(calendar_1, {
+								"top": "0px",
+								"right": "0px",
+								"bottom": "0px",
+								"left": "0px"
+							});
+						})(group_6);
+						tabItem_6.content = group_6;
+						return tabItem_6;
+					})(tabFolder_5);
+					tabFolder_5.addTabItem(tabItem_6);
+					tabFolder_5.setSelectedTabItem(tabItem_6);
+					container.addChild(tabFolder_5, {
+						"top": "370px",
 						"bottom": "0px",
-						"width": "925px"
+						"left": "0px",
+						"width": "800px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;
@@ -304,6 +1078,9 @@
 				"bottom": "0px",
 				"left": "0px"
 			});
+			if(typeof onBodyInit == "function"){
+				app.addEventListener("init", onBodyInit);
+			}
 		}
 	});
 	app.title = "AdminMain";

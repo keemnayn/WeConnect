@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("admin/Admin", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/adminTree2.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -63,7 +64,7 @@
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
+			function onBodyInit(e) {
 				var vcEmb = app.lookup("ea1");
 				/*초기값 설정*/
 				var voInitValue = {
@@ -86,25 +87,27 @@
 						vcEmb.app = loadedApp;
 					}
 				});
+				app.lookup("memberNameSub").send();
+				
 			}
 
 			function clock() {
-					const clock = app.lookup("clock1");
-			        const date = new Date();
-			        const hours = date.getHours();
-			        const month = date.getMonth();
-			        const clockDate = date.getDate();
-			        const day = date.getDay();
-			        const minutes = date.getMinutes();
-			        const week = ['일', '월', '화', '수', '목', '금', '토'];
-			        clock.value= `${month+1}월 ${clockDate}일 ${week[day]}요일 ${hours}시 ${minutes}분`
+				const clock = app.lookup("clock1");
+				const date = new Date();
+				const hours = date.getHours();
+				const month = date.getMonth();
+				const clockDate = date.getDate();
+				const day = date.getDay();
+				const minutes = date.getMinutes();
+				const week = ['일', '월', '화', '수', '목', '금', '토'];
+				clock.value = `${month+1}월 ${clockDate}일 ${week[day]}요일 ${hours}시 ${minutes}분`
 			}
 
 			/*
 			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
-			function onBodyLoad(e){
+			function onBodyLoad(e) {
 				clock();
 				setInterval(clock, 1000);
 			}
@@ -113,10 +116,19 @@
 			 * 트리에서 selection-change 이벤트 발생 시 호출.
 			 * 선택된 Item 값이 저장된 후에 발생하는 이벤트.
 			 */
-			function onTre1SelectionChange(e){
+			function onTre1SelectionChange(e) {
 				var tre1 = e.control;
 				
-			};
+			}
+
+			/*
+			 * 서브미션에서 submit-done 이벤트 발생 시 호출.
+			 * 응답처리가 모두 종료되면 발생합니다.
+			 */
+			function onMemberNameSubSubmitDone2(e) {
+				var memberNameSub = e.control;
+				app.lookup("memberNameOpb").redraw();
+			}
 			// End - User Script
 			
 			// Header
@@ -132,24 +144,39 @@
 				],
 				"rows": [
 					{"label": "홈", "value": "홈", "parent": "", "appId": "admin/AdminMain", "icon": "img/user/home.png"},
-					{"label": "회원", "value": "회원", "parent": "", "icon": "img/icon/team.png"},
+					{"label": "사원", "value": "사원", "parent": "", "icon": "img/icon/team.png"},
 					{"label": "프로젝트", "value": "프로젝트", "parent": "", "icon": "img/icon/project.png"},
-					{"label": "게시판", "value": "게시판", "parent": "", "icon": "img/icon/board.png"},
+					{"label": "커뮤니티", "value": "커뮤니티", "parent": "", "icon": "img/icon/board.png"},
 					{"label": "일정", "value": "일정", "parent": "", "icon": "img/icon/calendar.png", "appId": ""},
 					{"label": "회의실", "value": "회의실", "parent": ""},
-					{"label": "회원관리", "value": "회원관리", "parent": "회원", "appId": "admin/AdminMember"},
-					{"label": "근태관리", "value": "근태관리", "parent": "회원", "appId": "admin/AdminAttendance"},
-					{"label": "연차관리", "value": "연차관리", "parent": "회원", "appId": "admin/AdminVacation"},
-					{"label": "조직도", "value": "조직도", "parent": "회원", "appId": ""},
-					{"label": "공지사항", "value": "공지사항", "parent": "게시판", "appId": "admin/AdminNotice"},
-					{"label": "자유게시판", "value": "자유게시판", "parent": "게시판", "appId": "admin/AdminBoard"},
-					{"label": "건의사항", "value": "건의사항", "parent": "게시판", "appId": "admin/AdminProposal"},
-					{"label": "회의실예약현황", "value": "회의실예약현황", "parent": "회의실", "appId": "admin/AdminRoomReserv"},
+					{"label": "사원관리", "value": "사원관리", "parent": "사원", "appId": "admin/AdminMember"},
+					{"label": "근태관리", "value": "근태관리", "parent": "사원", "appId": "admin/AdminAttendance"},
+					{"label": "연차관리", "value": "연차관리", "parent": "사원", "appId": "admin/AdminVacation"},
+					{"label": "자유게시판", "value": "자유게시판", "parent": "커뮤니티", "appId": "admin/AdminBoard"},
+					{"label": "공지사항", "value": "공지사항", "parent": "커뮤니티", "appId": "admin/AdminNotice"},
+					{"label": "건의사항", "value": "건의사항", "parent": "커뮤니티", "appId": "admin/AdminProposal"},
+					{"label": "회의실 관리", "value": "회의실 관리", "parent": "회의실", "appId": "admin/AdminRoomReserv"},
 					{"label": "일정관리", "value": "일정관리", "parent": "일정", "appId": "admin/AdminSchedule", "icon": "img/icon/calendar.png"},
 					{"label": "프로젝트관리", "value": "프로젝트관리", "parent": "프로젝트", "appId": "admin/AdminProjectManagement"}
 				]
 			});
 			app.register(dataSet_1);
+			var dataMap_1 = new cpr.data.DataMap("memberName");
+			dataMap_1.parseData({
+				"columns" : [{"name": "memberName"}]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("memberNameSub");
+			submission_1.method = "get";
+			submission_1.action = "admin/name";
+			submission_1.addResponseData(dataMap_1, false);
+			if(typeof onMemberNameSubSubmitSuccess == "function") {
+				submission_1.addEventListener("submit-success", onMemberNameSubSubmitSuccess);
+			}
+			if(typeof onMemberNameSubSubmitDone2 == "function") {
+				submission_1.addEventListener("submit-done", onMemberNameSubSubmitDone2);
+			}
+			app.register(submission_1);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -193,7 +220,7 @@
 			}
 			container.addChild(tree_1, {
 				"top": "50px",
-				"bottom": "50px",
+				"bottom": "3px",
 				"left": "0px",
 				"width": "300px"
 			});
@@ -222,10 +249,10 @@
 					"text-align" : "center"
 				});
 				container.addChild(output_1, {
-					"top": "10px",
-					"right": "0px",
-					"bottom": "0px",
-					"width": "90px"
+					"top": "5px",
+					"right": "10px",
+					"bottom": "5px",
+					"width": "75px"
 				});
 				var output_2 = new cpr.controls.Output("clock1");
 				output_2.value = "현재시간";
@@ -234,10 +261,24 @@
 					"text-align" : "center"
 				});
 				container.addChild(output_2, {
-					"top": "10px",
-					"right": "75px",
-					"bottom": "0px",
-					"width": "186px"
+					"top": "5px",
+					"right": "165px",
+					"bottom": "5px",
+					"width": "200px"
+				});
+				var output_3 = new cpr.controls.Output("memberNameOpb");
+				output_3.style.css({
+					"font-size" : "15px",
+					"text-align" : "center"
+				});
+				var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("memberName"));
+				output_3.setBindContext(dataMapContext_1);
+				output_3.bind("value").toDataMap(app.lookup("memberName"), "memberName");
+				container.addChild(output_3, {
+					"top": "5px",
+					"right": "90px",
+					"bottom": "5px",
+					"width": "75px"
 				});
 			})(group_1);
 			if(typeof onGroupClick == "function") {
@@ -257,21 +298,8 @@
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
-				"bottom": "70px",
-				"left": "320px"
-			});
-			
-			var group_2 = new cpr.controls.Container();
-			group_2.style.css({
-				"background-color" : "#F1EFFF"
-			});
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			container.addChild(group_2, {
-				"right": "0px",
 				"bottom": "0px",
-				"width": "1920px",
-				"height": "50px"
+				"left": "320px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);

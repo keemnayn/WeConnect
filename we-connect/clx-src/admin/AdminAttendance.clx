@@ -80,6 +80,7 @@
           <cl:grid std:sid="grid-f2646872" id="attendanceListGrd" datasetid="attendanceList">
             <cl:listener std:sid="listener-edd8d071" name="selection-change" handler="onGrd1SelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-858ffeb0" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-c3b5b58f" visible="false"/>
             <cl:gridcolumn std:sid="g-column-c5d939f5" width="75px"/>
             <cl:gridcolumn std:sid="g-column-19092c83" width="75px"/>
@@ -91,13 +92,13 @@
             <cl:gridheader std:sid="gh-band-a2643a8e">
               <cl:gridrow std:sid="g-row-574c7555" height="50px"/>
               <cl:gridcell std:sid="gh-cell-28db5dbe" rowindex="0" colindex="0" style="text-align:center;" targetcolumnname="attendanceId" sortable="false" filterable="false" text="attendanceId"/>
-              <cl:gridcell std:sid="gh-cell-e32558ed" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="memberName" sortable="false" filterable="false" text="memberName"/>
-              <cl:gridcell std:sid="gh-cell-2c735cf1" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="position" sortable="false" filterable="false" text="position"/>
-              <cl:gridcell std:sid="gh-cell-342bfab7" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="departmentName" sortable="false" filterable="false" text="departmentName"/>
-              <cl:gridcell std:sid="gh-cell-c7d242eb" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="workDay" sortable="false" filterable="false" text="workDay"/>
-              <cl:gridcell std:sid="gh-cell-5a7aba77" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="workInTime" sortable="false" filterable="false" text="workInTime"/>
-              <cl:gridcell std:sid="gh-cell-5f44f4db" rowindex="0" colindex="6" style="text-align:center;" targetcolumnname="workOutTime" sortable="false" filterable="false" text="workOutTime"/>
-              <cl:gridcell std:sid="gh-cell-3d846a6d" rowindex="0" colindex="7" style="text-align:center;" targetcolumnname="attendanceStatus" sortable="false" filterable="false" text="attendanceStatus"/>
+              <cl:gridcell std:sid="gh-cell-e32558ed" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="memberName" sortable="false" filterable="false" text="이름"/>
+              <cl:gridcell std:sid="gh-cell-2c735cf1" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="position" sortable="false" filterable="false" text="직급"/>
+              <cl:gridcell std:sid="gh-cell-342bfab7" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="departmentName" sortable="false" filterable="false" text="부서"/>
+              <cl:gridcell std:sid="gh-cell-c7d242eb" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="workDay" sortable="false" filterable="false" text="날짜"/>
+              <cl:gridcell std:sid="gh-cell-5a7aba77" rowindex="0" colindex="5" style="text-align:center;" targetcolumnname="workInTime" sortable="false" filterable="false" text="출근 시간"/>
+              <cl:gridcell std:sid="gh-cell-5f44f4db" rowindex="0" colindex="6" style="text-align:center;" targetcolumnname="workOutTime" sortable="false" filterable="false" text="퇴근 시간"/>
+              <cl:gridcell std:sid="gh-cell-3d846a6d" rowindex="0" colindex="7" style="text-align:center;" targetcolumnname="attendanceStatus" sortable="false" filterable="false" text="근태"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-4b1373d8">
               <cl:gridrow std:sid="g-row-3bce33dc" height="50px"/>
@@ -143,7 +144,7 @@
               </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-ea1aa8f3" top="10px" right="310px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

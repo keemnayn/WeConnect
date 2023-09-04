@@ -30,18 +30,23 @@ public class AttendanceServiceImpl implements AttendanceService {
 		if (result == 0) {
 			check = true;
 		}
-		return check; 
+		return check;
 	}
 
 	@Override
 	public void updateAttendance(long memberId) {
-		// TODO 퇴근 버튼 
+		// TODO 퇴근 버튼
 		attendanceMapper.updateAttendance(memberId);
 	}
-	
+
 	@Override
 	public List<AttendanceDTO> AttendanceList(long memberId) {
 		// TODO 리스트화면
 		return attendanceMapper.AttendanceList(memberId);
+	}
+
+	@Override
+	public AttendanceDTO getTodayAttendanceByMemberId(long memberId) {
+		return attendanceMapper.selectTodayAttendanceByMemberId(memberId);
 	}
 }

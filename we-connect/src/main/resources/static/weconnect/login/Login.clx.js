@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("login/Login", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/login.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -32,8 +33,8 @@
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
 			 */
 			function onLoginBtnClick(e) {
-				var memberEmail = app.lookup("memberEmailIpb").value;
-				var memberPassword = app.lookup("memberPasswordIpb").value;
+				let memberEmail = app.lookup("memberEmailIpb").value;
+				let memberPassword = app.lookup("memberPasswordIpb").value;
 				// Check if email and password are either null or empty
 				if (isEmptyOrNull(memberEmail) || isEmptyOrNull(memberPassword)) {
 					alert("이메일과 비밀번호를 입력해주세요");
@@ -70,7 +71,12 @@
 				var loginSub = e.control;
 				var submission = app.lookup("loginSub");
 				var error = submission.getMetadata("error");
+				var memberEmailIpb = app.lookup("memberEmailIpb");
+				var memberPasswordIpb = app.lookup("memberPasswordIpb");
 				alert(error);
+				memberEmailIpb.clear();
+				memberPasswordIpb.clear();
+				memberEmailIpb.focus();
 			}
 
 			/*
@@ -82,6 +88,15 @@
 				if (e.keyCode == cpr.events.KeyCode.ENTER) {
 					app.lookup("loginBtn").click();
 				}
+			}
+
+			/*
+			 * 인풋 박스에서 focus 이벤트 발생 시 호출.
+			 * 컨트롤이 포커스를 획득한 후 발생하는 이벤트.
+			 */
+			function onMemberPasswordIpbFocus(e) {
+				var memberPasswordIpb = e.control;
+				memberPasswordIpb.autoSelect = true;
 			}
 			// End - User Script
 			
@@ -117,6 +132,7 @@
 			
 			// Configure root container
 			var container = app.getContainer();
+			container.style.setClasses(["Background"]);
 			container.style.css({
 				"background-color" : "#F8F8F8",
 				"width" : "100%",
@@ -133,7 +149,7 @@
 			group_1.style.css({
 				"border-right-style" : "solid",
 				"border-radius" : "9px",
-				"background-color" : "#FEFEFF",
+				"background-color" : "#F7F7F7",
 				"border-left-style" : "solid",
 				"vertical-align" : "middle",
 				"border-bottom-style" : "solid",
@@ -143,7 +159,7 @@
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var inputBox_1 = new cpr.controls.InputBox("memberEmailIpb");
-				inputBox_1.placeholder = "아이디";
+				inputBox_1.placeholder = "이메일";
 				inputBox_1.style.setClasses(["input_id"]);
 				inputBox_1.style.css({
 					"border-radius" : "8px",
@@ -153,6 +169,9 @@
 					"text-align" : "left"
 				});
 				inputBox_1.bind("value").toDataMap(app.lookup("loginParam"), "memberEmail");
+				if(typeof onMemberEmailIpbFocus == "function") {
+					inputBox_1.addEventListener("focus", onMemberEmailIpbFocus);
+				}
 				container.addChild(inputBox_1, {
 					"top": "164px",
 					"left": "90px",
@@ -173,6 +192,9 @@
 				inputBox_2.bind("value").toDataMap(app.lookup("loginParam"), "memberPassword");
 				if(typeof onMemberPasswordIpbKeydown == "function") {
 					inputBox_2.addEventListener("keydown", onMemberPasswordIpbKeydown);
+				}
+				if(typeof onMemberPasswordIpbFocus == "function") {
+					inputBox_2.addEventListener("focus", onMemberPasswordIpbFocus);
 				}
 				container.addChild(inputBox_2, {
 					"top": "225px",
@@ -208,7 +230,7 @@
 					"background-color" : "#4D5B67",
 					"border-radius" : "8px",
 					"color" : "#FFFFFF",
-					"font-weight" : "600",
+					"font-weight" : "900",
 					"font-size" : "16px",
 					"text-align" : "center"
 				});
@@ -221,22 +243,8 @@
 					"width": "420px",
 					"height": "40px"
 				});
-				var hTMLSnippet_1 = new cpr.controls.HTMLSnippet();
-				hTMLSnippet_1.value = "<a href=\"#\"  class=\"password-_reset\">비밀번호 찾기<\/a>";
-				hTMLSnippet_1.style.setClasses(["password_reset"]);
-				hTMLSnippet_1.style.css({
-					"color" : "#5B6B79",
-					"font-weight" : "400",
-					"font-size" : "15px"
-				});
-				container.addChild(hTMLSnippet_1, {
-					"top": "290px",
-					"right": "10px",
-					"left": "428px",
-					"height": "20px"
-				});
 				var image_1 = new cpr.controls.Image();
-				image_1.src = "img/enjoy.png";
+				image_1.src = "img/loginLogo.png";
 				container.addChild(image_1, {
 					"top": "49px",
 					"left": "93px",
@@ -245,8 +253,8 @@
 				});
 			})(group_1);
 			container.addChild(group_1, {
-				"top": "170px",
-				"left": "652px",
+				"top": "206px",
+				"left": "662px",
 				"width": "600px",
 				"height": "500px"
 			});

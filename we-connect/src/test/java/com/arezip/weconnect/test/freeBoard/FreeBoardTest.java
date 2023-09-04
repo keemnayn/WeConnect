@@ -61,14 +61,23 @@ public class FreeBoardTest {
 	//게시물 상세 조회
 	@Test
 	void getBoardDetail() {
-		long freeBoardId = 5;
-		FreeBoardDTO boardDetail = freeBoardMapper.getFreeBoardDetail(freeBoardId);
+		long freeBoardId = 97;
+		FreeBoardDTO boardDetail = freeBoardService.getFreeBoardDetail(freeBoardId);
 		log.info(boardDetail.toString());
 		assertNotNull(boardDetail);
 	}
-	//게시물 상세 페이지 댓글 조회
+	//게시물 상세 조회
 	@Test
 	void getBoardDetailComment() {
+		long freeBoardId = 97;
+		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardComment(freeBoardId);
+		log.info(boardDetail.toString());
+		assertNotNull(boardDetail);
+	}
+	
+	//게시물 상세 페이지 댓글 조회
+	@Test
+	void getBoardDetailComment1() {
 		long freeBoardId = 5;
 		List<FreeBoardCommentDTO> boardDetail = freeBoardService.getFreeBoardComment(freeBoardId);
 		boardDetail.forEach(comment -> log.info(comment.toString()));
@@ -77,19 +86,26 @@ public class FreeBoardTest {
 	//댓글 등록
 	@Test
 	void insertComment() {
-		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-		freeBoardCommentDTO.setFreeBoardCommentContent("ServiceTest");
-		freeBoardCommentDTO.setMemberId(24);
-		freeBoardCommentDTO.setFreeBoardId(61);
-		int result = freeBoardService.insertFreeBoardComment(freeBoardCommentDTO);
+		long memberId = 142;
+		long freeBoardId = 101;
+		String freeBoardCommentContent = "unitTest";
+		int result = freeBoardService.insertFreeBoardComment(freeBoardCommentContent,memberId,freeBoardId);
 		assertNotEquals(0, result);
 	}
 	//댓글 삭제 
 	@Test
 	void deleteComment() {
+		long freeBoardCommentId = 455;
+		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentId);
+		assertNotEquals(0, result);
+	}
+	//댓글 수정
+	@Test
+	void updateComment() {
 		FreeBoardCommentDTO freeBoardCommentDTO = new FreeBoardCommentDTO();
-		freeBoardCommentDTO.setFreeBoardCommentId(42);
-		int result = freeBoardService.deleteFreeBoardComment(freeBoardCommentDTO);
+		freeBoardCommentDTO.setFreeBoardCommentId(455);
+		freeBoardCommentDTO.setFreeBoardCommentContent("test수정test");
+		int result = freeBoardService.updateFreeBoardComment(freeBoardCommentDTO);
 		assertNotEquals(0, result);
 	}
 }

@@ -22,40 +22,144 @@
 			 * 루트 컨테이너에서 init 이벤트 발생 시 호출.
 			 * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
 			 */
-			function onBodyInit(e){
-				let submission = app.lookup("LeaveRequest2");
-				submission.send();
+			function onBodyInit(e) {
+				app.lookup("leaveRequestListSub").send();
+				var comboBox = app.lookup("searchTypeCmb");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
 			}
-			 
+
+			/*
+			 * "승인" 버튼(approvalBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onApprovalBtnClick2(e) {
+				var approvalBtn = e.control;
+				var grid = app.lookup("leaveRequestListGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				var submission = app.lookup("leaveRequestApproveSub");
+				if (checkRowIndices.length > 0) {
+					if (confirm("선택한 연차를 승인 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						submission.send();
+					}
+				} else {
+					alert("승인할 연차를 선택해 주세요");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
+			 * 통신 중 문제가 생기면 발생합니다.
+			 */
+			function onLeaveRequestApproveSubSubmitError2(e) {
+				var leaveRequestApproveSub = e.control;
+				var error = leaveRequestApproveSub.getMetadata("error");
+				app.lookup("leaveRequestListSub").send();
+				alert(error);
+			}
+
 			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onLeaveRequest2SubmitSuccess(e){
-				var leaveRequest2 = e.control;
-				app.lookup("grd1").redraw();
-			};
+			function onLeaveRequestApproveSubSubmitSuccess2(e) {
+				var leaveRequestApproveSub = e.control;
+				app.lookup("leaveRequestListSub").send();
+			}
+
+			/*
+			 * "거절" 버튼(refusalBtn)에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onRefusalBtnClick(e) {
+				var refusalBtn = e.control;
+				var grid = app.lookup("leaveRequestListGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				var submission = app.lookup("leaveRequestRejectSub");
+				if (checkRowIndices.length > 0) {
+					if (confirm("선택한 연차를 거절 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						submission.send();
+					}
+				} else {
+					alert("거절할 연차를 선택해 주세요");
+				}
+			}
+
+			/*
+			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
+			 * 통신 중 문제가 생기면 발생합니다.
+			 */
+			function onLeaveRequestRejectSubSubmitError(e) {
+				var leaveRequestRejectSub = e.control;
+				var error = leaveRequestRejectSub.getMetadata("error");
+				app.lookup("leaveRequestListSub").send();
+				alert(error);
+			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onLeaveRequestRejectSubSubmitSuccess(e) {
+				var leaveRequestRejectSub = e.control;
+				app.lookup("leaveRequestListSub").send();
+			}
+
+			/*
+			 * 서치 인풋에서 search 이벤트 발생 시 호출.
+			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
+			 */
+			function onSearchTextIpbSearch(e){
+				var searchTextIpb = e.control;
+				app.lookup("leaveRequestSearchSub").send();
+			}
 			// End - User Script
 			
 			// Header
 			var dataSet_1 = new cpr.data.DataSet("search");
 			dataSet_1.parseData({
-				"columns": [{"name": "type"}],
+				"columns": [
+					{"name": "label"},
+					{"name": "value"}
+				],
 				"rows": [
-					{"type": "전체"},
-					{"type": "이름"},
-					{"type": "직급"},
-					{"type": "부서"},
-					{"type": "상태"}
+					{"value": "all", "label": "전체"},
+					{"value": "memberName", "label": "이름"},
+					{"value": "position", "label": "직급"},
+					{"value": "departmentName", "label": "부서"},
+					{"label": "분류", "value": "leaveRequestType"},
+					{"value": "leaveRequestStatus", "label": "상태"}
 				]
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("LeaveRequest");
+			var dataSet_2 = new cpr.data.DataSet("leaveRequestList");
 			dataSet_2.parseData({
 				"columns" : [
 					{
-						"name": "leaveRequestType",
+						"name": "leaveRequestId",
+						"dataType": "number"
+					},
+					{
+						"name": "memberId",
+						"dataType": "number"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					},
+					{
+						"name": "leaveRequestReason",
 						"dataType": "string"
 					},
 					{
@@ -66,42 +170,65 @@
 						"name": "leaveRequestEnd",
 						"dataType": "string"
 					},
+					{"name": "formattedLeaveCount"},
+					{
+						"name": "leaveRequestType",
+						"dataType": "string"
+					},
 					{
 						"name": "leaveRequestStatus",
-						"dataType": "string"
-					},
-					{
-						"name": "leaveRequestReason",
-						"dataType": "string"
-					},
-					{
-						"name": "memberName",
-						"dataType": "string"
-					},
-					{
-						"name": "departmentName",
-						"dataType": "string"
-					},
-					{
-						"name": "position",
-						"dataType": "string"
-					},
-					{
-						"name": "leaveCount",
 						"dataType": "string"
 					}
 				]
 			});
 			app.register(dataSet_2);
-			var submission_1 = new cpr.protocols.Submission("LeaveRequest2");
+			var dataMap_1 = new cpr.data.DataMap("searchParam");
+			dataMap_1.parseData({
+				"columns" : [
+					{"name": "searchType"},
+					{"name": "searchText"}
+				]
+			});
+			app.register(dataMap_1);
+			var submission_1 = new cpr.protocols.Submission("leaveRequestListSub");
 			submission_1.async = false;
 			submission_1.method = "get";
-			submission_1.action = "member/leave-request/leave-request-list";
+			submission_1.action = "admin/leave-request";
 			submission_1.addResponseData(dataSet_2, false);
-			if(typeof onLeaveRequest2SubmitSuccess == "function") {
-				submission_1.addEventListener("submit-success", onLeaveRequest2SubmitSuccess);
-			}
 			app.register(submission_1);
+			
+			var submission_2 = new cpr.protocols.Submission("leaveRequestApproveSub");
+			submission_2.method = "put";
+			submission_2.action = "admin/leave-request";
+			submission_2.addRequestData(dataSet_2);
+			if(typeof onLeaveRequestApproveSubSubmitError2 == "function") {
+				submission_2.addEventListener("submit-error", onLeaveRequestApproveSubSubmitError2);
+			}
+			if(typeof onLeaveRequestApproveSubSubmitSuccess2 == "function") {
+				submission_2.addEventListener("submit-success", onLeaveRequestApproveSubSubmitSuccess2);
+			}
+			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("leaveRequestRejectSub");
+			submission_3.action = "admin/leave-request";
+			submission_3.addRequestData(dataSet_2);
+			if(typeof onLeaveRequestRejectSubSubmitError == "function") {
+				submission_3.addEventListener("submit-error", onLeaveRequestRejectSubSubmitError);
+			}
+			if(typeof onLeaveRequestRejectSubSubmitSuccess == "function") {
+				submission_3.addEventListener("submit-success", onLeaveRequestRejectSubSubmitSuccess);
+			}
+			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("leaveRequestSearchSub");
+			submission_4.method = "get";
+			submission_4.action = "admin/leave-request/search";
+			submission_4.addRequestData(dataMap_1);
+			submission_4.addResponseData(dataSet_2, false);
+			if(typeof onLeaveRequestSearchSubSubmitSuccess == "function") {
+				submission_4.addEventListener("submit-success", onLeaveRequestSearchSubSubmitSuccess);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "new-screen");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -128,18 +255,27 @@
 				var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 				group_1.setLayout(xYLayout_2);
 				(function(container){
-					var grid_1 = new cpr.controls.Grid("grd1");
+					var grid_1 = new cpr.controls.Grid("leaveRequestListGrd");
 					grid_1.init({
-						"dataSet": app.lookup("LeaveRequest"),
+						"dataSet": app.lookup("leaveRequestList"),
 						"columns": [
 							{"width": "25px"},
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{
+								"width": "100px",
+								"visible": false
+							},
+							{"width": "75px"},
+							{"width": "75px"},
+							{"width": "75px"},
+							{"width": "125px"},
 							{"width": "100px"},
 							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
-							{"width": "100px"},
+							{"width": "75px"},
+							{"width": "75px"},
 							{"width": "100px"}
 						],
 						"header": {
@@ -161,7 +297,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.text = "이름";
+										cell.targetColumnName = "leaveRequestId";
+										cell.text = "leaveRequestId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -172,7 +309,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.text = "직급";
+										cell.targetColumnName = "memberId";
+										cell.text = "memberId";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -183,7 +321,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.text = "부서";
+										cell.targetColumnName = "memberName";
+										cell.text = "이름";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -192,7 +331,13 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.text = "사유";
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "position";
+										cell.text = "직급";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -200,7 +345,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.text = "출발";
+										cell.targetColumnName = "departmentName";
+										cell.text = "부서";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -211,7 +357,8 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
-										cell.text = "복귀";
+										cell.targetColumnName = "leaveRequestReason";
+										cell.text = "연차 사유";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -220,7 +367,13 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 7},
 									"configurator": function(cell){
-										cell.text = "잔여일수";
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "leaveRequestStart";
+										cell.text = "출발";
+										cell.style.css({
+											"text-align" : "center"
+										});
 									}
 								},
 								{
@@ -228,6 +381,43 @@
 									"configurator": function(cell){
 										cell.filterable = false;
 										cell.sortable = false;
+										cell.targetColumnName = "leaveRequestEnd";
+										cell.text = "복귀";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 9},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "formattedLeaveCount";
+										cell.text = "남은 연차";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 10},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "leaveRequestType";
+										cell.text = "분류";
+										cell.style.css({
+											"text-align" : "center"
+										});
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 11},
+									"configurator": function(cell){
+										cell.filterable = false;
+										cell.sortable = false;
+										cell.targetColumnName = "leaveRequestStatus";
 										cell.text = "상태";
 										cell.style.css({
 											"text-align" : "center"
@@ -251,71 +441,207 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "memberName";
+										cell.columnName = "leaveRequestId";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_1 = new cpr.controls.Output();
+											output_1.style.css({
+												"text-align" : "center"
+											});
+											output_1.bind("value").toDataColumn("leaveRequestId");
+											return output_1;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "position";
+										cell.columnName = "memberId";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_2 = new cpr.controls.Output();
+											output_2.style.css({
+												"text-align" : "center"
+											});
+											output_2.bind("value").toDataColumn("memberId");
+											return output_2;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 3},
 									"configurator": function(cell){
-										cell.columnName = "departmentName";
+										cell.columnName = "memberName";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_3 = new cpr.controls.Output();
+											output_3.style.css({
+												"text-align" : "center"
+											});
+											output_3.bind("value").toDataColumn("memberName");
+											return output_3;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 4},
 									"configurator": function(cell){
-										cell.columnName = "leaveRequestReason";
+										cell.columnName = "position";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_4 = new cpr.controls.Output();
+											output_4.style.css({
+												"text-align" : "center"
+											});
+											output_4.bind("value").toDataColumn("position");
+											return output_4;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 5},
 									"configurator": function(cell){
-										cell.columnName = "leaveRequestStart";
+										cell.columnName = "departmentName";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_5 = new cpr.controls.Output();
+											output_5.style.css({
+												"text-align" : "center"
+											});
+											output_5.bind("value").toDataColumn("departmentName");
+											return output_5;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 6},
 									"configurator": function(cell){
-										cell.columnName = "leaveRequestEnd";
+										cell.columnName = "leaveRequestReason";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_6 = new cpr.controls.Output();
+											output_6.style.css({
+												"text-align" : "center"
+											});
+											output_6.bind("value").toDataColumn("leaveRequestReason");
+											return output_6;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 7},
 									"configurator": function(cell){
-										cell.columnName = "leaveCount";
+										cell.columnName = "leaveRequestStart";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_7 = new cpr.controls.Output();
+											output_7.style.css({
+												"text-align" : "center"
+											});
+											output_7.bind("value").toDataColumn("leaveRequestStart");
+											return output_7;
+										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 8},
 									"configurator": function(cell){
+										cell.columnName = "leaveRequestEnd";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_8 = new cpr.controls.Output();
+											output_8.style.css({
+												"text-align" : "center"
+											});
+											output_8.bind("value").toDataColumn("leaveRequestEnd");
+											return output_8;
+										})();
+										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 9},
+									"configurator": function(cell){
+										cell.columnName = "formattedLeaveCount";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_9 = new cpr.controls.Output();
+											output_9.style.css({
+												"text-align" : "center"
+											});
+											output_9.bind("value").toDataColumn("formattedLeaveCount");
+											return output_9;
+										})();
+										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 10},
+									"configurator": function(cell){
+										cell.columnName = "leaveRequestType";
+										cell.style.css({
+											"text-align" : "center"
+										});
+										cell.control = (function(){
+											var output_10 = new cpr.controls.Output();
+											output_10.style.css({
+												"text-align" : "center"
+											});
+											output_10.bind("value").toDataColumn("leaveRequestType");
+											return output_10;
+										})();
+										cell.controlConstraint = {};
+									}
+								},
+								{
+									"constraint": {"rowIndex": 0, "colIndex": 11},
+									"configurator": function(cell){
 										cell.columnName = "leaveRequestStatus";
 										cell.style.css({
 											"text-align" : "center"
 										});
+										cell.control = (function(){
+											var output_11 = new cpr.controls.Output();
+											output_11.style.css({
+												"text-align" : "center"
+											});
+											output_11.bind("value").toDataColumn("leaveRequestStatus");
+											return output_11;
+										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]
 						}
+					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
 					});
 					container.addChild(grid_1, {
 						"top": "50px",
@@ -332,25 +658,25 @@
 					formLayout_1.leftMargin = "5px";
 					formLayout_1.horizontalSpacing = "10px";
 					formLayout_1.verticalSpacing = "10px";
-					formLayout_1.setColumns(["1fr", "1fr", "1fr"]);
+					formLayout_1.setColumns(["1fr", "1fr"]);
 					formLayout_1.setRows(["1fr"]);
 					group_2.setLayout(formLayout_1);
 					(function(container){
-						var button_1 = new cpr.controls.Button();
-						button_1.value = "저장";
+						var button_1 = new cpr.controls.Button("refusalBtn");
+						button_1.value = "거절";
+						if(typeof onRefusalBtnClick == "function") {
+							button_1.addEventListener("click", onRefusalBtnClick);
+						}
 						container.addChild(button_1, {
-							"colIndex": 2,
-							"rowIndex": 0
-						});
-						var button_2 = new cpr.controls.Button();
-						button_2.value = "거절";
-						container.addChild(button_2, {
 							"colIndex": 1,
 							"rowIndex": 0
 						});
-						var button_3 = new cpr.controls.Button();
-						button_3.value = "승인";
-						container.addChild(button_3, {
+						var button_2 = new cpr.controls.Button("approvalBtn");
+						button_2.value = "승인";
+						if(typeof onApprovalBtnClick2 == "function") {
+							button_2.addEventListener("click", onApprovalBtnClick2);
+						}
+						container.addChild(button_2, {
 							"colIndex": 0,
 							"rowIndex": 0
 						});
@@ -358,27 +684,39 @@
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "200px",
+						"width": "133px",
 						"height": "40px"
 					});
-					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-					comboBox_1.value = "전체";
+					var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
+					comboBox_1.style.css({
+						"border-radius" : "8px",
+						"text-align" : "center"
+					});
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
+					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("search"), {
-							"label": "type",
-							"value": "type"
+							"label": "label",
+							"value": "value"
 						});
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "520px",
+						"right": "453px",
 						"width": "100px",
 						"height": "30px"
 					});
-					var searchInput_1 = new cpr.controls.SearchInput();
+					var searchInput_1 = new cpr.controls.SearchInput("searchTextIpb");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_2);
+					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
+					if(typeof onSearchTextIpbSearch == "function") {
+						searchInput_1.addEventListener("search", onSearchTextIpbSearch);
+					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "220px",
+						"right": "153px",
 						"width": "280px",
 						"height": "30px"
 					});

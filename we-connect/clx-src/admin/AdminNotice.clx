@@ -68,11 +68,11 @@
           <std:property key="is-active-item" value="true"/>
         </std:metadata>
         <cl:group std:sid="group-29424da0">
-          <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList" autofit="2, 3, 5">
-            <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="55px" right="0px" bottom="-5px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-            <cl:headerstyle class="Notice_grd1"/>
+          <cl:grid std:sid="grid-c21e7c3f" id="noticeGrd" datasetid="noticeList" autofit="1, 2, 3, 5">
+            <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="55px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;" class="Notice_grd1"/>
             <cl:gridcolumn std:sid="g-column-a4697205" width="50px"/>
-            <cl:gridcolumn std:sid="g-column-4284b01d" width="75px"/>
+            <cl:gridcolumn std:sid="g-column-4284b01d" width="75px" visible="false"/>
             <cl:gridcolumn std:sid="g-column-4a9b49cd"/>
             <cl:gridcolumn std:sid="g-column-f5abb798" width="200px"/>
             <cl:gridcolumn std:sid="g-column-672cc6fe" width="75px"/>
@@ -137,7 +137,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="text-align:center;">
+          <cl:combobox std:sid="c-box-7ef33e0a" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="545px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

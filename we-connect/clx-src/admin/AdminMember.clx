@@ -83,38 +83,7 @@
           <cl:datacolumn std:sid="d-column-4e14f6e7" name="departmentId" datatype="number"/>
           <cl:datacolumn std:sid="d-column-d62904ab" name="departmentName"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[1]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[a@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[박해준]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[2]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[b@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[김정현]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[3]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[c@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[김나연]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[4]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[d@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[최수연]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="memberEmail"><![CDATA[5]]></cl:datavalue>
-            <cl:datavalue columnname="memberName"><![CDATA[e@gmail.com]]></cl:datavalue>
-            <cl:datavalue columnname="position"><![CDATA[서정우]]></cl:datavalue>
-            <cl:datavalue columnname="memberJoinDate"><![CDATA[2023-03-27]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:dataset std:sid="d-set-db620e4e" id="pendingSearch">
         <cl:datacolumnlist>
@@ -187,10 +156,11 @@
     <cl:listener std:sid="listener-f91c8105" name="init" handler="onBodyInit"/>
     <cl:tabfolder std:sid="t-folder-30fb2ba2">
       <cl:xylayoutdata std:sid="xyl-data-2a17394c" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:tabitem std:sid="t-item-7e250f44" selected="true" text="회원명단">
+      <cl:tabitem std:sid="t-item-7e250f44" selected="true" text="사원명단">
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-dafc8668" id="memberListGrd1" datasetid="memberList" autofit="0, 2, 3, 5, 6">
             <cl:xylayoutdata std:sid="xyl-data-613ff43d" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-7a07d62e" width="25px"/>
             <cl:gridcolumn std:sid="g-column-289fdfe6" width="50px" visible="false"/>
             <cl:gridcolumn std:sid="g-column-1c773fe1"/>
@@ -250,7 +220,7 @@
               </cl:gridcell>
             </cl:griddetail>
           </cl:grid>
-          <cl:combobox std:sid="c-box-b8ad3665" id="searchTypeCmb1" style="text-align:center;">
+          <cl:combobox std:sid="c-box-b8ad3665" id="searchTypeCmb1" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-fd5acb44" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
@@ -281,7 +251,7 @@
           <cl:xylayout std:sid="xylayout-2dbc9a91"/>
         </cl:group>
       </cl:tabitem>
-      <cl:tabitem std:sid="t-item-34f385bf" text="회원승인">
+      <cl:tabitem std:sid="t-item-34f385bf" text="가입승인">
         <std:metadata>
           <std:property key="is-active-item" value="true"/>
         </std:metadata>
@@ -291,6 +261,7 @@
           </std:metadata>
           <cl:grid std:sid="grid-cf176441" id="memberListGrd2" datasetid="pendingList">
             <cl:xylayoutdata std:sid="xyl-data-ceda1cfc" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-93da78a6" width="25px"/>
             <cl:gridcolumn std:sid="g-column-4fd3a7b7" visible="false"/>
             <cl:gridcolumn std:sid="g-column-9d9e3cb4"/>
@@ -366,7 +337,7 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-3ab63fb8" id="searchTypeCmb2" style="text-align:center;">
+          <cl:combobox std:sid="c-box-3ab63fb8" id="searchTypeCmb2" style="border-radius:8px; text-align:center;">
             <cl:datamapbind property="value" category="PROPERTY" datacontrolid="pendingSearchParam" columnname="searchType"/>
             <cl:datamapcontext datacontrolid="pendingSearchParam"/>
             <cl:xylayoutdata std:sid="xyl-data-24a217c6" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>

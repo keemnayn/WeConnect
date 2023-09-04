@@ -11,12 +11,15 @@
  */
 function onBodyInit(e) {
 	app.lookup("proposalListSub").send();
+	var comboBox = app.lookup("cmb1");
+	comboBox.fieldLabel = "전체";
+	comboBox.value = "all";
 }
 
 /*
  * "처리" 버튼(updateStatusBtn)에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
- */
+
 function onUpdateStatusBtnClick(e) {
 	var updateStatusBtn = e.control;
 	var grid = app.lookup("proposalGrd");
@@ -32,6 +35,21 @@ function onUpdateStatusBtnClick(e) {
 		alert("처리는 하나씩만 가능합니다.");
 	}
 }
+ */
+
+function onUpdateStatusBtnClick(e) {
+	var updateStatusBtn = e.control;
+	var grid = app.lookup("proposalGrd");
+	var checkRowIndices = grid.getCheckRowIndices();
+	if (checkRowIndices.length > 0) {
+		if (confirm("처리완료 하시겠습니까?")) {
+			grid.deleteRow(checkRowIndices);
+			app.lookup("updateStatusSub").send();
+		}
+	} else {
+		alert("하나 이상 선택하셔야 합니다.");
+	}
+}
 
 /*
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
@@ -39,7 +57,7 @@ function onUpdateStatusBtnClick(e) {
  */
 function onUpdateStatusSubSubmitSuccess(e) {
 	var updateStatusSub = e.control;
-	app.lookup("updateStatusSub").send();
+	alert("정상 처리되었습니다");
 	app.lookup("proposalListSub").send();
 	app.lookup("proposalGrd").redraw();
 }
@@ -68,14 +86,14 @@ function onDeleteBtnClick(e) {
  */
 function onDeleteProposalSubSubmitDone(e) {
 	var deleteProposalSub = e.control;
-	app.lookup("deleteProposalSub").send();
+	app.lookup("proposalListSub").send();
 }
 
 /*
  * 서치 인풋에서 search 이벤트 발생 시 호출.
  * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
  */
-function onSearchInputSearch(e){
+function onSearchInputSearch(e) {
 	var searchInput = e.control;
 	var submission = app.lookup("searchProposalSub");
 	submission.send();
@@ -85,7 +103,18 @@ function onSearchInputSearch(e){
  * 서브미션에서 submit-success 이벤트 발생 시 호출.
  * 통신이 성공하면 발생합니다.
  */
-function onSearchProposalSubSubmitSuccess(e){
+function onSearchProposalSubSubmitSuccess(e) {
 	var searchProposalSub = e.control;
 	app.lookup("proposalGrd").redraw();
+}
+
+/*
+ * 서브미션에서 submit-error 이벤트 발생 시 호출.
+ * 통신 중 문제가 생기면 발생합니다.
+ */
+function onUpdateStatusSubSubmitError(e) {
+	var updateStatusSub = e.control;
+	var error = updateStatusSub.getMetadata("error");
+	app.lookup("proposalListSub").send();
+	alert(error);
 }

@@ -120,17 +120,22 @@ select * from profile_images;
 SELECT profile_images_path FROM profile_images WHERE member_id = 131;
 
 
+
 /* 부서 */
 CREATE SEQUENCE department_seq
 START WITH 1
 INCREMENT BY 1;
+select * from member;
+SELECT m.member_name, m.position, d.department_Name
+FROM member m 
+INNER JOIN department d ON m.department_ID = d.department_id;
 
+select * from department;
 		
 CREATE TABLE department (
 	department_id NUMBER NOT NULL, /* 부서번호 */
 	department_name VARCHAR2(100) NOT NULL /* 부서명 */
 );
-
 COMMENT ON TABLE department IS '부서';
 
 COMMENT ON COLUMN department.department_id IS '부서번호';
@@ -182,7 +187,15 @@ CREATE UNIQUE INDEX PK_project
 	ON project (
 		project_id ASC
 	);
-	
+select * from project
+
+
+INSERT INTO WECONNECT.PROJECT
+(PROJECT_ID, PROJECT_NAME, PROJECT_START, PROJECT_END, MEMBER_ID)
+VALUES(project_seq.NEXTVAL, '테스트', TO_DATE('2023-08-30', 'YYYY-MM-DD'), TO_DATE('2023-08-30', 'YYYY-MM-DD'), 131);
+
+--프로젝트 시작일 , 마감일 보여주는 select 
+select project.project_start, project.project_end from project where member_id = 131;
 ALTER TABLE project
 ADD CONSTRAINT CHK_project_dates
 CHECK (project_start <= project_end);

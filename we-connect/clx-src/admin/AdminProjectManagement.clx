@@ -5,6 +5,7 @@
     <screen std:sid="screen-341a4372" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px"/>
     <screen std:sid="screen-a7964aac" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-dd0c7e0a" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-82f3ad62" href="../theme/controls/grid.part.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-23250b37">
       <cl:dataset std:sid="d-set-61103626" id="projectList">
         <cl:datacolumnlist>
@@ -34,7 +35,9 @@
             <std:property key="locked" value="true"/>
           </std:metadata>
           <cl:grid std:sid="grid-c2ab4022" id="projectListGrd" datasetid="projectList">
+            <cl:listener std:sid="listener-61d71bbd" name="selection-change" handler="onProjectListGrdSelectionChange"/>
             <cl:xylayoutdata std:sid="xyl-data-f6d22039" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-102da647" visible="false"/>
             <cl:gridcolumn std:sid="g-column-543e4ee7" width="200px"/>
             <cl:gridcolumn std:sid="g-column-7aa2a4c7" width="100px"/>
@@ -46,33 +49,33 @@
               <cl:gridcell std:sid="gh-cell-f3916d2e" rowindex="0" colindex="1" style="text-align:center;" targetcolumnname="projectName" sortable="false" filterable="false" text="프로젝트명"/>
               <cl:gridcell std:sid="gh-cell-5adb43b4" rowindex="0" colindex="2" style="text-align:center;" targetcolumnname="projectStart" sortable="false" filterable="false" text="프로젝트 시작일"/>
               <cl:gridcell std:sid="gh-cell-8703c816" rowindex="0" colindex="3" style="text-align:center;" targetcolumnname="projectEnd" sortable="false" filterable="false" text="프로젝트 종료일"/>
-              <cl:gridcell std:sid="gh-cell-367b6a61" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="projectMemberCount" sortable="false" filterable="false" text="프로젝트 회원수"/>
+              <cl:gridcell std:sid="gh-cell-367b6a61" rowindex="0" colindex="4" style="text-align:center;" targetcolumnname="projectMemberCount" sortable="false" filterable="false" text="참여 사원수"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-a96e3f83">
               <cl:gridrow std:sid="g-row-eb803649" height="50px"/>
               <cl:gridcell std:sid="gd-cell-6a280f94" rowindex="0" colindex="0" style="text-align:center;" columnname="projectId">
                 <cl:output std:sid="output-9c19dd76" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-ba82b8b3"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-e17ac6dd" rowindex="0" colindex="1" style="text-align:center;" columnname="projectName">
                 <cl:output std:sid="output-109df825" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-6f403fa0"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-f9b3c91f" rowindex="0" colindex="2" style="text-align:center;" columnname="projectStart">
                 <cl:output std:sid="output-589eaf96" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-c594d4d5"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-e37a47b6" rowindex="0" colindex="3" style="text-align:center;" columnname="projectEnd">
                 <cl:output std:sid="output-5b5d7596" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-4661a2f6"/>
                 </cl:output>
               </cl:gridcell>
               <cl:gridcell std:sid="gd-cell-3ab23ff3" rowindex="0" colindex="4" style="text-align:center;" columnname="projectMemberCount">
                 <cl:output std:sid="output-3b7f6350" style="text-align:center;">
-                  <cl:celldata/>
+                  <cl:celldata std:sid="c-data-905a8bfb"/>
                 </cl:output>
               </cl:gridcell>
             </cl:griddetail>

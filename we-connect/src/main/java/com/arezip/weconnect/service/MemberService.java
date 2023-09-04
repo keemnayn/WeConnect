@@ -4,16 +4,11 @@ import java.util.List;
 
 import com.arezip.weconnect.model.dto.DepartmentDTO;
 import com.arezip.weconnect.model.dto.MemberDTO;
-import com.arezip.weconnect.model.dto.ProfileImageDTO;
 
 public interface MemberService {
-//	int register(MemberDTO memberDTO);
-
 	List<DepartmentDTO> findByDepartmentName();
 
-//	MemberDTO login(String memberEmail, String memberPassword);
-
-	MemberDTO findByEmail(String memberEmail);
+	boolean isEmailDuplicated(String memberEmail);
 
 //	회원가입 수정
 	int registerMember(MemberDTO memberDTO);
@@ -23,4 +18,7 @@ public interface MemberService {
 
 //	관리자 여부
 	boolean isAdmin(long memberId);
+
+//  메인 화면 세션
+	List<MemberDTO> findMemberName(long memberId);
 }

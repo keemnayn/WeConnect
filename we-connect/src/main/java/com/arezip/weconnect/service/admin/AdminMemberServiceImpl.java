@@ -63,4 +63,13 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return adminMemberMapper.rejectMember(memberDTO);
 	}
 
+	@Override
+	public int getLeaveCountByMemberId(long memberId) {
+		return adminMemberMapper.getLeaveCountByMemberId(memberId);
+	}
+
+	@Override
+	public String getMemberNameById(long memberId) {
+		return adminMemberMapper.findMemberNameById(memberId);
+	}
 }

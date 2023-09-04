@@ -121,6 +121,10 @@
 					{
 						"name": "freeBoardCreate",
 						"dataType": "string"
+					},
+					{
+						"name": "CMemberId",
+						"dataType": "number"
 					}
 				],
 				"rows": []
@@ -287,6 +291,10 @@
 					]
 				}
 			});
+			grid_1.style.header.css({
+				"font-weight" : "800",
+				"background-image" : "none"
+			});
 			if(typeof onBoardListGrdRowDblclick == "function") {
 				grid_1.addEventListener("row-dblclick", onBoardListGrdRowDblclick);
 			}
@@ -295,15 +303,6 @@
 				"right": "0px",
 				"bottom": "100px",
 				"left": "0px"
-			});
-			
-			var pageIndexer_1 = new cpr.controls.PageIndexer();
-			pageIndexer_1.init(1, 1, 1);
-			container.addChild(pageIndexer_1, {
-				"bottom": "50px",
-				"left": "290px",
-				"width": "1000px",
-				"height": "51px"
 			});
 			
 			var group_1 = new cpr.controls.Container();
@@ -327,6 +326,9 @@
 					"height": "30px"
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("searchCmb");
+				comboBox_1.style.css({
+					"text-align" : "center"
+				});
 				var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
 				comboBox_1.setBindContext(dataMapContext_3);
 				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");

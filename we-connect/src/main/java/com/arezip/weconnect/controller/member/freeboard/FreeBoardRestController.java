@@ -14,12 +14,14 @@ import org.springframework.web.servlet.View;
 
 import com.arezip.weconnect.model.dto.FreeBoardCommentDTO;
 import com.arezip.weconnect.model.dto.FreeBoardDTO;
+import com.arezip.weconnect.model.dto.MemberDTO;
 import com.arezip.weconnect.service.FreeBoardService;
 import com.cleopatra.protocol.data.DataRequest;
 import com.cleopatra.protocol.data.ParameterGroup;
 import com.cleopatra.spring.JSONDataView;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,80 +40,77 @@ public class FreeBoardRestController {
 		dataRequest.setResponse("boardList", boardList);// 데이터셋 이름과 같음
 		return new JSONDataView();
 	}
-	//검색
+
+	// 검색
 	@GetMapping("search")
 	public View searchFreeBoardList(DataRequest dataRequest) {
 		ParameterGroup param = dataRequest.getParameterGroup("searchParam");
 		Map<String, String> searchParams = new HashMap<String, String>();
 		String searchType = null;
 		String searchText = null;
-		if(param != null) {
+		if (param != null) {
 			searchType = param.getValue("searchType");
 			searchText = param.getValue("searchText");
 		}
 		List<FreeBoardDTO> freeBoardList = null;
-		//searchText가 빈 문자열이거나 null이면 전체 리스트 반환
-		if(searchText == null || searchText.trim().isEmpty()) {
+		// searchText가 빈 문자열이거나 null이면 전체 리스트 반환
+		if (searchText == null || searchText.trim().isEmpty()) {
 			freeBoardList = freeBoardService.getFreeBoardList();
 		} else {
-			if(searchType != null && !"".equals(searchType.trim())) {
+			if (searchType != null && !"".equals(searchType.trim())) {
 				searchParams.put("searchType", searchType);
 			}
-			searchParams.put("searchText",searchText);
+			searchParams.put("searchText", searchText);
 			freeBoardList = freeBoardService.searchFreeBoardList(searchParams);
 		}
 		dataRequest.setResponse("boardList", freeBoardList);
 		return new JSONDataView();
 	}
+
 	// 자유게시판 새글 쓰기
 	@PostMapping
 	public View newBoardSave(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("boardInsertParam");
 		if (param != null) {
 			HttpSession session = request.getSession();
-			Long memberId=(Long) session.getAttribute("memberId");
+			Long memberId = (Long) session.getAttribute("memberId");
 			String freeBoardTitle = param.getValue("freeBoardTitle");
 			String freeBoardContent = param.getValue("freeBoardContent");
 			String freeBoardFileName = param.getValue("freeBoardFileName");
-	
-			log.info("freeBoardTitle: {}", freeBoardTitle);
-			log.info("freeBoardContent: {}", freeBoardContent);
-			log.info("freeBoardFileName: {}", freeBoardFileName);
-	
+
 			FreeBoardDTO freeBoardDTO = new FreeBoardDTO();
 			freeBoardDTO.setMemberId(memberId);
 			freeBoardDTO.setFreeBoardTitle(freeBoardTitle);
 			freeBoardDTO.setFreeBoardContent(freeBoardContent);
 			freeBoardDTO.setFreeBoardFileName(freeBoardFileName);
-	
+
 			freeBoardService.insertFreeBoard(freeBoardDTO);
 		}
 		return new JSONDataView();
 	}
-	
-	//자유게시판 상세 조회 dialog 사용
+
+	// 자유게시판 상세 조회
 	@GetMapping("detail")
-	public View freeBoardDetail(DataRequest dataRequest) {
-		System.out.println("dataRequest"+dataRequest);
-		ParameterGroup param =dataRequest.getParameterGroup("detailBoardParam");
-		System.out.println("param"+param);
-		long freeBoardId = Long.parseLong(param.getValue("freeBoardId")); 
-		log.info("freeBoardId {}", freeBoardId);
+	public View freeBoardDetail(DataRequest dataRequest, HttpServletResponse response, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		//로그인한 회원 정보 담음 
+		MemberDTO memberDTO = new MemberDTO();
+		long memberId = (long) session.getAttribute("memberId");
+		memberDTO.setMemberId(memberId);
+		ParameterGroup param = dataRequest.getParameterGroup("detailBoardParam");
+		long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
+		freeBoardService.updateFreeBoardViews(freeBoardId);
 		FreeBoardDTO freeBoardDTO = freeBoardService.getFreeBoardDetail(freeBoardId);
-		List<FreeBoardCommentDTO> freeBoardCommentDTO = freeBoardService.getFreeBoardComment(freeBoardId);
 		dataRequest.setResponse("freeBoardDetail", freeBoardDTO);
-		dataRequest.setResponse("freeBoardComment", freeBoardCommentDTO);
-		log.info("freeBoardDTO {}",freeBoardDTO);
-		log.info("freeBoardCommentDTO {}", freeBoardCommentDTO);
-		log.info("상세 목록{}",freeBoardService.getFreeBoardDetail(freeBoardId));
+		dataRequest.setResponse("memberDTO", memberDTO);
 		return new JSONDataView();
 	}
-	
-	//자유게시판 글 삭제
+
+	// 자유게시판 글 삭제
 	@DeleteMapping
 	public View deleteFreeBoard(DataRequest dataRequest, HttpServletRequest request) {
 		ParameterGroup param = dataRequest.getParameterGroup("freeBoardDetail");
-		//파라미터에서 데이터 추출하여 처리
+		// 파라미터에서 데이터 추출하여 처리
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
 		Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
@@ -125,13 +124,14 @@ public class FreeBoardRestController {
 		freeBoardService.deleteFreeBoard(freeBoardDTO);
 		return new JSONDataView();
 	}
-	//자유게시판 글 수정
+
+	// 자유게시판 글 수정
 	@PutMapping
 	public View updateFreeBoard(DataRequest dataRequest, HttpServletRequest request) {
-		ParameterGroup param =dataRequest.getParameterGroup("freeBoardDetail");
+		ParameterGroup param = dataRequest.getParameterGroup("freeBoardDetail");
 		if (param != null) {
 			HttpSession session = request.getSession();
-			Long memberId = (Long) session.getAttribute("memberId"); 
+			Long memberId = (Long) session.getAttribute("memberId");
 			Long freeBoardId = Long.parseLong(param.getValue("freeBoardId"));
 			String freeBoardTitle = param.getValue("freeBoardTitle");
 			String freeBoardContent = param.getValue("freeBoardContent");

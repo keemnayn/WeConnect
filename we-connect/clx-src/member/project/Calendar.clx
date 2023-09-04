@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-2b1dec4c" version="1.0.4584">
+  <head std:sid="head-3702d063">
+    <screen std:sid="screen-fe586b12" id="Project" name="Project" minwidth="1920px" width="1920px" height="1080px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580"/>
+    <screen std:sid="screen-111d6771" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" useCustomWidth="true" useCustomHeight="true" customHeight="940" customWidth="1580" active="true"/>
+    <screen std:sid="screen-b382ef18" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
+    <screen std:sid="screen-7390749d" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <cl:model std:sid="model-7bfb1f9b">
+      <cl:dataset std:sid="d-set-8b011e73" id="projectList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-4e1911e7" name="projectName"/>
+          <cl:datacolumn std:sid="d-column-bdd99c54" name="projectStart"/>
+          <cl:datacolumn std:sid="d-column-5397c0c4" name="projectEnd"/>
+          <cl:datacolumn std:sid="d-column-78dce0ba" name="projectId" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
+      <cl:submission std:sid="submission-ff55b52a" id="projectListSub" method="get" action="member/project">
+        <cl:listener std:sid="listener-087a6bf7" name="submit-success" handler="onProjectListSubSubmitSuccess"/>
+        <cl:responsedata dataid="projectList"/>
+      </cl:submission>
+    </cl:model>
+    <cl:appspec/>
+  </head>
+  <body std:sid="body-4cfee988">
+    <cl:listener std:sid="listener-caf2ada5" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-d0abd75d" name="load" handler="onBodyLoad2"/>
+    <cl:calendar std:sid="calendar-fe9c627a" id="calendar">
+      <cl:listener std:sid="listener-398e3552" name="item-click" handler="onCalendarItemClick"/>
+      <cl:listener std:sid="listener-ce012cfc" name="date-click" handler="onCalendarDateClick"/>
+      <cl:xylayoutdata std:sid="xyl-data-dfcbb162" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:calendaritemset datasetid="projectList" label="projectName" value="projectName" tooltip="projectName" start="projectStart" end="projectEnd"/>
+      <cl:itemstyle>
+        <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;&#x9;case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
+      </cl:itemstyle>
+    </cl:calendar>
+    <cl:xylayout std:sid="xylayout-6fbf1cc2"/>
+  </body>
+  <std:studiosetting>
+    <std:hruler/>
+    <std:vruler/>
+  </std:studiosetting>
+</html>

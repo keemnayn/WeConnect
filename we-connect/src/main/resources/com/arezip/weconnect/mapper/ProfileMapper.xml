@@ -8,4 +8,11 @@
 		FROM
 		profile_images WHERE MEMBER_ID = #{memberId}
 	</select>
+
+	<update id="updateProfileImagePath" parameterType="com.arezip.weconnect.model.dto.ProfileImageDTO">
+		UPDATE profile_images
+		SET profile_images_path = #{profileImagePath}
+		WHERE member_id = #{memberId}
+	</update>
+
 </mapper> 

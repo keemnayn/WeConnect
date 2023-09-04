@@ -24,4 +24,4 @@ public class SecurityConfig {
 				authorize -> authorize.requestMatchers(WHITE_LIST).permitAll()/* .anyRequest().authenticated() */);
 		return http.build();
 	}
-}
+}   	  

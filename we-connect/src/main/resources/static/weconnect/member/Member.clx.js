@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("member/Member", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/MainTree.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -62,7 +63,9 @@
 						})
 						/*임베디드 앱에 내장할 앱을 로드하여 설정합니다*/
 						vcEmb.app = loadedApp;
+						vcEmb.redraw();
 					}
+					
 				});
 			}
 
@@ -93,6 +96,9 @@
 						vcEmb.app = loadedApp;
 					}
 				});
+				app.lookup("memberIdSub").send();
+				app.lookup("memberName").send();
+				
 			}
 
 			/*
@@ -181,6 +187,23 @@
 					window.location = url;
 				}
 			}
+
+			/*
+			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
+			 * 통신이 성공하면 발생합니다.
+			 */
+			function onMemberNameSubmitSuccess2(e) {
+				var memberName = e.control;
+				let admin = app.lookup("adminBtn");
+				let submission = app.lookup("memberName");
+				let xhr = submission.xhr.responseText;
+				let data = JSON.parse(xhr);
+				let memberInfo = data.memberList[0];
+				let managerYn = memberInfo.managerYn;
+				if (managerYn != "Y") {
+					admin.visible = false;
+				}
+			}
 			// End - User Script
 			
 			// Header
@@ -204,20 +227,50 @@
 					{"label": "근태", "value": "근태", "icon": "img/member/attendance.png", "parent": "", "appId": ""},
 					{"label": "프로젝트", "value": "프로젝트", "icon": "img/member/project.png", "parent": "", "appId": ""},
 					{"label": "예약", "value": "예약", "icon": "img/member/reservation.png", "parent": "", "appId": ""},
-					{"label": "게시판", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
+					{"label": "커뮤니티", "value": "게시판", "icon": "img/member/board.png", "parent": "", "appId": ""},
 					{"label": "출/퇴근 기록", "value": "출/퇴근 기록", "icon": "img/member/commute.png", "parent": "근태", "appId": "member/AttendForm"},
 					{"label": "연차신청", "value": "연차신청", "icon": "img/member/holiday.png", "parent": "근태", "appId": "member/LeaveRequestForm"},
-					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "member/project/Calendar1"},
+					{"label": "일정", "value": "일정", "icon": "img/member/calender.png", "parent": "프로젝트", "appId": "member/project/Calendar"},
 					{"label": "워크보드", "value": "워크보드", "icon": "img/member/work_board.png", "parent": "프로젝트", "appId": ""},
 					{"label": "회의실예약", "value": "회의실예약", "icon": "img/member/meeting_room.png", "parent": "예약", "appId": "member/RoomReservList"},
 					{"label": "자유게시판", "value": "자유게시판", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/FreeBoard"},
 					{"label": "공지사항", "value": "공지사항", "icon": "img/member/post.png", "parent": "게시판", "appId": "member/Notice"},
 					{"label": "건의사항", "value": "건의사항", "icon": "img/member/suggestions.png", "parent": "게시판", "appId": "member/Proposal"},
-					{"label": "공통", "value": "공통", "icon": "img/member/team.png", "parent": "워크보드", "appId": "member/project/TeamPost"},
-					{"label": "나의 보드", "value": "나의 보드", "icon": "img/member/solo.png", "parent": "워크보드", "appId": "member/project/MyPost"}
+					{"label": "공통", "value": "공통", "icon": "img/member/team.png", "parent": "워크보드", "appId": "member/project/TeamPost"}
 				]
 			});
 			app.register(dataSet_1);
+			
+			var dataSet_2 = new cpr.data.DataSet("memberList");
+			dataSet_2.parseData({
+				"columns" : [
+					{
+						"name": "memberId",
+						"dataType": "string"
+					},
+					{
+						"name": "memberName",
+						"dataType": "string"
+					},
+					{
+						"name": "position",
+						"dataType": "string"
+					},
+					{
+						"name": "departmentName",
+						"dataType": "string"
+					}
+				]
+			});
+			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("memberId");
+			dataMap_1.parseData({
+				"columns" : [{
+					"name": "memberId",
+					"dataType": "number"
+				}]
+			});
+			app.register(dataMap_1);
 			var submission_1 = new cpr.protocols.Submission("logoutSub");
 			submission_1.action = "logout";
 			if(typeof onLogoutSubSubmitSuccess == "function") {
@@ -235,6 +288,21 @@
 				submission_2.addEventListener("submit-error", onAdminSubSubmitError);
 			}
 			app.register(submission_2);
+			
+			var submission_3 = new cpr.protocols.Submission("memberIdSub");
+			submission_3.method = "get";
+			submission_3.action = "member/id";
+			submission_3.addResponseData(dataMap_1, false);
+			app.register(submission_3);
+			
+			var submission_4 = new cpr.protocols.Submission("memberName");
+			submission_4.method = "get";
+			submission_4.action = "member/Name";
+			submission_4.addResponseData(dataSet_2, false);
+			if(typeof onMemberNameSubmitSuccess2 == "function") {
+				submission_4.addEventListener("submit-success", onMemberNameSubmitSuccess2);
+			}
+			app.register(submission_4);
 			app.supportMedia("all and (min-width: 1920px)", "Project");
 			app.supportMedia("all and (min-width: 1024px) and (max-width: 1919px)", "default");
 			app.supportMedia("all and (min-width: 500px) and (max-width: 1023px)", "tablet");
@@ -243,8 +311,9 @@
 			// Configure root container
 			var container = app.getContainer();
 			container.style.css({
+				"border-left-color" : "#070048",
+				"background-color" : "#EDF2FF",
 				"width" : "100%",
-				"top" : "0px",
 				"height" : "100%",
 				"left" : "0px"
 			});
@@ -255,12 +324,14 @@
 			
 			// UI Configuration
 			var tree_1 = new cpr.controls.Tree("tre1");
+			tree_1.style.setClasses(["admin_tree"]);
 			tree_1.style.css({
-				"background-color" : "#F1EFFF",
-				"border-bottom-color" : "#f1efff",
+				"background-color" : "#566B90",
+				"color" : "#FFFFFF",
 				"border-left-color" : "#f1efff",
 				"border-top-color" : "#f1efff",
-				"border-right-color" : "#f1efff"
+				"border-right-color" : "#f1efff",
+				"font-family" : "'맑은 고딕' , 'Malgun Gothic' , sans-serif"
 			});
 			(function(tree_1){
 				tree_1.setItemSet(app.lookup("memberMenu"), {
@@ -274,70 +345,93 @@
 				tree_1.addEventListener("item-click", onTre1ItemClick);
 			}
 			container.addChild(tree_1, {
-				"top": "50px",
-				"bottom": "50px",
+				"top": "70px",
+				"bottom": "0px",
 				"left": "0px",
 				"width": "300px"
 			});
 			
 			var group_1 = new cpr.controls.Container();
 			group_1.style.css({
-				"background-color" : "#F1EFFF"
+				"background-color" : "#EDF2FF"
 			});
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var image_1 = new cpr.controls.Image();
-				image_1.src = "img/enjoy.png";
+				image_1.src = "img/header/WE connnect (300 × 50px) (3).png";
 				container.addChild(image_1, {
-					"top": "5px",
-					"left": "0px",
+					"top": "15px",
+					"left": "10px",
 					"width": "300px",
-					"height": "40px"
+					"height": "35px"
 				});
 				var button_1 = new cpr.controls.Button();
-				button_1.value = "관리자페이지";
-				if(typeof onButtonClick == "function") {
-					button_1.addEventListener("click", onButtonClick);
+				button_1.value = "로그인";
+				button_1.style.css({
+					"background-image" : "none"
+				});
+				button_1.bind("visible").toExpression("memberId.memberId != null ? true : false");
+				if(typeof onButtonClick3 == "function") {
+					button_1.addEventListener("click", onButtonClick3);
 				}
 				container.addChild(button_1, {
-					"top": "20px",
-					"left": "1468px",
-					"width": "100px",
-					"height": "20px"
+					"top": "5px",
+					"bottom": "5px",
+					"left": "1683px",
+					"width": "100px"
 				});
-				var button_2 = new cpr.controls.Button();
-				button_2.value = "회원가입";
-				if(typeof onButtonClick2 == "function") {
-					button_2.addEventListener("click", onButtonClick2);
+				var button_2 = new cpr.controls.Button("adminBtn");
+				button_2.value = "관리자페이지";
+				button_2.style.css({
+					"border-right-style" : "none",
+					"border-left-style" : "none",
+					"border-bottom-style" : "none",
+					"background-image" : "none",
+					"border-top-style" : "none"
+				});
+				if(typeof onButtonClick == "function") {
+					button_2.addEventListener("click", onButtonClick);
 				}
 				container.addChild(button_2, {
-					"top": "20px",
-					"left": "1621px",
+					"bottom": "5px",
+					"left": "1683px",
 					"width": "100px",
-					"height": "20px"
+					"height": "40px"
 				});
-				var button_3 = new cpr.controls.Button();
-				button_3.value = "로그인";
-				if(typeof onButtonClick3 == "function") {
-					button_3.addEventListener("click", onButtonClick3);
+				var button_3 = new cpr.controls.Button("logoutBtn");
+				button_3.value = "로그아웃";
+				button_3.style.css({
+					"background-image" : "none"
+				});
+				button_3.bind("visible").toExpression("memberId.memberId != null ? false : true");
+				if(typeof onLogoutBtnClick == "function") {
+					button_3.addEventListener("click", onLogoutBtnClick);
 				}
 				container.addChild(button_3, {
-					"top": "20px",
-					"left": "1771px",
+					"bottom": "5px",
+					"left": "1793px",
 					"width": "100px",
-					"height": "20px"
+					"height": "40px"
 				});
-				var button_4 = new cpr.controls.Button("logoutBtn");
-				button_4.value = "로그아웃";
-				if(typeof onLogoutBtnClick == "function") {
-					button_4.addEventListener("click", onLogoutBtnClick);
+				var button_4 = new cpr.controls.Button();
+				button_4.value = "회원가입";
+				button_4.style.css({
+					"border-right-style" : "none",
+					"border-left-style" : "none",
+					"border-bottom-style" : "none",
+					"background-image" : "none",
+					"border-top-style" : "none"
+				});
+				button_4.bind("visible").toExpression("memberId.memberId != null ? true : false");
+				if(typeof onButtonClick2 == "function") {
+					button_4.addEventListener("click", onButtonClick2);
 				}
 				container.addChild(button_4, {
-					"top": "20px",
-					"left": "1285px",
+					"bottom": "5px",
+					"left": "1793px",
 					"width": "100px",
-					"height": "20px"
+					"height": "40px"
 				});
 			})(group_1);
 			container.addChild(group_1, {
@@ -347,34 +441,24 @@
 				"height": "50px"
 			});
 			
-			var group_2 = new cpr.controls.Container();
-			group_2.style.css({
-				"background-color" : "#E0E0E0"
-			});
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			container.addChild(group_2, {
-				"right": "0px",
-				"bottom": "0px",
-				"left": "0px",
-				"height": "50px"
-			});
-			
 			var embeddedApp_1 = new cpr.controls.EmbeddedApp("ea1");
+			embeddedApp_1.style.css({
+				"background-color" : "#F8F8F8"
+			});
 			if(typeof onEa1Init2 == "function") {
 				embeddedApp_1.addEventListener("init", onEa1Init2);
 			}
 			container.addChild(embeddedApp_1, {
 				"top": "70px",
 				"right": "20px",
-				"bottom": "70px",
+				"bottom": "35px",
 				"left": "320px"
 			});
 			if(typeof onBodyInit == "function"){
 				app.addEventListener("init", onBodyInit);
 			}
-			if(typeof onBodyLoad == "function"){
-				app.addEventListener("load", onBodyLoad);
+			if(typeof onBodyLoad2 == "function"){
+				app.addEventListener("load", onBodyLoad2);
 			}
 		}
 	});

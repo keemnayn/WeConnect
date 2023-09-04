@@ -9,14 +9,12 @@
 		p.proposal_content
 		AS proposalContent,
 		to_char(p.proposal_create,'YYYY-MM-DD') AS proposalCreate,
-		p.proposal_status
-		AS proposalStatus, m.member_name AS
-		memberName from
-		proposal p join
-		member
-		m on m.member_id=p.member_id
-		ORDER BY proposal_id
-		DESC
+		p.proposal_status AS proposalStatus, 
+		CONCAT(SUBSTR(m.member_name, 1, 1), '***') AS memberName,
+		p.member_id AS PMemberId
+		from proposal p 
+		join member m on m.member_id=p.member_id
+		ORDER BY proposal_id DESC
 	</select>
 	<!-- <select id="selectAllProposals" resultType="com.arezip.weconnect.model.dto.ProposalDTO"> 
 		select proposal_id AS proposalId, proposal_title AS proposalTitle, proposal_content 
@@ -50,26 +48,37 @@
 	</delete>
 	<!-- 건의사항 검색 -->
 	<select id="searchProposal"
-		parameterType="HashMap"
 		resultType="com.arezip.weconnect.model.dto.ProposalDTO">
-		SELECT proposal_id AS proposalId, proposal_title AS
-		proposalTitle,
-		proposal_content AS proposalContent, proposal_create AS
-		proposalCreate,
+		SELECT
+		proposal_id AS proposalId,
+		proposal_title AS proposalTitle,
+		proposal_content AS proposalContent,
+		to_char(proposal_create,'YYYY-MM-DD') AS proposalCreate,
 		proposal_status AS proposalStatus
-		FROM proposal WHERE
-		1=1
+		FROM
+		proposal
+		WHERE 1=1
 		<choose>
 			<!-- 전체 검색일 경우 -->
 			<when test="searchType == 'all'">
-				AND (proposal_title LIKE '%' || #{searchText} || '%'
+				AND (
+				proposal_title LIKE '%' || #{searchText} || '%'
+				OR proposal_content LIKE '%' || #{searchText} || '%'
 				OR
-				proposal_content
-				LIKE '%' || #{searchText} || '%')
+				proposal_status LIKE '%' || #{searchText} || '%'
+				)
 			</when>
 			<!-- 제목으로만 검색할 경우 -->
 			<when test="searchType == 'title'">
-				AND proposa_title LIKE '%' || #{searchText} || '%'
+				AND proposal_title LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 내용으로만 검색할 경우 -->
+			<when test="searchType == 'content'">
+				AND proposal_content LIKE '%' || #{searchText} || '%'
+			</when>
+			<!-- 건의사항 처리상태로 검색할 경우 -->
+			<when test="searchType == 'status'">
+				AND proposal_status LIKE '%' || #{searchText} || '%'
 			</when>
 		</choose>
 		ORDER BY proposal_id DESC

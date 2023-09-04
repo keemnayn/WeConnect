@@ -24,12 +24,15 @@
 			 */
 			function onBodyInit(e) {
 				app.lookup("proposalListSub").send();
+				var comboBox = app.lookup("cmb1");
+				comboBox.fieldLabel = "전체";
+				comboBox.value = "all";
 			}
 
 			/*
 			 * "처리" 버튼(updateStatusBtn)에서 click 이벤트 발생 시 호출.
 			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
-			 */
+
 			function onUpdateStatusBtnClick(e) {
 				var updateStatusBtn = e.control;
 				var grid = app.lookup("proposalGrd");
@@ -45,6 +48,21 @@
 					alert("처리는 하나씩만 가능합니다.");
 				}
 			}
+			 */
+
+			function onUpdateStatusBtnClick(e) {
+				var updateStatusBtn = e.control;
+				var grid = app.lookup("proposalGrd");
+				var checkRowIndices = grid.getCheckRowIndices();
+				if (checkRowIndices.length > 0) {
+					if (confirm("처리완료 하시겠습니까?")) {
+						grid.deleteRow(checkRowIndices);
+						app.lookup("updateStatusSub").send();
+					}
+				} else {
+					alert("하나 이상 선택하셔야 합니다.");
+				}
+			}
 
 			/*
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
@@ -52,7 +70,7 @@
 			 */
 			function onUpdateStatusSubSubmitSuccess(e) {
 				var updateStatusSub = e.control;
-				app.lookup("updateStatusSub").send();
+				alert("정상 처리되었습니다");
 				app.lookup("proposalListSub").send();
 				app.lookup("proposalGrd").redraw();
 			}
@@ -81,14 +99,14 @@
 			 */
 			function onDeleteProposalSubSubmitDone(e) {
 				var deleteProposalSub = e.control;
-				app.lookup("deleteProposalSub").send();
+				app.lookup("proposalListSub").send();
 			}
 
 			/*
 			 * 서치 인풋에서 search 이벤트 발생 시 호출.
 			 * Searchinput의 enter키 또는 검색버튼을 클릭하여 인풋의 값이 Search될때 발생하는 이벤트
 			 */
-			function onSearchInputSearch(e){
+			function onSearchInputSearch(e) {
 				var searchInput = e.control;
 				var submission = app.lookup("searchProposalSub");
 				submission.send();
@@ -98,10 +116,21 @@
 			 * 서브미션에서 submit-success 이벤트 발생 시 호출.
 			 * 통신이 성공하면 발생합니다.
 			 */
-			function onSearchProposalSubSubmitSuccess(e){
+			function onSearchProposalSubSubmitSuccess(e) {
 				var searchProposalSub = e.control;
 				app.lookup("proposalGrd").redraw();
-			};
+			}
+
+			/*
+			 * 서브미션에서 submit-error 이벤트 발생 시 호출.
+			 * 통신 중 문제가 생기면 발생합니다.
+			 */
+			function onUpdateStatusSubSubmitError(e) {
+				var updateStatusSub = e.control;
+				var error = updateStatusSub.getMetadata("error");
+				app.lookup("proposalListSub").send();
+				alert(error);
+			}
 			// End - User Script
 			
 			// Header
@@ -149,7 +178,7 @@
 			
 			var submission_2 = new cpr.protocols.Submission("searchProposalSub");
 			submission_2.method = "get";
-			submission_2.action = "member/proposals/search";
+			submission_2.action = "admin/proposals/search";
 			submission_2.addRequestData(dataMap_1);
 			submission_2.addResponseData(dataSet_2, false);
 			if(typeof onSearchProposalSubSubmitSuccess == "function") {
@@ -163,6 +192,12 @@
 			submission_3.addRequestData(dataSet_2);
 			if(typeof onUpdateStatusSubSubmitSuccess == "function") {
 				submission_3.addEventListener("submit-success", onUpdateStatusSubSubmitSuccess);
+			}
+			if(typeof onUpdateStatusSubSubmitDone == "function") {
+				submission_3.addEventListener("submit-done", onUpdateStatusSubSubmitDone);
+			}
+			if(typeof onUpdateStatusSubSubmitError == "function") {
+				submission_3.addEventListener("submit-error", onUpdateStatusSubSubmitError);
 			}
 			app.register(submission_3);
 			
@@ -205,18 +240,21 @@
 						"dataSet": app.lookup("proposalList"),
 						"columns": [
 							{"width": "25px"},
-							{"width": "39px"},
-							{"width": "308px"},
-							{"width": "356px"},
+							{
+								"width": "39px",
+								"visible": false
+							},
+							{"width": "150px"},
+							{"width": "300px"},
 							{
 								"width": "98px",
 								"visible": false
 							},
-							{"width": "68px"},
-							{"width": "77px"}
+							{"width": "100px"},
+							{"width": "75px"}
 						],
 						"header": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -283,7 +321,7 @@
 							]
 						},
 						"detail": {
-							"rows": [{"height": "24px"}],
+							"rows": [{"height": "50px"}],
 							"cells": [
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
@@ -330,6 +368,10 @@
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
 					container.addChild(grid_1, {
 						"top": "50px",
 						"right": "0px",
@@ -373,11 +415,17 @@
 					container.addChild(group_2, {
 						"top": "5px",
 						"right": "0px",
-						"width": "200px",
+						"width": "133px",
 						"height": "40px"
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("cmb1");
-					comboBox_1.bind("value").toDataSet(app.lookup("proposalSearch"), "type", 0);
+					comboBox_1.style.css({
+						"border-radius" : "8px",
+						"text-align" : "center"
+					});
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
+					comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("proposalSearch"), {
 							"label": "type",
@@ -386,13 +434,13 @@
 					})(comboBox_1);
 					container.addChild(comboBox_1, {
 						"top": "10px",
-						"right": "520px",
+						"right": "453px",
 						"width": "100px",
 						"height": "30px"
 					});
 					var searchInput_1 = new cpr.controls.SearchInput();
-					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
-					searchInput_1.setBindContext(dataMapContext_1);
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("searchParam"));
+					searchInput_1.setBindContext(dataMapContext_2);
 					searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
 					if(typeof onSearchInputValueChange == "function") {
 						searchInput_1.addEventListener("value-change", onSearchInputValueChange);
@@ -402,7 +450,7 @@
 					}
 					container.addChild(searchInput_1, {
 						"top": "10px",
-						"right": "220px",
+						"right": "153px",
 						"width": "280px",
 						"height": "30px"
 					});

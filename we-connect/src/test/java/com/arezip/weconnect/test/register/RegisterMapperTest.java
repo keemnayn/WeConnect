@@ -1,6 +1,7 @@
 package com.arezip.weconnect.test.register;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,13 @@ public class RegisterMapperTest {
 		memberDTO.setPosition(position);
 		int result = memberMapper.insertMember(memberDTO);
 		assertNotEquals(0, result);
+	}
+
+//	이메일 중복확인
+	@Test
+	void checkEmailExistsTest() {
+		String memberEmail = "cyon8254@gmail.com";
+		int result = memberMapper.checkEmailExists(memberEmail);
+		assertTrue(result >= 1);
 	}
 }

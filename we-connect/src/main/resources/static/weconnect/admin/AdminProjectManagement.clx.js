@@ -7,6 +7,7 @@
 (function() {
 	var app = new cpr.core.App("admin/AdminProjectManagement", { 
 		onPrepare: function(loader) {
+			loader.addCSS("theme/controls/grid.part.css");
 		},
 		onCreate: function(/* cpr.core.AppInstance */ app, exports) {
 			var linker = {};
@@ -25,6 +26,15 @@
 			function onBodyInit(e) {
 				app.lookup("projectListSub").send();
 			}
+
+			/*
+			 * 그리드에서 selection-change 이벤트 발생 시 호출.
+			 * detail의 cell 클릭하여 설정된 selectionunit에 해당되는 단위가 선택될 때 발생하는 이벤트.
+			 */
+			function onProjectListGrdSelectionChange(e){
+				var projectListGrd = e.control;
+				
+			};
 			// End - User Script
 			
 			// Header
@@ -146,7 +156,7 @@
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.targetColumnName = "projectMemberCount";
-										cell.text = "프로젝트 회원수";
+										cell.text = "참여 사원수";
 										cell.style.css({
 											"text-align" : "center"
 										});
@@ -172,6 +182,7 @@
 											output_1.bind("value").toDataColumn("projectId");
 											return output_1;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -189,6 +200,7 @@
 											output_2.bind("value").toDataColumn("projectName");
 											return output_2;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -206,6 +218,7 @@
 											output_3.bind("value").toDataColumn("projectStart");
 											return output_3;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -223,6 +236,7 @@
 											output_4.bind("value").toDataColumn("projectEnd");
 											return output_4;
 										})();
+										cell.controlConstraint = {};
 									}
 								},
 								{
@@ -240,11 +254,19 @@
 											output_5.bind("value").toDataColumn("projectMemberCount");
 											return output_5;
 										})();
+										cell.controlConstraint = {};
 									}
 								}
 							]
 						}
 					});
+					grid_1.style.header.css({
+						"font-weight" : "800",
+						"background-image" : "none"
+					});
+					if(typeof onProjectListGrdSelectionChange == "function") {
+						grid_1.addEventListener("selection-change", onProjectListGrdSelectionChange);
+					}
 					container.addChild(grid_1, {
 						"top": "0px",
 						"right": "0px",

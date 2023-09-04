@@ -6,36 +6,45 @@
     <screen std:sid="screen-74f199e6" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-eef43841" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-c3c2c698">
-      <cl:dataset std:sid="d-set-768a4900" id="proposalList">
+      <cl:dataset std:sid="d-set-d50e6862" id="proposalSearch">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId"/>
-          <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
-          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
-          <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
-          <cl:datacolumn std:sid="d-column-5d935672" name="memberId"/>
-          <cl:datacolumn std:sid="d-column-ac96c3d8" name="proposalContent"/>
-        </cl:datacolumnlist>
-        <cl:datarowlist/>
-      </cl:dataset>
-      <cl:dataset std:sid="d-set-0fdd174e" id="search">
-        <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-9d9e1713" name="status"/>
+          <cl:datacolumn std:sid="d-column-a19118fc" name="type"/>
+          <cl:datacolumn std:sid="d-column-12415f0a" name="value"/>
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="status"><![CDATA[전체]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[전체]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[all]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="status"><![CDATA[처리중]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[제목]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[title]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="status"><![CDATA[완료]]></cl:datavalue>
+            <cl:datavalue columnname="type"><![CDATA[내용]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[content]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="type"><![CDATA[상태]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[status]]></cl:datavalue>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-768a4900" id="proposalList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-1a677f87" name="proposalId" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-e87e248a" name="proposalTitle"/>
+          <cl:datacolumn std:sid="d-column-ac96c3d8" name="proposalContent"/>
+          <cl:datacolumn std:sid="d-column-00944b19" name="memberName"/>
+          <cl:datacolumn std:sid="d-column-b6812138" name="proposalCreate"/>
+          <cl:datacolumn std:sid="d-column-b3e6aee7" name="proposalStatus"/>
+          <cl:datacolumn std:sid="d-column-5d935672" name="PMemberId" datatype="number"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-eb1b40b2" id="searchParam">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-152fa33a" name="searchStatus"/>
+          <cl:datacolumn std:sid="d-column-152fa33a" name="searchType"/>
           <cl:datacolumn std:sid="d-column-afb5a89c" name="searchText"/>
         </cl:datacolumnlist>
       </cl:datamap>
@@ -44,11 +53,11 @@
           <cl:datacolumn std:sid="d-column-c4fa4b48" name="status"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="admin/proposals">
+      <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">
-        <cl:listener std:sid="listener-96799b0c" name="submit-success" handler="onSearchProposalSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-d72ed10f" name="submit-success" handler="onSearchProposalSubSubmitSuccess"/>
         <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
@@ -60,39 +69,43 @@
     <cl:grid std:sid="grid-2fb52cbb" id="proposalGrd" datasetid="proposalList">
       <cl:listener std:sid="listener-449e111a" name="dblclick" handler="onProposalGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-077c59ca" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
-      <cl:gridcolumn std:sid="g-column-3f56fdb5" width="20px"/>
-      <cl:gridcolumn std:sid="g-column-8af67537"/>
-      <cl:gridcolumn std:sid="g-column-af26bb85" width="20px"/>
-      <cl:gridcolumn std:sid="g-column-2228bb8d" width="30px"/>
-      <cl:gridheader std:sid="gh-band-5b7a338d">
-        <cl:gridrow std:sid="g-row-c95af949" height="50px"/>
-        <cl:gridcell std:sid="gh-cell-cd57d20c" rowindex="0" colindex="0" targetcolumnname="proposalId" sortable="false" filterable="false" text="번호"/>
-        <cl:gridcell std:sid="gh-cell-86c38aae" rowindex="0" colindex="1" targetcolumnname="proposalTitle" sortable="false" filterable="false" text="제목"/>
-        <cl:gridcell std:sid="gh-cell-df155e64" rowindex="0" colindex="2" targetcolumnname="proposalStatus" sortable="false" filterable="false" text="처리상태"/>
-        <cl:gridcell std:sid="gh-cell-8f671925" rowindex="0" colindex="3" targetcolumnname="proposalCreate" sortable="false" filterable="false" text="등록일"/>
+      <cl:headerstyle style="font-weight:700; background-image:none;"/>
+      <cl:gridcolumn std:sid="g-column-3774fab1" width="28px" visible="false"/>
+      <cl:gridcolumn std:sid="g-column-c02d55d6" width="192px"/>
+      <cl:gridcolumn std:sid="g-column-86b520cf" width="55px"/>
+      <cl:gridcolumn std:sid="g-column-1b3caca8" width="53px"/>
+      <cl:gridcolumn std:sid="g-column-714ff053" width="50px"/>
+      <cl:gridcolumn std:sid="g-column-1967dc9a" width="36px" visible="false"/>
+      <cl:gridheader std:sid="gh-band-be6599df">
+        <cl:gridrow std:sid="g-row-62f2d353" height="50px"/>
+        <cl:gridcell std:sid="gh-cell-407dda57" rowindex="0" colindex="0" targetcolumnname="proposalId" sortable="false" filterable="false" text="글번호"/>
+        <cl:gridcell std:sid="gh-cell-783b2624" rowindex="0" colindex="1" targetcolumnname="proposalTitle" sortable="false" filterable="false" text="제목"/>
+        <cl:gridcell std:sid="gh-cell-95e9035a" rowindex="0" colindex="2" targetcolumnname="memberName" sortable="false" filterable="false" text="작성자"/>
+        <cl:gridcell std:sid="gh-cell-52988d2f" rowindex="0" colindex="3" targetcolumnname="proposalCreate" sortable="false" filterable="false" text="등록일"/>
+        <cl:gridcell std:sid="gh-cell-d89d2af9" rowindex="0" colindex="4" targetcolumnname="proposalStatus" sortable="false" filterable="false" text="처리상태"/>
+        <cl:gridcell std:sid="gh-cell-164a7b28" rowindex="0" colindex="5" targetcolumnname="PMemberId" sortable="false" filterable="false" text="PMemberId"/>
       </cl:gridheader>
-      <cl:griddetail std:sid="gd-band-38a5ef1b">
-        <cl:gridrow std:sid="g-row-3c0edbf5" height="50px"/>
-        <cl:gridcell std:sid="gd-cell-2ab6e51e" rowindex="0" colindex="0" columnname="proposalId"/>
-        <cl:gridcell std:sid="gd-cell-623c891b" rowindex="0" colindex="1" columnname="proposalTitle"/>
-        <cl:gridcell std:sid="gd-cell-925fbdfd" rowindex="0" colindex="2" columnname="proposalStatus"/>
-        <cl:gridcell std:sid="gd-cell-64ec50b7" rowindex="0" colindex="3" columnname="proposalCreate"/>
+      <cl:griddetail std:sid="gd-band-cde7ff1c">
+        <cl:gridrow std:sid="g-row-aac53a16" height="50px"/>
+        <cl:gridcell std:sid="gd-cell-061c5335" rowindex="0" colindex="0" columnname="proposalId"/>
+        <cl:gridcell std:sid="gd-cell-ab3e2290" rowindex="0" colindex="1" columnname="proposalTitle"/>
+        <cl:gridcell std:sid="gd-cell-1226432c" rowindex="0" colindex="2" columnname="memberName"/>
+        <cl:gridcell std:sid="gd-cell-d3029238" rowindex="0" colindex="3" columnname="proposalCreate"/>
+        <cl:gridcell std:sid="gd-cell-bfe6c4ae" rowindex="0" colindex="4" columnname="proposalStatus"/>
+        <cl:gridcell std:sid="gd-cell-5950078f" rowindex="0" colindex="5" columnname="PMemberId"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:pageindexer std:sid="p-indexer-6fa8328f">
-      <cl:xylayoutdata std:sid="xyl-data-04dea963" bottom="50px" left="290px" width="1000px" height="50px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:pageindexer>
     <cl:group std:sid="group-e89323ed">
       <cl:xylayoutdata std:sid="xyl-data-5f7b7b49" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
-      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb">
+      <cl:searchinput std:sid="s-input-e671e07b" id="searchIpb" style="border-radius:8px;">
         <cl:listener std:sid="listener-037457d5" name="search" handler="onSearchIpbSearch"/>
-        <cl:datamapbind property="value" datacontrolid="searchParam" columnname="searchText"/>
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchText"/>
         <cl:xylayoutdata std:sid="xyl-data-5b7db7b3" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchStatusCmb">
-        <cl:datamapbind property="value" datacontrolid="searchParam" columnname="searchStatus"/>
+      <cl:combobox std:sid="c-box-64b21162" id="searchTypeCmb" style="border-radius:8px; text-align:center;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
         <cl:xylayoutdata std:sid="xyl-data-486da7f1" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>
-        <cl:itemset datasetid="search" label="status" value="status"/>
+        <cl:itemset datasetid="proposalSearch" label="type" value="value"/>
       </cl:combobox>
       <cl:xylayout std:sid="xylayout-79e361e1"/>
     </cl:group>

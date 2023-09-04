@@ -28,5 +28,14 @@ public class AdminRoomServiceImpl implements AdminRoomService{
 	public List<RoomReservDTO> getRoomReservList() {
 		return adminRoomMapper.getRoomReservList();
 	}
-	
+	//회의실 삭제
+	@Override
+	public int deleteRoom(RoomDTO roomDTO) {
+		return adminRoomMapper.deleteRoom(roomDTO);
+	}
+	//회의실 수정
+	@Override
+	public int updateRoom(RoomDTO roomDTO) {
+		return adminRoomMapper.updateRoom(roomDTO);
+	}
 }

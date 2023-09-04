@@ -14,4 +14,5 @@ public class FreeBoardCommentDTO {
 	private String freeBoardCommentDate;
 	private String memberName;
 	private long memberId;
+	private long fbcMemberId;
 }

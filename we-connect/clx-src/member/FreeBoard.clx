@@ -12,6 +12,7 @@
           <cl:datacolumn std:sid="d-column-a89c5d7c" name="freeBoardTitle" datatype="string"/>
           <cl:datacolumn std:sid="d-column-27f6f332" name="memberName" datatype="string"/>
           <cl:datacolumn std:sid="d-column-935d25c4" name="freeBoardCreate" datatype="string"/>
+          <cl:datacolumn std:sid="d-column-78f298d9" name="CMemberId" datatype="number"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
@@ -67,6 +68,7 @@
     <cl:grid std:sid="grid-38750194" id="boardListGrd" datasetid="boardList">
       <cl:listener std:sid="listener-08c67cf7" name="row-dblclick" handler="onBoardListGrdRowDblclick"/>
       <cl:xylayoutdata std:sid="xyl-data-063ec0dd" top="80px" right="0px" bottom="100px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:headerstyle style="font-weight:800; background-image:none;"/>
       <cl:gridcolumn std:sid="g-column-61e98a7d" visible="false"/>
       <cl:gridcolumn std:sid="g-column-e9b2ce68" width="130px"/>
       <cl:gridcolumn std:sid="g-column-c6b83768" width="20px"/>
@@ -86,9 +88,6 @@
         <cl:gridcell std:sid="gd-cell-45335b99" rowindex="0" colindex="3" columnname="freeBoardCreate"/>
       </cl:griddetail>
     </cl:grid>
-    <cl:pageindexer std:sid="p-indexer-6fa8328f">
-      <cl:xylayoutdata std:sid="xyl-data-48882ae0" bottom="50px" left="290px" width="1000px" height="51px" horizontalAnchor="LEFT" verticalAnchor="BOTTOM"/>
-    </cl:pageindexer>
     <cl:group std:sid="group-d208eff7">
       <cl:xylayoutdata std:sid="xyl-data-c7a31631" top="40px" width="660px" height="30px" horizontalAnchor="CENTER" verticalAnchor="TOP"/>
       <cl:searchinput std:sid="s-input-e671e07b" id="searchTextIpb" style="border-radius:5px;">
@@ -97,7 +96,7 @@
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-702602b6" top="0px" right="0px" width="560px" height="30px" horizontalAnchor="RIGHT"/>
       </cl:searchinput>
-      <cl:combobox std:sid="c-box-64b21162" id="searchCmb">
+      <cl:combobox std:sid="c-box-64b21162" id="searchCmb" style="text-align:center;">
         <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
         <cl:datamapcontext datacontrolid="searchParam"/>
         <cl:xylayoutdata std:sid="xyl-data-ed4bdd06" top="0px" right="560px" width="100px" height="30px" horizontalAnchor="RIGHT"/>

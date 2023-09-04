@@ -50,13 +50,15 @@
       <cl:submission std:sid="submission-5b9f1e2f" id="proposalListSub" method="get" action="member/proposals">
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="member/proposals/search">
+      <cl:submission std:sid="submission-87647814" id="searchProposalSub" method="get" action="admin/proposals/search">
         <cl:listener std:sid="listener-05fd9dd5" name="submit-success" handler="onSearchProposalSubSubmitSuccess"/>
         <cl:requestdata dataid="searchParam"/>
         <cl:responsedata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-e33473dd" id="updateStatusSub" method="put" action="admin/proposals">
         <cl:listener std:sid="listener-693ae8e1" name="submit-success" handler="onUpdateStatusSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-f7126f43" name="submit-done" handler="onUpdateStatusSubSubmitDone"/>
+        <cl:listener std:sid="listener-c7007265" name="submit-error" handler="onUpdateStatusSubSubmitError"/>
         <cl:requestdata dataid="proposalList"/>
       </cl:submission>
       <cl:submission std:sid="submission-00c8f439" id="deleteProposalSub" method="delete" action="admin/proposals">
@@ -77,15 +79,16 @@
         <cl:group std:sid="group-29424da0">
           <cl:grid std:sid="grid-c21e7c3f" id="proposalGrd" datasetid="proposalList">
             <cl:xylayoutdata std:sid="xyl-data-b7ae4bcf" top="50px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+            <cl:headerstyle style="font-weight:800; background-image:none;"/>
             <cl:gridcolumn std:sid="g-column-b0d174cf" width="25px"/>
-            <cl:gridcolumn std:sid="g-column-7f08a6a9" width="39px"/>
-            <cl:gridcolumn std:sid="g-column-a3eaed30" width="308px"/>
-            <cl:gridcolumn std:sid="g-column-1cd9ca54" width="356px"/>
+            <cl:gridcolumn std:sid="g-column-7f08a6a9" width="39px" visible="false"/>
+            <cl:gridcolumn std:sid="g-column-a3eaed30" width="150px"/>
+            <cl:gridcolumn std:sid="g-column-1cd9ca54" width="300px"/>
             <cl:gridcolumn std:sid="g-column-ba44a982" width="98px" visible="false"/>
-            <cl:gridcolumn std:sid="g-column-3e3a5f20" width="68px"/>
-            <cl:gridcolumn std:sid="g-column-3927269b" width="77px"/>
+            <cl:gridcolumn std:sid="g-column-3e3a5f20" width="100px"/>
+            <cl:gridcolumn std:sid="g-column-3927269b" width="75px"/>
             <cl:gridheader std:sid="gh-band-efe652a3">
-              <cl:gridrow std:sid="g-row-8d552927"/>
+              <cl:gridrow std:sid="g-row-8d552927" height="50px"/>
               <cl:gridcell std:sid="gh-cell-710951c1" rowindex="0" colindex="0" sortable="false" filterable="false" columntype="checkbox"/>
               <cl:gridcell std:sid="gh-cell-fb52c81c" rowindex="0" colindex="1" targetcolumnname="proposalId" sortable="false" filterable="false" text="번호"/>
               <cl:gridcell std:sid="gh-cell-2cc32a75" rowindex="0" colindex="2" targetcolumnname="proposalTitle" sortable="false" filterable="false" text="제목"/>
@@ -95,7 +98,7 @@
               <cl:gridcell std:sid="gh-cell-c53e22e0" rowindex="0" colindex="6" targetcolumnname="proposalStatus" sortable="false" filterable="false" text="처리상태"/>
             </cl:gridheader>
             <cl:griddetail std:sid="gd-band-7dd2bece">
-              <cl:gridrow std:sid="g-row-567a4860"/>
+              <cl:gridrow std:sid="g-row-567a4860" height="50px"/>
               <cl:gridcell std:sid="gd-cell-aae3fe69" rowindex="0" colindex="0" columntype="checkbox"/>
               <cl:gridcell std:sid="gd-cell-bbd4295f" rowindex="0" colindex="1" columnname="proposalId"/>
               <cl:gridcell std:sid="gd-cell-d8a7df5c" rowindex="0" colindex="2" columnname="proposalTitle"/>
@@ -106,7 +109,7 @@
             </cl:griddetail>
           </cl:grid>
           <cl:group std:sid="group-2815f0b4">
-            <cl:xylayoutdata std:sid="xyl-data-b0db2694" top="5px" right="0px" width="200px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-b0db2694" top="5px" right="0px" width="133px" height="40px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:button std:sid="button-213da8ec" id="deleteBtn" value="삭제">
               <cl:listener std:sid="listener-30c70297" name="click" handler="onDeleteBtnClick"/>
               <cl:formdata std:sid="f-data-5d4b9cd1" row="0" col="1"/>
@@ -121,9 +124,10 @@
               <cl:columns length="1" unit="FRACTION"/>
             </cl:formlayout>
           </cl:group>
-          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1">
-            <cl:datasetbind property="value" datacontrolid="proposalSearch" columnname="type" rowindex="0"/>
-            <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="520px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+          <cl:combobox std:sid="c-box-7ef33e0a" id="cmb1" style="border-radius:8px; text-align:center;">
+            <cl:datamapbind property="value" category="PROPERTY" datacontrolid="searchParam" columnname="searchType"/>
+            <cl:datamapcontext datacontrolid="searchParam"/>
+            <cl:xylayoutdata std:sid="xyl-data-54354514" top="10px" right="453px" width="100px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
             <cl:itemset datasetid="proposalSearch" label="type" value="value"/>
           </cl:combobox>
           <cl:searchinput std:sid="s-input-e6af5d2c">
@@ -131,7 +135,7 @@
             <cl:listener std:sid="listener-4afd2207" name="search" handler="onSearchInputSearch"/>
             <cl:datamapbind property="value" datacontrolid="searchParam" columnname="searchText"/>
             <cl:datamapcontext datacontrolid="searchParam"/>
-            <cl:xylayoutdata std:sid="xyl-data-9b06b7e9" top="10px" right="220px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
+            <cl:xylayoutdata std:sid="xyl-data-9b06b7e9" top="10px" right="153px" width="280px" height="30px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
           </cl:searchinput>
           <cl:xylayout std:sid="xylayout-2dbc9a91"/>
         </cl:group>

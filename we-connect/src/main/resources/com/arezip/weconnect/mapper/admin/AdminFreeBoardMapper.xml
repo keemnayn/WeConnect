@@ -6,19 +6,21 @@
 		resultType="com.arezip.weconnect.model.dto.FreeBoardDTO">
 		SELECT
 		fb.FREE_BOARD_ID AS freeBoardId,
-		fb.FREE_BOARD_TITLE
-		AS freeBoardTitle,
-		fb.FREE_BOARD_CONTENT AS freeBoardContent,
+		fb.FREE_BOARD_TITLE AS freeBoardTitle,
+		CASE
+		WHEN LENGTH(fb.FREE_BOARD_CONTENT) > 13 THEN
+		SUBSTR(fb.FREE_BOARD_CONTENT, 1, 13) || '...'
+		ELSE
+		fb.FREE_BOARD_CONTENT
+		END AS freeBoardContent,
 		m.MEMBER_NAME AS memberName,
-		TO_CHAR(fb.FREE_BOARD_CREATE,
-		'yyyy-mm-dd') AS freeBoardCreate,
+		TO_CHAR(fb.FREE_BOARD_CREATE, 'yyyy-mm-dd') AS freeBoardCreate,
 		coalesce(commentData.freeBoardCommentCount, 0) AS
 		freeBoardCommentCount
 		FROM
 		FREE_BOARD fb
 		JOIN
-		MEMBER m ON fb.MEMBER_ID =
-		m.MEMBER_ID
+		MEMBER m ON fb.MEMBER_ID = m.MEMBER_ID
 		LEFT JOIN (
 		SELECT
 		FREE_BOARD_ID,
@@ -27,10 +29,8 @@
 		FREE_BOARD_COMMENT
 		GROUP BY
 		FREE_BOARD_ID
-		) commentData ON
-		fb.FREE_BOARD_ID = commentData.FREE_BOARD_ID
-		ORDER BY fb.FREE_BOARD_ID
-		DESC
+		) commentData ON fb.FREE_BOARD_ID = commentData.FREE_BOARD_ID
+		ORDER BY fb.FREE_BOARD_ID DESC
 	</select>
 	<select id="searchFreeBoardList"
 		resultType="com.arezip.weconnect.model.dto.FreeBoardDTO"
@@ -82,6 +82,7 @@
 		parameterType="com.arezip.weconnect.model.dto.FreeBoardDTO">
 		DELETE FROM FREE_BOARD
 		WHERE
-		FREE_BOARD_ID = #{freeBoardId}
+		FREE_BOARD_ID =
+		#{freeBoardId}
 	</delete>
 </mapper>

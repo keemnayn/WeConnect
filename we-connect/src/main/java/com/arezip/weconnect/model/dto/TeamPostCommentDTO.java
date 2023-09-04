@@ -13,6 +13,7 @@ public class TeamPostCommentDTO {
 	private long teamPostCommentId;
 	private String teamPostCommentContent;
 	private Date teamPostCommentDate;
-	private TeamPostDTO teamPostVO;
-	private MemberDTO memberVO;
+	private String memberName;
+	private long memberId;
+	private long tcMemberId;
 }

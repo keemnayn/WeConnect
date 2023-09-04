@@ -5,6 +5,7 @@
     <screen std:sid="screen-9e8590a1" id="default" name="default" minwidth="1024px" maxwidth="1919px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
     <screen std:sid="screen-70bf01ad" id="tablet" name="tablet" minwidth="500px" maxwidth="1023px" width="500px" height="667px"/>
     <screen std:sid="screen-7fc5c3ed" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-0e5f95f2" href="../theme/controls/adminTree2.less" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-c03507b1">
       <cl:dataset std:sid="d-set-cf5029dd" id="adminMenu" staterestore="true">
         <cl:datacolumnlist>
@@ -23,8 +24,8 @@
             <cl:datavalue columnname="icon"><![CDATA[img/user/home.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회원]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[사원]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/icon/team.png]]></cl:datavalue>
           </cl:datarow>
@@ -35,8 +36,8 @@
             <cl:datavalue columnname="icon"><![CDATA[img/icon/project.png]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[커뮤니티]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
             <cl:datavalue columnname="icon"><![CDATA[img/icon/board.png]]></cl:datavalue>
           </cl:datarow>
@@ -53,50 +54,44 @@
             <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회원관리]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회원관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[사원관리]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[사원관리]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminMember]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[근태관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[근태관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminAttendance]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[연차관리]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[연차관리]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[사원]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminVacation]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[조직도]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[조직도]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[회원]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
-            <cl:datavalue columnname="appId"><![CDATA[admin/AdminNotice]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[자유게시판]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[자유게시판]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminBoard]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[공지사항]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[공지사항]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
+            <cl:datavalue columnname="appId"><![CDATA[admin/AdminNotice]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[건의사항]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[건의사항]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[게시판]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[커뮤니티]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminProposal]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[회의실예약현황]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[회의실예약현황]]></cl:datavalue>
+            <cl:datavalue columnname="label"><![CDATA[회의실 관리]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[회의실 관리]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[회의실]]></cl:datavalue>
             <cl:datavalue columnname="appId"><![CDATA[admin/AdminRoomReserv]]></cl:datavalue>
           </cl:datarow>
@@ -115,6 +110,16 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:datamap std:sid="d-map-d1e60d69" id="memberName">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-79d1eaa1" name="memberName"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-19417f7e" id="memberNameSub" method="get" action="admin/name">
+        <cl:listener std:sid="listener-7446f096" name="submit-success" handler="onMemberNameSubSubmitSuccess"/>
+        <cl:listener std:sid="listener-cc70c5ea" name="submit-done" handler="onMemberNameSubSubmitDone2"/>
+        <cl:responsedata dataid="memberName"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -124,7 +129,7 @@
     <cl:tree std:sid="tree-f5826a7f" id="tre1" style="background-color:#F1EFFF; border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none; text-align:left;" class="admin_tree">
       <cl:listener std:sid="listener-3e8bb458" name="item-click" handler="onTre1ItemClick"/>
       <cl:listener std:sid="listener-5364dcf8" name="selection-change" handler="onTre1SelectionChange"/>
-      <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="50px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-86838293" top="50px" bottom="3px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       <cl:treeitemset datasetid="adminMenu" label="label" value="value" icon="icon" parent="parent"/>
     </cl:tree>
     <cl:group std:sid="group-4144ff34" style="background-color:#F1EFFF;">
@@ -134,21 +139,22 @@
         <cl:xylayoutdata std:sid="xyl-data-41517700" top="5px" bottom="0px" left="0px" width="300px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
       </cl:img>
       <cl:output std:sid="output-ffa6c7b0" style="font-size:15px; text-align:center;" value=" 관리자님">
-        <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="10px" right="0px" bottom="0px" width="90px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:xylayoutdata std:sid="xyl-data-e27d5a6c" top="5px" right="10px" bottom="5px" width="75px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:output std:sid="output-738cf04b" id="clock1" style="font-size:15px; text-align:center;" value="현재시간">
-        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="10px" right="75px" bottom="0px" width="186px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+        <cl:xylayoutdata std:sid="xyl-data-aef3e5f9" top="5px" right="165px" bottom="5px" width="200px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
+      </cl:output>
+      <cl:output std:sid="output-232d4831" id="memberNameOpb" style="font-size:15px; text-align:center;">
+        <cl:datamapbind property="value" category="PROPERTY" datacontrolid="memberName" columnname="memberName"/>
+        <cl:datamapcontext datacontrolid="memberName"/>
+        <cl:xylayoutdata std:sid="xyl-data-ac13e8c9" top="5px" right="90px" bottom="5px" width="75px" horizontalAnchor="RIGHT" verticalAnchor="BOTH"/>
       </cl:output>
       <cl:xylayout std:sid="xylayout-fee4904d"/>
     </cl:group>
     <cl:embeddedapp std:sid="e-app-ab9fedd7" id="ea1">
       <cl:listener std:sid="listener-b4ef381c" name="init" handler="onEa1Init"/>
-      <cl:xylayoutdata std:sid="xyl-data-1f7cd493" top="70px" right="20px" bottom="70px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-1f7cd493" top="70px" right="20px" bottom="0px" left="320px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
     </cl:embeddedapp>
-    <cl:group std:sid="group-fa8979ad" style="background-color:#F1EFFF;">
-      <cl:xylayoutdata std:sid="xyl-data-d5716855" right="0px" bottom="0px" width="1920px" height="50px" horizontalAnchor="RIGHT" verticalAnchor="BOTTOM"/>
-      <cl:xylayout std:sid="xylayout-5cdf7d4e"/>
-    </cl:group>
     <cl:xylayout std:sid="xylayout-9cd716cb"/>
   </body>
   <std:studiosetting>

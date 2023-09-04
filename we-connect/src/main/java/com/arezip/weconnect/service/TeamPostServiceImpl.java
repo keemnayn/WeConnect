@@ -1,6 +1,7 @@
 package com.arezip.weconnect.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -15,23 +16,36 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class TeamPostServiceImpl implements TeamPostService {
 	private final TeamPostMapper teamPostMapper;
+
+// 팀포스트 전체 조회
+	@Override
+	public List<TeamPostDTO> getTeamPostList() {
+		return teamPostMapper.selectTeamPostList();
+	}
 	
-	
-	@Override 
-	public List<TeamPostDTO> getTeamPostList(long memberId) {
-		return teamPostMapper.getTeamPostList(memberId);
+// 팀포스트 추가
+	@Override
+	public int addTeamPost(TeamPostDTO teamPostDTO) {
+		return teamPostMapper.insertTeamPost(teamPostDTO);
 	}
 
+// 팀포스트 수정
+	@Override
+	public int updateTeamPost(TeamPostDTO teamPostDTO) {
+		return teamPostMapper.updateTeamPost(teamPostDTO);
+	}
 
-	/*
-	 * @Override public TeamPostDTO getTeamPost(long teamPostId) { return
-	 * teamPostMapper.getTeamPost(teamPostId); }
-	 */
+// 팀포스트 삭제
+	@Override
+	public int deleteTeamPost(TeamPostDTO teamPostDTO) {
+		return teamPostMapper.deleteTeamPost(teamPostDTO);
+	}
 
+// 팀포스트 검색
+	@Override
+	public List<TeamPostDTO> searchProposal(Map<String, String> searchParams) {
+		return teamPostMapper.searchTeamPost(searchParams);
+	}
 	
-	/*
-	 * @Override public int insertTeamPost(TeamPostDTO teamPostDTO) { return
-	 * teamPostMapper.insertTeamPost(teamPostDTO); }
-	 */
 
 }
