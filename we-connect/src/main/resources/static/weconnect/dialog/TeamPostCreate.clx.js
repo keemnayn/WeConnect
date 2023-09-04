@@ -136,15 +136,11 @@
 						"colIndex": 0,
 						"rowIndex": 0
 					});
-					var inputBox_1 = new cpr.controls.InputBox("teamPostContentIpb");
-					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
-					inputBox_1.setBindContext(dataMapContext_1);
-					inputBox_1.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostContent");
-					container.addChild(inputBox_1, {
+					var textArea_1 = new cpr.controls.TextArea("teamPostContentIpb");
+					textArea_1.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostContent");
+					container.addChild(textArea_1, {
 						"colIndex": 1,
-						"rowIndex": 0,
-						"colSpan": 1,
-						"rowSpan": 1
+						"rowIndex": 0
 					});
 				})(group_2);
 				container.addChild(group_2, {
@@ -173,8 +169,8 @@
 						"rowIndex": 0
 					});
 					var comboBox_1 = new cpr.controls.ComboBox("projectNameCmb");
-					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
-					comboBox_1.setBindContext(dataMapContext_2);
+					var dataMapContext_1 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
+					comboBox_1.setBindContext(dataMapContext_1);
 					comboBox_1.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "projectId");
 					(function(comboBox_1){
 						comboBox_1.setItemSet(app.lookup("projectInfo"), {
@@ -242,11 +238,11 @@
 						"colIndex": 0,
 						"rowIndex": 0
 					});
-					var inputBox_2 = new cpr.controls.InputBox("teamPostTitleIpb");
-					var dataMapContext_3 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
-					inputBox_2.setBindContext(dataMapContext_3);
-					inputBox_2.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostTitle");
-					container.addChild(inputBox_2, {
+					var inputBox_1 = new cpr.controls.InputBox("teamPostTitleIpb");
+					var dataMapContext_2 = new cpr.bind.DataMapContext(app.lookup("teamPostCreateParam"));
+					inputBox_1.setBindContext(dataMapContext_2);
+					inputBox_1.bind("value").toDataMap(app.lookup("teamPostCreateParam"), "teamPostTitle");
+					container.addChild(inputBox_1, {
 						"colIndex": 1,
 						"rowIndex": 0,
 						"colSpan": 1,

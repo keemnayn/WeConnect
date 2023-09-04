@@ -26,7 +26,7 @@
     <cl:output std:sid="output-f77d4f6e" id="freeBoardCommentDate" value="Output">
       <cl:xylayoutdata std:sid="xyl-data-1ce731b9" top="20px" left="50px" width="130px" height="20px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
-    <cl:button std:sid="button-fba2fa26" id="deleteBtn" value="삭제">
+    <cl:button std:sid="button-fba2fa26" id="deleteBtn" visible="false" value="삭제">
       <cl:listener std:sid="listener-54769717" name="click" handler="onButtonClick2"/>
       <cl:xylayoutdata std:sid="xyl-data-082d8e5c" top="20px" right="0px" width="100px" height="20px" horizontalAnchor="RIGHT" verticalAnchor="TOP"/>
     </cl:button>

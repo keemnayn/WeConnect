@@ -290,6 +290,7 @@
 			container.style.css({
 				"border-bottom-style" : "none",
 				"border-top-style" : "none",
+				"background-color" : "#EDF2FF",
 				"border-right-style" : "none",
 				"width" : "100%",
 				"height" : "100%",
@@ -306,9 +307,23 @@
 			output_1.readOnly = true;
 			output_1.value = "새소식";
 			output_1.style.css({
+				"border-right-style" : "solid",
+				"border-top-width" : "1px",
+				"border-bottom-color" : "#bfbfbf",
 				"font-weight" : "bold",
+				"border-right-width" : "1px",
+				"border-left-color" : "#bfbfbf",
 				"font-size" : "30px",
-				"font-family" : "IBM Plex Sans KR SemiBold"
+				"border-right-color" : "#bfbfbf",
+				"border-left-width" : "1px",
+				"border-top-style" : "solid",
+				"background-color" : "#ffffff",
+				"border-radius" : "5px",
+				"border-left-style" : "solid",
+				"border-bottom-width" : "1px",
+				"border-top-color" : "#bfbfbf",
+				"font-family" : "IBM Plex Sans KR SemiBold",
+				"border-bottom-style" : "solid"
 			});
 			var dataRowContext_1 = new cpr.bind.DataRowContext(app.lookup("teamPostList"), 0);
 			output_1.setBindContext(dataRowContext_1);
@@ -320,7 +335,21 @@
 			var inputBox_1 = new cpr.controls.InputBox("insertIpb");
 			inputBox_1.placeholder = "보드 멤버들과 공유할 내용을 입력해보세요.";
 			inputBox_1.style.css({
-				"font-family" : "'IBM Plex Sans KR'"
+				"border-right-style" : "solid",
+				"border-top-width" : "1px",
+				"border-bottom-color" : "#bfbfbf",
+				"border-right-width" : "1px",
+				"border-left-color" : "#bfbfbf",
+				"font-size" : "18px",
+				"border-right-color" : "#bfbfbf",
+				"border-left-width" : "1px",
+				"border-top-style" : "solid",
+				"border-radius" : "5px",
+				"border-left-style" : "solid",
+				"border-bottom-width" : "1px",
+				"border-top-color" : "#bfbfbf",
+				"font-family" : "'IBM Plex Sans KR'",
+				"border-bottom-style" : "solid"
 			});
 			if(typeof onInsertIpbMousedown == "function") {
 				inputBox_1.addEventListener("mousedown", onInsertIpbMousedown);
@@ -332,6 +361,22 @@
 			
 			var group_1 = new cpr.controls.Container("grp");
 			group_1.style.setClasses(["cl-form-group"]);
+			group_1.style.css({
+				"border-right-style" : "solid",
+				"border-top-width" : "1px",
+				"border-bottom-color" : "#bfbfbf",
+				"border-right-width" : "1px",
+				"border-left-color" : "#bfbfbf",
+				"border-right-color" : "#bfbfbf",
+				"border-left-width" : "1px",
+				"border-top-style" : "solid",
+				"background-color" : "#ffffff",
+				"border-radius" : "5px",
+				"border-left-style" : "solid",
+				"border-bottom-width" : "1px",
+				"border-top-color" : "#bfbfbf",
+				"border-bottom-style" : "solid"
+			});
 			var verticalLayout_2 = new cpr.controls.layouts.VerticalLayout();
 			group_1.setLayout(verticalLayout_2);
 			container.addChild(group_1, {

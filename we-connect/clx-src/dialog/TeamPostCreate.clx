@@ -37,11 +37,10 @@
         <cl:output std:sid="output-d4483102" value="내용">
           <cl:formdata std:sid="f-data-6e415ad2" row="0" col="0"/>
         </cl:output>
-        <cl:inputbox std:sid="i-box-cbe7f8f3" id="teamPostContentIpb">
+        <cl:textarea std:sid="t-area-4e2dcc2a" id="teamPostContentIpb">
           <cl:datamapbind property="value" datacontrolid="teamPostCreateParam" columnname="teamPostContent"/>
-          <cl:datamapcontext datacontrolid="teamPostCreateParam"/>
-          <cl:formdata std:sid="f-data-b71b198a" row="0" col="1" rowspan="1" colspan="1"/>
-        </cl:inputbox>
+          <cl:formdata std:sid="f-data-677c139f" row="0" col="1"/>
+        </cl:textarea>
         <cl:formlayout std:sid="f-layout-63b8131b" scrollable="false" hspace="10px" vspace="10px" top-margin="5px" right-margin="5px" bottom-margin="5px" left-margin="5px">
           <cl:rows length="1" unit="FRACTION" autoSizing="true" shadetype="NONE" shadecolor="transparent"/>
           <cl:columns length="100" unit="PIXEL"/>

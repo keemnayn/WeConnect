@@ -113,17 +113,17 @@
     </cl:model>
     <cl:appspec/>
   </head>
-  <body std:sid="body-5f8ffe8c" style="border-right-style:none; border-left-style:none; border-bottom-style:none; border-top-style:none;">
+  <body std:sid="body-5f8ffe8c" style="border-right-style:none; background-color:#EDF2FF; border-left-style:none; border-bottom-style:none; border-top-style:none;">
     <cl:listener std:sid="listener-bb7a49b0" name="load" handler="onBodyLoad"/>
-    <cl:output std:sid="output-1fa5fb0a" id="projectName" style="font-weight:bold; font-size:30px; font-family:IBM Plex Sans KR SemiBold;" readonly="true" value="새소식">
+    <cl:output std:sid="output-1fa5fb0a" id="projectName" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; font-weight:bold; border-right-width:1px; border-left-color:#bfbfbf; font-size:30px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; background-color:#ffffff; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; font-family:IBM Plex Sans KR SemiBold; border-bottom-style:solid;" readonly="true" value="새소식">
       <cl:datarowcontext datacontrolid="teamPostList"/>
       <cl:verticaldata std:sid="v-data-429c82c6" width="1540px" height="80px"/>
     </cl:output>
-    <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="font-family:'IBM Plex Sans KR';" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
+    <cl:inputbox std:sid="i-box-0b27bbbf" id="insertIpb" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; font-size:18px; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; font-family:'IBM Plex Sans KR'; border-bottom-style:solid;" placeholder="보드 멤버들과 공유할 내용을 입력해보세요.">
       <cl:listener std:sid="listener-44971034" name="mousedown" handler="onInsertIpbMousedown"/>
       <cl:verticaldata std:sid="v-data-d7745164" width="1540px" height="131px"/>
     </cl:inputbox>
-    <cl:group std:sid="group-1ee9ec57" id="grp" class="cl-form-group">
+    <cl:group std:sid="group-1ee9ec57" id="grp" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#bfbfbf; border-right-width:1px; border-left-color:#bfbfbf; border-right-color:#bfbfbf; border-left-width:1px; border-top-style:solid; background-color:#ffffff; border-radius:5px; border-left-style:solid; border-bottom-width:1px; border-top-color:#bfbfbf; border-bottom-style:solid;" class="cl-form-group">
       <cl:verticaldata std:sid="v-data-b59d3b08" width="1540px" height="300px" autosize="height"/>
       <cl:verticallayout std:sid="v-layout-e07151db"/>
     </cl:group>
