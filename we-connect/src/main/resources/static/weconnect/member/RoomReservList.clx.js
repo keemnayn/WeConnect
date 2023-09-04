@@ -212,6 +212,10 @@
 					]
 				}
 			});
+			grid_1.style.header.css({
+				"font-weight" : "700",
+				"background-image" : "none"
+			});
 			container.addChild(grid_1, {
 				"top": "50px",
 				"bottom": "130px",

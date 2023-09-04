@@ -75,7 +75,7 @@
 				let workInCount = 0;
 				
 				for (let i = 0; i < attendInfo.length; i++) {
-					if (attendInfo[i].workInTime && attendInfo[i].workInTime !== "00:00") {
+					if (attendInfo[i].workInTime && attendInfo[i].workInTime !== "23:50") {
 						workInCount++;
 					}
 				}

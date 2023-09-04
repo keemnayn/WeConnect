@@ -214,7 +214,7 @@
       <cl:xylayout std:sid="xylayout-0003050b"/>
     </cl:group>
     <cl:group std:sid="group-e1bd1b76" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-6f74e9b8" top="4px" left="494px" width="610px" height="320px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-6f74e9b8" top="4px" right="476px" left="494px" height="320px" horizontalAnchor="BOTH" verticalAnchor="TOP"/>
       <cl:tabfolder std:sid="t-folder-fc8cda1d">
         <cl:xylayoutdata std:sid="xyl-data-57eeecf3" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
         <cl:tabitem std:sid="t-item-cc468e09" selected="true" text="건의사항">
@@ -349,7 +349,7 @@
             <cl:calendar std:sid="calendar-7bdba216" id="main_crd">
               <cl:xylayoutdata std:sid="xyl-data-84319a17" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
               <cl:itemstyle>
-                <cl:expbind property="background-color" category="STYLER" expression="value == &quot;projectName&quot; ? &quot;rgb(247, 238, 235)&quot; : &quot;rgb(240,182,151)&quot;"/>
+                <cl:expbind property="background-color" category="STYLER" expression="switch(label){&#xD;&#xA;&#x9;case &quot;프로젝트&quot;:&quot;LightGoldenRodYellow&quot;&#xD;&#xA;&#x9;case &quot;회의&quot;:&quot;pink&quot;&#xD;&#xA;&#x9;case &quot;보고&quot;:&quot;DarkSalmon&quot;&#xD;&#xA;&#x9;case &quot;외부&quot;:&quot;LightBlue&quot;&#xD;&#xA;&#x9;case &quot;교육&quot;:&quot;LightGreen&quot;&#xD;&#xA;&#x9;case &quot;기타&quot;:&quot;AliceBlue&quot;&#xD;&#xA;}"/>
               </cl:itemstyle>
             </cl:calendar>
             <cl:xylayout std:sid="xylayout-ad5ce9d2"/>
@@ -359,7 +359,7 @@
       <cl:xylayout std:sid="xylayout-26b74033"/>
     </cl:group>
     <cl:group std:sid="group-552c99b1" style="border-right-style:solid; border-radius:8px; border-bottom-color:#bfbfbf; border-left-style:solid; border-left-color:#bfbfbf; border-top-color:#bfbfbf; border-bottom-style:solid; border-right-color:#bfbfbf; border-top-style:solid;" class="main_layout1">
-      <cl:xylayoutdata std:sid="xyl-data-65c7913b" top="334px" bottom="0px" left="494px" width="610px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:xylayoutdata std:sid="xyl-data-65c7913b" top="334px" right="476px" bottom="0px" left="494px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
       <cl:tabfolder std:sid="t-folder-8a4c56fa">
         <cl:xylayoutdata std:sid="xyl-data-d5abcbd9" top="0px" right="0px" bottom="0px" left="0px" horizontalAnchor="BOTH" verticalAnchor="BOTH"/>
         <cl:tabitem std:sid="t-item-10a1621f" selected="true" text="공지사항">

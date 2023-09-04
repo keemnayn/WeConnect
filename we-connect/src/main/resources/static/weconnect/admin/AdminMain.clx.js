@@ -505,6 +505,7 @@
 							});
 							grid_1.style.header.css({
 								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
 								"background-image" : "none"
 							});
 							container.addChild(grid_1, {
@@ -710,6 +711,7 @@
 							});
 							grid_2.style.header.css({
 								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
 								"background-image" : "none"
 							});
 							container.addChild(grid_2, {
@@ -908,6 +910,7 @@
 							});
 							grid_3.style.header.css({
 								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
 								"background-image" : "none"
 							});
 							container.addChild(grid_3, {
@@ -925,7 +928,7 @@
 					container.addChild(tabFolder_3, {
 						"top": "0px",
 						"right": "0px",
-						"width": "755px",
+						"left": "823px",
 						"height": "371px"
 					});
 					var tabFolder_4 = new cpr.controls.TabFolder();
@@ -1007,6 +1010,7 @@
 							});
 							grid_4.style.header.css({
 								"background-color" : "#E0E1E2",
+								"font-weight" : "700",
 								"background-image" : "none"
 							});
 							container.addChild(grid_4, {
@@ -1060,7 +1064,7 @@
 						"top": "370px",
 						"bottom": "0px",
 						"left": "0px",
-						"width": "805px"
+						"width": "800px"
 					});
 				})(group_1);
 				tabItem_1.content = group_1;

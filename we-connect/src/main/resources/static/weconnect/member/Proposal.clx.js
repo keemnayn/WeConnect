@@ -302,6 +302,10 @@
 					]
 				}
 			});
+			grid_1.style.header.css({
+				"font-weight" : "700",
+				"background-image" : "none"
+			});
 			if(typeof onProposalGrdRowDblclick == "function") {
 				grid_1.addEventListener("dblclick", onProposalGrdRowDblclick);
 			}
@@ -317,6 +321,9 @@
 			group_1.setLayout(xYLayout_2);
 			(function(container){
 				var searchInput_1 = new cpr.controls.SearchInput("searchIpb");
+				searchInput_1.style.css({
+					"border-radius" : "8px"
+				});
 				searchInput_1.bind("value").toDataMap(app.lookup("searchParam"), "searchText");
 				if(typeof onSearchIpbSearch == "function") {
 					searchInput_1.addEventListener("search", onSearchIpbSearch);
@@ -329,6 +336,7 @@
 				});
 				var comboBox_1 = new cpr.controls.ComboBox("searchTypeCmb");
 				comboBox_1.style.css({
+					"border-radius" : "8px",
 					"text-align" : "center"
 				});
 				comboBox_1.bind("value").toDataMap(app.lookup("searchParam"), "searchType");

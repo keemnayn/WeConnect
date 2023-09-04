@@ -42,6 +42,7 @@
     <cl:listener std:sid="listener-e3b3b88b" name="init" handler="onBodyInit"/>
     <cl:grid std:sid="grid-38750194" id="grd1" datasetid="reservList">
       <cl:xylayoutdata std:sid="xyl-data-97df155a" top="50px" bottom="130px" left="0px" width="1580px" horizontalAnchor="LEFT" verticalAnchor="BOTH"/>
+      <cl:headerstyle style="font-weight:700; background-image:none;"/>
       <cl:gridcolumn std:sid="g-column-9dca41c6" visible="false"/>
       <cl:gridcolumn std:sid="g-column-99a3d07b"/>
       <cl:gridcolumn std:sid="g-column-08d99dda"/>
